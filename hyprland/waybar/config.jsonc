@@ -51,7 +51,6 @@
   "custom/launcher":{
     "format": " ",
     "on-click": "wofi --show drun"
-        // "on-click-right": "killall rofi"
   },
 
   "hyprland/workspaces": {
@@ -60,20 +59,4 @@
       "*": 5
     }
   }
-
-        // Workspaces
-        // "hyprland/workspaces" : {
-        //   "on-click": "activate",
-        //   "active-only": false,
-        //   "all-outputs": true,
-        //   "format": "{}",
-        //   "format-icons": {
-        //     "urgent": "",
-        //     "active": "",
-        //     "default": ""
-        //   },
-        //   "persistent-workspaces": {
-        //     "*": 5
-        //   }       
-        // }
 }
