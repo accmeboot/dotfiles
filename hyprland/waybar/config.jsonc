@@ -42,14 +42,14 @@
   },
 
   "clock": {
-    "format": "  {:%H:%M}",
+    "format": "   {:%H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
     "format-alt": "{:%Y-%m-%d}"
 
   },
 
   "custom/launcher":{
-    "format": "",
+    "format": "  ",
     "on-click": "wofi --show drun"
   },
 

@@ -48,11 +48,18 @@ window#waybar.hidden {
   font-size: 14px;
   margin-top: 6px;
   margin-left: 8px;
-  padding-left: 8px;
-  padding-right: 13px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  /* padding-left: 9px; */
+  /* padding-right: 14px; */
+  /* padding-top: 5px; */
+  /* padding-bottom: 5px; */
   border-radius: 14px;
+
+  min-width: 10px;
+  min-height: 10px;
+  padding-right: 0px;
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   color: @iris;
   background: @overlay;
 }
@@ -73,10 +80,12 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-  padding: 0px 4px;
+  padding: 0px 7px;
   margin: 4px 3px;
-  border-radius: 15px;
+  border-radius: 14px;
   border: 0px;
+  min-width: 7px;
+  min-height: 7px;
   color: @text;
   background: @overlay;
   transition: all 0.2s ease-in-out;
