@@ -2,7 +2,7 @@
   "layer": "top",
   "modules-left": ["custom/launcher"],
   "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["network", "backlight","pulseaudio","clock", "battery"],
+  "modules-right": ["bluetooth", "network", "backlight","pulseaudio","clock", "battery"],
 
   "pulseaudio": {
     "tooltip": false,
@@ -49,7 +49,7 @@
   },
 
   "custom/launcher":{
-    "format": " ",
+    "format": "",
     "on-click": "wofi --show drun"
   },
 
@@ -58,5 +58,14 @@
     "persistent-workspaces": {
       "*": 5
     }
+  },
+
+  "bluetooth": {
+    "format": "{icon}",
+    "format-on": "",
+    "format-off": "!",
+    "format-disabled": "!",
+    "on-click": "blueman-manager",
+    "tooltip-format": "{status}"
   }
 }
