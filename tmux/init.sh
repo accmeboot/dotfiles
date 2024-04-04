@@ -1,9 +1,8 @@
 #! usr/bin/bash
 
-if [ ! -d "plugins" ]; then
-  mkdir plugins
-  cd plugins
-  git clone https://github.com/tmux-plugins/tpm
+if [ ! -d "~/dotfiles/tmux/plugins" ]; then
+  mkdir ~/dotfiles/tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm ~/dotfiles/tmux/plugins
 else
   echo "Plugins directory already exists"
 fi
