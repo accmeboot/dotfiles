@@ -8,4 +8,4 @@ else
   echo "Plugins directory already exists"
 fi
 
-ln -s ~/.config/tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
