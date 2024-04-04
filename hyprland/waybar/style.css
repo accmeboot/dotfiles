@@ -50,8 +50,8 @@ window#waybar.hidden {
   padding-right: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 10px;
-  color: @text;
+  border-radius: 14px;
+  color: @iris;
   background: @overlay;
 }
 
