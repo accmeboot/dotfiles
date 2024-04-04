@@ -1,18 +1,22 @@
 window {
   border-radius: 14px;
-  border: 2px solid rgba(235, 111, 146, 1);
+  border: 2px solid #c4a7e7;
   opacity: 0.98;
 }
 
-#inner-box {
-  border-top: 2px solid rgba(235, 111, 146, 1);
+#scroll {
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  padding: 10px 0;
 }
 
 #entry {
-  margin: 2px 10px;
-  padding: 4px 10px;
+  margin: 2px 5px;
+  padding: 4px 5px;
   border-radius: 14px;
+  font-size: 14px;
 }
+
 #entry:selected {
   border: none;
   outline: none;
@@ -29,4 +33,5 @@ window {
   border: none;
   font-size: 16px;
   padding: 10px;
+  border-bottom: 2px solid #c4a7e7;
 }
