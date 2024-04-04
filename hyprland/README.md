@@ -10,3 +10,4 @@
 6. Install [Rose Pine](https://github.com/rose-pine/gtk).
 7. Install [this](https://github.com/nwg-piotr/nwg-look) to apply themes.
 8. Install `nemo` and delete dolphin.
+9. Install `bluez`, `bluez-utils` and `blueman` for bluetooth.
