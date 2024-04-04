@@ -4,4 +4,4 @@
 
 ### Installation
 
-run `bash bash ./init.sh` to link .tmux.conf to the ~./ derectory
+run `bash ./init.sh` to link .tmux.conf to the ~./ derectory

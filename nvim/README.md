@@ -4,4 +4,4 @@
 
 ### Installation
 
-run `bash bash ./init.sh` to link config files to the ~./config derectory
+run `bash ./init.sh` to link config files to the ~./config derectory
