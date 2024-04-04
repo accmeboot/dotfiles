@@ -1,0 +1,79 @@
+{
+  "layer": "top",
+  "modules-left": ["custom/launcher"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["network", "backlight","pulseaudio","clock", "battery"],
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 5,
+    "format": "{icon}   {volume}%",
+    "format-muted": "{icon}   {volume}%",
+    "on-click":"pavucontrol",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "network": {
+    "tooltip": false,
+    "format-wifi": "    {essid}",
+    // "format-ethernet": "",
+    "on-click": "nm-connection-editor"
+  },
+  "backlight": {
+    "tooltip": false,
+    "format": " {}%",
+    "interval":1,
+    "on-scroll-up": "light -A 5",
+    "on-scroll-down": "light -U 5"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "   {capacity}%",
+    "format-plugged": "   {capacity}%",
+    "format-alt": "{time}  {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "clock": {
+    "format": "  {:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+
+  },
+
+  "custom/launcher":{
+    "format": " ",
+    "on-click": "wofi --show drun"
+        // "on-click-right": "killall rofi"
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  }
+
+        // Workspaces
+        // "hyprland/workspaces" : {
+        //   "on-click": "activate",
+        //   "active-only": false,
+        //   "all-outputs": true,
+        //   "format": "{}",
+        //   "format-icons": {
+        //     "urgent": "",
+        //     "active": "",
+        //     "default": ""
+        //   },
+        //   "persistent-workspaces": {
+        //     "*": 5
+        //   }       
+        // }
+}
