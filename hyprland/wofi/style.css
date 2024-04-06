@@ -1,12 +1,13 @@
 window {
   border-radius: 14px;
-  opacity: 0.98;
+  font-family: "JetbrainsMono Nerd Font";
+  background: #191724;
 }
 
 #scroll {
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-  padding: 10px 0;
+  padding: 2px 0;
 }
 
 #entry {
@@ -33,4 +34,5 @@ window {
   font-size: 16px;
   padding: 10px;
   border-bottom: 2px solid #c4a7e7;
+  background: #1f1d2e;
 }
