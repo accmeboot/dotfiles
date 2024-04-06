@@ -1,14 +1,14 @@
 {
   "layer": "top",
-  "modules-left": ["custom/launcher"],
-  "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["bluetooth", "network", "backlight","pulseaudio","clock", "battery"],
+  "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["tray", "network", "backlight","pulseaudio", "battery"],
 
   "pulseaudio": {
     "tooltip": false,
     "scroll-step": 5,
-    "format": "{icon}   {volume}%",
-    "format-muted": "{icon}   {volume}%",
+    "format": "{icon} {volume}%",
+    "format-muted": "{icon} {volume}%",
     "on-click":"pavucontrol",
     "format-icons": {
       "default": ["", "", ""]
@@ -16,11 +16,14 @@
   },
 
   "network": {
-    "tooltip": false,
-    "format-wifi": "    {essid}",
-    // "format-ethernet": "",
-    "on-click": "nm-connection-editor"
+    "tooltip": true,
+    "format-wifi": " ",
+    "on-click": "nm-connection-editor",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "" //An empty format will hide the ,
   },
+
   "backlight": {
     "tooltip": false,
     "format": " {}%",
@@ -34,18 +37,16 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "{icon}   {capacity}%",
-    "format-charging": "   {capacity}%",
-    "format-plugged": "   {capacity}%",
-    "format-alt": "{time}  {icon}",
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
 
   "clock": {
-    "format": "   {:%H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-    "format-alt": "{:%Y-%m-%d}"
-
+    "format": "{:%A, %B %d, %Y %R}",
+    "on-click": "firefox --new-window https://www.google.com/calendar",
   },
 
   "custom/launcher":{
@@ -60,12 +61,33 @@
     }
   },
 
-  "bluetooth": {
+  // "bluetooth": {
+  //   "format": "{icon}",
+  //   "format-on": "",
+  //   "format-off": "!",
+  //   "format-disabled": "!",
+  //   "on-click": "blueman-manager",
+  //   "tooltip-format": "{status}"
+  // },
+
+  "wlr/taskbar": {
     "format": "{icon}",
-    "format-on": "",
-    "format-off": "!",
-    "format-disabled": "!",
-    "on-click": "blueman-manager",
-    "tooltip-format": "{status}"
+    "icon-size": 11,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "ignore-list": ["wofi"],
+    "rewrite": {
+      "Firefox Web Browser": "Firefox",
+      "Foot Server": "Terminal"
+    }
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 2
   }
 }
