@@ -19,7 +19,7 @@
     "format": "CPU:{}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/cpu-temp.sh",
-    "on-click": "kitty -e bash -c 'sensors; read'"
+    "on-click": "kitty -e bash -c 'htop; read'"
   },
   "custom/divider": {
     "format": " | "
@@ -28,7 +28,7 @@
     "format": "GPU:{}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
-    "on-click": "kitty -e bash -c 'nvidia-smi; read'"
+    "on-click": "kitty -e bash -c 'nvtop; read'"
   },
 
   "network": {
