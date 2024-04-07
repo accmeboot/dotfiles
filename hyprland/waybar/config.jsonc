@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": ["clock", "custom/divider", "custom/cpu", "custom/gpu"],
   "modules-right": ["tray", "network", "backlight","pulseaudio", "battery"],
 
   "pulseaudio": {
@@ -13,6 +13,22 @@
     "format-icons": {
       "default": ["", "", ""]
     }
+  },
+
+  "custom/cpu": {
+    "format": "CPU:{}°C",
+    "interval": 5,
+    "exec": "bash ~/dotfiles/hyprland/waybar/scripts/cpu-temp.sh",
+    "on-click": "kitty -e bash -c 'sensors; read'"
+  },
+  "custom/divider": {
+    "format": " | "
+  },
+  "custom/gpu": {
+    "format": "GPU:{}°C",
+    "interval": 5,
+    "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
+    "on-click": "kitty -e bash -c 'nvidia-smi; read'"
   },
 
   "network": {
