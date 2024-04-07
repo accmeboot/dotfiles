@@ -46,7 +46,7 @@
 
   "clock": {
     "format": "{:%A, %B %d, %Y %R}",
-    "on-click": "firefox --new-window https://www.google.com/calendar",
+    "on-click": "firefox --new-window https://www.google.com/calendar"
   },
 
   "custom/launcher":{
@@ -60,15 +60,6 @@
       "*": 5
     }
   },
-
-  // "bluetooth": {
-  //   "format": "{icon}",
-  //   "format-on": "",
-  //   "format-off": "!",
-  //   "format-disabled": "!",
-  //   "on-click": "blueman-manager",
-  //   "tooltip-format": "{status}"
-  // },
 
   "wlr/taskbar": {
     "format": "{icon}",
