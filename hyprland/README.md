@@ -15,3 +15,4 @@
 11. Install `plymouth` for displaying wendor logo [guide](https://wiki.archlinux.org/title/plymouth)
 12. Install [cattpuccin for sddm](https://github.com/catppuccin/sddm) just follow the instructions,
     don't forget to check the dependencies and change the radius to 14.
+13. Install [brightnessctl](https://man.archlinux.org/man/brightnessctl.1.en) for back light control.
