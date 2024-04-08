@@ -33,9 +33,31 @@ window#waybar.hidden {
 }
 
 #clock {
-  margin: 8px 1px 0px 8px;
+  margin: 8px 0px 0px 8px;
   font-weight: bold;
   font-size: 14px;
+}
+
+#custom-cpu,
+#custom-gpu {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#custom-divider {
+  margin: 8px 8px 0px 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#custom-cpu {
+  color: @gold;
+}
+
+#custom-gpu {
+  color: @foam;
+  margin-left: 4px;
 }
 
 #tray {

@@ -16,3 +16,4 @@
 12. Install [cattpuccin for sddm](https://github.com/catppuccin/sddm) just follow the instructions,
     don't forget to check the dependencies and change the radius to 14.
 13. Install [brightnessctl](https://man.archlinux.org/man/brightnessctl.1.en) for back light control.
+14. Install [htop](https://github.com/Syllo/nvtop) and [ntop](https://github.com/Syllo/nvtop) for way bar on click events for cpu and gpu.
