@@ -1,6 +1,6 @@
 ## [yabai](https://github.com/koekeishiya/yabai)
 
-> Requirements: `yabai`
+> Requirements: `yabai`, [JankyBorders](https://github.com/FelixKratz/JankyBorders)
 
 ### Installation
 
