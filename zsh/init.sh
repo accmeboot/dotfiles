@@ -8,8 +8,9 @@ else
   echo "~/.zsh directory already exists"
 fi
 
-echo "Adding nv alias to ~/.zshrc"
+echo "Adding nv and kitten icat aliases  to ~/.zshrc"
 echo "alias nv='nvim'" >> ~/.zshrc
+echo "alias icat='kitten icat'" >> ~/.zshrc
 
 echo "Changing ZSH_THEME to Soliah"
 sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="Soliah"/' ~/.zshrc
