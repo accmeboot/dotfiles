@@ -1,5 +1,7 @@
 local opt = vim.opt -- options gloabals variable
 
+vim.g.have_nerd_font = true
+
 -- line numbers
 opt.relativenumber = true
 
@@ -28,6 +30,14 @@ opt.backspace = "indent,eol,start" --- I HAVE NO IDEA WHAT IT
 
 -- clipboard
 opt.clipboard:append("unnamedplus") -- for copy/paste from the outside
+
+--[[ Every wrapped line will continue visually indented (same amount of
+	space as the beginning of that line), thus preserving horizontal blocks
+	of text.
+--]]
+opt.breakindent = true
+
+opt.undofile = true
 
 -- split windows
 opt.splitright = true
