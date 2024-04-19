@@ -24,7 +24,7 @@ return {
         comments = { "italic" },      -- Change the style of comments
         conditionals = { "italic" },
         loops = {},
-        functions = {},
+        functions = { "bold" },
         keywords = {},
         strings = {},
         variables = {},
@@ -40,8 +40,8 @@ return {
       default_integrations = true,
       integrations = {
         cmp = true,
-        gitsigns = true,
-        nvimtree = true,
+        gitsigns = false,
+        nvimtree = false,
         treesitter = true,
         notify = false,
         mini = {

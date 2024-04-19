@@ -91,6 +91,7 @@ window#waybar.hidden {
 }
 
 #battery {
+  margin-right: 10px;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   margin-right: 10px;
@@ -145,7 +146,7 @@ window#waybar.hidden {
 #custom-launcher {
   font-size: 14px;
   margin-top: 8px;
-  margin-left: 8px;
+  margin-left: 10px;
   border-radius: 3px;
   padding-left: 10px;
   color: @iris;
