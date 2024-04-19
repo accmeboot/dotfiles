@@ -8,15 +8,15 @@
     "tooltip": false,
     "scroll-step": 5,
     "format": "{icon} {volume}%",
-    "format-muted": "{icon} {volume}%",
+    "format-muted": "  {volume}%",
     "on-click":"pavucontrol",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [" ", " ", " "]
     }
   },
 
   "custom/cpu": {
-    "format": "CPU:{}°C",
+    "format": "CPU: {}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/cpu-temp.sh",
     "on-click": "kitty -e bash -c 'htop; read'"
@@ -25,7 +25,7 @@
     "format": " | "
   },
   "custom/gpu": {
-    "format": "GPU:{}°C",
+    "format": "GPU: {}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
     "on-click": "kitty -e bash -c 'nvtop; read'"
@@ -54,8 +54,8 @@
       "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": "   {capacity}%",
+    "format-plugged": "   {capacity}%",
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },

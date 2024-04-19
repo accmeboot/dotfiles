@@ -1,19 +1,17 @@
 window {
-  border-radius: 14px;
-  font-family: "JetbrainsMono Nerd Font";
-  background: #191724;
+  border-radius: 3px;
 }
 
 #scroll {
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   padding: 2px 0;
 }
 
 #entry {
   margin: 2px 5px;
   padding: 4px 5px;
-  border-radius: 14px;
+  border-radius: 3px;
   font-size: 14px;
 }
 
@@ -28,11 +26,8 @@ window {
 
 #input {
   margin: 1px;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
-  border: none;
+  border-radius: 3px;
   font-size: 16px;
   padding: 10px;
-  border-bottom: 2px solid #c4a7e7;
-  background: #1f1d2e;
+  border-bottom: 2px solid #f2cdcd;
 }
