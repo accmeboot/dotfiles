@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/divider", "custom/cpu", "custom/gpu"],
+  "modules-center": ["group/info"],
   "modules-right": ["tray", "network", "backlight","pulseaudio", "battery"],
 
   "pulseaudio": {
@@ -15,17 +15,20 @@
     }
   },
 
+  "group/info": {
+    "orientation": "inherit",
+    "modules": ["clock", "custom/cpu", "custom/gpu"],
+  },
+
   "custom/cpu": {
-    "format": "CPU: {}°C",
+    "format": "  {}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/cpu-temp.sh",
     "on-click": "kitty -e bash -c 'htop; read'"
   },
-  "custom/divider": {
-    "format": " | "
-  },
+
   "custom/gpu": {
-    "format": "GPU: {}°C",
+    "format": "󰾲  {}°C",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
     "on-click": "kitty -e bash -c 'nvtop; read'"

@@ -28,38 +28,40 @@ window#waybar.hidden {
   border-radius: 0;
   transition: none;
   color: @text;
-  background: @surface0;
+  background: @surface3;
 
   border-top: 1px solid @teal;
   border-bottom: 1px solid @teal;
 }
 
-#clock {
-  margin: 8px 0px 0px 8px;
+#info {
   font-weight: bold;
-  font-size: 12px;
-}
+  font-size: 14px;
 
-#custom-cpu,
-#custom-gpu {
   margin-top: 8px;
-  font-weight: bold;
-  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0px;
+  border-radius: 3px;
+  transition: none;
+  color: @text;
+  background: @surface3;
+
+  border: 1px solid @teal;
 }
 
-#custom-divider {
-  margin: 8px 8px 0px 8px;
-  font-weight: bold;
-  font-size: 12px;
+#clock {
+  color: @sapphire;
 }
 
 #custom-cpu {
-  color: @teal;
+  margin-left: 12px;
+  color: @mauve;
 }
 
 #custom-gpu {
-  color: @red;
-  margin-left: 4px;
+  margin-left: 8px;
+  color: @maroon;
 }
 
 #tray {
@@ -103,7 +105,7 @@ window#waybar.hidden {
   font-weight: bold;
   font-style: normal;
   color: @text;
-  background: @surface0;
+  background: @surface3;
 
   border: 1px solid @teal;
 }
@@ -116,7 +118,7 @@ window#waybar.hidden {
   min-width: 7px;
   min-height: 7px;
   color: @text;
-  background: @surface0;
+  background: @surface3;
   transition: all 0.2s ease-in-out;
 }
 
@@ -147,7 +149,7 @@ window#waybar.hidden {
   border-radius: 3px;
   padding-left: 10px;
   color: @iris;
-  background: @surface0;
+  background: @surface3;
 
   border: 1px solid @teal;
 }
@@ -160,7 +162,7 @@ window#waybar.hidden {
   font-weight: bold;
   font-style: normal;
   color: @text;
-  background: @surface0;
+  background: @surface3;
 
   border: 1px solid @teal;
 }
@@ -177,7 +179,7 @@ window#waybar.hidden {
   min-width: 7px;
   min-height: 7px;
   color: @text;
-  background: @surface0;
+  background: @surface3;
   transition: all 0.2s ease-in-out;
 }
 
