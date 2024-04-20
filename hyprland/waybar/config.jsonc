@@ -70,7 +70,7 @@
 
   "custom/launcher":{
     "format": "  ",
-    "on-click": "wofi --show drun"
+    "on-click": "hyprctl dispatch exec '[floating] rofi -show drun -normal-window'"
   },
 
   "hyprland/workspaces": {
