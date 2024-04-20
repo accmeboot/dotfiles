@@ -30,8 +30,8 @@ window#waybar.hidden {
   color: @text;
   background: @surface3;
 
-  border-top: 1px solid @teal;
-  border-bottom: 1px solid @teal;
+  border-top: 2px solid @mauve;
+  border-bottom: 2px solid @mauve;
 }
 
 #info {
@@ -47,7 +47,7 @@ window#waybar.hidden {
   color: @text;
   background: @surface3;
 
-  border: 1px solid @teal;
+  border: 2px solid @mauve;
 }
 
 #clock {
@@ -68,9 +68,9 @@ window#waybar.hidden {
   padding-right: 2px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  border-left: 1px solid @teal;
-  border-top: 1px solid @teal;
-  border-bottom: 1px solid @teal;
+  border-left: 2px solid @mauve;
+  border-top: 2px solid @mauve;
+  border-bottom: 2px solid @mauve;
 }
 
 #network {
@@ -80,14 +80,14 @@ window#waybar.hidden {
   padding-right: 8px;
   padding-left: 0px;
 
-  border-right: 1px solid @teal;
+  border-right: 2px solid @mauve;
 }
 
 #backlight {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 
-  border-left: 1px solid @teal;
+  border-left: 2px solid @mauve;
 }
 
 #battery {
@@ -96,7 +96,7 @@ window#waybar.hidden {
   border-bottom-right-radius: 3px;
   margin-right: 10px;
 
-  border-right: 1px solid @teal;
+  border-right: 2px solid @mauve;
 }
 
 #taskbar {
@@ -108,7 +108,7 @@ window#waybar.hidden {
   color: @text;
   background: @surface3;
 
-  border: 1px solid @teal;
+  border: 2px solid @mauve;
 }
 
 #taskbar button {
@@ -152,7 +152,7 @@ window#waybar.hidden {
   color: @iris;
   background: @surface3;
 
-  border: 1px solid @teal;
+  border: 2px solid @mauve;
 }
 
 #workspaces {
@@ -165,7 +165,7 @@ window#waybar.hidden {
   color: @text;
   background: @surface3;
 
-  border: 1px solid @teal;
+  border: 2px solid @mauve;
 }
 
 #workspaces button label {
