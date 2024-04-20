@@ -6,7 +6,8 @@
 
 ### Hyprland
 
-![Showcase 1](/assets/showcase/1712516099.png)
-![Showcase 2](/assets/showcase/1712516144.png)
-![Showcase 3](/assets/showcase/1712516189.png)
-![Showcase 4](/assets/showcase/1712516195.png)
+![Showcase 1](/assets/showcase/1713619040.png)
+![Showcase 2](/assets/showcase/1713619067.png)
+![Showcase 3](/assets/showcase/1713619077.png)
+![Showcase 4](/assets/showcase/1713619119.png)
+
