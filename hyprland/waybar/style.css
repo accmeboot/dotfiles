@@ -40,7 +40,7 @@ window#waybar {
 
 #software {
   padding: 2px 8px;
-  background: @surface3;
+  background: transparent;
   border-bottom: 2px solid @mauve;
   border-top: 2px solid @mauve;
 }
@@ -67,15 +67,18 @@ window#waybar {
   transition: all 0.3s;
   padding: 1px 2px 0px 4px;
   margin: 0px;
+  opacity: 0.3;
   background: transparent;
 }
 
 #taskbar button.active {
-  background: @teal;
+  background: transparent;
+  opacity: 1;
 }
 
 #taskbar button:hover {
-  background: @surface2;
+  background: @surface3;
+  opacity: 0.8;
 }
 
 #custom-launcher {
