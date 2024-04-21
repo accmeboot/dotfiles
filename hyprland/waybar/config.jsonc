@@ -1,7 +1,7 @@
 {
   "layer": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["group/apps"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
+  "modules-center": ["hyprland/window"],
   "modules-right": ["clock", "group/software", "group/hardware"], 
   "margin": "4 12 0",
 
@@ -15,9 +15,8 @@
     "modules": ["tray", "network"]
   },
 
-  "group/apps": {
-    "orientation": "horizontal",
-    "modules": ["custom/launcher", "wlr/taskbar"]
+  "hyprland/window": {
+    "separate-outputs": true
   },
 
   "pulseaudio": {
@@ -47,7 +46,7 @@
 
   "network": {
     "tooltip": true,
-    "format-wifi": " ",
+    "format-wifi": "󰤨 ",
     "on-click": "nm-connection-editor",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "{ifname} ",
@@ -108,7 +107,7 @@
   },
 
   "tray": {
-    "icon-size": 16,
+    "icon-size": 14,
     "spacing": 4
   }
 }

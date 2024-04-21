@@ -1,9 +1,8 @@
 configuration{
     modi: "run,drun,window";
     lines: 8;
-    font: "font: "System-ui Regular 12";
+    font: "Cantarell Regular 12";
     show-icons: true;
-    icon-theme: "Oranchelo";
     terminal: "st";
     drun-display-format: "{icon} {name}";
     location: 0;
