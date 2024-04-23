@@ -319,6 +319,17 @@ globalkeys = gears.table.join(
   awful.key({ modkey }, "f", function() awful.util.spawn("firefox") end),
   awful.key({ 'Mod1', }, "space", function() awful.util.spawn("rofi -show drun") end),
 
+
+  -- Volume control
+  awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%") end),
+  awful.key({}, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%") end),
+  awful.key({}, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle") end),
+
+
+  -- Brightness control
+  awful.key({}, "XF86MonBrightnessUp", function() awful.spawn("brightnessctl s +10%") end),
+  awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("brightnessctl s 10%-") end),
+
   -- Default
   awful.key({ modkey, "Control" }, "n",
     function()
