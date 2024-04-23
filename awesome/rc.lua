@@ -246,14 +246,24 @@ globalkeys = gears.table.join(
     { description = "go back", group = "tag" }),
 
   awful.key({ modkey, }, "Right",
-    function()
+    function(c)
       awful.client.focus.byidx(1)
+
+      if client.focus then
+        local c_cords = client.focus:geometry()
+        mouse.coords({ x = c_cords.x + c_cords.width / 2, y = c_cords.y + c_cords.height / 2 })
+      end
     end,
     { description = "focus next by index", group = "client" }
   ),
   awful.key({ modkey, }, "Left",
     function()
       awful.client.focus.byidx(-1)
+
+      if client.focus then
+        local c_cords = client.focus:geometry()
+        mouse.coords({ x = c_cords.x + c_cords.width / 2, y = c_cords.y + c_cords.height / 2 })
+      end
     end,
     { description = "focus previous by index", group = "client" }
   ),
@@ -287,9 +297,9 @@ globalkeys = gears.table.join(
     { description = "reload awesome", group = "awesome" }),
   awful.key({ modkey, "Shift" }, "q", awesome.quit,
     { description = "quit awesome", group = "awesome" }),
-  awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
+  awful.key({ modkey, "Shift" }, "Right", function() awful.tag.incmwfact(0.05) end,
     { description = "increase master width factor", group = "layout" }),
-  awful.key({ modkey, }, "h", function() awful.tag.incmwfact(-0.05) end,
+  awful.key({ modkey, "Shift" }, "Left", function() awful.tag.incmwfact(-0.05) end,
     { description = "decrease master width factor", group = "layout" }),
   awful.key({ modkey, "Shift" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
     { description = "increase the number of master clients", group = "layout" }),
@@ -579,9 +589,6 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 client.connect_signal("focus", function(c)
-  local c_cords = c:geometry()
-  mouse.coords({ x = c_cords.x + c_cords.width / 2, y = c_cords.y + c_cords.height / 2 })
-
   c.border_color = beautiful.border_focus
 end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
@@ -594,4 +601,4 @@ awful.spawn.with_shell("rog-control-center")
 -- Swap caps lock and control
 awful.util.spawn_with_shell("setxkbmap -option ctrl:swapcaps")
 -- Set keyboard repeat rate
-awful.util.spawn_with_shell("xset r rate 200 30")
+awful.util.spawn_with_shell("xset r rate 250 30")
