@@ -54,45 +54,23 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 local theme = "blackburn"
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme)
-beautiful.init(theme_path)
 
-beautiful.font               = "Cantarell 10"
-beautiful.wallpaper          = string.format("%s/dotfiles/assets/wallpapers/mountain_sunset.jpg", os.getenv("HOME"))
-beautiful.fg_normal          = "#cdd6f4"
-beautiful.fg_focus           = "#cba6f7"
-beautiful.fg_urgent          = "#cdd6f4"
-beautiful.bg_normal          = "#1E1E2E"
-beautiful.bg_focus           = "#1E1E2E"
-beautiful.bg_urgent          = "#f38ba8"
-beautiful.border_width       = dpi(1)
-beautiful.border_normal      = "#1E1E2E"
-beautiful.border_focus       = "#cba6f7"
-beautiful.border_marked      = "#cba6f7"
-beautiful.tasklist_bg_focus  = "#1E1E2E"
-beautiful.titlebar_bg_focus  = beautiful.bg_focus
-beautiful.titlebar_bg_normal = beautiful.bg_normal
-beautiful.titlebar_fg_focus  = beautiful.fg_focus
--- Menu
-beautiful.menu_height        = dpi(20)
-beautiful.menu_font          = "Cantarell 11"
-
-beautiful.useless_gap        = 3
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), theme))
 
 -- This is used later as the default terminal and editor to run.
-terminal                     = "kitty"
-editor                       = os.getenv("EDITOR") or "nvim"
-editor_cmd                   = terminal .. " -e " .. editor
+terminal               = "kitty"
+editor                 = os.getenv("EDITOR") or "nvim"
+editor_cmd             = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey                       = "Mod4"
+modkey                 = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts         = {
+awful.layout.layouts   = {
   awful.layout.suit.tile,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile.bottom,
@@ -114,7 +92,7 @@ awful.layout.layouts         = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-mymainmenu                   = awful.menu({
+mymainmenu             = awful.menu({
   items = {
     { "terminal",    terminal },
     { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
@@ -126,18 +104,18 @@ mymainmenu                   = awful.menu({
 })
 
 -- Menubar configuration
-menubar.utils.terminal       = terminal -- Set the terminal for applications that require it
+menubar.utils.terminal = terminal         -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout             = awful.widget.keyboardlayout()
+mykeyboardlayout       = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock                  = wibox.widget.textclock()
+mytextclock            = wibox.widget.textclock()
 
 -- Create a wibox for each screen and add it
-local taglist_buttons        = gears.table.join(
+local taglist_buttons  = gears.table.join(
   awful.button({}, 1, function(t) t:view_only() end),
   awful.button({ modkey }, 1, function(t)
     if client.focus then
@@ -154,7 +132,7 @@ local taglist_buttons        = gears.table.join(
   awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-local tasklist_buttons       = gears.table.join(
+local tasklist_buttons = gears.table.join(
   awful.button({}, 1, function(c)
     if c == client.focus then
       c.minimized = true
