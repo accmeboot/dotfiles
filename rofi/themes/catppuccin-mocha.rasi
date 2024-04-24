@@ -1,7 +1,7 @@
 * {
     bg-col:  #1e1e2e;
     bg-col-light: #1e1e2e;
-    border-col: #1e1e2e;
+    border-col: #cba6f7;
     selected-col: #1e1e2e;
     blue: #89b4fa;
     fg-col: #cdd6f4;
@@ -19,8 +19,8 @@ element-text, element-icon , mode-switcher {
 
 window {
     height: 360px;
-    border: 3px;
-    border-color: @blue;
+    border: 1px;
+    border-color: @border-col;
     background-color: @bg-col;
 }
 
