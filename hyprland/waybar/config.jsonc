@@ -3,7 +3,6 @@
   "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["clock", "group/software", "group/hardware"], 
-  "margin": "4 12 0",
 
   "group/hardware": {
     "orientation": "horizontal",
@@ -65,7 +64,7 @@
   },
 
   "clock": {
-    "format": "{:%A, %B %d, %Y %R}",
+    "format": "{:%A,  %B  %d  %Y    %R}",
     "on-click": "firefox --new-window https://www.google.com/calendar"
   },
 
