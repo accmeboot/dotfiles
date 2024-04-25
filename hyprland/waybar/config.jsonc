@@ -1,43 +1,47 @@
 {
   "layer": "top",
-  "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
-  "modules-center": ["clock", "custom/divider", "custom/cpu", "custom/gpu"],
-  "modules-right": ["tray", "network", "backlight","pulseaudio", "battery"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["clock", "group/software", "group/hardware"], 
+  "margin": "4 12 0",
+
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": ["custom/cpu", "custom/gpu", "backlight", "pulseaudio", "battery"]
+  },
+
+  "group/software": {
+    "orientation": "horizontal",
+    "modules": ["tray"]
+  },
+
+  "hyprland/window": {
+    "separate-outputs": true
+  },
 
   "pulseaudio": {
     "tooltip": false,
     "scroll-step": 5,
     "format": "{icon} {volume}%",
-    "format-muted": "{icon} {volume}%",
+    "format-muted": "  {volume}%",
     "on-click":"pavucontrol",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [" ", " ", " "]
     }
   },
 
   "custom/cpu": {
-    "format": "CPU:{}°C",
+    "format": "\udb83\udee0  {}℃",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/cpu-temp.sh",
     "on-click": "kitty -e bash -c 'htop; read'"
   },
-  "custom/divider": {
-    "format": " | "
-  },
+
   "custom/gpu": {
-    "format": "GPU:{}°C",
+    "format": "\udb82\udcae  {}℃",
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
     "on-click": "kitty -e bash -c 'nvtop; read'"
-  },
-
-  "network": {
-    "tooltip": true,
-    "format-wifi": " ",
-    "on-click": "nm-connection-editor",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "" //An empty format will hide the ,
   },
 
   "backlight": {
@@ -54,10 +58,10 @@
       "critical": 20
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format-charging": "\udb80\udc84 {capacity}%",
+    "format-plugged": "\udb81\udea5 {capacity}%",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82", "\udb80\udc79"]
   },
 
   "clock": {
@@ -66,8 +70,8 @@
   },
 
   "custom/launcher":{
-    "format": "  ",
-    "on-click": "wofi --show drun"
+    "format": " ",
+    "on-click": "hyprctl dispatch exec '[floating] rofi -show drun -normal-window'"
   },
 
   "hyprland/workspaces": {
@@ -79,14 +83,14 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 11,
+    "icon-size": 14,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
     },
-    "ignore-list": ["wofi"],
+    "ignore-list": ["rofi"],
     "rewrite": {
       "Firefox Web Browser": "Firefox",
       "Foot Server": "Terminal"
@@ -95,6 +99,6 @@
 
   "tray": {
     "icon-size": 14,
-    "spacing": 2
+    "spacing": 4
   }
 }
