@@ -12,7 +12,7 @@
 
   "group/software": {
     "orientation": "horizontal",
-    "modules": ["tray", "network"]
+    "modules": ["tray"]
   },
 
   "hyprland/window": {
@@ -42,15 +42,6 @@
     "interval": 5,
     "exec": "bash ~/dotfiles/hyprland/waybar/scripts/gpu-temp.sh",
     "on-click": "kitty -e bash -c 'nvtop; read'"
-  },
-
-  "network": {
-    "tooltip": true,
-    "format-wifi": "󰤨 ",
-    "on-click": "nm-connection-editor",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "" //An empty format will hide the ,
   },
 
   "backlight": {
