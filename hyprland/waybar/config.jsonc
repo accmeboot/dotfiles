@@ -3,7 +3,7 @@
   "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["clock", "group/software", "group/hardware"], 
-  "margin": "5 5 0 5",
+  "margin": "5 3 0 3",
 
   "group/hardware": {
     "orientation": "horizontal",
