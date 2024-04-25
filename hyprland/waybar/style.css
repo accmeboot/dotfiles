@@ -1,13 +1,13 @@
 @import "./themes/catppuccin/mocha.css";
 
 * {
-  font-size: 14px;
+  font-size: 11px;
 }
 
 window#waybar {
   background: @surface3;
-  border-radius: 3px;
-  border: 2px solid @mauve;
+  border-radius: 0px;
+  /* border: 2px solid @mauve; */
 }
 
 #hardware {
@@ -41,8 +41,8 @@ window#waybar {
 #software {
   padding: 2px 8px;
   background: transparent;
-  border-bottom: 2px solid @mauve;
-  border-top: 2px solid @mauve;
+  /* border-bottom: 2px solid @mauve; */
+  /* border-top: 2px solid @mauve; */
 }
 
 #software #network {
@@ -52,14 +52,15 @@ window#waybar {
 #clock {
   margin: 0px 12px;
   color: @flamingo;
+  font-weight: bold;
 }
 
 #taskbar {
   margin: 0px 12px;
   padding: 0px;
-  border-radius: 3px;
-  border-top: 2px solid @mauve;
-  border-bottom: 2px solid @mauve;
+  border-radius: 0px;
+  /* border-top: 2px solid @mauve; */
+  /* border-bottom: 2px solid @mauve; */
 }
 
 #taskbar button {
@@ -82,7 +83,7 @@ window#waybar {
 }
 
 #custom-launcher {
-  font-size: 16px;
+  font-size: 14px;
   color: @blue;
   padding: 0px 12px;
 }
@@ -92,14 +93,12 @@ window#waybar {
 }
 
 #workspaces {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top: 2px solid @mauve;
-  border-bottom: 2px solid @mauve;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 #workspaces button {
-  padding: 4px;
+  padding: 0px 4px;
   border-radius: 0px;
 }
 
