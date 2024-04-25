@@ -5,13 +5,16 @@
 }
 
 window#waybar {
-  background: @surface3;
+  background: transparent;
   border-radius: 0px;
   /* border: 2px solid @mauve; */
 }
 
 #hardware {
   margin-left: 12px;
+  background: @surface0;
+  border-radius: 3px;
+  padding: 0px 8px;
 }
 
 #hardware * {
@@ -40,9 +43,8 @@ window#waybar {
 
 #software {
   padding: 2px 8px;
-  background: transparent;
-  /* border-bottom: 2px solid @mauve; */
-  /* border-top: 2px solid @mauve; */
+  background: @surface0;
+  border-radius: 3px;
 }
 
 #software #network {
@@ -53,14 +55,16 @@ window#waybar {
   margin: 0px 12px;
   color: @flamingo;
   font-weight: bold;
+  background: @surface0;
+  padding: 0px 8px;
+  border-radius: 3px;
 }
 
 #taskbar {
   margin: 0px 12px;
-  padding: 0px;
-  border-radius: 0px;
-  /* border-top: 2px solid @mauve; */
-  /* border-bottom: 2px solid @mauve; */
+  border-radius: 3px;
+  background: @surface0;
+  padding: 0px 8px 3px;
 }
 
 #taskbar button {
@@ -83,18 +87,22 @@ window#waybar {
 }
 
 #custom-launcher {
+  border-radius: 3px;
   font-size: 14px;
-  color: @blue;
+  color: @base;
   padding: 0px 12px;
+  background: @red;
 }
 
 #custom-launcher:hover {
-  color: @red;
+  opacity: 0.7;
 }
 
 #workspaces {
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
+  border-radius: 3px;
+  background: @surface0;
+  padding: 0px 8px;
+  margin-left: 12px;
 }
 
 #workspaces button {
@@ -109,4 +117,7 @@ window#waybar {
 
 #window {
   color: @blue;
+  background: @surface0;
+  padding: 0px 8px;
+  border-radius: 3px;
 }

@@ -3,6 +3,7 @@
   "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["clock", "group/software", "group/hardware"], 
+  "margin": "5 5 0 5",
 
   "group/hardware": {
     "orientation": "horizontal",
@@ -75,9 +76,9 @@
 
   "hyprland/workspaces": {
     "on-click": "activate",
-    "persistent-workspaces": {
-      "*": 5
-    }
+    // "persistent-workspaces": {
+    //   "*": 10
+    // }
   },
 
   "wlr/taskbar": {
