@@ -7,7 +7,6 @@
 window#waybar {
   background: transparent;
   border-radius: 0px;
-  /* border: 2px solid @mauve; */
 }
 
 #hardware {
@@ -90,7 +89,7 @@ window#waybar {
   border-radius: 3px;
   font-size: 14px;
   color: @base;
-  padding: 0px 12px;
+  padding: 0px 8px 0px 12px;
   background: @red;
 }
 
@@ -108,11 +107,12 @@ window#waybar {
 #workspaces button {
   padding: 0px 4px;
   border-radius: 0px;
+  margin: 0px 2px;
 }
 
 #workspaces button.active {
-  background: @blue;
-  color: @base;
+  color: @red;
+  border-bottom: 2px solid @red;
 }
 
 #window {
