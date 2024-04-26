@@ -9,6 +9,30 @@ window#waybar {
   border-radius: 0px;
 }
 
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#temperature {
+  margin-right: 12px;
+  background: @surface0;
+  border-radius: 14px;
+  padding: 0px 8px;
+}
+
+#temperature * {
+  margin: 0px 4px;
+  font-weight: bold;
+}
+
+#temperature #custom-cpu {
+  color: @yellow;
+}
+
+#temperature #custom-gpu {
+  color: @pink;
+}
+
 #hardware {
   margin-left: 12px;
   background: @surface0;
@@ -18,26 +42,8 @@ window#waybar {
 
 #hardware * {
   margin: 0px 4px;
-}
-
-#hardware #custom-cpu {
-  color: @green;
-}
-
-#hardware #custom-gpu {
-  color: @red;
-}
-
-#hardware #backlight {
-  color: @yellow;
-}
-
-#hardware #pulseaudio {
-  color: @teal;
-}
-
-#hardware #battery {
-  color: @peach;
+  font-weight: bold;
+  color: @text;
 }
 
 #software {
@@ -52,7 +58,7 @@ window#waybar {
 
 #clock {
   margin: 0px 12px;
-  color: @flamingo;
+  color: @text;
   font-weight: bold;
   background: @surface0;
   padding: 0px 8px;
@@ -63,7 +69,7 @@ window#waybar {
   margin: 0px 12px;
   border-radius: 14px;
   background: @surface0;
-  padding: 0px 8px 3px;
+  padding: 0px 8px 1px;
 }
 
 #taskbar button {
@@ -86,10 +92,12 @@ window#waybar {
 }
 
 #custom-launcher {
-  border-radius: 14px;
-  font-size: 14px;
-  color: @red;
-  padding: 0px 8px 0px 12px;
+  /* border-radius: 14px; */
+  font-size: 16px;
+  font-weight: bold;
+  color: @blue;
+  margin-left: 4px;
+  /* padding: 0px 8px 0px 12px; */
   background: transparent;
 }
 
@@ -101,7 +109,7 @@ window#waybar {
   border-radius: 14px;
   background: @surface0;
   padding: 0px 8px;
-  margin-left: 12px;
+  margin-left: 4px;
 }
 
 #workspaces button {
@@ -116,7 +124,7 @@ window#waybar {
 }
 
 #window {
-  color: @blue;
+  color: @flamingo;
   background: @surface0;
   padding: 0px 8px;
   border-radius: 14px;

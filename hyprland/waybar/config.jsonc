@@ -2,12 +2,17 @@
   "layer": "top",
   "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["clock", "group/software", "group/hardware"], 
+  "modules-right": ["clock", "group/temperature", "group/software", "group/hardware"], 
   "margin": "5 3 0 3",
+
+  "group/temperature": {
+    "orientation": "horizontal",
+    "modules": ["custom/cpu", "custom/gpu"]
+  },
 
   "group/hardware": {
     "orientation": "horizontal",
-    "modules": ["custom/cpu", "custom/gpu", "backlight", "pulseaudio", "battery"]
+    "modules": ["backlight", "pulseaudio", "battery"]
   },
 
   "group/software": {
@@ -16,7 +21,9 @@
   },
 
   "hyprland/window": {
-    "separate-outputs": true
+    "format-empty": "nothing is running",
+    "separate-outputs": true,
+    "icon": true
   },
 
   "pulseaudio": {
@@ -76,9 +83,10 @@
 
   "hyprland/workspaces": {
     "on-click": "activate",
-    // "persistent-workspaces": {
-    //   "*": 10
-    // }
+    "persistent-workspaces": {
+      "DP-3": [ 1, 2, 3, 4, 5 ], 
+      "eDP-1": [ 6, 7, 8, 9, 10 ]
+    }
   },
 
   "wlr/taskbar": {
