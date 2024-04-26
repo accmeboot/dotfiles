@@ -4,12 +4,37 @@
   font-size: 11px;
 }
 
-#main {
+window#waybar {
+  background: @base;
   border-radius: 0px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+.modules-left {
+  background: @surface0;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
+  padding: 0px 12px 0px 4px;
+}
+
+.modules-right {
   background: @surface0;
-  padding: 0px 14px 0px 4px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  padding: 0px 4px 0px 12px;
+  font-weight: bold;
+}
+
+.modules-center {
+  background: transparent;
+}
+
+#window {
+  color: @text;
+  font-weight: bold;
 }
 
 #custom-launcher {
@@ -21,90 +46,24 @@
   color: @red;
 }
 
-#workspaces {
-  margin-left: 4px;
-}
-
 #workspaces button {
-  padding: 0px 4px;
+  padding: 0px;
   border-radius: 0px;
-  margin: 0px 2px;
-  font-size: 11px;
+  margin: 0px;
+  color: @text;
+  font-weight: bold;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
 }
 
 #workspaces button.active {
-  color: @red;
-  border-bottom: 2px solid @red;
-}
-
-window#waybar {
-  background: transparent;
-  border-radius: 0px;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-}
-
-#temperature {
-  margin-right: 12px;
-  background: @surface0;
-  border-radius: 14px;
-  padding: 0px 8px;
-}
-
-#temperature * {
-  margin: 0px 4px;
-  font-weight: bold;
-}
-
-#temperature #custom-cpu {
-  color: @yellow;
-}
-
-#temperature #custom-gpu {
-  color: @pink;
-}
-
-#hardware {
-  margin-left: 12px;
-  background: @surface0;
-  border-radius: 0px;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
-  padding: 0px 8px;
-}
-
-#hardware * {
-  margin: 0px 4px;
-  font-weight: bold;
-  color: @text;
-}
-
-#software {
-  padding: 2px 8px;
-  background: @surface0;
-  border-radius: 14px;
-}
-
-#software #network {
-  margin-left: 4px;
-}
-
-#clock {
-  margin: 0px 12px;
-  color: @text;
-  font-weight: bold;
-  background: @surface0;
-  padding: 0px 8px;
-  border-radius: 14px;
+  color: @mauve;
+  border-bottom: 2px solid @mauve;
 }
 
 #taskbar {
-  margin: 0px 12px;
-  border-radius: 14px;
   background: @surface0;
-  padding: 0px 8px 1px;
+  padding: 0px 4px 1px;
 }
 
 #taskbar button {
@@ -126,9 +85,27 @@ window#waybar.empty #window {
   opacity: 0.8;
 }
 
-#window {
-  color: @flamingo;
-  background: @surface0;
-  padding: 0px 8px;
-  border-radius: 14px;
+#clock,
+#tray,
+#backlight,
+#pulseaudio,
+#battery,
+#custom-cpu,
+#custom-gpu {
+  margin: 0px 4px;
+}
+#custom-cpu {
+  color: @lavender;
+}
+#custom-gpu {
+  color: @blue;
+}
+#backlight,
+#pulseaudio,
+#battery {
+  color: @text;
+}
+
+#clock {
+  color: @green;
 }

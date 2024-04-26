@@ -1,34 +1,15 @@
 {
   "layer": "top",
-  "modules-left": ["group/main", "wlr/taskbar"],
+  "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["clock", "group/temperature", "group/software", "group/hardware"], 
+  "modules-right": ["clock", "custom/cpu", "custom/gpu", "tray", "backlight", "pulseaudio", "battery"], 
   "margin": "0",
-
-  "group/main": {
-    "orientation": "horizontal",
-    "modules": ["custom/launcher", "hyprland/workspaces"]
-  },
-
-  "group/temperature": {
-    "orientation": "horizontal",
-    "modules": ["custom/cpu", "custom/gpu"]
-  },
-
-  "group/hardware": {
-    "orientation": "horizontal",
-    "modules": ["backlight", "pulseaudio", "battery"]
-  },
-
-  "group/software": {
-    "orientation": "horizontal",
-    "modules": ["tray"]
-  },
 
   "hyprland/window": {
     "format-empty": "nothing is running",
     "separate-outputs": true,
-    "icon": true
+    "icon": true,
+    "icon-size": 11,
   },
 
   "pulseaudio": {
@@ -77,7 +58,7 @@
   },
 
   "clock": {
-    "format": "{:%A,  %B  %d  %Y    %R}",
+    "format": "{:%A  %B  %d  %Y   %R}",
     "on-click": "firefox --new-window https://www.google.com/calendar"
   },
 
