@@ -9,7 +9,7 @@
     "format-empty": "nothing is running",
     "separate-outputs": true,
     "icon": true,
-    "icon-size": 11,
+    "icon-size": 11
   },
 
   "pulseaudio": {
@@ -77,7 +77,7 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 14,
+    "icon-size": 11,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
@@ -92,7 +92,7 @@
   },
 
   "tray": {
-    "icon-size": 14,
+    "icon-size": 11,
     "spacing": 4
   }
 }
