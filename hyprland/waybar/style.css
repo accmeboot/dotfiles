@@ -4,6 +4,39 @@
   font-size: 11px;
 }
 
+#main {
+  border-radius: 0px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  background: @surface0;
+  padding: 0px 14px 0px 4px;
+}
+
+#custom-launcher {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#custom-launcher:hover {
+  color: @red;
+}
+
+#workspaces {
+  margin-left: 4px;
+}
+
+#workspaces button {
+  padding: 0px 4px;
+  border-radius: 0px;
+  margin: 0px 2px;
+  font-size: 11px;
+}
+
+#workspaces button.active {
+  color: @red;
+  border-bottom: 2px solid @red;
+}
+
 window#waybar {
   background: transparent;
   border-radius: 0px;
@@ -36,7 +69,9 @@ window#waybar.empty #window {
 #hardware {
   margin-left: 12px;
   background: @surface0;
-  border-radius: 14px;
+  border-radius: 0px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
   padding: 0px 8px;
 }
 
@@ -89,38 +124,6 @@ window#waybar.empty #window {
 #taskbar button:hover {
   background: @surface3;
   opacity: 0.8;
-}
-
-#custom-launcher {
-  /* border-radius: 14px; */
-  font-size: 16px;
-  font-weight: bold;
-  color: @blue;
-  margin-left: 4px;
-  /* padding: 0px 8px 0px 12px; */
-  background: transparent;
-}
-
-#custom-launcher:hover {
-  opacity: 0.7;
-}
-
-#workspaces {
-  border-radius: 14px;
-  background: @surface0;
-  padding: 0px 8px;
-  margin-left: 4px;
-}
-
-#workspaces button {
-  padding: 0px 4px;
-  border-radius: 0px;
-  margin: 0px 2px;
-}
-
-#workspaces button.active {
-  color: @red;
-  border-bottom: 2px solid @red;
 }
 
 #window {
