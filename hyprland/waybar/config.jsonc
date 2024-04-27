@@ -70,8 +70,8 @@
   "hyprland/workspaces": {
     "on-click": "activate",
     "persistent-workspaces": {
-      "DP-3": [ 1, 2, 3, 4, 5 ], 
-      "eDP-1": [ 6, 7, 8, 9, 10 ]
+      "DP-1": [ 1, 2, 3, 4, 5 ], 
+      "eDP-2": [ 6, 7, 8, 9, 10 ]
     }
   },
 
