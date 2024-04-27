@@ -85,6 +85,11 @@ window#waybar.empty #window {
   opacity: 0.8;
 }
 
+#custom-pacman {
+  color: @red;
+  margin-right: 8px;
+}
+
 #clock,
 #tray,
 #backlight,

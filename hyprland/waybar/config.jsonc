@@ -2,7 +2,7 @@
   "layer": "top",
   "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["clock", "custom/cpu", "custom/gpu", "tray", "backlight", "pulseaudio", "battery"], 
+  "modules-right": ["custom/pacman", "clock", "custom/cpu", "custom/gpu", "tray", "backlight", "pulseaudio", "battery"], 
   "margin": "0",
 
   "hyprland/window": {
@@ -10,6 +10,14 @@
     "separate-outputs": true,
     "icon": true,
     "icon-size": 11
+  },
+
+  "custom/pacman": {
+      "format": "{} \udb81\udeb0",
+      "interval": 3600,                     // every hour
+      "exec": "checkupdates | wc -l",       // # of updates
+      "exec-if": "exit 0",                  // always run; consider advanced run conditions
+      "signal": 8
   },
 
   "pulseaudio": {
