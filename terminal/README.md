@@ -1,5 +1,9 @@
 ## Terminal related apps
 
+### [Alacritty](https://alacritty.org/index.html)
+
+> Requirements: `alacritty`
+
 ### [Kitty](https://sw.kovidgoyal.net/kitty/)
 
 > Requirements: `kitty`

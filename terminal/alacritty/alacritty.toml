@@ -1,3 +1,7 @@
+import = [
+  "~/dotfiles/terminal/alacritty/catppuccin-mocha.toml"
+]
+
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 bold = { style = "Bold" }

@@ -39,14 +39,14 @@
     "format": "\udb83\udee0  {}℃",
     "interval": 5,
     "exec": "bash $HOME/dotfiles/linux/hyprland/waybar/scripts/cpu-temp.sh",
-    "on-click": "kitty -e bash -c 'htop; read'"
+    "on-click": "alacritty -e bash -c 'htop; read'"
   },
 
   "custom/gpu": {
     "format": "\udb82\udcae  {}℃",
     "interval": 5,
     "exec": "bash $HOME/dotfiles/linux/hyprland/waybar/scripts/gpu-temp.sh",
-    "on-click": "kitty -e bash -c 'nvtop; read'"
+    "on-click": "alacritty -e bash -c 'nvtop; read'"
   },
 
   "backlight": {
