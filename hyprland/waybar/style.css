@@ -13,13 +13,6 @@ window#waybar.empty #window {
   background-color: transparent;
 }
 
-.modules-left {
-  background: @surface0;
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px;
-  padding: 0px 12px 0px 4px;
-}
-
 .modules-right {
   background: @surface0;
   border-top-left-radius: 14px;
@@ -30,6 +23,13 @@ window#waybar.empty #window {
 
 .modules-center {
   background: transparent;
+}
+
+#left {
+  background: @surface0;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  padding: 0px 12px 0px 4px;
 }
 
 #window {
@@ -61,8 +61,12 @@ window#waybar.empty #window {
   border-bottom: 2px solid @mauve;
 }
 
+#workspaces button:hover {
+  background: @surface1;
+}
+
 #taskbar {
-  background: @surface0;
+  background: transparent;
   padding: 0px 4px 1px;
 }
 
@@ -81,8 +85,13 @@ window#waybar.empty #window {
 }
 
 #taskbar button:hover {
-  background: @surface3;
+  background: transparent;
   opacity: 0.8;
+}
+
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px transparent;
 }
 
 #custom-pacman {

@@ -1,15 +1,19 @@
 {
   "layer": "top",
-  "modules-left": ["custom/launcher", "wlr/taskbar", "hyprland/workspaces"],
+  "modules-left": ["group/left", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
   "modules-right": ["custom/pacman", "clock", "custom/cpu", "custom/gpu", "tray", "backlight", "pulseaudio", "battery"], 
   "margin": "0",
 
+  "group/left": {
+    "orientation": "horizontal",
+    "modules": ["custom/launcher", "hyprland/workspaces"],
+    "width": 5,
+  },
+
   "hyprland/window": {
-    "format-empty": "nothing is running",
-    "separate-outputs": true,
-    "icon": true,
-    "icon-size": 11
+    "max-length": 200,
+    "separate-outputs": true
   },
 
   "custom/pacman": {
@@ -85,7 +89,7 @@
 
   "wlr/taskbar": {
     "format": "{icon}",
-    "icon-size": 11,
+    "icon-size": 14,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
@@ -96,7 +100,8 @@
     "rewrite": {
       "Firefox Web Browser": "Firefox",
       "Foot Server": "Terminal"
-    }
+    },
+    "icon-theme": "papirus"
   },
 
   "tray": {
