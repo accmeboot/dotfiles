@@ -1,16 +1,11 @@
+#!/bin/bash
+
+set -e
+
 echo "linking dotfiles..."
 
 if [ -d $HOME/.config/nvim ]; then rm -r $HOME/.config/nvim; fi
 ln -sfn $HOME/dotfiles/terminal/nvim/ $HOME/.config/nvim
-
-
-echo "Installng tmux plugin manager"
-if [ ! -d "$HOME/dotfiles/terminal/tmux/plugins" ]; then
-  mkdir $HOME/dotfiles/terminal/tmux/plugins
-  git clone https://github.com/tmux-plugins/tpm $HOME/dotfiles/tmux/plugins
-else
-  echo "Plugins directory already exists"
-fi
 
 if [ -d $HOME/.tmux.conf ]; then rm -r $HOME/.tmux.conf; fi
 ln -sfn $HOME/dotfiles/terminal/tmux/.tmux.conf $HOME/.tmux.conf
@@ -23,5 +18,18 @@ ln -sfn $HOME/dotfiles/terminal/alacritty/ $HOME/.config/alacritty
 
 if [ -d $HOME/.config/ranger ]; then rm -r $HOME/.config/ranger; fi
 ln -sfn $HOME/dotfiles/terminal/ranger/ $HOME/.config/ranger
+
+
+echo "Installng tmux plugin manager"
+if [ ! -d "$HOME/dotfiles/terminal/tmux/plugins" ]; then
+  mkdir $HOME/dotfiles/terminal/tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm $HOME/dotfiles/tmux/plugins
+else
+  echo "Plugins directory already exists"
+fi
+
+
+echo "Running the oh-my-zsh configuration script in a new shell..."
+bash ./zsh/bootstrap.sh
 
 echo "All done!"

@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 echo "linking dotfiles..."
 
 if [ -d $HOME/.config/yabai ]; then rm -r $HOME/.config/yabai; fi

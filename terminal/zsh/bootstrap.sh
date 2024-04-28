@@ -1,9 +1,16 @@
+#!/bin/bash
+
+set -e
+
 echo "Creating ~/.zsh directory"
-if [ ! -d "~./zsh" ]; then
+if [ ! -d "$HOME/.zsh" ]; then
   mkdir ~/.zsh
 else
   echo "~/.zsh directory already exists"
 fi
+
+echo "Installing oh-my-zsh..."
+RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || exit
 
 echo "Adding nv and kitten icat aliases  to ~/.zshrc"
 echo "alias nv='nvim'" >> ~/.zshrc
@@ -22,4 +29,3 @@ echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
 echo "Adding neofetch to ~/.zshrc"
 echo "neofetch" >> ~/.zshrc
-
