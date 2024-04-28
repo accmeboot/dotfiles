@@ -3,12 +3,9 @@ import = [
 ]
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-bold = { style = "Bold" }
-italic = { style = "Italic" }
-bold_italic = { style = "Bold Italic" }
+normal = { family = "JetBrainsMono Nerd Font" }
 size = 10
 
 [window]
-decorations = "None"
+decorations = "Buttonless"
 dynamic_padding = true

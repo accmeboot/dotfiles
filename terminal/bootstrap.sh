@@ -30,6 +30,6 @@ fi
 
 
 echo "Running the oh-my-zsh configuration script in a new shell..."
-bash ./zsh/bootstrap.sh
+bash $HOME/dotfiles/terminal/zsh/bootstrap.sh
 
 echo "All done!"
