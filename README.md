@@ -1,12 +1,31 @@
-## Dotfiles
+# Dotfiles
 
-> A collection of tools for macOS and Linux.
+This repository contains configuration files (dotfiles) for various tools and systems. It's organized by system and tool for easy navigation and setup.
 
-### Follow each module's README for installation instructions.
+## Structure
 
-### Hyprland
+The repository is structured as follows:
 
-![Showcase 1](/assets/showcase/1714161591.png)
-![Showcase 2](/assets/showcase/1714161602.png)
-![Showcase 3](/assets/showcase/1714161630.png)
-![Showcase 4](/assets/showcase/1714161646.png)
+- `assets/`: Contains various resources like showcase images, wallpapers, and fonts.
+- `macos/`: Contains configuration files and bootstrap scripts for macOS specific tools.
+- `linux/`: Contains configuration files and bootstrap scripts for Linux specific tools.
+- `terminal/`: Contains configuration files and bootstrap scripts for terminal tools.
+
+## Showcase
+
+Here are some screenshots of the configurations in action:
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="/assets/showcase/1714161591.png" width="100" />
+  <img src="/assets/showcase/1714161602.png" width="100" /> 
+  <img src="/assets/showcase/1714161630.png" width="100" />
+  <img src="/assets/showcase/1714161646.png" width="100" />
+</div>
+
+## Setup
+
+Each system/tool directory contains a `bootstrap.sh` script. Run this script to set up the configuration for that particular system/tool.
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE.md) file for details.
