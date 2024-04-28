@@ -23,7 +23,7 @@ ln -sfn $HOME/dotfiles/terminal/ranger/ $HOME/.config/ranger
 echo "Installng tmux plugin manager"
 if [ ! -d "$HOME/dotfiles/terminal/tmux/plugins" ]; then
   mkdir $HOME/dotfiles/terminal/tmux/plugins
-  git clone https://github.com/tmux-plugins/tpm $HOME/dotfiles/tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm $HOME/dotfiles/terminal/tmux/plugins
 else
   echo "Plugins directory already exists"
 fi
