@@ -10,7 +10,7 @@ if [ -d ~/.config/waybar ]; then rm -r ~/.config/waybar; fi
 ln -sfn ~/dotfiles/hyprland/waybar/ ~/.config/waybar
 
 echo "Installing dependencies..."
-sudo pacman -S waybar rofi bluez bluez-utils blueman brightnessctl wl-clipboard hyprpaper hyprlock xclip nemo nwg-look grim slurp pavucontrol papirus-icon-theme pacman-contrib cmake cpio meson
+sudo pacman -S waybar rofi bluez bluez-utils blueman brightnessctl wl-clipboard hyprpaper hyprlock xclip nemo nwg-look grim slurp pavucontrol papirus-icon-theme pacman-contrib cmake
 
 systemctl enable bluetooth.service
 systemctl start bluetooth.service 
