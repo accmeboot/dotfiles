@@ -39,5 +39,14 @@ else
     echo "yay is already installed"
 fi
 
+echo "Installing AUR packages..."
+aur_dependencies=(catppuccin-gtk-theme-mocha)
+for aur_pkg in "${aur_dependencies[@]}"; do
+    if ! yay -Qs $aur_pkg > /dev/null; then
+        yay -S $aur_pkg
+    else
+        echo "$aur_pkg is already installed"
+    fi
+done
 
 echo "All done!"
