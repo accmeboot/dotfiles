@@ -11,7 +11,22 @@ if [ -d $HOME/.config/skhd ]; then rm -r $HOME/.config/skhd; fi
 ln -sfn $HOME/dotfiles/macos/skhd/ $HOME/.config/skhd
 
 echo "Installing dependencies..."
-dependencies=(koekeishiya/formulae/yabai koekeishiya/formulae/skhd nvim tmux kitty yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide)
+dependencies=(
+  koekeishiya/formulae/yabai
+  koekeishiya/formulae/skhd
+  nvim
+  tmux
+  kitty
+  yazi
+  ffmpegthumbnailer
+  unar
+  jq
+  poppler
+  fd
+  ripgrep
+  fzf
+  zoxide
+)
 installed_formulas=$(brew list --formula)
 
 for pkg in "${dependencies[@]}"; do

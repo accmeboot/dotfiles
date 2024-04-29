@@ -14,7 +14,42 @@ if [ -d $HOME/.config/waybar ]; then rm -r $HOME/.config/waybar; fi
 ln -sfn $HOME/dotfiles/linux/hyprland/waybar/ $HOME/.config/waybar
 
 echo "Installing dependencies..."
-dependencies=(waybar rofi bluez bluez-utils blueman brightnessctl wl-clipboard hyprpaper hyprlock xclip nemo nwg-look grim slurp pavucontrol papirus-icon-theme pacman-contrib cmake yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide)
+dependencies=(
+    waybar 
+    rofi 
+    bluez 
+    bluez-utils 
+    blueman 
+    brightnessctl 
+    wl-clipboard 
+    hyprpaper 
+    hyprlock 
+    xclip 
+    nemo 
+    nwg-look 
+    grim 
+    slurp 
+    pavucontrol 
+    papirus-icon-theme 
+    pacman-contrib 
+    cmake 
+    yazi 
+    ffmpegthumbnailer 
+    unarchiver 
+    jq 
+    poppler 
+    fd 
+    ripgrep 
+    fzf 
+    zoxide
+)
+for pkg in "${dependencies[@]}"; do
+    if ! pacman -Qs $pkg > /dev/null; then
+        sudo pacman -S $pkg
+    else
+        echo "$pkg is already installed"
+    fi
+done
 for pkg in "${dependencies[@]}"; do
     if ! pacman -Qs $pkg > /dev/null; then
         sudo pacman -S $pkg
@@ -40,7 +75,9 @@ else
 fi
 
 echo "Installing AUR packages..."
-aur_dependencies=(catppuccin-gtk-theme-mocha)
+aur_dependencies=(
+  catppuccin-gtk-theme-mocha
+)
 for aur_pkg in "${aur_dependencies[@]}"; do
     if ! yay -Qs $aur_pkg > /dev/null; then
         yay -S $aur_pkg
