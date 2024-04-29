@@ -13,6 +13,9 @@ ln -sfn $HOME/dotfiles/terminal/tmux/.tmux.conf $HOME/.tmux.conf
 if [ -d $HOME/.config/kitty ]; then rm -r $HOME/.config/kitty; fi
 ln -sfn $HOME/dotfiles/terminal/kitty/ $HOME/.config/kitty
 
+if [ -d $HOME/.config/yazi ]; then rm -r $HOME/.config/yazi; fi
+ln -sfn $HOME/dotfiles/terminal/yazi/ $HOME/.config/yazi
+
 echo "Installng tmux plugin manager"
 if [ ! -d "$HOME/dotfiles/terminal/tmux/plugins" ]; then
   mkdir $HOME/dotfiles/terminal/tmux/plugins

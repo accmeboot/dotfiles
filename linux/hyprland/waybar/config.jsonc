@@ -85,8 +85,7 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "active": "\udb82\udfaf",
-      // "default": "\udb80\udea0"
+      "active": "\udb82\udfaf"
     }
   },
 
@@ -96,6 +95,7 @@
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
+    "active-first": true,
     "app_ids-mapping": {
       "firefoxdeveloperedition": "firefox-developer-edition"
     },
