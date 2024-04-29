@@ -13,13 +13,14 @@ The repository is structured as follows:
 
 ## Showcase
 
-Here are some screenshots of the configurations in action:
+#### Hyprland
 
 <div style="display: flex; justify-content: space-between;">
-  <img src="/assets/showcase/1714161591.png" width="40%" />
-  <img src="/assets/showcase/1714161602.png" width="40%" /> 
-  <img src="/assets/showcase/1714161630.png" width="40%" />
-  <img src="/assets/showcase/1714161646.png" width="40%" />
+  <img src="/assets/showcase/1714420159.png" width="45%" />
+  <img src="/assets/showcase/1714420164.png" width="45%" /> 
+  <img src="/assets/showcase/1714420174.png" width="45%" />
+  <img src="/assets/showcase/1714420223.png" width="45%" />
+  <img src="/assets/showcase/1714420236.png" width="45%" />
 </div>
 
 ## Setup
