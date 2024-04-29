@@ -14,7 +14,7 @@ if [ -d $HOME/.config/waybar ]; then rm -r $HOME/.config/waybar; fi
 ln -sfn $HOME/dotfiles/linux/hyprland/waybar/ $HOME/.config/waybar
 
 echo "Installing dependencies..."
-dependencies=(waybar rofi bluez bluez-utils blueman brightnessctl wl-clipboard hyprpaper hyprlock xclip nemo nwg-look grim slurp pavucontrol papirus-icon-theme pacman-contrib cmake ranger)
+dependencies=(waybar rofi bluez bluez-utils blueman brightnessctl wl-clipboard hyprpaper hyprlock xclip nemo nwg-look grim slurp pavucontrol papirus-icon-theme pacman-contrib cmake yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide)
 for pkg in "${dependencies[@]}"; do
     if ! pacman -Qs $pkg > /dev/null; then
         sudo pacman -S $pkg
