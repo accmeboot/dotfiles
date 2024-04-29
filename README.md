@@ -15,11 +15,11 @@ The repository is structured as follows:
 
 Here are some screenshots of the configurations in action:
 
-<div style="display: flex; justify-content: space-around;">
-  <img src="/assets/showcase/1714161591.png" width="100" />
-  <img src="/assets/showcase/1714161602.png" width="100" /> 
-  <img src="/assets/showcase/1714161630.png" width="100" />
-  <img src="/assets/showcase/1714161646.png" width="100" />
+<div style="display: flex; justify-content: space-between;">
+  <img src="/assets/showcase/1714161591.png" width="40%" />
+  <img src="/assets/showcase/1714161602.png" width="40%" /> 
+  <img src="/assets/showcase/1714161630.png" width="40%" />
+  <img src="/assets/showcase/1714161646.png" width="40%" />
 </div>
 
 ## Setup
