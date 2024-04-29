@@ -39,12 +39,5 @@ else
     echo "yay is already installed"
 fi
 
-echo "Installing ueberzugpp... (image preview in ranger)"
-if ! pacman -Qs ueberzugpp &> /dev/null; then
-    sudo pacman -S ueberzugpp
-else
-    echo "ueberzugpp is already installed"
-fi
-
 
 echo "All done!"

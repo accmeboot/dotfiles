@@ -13,9 +13,6 @@ ln -sfn $HOME/dotfiles/terminal/tmux/.tmux.conf $HOME/.tmux.conf
 if [ -d $HOME/.config/kitty ]; then rm -r $HOME/.config/kitty; fi
 ln -sfn $HOME/dotfiles/terminal/kitty/ $HOME/.config/kitty
 
-if [ -d $HOME/.config/alacritty ]; then rm -r $HOME/.config/alacritty; fi
-ln -sfn $HOME/dotfiles/terminal/alacritty/ $HOME/.config/alacritty
-
 if [ -d $HOME/.config/ranger ]; then rm -r $HOME/.config/ranger; fi
 ln -sfn $HOME/dotfiles/terminal/ranger/ $HOME/.config/ranger
 
