@@ -52,13 +52,10 @@ window#waybar.empty #window {
   margin: 0px;
   color: @text;
   font-weight: bold;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
 }
 
 #workspaces button.active {
-  color: @mauve;
-  border-bottom: 2px solid @mauve;
+  color: @peach;
 }
 
 #workspaces button:hover {

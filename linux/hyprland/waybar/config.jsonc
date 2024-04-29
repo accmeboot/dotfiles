@@ -82,7 +82,12 @@
   },
 
   "hyprland/workspaces": {
-    "on-click": "activate"
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": "\udb82\udfaf",
+      // "default": "\udb80\udea0"
+    }
   },
 
   "wlr/taskbar": {
