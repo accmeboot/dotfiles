@@ -9,3 +9,16 @@
 7. Install [cattpuccin for sddm](https://github.com/catppuccin/sddm) just follow the instructions,
 8. Install [Catppuccin GTK](https://github.com/catppuccin/gtk).
 9. Install icons for gtk https://github.com/PapirusDevelopmentTeam/papirus-icon-theme?tab=readme-ov-file
+
+## Arch Important Notes
+
+> /boot/loader/entries/(date-format)\_linux.conf
+> `quiet splash loglevel=3 systemd.show_status=auto rd.udev.log_level=3 vt.global_cursor_default=0 nvidia_drm.modeset=1 nvidia.NVreg_RegistryDwords=EnableBrightnessControl=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1`
+
+> /etc/mkinitcpio.conf
+> `MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+ BINARIES=()
+ FILES=()
+ HOOKS=(base systemd plymouth autodetect keyboard keymap modconf block filesystems fsck)`
+
+**Need to run `sudo mkinitcpio -P` after changing mkinitcpio.conf**
