@@ -51,11 +51,13 @@
 
   "backlight": {
     "tooltip": false,
-    "format": " {}%",
+    "format": "{icon} {percent}%",
     "interval":1,
     "on-scroll-up": "brightnessctl s +5",
-    "on-scroll-down": "brightnessctl s 5-"
+    "on-scroll-down": "brightnessctl s 5-",
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   },
+
   "battery": {
     "states": {
       "good": 95,
