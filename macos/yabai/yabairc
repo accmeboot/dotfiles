@@ -4,11 +4,11 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # padding
-yabai -m config top_padding 12
-yabai -m config bottom_padding 12
-yabai -m config left_padding 12
-yabai -m config right_padding 12
-yabai -m config window_gap 12
+# yabai -m config top_padding 12
+# yabai -m config bottom_padding 12
+# yabai -m config left_padding 12
+# yabai -m config right_padding 12
+# yabai -m config window_gap 12
 
 # mouse settings
 yabai -m config mouse_follows_focus on
@@ -31,4 +31,4 @@ yabai -m rule --add app="^System Settings" manage=off
 
 
 # Borders, must be at the end of the script
-borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+# borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
