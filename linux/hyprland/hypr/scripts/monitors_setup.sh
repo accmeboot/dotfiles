@@ -1,9 +1,27 @@
 #!/bin/bash
 
+# Initialize the direction to "right" by default
+direction="right"
+
+# Parse the command-line options
+while getopts "d:" opt; do
+  case ${opt} in
+    d)
+      direction=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
 
 monitors_state_dir=$HOME/.local/state/hyprmonitors
 monitors_state_file=$monitors_state_dir/rc.log
-
 
 if [ ! -d "$monitors_state_dir" ]; then
   mkdir -p "$monitors_state_dir"
@@ -12,7 +30,6 @@ fi
 if [ -f "$monitors_state_file" ]; then
   > "$monitors_state_file"
 fi
-
 
 # Get the list of monitor names and sort them so the internal monitor is always first
 monitors_output=$(hyprctl monitors | grep "Monitor " | awk '{print $2}')
@@ -24,8 +41,9 @@ fi
 
 monitors=$(echo "$monitors_output" | { grep "^eDP-" || true; } ; echo "$monitors_output" | { grep -v "^eDP-" | sort || true; })
 
-# Initialize the x position
+# Initialize the x and y positions
 x_position=0
+y_position=0
 
 # Loop over each monitor
 for monitor in $monitors
@@ -42,14 +60,24 @@ do
     # Extract the resolution
     resolution=$(echo "$highest_mode" | awk -F'@' '{print $1}')
 
-    # Extract the width of the resolution
+    # Extract the width and height of the resolution
     width=$(echo "$resolution" | awk -F'x' '{print $1}')
+    height=$(echo "$resolution" | awk -F'x' '{print $2}')
 
     # Set the mode for the monitor
-    hyprctl keyword monitor "${monitor}, ${highest_mode},${x_position}x0,1"
+    if [ "$direction" = "right" ]; then
+        hyprctl keyword monitor "${monitor}, ${highest_mode},${x_position}x0,1"
+        x_position=$((x_position + width))
+    elif [ "$direction" = "left" ]; then
+        x_position=$((x_position - width))
+        hyprctl keyword monitor "${monitor}, ${highest_mode},${x_position}x0,1"
+    elif [ "$direction" = "top" ]; then
+        y_position=$((y_position - height))
+        hyprctl keyword monitor "${monitor}, ${highest_mode},0x${y_position},1"
+    elif [ "$direction" = "bottom" ]; then
+        hyprctl keyword monitor "${monitor}, ${highest_mode},0x${y_position},1"
+        y_position=$((y_position + height))
+    fi
 
-    echo "${monitor},${highest_mode},${x_position}x0,1" >> "$monitors_state_file"
-
-    # Update the x position for the next monitor
-    x_position=$((x_position + width))
+    echo "${monitor},${highest_mode},${x_position}x${y_position},1" >> "$monitors_state_file"
 done
