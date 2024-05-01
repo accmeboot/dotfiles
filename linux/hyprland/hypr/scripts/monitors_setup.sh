@@ -27,8 +27,8 @@ if [ ! -d "$monitors_state_dir" ]; then
   mkdir -p "$monitors_state_dir"
 fi
 
-if [ -f "$monitors_state_file" ]; then
-  > "$monitors_state_file"
+if [ ! -f "$monitors_state_file" ]; then
+  touch "$monitors_state_file"
 fi
 
 # Get the list of monitor names and sort them so the internal monitor is always first
@@ -79,5 +79,10 @@ do
         y_position=$((y_position + height))
     fi
 
-    echo "${monitor},${highest_mode},${x_position}x${y_position},1" >> "$monitors_state_file"
+    # Update the monitor's line in the state file or add a new line if the monitor is not in the file
+    if grep -q "^${monitor}," "$monitors_state_file"; then
+        sed -i "/^${monitor},/c\\${monitor},${highest_mode},${x_position}x${y_position},1" "$monitors_state_file"
+    else
+        echo "${monitor},${highest_mode},${x_position}x${y_position},1" >> "$monitors_state_file"
+    fi
 done

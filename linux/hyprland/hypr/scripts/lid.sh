@@ -3,6 +3,8 @@
 monitors_state_dir=$HOME/.local/state/hyprmonitors
 monitors_state_file=$monitors_state_dir/rc.log
 
+monitors_setup=$HOME/dotfiles/linux/hyprland/hypr/scripts/monitors_setup.sh
+
 internal_monitor=$(grep "^eDP-" "$monitors_state_file")
 external_monitor=$(grep "^DP-" "$monitors_state_file")
 
@@ -14,11 +16,13 @@ fi
 
 if grep open /proc/acpi/button/lid/LID0/state; then
   hyprctl keyword monitor "$internal_monitor"
+  bash "$monitors_setup"
 else
 
   if [ -n "$external_monitor" ]; then
     internal_monitor_name=$(echo $internal_monitor | cut -d, -f1)
     hyprctl keyword monitor "$internal_monitor_name, disable"
+    bash "$monitors_setup"
   else
     systemctl suspend
   fi
