@@ -16,6 +16,7 @@ dependencies=(
   koekeishiya/formulae/skhd
   nvim
   tmux
+  zellij
   kitty
   yazi
   ffmpegthumbnailer

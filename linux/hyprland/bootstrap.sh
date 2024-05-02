@@ -33,6 +33,7 @@ dependencies=(
     papirus-icon-theme 
     pacman-contrib 
     cmake 
+    zellij
     yazi 
     ffmpegthumbnailer 
     unarchiver 
