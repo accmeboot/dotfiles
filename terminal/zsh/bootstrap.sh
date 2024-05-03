@@ -16,8 +16,14 @@ echo "Adding nv and kitten icat aliases  to ~/.zshrc"
 echo "alias nv='nvim'" >> ~/.zshrc
 echo "alias icat='kitten icat'" >> ~/.zshrc
 
-echo "Changing ZSH_THEME to dst"
-sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="dst"/' ~/.zshrc
+echo "Installing powerlevel10k theme..."
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo "Adding powerlevel10k to ~/.zshrc"
+echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
+
+echo "Changing ZSH_THEME to powerlevel10k"
+sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc
 
 echo "Cloning zsh-autosuggestions and zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
@@ -26,6 +32,3 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 echo "Source plugins in ~/.zshrc"
 echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-
-echo "Adding neofetch to ~/.zshrc"
-echo "neofetch" >> ~/.zshrc
