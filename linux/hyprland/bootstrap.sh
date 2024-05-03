@@ -22,6 +22,7 @@ dependencies=(
     blueman 
     brightnessctl 
     wl-clipboard 
+    wlr-randr
     hyprpaper 
     hyprlock 
     xclip 
