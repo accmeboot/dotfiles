@@ -19,6 +19,10 @@ echo "alias icat='kitten icat'" >> ~/.zshrc
 echo "Installing powerlevel10k theme..."
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+echo "Linking powerlevel10k configuration to ~/.p10k.zsh"
+if [ -d $HOME/.p10k.zsh ]; then rm -r $HOME/.p10k.zsh; fi
+ln -sfn $HOME/dotfiles/terminal/zsh/.p10k.zsh $HOME/.p10k.zsh
+
 echo "Adding powerlevel10k to ~/.zshrc"
 echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
 
