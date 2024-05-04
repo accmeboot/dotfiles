@@ -36,3 +36,6 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 echo "Source plugins in ~/.zshrc"
 echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+
+echo "Adding Homer..."
+echo "source $HOME/dotfiles/terminal/zsh/homer.sh" >> ~/.zshrc
