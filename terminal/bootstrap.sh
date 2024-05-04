@@ -28,7 +28,7 @@ else
 fi
 
 
-echo "Running the oh-my-zsh configuration script in a new shell..."
+echo "Running the zsh configuration script in a new shell..."
 bash $HOME/dotfiles/terminal/zsh/bootstrap.sh
 
 echo "All done!"

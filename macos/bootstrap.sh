@@ -16,7 +16,6 @@ dependencies=(
   koekeishiya/formulae/skhd
   nvim
   tmux
-  zellij
   kitty
   yazi
   ffmpegthumbnailer
@@ -27,6 +26,7 @@ dependencies=(
   ripgrep
   fzf
   zoxide
+  fastfetch
 )
 installed_formulas=$(brew list --formula)
 

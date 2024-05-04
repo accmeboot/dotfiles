@@ -36,7 +36,7 @@
   },
 
   "custom/cpu": {
-    "format": "\udb83\udee0  {}℃",
+    "format": "  {}℃",
     "interval": 5,
     "exec": "bash $HOME/dotfiles/linux/hyprland/waybar/scripts/cpu-temp.sh",
     "on-click": "kitty -e bash -c 'htop; read'"

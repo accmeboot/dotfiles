@@ -44,6 +44,7 @@ dependencies=(
     ripgrep 
     fzf 
     zoxide
+    fastfetch
 )
 for pkg in "${dependencies[@]}"; do
     if ! pacman -Qs $pkg > /dev/null; then

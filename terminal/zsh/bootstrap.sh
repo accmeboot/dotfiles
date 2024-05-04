@@ -16,18 +16,8 @@ echo "Adding nv and kitten icat aliases  to ~/.zshrc"
 echo "alias nv='nvim'" >> ~/.zshrc
 echo "alias icat='kitten icat'" >> ~/.zshrc
 
-echo "Installing powerlevel10k theme..."
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-echo "Linking powerlevel10k configuration to ~/.p10k.zsh"
-if [ -d $HOME/.p10k.zsh ]; then rm -r $HOME/.p10k.zsh; fi
-ln -sfn $HOME/dotfiles/terminal/zsh/.p10k.zsh $HOME/.p10k.zsh
-
-echo "Adding powerlevel10k to ~/.zshrc"
-echo "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" >> ~/.zshrc
-
-echo "Changing ZSH_THEME to powerlevel10k"
-sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc
+echo "Changing ZSH_THEME to clean"
+sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="clean"/' ~/.zshrc
 
 echo "Cloning zsh-autosuggestions and zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
@@ -37,5 +27,18 @@ echo "Source plugins in ~/.zshrc"
 echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 
-echo "Adding Homer..."
-echo "source $HOME/dotfiles/terminal/zsh/homer.sh" >> ~/.zshrc
+echo "Adding fastfetch to ~/.zshrc"
+echo "fastfetch --load-config $HOME/dotfiles/terminal/zsh/fastfetch-config.jsonc" >> ~/.zshrc
+
+echo "Installing starship prompt"
+RUNZSH=no curl -sS https://starship.rs/install.sh | sh
+
+echo "Adding starship to ~/.zshrc"
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+
+echo "Linking starhip.toml to ~/.config"
+if [ -f $HOME/.config/starship.toml ]; then rm -r $HOME/.config/starship.toml; fi
+ln -sfn $HOME/dotfiles/terminal/zsh/starship.toml $HOME/.config/starship.toml
+
+echo "Zsh setup complete!"
+

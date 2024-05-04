@@ -1,0 +1,48 @@
+format = """
+[](#F38BA8)\
+$directory\
+[](fg:#F38BA8 bg:#A6E3A1)\
+$git_branch\
+$git_status\
+[](fg:#A6E3A1 bg:#89B4FA)\
+$cmd_duration\
+[ ](fg:#89B4FA)\
+\n$character"""
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = true
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:#9A348E"
+disabled = true # Disabled by default
+
+[directory]
+style = "bg:#F38BA8 fg:#11111B"
+format = "[ $path]($style)"
+truncation_symbol = "~/"
+
+[git_branch]
+symbol = ""
+style = "fg:#11111B bg:#A6E3A1"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#DC143C bg:#A6E3A1"
+format = '[$all_status$ahead_behind ]($style)'
+
+[cmd_duration]
+disabled = false
+min_time = 500  # Duration is shown if command runs longer than 500ms
+style = "fg:#11111B bg:#89B4FA "
+format = '[ $duration ]($style)'
