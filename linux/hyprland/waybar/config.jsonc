@@ -18,7 +18,7 @@
 
   "custom/pacman": {
     "format": "{} \udb81\udeb0",
-    "interval": 3600,
+    "interval": 60,
     "exec": "updates=$(checkupdates | wc -l); if [ $updates -gt 0 ]; then echo $updates; fi", // output number of updates if greater than 0
     "exec-if": "exit 0",
     "signal": 8
