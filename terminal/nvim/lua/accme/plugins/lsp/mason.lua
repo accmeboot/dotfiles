@@ -26,7 +26,6 @@ return {
         "svelte",
         "rust_analyzer",
         "mdx_analyzer",
-        "pylint",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -40,6 +39,7 @@ return {
         "eslint_d",
         "prettierd",
         "goimports",
+        "pylint",
       },
     })
   end,
