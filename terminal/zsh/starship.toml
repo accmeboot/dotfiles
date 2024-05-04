@@ -45,4 +45,4 @@ format = '[$all_status$ahead_behind ]($style)'
 disabled = false
 min_time = 500  # Duration is shown if command runs longer than 500ms
 style = "fg:#11111B bg:#89B4FA "
-format = '[ $duration ]($style)'
+format = '[ 󱦟 $duration ]($style)'
