@@ -150,6 +150,7 @@ def arrange_monitors(direction, limit_rate):
             else:
                 try:
                     subprocess.run(['wlr-randr', '--output', monitor, '--off'], check=True)
+                    subprocess.run(['hyprctl keyword monitor', f'"{monitor}, disable"'], check=True)
                 except subprocess.CalledProcessError as e:
                     print(f"Error arranging monitor {monitor}: {e}")
 
