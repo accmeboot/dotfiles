@@ -65,6 +65,11 @@ echo "Enabling bluetooth..."
 systemctl enable bluetooth.service
 systemctl start bluetooth.service 
 
+echo "Enabling nvidia services..."
+sudo systemctl enable nvidia-suspend.service
+sudo systemctl enable nvidia-hibernate.service
+sudo systemctl enable nvidia-resume.service
+
 echo "Installing yay..."
 if ! command -v yay &> /dev/null; then
     sudo pacman -S --needed git base-devel
