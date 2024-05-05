@@ -92,10 +92,14 @@ def get_pos_and_offset(offset, direction, monitor):
     return (pos, offset)
 
 def suspend_system():
-    '''Suspend the system'''
+    '''Suspend the system and lock the screen using hyprlock'''
 
     try:
-        subprocess.run(['systemctl', 'suspend'], check=True)
+        subprocess.run(
+            'systemctl suspend && nohup hyprlock >& /dev/null &',
+            shell=True,
+            check=True
+        )
     except subprocess.CalledProcessError as e:
         print(f"Error suspending system: {e}")
 
