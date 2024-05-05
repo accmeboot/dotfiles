@@ -10,9 +10,6 @@ ln -sfn $HOME/dotfiles/terminal/nvim/ $HOME/.config/nvim
 if [ -d $HOME/.config/tmux ]; then rm -rf $HOME/.config/tmux; fi
 ln -sfn $HOME/dotfiles/terminal/tmux/ $HOME/.config/tmux
 
-if [ -d $HOME/.config/zellij ]; then rm -r $HOME/.config/zellij; fi
-ln -sfn $HOME/dotfiles/terminal/zellij/ $HOME/.config/zellij
-
 if [ -d $HOME/.config/kitty ]; then rm -r $HOME/.config/kitty; fi
 ln -sfn $HOME/dotfiles/terminal/kitty/ $HOME/.config/kitty
 
