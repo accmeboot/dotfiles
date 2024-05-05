@@ -7,8 +7,8 @@ echo "linking dotfiles..."
 if [ -d $HOME/.config/nvim ]; then rm -r $HOME/.config/nvim; fi
 ln -sfn $HOME/dotfiles/terminal/nvim/ $HOME/.config/nvim
 
-if [ -d $HOME/.tmux.conf ]; then rm -r $HOME/.tmux.conf; fi
-ln -sfn $HOME/dotfiles/terminal/tmux/.tmux.conf $HOME/.tmux.conf
+if [ -d $HOME/.config/tmux ]; then rm -rf $HOME/.config/tmux; fi
+ln -sfn $HOME/dotfiles/terminal/tmux/ $HOME/.config/tmux
 
 if [ -d $HOME/.config/zellij ]; then rm -r $HOME/.config/zellij; fi
 ln -sfn $HOME/dotfiles/terminal/zellij/ $HOME/.config/zellij
