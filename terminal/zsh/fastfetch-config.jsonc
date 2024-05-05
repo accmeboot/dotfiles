@@ -30,16 +30,16 @@
         },
         {
             "type": "battery",
-            "key": "",
+            "key": "󰁹",
             "format": "{5} {4}"
         },
         {
             "type": "packages",
-            "key": ""
+            "key": "󰏔"
         },
         {
             "type": "uptime",
-            "key": ""
+            "key": "󰶞"
         },
         {
           "type": "custom"
