@@ -30,7 +30,9 @@ disabled = true # Disabled by default
 [directory]
 style = "bg:#F38BA8 fg:#11111B"
 format = "[ $path]($style)"
+truncation_length = 0
 truncation_symbol = "~/"
+truncate_to_repo = false
 
 [git_branch]
 symbol = ""
