@@ -44,6 +44,7 @@ dependencies=(
     ripgrep 
     fzf 
     zoxide
+    noto-fonts-emoji
     fastfetch
 )
 for pkg in "${dependencies[@]}"; do
