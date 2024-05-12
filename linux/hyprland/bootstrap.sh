@@ -86,6 +86,7 @@ fi
 echo "Installing AUR packages..."
 aur_dependencies=(
   catppuccin-gtk-theme-mocha
+  asusctl
 )
 for aur_pkg in "${aur_dependencies[@]}"; do
     if ! yay -Qs $aur_pkg > /dev/null; then
