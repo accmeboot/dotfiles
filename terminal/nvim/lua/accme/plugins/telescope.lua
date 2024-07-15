@@ -66,6 +66,7 @@ return {
 						["<cr>"] = custom_actions.fzf_multi_select,
 					},
 				},
+				file_ignore_patterns = { "node_modules", ".git/" },
 			},
 		})
 
