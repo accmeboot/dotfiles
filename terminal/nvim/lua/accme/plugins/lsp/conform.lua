@@ -18,9 +18,9 @@ return {
 				yaml = { "prettier" },
 				markdown = function(bufnr)
 					-- TODO: this is temp fix for MDX storybook files, mdx_analyzer lsp doesn't work
-					if vim.bo[bufnr].filetype == "markdown" then
-						return { "prettier" }
-					end
+					-- if vim.bo[bufnr].filetype == "markdown" then
+					-- 	return { "prettier" }
+					-- end
 
 					return {}
 				end,
