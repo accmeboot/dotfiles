@@ -23,13 +23,27 @@ dependencies=(
   zoxide
   fastfetch
 )
+
+cask_dependencies=(
+  nikitabobko/tap/aerospace
+)
+
 installed_formulas=$(brew list --formula)
+installed_casks=$(brew list --cask)
 
 for pkg in "${dependencies[@]}"; do
   if ! echo "$installed_formulas" | grep -q "$(basename "$pkg")\$"; then
     brew install $pkg
   else
     echo "$pkg is already installed"
+  fi
+done
+
+for cask in "${cask_dependencies[@]}"; do
+  if ! echo "$installed_casks" | grep -q "$(basename "$cask")\$"; then
+    brew install --cask $cask
+  else
+    echo "$cask is already installed"
   fi
 done
 
