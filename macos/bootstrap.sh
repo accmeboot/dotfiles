@@ -4,16 +4,11 @@ set -e
 
 echo "linking dotfiles..."
 
-if [ -d $HOME/.config/yabai ]; then rm -r $HOME/.config/yabai; fi
-ln -sfn $HOME/dotfiles/macos/yabai/ $HOME/.config/yabai
-
-if [ -d $HOME/.config/skhd ]; then rm -r $HOME/.config/skhd; fi
-ln -sfn $HOME/dotfiles/macos/skhd/ $HOME/.config/skhd
+if [ -d $HOME/.config/aerospace ]; then rm -r $HOME/.config/aerospace; fi
+ln -sfn $HOME/dotfiles/macos/aerospace/ $HOME/.config/aerospace
 
 echo "Installing dependencies..."
 dependencies=(
-  koekeishiya/formulae/yabai
-  koekeishiya/formulae/skhd
   nvim
   tmux
   kitty
@@ -37,11 +32,5 @@ for pkg in "${dependencies[@]}"; do
     echo "$pkg is already installed"
   fi
 done
-
-echo "Enabling yabai..."
-yabai --start-service
-
-echo "Starting skhd..."
-skhd --start-service
 
 echo "All done!"
