@@ -38,4 +38,4 @@ keymap.set("x", "<leader>p", '"_dP')
 -- spell suggestion
 keymap.set("n", "<leader>m", ":SpellSuggest<CR>")
 
-keymap.set("n", "<leader>e", ":Ex<CR>")
+keymap.set("n", "<leader>e", ":Oil --float<CR>")
