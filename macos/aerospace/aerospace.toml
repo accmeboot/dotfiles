@@ -212,7 +212,7 @@ run = 'layout floating'
 
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace B'
 
 
