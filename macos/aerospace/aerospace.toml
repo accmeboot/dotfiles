@@ -102,6 +102,16 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
+alt-ctrl-h = 'focus-monitor left'
+alt-ctrl-j = 'focus-monitor down'
+alt-ctrl-k = 'focus-monitor up'
+alt-ctrl-l = 'focus-monitor right'
+
+alt-shift-left = 'move-node-to-monitor left --focus-follows-window'
+alt-shift-down = 'move-node-to-monitor down --focus-follows-window'
+alt-shift-up = 'move-node-to-monitor up --focus-follows-window'
+alt-shift-right = 'move-node-to-monitor right --focus-follows-window'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
