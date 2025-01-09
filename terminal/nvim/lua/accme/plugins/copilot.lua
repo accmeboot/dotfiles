@@ -1,7 +1,7 @@
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
 	dependencies = { "github/copilot.vim" },
-	branch = "canary",
+	branch = "main",
 	config = function()
 		local chat = require("CopilotChat")
 		chat.setup({
