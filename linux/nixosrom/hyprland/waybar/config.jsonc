@@ -1,0 +1,100 @@
+{
+  "layer": "top",
+  "modules-left": ["group/left", "wlr/taskbar"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["custom/pacman", "clock", "custom/cpu", "custom/gpu", "tray", "backlight", "pulseaudio", "battery"], 
+  "margin": "0",
+
+  "group/left": {
+    "orientation": "horizontal",
+    "modules": ["custom/launcher", "hyprland/workspaces"],
+    "width": 5,
+  },
+
+  "hyprland/window": {
+    "max-length": 200,
+    "separate-outputs": true
+  },
+
+  "custom/pacman": {
+    "format": "{} \udb81\udeb0",
+    "interval": 60,
+    "exec": "updates=$(checkupdates | wc -l); if [ $updates -gt 0 ]; then echo $updates; fi", // output number of updates if greater than 0
+    "exec-if": "exit 0",
+    "signal": 8
+  },
+
+  "pulseaudio": {
+    "tooltip": false,
+    "scroll-step": 1,
+    "format": "{icon} {volume}%",
+    "format-muted": "  {volume}%",
+    "on-click":"pavucontrol",
+    "format-icons": {
+      "default": [" ", " ", " "]
+    }
+  },
+
+  "custom/cpu": {
+    "format": "  {}℃",
+    "interval": 5,
+    "exec": "bash $HOME/dotfiles/linux/hyprland/waybar/scripts/cpu-temp.sh",
+    "on-click": "kitty -e bash -c 'htop; read'"
+  },
+
+  "custom/gpu": {
+    "format": "\udb82\udcae  {}℃",
+    "interval": 5,
+    "exec": "bash $HOME/dotfiles/linux/hyprland/waybar/scripts/gpu-temp.sh",
+    "on-click": "kitty -e bash -c 'nvtop; read'"
+  },
+
+  "backlight": {
+    "tooltip": false,
+    "format": "{icon} {percent}%",
+    "interval":1,
+    "on-scroll-up": "brightnessctl s +5",
+    "on-scroll-down": "brightnessctl s 5-",
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  },
+
+  "clock": {
+    "format": "{:%A  %B  %d  %Y   %R}",
+    "on-click": "firefox --new-window https://www.google.com/calendar"
+  },
+
+  "custom/launcher":{
+    "format": " ",
+    "on-click": "hyprctl dispatch exec '[floating] rofi -show drun -normal-window'"
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": "\udb82\udfaf"
+    }
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "active-first": true,
+    "app_ids-mapping": {
+      "firefoxdeveloperedition": "firefox-developer-edition"
+    },
+    "ignore-list": ["rofi"],
+    "rewrite": {
+      "Firefox Web Browser": "Firefox"
+    },
+    "icon-theme": "papirus"
+  },
+
+  "tray": {
+    "icon-size": 11,
+    "spacing": 4
+  }
+}
