@@ -58,13 +58,26 @@
     "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   },
 
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "\udb80\udc84 {capacity}%",
+    "format-plugged": "\udb81\udea5 {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["\udb80\udc7a", "\udb80\udc7b", "\udb80\udc7c", "\udb80\udc7d", "\udb80\udc7e", "\udb80\udc7f", "\udb80\udc80", "\udb80\udc81", "\udb80\udc82", "\udb80\udc79"]
+  },
+
   "clock": {
     "format": "{:%A  %B  %d  %Y   %R}",
     "on-click": "firefox --new-window https://www.google.com/calendar"
   },
 
   "custom/launcher":{
-    "format": " ",
+    "format": "☰",
     "on-click": "hyprctl dispatch exec '[floating] rofi -show drun -normal-window'"
   },
 

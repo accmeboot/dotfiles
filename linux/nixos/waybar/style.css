@@ -40,6 +40,7 @@ window#waybar.empty #window {
 #custom-launcher {
   font-size: 16px;
   font-weight: bold;
+  color: @text;
 }
 
 #custom-launcher:hover {
