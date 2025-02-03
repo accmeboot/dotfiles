@@ -55,7 +55,7 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      "active": "\udb82\udfaf",
+      // "active": "\udb82\udfaf",
       "1": "1",
       "2": "2",
       "3": "3",
