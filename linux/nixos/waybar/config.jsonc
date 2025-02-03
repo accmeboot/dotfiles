@@ -1,29 +1,14 @@
 {
   "layer": "top",
-  "modules-left": ["group/left", "custom/right-triangle", "wlr/taskbar"],
+  "modules-left": ["group/left", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["custom/left-triangle", "group/right"],
+  "modules-right": ["custom/cpu", "custom/gpu", "tray", "pulseaudio", "clock"], 
   "margin": "0",
 
   "group/left": {
     "orientation": "horizontal",
     "modules": ["custom/launcher", "hyprland/workspaces"],
-    "width": 10,
-  },
-
-  "group/right": {
-    "orientation": "horizontal",
-    "modules": ["custom/cpu", "custom/gpu", "tray", "pulseaudio", "clock"],
-  },
-
-  "custom/right-triangle": {
-    "format": "",
-    "tooltip": false,
-  },
-
-  "custom/left-triangle": {
-    "format": "",
-    "tooltip": false,
+    "width": 5,
   },
 
   "hyprland/window": {
