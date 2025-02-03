@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
+sensors | awk '/edge/ {printf "%d\n", $2}'

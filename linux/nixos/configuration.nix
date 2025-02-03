@@ -54,6 +54,17 @@ in
     loader.timeout = 0;
   };
 
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+
   services.displayManager.sddm = {
     wayland.enable = true;
     enable = true;
@@ -85,7 +96,23 @@ in
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with 'passwd'.
+# keyboard settings
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ]; # what goes into the [id] section, here we select all keyboards
+        settings = {
+          main = {
+            rightcontrol = "rightmeta";
+          };
+          otherlayer = {};
+        };
+      };
+    };
+  };
+
+# Define a user account. Don't forget to set a password with 'passwd'.
   users.users.accme = {
     isNormalUser = true;
     description = "accme";
