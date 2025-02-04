@@ -1,12 +1,12 @@
 format = """
-[█](#CBA6F7)\
+[█](#fabc2e)\
 $directory\
-[](fg:#CBA6F7 bg:#A6E3A1)\
+[](fg:#fabc2e bg:#8ec07b)\
 $git_branch\
 $git_status\
-[](fg:#A6E3A1 bg:#313244)\
+[](fg:#8ec07b bg:#928373)\
 $cmd_duration\
-[ ](fg:#313244)\
+[ ](fg:#928373)\
 \n$character"""
 
 # Disable the blank line at the start of the prompt
@@ -19,7 +19,7 @@ style = "bg:#9A348E"
 disabled = true # Disabled by default
 
 [directory]
-style = "bg:#CBA6F7 fg:#11111B"
+style = "bg:#fabc2e fg:#272727"
 format = "[$path]($style)"
 truncation_length = 0
 truncation_symbol = "~/"
@@ -27,15 +27,15 @@ truncate_to_repo = false
 
 [git_branch]
 symbol = ""
-style = "fg:#11111B bg:#A6E3A1"
+style = "fg:#272727 bg:#8ec07b"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:#DC143C bg:#A6E3A1"
+style = "fg:#cc231c bg:#8ec07b"
 format = '[$all_status$ahead_behind ]($style)'
 
 [cmd_duration]
 disabled = false
 min_time = 500  # Duration is shown if command runs longer than 500ms
-style = "fg:#bac2de bg:#313244 "
+style = "fg:#ebdbb2 bg:#928373 "
 format = '[ 󱦟 $duration ]($style)'

@@ -3,7 +3,8 @@ local opt = vim.opt -- options gloabals variable
 vim.g.have_nerd_font = true
 
 -- line numbers
-opt.relativenumber = true
+-- opt.number = true -- Show current line number
+opt.relativenumber = true -- Show relative line numbers
 
 -- tabs & indentation
 opt.tabstop = 2
