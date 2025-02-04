@@ -1,7 +1,7 @@
 @import "./themes/gruvbox/dark.css";
 
 * {
-  all: unset;
+  /* all: unset; this fixes the extra padding, but removes all the gtk styles related to tray */
   font-size: 12px;
 }
 
@@ -43,6 +43,7 @@ window#waybar {
 
 #taskbar button:hover {
   background-color: @color0;
+  border-radius: 0px;
 }
 
 #workspaces {
@@ -52,6 +53,7 @@ window#waybar {
 #workspaces button {
   color: @foreground;
   padding: 6px;
+  border-radius: 0px;
 }
 
 #workspaces button.active {
