@@ -167,11 +167,12 @@ in
     papirus-icon-theme
     gsettings-desktop-schemas
     glib
+    gnome.gnome-tweaks
     (catppuccin-sddm.override {
      flavor = "mocha";
      font = "Noto Sans";
      fontSize = "9";
-     background = "${../../assets/wallpapers/ferris_wheel.jpg}";
+     background = "${../../assets/wallpapers/gruvbox_image40.png}";
      loginBackground = true;
     })
   ];
@@ -193,11 +194,12 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     users.accme = { pkgs, ... }: {
+
       gtk = {
         enable = true;
         theme = {
-          name = "Dracula";
-          package = pkgs.dracula-theme;
+          name = "Gruvbox-Dark";
+          package = pkgs.gruvbox-gtk-theme;
         };
         iconTheme = {
           name = "Papirus-Dark";
@@ -212,7 +214,6 @@ in
           extraConfig.gtk-application-prefer-dark-theme = true;
         };
       };
-
       home.stateVersion = "24.11";
     };
     backupFileExtension = "backup";

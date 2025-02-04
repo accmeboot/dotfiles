@@ -1,11 +1,112 @@
 * {
-    bg-col:  #222526;
-    bg-col-light: #26292a;
-    border-col: #282b2c;
-    selected-col: #282b2c;
-    blue: #8dae88;
+    bg-col:  #282828;
+    bg-col-light: #ea6962;
+    border-col: #d4be98;
+    selected-col: #282828;
+    blue: #fabc2e;
     fg-col: #d4be98;
-    fg-col2: #df736d;
-    grey: #5b5e5f;
+    fg-col2: #e78a4e;
+    grey: #282828;
+    button-bg: #665c54;
+
     width: 600;
+    font: "System-ui Rgular 12";
+}
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 360px;
+    border: 0px;
+    border-color: @border-col;
+    background-color: @bg-col;
+}
+
+mainbox {
+    background-color: @bg-col;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @bg-col;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @bg-col;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @fg-col;
+    background-color: @bg-col;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 20px;
+    columns: 2;
+    lines: 5;
+    background-color: @bg-col;
+}
+
+element {
+    padding: 5px;
+    background-color: @bg-col;
+    text-color: @fg-col  ;
+}
+
+element-icon {
+    size: 25px;
+}
+
+element selected {
+    background-color:  @selected-col ;
+    text-color: @fg-col2  ;
+}
+
+mode-switcher {
+    spacing: 0;
+}
+
+button {
+    padding: 10px;
+    background-color: @button-bg;
+    text-color: @fg-col;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @blue;
+  text-color: @grey;
+}
+
+message {
+    background-color: @bg-col-light;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+textbox {
+    padding: 6px;
+    margin: 20px 0px 0px 20px;
+    text-color: @blue;
+    background-color: @bg-col-light;
 }

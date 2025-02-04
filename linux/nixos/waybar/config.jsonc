@@ -1,19 +1,23 @@
 {
   "layer": "top",
-  "modules-left": ["group/left", "wlr/taskbar"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces", "wlr/taskbar"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["custom/cpu", "custom/gpu", "tray", "pulseaudio", "clock"], 
+  "modules-right": ["group/custom-hardware", "tray", "group/custom-info"],
   "margin": "0",
-
-  "group/left": {
-    "orientation": "horizontal",
-    "modules": ["custom/launcher", "hyprland/workspaces"],
-    "width": 5,
-  },
 
   "hyprland/window": {
     "max-length": 200,
     "separate-outputs": true
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "icon-theme": "Papirus-Dark",
+    "tooltip-format": "{title}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "sort-by-app-id": true
   },
 
   "pulseaudio": {
@@ -25,6 +29,16 @@
     "format-icons": {
       "default": [" ", " ", " "]
     }
+  },
+
+  "group/custom-hardware": {
+    "orientation": "horizontal",
+    "modules": ["custom/cpu", "custom/gpu"],
+  },
+
+  "group/custom-info": {
+    "orientation": "horizontal",
+    "modules": ["pulseaudio", "clock"],
   },
 
   "custom/cpu": {
@@ -42,12 +56,12 @@
   },
 
   "clock": {
-    "format": "{:%A, %B %d %Y  %R}",
+    "format": "{:%R}",
     "on-click": "brave --new-window https://www.google.com/calendar"
   },
 
   "custom/launcher":{
-    "format": "❄ ",
+    "format": "❄",
     "on-click": "hyprctl dispatch exec '[floating] rofi -show drun -normal-window'"
   },
 
@@ -55,7 +69,6 @@
     "on-click": "activate",
     "format": "{icon}",
     "format-icons": {
-      // "active": "\udb82\udfaf",
       "1": "1",
       "2": "2",
       "3": "3",
@@ -88,17 +101,6 @@
       "30": "Y",
       "31": "Z"
     }
-  },
-
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 14,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "active-first": true,
-    "ignore-list": ["rofi"],
-    "icon-theme": "papirus"
   },
 
   "tray": {

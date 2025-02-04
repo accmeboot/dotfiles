@@ -1,71 +1,70 @@
-@import "./themes/catppuccin/mocha.css";
+@import "./themes/gruvbox/dark.css";
 
 * {
-  font-size: 11px;
+  all: unset;
+  font-size: 12px;
 }
 
 window#waybar {
-  background: @mantle;
-  border-radius: 0px;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-}
-
-.modules-right {
-  background: @surface0;
-  border-top-left-radius: 14px;
-  border-bottom-left-radius: 14px;
-  padding: 0px 4px 0px 12px;
-  font-weight: bold;
-}
-
-.modules-center {
   background: transparent;
 }
 
-#left {
-  background: @surface0;
-  border-top-right-radius: 14px;
-  border-bottom-right-radius: 14px;
-  padding: 0px 12px 0px 4px;
-}
-
-#window {
-  color: @text;
-  font-weight: bold;
+/* Modules */
+#custom-launcher,
+#workspaces,
+#taskbar,
+#window,
+#custom-hardware,
+#tray,
+#custom-info {
+  border-radius: 4px;
+  padding: 0px 12px;
+  margin: 6px;
+  margin-bottom: 0px;
+  background-color: @background;
+  color: @foreground;
 }
 
 #custom-launcher {
   font-size: 16px;
   font-weight: bold;
-  color: @text;
+  background-color: @color3;
+  color: @background;
 }
 
 #custom-launcher:hover {
-  color: @red;
+  color: @color1;
+  background-color: @color0;
+}
+
+#taskbar button {
+  padding: 6px;
+}
+
+#taskbar button:hover {
+  background-color: @color0;
+}
+
+#workspaces {
+  background-color: @background;
 }
 
 #workspaces button {
-  padding: 0px;
-  border-radius: 0px;
-  margin: 0px;
-  color: @text;
-  font-weight: bold;
+  color: @foreground;
+  padding: 6px;
 }
 
 #workspaces button.active {
-  color: @peach;
+  color: @color3;
 }
 
 #workspaces button:hover {
-  background: @surface1;
+  background-color: @color0;
 }
 
 @keyframes blink {
   to {
-    color: @text;
+    color: @foreground;
   }
 }
 
@@ -75,59 +74,33 @@ window#waybar.empty #window {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  color: @red;
+  color: @color1;
 }
 
-#taskbar {
-  background: transparent;
-  padding: 0px 4px 1px;
+#window {
+  color: @color3;
+  font-weight: bold;
+  opacity: 0.9;
 }
 
-#taskbar button {
-  border-radius: 0px;
-  transition: all 0.3s;
-  padding: 1px 2px 0px 4px;
-  margin: 0px;
-  opacity: 0.3;
-  background: transparent;
+#custom-hardware {
+  color: @foreground;
+  background-color: @background;
 }
 
-#taskbar button.active {
-  background: transparent;
-  opacity: 1;
-}
-
-#taskbar button:hover {
-  background: transparent;
-  opacity: 0.8;
-}
-
-button:hover {
-  background: inherit;
-  box-shadow: inset 0 -3px transparent;
-}
-
-#clock,
-#tray,
-#backlight,
-#pulseaudio,
-#battery,
-#custom-cpu,
-#custom-gpu {
-  margin: 0px 4px;
-}
 #custom-cpu {
-  color: @lavender;
+  color: @color5;
 }
 #custom-gpu {
-  color: @blue;
-}
-#backlight,
-#pulseaudio,
-#battery {
-  color: @text;
+  margin-left: 12px;
+  color: @color6;
 }
 
 #clock {
-  color: @green;
+  margin-left: 12px;
+  color: @foreground;
+}
+
+#pulseaudio {
+  color: @foreground;
 }
