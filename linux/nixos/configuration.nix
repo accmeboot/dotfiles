@@ -168,6 +168,11 @@ in
     gsettings-desktop-schemas
     glib
     gnome.gnome-tweaks
+    telegram-desktop
+    spotify
+    discord
+    pciutils
+    radeontop
     (catppuccin-sddm.override {
      flavor = "mocha";
      font = "Noto Sans";
@@ -187,7 +192,12 @@ in
     };
     zsh.enable = true;
     starship.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
   };
 
   home-manager = {
