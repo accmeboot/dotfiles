@@ -45,14 +45,14 @@
     "format": "  {}℃",
     "interval": 5,
     "exec": "bash $HOME/dotfiles/linux/nixos/waybar/scripts/cpu-temp.sh",
-    "on-click": "kitty -e bash -c 'htop; read'"
+    "on-click": "kitty -e bash -c 'btop; read'"
   },
 
   "custom/gpu": {
     "format": "\udb82\udcae  {}℃",
     "interval": 5,
     "exec": "bash $HOME/dotfiles/linux/nixos/waybar/scripts/gpu-temp.sh",
-    "on-click": "kitty -e bash -c 'nvtop; read'"
+    "on-click": "kitty -e bash -c 'btop; read'"
   },
 
   "clock": {
