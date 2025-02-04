@@ -23,6 +23,7 @@ window#waybar {
   margin-bottom: 0px;
   background-color: @background;
   color: @foreground;
+  border: 2px solid @color0;
 }
 
 #custom-launcher {
