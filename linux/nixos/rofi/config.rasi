@@ -15,4 +15,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "./themes/catppuccin-mocha"
+@theme "./themes/gruvchad.rasi"

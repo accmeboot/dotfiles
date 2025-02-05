@@ -167,11 +167,17 @@ in
     papirus-icon-theme
     gsettings-desktop-schemas
     glib
+    gnome.gnome-tweaks
+    telegram-desktop
+    spotify
+    discord
+    pciutils
+    radeontop
     (catppuccin-sddm.override {
      flavor = "mocha";
      font = "Noto Sans";
      fontSize = "9";
-     background = "${../../assets/wallpapers/ferris_wheel.jpg}";
+     background = "${../../assets/wallpapers/gruvbox_image40.png}";
      loginBackground = true;
     })
   ];
@@ -186,18 +192,33 @@ in
     };
     zsh.enable = true;
     starship.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true; # So that gtk works properly
+        extraPackages = with pkgs; [
+        swaylock
+          swayidle
+          swaybg
+        ];
+    };
   };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.accme = { pkgs, ... }: {
+
       gtk = {
         enable = true;
         theme = {
-          name = "Dracula";
-          package = pkgs.dracula-theme;
+          name = "Gruvbox-Dark";
+          package = pkgs.gruvbox-gtk-theme;
         };
         iconTheme = {
           name = "Papirus-Dark";
@@ -212,7 +233,6 @@ in
           extraConfig.gtk-application-prefer-dark-theme = true;
         };
       };
-
       home.stateVersion = "24.11";
     };
     backupFileExtension = "backup";
