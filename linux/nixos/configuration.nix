@@ -198,6 +198,15 @@ in
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     };
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true; # So that gtk works properly
+        extraPackages = with pkgs; [
+        swaylock
+          swayidle
+          swaybg
+        ];
+    };
   };
 
   home-manager = {

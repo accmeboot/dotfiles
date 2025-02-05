@@ -1,0 +1,236 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term kitty
+# Your preferred application launcher
+set $menu rofi
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
+output * bg $HOME/dotfiles/assets/wallpapers/gruvbox_image40.png fill
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output DP-2 resolution 1920x1080@360.000Hz
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+f10 exec $term
+
+    # Kill focused window
+    bindsym $mod+Backspace kill
+
+    # Start your launcher
+    bindsym alt+space exec $menu -show drun
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+f11 reload
+
+    # Exit sway (logs you out of your Wayland session)
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+
+    # Move the focused window
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+a workspace A
+    bindsym $mod+b workspace B
+    bindsym $mod+c workspace C
+    bindsym $mod+d workspace D
+    bindsym $mod+e workspace E
+    bindsym $mod+f workspace F
+    bindsym $mod+g workspace G
+    bindsym $mod+i workspace I
+    bindsym $mod+m workspace M
+    bindsym $mod+n workspace N
+    bindsym $mod+o workspace O
+    bindsym $mod+p workspace P
+    bindsym $mod+q workspace Q
+    bindsym $mod+r workspace R
+    bindsym $mod+s workspace S
+    bindsym $mod+t workspace T
+    bindsym $mod+u workspace U
+    bindsym $mod+v workspace V
+    bindsym $mod+w workspace W
+    bindsym $mod+x workspace X
+    bindsym $mod+y workspace Y
+    bindsym $mod+z workspace Z
+
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+a move container to workspace A
+    bindsym $mod+Shift+b move container to workspace B
+    bindsym $mod+Shift+c move container to workspace C
+    bindsym $mod+Shift+d move container to workspace D
+    bindsym $mod+Shift+e move container to workspace E
+    bindsym $mod+Shift+f move container to workspace F
+    bindsym $mod+Shift+g move container to workspace G
+    bindsym $mod+Shift+i move container to workspace I
+    bindsym $mod+Shift+m move container to workspace M
+    bindsym $mod+Shift+n move container to workspace N
+    bindsym $mod+Shift+o move container to workspace O
+    bindsym $mod+Shift+p move container to workspace P
+    bindsym $mod+Shift+q move container to workspace Q
+    bindsym $mod+Shift+r move container to workspace R
+    bindsym $mod+Shift+s move container to workspace S
+    bindsym $mod+Shift+t move container to workspace T
+    bindsym $mod+Shift+u move container to workspace U
+    bindsym $mod+Shift+v move container to workspace V
+    bindsym $mod+Shift+w move container to workspace W
+    bindsym $mod+Shift+x move container to workspace X
+    bindsym $mod+Shift+y move container to workspace Y
+    bindsym $mod+Shift+z move container to workspace Z
+
+#
+# Layout stuff:
+#
+    # Switch layouts
+    bindsym $mod+slash layout toggle split
+    bindsym $mod+comma layout stacking
+
+    # Make the current focus fullscreen
+    bindsym $mod+ctrl+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+ctrl+a focus parent
+
+#
+# Scratchpad:
+#
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    bindsym $mod+ctrl+minus scratchpad show
+
+#
+# Resizing:
+#
+    bindsym $mod+minus resize shrink width 50px
+    bindsym $mod+equal resize grow width 50px
+
+# Monitor movement
+bindsym $mod+Shift+Right move container to output right
+bindsym $mod+Shift+Left move container to output left
+bindsym $mod+Shift+Up move container to output up
+bindsym $mod+Shift+Down move container to output down
+
+# Workspace switching
+bindsym $mod+Tab workspace back_and_forth
+
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+    bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim
+
+# Gruvbox colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d6a
+set $gray #a89984
+set $fg #ebdbb2
+
+# class                 border   backgr.  text    indicator child_border
+client.focused          $yellow  $yellow  $fg     $yellow   $yellow
+client.focused_inactive $bg      $bg      $fg     $bg       $bg
+client.unfocused        $bg      $bg      $gray   $bg       $bg
+client.urgent           $red     $red     $fg     $red      $red
+
+# Update your bar colors
+bar {
+    position top
+    status_command while $HOME/dotfiles/linux/nixos/sway/scripts/temps.sh; do sleep 1; done
+
+    colors {
+        background $bg
+        statusline $fg
+        separator  $gray
+
+        # workspace indicators
+        focused_workspace  $yellow $yellow $fg
+        active_workspace   $bg $bg $fg
+        inactive_workspace $bg $bg $gray
+        urgent_workspace   $red $red $fg
+        binding_mode      $yellow $yellow $fg
+    }
+}
+
+include /etc/sway/config.d/*
