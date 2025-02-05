@@ -7,5 +7,4 @@ GPU_TEMP=$(sensors | awk '/junction/ {if (!found) {print $2; found=1}}')
 DATE=$(date "+%H:%M:%S")
 
 # Print the temperatures
-echo " CPU:+${CPU_TEMP}°C  GPU:${GPU_TEMP}°C  ${DATE} "
-
+echo "  +${CPU_TEMP}°C  󰘚 ${GPU_TEMP}  ${DATE} "

@@ -96,6 +96,19 @@ in
     variant = "";
   };
 
+
+  services.libinput = {
+    enable = true;
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
+    touchpad = {
+      accelProfile = "flat";
+      accelSpeed = "0";
+    };
+  };
+
 # keyboard settings
   services.keyd = {
     enable = true;
@@ -245,4 +258,13 @@ in
     pam.services.hyprlock = {};
     pam.services.sddm = {};
   };
+
+  environment.sessionVariables = {
+    XCURSOR_PATH = [
+      "${pkgs.capitaine-cursors}/share/icons"
+    ];
+    XCURSOR_SIZE = "16";
+  };
+
+  programs.dconf.enable = true;  # Needed for storing GTK configuration
 }
