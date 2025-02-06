@@ -7,28 +7,10 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
 
-    plymouth = {
-      enable = true;
-      theme = "rings";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "rings" ];
-        })
-      ];
-    };
-
-    consoleLogLevel = 0;
-    initrd.verbose = false;
+    initrd.kernelModules = [ "amdgpu" ];  # early load amdgpu
     kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
+      "video=DP-2:1920x1080@360"
     ];
-    loader.timeout = 0;
   };
 
   networking.hostName = "nixos";

@@ -10,6 +10,9 @@ ln -sfn $HOME/dotfiles/linux/nixos/rofi/ $HOME/.config/rofi
 if [ -d $HOME/.config/sway ]; then rm -r $HOME/.config/sway; fi
 ln -sfn $HOME/dotfiles/linux/nixos/sway/ $HOME/.config/sway
 
+if [ -d $HOME/.config/mako ]; then rm -r $HOME/.config/mako; fi
+ln -sfn $HOME/dotfiles/linux/nixos/mako/ $HOME/.config/mako
+
 chmod +x $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh
 
 echo "Linking NixOS configuration..."
