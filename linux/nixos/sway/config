@@ -221,7 +221,7 @@ client.urgent           $red    $red     $fg   $red       $red
 # Update your bar colors
 bar {
     position top
-    status_command while $HOME/dotfiles/linux/nixos/sway/scripts/temps.sh; do sleep 1; done
+    status_command while $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh; do sleep 1; done
 
     colors {
         background $bg2
