@@ -40,6 +40,8 @@
     discord
     pciutils
     radeontop
+    feh # image viewer
+    mpv # video player
 
     # sway
     grim # screenshot functionality

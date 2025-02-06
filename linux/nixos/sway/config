@@ -199,6 +199,7 @@ bindsym $mod+Tab workspace back_and_forth
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    bindsym Mod1+Shift+4 exec grim -g "$(slurp)" $HOME/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')
 
 # Gruvbox colors
 set $bg #282828
