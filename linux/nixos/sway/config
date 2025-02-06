@@ -1,3 +1,6 @@
+# give Sway a little time to startup before starting kanshi (the deamon to run sway properly https://wiki.nixos.org/wiki/Sway).
+exec sleep 5; systemctl --user start kanshi.service
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -15,7 +18,7 @@ set $menu rofi
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg $HOME/dotfiles/assets/wallpapers/ALLqk82.png fill
+output * bg $HOME/dotfiles/assets/wallpapers/gruvbox_image40.png fill
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-2 resolution 1920x1080@360.000Hz
@@ -188,8 +191,8 @@ bindsym $mod+Tab workspace back_and_forth
 #
     # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
-    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+    bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
+    bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
     bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
@@ -199,6 +202,7 @@ bindsym $mod+Tab workspace back_and_forth
 
 # Gruvbox colors
 set $bg #282828
+set $bg2 #3a3735
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
@@ -208,11 +212,11 @@ set $aqua #689d6a
 set $gray #a89984
 set $fg #ebdbb2
 
-# class                 border   backgr.  text    indicator child_border
-client.focused          $yellow  $yellow  $fg     $yellow   $yellow
-client.focused_inactive $bg      $bg      $fg     $bg       $bg
-client.unfocused        $bg      $bg      $gray   $bg       $bg
-client.urgent           $red     $red     $fg     $red      $red
+# class                 border  backgr.  text  indicator  child_border
+client.focused          $fg     $fg      $bg   $fg        $fg
+client.focused_inactive $bg     $bg      $fg   $bg        $bg
+client.unfocused        $gray   $gray    $bg   $gray      $gray
+client.urgent           $red    $red     $fg   $red       $red
 
 # Update your bar colors
 bar {
@@ -220,7 +224,7 @@ bar {
     status_command while $HOME/dotfiles/linux/nixos/sway/scripts/temps.sh; do sleep 1; done
 
     colors {
-        background $bg
+        background $bg2
         statusline $fg
         separator  $gray
 
@@ -232,5 +236,9 @@ bar {
         binding_mode      $yellow $yellow $fg
     }
 }
+
+# gaps
+gaps inner 4
+gaps outer 4
 
 include /etc/sway/config.d/*
