@@ -212,11 +212,10 @@ set $fg #ebdbb2
 
 # class                 border  backgr.  text  indicator  child_border
 client.focused          $fg     $fg      $bg   $fg        $fg
-client.focused_inactive $bg     $bg      $fg   $bg        $bg
+client.focused_inactive $gray   $gray    $bg   $gray      $gray
 client.unfocused        $gray   $gray    $bg   $gray      $gray
 client.urgent           $red    $red     $fg   $red       $red
 
-# Update your bar colors
 # bar {
 #     position top
 #     status_command while $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh; do sleep 1; done
@@ -247,6 +246,6 @@ include /etc/sway/config.d/*
 
 
 # launch eww
-exec_always pkill eww && eww daemon && eww open bar
+exec_always eww daemon --restart && eww open bar
 # give Sway a little time to startup before starting kanshi (the deamon to run sway properly https://wiki.nixos.org/wiki/Sway).
 exec sleep 5; systemctl --user start kanshi.service

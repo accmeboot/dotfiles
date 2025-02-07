@@ -10,15 +10,20 @@
 // fg #ebdbb2;
 
 * {
-  all: unset; // Unsets everything so you can style everything from scratch
-  font-size: 14px;
+  /* all: unset; // Unsets everything so you can style everything from scratch */
+  border-radius: 0;
+  font-size: 13px;
+}
+
+.calendar-closer {
+  background-color: transparent;
 }
 
 // Global Styles
 .bar {
-  background-color: #3a3735; // bg2
+  background-color: transparent;
   color: #ebdbb2; // fg
-  padding: 4px 8px;
+  padding: 0px 8px;
 }
 
 .workspaces button:hover {
@@ -34,6 +39,10 @@
 .workspaces button.active {
   color: #ebdbb2; // fg
   background-color: #d79921; // yellow
+}
+
+.workspaces button.urgent {
+  color: #cc241d; // red
 }
 
 .separator {
@@ -55,15 +64,55 @@
   margin: 0px 5px;
 }
 
+.metric * {
+  all: unset;
+}
+
+.date {
+  margin-left: 5px;
+}
+
+.date-icon {
+  color: #b16286; // purple
+}
+
 .metric scale trough highlight {
   background-color: #d79921; // yellow
   border-radius: 10px;
 }
 
 .metric scale trough {
-  background-color: #282828; // bg
+  background-color: #3a3735; // bg2
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
   margin: 0px 5px;
+}
+
+.systray,
+.temps,
+.audio {
+  background-color: #282828; // bg
+  padding: 0px 6px;
+  border: 2px solid #ebdbb2; // fg
+}
+
+.systray * {
+  -gtk-icon-transform: scale(0.75);
+}
+
+.leftsidestuff {
+  border: 2px solid #ebdbb2; // fg
+  background-color: #3a3735; // bg2
+}
+
+.launcher {
+  all: unset;
+  background-color: #b16286; // purple
+  padding: 0px 5px 0px 8px;
+  color: #d79921 // yellow
+}
+
+.workspaces {
+  margin-left: 10px;
 }

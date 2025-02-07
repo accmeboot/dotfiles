@@ -1,2 +1,2 @@
 #!/bin/bash
-wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -c MUTED
+wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo "true" || echo "false"

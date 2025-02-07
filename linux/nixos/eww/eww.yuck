@@ -1,6 +1,6 @@
 (defwidget bar []
   (centerbox :orientation "h"
-    (workspaces)
+    (leftsidestuff)
     (box :orientation "h"
          :space-evenly false
          :halign "end")
@@ -8,20 +8,59 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (label :class "audio-icon" :text {is-muted == "1" ? " " : " "})
-    (metric :class "metric"
-            :label "${output-name}"
-            :value volume
-            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")
-    (label :class "separator" :text "")
+    (audio)
+    (label :class "separator" :text "")
+    (temps)
+    (label :class "separator" :text "")
+    (systray :class "systray")))
+
+(defwidget leftsidestuff []
+    (box :class "leftsidestuff"
+         :orientation "h"
+         :space-evenly false
+         :halign "start"
+         (launcher)
+         (workspaces)
+    ))
+
+(defwidget launcher []
+  (button :class "launcher"
+          :onclick "rofi -show drun &"
+          " "))
+
+(defwidget temps []
+  (box :class "temps"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
     (label :class "cpu-icon" :text " ")
     (label :class "cpu"
            :text "+${cpu}°C")
     (label :class "gpu-icon" :text "󰘚 ")
     (label :class "gpu"
-           :text "${gpu}")
-    (label :class "separator" :text "")
-    time))
+           :text "${gpu} ")
+           (date)))
+
+(defwidget date []
+  (eventbox :onclick "eww open --toggle calendar"
+            (box :class "date"
+                 :orientation "h"
+                 :space-evenly false
+                 :halign "end"
+              (label :class "date-icon" :text " ")
+              (label :text time))))
+
+(defwidget audio []
+  (box :class "audio"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (label :class "audio-icon" :text {is-muted == "true" ? " " : " "})
+    (metric :class "metric"
+            :label "${output-name}"
+            :value volume
+            :onclick "pavucontrol &"
+            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")))
 
 (defwidget workspaces []
   (eventbox
@@ -31,15 +70,17 @@
        :space-evenly true
        :halign "start"
     (for workspace in workspace-list
-      (button :class {workspace.focused ? "active" : ""}
+      (button :class {(workspace.focused ? "active" : workspace.urgent ? "urgent" : "")}
               :onclick "swaymsg workspace ${workspace.name}"
               "${workspace.name}")))))
 
-(defwidget metric [class label value onchange]
+(defwidget metric [class label value onchange onclick]
   (box :orientation "h"
        :class class
        :space-evenly false
-    (box :class "label" label)
+    (button :class "label"
+            :onclick onclick
+            label)
     (scale :min 0
            :max 154
            :active {onchange != ""}
@@ -51,7 +92,7 @@
   "bash scripts/get-volume")
 
 (defpoll time :interval "10ms"
-  "date '+%H:%M'")
+  "date '+%A, %d %b %Y, %H:%M'")
 
 (defpoll workspace-list :interval "10ms" "bash scripts/get-workspaces")
 
@@ -71,3 +112,12 @@
   :exclusive true
   :windowtype "dock"
 (bar))
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry :x "8px"
+                      :y "0px"
+                      :anchor "top right")
+  :stacking "fg"
+  :wm-ignore true
+  (calendar))
