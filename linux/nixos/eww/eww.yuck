@@ -108,7 +108,7 @@
 (defwindow bar
   :monitor 0
   :geometry (geometry :x "0%"
-                      :y "0%"
+                      :y "8px"
                       :width "100%"
                       :anchor "top center")
   :stacking "bg"
