@@ -1,0 +1,69 @@
+// bg #282828;
+// bg2 #3a3735;
+// red #cc241d;
+// green #98971a;
+// yellow #d79921;
+// blue #458588;
+// purple #b16286;
+// aqua #689d6a;
+// gray #a89984;
+// fg #ebdbb2;
+
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+  font-size: 14px;
+}
+
+// Global Styles
+.bar {
+  background-color: #3a3735; // bg2
+  color: #ebdbb2; // fg
+  padding: 4px 8px;
+}
+
+.workspaces button:hover {
+  color: #ebdbb2; // fg
+}
+
+.workspaces button {
+  padding: 0px 6px;
+  background-color: #282828; // bg
+  color: #a89984; // gray
+}
+
+.workspaces button.active {
+  color: #ebdbb2; // fg
+  background-color: #d79921; // yellow
+}
+
+.separator {
+  color: #ebdbb2; // fg
+  margin: 0px 5px;
+}
+
+.cpu-icon {
+  color: #98971a; // green
+}
+
+.gpu-icon {
+  color: #458588; // blue
+  margin-left: 10px;
+}
+
+.audio-icon {
+  color: #d79921; // yellow
+  margin: 0px 5px;
+}
+
+.metric scale trough highlight {
+  background-color: #d79921; // yellow
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  background-color: #282828; // bg
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin: 0px 5px;
+}

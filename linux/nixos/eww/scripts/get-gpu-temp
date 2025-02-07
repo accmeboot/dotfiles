@@ -1,0 +1,2 @@
+#!/bin/bash
+sensors | awk '/junction/ {if (!found) {print $2; found=1}}'

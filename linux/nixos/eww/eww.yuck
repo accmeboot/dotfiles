@@ -1,0 +1,73 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (workspaces)
+    (box :orientation "h"
+         :space-evenly false
+         :halign "end")
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (label :class "audio-icon" :text {is-muted == "1" ? " " : " "})
+    (metric :class "metric"
+            :label "${output-name}"
+            :value volume
+            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")
+    (label :class "separator" :text "")
+    (label :class "cpu-icon" :text " ")
+    (label :class "cpu"
+           :text "+${cpu}°C")
+    (label :class "gpu-icon" :text "󰘚 ")
+    (label :class "gpu"
+           :text "${gpu}")
+    (label :class "separator" :text "")
+    time))
+
+(defwidget workspaces []
+  (eventbox
+      :onscroll `bash scripts/change-workspace {}`
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+    (for workspace in workspace-list
+      (button :class {workspace.focused ? "active" : ""}
+              :onclick "swaymsg workspace ${workspace.name}"
+              "${workspace.name}")))))
+
+(defwidget metric [class label value onchange]
+  (box :orientation "h"
+       :class class
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 154
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+
+(defpoll volume :interval "100ms"
+  "bash scripts/get-volume")
+
+(defpoll time :interval "10ms"
+  "date '+%H:%M'")
+
+(defpoll workspace-list :interval "10ms" "bash scripts/get-workspaces")
+
+(defpoll cpu :interval "1s" "bash scripts/get-cpu-temp")
+(defpoll gpu :interval "1s" "bash scripts/get-gpu-temp")
+(defpoll output-name :interval "100ms" "bash scripts/get-output-name")
+(defpoll is-muted :interval "100ms" "bash scripts/get-is-muted")
+
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :anchor "top center")
+  :stacking "bg"
+  :reserve (struts :distance "0px" :side "top")
+  :exclusive true
+  :windowtype "dock"
+(bar))

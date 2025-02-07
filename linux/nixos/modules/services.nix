@@ -9,6 +9,8 @@
 
     gnome.gnome-keyring.enable = true;
 
+    envfs.enable = true;
+
     greetd = {                                                      
       enable = true;                                                         
       settings = {                                                           

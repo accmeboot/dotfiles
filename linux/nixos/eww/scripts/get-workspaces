@@ -1,0 +1,2 @@
+#!/bin/bash
+swaymsg -t get_workspaces | jq -c '.[] | {name: .name, focused: .focused}' | jq -s '.'

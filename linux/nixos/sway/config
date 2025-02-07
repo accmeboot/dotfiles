@@ -1,6 +1,3 @@
-# give Sway a little time to startup before starting kanshi (the deamon to run sway properly https://wiki.nixos.org/wiki/Sway).
-exec sleep 5; systemctl --user start kanshi.service
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -220,26 +217,36 @@ client.unfocused        $gray   $gray    $bg   $gray      $gray
 client.urgent           $red    $red     $fg   $red       $red
 
 # Update your bar colors
-bar {
-    position top
-    status_command while $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh; do sleep 1; done
-
-    colors {
-        background $bg2
-        statusline $fg
-        separator  $gray
-
-        # workspace indicators
-        focused_workspace  $yellow $yellow $fg
-        active_workspace   $bg $bg $fg
-        inactive_workspace $bg $bg $gray
-        urgent_workspace   $red $red $fg
-        binding_mode      $yellow $yellow $fg
-    }
-}
+# bar {
+#     position top
+#     status_command while $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh; do sleep 1; done
+#
+#     colors {
+#         background $bg2
+#         statusline $fg
+#         separator  $gray
+#
+#         # workspace indicators
+#         focused_workspace  $yellow $yellow $fg
+#         active_workspace   $bg $bg $fg
+#         inactive_workspace $bg $bg $gray
+#         urgent_workspace   $red $red $fg
+#         binding_mode      $yellow $yellow $fg
+#     }
+# }
 
 # gaps
 gaps inner 4
 gaps outer 4
 
+# Floating apps
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="nemo"] floating enable
+
 include /etc/sway/config.d/*
+
+
+# launch eww
+exec_always pkill eww && eww daemon && eww open bar
+# give Sway a little time to startup before starting kanshi (the deamon to run sway properly https://wiki.nixos.org/wiki/Sway).
+exec sleep 5; systemctl --user start kanshi.service
