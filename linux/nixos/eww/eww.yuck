@@ -12,7 +12,12 @@
     (label :class "separator" :text "")
     (temps)
     (label :class "separator" :text "")
-    (systray :class "systray")))
+    (box :class "systray"
+          :orientation "h"
+          :space-evenly false
+          :halign "end"
+         (systray)
+         (date))))
 
 (defwidget leftsidestuff []
     (box :class "leftsidestuff"
@@ -38,8 +43,7 @@
            :text "+${cpu}°C")
     (label :class "gpu-icon" :text "󰘚 ")
     (label :class "gpu"
-           :text "${gpu} ")
-           (date)))
+           :text "${gpu} ")))
 
 (defwidget date []
   (eventbox :onclick "eww open --toggle calendar"
