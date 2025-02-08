@@ -1,6 +1,5 @@
 configuration{
-    modi: "run,drun,window";
-    lines: 8;
+    modi: "drun";
     font: "Cantarell Regular 12";
     show-icons: true;
     terminal: "st";
@@ -8,11 +7,8 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: false;
-    display-drun: "    Apps ";
-    display-run: "    Run ";
-    display-window: "     window";
-    /* display-Network: " 󰤨  Network"; */
-    sidebar-mode: true;
+    display-drun: "󱘶 ";
+    sidebar-mode: false;
 }
 
-@theme "./themes/gruvchad.rasi"
+@theme "./themes/gruvbox.rasi"

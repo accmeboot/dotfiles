@@ -1,15 +1,13 @@
 * {
     bg-col:  #282828;
-    bg-col-light: #ea6962;
-    border-col: #d4be98;
     selected-col: #282828;
     blue: #fabc2e;
-    fg-col: #d4be98;
-    fg-col2: #e78a4e;
+    fg-col: #ebdbb2;
+    fg-col2: #d79921;
     grey: #282828;
     button-bg: #665c54;
 
-    width: 600;
+    width: 500;
     font: "System-ui Rgular 12";
 }
 
@@ -19,9 +17,8 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 360px;
     border: 2px;
-    border-color: @border-col;
+    border-color: @fg-col;
     background-color: @bg-col;
 }
 
@@ -31,17 +28,19 @@ mainbox {
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-col;
-    border-radius: 5px;
+    background-color: @fg-col;
+    border-radius: 0px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
-    padding: 6px;
+    background-color: @fg-col;
     text-color: @bg-col;
-    border-radius: 3px;
-    margin: 20px 0px 0px 20px;
+    border-radius: 0px;
+    margin: 0px 0px 0px 10px;
+    vertical-align: 0.5;   /* Centers content vertically */
+    horizontal-align: 0.5; /* Centers content horizontally */
+    font: "Cantarell Regular 16";
 }
 
 textbox-prompt-colon {
@@ -50,29 +49,31 @@ textbox-prompt-colon {
 }
 
 entry {
-    padding: 6px;
-    margin: 20px 0px 0px 10px;
+    padding: 6px 6px 6px 6px;
+    margin: 0px 0px 0px -3px;
     text-color: @fg-col;
     background-color: @bg-col;
 }
 
 listview {
-    border: 0px 0px 0px;
-    padding: 6px 0px 0px;
-    margin: 10px 0px 0px 20px;
-    columns: 2;
-    lines: 5;
+    padding: 6px 5px 0px 6px;
+    margin: -2px 0px 0px 0px;
+    columns: 1;
+    lines: 12;
     background-color: @bg-col;
+    border: 1px 1px 1px 1px solid; /* top right bottom left */
+    border-color: @fg-col;
 }
 
 element {
     padding: 5px;
     background-color: @bg-col;
     text-color: @fg-col  ;
+    spacing: 7px;
 }
 
 element-icon {
-    size: 25px;
+    size: 18px;
 }
 
 element selected {
@@ -98,7 +99,6 @@ button selected {
 }
 
 message {
-    background-color: @bg-col-light;
     margin: 2px;
     padding: 2px;
     border-radius: 5px;
@@ -108,5 +108,4 @@ textbox {
     padding: 6px;
     margin: 20px 0px 0px 20px;
     text-color: @blue;
-    background-color: @bg-col-light;
 }
