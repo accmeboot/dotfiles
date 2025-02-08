@@ -98,7 +98,8 @@
 (defpoll time :interval "1s"
   "date '+%A, %d %b %Y, %H:%M'")
 
-(defpoll workspace-list :interval "50ms" "bash scripts/get-workspaces")
+(deflisten workspace-list :initial "[]"
+  "bash scripts/get-workspaces")
 
 (defpoll cpu :interval "1s" "bash scripts/get-cpu-temp")
 (defpoll gpu :interval "1s" "bash scripts/get-gpu-temp")
