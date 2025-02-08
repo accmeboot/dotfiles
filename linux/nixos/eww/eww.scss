@@ -94,9 +94,10 @@
 .temps,
 .audio {
   background-color: #282828; // bg
-  padding: 0px 6px;
+  padding: 4px 6px;
   border: 2px solid #ebdbb2; // fg
 }
+
 
 .systray * {
   -gtk-icon-transform: scale(0.8);
@@ -116,4 +117,11 @@
 
 .workspaces {
   margin-left: 10px;
+}
+
+.systray {
+  all: unset;
+  background-color: #282828; // bg
+  padding: 0px 6px;
+  border: 2px solid #ebdbb2; // fg
 }

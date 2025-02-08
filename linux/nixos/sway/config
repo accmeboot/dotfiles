@@ -242,10 +242,15 @@ gaps outer 4
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [app_id="nemo"] floating enable
 
+
+# Assign applications to specific workspaces
+assign [class="Brave-browser"] workspace B
+assign [class="kitty"] workspace T
+
 include /etc/sway/config.d/*
 
-
 # launch eww
+exec swaymsg "workspace T"
 exec_always eww daemon --restart && eww open bar
 # give Sway a little time to startup before starting kanshi (the deamon to run sway properly https://wiki.nixos.org/wiki/Sway).
 exec sleep 5; systemctl --user start kanshi.service
