@@ -110,8 +110,13 @@
 
 .launcher {
   all: unset;
-  background-color: #b16286; // purple
-  padding: 0px 5px 0px 8px;
+  background-color: #ebdbb2; // fg
+  padding: 0px 5px;
+  color: #282828; // bg
+  font-size: 18px;
+}
+
+.launcher:hover {
   color: #d79921 // yellow
 }
 
