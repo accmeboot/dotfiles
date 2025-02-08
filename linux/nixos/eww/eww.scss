@@ -12,7 +12,6 @@
 * {
   /* all: unset; // Unsets everything so you can style everything from scratch */
   border-radius: 0;
-  font-size: 13px;
 }
 
 .calendar-closer {
@@ -31,6 +30,7 @@
 }
 
 .workspaces button {
+  all: unset;
   padding: 0px 6px;
   background-color: #282828; // bg
   color: #a89984; // gray

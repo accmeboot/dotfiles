@@ -92,18 +92,18 @@
            :onchange onchange)))
 
 
-(defpoll volume :interval "100ms"
+(defpoll volume :interval "50ms"
   "bash scripts/get-volume")
 
-(defpoll time :interval "10ms"
+(defpoll time :interval "1s"
   "date '+%A, %d %b %Y, %H:%M'")
 
-(defpoll workspace-list :interval "10ms" "bash scripts/get-workspaces")
+(defpoll workspace-list :interval "50ms" "bash scripts/get-workspaces")
 
 (defpoll cpu :interval "1s" "bash scripts/get-cpu-temp")
 (defpoll gpu :interval "1s" "bash scripts/get-gpu-temp")
-(defpoll output-name :interval "100ms" "bash scripts/get-output-name")
-(defpoll is-muted :interval "100ms" "bash scripts/get-is-muted")
+(defpoll output-name :interval "1s" "bash scripts/get-output-name")
+(defpoll is-muted :interval "1s" "bash scripts/get-is-muted")
 
 (defwindow bar
   :monitor 0
