@@ -16,8 +16,10 @@
           :orientation "h"
           :space-evenly false
           :halign "end"
-         (systray)
-         (date))))
+          :visible { is-tray-visible == "true" }
+          (label :class "systray-icon" :text "󰪴 ")
+         (systray))
+         (date)))
 
 (defwidget leftsidestuff []
     (box :class "leftsidestuff"
@@ -38,12 +40,11 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (label :class "cpu-icon" :text " ")
+    (label :class "temps-icon" :text "󰏈 ")
     (label :class "cpu"
-           :text "+${cpu}°C")
-    (label :class "gpu-icon" :text "󰘚 ")
+           :text "CPU: ${cpu}°C")
     (label :class "gpu"
-           :text "${gpu} ")))
+           :text "GPU: ${gpu}°C")))
 
 (defwidget date []
   (eventbox :onclick "eww open --toggle calendar"
@@ -105,6 +106,7 @@
 (defpoll gpu :interval "1s" "bash scripts/get-gpu-temp")
 (defpoll output-name :interval "1s" "bash scripts/get-output-name")
 (defpoll is-muted :interval "1s" "bash scripts/get-is-muted")
+(defpoll is-tray-visible :interval "1s" "bash scripts/get-systray-status")
 
 (defwindow bar
   :monitor 0

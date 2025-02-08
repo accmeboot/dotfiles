@@ -51,30 +51,28 @@
   margin: 0px 5px;
 }
 
-.cpu-icon {
-  color: #98971a; // green
+.audio-icon,
+.temps-icon,
+.date-icon,
+.systray-icon {
+  color: #282828; // bg
+  background-color: #ebdbb2; // fg 
+  padding: 0px 5px;
+  margin-right: 5px;
+  font-size: 16px;
 }
 
-.gpu-icon {
-  color: #458588; // blue
-  margin-left: 10px;
-}
-
-.audio-icon {
-  color: #d79921; // yellow
-  margin: 0px 5px;
+.gpu {
+  margin-left: 5px;
+  padding-right: 5px;
 }
 
 .metric * {
   all: unset;
 }
 
-.date {
-  margin-left: 5px;
-}
-
 .date-icon {
-  color: #b16286; // purple
+  padding-right: 4px;
 }
 
 .metric scale trough highlight {
@@ -83,7 +81,7 @@
 }
 
 .metric scale trough {
-  background-color: #3a3735; // bg2
+  background-color: #282828; // bg
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
@@ -92,15 +90,11 @@
 
 .systray,
 .temps,
-.audio {
-  background-color: #282828; // bg
-  padding: 4px 6px;
+.audio,
+.date {
+  background-color: #3a3735; // bg2
   border: 2px solid #ebdbb2; // fg
-}
-
-
-.systray * {
-  -gtk-icon-transform: scale(0.8);
+  padding-right: 5px;
 }
 
 .leftsidestuff {
@@ -126,7 +120,16 @@
 
 .systray {
   all: unset;
-  background-color: #282828; // bg
-  padding: 0px 6px;
+  background-color: #3a3735; // bg2
   border: 2px solid #ebdbb2; // fg
+  margin-right: 10px;
+  padding-right: 5px;
+}
+
+.systray * {
+  -gtk-icon-transform: scale(0.8);
+}
+
+.systray-icon {
+  padding-right: 4px;
 }
