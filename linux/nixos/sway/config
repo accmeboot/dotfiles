@@ -13,7 +13,7 @@ set $term kitty
 set $menu rofi
 
 ### Output configuration
-#
+output * adaptive_sync on
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 output * bg $HOME/dotfiles/assets/wallpapers/gruvbox_image40.png fill
 
