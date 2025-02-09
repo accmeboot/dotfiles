@@ -21,7 +21,6 @@
     cmake
     gnumake
     bluez
-    blueman
     wlr-randr
     xclip
     pavucontrol

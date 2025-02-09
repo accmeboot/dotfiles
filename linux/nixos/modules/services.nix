@@ -9,6 +9,9 @@
 
     gnome.gnome-keyring.enable = true;
 
+
+    blueman.enable = true;
+
     envfs.enable = true;
 
     greetd = {                                                      
