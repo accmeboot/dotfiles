@@ -59,7 +59,7 @@ listview {
     padding: 6px 5px 0px 6px;
     margin: -2px 0px 0px 0px;
     columns: 1;
-    lines: 12;
+    lines: 10;
     background-color: @bg-col;
     border: 1px 1px 1px 1px solid; /* top right bottom left */
     border-color: @fg-col;
