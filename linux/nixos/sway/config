@@ -247,6 +247,9 @@ for_window [app_id="nemo"] floating enable
 assign [class="Brave-browser"] workspace B
 assign [class="kitty"] workspace T
 
+# set cursor theme
+seat seat0 xcursor_theme capitaine-cursors 16
+
 include /etc/sway/config.d/*
 
 # launch eww

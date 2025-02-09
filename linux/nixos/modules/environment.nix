@@ -57,6 +57,7 @@
       "${pkgs.capitaine-cursors}/share/icons"
     ];
     XCURSOR_SIZE = "16";
+    NIXOS_OZONE_WL = "1";
   };
 
   fonts.enableDefaultPackages = true;
