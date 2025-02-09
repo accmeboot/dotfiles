@@ -50,7 +50,8 @@
 .audio-icon,
 .temps-icon,
 .date-icon,
-.systray-icon {
+.systray-icon,
+.locale-icon {
   color: #282828; // bg
   background-color: #ebdbb2; // fg 
   padding: 0px 5px;
@@ -87,7 +88,8 @@
 .systray,
 .temps,
 .audio,
-.date {
+.date,
+.locale {
   background-color: #3a3735; // bg2
   border: 2px solid #ebdbb2; // fg
   padding-right: 5px;
@@ -128,4 +130,41 @@
 
 .systray-icon {
   padding-right: 4px;
+}
+
+.locale {
+  margin-left: 10px;
+}
+
+.powermenu-toggle {
+  all: unset;
+  background-color: #ebdbb2; // fg
+  padding: 0px 10px;
+  color: #cc241d; // red
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.powermenu-toggle:hover {
+  color: #d79921 // yellow
+}
+
+.powermenu-toggle:hover {
+  color: #d79921 // yellow
+}
+
+.powermenu {
+  all: unset;
+  background-color: #3a3735; // bg2
+  color: #ebdbb2; // fg
+  border: 2px solid #ebdbb2; // fg
+}
+
+.powermenu .powermenu-item {
+  all: unset;
+  padding: 10px 3px 10px 7px;
+}
+
+.powermenu .powermenu-item:hover {
+  color: #d79921; // yellow
 }

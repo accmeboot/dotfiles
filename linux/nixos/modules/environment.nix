@@ -57,6 +57,9 @@
     ];
     XCURSOR_SIZE = "16";
     NIXOS_OZONE_WL = "1";
+
+    XKB_DEFAULT_LAYOUT = "us,ru";
+    XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
   };
 
   fonts.enableDefaultPackages = true;

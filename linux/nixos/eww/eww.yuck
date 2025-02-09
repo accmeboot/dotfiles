@@ -19,7 +19,9 @@
           :visible { is-tray-visible == "true" }
           (label :class "systray-icon" :text "󰪴 ")
          (systray))
-         (date)))
+         (date)
+         (locale)
+         (powermenu-toggle)))
 
 (defwidget leftsidestuff []
     (box :class "leftsidestuff"
@@ -45,6 +47,15 @@
            :text "CPU: ${cpu}°C")
     (label :class "gpu"
            :text "GPU: ${gpu}°C")))
+
+(defwidget locale []
+  (box :class "locale"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (label :class "locale-icon" :text " ")
+    (label :class "locale-text"
+           :text "${locale}")))
 
 (defwidget date []
   (eventbox :onclick "eww open --toggle calendar"
@@ -92,6 +103,38 @@
            :value value
            :onchange onchange)))
 
+(defwidget powermenu-toggle []
+  (powermenubutton :class "powermenu-toggle"
+                   :onclick "eww open --toggle powermenu"
+                   :label "󰐥"))
+
+(defwidget powermenubutton [class label onclick]
+ (button :class class
+         :onclick onclick
+          "${label}"))
+
+(defwidget powermenu []
+  (box :class "powermenu"
+       :orientation "v"
+       :space-evenly false
+       :halign "end"
+    (powermenubutton :class "powermenu-item"
+                     :label " "
+                     :onclick "shutdown now")
+
+    (powermenubutton :class "powermenu-item"
+                     :label " "
+                     :onclick "reboot")
+    (powermenubutton :class "powermenu-item"
+                     :label " "
+                     :onclick "swaylock")
+    (powermenubutton :class "powermenu-item"
+                     :label " "
+                     :onclick "systemctl suspend")
+    (powermenubutton :class "powermenu-item"
+                     :label " "
+                     :onclick "systemctl hibernate")))
+
 
 (defpoll volume :interval "50ms"
   "bash scripts/get-volume")
@@ -107,6 +150,7 @@
 (defpoll output-name :interval "1s" "bash scripts/get-output-name")
 (defpoll is-muted :interval "1s" "bash scripts/get-is-muted")
 (defpoll is-tray-visible :interval "1s" "bash scripts/get-systray-status")
+(defpoll locale :interval "1s" "bash scripts/get-locale")
 
 (defwindow bar
   :monitor 0
@@ -122,9 +166,18 @@
 
 (defwindow calendar
   :monitor 0
-  :geometry (geometry :x "8px"
+  :geometry (geometry :x "82px"
                       :y "0px"
                       :anchor "top right")
   :stacking "fg"
   :wm-ignore true
   (calendar))
+
+(defwindow powermenu
+   :monitor 0
+   :geometry (geometry :x "8px"
+                       :y "0px"
+                       :anchor "top right")
+   :stacking "fg"
+   :wm-ignore true
+   (powermenu))
