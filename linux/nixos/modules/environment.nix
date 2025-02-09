@@ -30,6 +30,7 @@
     unzip
     steam
     btop
+    htop
     lm_sensors
     papirus-icon-theme
     gsettings-desktop-schemas
@@ -38,7 +39,7 @@
     spotify
     discord
     pciutils
-    radeontop
+    amdgpu_top
     feh # image viewer
     mpv # video player
 
