@@ -6,6 +6,8 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  hardware.xpadneo.enable = true; # enables support for the Xbox One controller
+
   boot = {
     loader = {
       grub = {
