@@ -33,11 +33,11 @@
       enable = true;
       mouse = {
         accelProfile = "flat";
-        accelSpeed = "-0.5";
+        accelSpeed = "-1";
       };
       touchpad = {
         accelProfile = "flat";
-        accelSpeed = "-0.5";
+        accelSpeed = "-1";
       };
     };
 

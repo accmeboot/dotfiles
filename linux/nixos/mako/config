@@ -1,8 +1,8 @@
 background-color=#282828
 text-color=#ebdbb2
-border-color=#d79921
+border-color=#ebdbb2
 border-size=2
-border-radius=5
+border-radius=0
 
 [urgency=high]
 border-color=#cc241d
