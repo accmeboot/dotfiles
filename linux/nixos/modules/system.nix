@@ -8,6 +8,14 @@
 
   hardware.xpadneo.enable = true; # enables support for the Xbox One controller
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
+
   boot = {
     loader = {
       grub = {
