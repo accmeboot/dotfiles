@@ -52,6 +52,7 @@
     eww # widget manager for wayland
 
     mangohud # overlay for games
+    goverlay # gui settings for mangohud
   ];
 
   environment.sessionVariables = {
@@ -65,7 +66,8 @@
     XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
 
 
-    MANGOHUD_CONFIG = "gpu_stats,gpu_temp,gpu_load_change,cpu_stats,cpu_temp"; # for mangohud
+    MANGOHUD_CONFIG = "pci_dev='0000\:03\:00.0',cpu_temp,gpu_temp,cpu_stats,gpu_stats,ram,fps,frametime";
+    MANGOHUD="1"; # for mangohud
   };
 
   fonts.enableDefaultPackages = true;
