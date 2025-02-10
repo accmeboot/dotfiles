@@ -50,6 +50,8 @@
     mako # notification system developed by swaywm maintainer
 
     eww # widget manager for wayland
+
+    mangohud # overlay for games
   ];
 
   environment.sessionVariables = {
@@ -61,6 +63,9 @@
 
     XKB_DEFAULT_LAYOUT = "us,ru";
     XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
+
+
+    MANGOHUD_CONFIG = "gpu_stats,gpu_temp,gpu_load_change,cpu_stats,cpu_temp"; # for mangohud
   };
 
   fonts.enableDefaultPackages = true;
