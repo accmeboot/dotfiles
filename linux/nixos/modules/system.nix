@@ -57,4 +57,18 @@
       ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
     };
   };
+  # https://wiki.nixos.org/wiki/AMD_GPU amd gpu settings
+  systemd.tmpfiles.rules = 
+  let
+    rocmEnv = pkgs.symlinkJoin {
+      name = "rocm-combined";
+      paths = with pkgs.rocmPackages; [
+        rocblas
+        hipblas
+        clr
+      ];
+    };
+  in [
+    "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  ];
 }
