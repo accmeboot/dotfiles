@@ -53,7 +53,7 @@
 .systray-icon,
 .locale-icon {
   color: #282828; // bg
-  background-color: #ebdbb2; // fg 
+  background-color: #d79921; // yellow
   padding: 0px 5px;
   margin-right: 5px;
   font-size: 14px;
@@ -93,11 +93,13 @@
   background-color: #3a3735; // bg2
   border: 2px solid #ebdbb2; // fg
   padding-right: 5px;
+  border-radius: 4px;
 }
 
 .leftsidestuff {
   border: 2px solid #ebdbb2; // fg
   background-color: #3a3735; // bg2
+  border-radius: 4px;
 }
 
 .launcher {
@@ -122,6 +124,7 @@
   border: 2px solid #ebdbb2; // fg
   margin-right: 10px;
   padding-right: 5px;
+  border-radius: 4px;
 }
 
 .systray * {
@@ -143,6 +146,7 @@
   color: #cc241d; // red
   font-size: 20px;
   margin-left: 10px;
+  border-radius: 4px;
 }
 
 .powermenu-toggle:hover {
@@ -158,11 +162,14 @@
   background-color: #3a3735; // bg2
   color: #ebdbb2; // fg
   border: 2px solid #ebdbb2; // fg
+  border-radius: 4px;
 }
 
 .powermenu .powermenu-item {
   all: unset;
-  padding: 10px 3px 10px 7px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 0px 5px;
 }
 
 .powermenu .powermenu-item:hover {

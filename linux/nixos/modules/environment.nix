@@ -31,6 +31,7 @@
     steam
     btop
     htop
+    nvtopPackages.full
     lm_sensors
     papirus-icon-theme
     gsettings-desktop-schemas
@@ -39,7 +40,6 @@
     spotify
     discord
     pciutils
-    amdgpu_top
     feh # image viewer
     mpv # video player
 
@@ -66,7 +66,8 @@
     XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
 
 
-    MANGOHUD_CONFIG = "pci_dev='0000\:03\:00.0',cpu_temp,gpu_temp,cpu_stats,gpu_stats,ram,fps,frametime";
+    MANGOHUD_CONFIG = "cpu_temp,gpu_temp,cpu_stats,gpu_stats,ram,fps,frametime";
+
     MANGOHUD="1"; # for mangohud
   };
 

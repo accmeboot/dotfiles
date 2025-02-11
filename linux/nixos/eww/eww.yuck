@@ -115,7 +115,7 @@
 
 (defwidget powermenu []
   (box :class "powermenu"
-       :orientation "v"
+       :orientation "h"
        :space-evenly false
        :halign "end"
     (powermenubutton :class "powermenu-item"
@@ -176,7 +176,7 @@
 (defwindow powermenu
    :monitor 0
    :geometry (geometry :x "8px"
-                       :y "0px"
+                       :y "8px"
                        :anchor "top right")
    :stacking "fg"
    :wm-ignore true
