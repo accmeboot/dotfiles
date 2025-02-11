@@ -65,9 +65,6 @@
     XKB_DEFAULT_LAYOUT = "us,ru";
     XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
 
-
-    MANGOHUD_CONFIG = "cpu_temp,gpu_temp,cpu_stats,gpu_stats,ram,fps,frametime";
-
     MANGOHUD="1"; # for mangohud
   };
 

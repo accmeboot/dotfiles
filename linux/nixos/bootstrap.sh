@@ -16,6 +16,9 @@ ln -sfn $HOME/dotfiles/linux/nixos/mako/ $HOME/.config/mako
 if [ -d $HOME/.config/eww ]; then rm -r $HOME/.config/eww; fi
 ln -sfn $HOME/dotfiles/linux/nixos/eww/ $HOME/.config/eww
 
+if [ -d $HOME/.config/MangoHud ]; then rm -r $HOME/.config/MangoHud; fi
+ln -sfn $HOME/dotfiles/linux/nixos/MangoHud/ $HOME/.config/MangoHud
+
 chmod +x $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh
 
 echo "Linking NixOS configuration..."
