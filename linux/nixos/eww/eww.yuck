@@ -127,7 +127,7 @@
                      :onclick "reboot")
     (powermenubutton :class "powermenu-item"
                      :label " "
-                     :onclick "swaylock")
+                     :onclick "swaylock &")
     (powermenubutton :class "powermenu-item"
                      :label " "
                      :onclick "systemctl suspend")
