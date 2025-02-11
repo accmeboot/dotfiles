@@ -68,8 +68,9 @@
   all: unset;
 }
 
-.date-icon {
-  padding-right: 4px;
+.date-icon,
+.systray-icon {
+  padding-right: 2px;
 }
 
 .metric scale trough highlight {
@@ -129,10 +130,6 @@
 
 .systray * {
   -gtk-icon-transform: scale(0.8);
-}
-
-.systray-icon {
-  padding-right: 4px;
 }
 
 .locale {
