@@ -157,22 +157,22 @@ input * {
     bindsym $mod+ctrl+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+apostrophe floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+ctrl+a focus parent
 
 #
 # Scratchpad:
 #
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+bracketright move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
-    bindsym $mod+ctrl+minus scratchpad show
+    bindsym $mod+bracketleft scratchpad show
+
+    # Move window from scratchpad to current workspace
+    bindsym $mod+backslash floating disable
 
 #
 # Resizing:
