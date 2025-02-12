@@ -18,7 +18,7 @@ This repository contains configuration files (dotfiles) for various tools and sy
 ![Showcase 2](/assets/showcase/sway2.png)
 ![Showcase 3](/assets/showcase/sway3.png)
 ![Showcase 4](/assets/showcase/sway4.png)
-![Showcase 5](/assets/showcase/sway4.png)
+![Showcase 5](/assets/showcase/sway5.png)
 
 ## Setup
 
