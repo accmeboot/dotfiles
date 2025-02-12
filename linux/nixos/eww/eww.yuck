@@ -44,9 +44,11 @@
        :halign "end"
     (label :class "temps-icon" :text "󱌚 ")
     (label :class "cpu"
-           :text "CPU: ${cpu}°C")
+           :text "C: ${cpu}°C")
     (label :class "gpu"
-           :text "GPU: ${gpu}°C")))
+           :text "G: ${gpu}°C")
+    (label :text "R: ${memory}%")))
+    
 
 (defwidget locale []
   (box :class "locale"
@@ -148,6 +150,7 @@
 (defpoll is-muted :interval "1s" "bash scripts/get-is-muted")
 (defpoll is-tray-visible :interval "1s" "bash scripts/get-systray-status")
 (defpoll locale :interval "1s" "bash scripts/get-locale")
+(defpoll memory :interval "1s" "bash scripts/get-ram")
 
 (defwindow bar
   :monitor 0
