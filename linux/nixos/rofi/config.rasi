@@ -7,8 +7,9 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: false;
-    display-drun: "󱘶 ";
+    display-drun: " ";
+    kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
     sidebar-mode: false;
 }
 
-@theme "./themes/gruvbox.rasi"
+@theme "./themes/gruvbox-dmenu.rasi"
