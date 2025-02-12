@@ -53,7 +53,7 @@
 .systray-icon,
 .locale-icon {
   color: #282828; // bg
-  background-color: #d79921; // yellow
+  background-color: #ebdbb2; // fg
   padding: 0px 5px;
   margin-right: 5px;
   font-size: 14px;
@@ -138,20 +138,16 @@
 
 .powermenu-toggle {
   all: unset;
-  background-color: #ebdbb2; // fg
+  background-color: #d79921; // yellow
   padding: 0px 10px;
-  color: #cc241d; // red
+  color: #282828; // bg
   font-size: 20px;
   margin-left: 10px;
   border-radius: 4px;
 }
 
 .powermenu-toggle:hover {
-  color: #d79921 // yellow
-}
-
-.powermenu-toggle:hover {
-  color: #d79921 // yellow
+  color: #ebdbb2; // fg
 }
 
 .powermenu {
@@ -164,9 +160,8 @@
 
 .powermenu .powermenu-item {
   all: unset;
-  padding: 10px;
-  font-size: 16px;
-  margin: 0px 5px;
+  padding: 5px 8px;
+  font-size: 18px;
 }
 
 .powermenu .powermenu-item:hover {

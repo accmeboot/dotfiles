@@ -17,7 +17,7 @@
           :space-evenly false
           :halign "end"
           :visible { is-tray-visible == "true" }
-          (label :class "systray-icon" :text "󰪴 ")
+          (label :class "systray-icon" :text " ")
          (systray))
          (date)
          (locale)
@@ -42,7 +42,7 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (label :class "temps-icon" :text "󰏈 ")
+    (label :class "temps-icon" :text "󱌚 ")
     (label :class "cpu"
            :text "CPU: ${cpu}°C")
     (label :class "gpu"
@@ -53,7 +53,7 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (label :class "locale-icon" :text " ")
+    (label :class "locale-icon" :text " ")
     (label :class "locale-text"
            :text "${locale}")))
 
@@ -63,7 +63,7 @@
                  :orientation "h"
                  :space-evenly false
                  :halign "end"
-              (label :class "date-icon" :text " ")
+              (label :class "date-icon" :text " ")
               (label :text time))))
 
 (defwidget audio []
@@ -71,7 +71,7 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (label :class "audio-icon" :text {is-muted == "true" ? " " : " "})
+    (label :class "audio-icon" :text {is-muted == "true" ? "󰽠 " : "󰽟 "})
     (metric :class "metric"
             :label "${output-name}"
             :value volume
@@ -163,8 +163,9 @@
 
 (defwindow calendar
   :monitor 0
-  :geometry (geometry :x "82px"
-                      :y "0px"
+  :geometry (geometry :x "185px"
+                      :y "8px"
+                      :width "200px"
                       :anchor "top right")
   :stacking "fg"
   :wm-ignore true
