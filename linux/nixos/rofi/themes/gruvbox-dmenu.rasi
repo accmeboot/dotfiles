@@ -24,8 +24,6 @@ horibox {
 }
 listview {
     layout:     horizontal;
-    spacing:    5px;
-    lines:      100;
     background-color: @bg-col;
 }
 entry {
