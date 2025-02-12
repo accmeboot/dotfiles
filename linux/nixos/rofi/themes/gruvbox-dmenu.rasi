@@ -10,7 +10,7 @@ window {
     anchor:     north;
     location:   north;
     width:      100%;
-    margin:     8px 8px 0px 8px;
+    margin:     8px 50% 0px 8px;
     border-radius: 4px;
     children:   [ horibox ];
     background-color: @bg-col2;
