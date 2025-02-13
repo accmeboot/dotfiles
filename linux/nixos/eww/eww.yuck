@@ -19,8 +19,8 @@
           :visible { is-tray-visible == "true" }
           (label :class "systray-icon" :text " ")
          (systray))
-         (date)
          (locale)
+         (date)
          (powermenu-toggle)))
 
 (defwidget leftsidestuff []
@@ -166,7 +166,7 @@
 
 (defwindow calendar
   :monitor 0
-  :geometry (geometry :x "185px"
+  :geometry (geometry :x "50px"
                       :y "8px"
                       :width "200px"
                       :anchor "top right")
