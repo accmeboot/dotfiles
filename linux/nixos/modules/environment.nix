@@ -40,7 +40,7 @@
     spotify
     discord
     pciutils
-    feh # image viewer
+    mupdf # media viewer
     mpv # video player
 
     # sway
