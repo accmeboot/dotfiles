@@ -12,13 +12,11 @@ This repository contains configuration files (dotfiles) for various tools and sy
 ![Showcase 4](/assets/showcase/1714420236.png)
 ![Showcase 5](/assets/showcase/1714420715.png)
 
-### Sway
+### Sway (nixos)
 
 ![Showcase 1](/assets/showcase/sway1.png)
 ![Showcase 2](/assets/showcase/sway2.png)
 ![Showcase 3](/assets/showcase/sway3.png)
-![Showcase 4](/assets/showcase/sway4.png)
-![Showcase 5](/assets/showcase/sway5.png)
 
 ## Setup
 
