@@ -270,3 +270,5 @@ exec_always eww daemon --restart && eww open bar
 exec sleep 5; systemctl --user start kanshi.service
 # launch blueman
 exec blueman-applet
+# launch network manager applet
+exec nm-applet

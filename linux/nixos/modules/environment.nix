@@ -53,6 +53,8 @@
 
     mangohud # overlay for games
     goverlay # gui settings for mangohud
+
+    networkmanagerapplet # network manager applet
   ];
 
   environment.sessionVariables = {
