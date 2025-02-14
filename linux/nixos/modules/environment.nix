@@ -39,6 +39,7 @@
     pciutils     # PCI utilities for device inspection
     mupdf # media viewer
     mpv # video player
+    gimp # image editor
 
     # sway
     grim # screenshot functionality

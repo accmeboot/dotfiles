@@ -16,8 +16,7 @@ in {
        stylix = {
          enable = true;
          image = ../../../assets/wallpapers/gruvbox_image40.png;
-         # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-         # Define colors inline
+         polarity = "dark";
          base16Scheme = {
            scheme = "Custom Gruvbox";
            author = "accme";
@@ -40,9 +39,7 @@ in {
          };
 
          targets = {
-           foot.enable = false;
            kitty.enable = false;
-           alacritty.enable = false;
            neovim.enable = false;
            tmux.enable = false;
          };
@@ -64,9 +61,6 @@ in {
           name = "capitaine-cursors";
           package = pkgs.capitaine-cursors;
           size = 16;
-        };
-        gtk3 = {
-          extraConfig.gtk-application-prefer-dark-theme = true;
         };
       };
       
