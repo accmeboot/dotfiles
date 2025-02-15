@@ -64,7 +64,7 @@ exec swayidle -w \
     bindsym alt+space exec $menu -show drun
 
     # Show power menu
-    bindsym $mod+Return exec eww open --toggle powermenu
+    bindsym $mod+Return exec $menu -show powermenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
