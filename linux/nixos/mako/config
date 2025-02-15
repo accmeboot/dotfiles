@@ -5,6 +5,7 @@ text-color=#ebdbb2
 border-color=#ebdbb2
 border-size=2
 border-radius=4
+layer=overlay
 
 [urgency=high]
 border-color=#cc241d
