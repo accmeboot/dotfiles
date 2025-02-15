@@ -107,36 +107,13 @@
 
 (defwidget powermenu-toggle []
   (powermenubutton :class "powermenu-toggle"
-                   :onclick "eww open --toggle powermenu && eww open powermenu-overlay"
+                   :onclick "rofi -show powermenu &"
                    :label "󰐥"))
 
 (defwidget powermenubutton [class label onclick]
  (button :class class
          :onclick onclick
           "${label}"))
-
-
-(defwidget powermenu []
-  (box :class "powermenu"
-       :orientation "h"
-       :space-evenly false
-       :halign "end"
-    (powermenubutton :class "poweritem-shutdown"
-                     :label "⏻"
-                     :onclick "shutdown now")
-
-    (powermenubutton :class "poweritem-reboot"
-                     :label "⭘"
-                     :onclick "reboot")
-    (powermenubutton :class "poweritem-lock"
-                     :label "⏽"
-                     :onclick "swaylock -f -c '#3a3735' && eww open --toggle powermenu")
-    (powermenubutton :class "poweritem-suspend"
-                     :label "⏾"
-                     :onclick "systemctl suspend &")
-    (powermenubutton :class "poweritem-logout"
-                     :label "⏼"
-                     :onclick "sway exit")))
 
 
 (defpoll volume :interval "50ms"
@@ -177,14 +154,4 @@
   :stacking "fg"
   :wm-ignore true
   (calendar))
-
-(defwindow powermenu
-   :monitor 0
-   :geometry (geometry :x "0px"
-                       :y "0px"
-                       :anchor "center")
-   :stacking "overlay"
-   :wm-ignore true
-   :windowtype "toolbar"
-   (powermenu))
 

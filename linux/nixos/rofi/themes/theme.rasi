@@ -1,13 +1,13 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser";
+	modi:                       "drun,,powermenu:~/dotfiles/linux/nixos/rofi/scripts/powermenu.sh";
   show-icons:                 true;
   display-drun:               "APPS";
-  display-run:                "RUN";
-  display-filebrowser:        "FILES";
+  display-powermenu:          "POWER";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c}";
   kb-cancel:                  "Escape,Control+g,Control+bracketleft,MouseSecondary";
+
 }
 
 /*****----- Global Properties -----*****/
@@ -103,7 +103,7 @@ mode-switcher{
     text-color:                  @foreground;
 }
 button {
-    width:                       80px;
+    width:                       85px;
     padding:                     12px;
     border-radius:               4px;
     background-color:            @background-alt;
@@ -127,6 +127,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
+    flow:                        horizontal;
     
     spacing:                     10px;
     background-color:            transparent;
