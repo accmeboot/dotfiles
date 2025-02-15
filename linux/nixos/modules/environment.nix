@@ -53,6 +53,7 @@
     goverlay # gui settings for mangohud
 
     networkmanagerapplet # network manager applet
+    libnotify # notification library
   ];
 
   environment.sessionVariables = {
