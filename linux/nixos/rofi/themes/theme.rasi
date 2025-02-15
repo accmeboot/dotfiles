@@ -1,13 +1,12 @@
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,,powermenu:~/dotfiles/linux/nixos/rofi/scripts/powermenu.sh";
+	modi:                       "drun,powermenu:~/dotfiles/linux/nixos/rofi/scripts/powermenu.sh";
   show-icons:                 true;
-  display-drun:               "APPS";
-  display-powermenu:          "POWER";
+  display-drun:               " ";
+  display-powermenu:          " ";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c}";
   kb-cancel:                  "Escape,Control+g,Control+bracketleft,MouseSecondary";
-
 }
 
 /*****----- Global Properties -----*****/
@@ -28,7 +27,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -81,7 +80,7 @@ textbox-prompt-colon {
 entry {
     enabled:                     true;
     expand:                      false;
-    width:                       300px;
+    width:                       500px;
     padding:                     12px 16px;
     border-radius:               4px;
     background-color:            @background-alt;
@@ -103,7 +102,7 @@ mode-switcher{
     text-color:                  @foreground;
 }
 button {
-    width:                       85px;
+    width:                       50px;
     padding:                     12px;
     border-radius:               4px;
     background-color:            @background-alt;
@@ -118,8 +117,8 @@ button selected {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     6;
-    lines:                       3;
+    columns:                     5;
+    lines:                       4;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
