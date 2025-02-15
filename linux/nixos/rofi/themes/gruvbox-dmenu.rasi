@@ -1,3 +1,17 @@
+configuration{
+    modi: "drun";
+    font: "Cantarell Regular 12";
+    show-icons: true;
+    terminal: "st";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: false;
+    display-drun: " ";
+    kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
+    sidebar-mode: false;
+}
+
 * {
     bg-col:      #282828;
     bg-col2:     #3a3735;
