@@ -107,7 +107,7 @@
 
 (defwidget powermenu-toggle []
   (powermenubutton :class "powermenu-toggle"
-                   :onclick "eww open --toggle powermenu"
+                   :onclick "eww open --toggle powermenu && eww open powermenu-overlay"
                    :label "󰐥"))
 
 (defwidget powermenubutton [class label onclick]
@@ -115,24 +115,28 @@
          :onclick onclick
           "${label}"))
 
+
 (defwidget powermenu []
   (box :class "powermenu"
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (powermenubutton :class "powermenu-item"
-                     :label " "
+    (powermenubutton :class "poweritem-shutdown"
+                     :label "⏻"
                      :onclick "shutdown now")
 
-    (powermenubutton :class "powermenu-item"
-                     :label " "
+    (powermenubutton :class "poweritem-reboot"
+                     :label "⭘"
                      :onclick "reboot")
-    (powermenubutton :class "powermenu-item"
-                     :label " "
-                     :onclick "swaylock &")
-    (powermenubutton :class "powermenu-item"
-                     :label " "
-                     :onclick "systemctl suspend &")))
+    (powermenubutton :class "poweritem-lock"
+                     :label "⏽"
+                     :onclick "swaylock -f -c '#3a3735' && eww open --toggle powermenu")
+    (powermenubutton :class "poweritem-suspend"
+                     :label "⏾"
+                     :onclick "systemctl suspend &")
+    (powermenubutton :class "poweritem-logout"
+                     :label "⏼"
+                     :onclick "sway exit")))
 
 
 (defpoll volume :interval "50ms"
@@ -176,9 +180,11 @@
 
 (defwindow powermenu
    :monitor 0
-   :geometry (geometry :x "8px"
-                       :y "8px"
-                       :anchor "top right")
-   :stacking "fg"
+   :geometry (geometry :x "0px"
+                       :y "0px"
+                       :anchor "center")
+   :stacking "overlay"
    :wm-ignore true
+   :windowtype "toolbar"
    (powermenu))
+

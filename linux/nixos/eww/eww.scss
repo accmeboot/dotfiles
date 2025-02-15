@@ -153,12 +153,34 @@
   border-radius: 4px;
 }
 
-.powermenu .powermenu-item {
+.poweritem-shutdown,
+.poweritem-reboot,
+.poweritem-lock,
+.poweritem-logout,
+.poweritem-suspend {
   all: unset;
-  padding: 5px 8px;
-  font-size: 18px;
+  padding: 20px;
+  padding: 50px;
+  font-size: 120px;
+  border-radius: 4px;
 }
 
-.powermenu .powermenu-item:hover {
+.poweritem-shutdown,
+.poweritem-reboot,
+.poweritem-logout {
+  padding-right: 70px;
+  padding-left: 35px;
+}
+
+.powermenu-item-suspend {
+  padding-right: 10px;
+}
+
+.poweritem-shutdown:hover,
+.poweritem-reboot:hover,
+.poweritem-lock:hover,
+.poweritem-logout:hover,
+.poweritem-suspend:hover {
   color: #d79921; // yellow
+  background-color: #282828; // bg
 }

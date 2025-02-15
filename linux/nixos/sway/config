@@ -63,6 +63,9 @@ exec swayidle -w \
     # Start your launcher
     bindsym alt+space exec $menu -show drun
 
+    # Show power menu
+    bindsym $mod+Return exec eww open --toggle powermenu
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     floating_modifier $mod normal
