@@ -12,3 +12,7 @@ border-color=#cc241d
 [app-name="volume"]
 anchor=bottom-center
 outer-margin=0,0,100
+progress-color=#d79921
+text-color=#282828
+background-color=#a89984
+font=monospace 24
