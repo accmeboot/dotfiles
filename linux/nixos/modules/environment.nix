@@ -6,7 +6,7 @@
     brave        # privacy-focused web browser
     neovim       # modern vim-based text editor
     git          # version control system
-    rofi         # application launcher and window switcher
+    rofi-wayland # application launcher and window switcher
     python3      # python programming language
     nodejs       # JavaScript runtime environment
     go           # go programming language

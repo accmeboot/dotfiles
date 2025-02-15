@@ -20,6 +20,7 @@ if [ -d $HOME/.config/MangoHud ]; then rm -r $HOME/.config/MangoHud; fi
 ln -sfn $HOME/dotfiles/linux/nixos/MangoHud/ $HOME/.config/MangoHud
 
 chmod +x $HOME/dotfiles/linux/nixos/sway/scripts/status-line.sh
+chmod +x $HOME/dotfiles/linux/nixos/rofi/scripts/powermenu.sh
 
 echo "Linking NixOS configuration..."
 if [ -f /etc/nixos/configuration.nix ]; then sudo mv /etc/nixos/configuration.nix /etc/nixos/configuration.nix.backup; fi
