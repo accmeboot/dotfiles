@@ -2,7 +2,7 @@ background-color=#282828
 text-color=#ebdbb2
 border-color=#ebdbb2
 border-size=2
-border-radius=0
+border-radius=4
 
 [urgency=high]
 border-color=#cc241d
