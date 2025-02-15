@@ -13,7 +13,7 @@ if [ "$#" -gt 0 ]; then
             systemctl suspend
             ;;
         lock)
-            swaylock -f -c '#3a3735' &
+            swaylock -f -c 000000 &
             ;;
         logout)
             sway exit
