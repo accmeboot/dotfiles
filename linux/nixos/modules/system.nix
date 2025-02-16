@@ -31,6 +31,9 @@
     };
 
     initrd.kernelModules = [ "amdgpu" ];  # early load amdgpu
+    kernelParams = [
+      "video=DP-2:1920x1080@360"
+    ];
   };
 
   networking.hostName = "nixos";
