@@ -9,15 +9,9 @@ else
   echo "~/.zsh directory already exists"
 fi
 
-echo "Installing oh-my-zsh..."
-RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || exit
-
 echo "Adding nv and kitten icat aliases  to ~/.zshrc"
 echo "alias nv='nvim'" >> ~/.zshrc
 echo "alias icat='kitten icat'" >> ~/.zshrc
-
-echo "Changing ZSH_THEME to clean"
-sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="clean"/' ~/.zshrc
 
 echo "Cloning zsh-autosuggestions and zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
