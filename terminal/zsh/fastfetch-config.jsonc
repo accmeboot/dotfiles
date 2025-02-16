@@ -1,52 +1,79 @@
 {
-    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-        "type": "small"
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "kitty-direct",
+    "source": "~/dotfiles/assets/wallpapers/pacman-logo.png",
+    "padding": {
+      "right": 2,
+      "left": 2,
+      "top": 1
     },
-    "display": {
-        "separator": "  ",
-        "color": {
-            "keys": "magenta"
-        },
-        "size": {
-            "ndigits": 0,
-            "maxPrefix": "MB"
-        }
+    "width": 20,
+    "height": 10
+  },
+  "general": {
+    "multithreading": true
+  },
+  "display": {
+    "separator": "➜   "
+  },
+  "modules": [
+    "break",
+    {
+      "key": "     OS           ",
+      "keyColor": "green",
+      "type": "os"
     },
-    "modules": [
-        {
-            "type": "os",
-            "key": "",
-            "format": "{2} {8}"
-        },
-        {
-            "type": "memory",
-            "key": "󰻠"
-        },
-        {
-          "type": "cpu",
-          "key": "",
-          "format": "{1}"
-        },
-        {
-            "type": "battery",
-            "key": "󰁹",
-            "format": "{5} {4}"
-        },
-        {
-            "type": "packages",
-            "key": "󰏔"
-        },
-        {
-            "type": "uptime",
-            "key": "󰶞"
-        },
-        {
-          "type": "custom"
-        },
-        {
-            "type": "custom",
-            "format": "\u001b[31m███\u001b[32m███\u001b[33m███\u001b[34m███\u001b[35m███\u001b[36m███",
-        }
-    ]
+    {
+      "key": "    󰌢 Machine      ",
+      "keyColor": "cyan",
+      "type": "host"
+    },
+    {
+      "key": "     Kernel       ",
+      "keyColor": "blue",
+      "type": "kernel"
+    },
+    {
+      "key": "    󰅐 Uptime       ",
+      "keyColor": "green",
+      "type": "uptime"
+    },
+    {
+      "key": "     Packages     ",
+      "keyColor": "cyan",
+      "type": "packages"
+    },
+    {
+      "key": "     WM           ",
+      "keyColor": "blue",
+      "type": "wm"
+    },
+    {
+      "key": "     Shell        ",
+      "keyColor": "green",
+      "type": "shell"
+    },
+    {
+      "key": "     Terminal     ",
+      "keyColor": "cyan",
+      "type": "terminal"
+    },
+    {
+      "key": "    󰻠 CPU          ",
+      "keyColor": "green",
+      "type": "cpu"
+    },
+    {
+      "key": "    󰍛 GPU          ",
+      "keyColor": "cyan",
+      "type": "gpu"
+    },
+    {
+      "key": "    󰑭 Memory       ",
+      "keyColor": "blue",
+      "type": "memory"
+    },
+    "break"
+  ]
 }
