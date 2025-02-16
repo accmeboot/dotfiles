@@ -1,6 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$env_var\
 [](color_orange)\
 $username\
 [](bg:color_yellow fg:color_orange)\
@@ -73,20 +74,20 @@ NixOS = " "
 show_always = true
 style_user = "bg:color_orange fg:color_fg0"
 style_root = "bg:color_orange fg:color_fg0"
-format = '[ ]($style)'
+format = '[ $user ]($style)'
+
+[env_var]
+symbol = "╭╴"
+variable = 'SHELL'
+style = "fg:color_fg0"
+format = "[$symbol]($style)"
+disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
+format = "[  $path ]($style)"
+truncation_length = 0
+truncation_symbol = ""
 
 [git_branch]
 symbol = ""
@@ -152,13 +153,13 @@ style = "bg:color_bg3"
 format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
+error_symbol = '[[╰](fg:color_fg0)](bold fg:color_red)'
+vimcmd_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
+vimcmd_replace_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
+vimcmd_visual_symbol = '[[╰](fg:color_fg0)](bold fg:color_yellow)'
