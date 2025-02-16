@@ -116,22 +116,19 @@
           "${label}"))
 
 
-(defpoll volume :interval "50ms"
-  "bash scripts/get-volume")
+;; Listen variables
+(deflisten volume :initial "0" "bash scripts/get-volume")
+(deflisten is-muted :initial "false" "bash scripts/get-is-muted")
+(deflisten workspace-list :initial "[]" "bash scripts/get-workspaces")
 
-(defpoll time :interval "1s"
-  "date '+%A, %d %b %Y, %H:%M'")
-
-(deflisten workspace-list :initial "[]"
-  "bash scripts/get-workspaces")
-
+;; Polling variables
 (defpoll cpu :interval "1s" "bash scripts/get-cpu-temp")
 (defpoll gpu :interval "1s" "bash scripts/get-gpu-temp")
 (defpoll output-name :interval "1s" "bash scripts/get-output-name")
-(defpoll is-muted :interval "1s" "bash scripts/get-is-muted")
 (defpoll is-tray-visible :interval "1s" "bash scripts/get-systray-status")
 (defpoll locale :interval "1s" "bash scripts/get-locale")
 (defpoll memory :interval "1s" "bash scripts/get-ram")
+(defpoll time :interval "1s" "date '+%A, %d %b %Y, %H:%M'")
 
 (defwindow bar
   :monitor 0
