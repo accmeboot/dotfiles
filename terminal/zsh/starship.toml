@@ -2,12 +2,14 @@
 
 format = """
 $env_var\
-[](color_yellow)\
+[](color_orange)\
+$username\
+[](bg:color_yellow fg:color_orange)\
 $directory\
-[](fg:color_yellow bg:color_orange)\
+[](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
-[](fg:color_orange bg:color_blue)\
+[](fg:color_aqua bg:color_blue)\
 $c\
 $rust\
 $golang\
@@ -68,6 +70,12 @@ RedHatEnterprise = "󱄛 "
 Pop = " "
 NixOS = " "
 
+[username]
+show_always = true
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user ]($style)'
+
 [env_var]
 symbol = "╭╴"
 variable = 'SHELL'
@@ -77,18 +85,18 @@ disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
-format = "[ $path ]($style)"
+format = "[  $path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
 symbol = ""
-style = "bg:color_orange"
-format = '[[ $symbol $branch ](fg:color_fg0 bg:color_orange)]($style)'
+style = "bg:color_aqua"
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_orange)]($style)'
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [nodejs]
 symbol = ""
