@@ -2,9 +2,15 @@
 
 format = """
 $env_var\
-[](color_orange)\
+[](color_bg1)\
+${custom.start_symbol}\
+[](bg:color_orange fg:color_bg1)\
+[](bg:color_yellow fg:color_orange)\
+[](bg:color_aqua fg:color_yellow)\
+[](bg:color_blue fg:color_aqua)\
+[](bg:color_bg1 fg:color_blue)\
 $directory\
-[](fg:color_orange)\
+[](fg:color_bg1)\
 $fill\
 [](color_bg1)\
 $git_status\
@@ -14,7 +20,7 @@ $git_branch\
 [](bg:color_yellow fg:color_aqua)\
 [](bg:color_aqua fg:color_blue)\
 [](bg:color_blue fg:color_bg1)\
-$os\
+${custom.end_symbol}\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
@@ -36,35 +42,6 @@ color_yellow = '#d79921'
 symbol = '·'
 style = 'fg:color_fg0'
 
-[os]
-disabled = false
-style = "fg:color_fg0 bg:color_bg1"
-format = '[ $symbol]($style)'
-
-[os.symbols]
-Windows = "󰍲 "
-Ubuntu = "󰕈 "
-SUSE = " "
-Raspbian = "󰐿 "
-Mint = "󰣭 "
-Macos = " "
-Manjaro = " "
-Linux = "󰌽 "
-Gentoo = "󰣨 "
-Fedora = "󰣛 "
-Alpine = " "
-Amazon = " "
-Android = " "
-Arch = "󰣇 "
-Artix = "󰣇 "
-EndeavourOS = " "
-CentOS = " "
-Debian = "󰣚 "
-Redhat = "󱄛 "
-RedHatEnterprise = "󱄛 "
-Pop = " "
-NixOS = " "
-
 [env_var]
 symbol = "╭╴"
 variable = 'SHELL'
@@ -73,25 +50,31 @@ format = "[$symbol]($style)"
 disabled = false
 
 [directory]
-style = "fg:color_fg0 bg:color_orange"
-format = "[ $path ]($style)"
+style = "fg:color_fg0 bg:color_bg1"
+format = "[ $path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
 symbol = " "
 style = "bg:color_bg1"
-format = '[[ $branch $symbol](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[ $branch ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [git_status]
 style = "bg:color_bg1"
 format = '[[($all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
 
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:color_yellow"
-format = '[[$time  ](fg:color_bg1 bg:color_yellow)]($style)'
+[custom.end_symbol]
+command = "echo ' '"
+when = "true"
+style = "fg:color_fg0 bg:color_bg1"
+format = '[ $output]($style)'
+
+[custom.start_symbol]
+command = "echo ' '"
+when = "true"
+style = "fg:color_fg0 bg:color_bg1"
+format = '[$output ]($style)'
 
 [line_break]
 disabled = false
