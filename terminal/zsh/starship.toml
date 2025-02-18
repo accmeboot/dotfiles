@@ -65,10 +65,10 @@ style = "bg:color_bg1"
 format = '[[($all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
 
 [custom.end_symbol]
-command = "echo ' '"
+command = "echo ''"
 when = "true"
 style = "fg:color_fg0 bg:color_bg1"
-format = '[ $output]($style)'
+format = '[ $output ]($style)'
 
 [custom.start_symbol]
 command = "echo ' '"
