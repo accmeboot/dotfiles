@@ -2,17 +2,19 @@
 
 format = """
 $env_var\
-[](color_bg1)\
-$os\
-[](bg:color_aqua fg:color_bg1)\
-[](bg:color_red fg:color_aqua)\
-[](bg:color_orange fg:color_red)\
+[](color_orange)\
 $directory\
 [](fg:color_orange)\
 $fill\
 [](color_bg1)\
 $git_status\
 $git_branch\
+[](bg:color_bg1 fg:color_orange)\
+[](bg:color_orange fg:color_yellow)\
+[](bg:color_yellow fg:color_aqua)\
+[](bg:color_aqua fg:color_blue)\
+[](bg:color_blue fg:color_bg1)\
+$os\
 [ ](fg:color_bg1)\
 $line_break$character"""
 
@@ -37,7 +39,7 @@ style = 'fg:color_fg0'
 [os]
 disabled = false
 style = "fg:color_fg0 bg:color_bg1"
-format = '[$symbol]($style)'
+format = '[ $symbol]($style)'
 
 [os.symbols]
 Windows = "󰍲 "
@@ -72,18 +74,24 @@ disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_orange"
-format = "[  $path ]($style)"
+format = "[ $path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-symbol = ""
+symbol = " "
 style = "bg:color_bg1"
-format = '[[ $branch $symbol ](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[ $branch $symbol](fg:color_fg0 bg:color_bg1)]($style)'
 
 [git_status]
 style = "bg:color_bg1"
 format = '[[($all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_yellow"
+format = '[[$time  ](fg:color_bg1 bg:color_yellow)]($style)'
 
 [line_break]
 disabled = false
