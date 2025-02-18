@@ -4,7 +4,9 @@ format = """
 $env_var\
 [](color_bg1)\
 $os\
-[](bg:color_orange fg:color_bg1)\
+[](bg:color_aqua fg:color_bg1)\
+[](bg:color_red fg:color_aqua)\
+[](bg:color_orange fg:color_red)\
 $directory\
 [](fg:color_orange)\
 $fill\
