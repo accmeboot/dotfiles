@@ -4,9 +4,9 @@ format = """
 $env_var\
 [](color_orange)\
 $directory\
-[](fg:color_orange)\
+[](fg:color_orange)\
 $fill\
-[](color_bg1)\
+[](color_bg1)\
 $git_status\
 $git_branch\
 [](bg:color_bg1 fg:color_orange)\
