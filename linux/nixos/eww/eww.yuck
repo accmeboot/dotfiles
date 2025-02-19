@@ -1,84 +1,38 @@
 (defwidget bar []
   (centerbox :orientation "h"
-    (leftsidestuff)
-    (box :orientation "h"
-         :space-evenly false
-         :halign "end")
-    (sidestuff)))
+    (leftbar)
+    (centerbar)
+    (rightbar)))
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+(defwidget leftbar []
+  (box :class "leftbar"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+    (launcher)
+    (workspaces)))
+
+(defwidget centerbar [] (box))
+(defwidget rightbar []
+  (box :class "rightbar"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
     (audio)
-    (label :class "separator" :text "")
     (temps)
-    (label :class "separator" :text "")
-    (box :class "systray"
-          :orientation "h"
-          :space-evenly false
-          :halign "end"
-          :visible { is-tray-visible == "true" }
-          (label :class "systray-icon" :text " ")
-         (systray))
-         (locale)
-         (date)
-         (powermenu-toggle)))
+    (tray)
+    (locale)
+    (date)))
 
-(defwidget leftsidestuff []
-    (box :class "leftsidestuff"
-         :orientation "h"
-         :space-evenly false
-         :halign "start"
-         (launcher)
-         (workspaces)
-    ))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                     ;;
+;;   Leftbar Content   ;;
+;;                     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
 (defwidget launcher []
   (button :class "launcher"
           :onclick "rofi -show drun &"
           " "))
-
-(defwidget temps []
-  (box :class "temps"
-       :orientation "h"
-       :space-evenly false
-       :halign "end"
-    (label :class "temps-icon" :text "󱌚 ")
-    (label :class "cpu"
-           :text "C: ${cpu}°C")
-    (label :class "gpu"
-           :text "G: ${gpu}°C")
-    (label :text "R: ${memory}%")))
-    
-
-(defwidget locale []
-  (box :class "locale"
-       :orientation "h"
-       :space-evenly false
-       :halign "end"
-    (label :class "locale-icon" :text " ")
-    (label :class "locale-text"
-           :text "${locale}")))
-
-(defwidget date []
-  (eventbox :onclick "eww open --toggle calendar"
-            (box :class "date"
-                 :orientation "h"
-                 :space-evenly false
-                 :halign "end"
-              (label :class "date-icon" :text " ")
-              (label :text time))))
-
-(defwidget audio []
-  (box :class "audio"
-       :orientation "h"
-       :space-evenly false
-       :halign "end"
-    (label :class "audio-icon" :text {is-muted == "true" ? "󰽠 " : "󰽟 "})
-    (metric :class "metric"
-            :label "${output-name}"
-            :value volume
-            :onclick "pavucontrol &"
-            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%")))
 
 (defwidget workspaces []
   (eventbox
@@ -92,11 +46,65 @@
               :onclick "swaymsg workspace ${workspace.name}"
               "${workspace.name}")))))
 
-(defwidget metric [class label value onchange onclick]
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                     ;;
+;;   Rightbar Content  ;;
+;;                     ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+(defwidget date []
+  (eventbox :onclick "eww open --toggle calendar"
+            (box :class "date"
+                 :orientation "h"
+                 :space-evenly false
+                 :halign "end"
+              (label :text time))))
+
+(defwidget tray []
+  (box :class "tray"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (systray)))
+
+
+(defwidget locale []
+  (box :class "locale"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (label :class "locale-text"
+           :text "   ${locale}")))
+
+(defwidget temps []
+  (box :class "temps"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (label :class "cpu"
+           :text " ${cpu}°C ")
+    (label :class "gpu"
+           :text "  ${gpu}°C ")
+    (label :class "ram"
+           :text "  ${memory}% ")))
+
+(defwidget audio []
+  (box :class "audio"
+       :orientation "h"
+       :space-evenly false
+       :halign "end"
+    (label :class "audio-icon" :text {is-muted == "true" ? "  " : "  "})
+    (metric :class "audio"
+            :label "${output-name}"
+            :value volume
+            :btnclass "audio-button"
+            :onclick "pavucontrol &"
+            :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}% && bash ../sway/scripts/volume-notify.sh")))
+
+(defwidget metric [class label value btnclass onchange onclick]
   (box :orientation "h"
        :class class
        :space-evenly false
-    (button :class "label"
+    (button :class btnclass
             :onclick onclick
             label)
     (scale :min 0
@@ -105,15 +113,6 @@
            :value value
            :onchange onchange)))
 
-(defwidget powermenu-toggle []
-  (powermenubutton :class "powermenu-toggle"
-                   :onclick "rofi -show powermenu &"
-                   :label "󰐥"))
-
-(defwidget powermenubutton [class label onclick]
- (button :class class
-         :onclick onclick
-          "${label}"))
 
 
 ;; Listen variables
@@ -132,8 +131,8 @@
 
 (defwindow bar
   :monitor 0
-  :geometry (geometry :x "0%"
-                      :y "8px"
+  :geometry (geometry :x "0px"
+                      :y "0px"
                       :width "100%"
                       :anchor "top center")
   :stacking "bg"
@@ -144,7 +143,7 @@
 
 (defwindow calendar
   :monitor 0
-  :geometry (geometry :x "50px"
+  :geometry (geometry :x "0px"
                       :y "8px"
                       :width "200px"
                       :anchor "top right")
