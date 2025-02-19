@@ -20,8 +20,8 @@
        :halign "end"
     (audio)
     (temps)
-    (locale)
     (tray)
+    (locale)
     (date)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
