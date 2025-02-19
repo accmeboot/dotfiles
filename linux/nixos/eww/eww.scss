@@ -32,16 +32,20 @@
 
     button {
       all: unset;
-      padding: 4px 8px;
+      padding: 0px 6px;
+      margin: 0px 2px;
       background-color: #3a3735; // bg2
+      border-top: 2px solid #3a3735; // bg2
+      border-bottom: 2px solid #3a3735; // bg2
+      opacity: 0.6;
 
       &:hover {
         color: #d79921; // yellow
       }
 
       &.active {
-        color: #282828; // bg
-        background-color: #d79921; // yellow
+        border-bottom: 2px solid #d79921; // bg2
+        opacity: 1;
       }
 
       &.urgent {
