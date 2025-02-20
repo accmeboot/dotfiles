@@ -64,7 +64,8 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (systray)))
+    (systray :spacing 4
+             :icon-size 16)))
 
 
 (defwidget locale []
