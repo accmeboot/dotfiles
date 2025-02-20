@@ -85,7 +85,7 @@
     (label :class "gpu"
            :text "  ${gpu}°C ")
     (label :class "ram"
-           :text "  ${memory}% ")))
+           :text "  ${memory}%")))
 
 (defwidget audio []
   (box :class "audio"
