@@ -108,7 +108,7 @@
             :onclick onclick
             label)
     (scale :min 0
-           :max 154
+           :max 153
            :active {onchange != ""}
            :value value
            :onchange onchange)))
