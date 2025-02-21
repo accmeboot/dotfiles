@@ -11,7 +11,7 @@ ${custom.start_symbol}\
 $directory\
 [](fg:color_bg1)\
 $fill\
-[](color_bg1)\
+[](fg:color_bg1)\
 $git_status\
 $git_branch\
 [](bg:color_bg1 fg:color_fg1)\
@@ -53,17 +53,17 @@ disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_bg1"
-format = "[ $path]($style)"
+format = "[ $path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
 style = "bg:color_bg1"
-format = '[[$branch ](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[ $branch ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [git_status]
 style = "bg:color_bg1"
-format = '[[( $all_status$ahead_behind )](fg:color_red bg:color_bg1)]($style)'
+format = '[[( $all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"

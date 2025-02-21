@@ -3,74 +3,44 @@
   "logo": {
     "type": "kitty-icat",
     "source": "~/dotfiles/assets/wallpapers/pacman-logo.png",
-    "padding": {
-      "right": 2,
-      "left": 2,
-      "top": 1
-    },
-    "width": 20,
-    "height": 10
+    "width": 12,
+    "height": 6
   },
   "general": {
     "multithreading": true
   },
   "display": {
-    "separator": "➜   "
+    "separator": " "
   },
   "modules": [
     "break",
     {
-      "key": "     OS           ",
-      "keyColor": "green",
-      "type": "os"
-    },
-    {
-      "key": "    󰌢 Machine      ",
-      "keyColor": "cyan",
-      "type": "host"
-    },
-    {
-      "key": "     Kernel       ",
-      "keyColor": "blue",
-      "type": "kernel"
-    },
-    {
-      "key": "    󰅐 Uptime       ",
+      "key": "󰅐 ",
       "keyColor": "green",
       "type": "uptime"
     },
     {
-      "key": "     Packages     ",
+      "key": " ",
       "keyColor": "cyan",
       "type": "packages"
     },
     {
-      "key": "     WM           ",
+      "key": " ",
       "keyColor": "blue",
       "type": "wm"
     },
     {
-      "key": "     Shell        ",
+      "key": " ",
       "keyColor": "green",
       "type": "shell"
     },
     {
-      "key": "     Terminal     ",
+      "key": " ",
       "keyColor": "cyan",
       "type": "terminal"
     },
     {
-      "key": "    󰻠 CPU          ",
-      "keyColor": "green",
-      "type": "cpu"
-    },
-    {
-      "key": "    󰍛 GPU          ",
-      "keyColor": "cyan",
-      "type": "gpu"
-    },
-    {
-      "key": "    󰑭 Memory       ",
+      "key": "󰑭 ",
       "keyColor": "blue",
       "type": "memory"
     },

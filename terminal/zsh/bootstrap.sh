@@ -14,7 +14,7 @@ echo "alias nv='nvim'" >> ~/.zshrc
 echo "alias icat='kitten icat'" >> ~/.zshrc
 
 echo "Setting vi mode in ~/.zshrc"
-echo "set -o vi" >> ~/.zshrc
+echo "bindkey -v" >> ~/.zshrc
 
 echo "Cloning zsh-autosuggestions and zsh-syntax-highlighting"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
