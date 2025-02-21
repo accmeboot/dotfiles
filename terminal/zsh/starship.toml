@@ -4,22 +4,20 @@ format = """
 $env_var\
 [](color_bg1)\
 ${custom.start_symbol}\
-[](bg:color_orange fg:color_bg1)\
-[](bg:color_yellow fg:color_orange)\
-[](bg:color_aqua fg:color_yellow)\
-[](bg:color_blue fg:color_aqua)\
-[](bg:color_bg1 fg:color_blue)\
+[](bg:color_fg1 fg:color_bg1)\
+[](bg:color_fg2 fg:color_fg1)\
+[](bg:color_fg3 fg:color_fg2)\
+[](bg:color_bg1 fg:color_fg3)\
 $directory\
 [](fg:color_bg1)\
 $fill\
 [](color_bg1)\
 $git_status\
 $git_branch\
-[](bg:color_bg1 fg:color_orange)\
-[](bg:color_orange fg:color_yellow)\
-[](bg:color_yellow fg:color_aqua)\
-[](bg:color_aqua fg:color_blue)\
-[](bg:color_blue fg:color_bg1)\
+[](bg:color_bg1 fg:color_fg1)\
+[](bg:color_fg1 fg:color_fg2)\
+[](bg:color_fg2 fg:color_fg3)\
+[](bg:color_fg3 fg:color_bg1)\
 ${custom.end_symbol}\
 [ ](fg:color_bg1)\
 $line_break$character"""
@@ -28,7 +26,11 @@ palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
+color_fg1 = '#ebdbb2'
+color_fg2 = '#d5c4a1'
+color_fg3 = '#bdae93'
 color_bg1 = '#3c3836'
+color_bg2 = '#504945'
 color_bg3 = '#665c54'
 color_blue = '#458588'
 color_aqua = '#689d6a'
@@ -56,13 +58,12 @@ truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-symbol = " "
 style = "bg:color_bg1"
-format = '[[ $branch ](fg:color_fg0 bg:color_bg1)]($style)'
+format = '[[$branch ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [git_status]
 style = "bg:color_bg1"
-format = '[[($all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
+format = '[[( $all_status$ahead_behind )](fg:color_red bg:color_bg1)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"
