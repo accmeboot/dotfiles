@@ -4,7 +4,7 @@ let
     owner = "danth";
     repo = "stylix";
     rev = "release-24.11"; # should match the nixos version
-    sha256 = "sha256-mU+aYnob+7Ycu/tU9oFoweIJwdjLj0uxcp+I1czH4DM=";
+    sha256 = "sha256-LlUFkinhMlvK5uIx6tTg1UYcreYF4iLVNRL8mqiSyjQ=";
   };
 in {
   home-manager = {
