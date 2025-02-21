@@ -1,18 +1,31 @@
-default-timeout=2000
-
-background-color=#282828
-text-color=#ebdbb2
-border-color=#ebdbb2
-border-size=2
-border-radius=4
+sort=-time
 layer=overlay
+background-color=#3a3735
+text-color=#ebdbb2
+width=300
+height=110
+border-size=2
+border-color=#ebdbb2
+border-radius=4
+icons=1
+default-timeout=5000
+ignore-timeout=1
+font=monospace 9
 
 [urgency=high]
 border-color=#cc241d
+default-timeout=0
+
+[category=mpd]
+default-timeout=2000
+group-by=category
 
 [app-name="volume"]
 anchor=bottom-center
 outer-margin=0,0,100
+border-radius=12
 progress-color=#d79921
 text-color=#282828
 background-color=#3a3735
+font=monospace 12
+default-timeout=2000

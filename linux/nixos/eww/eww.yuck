@@ -64,7 +64,8 @@
        :orientation "h"
        :space-evenly false
        :halign "end"
-    (systray)))
+    (systray :spacing 4
+             :icon-size 16)))
 
 
 (defwidget locale []
@@ -108,7 +109,7 @@
             :onclick onclick
             label)
     (scale :min 0
-           :max 154
+           :max 153
            :active {onchange != ""}
            :value value
            :onchange onchange)))

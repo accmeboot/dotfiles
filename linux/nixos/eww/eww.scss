@@ -118,10 +118,6 @@
   }
 
   .tray {
-    margin-right: 8px;
-
-    * {
-      -gtk-icon-transform: scale(0.8);
-    }
+    margin: 4px 16px 4px 8px;
   }
 }
