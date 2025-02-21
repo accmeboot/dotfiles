@@ -53,7 +53,7 @@ disabled = false
 
 [directory]
 style = "fg:color_fg0 bg:color_bg1"
-format = "[ $path ]($style)"
+format = "[ $path]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
