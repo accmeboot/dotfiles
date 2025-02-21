@@ -6,13 +6,14 @@ $env_var\
 ${custom.start_symbol}\
 $directory\
 [](fg:color_bg1)\
-$fill\
+$character"""
+
+right_format = """
 [](color_bg1)\
 $git_status\
 $git_branch\
 ${custom.end_symbol}\
-[ ](fg:color_bg1)\
-$line_break$character"""
+[](fg:color_bg1)"""
 
 palette = 'gruvbox_dark'
 
@@ -28,22 +29,11 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
-[fill]
-symbol = '·'
-style = 'fg:color_fg0'
-
-[env_var]
-symbol = "╭╴"
-variable = 'SHELL'
-style = "fg:color_fg0"
-format = "[$symbol]($style)"
-disabled = false
-
 [directory]
 style = "fg:color_fg0 bg:color_bg1"
 format = "[ $path ]($style)"
-truncation_length = 0
-truncation_symbol = ""
+truncation_length = 3
+truncation_symbol = "../"
 
 [git_branch]
 style = "bg:color_bg1"
@@ -66,13 +56,13 @@ style = "fg:color_orange bg:color_bg1"
 format = '[$output]($style)'
 
 [line_break]
-disabled = false
+disabled = true
 
 [character]
 disabled = false
-success_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
-error_symbol = '[[╰](fg:color_fg0)](bold fg:color_red)'
-vimcmd_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
-vimcmd_replace_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
-vimcmd_visual_symbol = '[[╰](fg:color_fg0)](bold fg:color_yellow)'
+success_symbol = '[ ](bold fg:color_green)'
+error_symbol = '[ ](bold fg:color_red)'
+vimcmd_symbol = '[ ](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[ ](bold fg:color_purple)'
+vimcmd_replace_symbol = '[ ](bold fg:color_purple)'
+vimcmd_visual_symbol = '[ ](bold fg:color_yellow)'
