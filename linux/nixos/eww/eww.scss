@@ -1,20 +1,19 @@
-// bg #282828;
-// bg2 #3a3735;
-// red #cc241d;
-// green #98971a;
-// yellow #d79921;
-// orange #d65d0e;
-// blue #458588;
-// purple #b16286;
-// aqua #689d6a;
-// gray #a89984;
-// fg #ebdbb2;
-
+$base00: #282828;
+$base01: #3a3735;
+$base08: #cc241d;
+$base0B: #98971a;
+$base0A: #d79921;
+$base09: #d65d0e;
+$base0D: #458588;
+$base0E: #b16286;
+$base0C: #689d6a;
+$base03: #a89984;
+$base05: #ebdbb2;
 
 // Global Styles
 .bar {
-  background-color: #282828; // bg
-  color: #ebdbb2; // fg
+  background-color: $base00;
+  color: $base05;
   padding: 2px 8px;
 }
 
@@ -23,7 +22,7 @@
     all: unset;
 
     &:hover {
-      color: #d65d0e; // orange
+      color: $base09;
     }
   }
 
@@ -34,25 +33,24 @@
       all: unset;
       padding: 0px 6px;
       margin: 0px 2px;
-      background-color: #3a3735; // bg2
-      border-top: 2px solid #282828; // bg
-      border-bottom: 2px solid #282828; // bg
+      background-color: $base01;
+      border-top: 2px solid $base00;
+      border-bottom: 2px solid $base00;
       opacity: 0.6;
 
       &:hover {
-        color: #d79921; // yellow
+        color: $base0A;
       }
 
       &.active {
-        border-bottom: 2px solid #d79921; // bg2
+        border-bottom: 2px solid $base0A;
         opacity: 1;
       }
 
       &.urgent {
-        color: #cc241d; // red
+        color: $base08;
       }
     }
-
   }
 }
 
@@ -64,12 +62,12 @@
       all: unset;
 
       &:hover {
-        color: #d79921; // yellow
+        color: $base0A;
       }
     }
 
     slider {
-      background-color: #a89984; // green
+      background-color: $base03;
       min-height: 10px;
       min-width: 10px;
     }
@@ -85,7 +83,7 @@
         min-width: 80px;
 
         highlight {
-          background-color: #d79921; // yellow
+          background-color: $base0A;
           border-radius: 10px;
         }
       }
@@ -101,15 +99,15 @@
     }
 
     .cpu {
-      color: #d65d0e; // orange
+      color: $base09;
     }
 
     .gpu {
-      color: #d79921; // yellow
+      color: $base0A;
     }
 
     .ram {
-      color: #689d6a; // aqua
+      color: $base0C;
     }
   }
 
