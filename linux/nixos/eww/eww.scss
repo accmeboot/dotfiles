@@ -15,7 +15,7 @@
 .bar {
   background-color: #282828; // bg
   color: #ebdbb2; // fg
-  padding: 0px 8px;
+  padding: 2px 8px;
 }
 
 .leftbar {
@@ -35,8 +35,8 @@
       padding: 0px 6px;
       margin: 0px 2px;
       background-color: #3a3735; // bg2
-      border-top: 2px solid #3a3735; // bg2
-      border-bottom: 2px solid #3a3735; // bg2
+      border-top: 2px solid #282828; // bg
+      border-bottom: 2px solid #282828; // bg
       opacity: 0.6;
 
       &:hover {
