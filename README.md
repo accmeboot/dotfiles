@@ -4,19 +4,12 @@ This repository contains configuration files (dotfiles) for various tools and sy
 
 ## Showcase
 
-### Hyprland (arch)
-
-![Showcase 1](/assets/showcase/1714420159.png)
-![Showcase 2](/assets/showcase/1714420164.png)
-![Showcase 3](/assets/showcase/1714420223.png)
-![Showcase 4](/assets/showcase/1714420236.png)
-![Showcase 5](/assets/showcase/1714420715.png)
-
 ### Sway (nixos)
 
-![Showcase 1](/assets/showcase/sway1.png)
-![Showcase 2](/assets/showcase/sway2.png)
-![Showcase 3](/assets/showcase/sway3.png)
+![Showcase 1](/assets/showcase/4.png)
+![Showcase 2](/assets/showcase/1.png)
+![Showcase 3](/assets/showcase/2.png)
+![Showcase 4](/assets/showcase/3.png)
 
 ## Setup
 
