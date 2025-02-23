@@ -82,11 +82,11 @@
        :space-evenly false
        :halign "end"
     (label :class "cpu"
-           :text " ${cpu}°C ")
+           :text "CPU ${cpu}°C ")
     (label :class "gpu"
-           :text "  ${gpu}°C ")
+           :text "GPU ${gpu}°C ")
     (label :class "ram"
-           :text "  ${memory}%")))
+           :text "MEM ${memory}%")))
 
 (defwidget audio []
   (box :class "audio"
