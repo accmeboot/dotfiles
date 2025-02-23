@@ -15,7 +15,7 @@ in {
       
        stylix = {
          enable = true;
-         image = ../../../assets/wallpapers/gruvbox_image40.png;
+         image = ../../../assets/wallpapers/nix-wallpaper-binary-black.png;
          polarity = "dark";
          base16Scheme = {
            scheme = "Custom Gruvbox";
