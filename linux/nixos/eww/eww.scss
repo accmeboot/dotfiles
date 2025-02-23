@@ -56,7 +56,7 @@ $base05: #ebdbb2;
 
 .rightbar {
   .audio {
-    margin-right: 4px;
+    margin-right: 8px;
 
     .audio-button {
       all: unset;
@@ -67,9 +67,7 @@ $base05: #ebdbb2;
     }
 
     slider {
-      background-color: $base03;
-      min-height: 10px;
-      min-width: 10px;
+      all: unset;
     }
 
     scale {
@@ -77,12 +75,12 @@ $base05: #ebdbb2;
       margin-left: 4px;
 
       trough {
-        min-height: 3px;
+        min-height: 5px;
         min-width: 80px;
 
         highlight {
           background-color: $base0A;
-          border-radius: 10px;
+          border-radius: 4px;
         }
       }
     }
