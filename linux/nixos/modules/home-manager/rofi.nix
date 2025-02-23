@@ -7,7 +7,7 @@ let
       background: #${config.lib.stylix.colors.base00};
       background-alt: #${config.lib.stylix.colors.base01};
       foreground: #${config.lib.stylix.colors.base05};
-      selected: #${config.lib.stylix.colors.base0A};
+      selected: #${config.lib.stylix.colors.base0D};
       active: #${config.lib.stylix.colors.base0B};
       urgent: #${config.lib.stylix.colors.base08};
     }

@@ -17,7 +17,7 @@
       anchor=bottom-center
       outer-margin=0,0,100
       border-radius=4
-      progress-color=#${config.lib.stylix.colors.base0A}
+      progress-color=#${config.lib.stylix.colors.base0D}
       text-color=#${config.lib.stylix.colors.base00}
       background-color=#${config.lib.stylix.colors.base01}
       font=monospace 12
@@ -25,3 +25,4 @@
     '';
   };
 }
+
