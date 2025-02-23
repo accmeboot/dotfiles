@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 {
-  programs.mako = {
+  services.mako = {
     enable = true;
     sort = "-time";
     layer = "overlay";
