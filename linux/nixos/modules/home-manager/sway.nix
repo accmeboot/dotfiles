@@ -164,7 +164,7 @@
         focused = {
           border = lib.mkForce "#${config.lib.stylix.colors.base0D}";
           background = lib.mkForce "#${config.lib.stylix.colors.base0D}";
-          text = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          text = lib.mkForce "#${config.lib.stylix.colors.base01}";
           indicator = lib.mkForce "#${config.lib.stylix.colors.base0D}";
           childBorder = lib.mkForce "#${config.lib.stylix.colors.base0D}";
         };

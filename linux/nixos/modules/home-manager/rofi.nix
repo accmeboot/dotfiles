@@ -94,8 +94,8 @@ let
     }
 
     button selected {
-      background-color: #${config.lib.stylix.colors.base02};
-      text-color: #${config.lib.stylix.colors.base04};
+      background-color: #${config.lib.stylix.colors.base0D};
+      text-color: #${config.lib.stylix.colors.base01};
     }
 
     listview {
@@ -138,13 +138,13 @@ let
     }
 
     element normal.active {
-      background-color: #${config.lib.stylix.colors.base02};
-      text-color: #${config.lib.stylix.colors.base04};
+      background-color: #${config.lib.stylix.colors.base0D};
+      text-color: #${config.lib.stylix.colors.base01};
     }
 
     element selected.normal {
-      background-color: #${config.lib.stylix.colors.base02};
-      text-color: #${config.lib.stylix.colors.base04};
+      background-color: #${config.lib.stylix.colors.base0D};
+      text-color: #${config.lib.stylix.colors.base01};
     }
 
     element selected.urgent {
@@ -153,8 +153,8 @@ let
     }
 
     element selected.active {
-      background-color: #${config.lib.stylix.colors.base02};
-      text-color: #${config.lib.stylix.colors.base04};
+      background-color: #${config.lib.stylix.colors.base0D};
+      text-color: #${config.lib.stylix.colors.base01};
     }
 
     element-icon {
