@@ -162,25 +162,25 @@
       # Colors
       colors = {
         focused = {
+          border = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          text = lib.mkForce "#${config.lib.stylix.colors.base00}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+        };
+        focusedInactive = {
           border = lib.mkForce "#${config.lib.stylix.colors.base03}";
           background = lib.mkForce "#${config.lib.stylix.colors.base03}";
           text = lib.mkForce "#${config.lib.stylix.colors.base05}";
           indicator = lib.mkForce "#${config.lib.stylix.colors.base03}";
           childBorder = lib.mkForce "#${config.lib.stylix.colors.base03}";
         };
-        focusedInactive = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base01}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base01}";
-          text = lib.mkForce "#${config.lib.stylix.colors.base05}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base01}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base01}";
-        };
         unfocused = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base01}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base01}";
+          border = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base03}";
           text = lib.mkForce "#${config.lib.stylix.colors.base05}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base01}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base01}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base03}";
         };
         urgent = {
           border = lib.mkForce "#${config.lib.stylix.colors.base08}";

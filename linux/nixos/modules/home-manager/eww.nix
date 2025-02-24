@@ -33,7 +33,6 @@
                 background-color: #${config.lib.stylix.colors.base01};
                 border-top: 2px solid #${config.lib.stylix.colors.base01};
                 border-bottom: 2px solid #${config.lib.stylix.colors.base01};
-                opacity: 0.6;
 
                 &:hover {
                   color: #${config.lib.stylix.colors.base0D};
@@ -41,7 +40,6 @@
 
                 &.active {
                   border-bottom: 2px solid #${config.lib.stylix.colors.base0D};
-                  opacity: 1;
                 }
 
                 &.urgent {
