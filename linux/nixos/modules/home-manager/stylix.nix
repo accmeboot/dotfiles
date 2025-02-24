@@ -4,7 +4,7 @@
    enable = true;
    image = ../../../../assets/wallpapers/nix-wallpaper-binary-black.png;
    polarity = "dark";
-   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
 
    targets = {
      kitty.enable = false;
