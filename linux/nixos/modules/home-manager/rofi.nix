@@ -4,12 +4,6 @@ let
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
       font: "System-ui Regular 12";
-      background: #${config.lib.stylix.colors.base00};
-      background-alt: #${config.lib.stylix.colors.base01};
-      foreground: #${config.lib.stylix.colors.base05};
-      selected: #${config.lib.stylix.colors.base0D};
-      active: #${config.lib.stylix.colors.base0B};
-      urgent: #${config.lib.stylix.colors.base08};
     }
 
     window {
@@ -23,8 +17,8 @@ let
       enabled: true;
       border-radius: 4px;
       cursor: "default";
-      background-color: @background;
-      border-color: @foreground;
+      background-color: #${config.lib.stylix.colors.base00};
+      border-color: #${config.lib.stylix.colors.base0D};
       border: 2px;
     }
 
@@ -50,7 +44,7 @@ let
       padding: 100px 60px;
       background-color: transparent;
       background-image: url("${rofi_bg}", width);
-      text-color: @foreground;
+      text-color: #${config.lib.stylix.colors.base05};
       orientation: horizontal;
       children: [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
     }
@@ -61,7 +55,7 @@ let
       str: " ";
       padding: 12px 10px 12px 15px;
       border-radius: 4px;
-      background-color: @background-alt;
+      background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
     }
 
@@ -71,7 +65,7 @@ let
       width: 450px;
       padding: 12px 16px;
       border-radius: 4px;
-      background-color: @background-alt;
+      background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
       cursor: text;
       placeholder: "Search";
@@ -87,21 +81,21 @@ let
       enabled: true;
       spacing: 10px;
       background-color: transparent;
-      text-color: @foreground;
+      text-color: #${config.lib.stylix.colors.base05};
     }
 
     button {
       width: 50px;
       padding: 12px 8px 12px 12px;
       border-radius: 4px;
-      background-color: @background-alt;
+      background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
       cursor: pointer;
     }
 
     button selected {
-      background-color: @selected;
-      text-color: @background;
+      background-color: #${config.lib.stylix.colors.base02};
+      text-color: #${config.lib.stylix.colors.base04};
     }
 
     listview {
@@ -118,7 +112,7 @@ let
       flow: horizontal;
       spacing: 10px;
       background-color: transparent;
-      text-color: @foreground;
+      text-color: #${config.lib.stylix.colors.base05};
       cursor: "default";
     }
 
@@ -128,7 +122,7 @@ let
       padding: 10px;
       border-radius: 4px;
       background-color: transparent;
-      text-color: @foreground;
+      text-color: #${config.lib.stylix.colors.base05};
       cursor: pointer;
       orientation: vertical;
     }
@@ -139,28 +133,28 @@ let
     }
 
     element normal.urgent {
-      background-color: @urgent;
-      text-color: @foreground;
+      background-color: #${config.lib.stylix.colors.base09};
+      text-color: #${config.lib.stylix.colors.base05};
     }
 
     element normal.active {
-      background-color: @active;
-      text-color: @foreground;
+      background-color: #${config.lib.stylix.colors.base02};
+      text-color: #${config.lib.stylix.colors.base04};
     }
 
     element selected.normal {
-      background-color: @selected;
-      text-color: @background;
+      background-color: #${config.lib.stylix.colors.base02};
+      text-color: #${config.lib.stylix.colors.base04};
     }
 
     element selected.urgent {
-      background-color: @urgent;
-      text-color: @background;
+      background-color: #${config.lib.stylix.colors.base09};
+      text-color: #${config.lib.stylix.colors.base05};
     }
 
     element selected.active {
-      background-color: @urgent;
-      text-color: @background;
+      background-color: #${config.lib.stylix.colors.base02};
+      text-color: #${config.lib.stylix.colors.base04};
     }
 
     element-icon {
@@ -185,8 +179,8 @@ let
     textbox {
       padding: 15px;
       border-radius: 4px;
-      background-color: @background-alt;
-      text-color: @foreground;
+      background-color: #${config.lib.stylix.colors.base01};
+      text-color: #${config.lib.stylix.colors.base04};
       vertical-align: 0.5;
       horizontal-align: 0.0;
     }
@@ -194,8 +188,8 @@ let
     error-message {
       padding: 15px;
       border-radius: 4px;
-      background-color: @background;
-      text-color: @foreground;
+      background-color: #${config.lib.stylix.colors.base01};
+      text-color: #${config.lib.stylix.colors.base04};
     }
   '';
 in {
@@ -211,7 +205,7 @@ in {
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
     };
-    package = pkgs.rofi.override {
+    package = pkgs.rofi-wayland.override {
       theme = customTheme;
     };
   };

@@ -162,25 +162,25 @@
       # Colors
       colors = {
         focused = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base05}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base05}";
-          text = lib.mkForce "#${config.lib.stylix.colors.base00}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base05}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          border = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          text = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base0D}";
         };
         focusedInactive = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          text = lib.mkForce "#${config.lib.stylix.colors.base00}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base04}";
+          border = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          text = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base03}";
         };
         unfocused = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          text = lib.mkForce "#${config.lib.stylix.colors.base00}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base04}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base04}";
+          border = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          text = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base03}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base03}";
         };
         urgent = {
           border = lib.mkForce "#${config.lib.stylix.colors.base08}";

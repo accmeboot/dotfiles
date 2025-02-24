@@ -17,9 +17,9 @@
       anchor=bottom-center
       outer-margin=0,0,100
       border-radius=4
-      progress-color=#${config.lib.stylix.colors.base0D}
-      text-color=#${config.lib.stylix.colors.base00}
-      background-color=#${config.lib.stylix.colors.base01}
+      progress-color=#${config.lib.stylix.colors.base01}
+      text-color=#${config.lib.stylix.colors.base0A}
+      background-color=#${config.lib.stylix.colors.base02}
       font=monospace 12
       default-timeout=2000
     '';

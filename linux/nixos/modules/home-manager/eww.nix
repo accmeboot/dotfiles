@@ -7,22 +7,10 @@
       name = "eww";
       paths = [
         (pkgs.writeTextDir "eww.scss" ''
-          $base00: #${config.lib.stylix.colors.base00};
-          $base01: #${config.lib.stylix.colors.base01};
-          $base08: #${config.lib.stylix.colors.base08};
-          $base0B: #${config.lib.stylix.colors.base0B};
-          $base0A: #${config.lib.stylix.colors.base0A};
-          $base09: #${config.lib.stylix.colors.base09};
-          $base0D: #${config.lib.stylix.colors.base0D};
-          $base0E: #${config.lib.stylix.colors.base0E};
-          $base0C: #${config.lib.stylix.colors.base0C};
-          $base03: #${config.lib.stylix.colors.base03};
-          $base05: #${config.lib.stylix.colors.base05};
-
           // Global Styles
           .bar {
-            background-color: $base00;
-            color: $base05;
+            background-color: #${config.lib.stylix.colors.base00};
+            color: #${config.lib.stylix.colors.base05};
             padding: 2px 8px;
           }
 
@@ -31,7 +19,7 @@
               all: unset;
 
               &:hover {
-                color: $base09;
+                color: #${config.lib.stylix.colors.base0D};
               }
             }
 
@@ -42,22 +30,22 @@
                 all: unset;
                 padding: 0px 6px;
                 margin: 0px 2px;
-                background-color: $base01;
-                border-top: 2px solid $base00;
-                border-bottom: 2px solid $base00;
+                background-color: #${config.lib.stylix.colors.base01};
+                border-top: 2px solid #${config.lib.stylix.colors.base01};
+                border-bottom: 2px solid #${config.lib.stylix.colors.base01};
                 opacity: 0.6;
 
                 &:hover {
-                  color: $base0A;
+                  color: #${config.lib.stylix.colors.base0D};
                 }
 
                 &.active {
-                  border-bottom: 2px solid $base0A;
+                  border-bottom: 2px solid #${config.lib.stylix.colors.base0D};
                   opacity: 1;
                 }
 
                 &.urgent {
-                  color: $base08;
+                  color: #${config.lib.stylix.colors.base09};
                 }
               }
             }
@@ -71,7 +59,7 @@
                 all: unset;
 
                 &:hover {
-                  color: $base0A;
+                  color: #${config.lib.stylix.colors.base0D};
                 }
               }
 
@@ -88,7 +76,7 @@
                   min-width: 80px;
 
                   highlight {
-                    background-color: $base0A;
+                    background-color: #${config.lib.stylix.colors.base0D};
                     border-radius: 4px;
                   }
                 }
@@ -104,15 +92,15 @@
               }
 
               .cpu {
-                color: $base09;
+                color: #${config.lib.stylix.colors.base09};
               }
 
               .gpu {
-                color: $base0A;
+                color: #${config.lib.stylix.colors.base0A};
               }
 
               .ram {
-                color: $base0C;
+                color: #${config.lib.stylix.colors.base0D};
               }
             }
 
