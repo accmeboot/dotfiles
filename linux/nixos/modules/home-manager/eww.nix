@@ -180,7 +180,7 @@
                    :space-evenly false
                    :halign "end"
                 (systray :spacing 4
-                         :icon-size 16)))
+                         :icon-size 14)))
 
 
             (defwidget locale []
