@@ -11,7 +11,7 @@
           .bar {
             background-color: #${config.lib.stylix.colors.base00};
             color: #${config.lib.stylix.colors.base05};
-            padding: 2px 8px;
+            padding: 2px 8px 4px 8px;
           }
 
           .leftbar {
