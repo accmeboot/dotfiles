@@ -2,79 +2,53 @@
 
 format = """
 $env_var\
-[](color_bg1)\
+[](5)\
 ${custom.start_symbol}\
-[](bg:color_fg1 fg:color_bg1)\
-[](bg:color_fg2 fg:color_fg1)\
-[](bg:color_fg3 fg:color_fg2)\
-[](bg:color_bg1 fg:color_fg3)\
 $directory\
-[](fg:color_bg1)\
+[](fg:5)\
 $fill\
-[](fg:color_bg1)\
+[](fg:5)\
 $git_status\
 $git_branch\
-[](bg:color_bg1 fg:color_fg1)\
-[](bg:color_fg1 fg:color_fg2)\
-[](bg:color_fg2 fg:color_fg3)\
-[](bg:color_fg3 fg:color_bg1)\
 ${custom.end_symbol}\
-[ ](fg:color_bg1)\
+[ ](fg:5)\
 $line_break$character"""
-
-palette = 'rosepine'
-
-[palettes.rosepine]
-color_fg0 = '#e0def4' # text
-color_fg1 = '#e0def4' # text
-color_fg2 = '#908caa' # subtle
-color_fg3 = '#6e6a86' # muted
-color_bg1 = '#1f1d2e' # surface
-color_bg2 = '#26233a' # overlay
-color_bg3 = '#524f67' # subtle
-color_blue = '#31748f' # pine
-color_aqua = '#9ccfd8' # foam
-color_green = '#9ccfd8' # foam
-color_orange = '#f6c177' # gold
-color_purple = '#c4a7e7' # iris
-color_red = '#eb6f92' # love
-color_yellow = '#f6c177' # gold
 
 [fill]
 symbol = '·'
-style = 'fg:color_fg0'
+style = 'fg:5'
 
 [env_var]
 symbol = "╭╴"
 variable = 'SHELL'
-style = "fg:color_fg0"
+style = "fg:7"
 format = "[$symbol]($style)"
 disabled = false
 
 [directory]
-style = "fg:color_fg0 bg:color_bg1"
-format = "[ $path ]($style)"
+style = "bold fg:0 bg:5"
+format = "[$path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-style = "bg:color_bg1"
-format = '[[ $branch ](fg:color_fg0 bg:color_bg1)]($style)'
+style = "bold bg:5"
+format = '[[ $branch](fg:0 bg:5)]($style)'
 
 [git_status]
-style = "bg:color_bg1"
-format = '[[( $all_status$ahead_behind)](fg:color_red bg:color_bg1)]($style)'
+style = "bold bg:1"
+format = '[[( $all_status$ahead_behind)](fg:1 bg:5)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"
 when = "true"
-style = "fg:color_fg0 bg:color_bg1"
+style = "bold fg:0 bg:5"
 format = '[ $output ]($style)'
 
 [custom.start_symbol]
 command = "echo ' '"
 when = "true"
-style = "fg:color_fg0 bg:color_bg1"
+style = "bold fg:0 bg:5"
 format = '[$output ]($style)'
 
 [line_break]
@@ -82,9 +56,9 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
-error_symbol = '[[╰](fg:color_fg0)](bold fg:color_red)'
-vimcmd_symbol = '[[╰](fg:color_fg0)](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
-vimcmd_replace_symbol = '[[╰](fg:color_fg0)](bold fg:color_purple)'
-vimcmd_visual_symbol = '[[╰](fg:color_fg0)](bold fg:color_yellow)'
+success_symbol = '[[╰](fg:7)](bold fg:2)'
+error_symbol = '[[╰](fg:7)](bold fg:1)'
+vimcmd_symbol = '[[╰](fg:7)](bold fg:2)'
+vimcmd_replace_one_symbol = '[[╰](fg:7)](bold fg:5)'
+vimcmd_replace_symbol = '[[╰](fg:7)](bold fg:5)'
+vimcmd_visual_symbol = '[[╰](fg:7)](bold fg:3)'
