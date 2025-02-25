@@ -2,7 +2,7 @@
 {
   stylix = {
    enable = true;
-   image = ../../../../assets/wallpapers/space-shuttle.png;
+   image = ../../../../assets/wallpapers/nix-wallpaper-binary-black.png;
    polarity = "dark";
    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
 
