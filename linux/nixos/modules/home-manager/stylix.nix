@@ -2,9 +2,9 @@
 {
   stylix = {
    enable = true;
-   image = ../../../../assets/wallpapers/xavier-cuenca-w4-3.jpg;
+   image = ../../../../assets/wallpapers/rose_pine_shape.png;
    polarity = "dark";
-   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+   base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
    targets = {
      kitty.enable = false;
