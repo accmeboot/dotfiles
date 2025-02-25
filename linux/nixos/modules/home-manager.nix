@@ -4,53 +4,24 @@ let
     owner = "danth";
     repo = "stylix";
     rev = "release-24.11"; # should match the nixos version
-    sha256 = "sha256-LlUFkinhMlvK5uIx6tTg1UYcreYF4iLVNRL8mqiSyjQ=";
+    sha256 = "sha256-7SEvP++jm4q9hP8+GXdzrETVi4yNO/3a6Ev1pEsw9cU=";
   };
 in {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.accme = { pkgs, ... }: {
-      imports = [ (import stylix).homeManagerModules.stylix ];
-      
-       stylix = {
-         enable = true;
-         image = ../../../assets/wallpapers/nix-wallpaper-binary-black.png;
-         polarity = "dark";
-         base16Scheme = {
-           scheme = "Custom Gruvbox";
-           author = "accme";
-           base00 = "282828";
-           base01 = "3a3735";
-           base02 = "3a3735";
-           base03 = "3a3735";
-           base04 = "d4be98";
-           base05 = "d4be98";
-           base06 = "d4be98";
-           base07 = "d4be98";
-           base08 = "ea6962";
-           base09 = "e78a4e";
-           base0A = "d8a657";
-           base0B = "a9b665";
-           base0C = "89b482";
-           base0D = "7daea3";
-           base0E = "d3869b";
-           base0F = "ea6962";
-         };
+      imports = [ 
+         (import stylix).homeManagerModules.stylix
 
-         targets = {
-           kitty.enable = false;
-           neovim.enable = false;
-           tmux.enable = false;
-         };
+        ./home-manager/stylix.nix
+        ./home-manager/sway.nix
+        ./home-manager/eww.nix
+        ./home-manager/mako.nix
+        ./home-manager/rofi.nix
+        ./home-manager/mangohud.nix
+      ];
       
-         fonts.sizes = {
-           applications = 9;
-           desktop = 9;
-           popups = 9;
-         };
-       };
-
       gtk = {
         enable = true;
         iconTheme = {
