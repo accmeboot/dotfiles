@@ -98,7 +98,7 @@
               }
 
               .ram {
-                color: #${config.lib.stylix.colors.base0D};
+                color: #${config.lib.stylix.colors.base0B};
               }
             }
 
