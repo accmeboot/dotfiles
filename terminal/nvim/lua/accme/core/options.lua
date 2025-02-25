@@ -3,7 +3,7 @@ local opt = vim.opt -- options gloabals variable
 vim.g.have_nerd_font = true
 
 -- line numbers
--- opt.number = true -- Show current line number
+opt.number = true -- Show current line number
 opt.relativenumber = true -- Show relative line numbers
 
 -- tabs & indentation
@@ -58,8 +58,5 @@ opt.foldmethod = "indent"
 opt.foldcolumn = "0"
 -- makes all folds open by default
 opt.foldlevelstart = 99
-
--- statuscolumn
-opt.statuscolumn = ' %s%{(&filetype !=# "netrw" && &buftype !=# "nofile") ? (v:relnum?v:relnum:v:lnum) : ""} '
 
 opt.fillchars:append({ eob = " " })
