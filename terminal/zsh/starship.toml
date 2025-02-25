@@ -32,12 +32,12 @@ truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-style = "bold bg:5"
-format = '[[ $branch](fg:0 bg:5)]($style)'
+style = "bg:5"
+format = '[[ $branch](bold fg:0 bg:5)]($style)'
 
 [git_status]
-style = "bold bg:1"
-format = '[[( $all_status$ahead_behind)](fg:1 bg:5)]($style)'
+style = "bg:1"
+format = '[[( $all_status$ahead_behind)](bold fg:1 bg:5)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"

@@ -1,37 +1,35 @@
 return {
 	"https://github.com/RRethy/base16-nvim",
-
-	lazy = true,
 	config = function()
-		-- local base16 = require("base16-colorscheme")
+		local base16 = require("base16-colorscheme")
 
-		-- base16.with_config({
-		-- 	telescope = false,
-		-- 	indentblankline = false,
-		-- 	notify = false,
-		-- 	ts_rainbow = false,
-		-- 	cmp = false,
-		-- 	illuminate = false,
-		-- 	dapui = false,
-		-- })
+		base16.with_config({
+		 	telescope = false,
+		 	indentblankline = false,
+		 	notify = false,
+		 	ts_rainbow = false,
+		 	cmp = false,
+		 	illuminate = false,
+		 	dapui = false,
+		 })
 
-		-- base16.setup({
-		-- 	base00 = "#1F1F28",
-		-- 	base01 = "#16161D",
-		-- 	base02 = "#223249",
-		-- 	base03 = "#54546D",
-		-- 	base04 = "#727169",
-		-- 	base05 = "#DCD7BA",
-		-- 	base06 = "#C8C093",
-		-- 	base07 = "#717C7C",
-		-- 	base08 = "#C34043",
-		-- 	base09 = "#FFA066",
-		-- 	base0A = "#C0A36E",
-		-- 	base0B = "#76946A",
-		-- 	base0C = "#6A9589",
-		-- 	base0D = "#7E9CD8",
-		-- 	base0E = "#957FB8",
-		-- 	base0F = "#D27E99",
-		-- })
+		 base16.setup({
+      base00 = "#1C1917", 
+      base01 = "#2D2927", 
+      base02 = "#3E3937", 
+      base03 = "#756E6B", 
+      base04 = "#988F8C", 
+      base05 = "#DBD6D1", 
+      base06 = "#ECE7E2", 
+      base07 = "#FAF5F0", 
+      base08 = "#C5907B", 
+      base09 = "#C4B187", 
+      base0A = "#C4B187", 
+      base0B = "#B8C196", 
+      base0C = "#A699B7", 
+      base0D = "#9F8B96", 
+      base0E = "#B8B0A4", 
+      base0F = "#7B9F7B", 
+		 })
 	end,
 }
