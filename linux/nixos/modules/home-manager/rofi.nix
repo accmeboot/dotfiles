@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  rofi_bg = pkgs.copyPathToStore ../../../../assets/rofi_bg.png;
+  rofi_bg = config.stylix.image;
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
       font: "System-ui Regular 12";
