@@ -2,7 +2,7 @@
 {
   stylix = {
    enable = true;
-   image = ../../../../assets/wallpapers/rose_pine_shape.png;
+   image = ../../../../assets/wallpapers/bay.JPG;
    polarity = "dark";
    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
