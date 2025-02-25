@@ -25,8 +25,8 @@ in {
       gtk = {
         enable = true;
         iconTheme = {
-          name = "Papirus";
-          package = pkgs.papirus-icon-theme;
+          name = "Gruvbox-Plus-Dark";
+          package = pkgs.gruvbox-plus-icons;
         };
         cursorTheme = {
           name = "capitaine-cursors";
