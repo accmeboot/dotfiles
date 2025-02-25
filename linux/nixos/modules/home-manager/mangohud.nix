@@ -4,6 +4,8 @@
   programs.mangohud = {
     enable = true;
     settings = {
+      alpha = lib.mkForce 0.6;
+      background_alpha = lib.mkForce 0.6;
       legacy_layout = 0;
       gpu_stats = true;
       gpu_temp = true;
@@ -20,6 +22,8 @@
       toggle_hud = "Shift_L+F12";
       reload_cfg = "Shift_L+F4";
       pci_dev = "0000:03:00.0";
+      font_size = lib.mkForce 18;
+      fint_size_text = lib.mkForce 18;
     };
   };
 }
