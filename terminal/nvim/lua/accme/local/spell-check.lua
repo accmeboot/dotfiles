@@ -34,7 +34,7 @@ local function get_win_dimenstions(suggestions)
 end
 
 local function set_window_options(win)
-	local hint_hl = vim.api.nvim_get_hl_by_name("CurSearch", true)
+	local hint_hl = vim.api.nvim_get_hl_by_name("Search", true)
 	local hint_bg = hint_hl["background"]
 	local hint_fg = hint_hl["foreground"]
 
