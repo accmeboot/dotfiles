@@ -1,64 +1,45 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
 format = """
-$env_var\
-[](4)\
-${custom.start_symbol}\
 $directory\
-[](fg:4)\
-$fill\
-[](fg:4)\
-$git_status\
 $git_branch\
-${custom.end_symbol}\
-[ ](fg:4)\
-$line_break$character"""
-
-[fill]
-symbol = '·'
-style = 'fg:4'
-
-[env_var]
-symbol = "╭╴"
-variable = 'SHELL'
-style = "fg:7"
-format = "[$symbol]($style)"
-disabled = false
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [directory]
-style = "fg:0 bg:4"
-format = "[$path ]($style)"
-truncation_length = 0
-truncation_symbol = ""
+format = "[  $path]($style) "
+style = "blue"
 
-[git_branch]
-style = "bg:4"
-format = '[[ $branch](fg:0 bg:4)]($style)'
-
-[git_status]
-style = "bg:1"
-format = '[[( $all_status$ahead_behind)](fg:0 bg:4)]($style)'
-
-[custom.end_symbol]
-command = "echo ''"
-when = "true"
-style = "fg:0 bg:4"
-format = '[ $output ]($style)'
-
-[custom.start_symbol]
-command = "echo ' '"
-when = "true"
-style = "fg:0 bg:4"
-format = '[$output ]($style)'
-
-[line_break]
-disabled = false
+[fill]
+symbol = "─"
+style = "bright-black"
 
 [character]
-disabled = false
-success_symbol = '[[╰](fg:7)](bold fg:2)'
-error_symbol = '[[╰](fg:7)](bold fg:1)'
-vimcmd_symbol = '[[╰](fg:7)](bold fg:2)'
-vimcmd_replace_one_symbol = '[[╰](fg:7)](bold fg:2)'
-vimcmd_replace_symbol = '[[╰](fg:7)](bold fg:2)'
-vimcmd_visual_symbol = '[[╰](fg:7)](bold fg:3)'
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[ $branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[($conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+
+[line_break]
+disabled = true
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
