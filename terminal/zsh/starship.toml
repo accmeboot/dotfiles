@@ -2,21 +2,21 @@
 
 format = """
 $env_var\
-[](5)\
+[](2)\
 ${custom.start_symbol}\
 $directory\
-[](fg:5)\
+[](fg:2)\
 $fill\
-[](fg:5)\
+[](fg:2)\
 $git_status\
 $git_branch\
 ${custom.end_symbol}\
-[ ](fg:5)\
+[ ](fg:2)\
 $line_break$character"""
 
 [fill]
 symbol = '·'
-style = 'fg:5'
+style = 'fg:2'
 
 [env_var]
 symbol = "╭╴"
@@ -26,29 +26,29 @@ format = "[$symbol]($style)"
 disabled = false
 
 [directory]
-style = "bold fg:0 bg:5"
+style = "bold fg:0 bg:2"
 format = "[$path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-style = "bg:5"
-format = '[[ $branch](bold fg:0 bg:5)]($style)'
+style = "bg:2"
+format = '[[ $branch](bold fg:0 bg:2)]($style)'
 
 [git_status]
 style = "bg:1"
-format = '[[( $all_status$ahead_behind)](bold fg:1 bg:5)]($style)'
+format = '[[( $all_status$ahead_behind)](bold fg:1 bg:2)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"
 when = "true"
-style = "bold fg:0 bg:5"
+style = "bold fg:0 bg:2"
 format = '[ $output ]($style)'
 
 [custom.start_symbol]
 command = "echo ' '"
 when = "true"
-style = "bold fg:0 bg:5"
+style = "bold fg:0 bg:2"
 format = '[$output ]($style)'
 
 [line_break]
@@ -59,6 +59,6 @@ disabled = false
 success_symbol = '[[╰](fg:7)](bold fg:2)'
 error_symbol = '[[╰](fg:7)](bold fg:1)'
 vimcmd_symbol = '[[╰](fg:7)](bold fg:2)'
-vimcmd_replace_one_symbol = '[[╰](fg:7)](bold fg:5)'
-vimcmd_replace_symbol = '[[╰](fg:7)](bold fg:5)'
+vimcmd_replace_one_symbol = '[[╰](fg:7)](bold fg:2)'
+vimcmd_replace_symbol = '[[╰](fg:7)](bold fg:2)'
 vimcmd_visual_symbol = '[[╰](fg:7)](bold fg:3)'
