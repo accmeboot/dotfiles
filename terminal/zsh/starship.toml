@@ -2,21 +2,21 @@
 
 format = """
 $env_var\
-[](2)\
+[](4)\
 ${custom.start_symbol}\
 $directory\
-[](fg:2)\
+[](fg:4)\
 $fill\
-[](fg:2)\
+[](fg:4)\
 $git_status\
 $git_branch\
 ${custom.end_symbol}\
-[ ](fg:2)\
+[ ](fg:4)\
 $line_break$character"""
 
 [fill]
 symbol = '·'
-style = 'fg:2'
+style = 'fg:4'
 
 [env_var]
 symbol = "╭╴"
@@ -26,29 +26,29 @@ format = "[$symbol]($style)"
 disabled = false
 
 [directory]
-style = "fg:0 bg:2"
+style = "fg:0 bg:4"
 format = "[$path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
-style = "bg:2"
-format = '[[ $branch](fg:0 bg:2)]($style)'
+style = "bg:4"
+format = '[[ $branch](fg:0 bg:4)]($style)'
 
 [git_status]
 style = "bg:1"
-format = '[[( $all_status$ahead_behind)](fg:1 bg:2)]($style)'
+format = '[[( $all_status$ahead_behind)](fg:0 bg:4)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"
 when = "true"
-style = "fg:0 bg:2"
+style = "fg:0 bg:4"
 format = '[ $output ]($style)'
 
 [custom.start_symbol]
 command = "echo ' '"
 when = "true"
-style = "fg:0 bg:2"
+style = "fg:0 bg:4"
 format = '[$output ]($style)'
 
 [line_break]
