@@ -9,7 +9,7 @@ $python\
 $character"""
 
 [directory]
-format = "[  $path]($style) "
+format = "[ $path]($style) "
 style = "blue"
 
 [fill]
