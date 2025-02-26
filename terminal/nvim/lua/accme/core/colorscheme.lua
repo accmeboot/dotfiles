@@ -37,3 +37,27 @@ if visual_bg and search_fg and search_bg then
 	vim.cmd("highlight DiffChange guibg=#" .. visual_bg)
 	vim.cmd("highlight DiffText guibg=#" .. search_bg .. " guifg=#" .. search_fg)
 end
+
+-- diagnostic colors remap
+local error_fg = vim.api.nvim_get_hl(0, { name = "DiagnosticError" }).fg
+local hint_fg = vim.api.nvim_get_hl(0, { name = "DiagnosticHint" }).fg
+local info_fg = vim.api.nvim_get_hl(0, { name = "DiagnosticInfo" }).fg
+local warn_fg = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn" }).fg
+
+local diagnostic_bg = vim.g.base16_gui02
+
+if error_fg and hint_fg and info_fg and warn_fg then
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = error_fg, bg = diagnostic_bg })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = hint_fg, bg = diagnostic_bg })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = info_fg, bg = diagnostic_bg })
+	vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = warn_fg, bg = diagnostic_bg })
+
+	vim.api.nvim_set_hl(
+		0,
+		"DiagnosticUnderlineError",
+		{ undercurl = true, sp = error_fg, cterm = { undercurl = true } }
+	)
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = hint_fg, cterm = { undercurl = true } })
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = info_fg, cterm = { undercurl = true } })
+	vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = warn_fg, cterm = { undercurl = true } })
+end
