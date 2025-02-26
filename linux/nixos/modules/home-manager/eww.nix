@@ -90,15 +90,15 @@
               }
 
               .cpu {
-                color: #${config.lib.stylix.colors.base0A};
+                color: #${config.lib.stylix.colors.base08};
               }
 
               .gpu {
-                color: #${config.lib.stylix.colors.base0B};
+                color: #${config.lib.stylix.colors.base09};
               }
 
               .ram {
-                color: #${config.lib.stylix.colors.base0C};
+                color: #${config.lib.stylix.colors.base0B};
               }
             }
 
