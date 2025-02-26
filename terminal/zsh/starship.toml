@@ -26,29 +26,29 @@ format = "[$symbol]($style)"
 disabled = false
 
 [directory]
-style = "bold fg:0 bg:2"
+style = "fg:0 bg:2"
 format = "[$path ]($style)"
 truncation_length = 0
 truncation_symbol = ""
 
 [git_branch]
 style = "bg:2"
-format = '[[ $branch](bold fg:0 bg:2)]($style)'
+format = '[[ $branch](fg:0 bg:2)]($style)'
 
 [git_status]
 style = "bg:1"
-format = '[[( $all_status$ahead_behind)](bold fg:1 bg:2)]($style)'
+format = '[[( $all_status$ahead_behind)](fg:1 bg:2)]($style)'
 
 [custom.end_symbol]
 command = "echo ''"
 when = "true"
-style = "bold fg:0 bg:2"
+style = "fg:0 bg:2"
 format = '[ $output ]($style)'
 
 [custom.start_symbol]
 command = "echo ' '"
 when = "true"
-style = "bold fg:0 bg:2"
+style = "fg:0 bg:2"
 format = '[$output ]($style)'
 
 [line_break]
