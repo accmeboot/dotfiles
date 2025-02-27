@@ -19,9 +19,9 @@ return {
 			base02 = "#3E3937",
 			base03 = "#756E6B",
 			base04 = "#988F8C",
-			base05 = "#DBD6D1",
-			base06 = "#ECE7E2",
-			base07 = "#FAF5F0",
+			base05 = "#CBC6C1", -- Softened from DBD6D1
+			base06 = "#DCD7D2", -- Softened from ECE7E2
+			base07 = "#EAE5E0", -- Softened from FAF5F0
 			base08 = "#C5907B",
 			base09 = "#C4B187",
 			base0A = "#D7C897",
