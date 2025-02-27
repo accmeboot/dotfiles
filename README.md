@@ -8,8 +8,6 @@ This repository contains configuration files (dotfiles) for various tools and sy
 
 ![Showcase 1](/assets/showcase/4.png)
 ![Showcase 2](/assets/showcase/1.png)
-![Showcase 3](/assets/showcase/2.png)
-![Showcase 4](/assets/showcase/3.png)
 
 ## Setup
 
