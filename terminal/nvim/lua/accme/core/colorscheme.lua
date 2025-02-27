@@ -62,7 +62,35 @@ if error_fg and hint_fg and info_fg and warn_fg then
 	vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = warn_fg, cterm = { undercurl = true } })
 end
 
-
 -- Make statusline transparent
 vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
 vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
+
+-- Settings for gutter colors
+local bg_color = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+if bg_color then
+	-- Convert to hex and darken by ~3%
+	local darker_bg = string.format("#%06x", bit.band(bg_color - 0x090909, 0xFFFFFF))
+	-- Set the SignColumn and LineNr background to the darker color
+	vim.api.nvim_set_hl(0, "SignColumn", { bg = darker_bg })
+	vim.api.nvim_set_hl(0, "LineNr", { bg = darker_bg })
+	vim.api.nvim_set_hl(0, "CursorLineNr", { bg = darker_bg })
+
+	-- Get and preserve diagnostic colors
+	local diagnostic_signs = {
+		"DiagnosticSignError",
+		"DiagnosticSignWarn",
+		"DiagnosticSignInfo",
+		"DiagnosticSignHint",
+	}
+
+	for _, sign in ipairs(diagnostic_signs) do
+		local original = vim.api.nvim_get_hl(0, { name = sign, link = false })
+		if original.fg then
+			vim.api.nvim_set_hl(0, sign, {
+				fg = original.fg,
+				bg = darker_bg,
+			})
+		end
+	end
+end

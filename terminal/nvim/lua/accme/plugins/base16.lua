@@ -14,14 +14,14 @@ return {
 		})
 
 		base16.setup({
-			base00 = "#1C1917",
-			base01 = "#2D2927",
-			base02 = "#3E3937",
+			base00 = "#1A1A1A",
+			base01 = "#2A2A2A",
+			base02 = "#3A3A3A",
 			base03 = "#756E6B",
 			base04 = "#988F8C",
-			base05 = "#CBC6C1", -- Softened from DBD6D1
-			base06 = "#DCD7D2", -- Softened from ECE7E2
-			base07 = "#EAE5E0", -- Softened from FAF5F0
+			base05 = "#CBC6C1",
+			base06 = "#DCD7D2",
+			base07 = "#EAE5E0",
 			base08 = "#C5907B",
 			base09 = "#C4B187",
 			base0A = "#D7C897",
