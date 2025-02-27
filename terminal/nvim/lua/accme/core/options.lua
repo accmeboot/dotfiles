@@ -23,8 +23,7 @@ opt.cursorline = true
 
 -- appearance
 opt.termguicolors = true
--- opt.background = "transparent" -- doesn't work this way
-opt.signcolumn = "yes" -- adds to the termguicolor something
+opt.signcolumn = "yes"
 
 -- backspace
 opt.backspace = "indent,eol,start" --- I HAVE NO IDEA WHAT IT
@@ -32,10 +31,6 @@ opt.backspace = "indent,eol,start" --- I HAVE NO IDEA WHAT IT
 -- clipboard
 opt.clipboard:append("unnamedplus") -- for copy/paste from the outside
 
---[[ Every wrapped line will continue visually indented (same amount of
-	space as the beginning of that line), thus preserving horizontal blocks
-	of text.
---]]
 opt.breakindent = true
 
 opt.undofile = true
