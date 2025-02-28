@@ -54,6 +54,8 @@
 
     networkmanagerapplet # network manager applet
     libnotify # notification library
+
+    transmission_4-gtk # torrent client
   ];
 
   environment.sessionVariables = {
