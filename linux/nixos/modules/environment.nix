@@ -58,8 +58,10 @@
     transmission_4-gtk # torrent client
 
     (lutris.override {
-     extraLibraries =  pkgs: [];
-     }) # gaming platform
+     extraLibraries =  pkgs: [
+       wineWowPackages.waylandFull
+     ];
+    }) # gaming platform
 
     thunderbird # email client
   ];
