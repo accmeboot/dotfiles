@@ -9,7 +9,6 @@
       legacy_layout = 0;
       gpu_stats = true;
       gpu_temp = true;
-      gpu_list = 1;
       cpu_stats = true;
       cpu_temp = true;
       vram = true;
@@ -23,7 +22,7 @@
       reload_cfg = "Shift_L+F4";
       pci_dev = "0000:03:00.0";
       font_size = lib.mkForce 18;
-      fint_size_text = lib.mkForce 18;
+      font_size_text = lib.mkForce 18;
     };
   };
 }

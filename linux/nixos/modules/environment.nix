@@ -56,6 +56,12 @@
     libnotify # notification library
 
     transmission_4-gtk # torrent client
+
+    (lutris.override {
+     extraLibraries =  pkgs: [];
+     }) # gaming platform
+
+    thunderbird # email client
   ];
 
   environment.sessionVariables = {
