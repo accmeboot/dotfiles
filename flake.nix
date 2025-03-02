@@ -5,12 +5,12 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,11 +32,11 @@
                 users.accme = {
                   imports = [
                     ./modules/home-manager/default.nix
+                    ./modules/home-manager/stylix/default.nix
                     ./modules/home-manager/eww/default.nix
                     ./modules/home-manager/mako/default.nix
                     ./modules/home-manager/mangohud/default.nix
                     ./modules/home-manager/rofi/default.nix
-                    ./modules/home-manager/stylix/default.nix
                     ./modules/home-manager/sway/default.nix
                   ];
                 };
