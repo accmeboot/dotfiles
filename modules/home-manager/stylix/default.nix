@@ -40,10 +40,24 @@
     #--------------------------------------------------------------------------#
     # FONT CONFIGURATION                                                        #
     #--------------------------------------------------------------------------#
-    fonts.sizes = {
-      applications = 9;  # general UI font size
-      desktop = 9;      # desktop environment font size
-      popups = 9;       # notification/dialog font size
+    fonts = {
+      serif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      monospace = {
+        package = pkgs.nerdfonts;
+        name = "SFMono Nerd Font";  # macOS's native monospace font
+      };
+      sizes = {
+        applications = 9;
+        desktop = 9;
+        popups = 9;
+      };
     };
   };
 }

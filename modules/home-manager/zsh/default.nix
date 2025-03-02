@@ -15,7 +15,7 @@
     };
 
     # Use built-in plugin options
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
   };
 }

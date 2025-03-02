@@ -3,7 +3,7 @@ let
   rofi_bg = config.stylix.image;
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
-      font: "System-ui Regular 12";
+      font: "SF Pro Text 12";
     }
 
     window {
