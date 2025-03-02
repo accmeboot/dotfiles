@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -10,6 +10,7 @@
     cmake        # cross-platform build system generator
     gnumake      # build automation tool
     git          # version control system
+    # brave        # privacy-focused web browser
     
     # Programming Languages
     python3      # python programming language
@@ -91,5 +92,5 @@
   # FONTS                                                                       #
   #----------------------------------------------------------------------------#
   fonts.enableDefaultPackages = true;
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts.packages = [ pkgs.nerdfonts ];
 }

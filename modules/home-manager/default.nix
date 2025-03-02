@@ -12,10 +12,16 @@
       size = 16;
     };
   };
-  
+
   home = {
     stateVersion = "24.11";
     username = "accme";
     homeDirectory = "/home/accme";
+  };
+
+
+  programs.brave = {
+    enable = true;
+    commandLineArgs = ["--no-managed-user-policies"];
   };
 }

@@ -205,10 +205,10 @@
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
   environment.sessionVariables = {
-    XCURSOR_PATH = [
-      "${pkgs.capitaine-cursors}/share/icons"
-    ];
-    XCURSOR_SIZE = "16";
+    # XCURSOR_PATH = [
+    #   "${pkgs.capitaine-cursors}/share/icons"
+    # ];
+    # XCURSOR_SIZE = "16";
     NIXOS_OZONE_WL = "1";
 
     XKB_DEFAULT_LAYOUT = "us,ru";
