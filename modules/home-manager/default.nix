@@ -18,10 +18,4 @@
     username = "accme";
     homeDirectory = "/home/accme";
   };
-
-
-  programs.brave = {
-    enable = true;
-    commandLineArgs = ["--no-managed-user-policies"];
-  };
 }
