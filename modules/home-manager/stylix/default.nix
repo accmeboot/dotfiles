@@ -54,9 +54,9 @@
         name = "SFMono Nerd Font";  # macOS's native monospace font
       };
       sizes = {
-        applications = 9;
-        desktop = 9;
-        popups = 9;
+        applications = 9.5;
+        desktop = 9.5;
+        popups = 9.5;
       };
     };
   };
