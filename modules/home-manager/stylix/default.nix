@@ -4,7 +4,7 @@
   #----------------------------------------------------------------------------#
   stylix = {
     enable = true;
-    image = ../../assets/wallpapers/bay.JPG;  # wallpaper path
+    image = ../../../assets/wallpapers/bay.JPG;  # wallpaper path
     polarity = "dark";  # dark theme preference
 
     # Custom color scheme definition
