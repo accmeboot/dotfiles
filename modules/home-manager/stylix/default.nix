@@ -34,10 +34,6 @@
     # APPLICATION TARGETS                                                       #
     #--------------------------------------------------------------------------#
     targets = {
-      # kitty.enable = false;    # terminal emulator
-      # nvim.enable = false;   # text editor
-      # tmux.enable = false;     # terminal multiplexer
-      # rofi.enable = false;     # application launcher
       chromium.enable = false;
     };
 
