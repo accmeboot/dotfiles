@@ -25,4 +25,5 @@ require("lazy").setup({ { import = "accme.plugins" }, { import = "accme.plugins.
 	ui = {
 		border = "rounded",
 	},
+  lockfile = vim.fn.expand("~/dotfiles/modules/home-manager/nvim/src/lazy-lock.json"),
 })

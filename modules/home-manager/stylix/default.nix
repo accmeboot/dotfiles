@@ -7,7 +7,7 @@
     image = ../../../assets/wallpapers/bay.JPG;  # wallpaper path
     polarity = "dark";  # dark theme preference
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
     # Custom color scheme definition
     base16Scheme = {
       scheme = "Dawn";
