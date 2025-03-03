@@ -35,16 +35,6 @@
           type = "terminal";
         }
         {
-          key = " 󰻠 ";
-          keyColor = "yellow";
-          type = "cpu";
-        }
-        {
-          key = " 󰍛 ";
-          keyColor = "yellow";
-          type = "gpu";
-        }
-        {
           key = "  ";
           keyColor = "yellow";
           type = "disk";
