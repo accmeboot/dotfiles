@@ -74,9 +74,10 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              users.accme = {
+              users.Mikhail_Vialov = {
                 imports = [
-                  ./hosts/mpb-m1/home.nix
+                  ./hosts/mbp-m1/home.nix
+                  ./modules/home-manager/aerospace/default.nix
                   ./modules/home-manager/nvim/default.nix
                   ./modules/home-manager/kitty/default.nix
                   ./modules/home-manager/tmux/default.nix
@@ -84,7 +85,7 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
-                  
+
                   inputs.stylix.homeManagerModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];

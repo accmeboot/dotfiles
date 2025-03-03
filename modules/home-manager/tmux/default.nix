@@ -5,13 +5,6 @@
     enable = true;
     shell = "${config.programs.zsh.package}/bin/zsh"; # equivalent to $SHELL
     clock24 = true;
-    plugins = with pkgs.tmuxPlugins; [
-      sensible
-      vim-tmux-navigator
-      yank
-      resurrect
-    ];
-
     extraConfig = ''
       # settings for image preview to work in yazi
       set -g allow-passthrough on
@@ -73,5 +66,12 @@
       set -g status-right-length 100
       set -g status-right "#[fg=2,bg=0]  #[fg=5]#{pane_current_path}"
     '';
+
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      vim-tmux-navigator
+      yank
+      resurrect
+    ];
   };
 }
