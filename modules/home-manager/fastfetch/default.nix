@@ -10,44 +10,44 @@
       modules = [
         "break"
         {
-          key = " 󰅐 ";
+          key = "󰅐 ";
           keyColor = "yellow";
           type = "uptime";
         }
         {
-          key = "  ";
+          key = " ";
           keyColor = "yellow";
           type = "packages";
         }
         {
-          key = "  ";
+          key = " ";
           keyColor = "yellow";
           type = "wm";
         }
         {
-          key = "  ";
+          key = " ";
           keyColor = "yellow";
           type = "shell";
         }
         {
-          key = "  ";
+          key = " ";
           keyColor = "yellow";
           type = "terminal";
         }
         {
-          key = "  ";
+          key = " ";
           keyColor = "yellow";
           type = "disk";
         }
         {
-          key = " 󰑭 ";
+          key = "󰑭 ";
           keyColor = "yellow";
           type = "memory";
         }
         "break"
         {
           type = "custom";
-          format = " {#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39} ";
+          format = "{#90}  {#31}  {#32}  {#33}  {#34}  {#35}  {#36}  {#37}  {#38}  {#39} ";
         }
         "break"
       ];
