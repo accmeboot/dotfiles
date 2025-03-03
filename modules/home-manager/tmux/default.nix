@@ -1,10 +1,13 @@
 { config, lib, pkgs, ... }:
-
 {
   programs.tmux = {
     enable = true;
-    shell = "${config.programs.zsh.package}/bin/zsh"; # equivalent to $SHELL
-    clock24 = true;
+    shell = "$SHELL"; 
+    sensibleOnTop = false;
+    keyMode = "vi";
+    mouse = true;
+    terminal = "tmux-256color";
+    aggressiveResize = true;
     extraConfig = ''
       # settings for image preview to work in yazi
       set -g allow-passthrough on
@@ -68,7 +71,6 @@
     '';
 
     plugins = with pkgs.tmuxPlugins; [
-      sensible
       vim-tmux-navigator
       yank
       resurrect
