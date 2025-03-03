@@ -44,15 +44,14 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
+
+
+                  inputs.stylix.homeManagerModules.stylix  # Add this line
+                  ./modules/home-manager/stylix/default.nix
                 ];
               };
             };
           }
-
-
-          inputs.stylix.nixosModules.stylix 
-          ./modules/home-manager/stylix/default.nix
-
         ];
       };
     };
