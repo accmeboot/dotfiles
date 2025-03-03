@@ -5,4 +5,6 @@
     username = "Mikhail_Vialov";
     homeDirectory = /Users/Mikhail_Vialov;
   };
+
+  programs.zsh.enableNvm = true;
 }
