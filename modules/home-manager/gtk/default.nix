@@ -12,10 +12,4 @@
       size = 16;
     };
   };
-
-  home = {
-    stateVersion = "24.11";
-    username = "accme";
-    homeDirectory = "/home/accme";
-  };
 }
