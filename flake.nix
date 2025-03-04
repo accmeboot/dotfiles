@@ -52,7 +52,7 @@
                   ./modules/home-manager/fastfetch/default.nix
 
 
-                  inputs.stylix.homeManagerModules.stylix  # Add this line
+                  inputs.stylix.homeManagerModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];
               };
