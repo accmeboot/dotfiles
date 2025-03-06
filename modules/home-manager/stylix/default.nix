@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/bay.JPG;
+    image = ../../../assets/wallpapers/van.png;
     polarity = "dark";
 
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
