@@ -5,6 +5,10 @@
   config = {
     programs.zsh = {
       enable = true;
+      sessionVariables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
       initExtra = ''
         bindkey -v
         fastfetch --load-config "$HOME/.config/fastfetch/config.jsonc"
