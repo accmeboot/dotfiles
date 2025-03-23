@@ -44,6 +44,7 @@
                   ./modules/home-manager/rofi/default.nix
                   ./modules/home-manager/sway/default.nix
                   ./modules/home-manager/nvim/default.nix
+                  ./modules/home-manager/nvim/base16.nix
                   ./modules/home-manager/kitty/default.nix
                   ./modules/home-manager/tmux/default.nix
                   ./modules/home-manager/yazi/default.nix
