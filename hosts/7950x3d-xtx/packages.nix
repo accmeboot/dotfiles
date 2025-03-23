@@ -86,6 +86,8 @@
 
     # Network Tools
     networkmanagerapplet # network manager GUI
+
+    mission-center # mission control center
   ];
 
   #----------------------------------------------------------------------------#
