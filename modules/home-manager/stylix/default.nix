@@ -4,7 +4,7 @@
     image = ../../../assets/wallpapers/wp4770716-hunt-showdown-wallpapers.jpg;
     polarity = "dark";
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
     # base16Scheme = import ./src/schemes/dawn.nix;
 
     targets = {
