@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/wp4770730-hunt-showdown-wallpapers.jpg;
+    image = ../../../assets/wallpapers/bay.jpeg;
     polarity = "dark";
 
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
