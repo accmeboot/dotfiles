@@ -63,5 +63,5 @@ if error_fg and hint_fg and info_fg and warn_fg then
 end
 
 -- Make statusline transparent
-vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
-vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")
+-- vim.cmd("highlight StatusLine guibg=NONE ctermbg=NONE")
+-- vim.cmd("highlight StatusLineNC guibg=NONE ctermbg=NONE")

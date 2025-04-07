@@ -56,18 +56,18 @@
       set -g window-status-separator ""
       set -g status-left-length 50
 
-      set -g status-left "#[fg=#${config.lib.stylix.colors.base08},bg=#${config.lib.stylix.colors.base00}] #[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base00}]#S "
+      set -g status-left "#[fg=#${config.lib.stylix.colors.base08},bg=#${config.lib.stylix.colors.base01}] #[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}]#S "
 
-      set -g message-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base00}"
-      set -g message-command-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base00}"
+      set -g message-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
+      set -g message-command-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
 
-      set -g status-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base00}"
+      set -g status-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
 
-      set -g window-status-format "#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base00}] #I  #W "
-      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base0D},bg=#${config.lib.stylix.colors.base00}] #I  #W "
+      set -g window-status-format "#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}] #I  #W "
+      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base0D},bg=#${config.lib.stylix.colors.base01}] #I* #W "
 
       set -g status-right-length 100
-      set -g status-right "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base00}]  #[fg=#${config.lib.stylix.colors.base05}]#{pane_current_path}"
+      set -g status-right "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]  #[fg=#${config.lib.stylix.colors.base05}]#{pane_current_path}"
     '';
 
     plugins = with pkgs.tmuxPlugins; [
