@@ -64,7 +64,7 @@
       set -g status-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base02}"
 
       set -g window-status-format "#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base02}] #I  #W "
-      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base0D},bg=#${config.lib.stylix.colors.base02}] #I* #W "
+      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base07},bg=#${config.lib.stylix.colors.base0D}] #I  #W "
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base02}]  #[fg=#${config.lib.stylix.colors.base05}]#{pane_current_path}"
