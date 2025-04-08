@@ -4,7 +4,7 @@
     image = ../../../assets/wallpapers/bay.jpeg;
     polarity = "dark";
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
     # base16Scheme = import ./src/schemes/dawn.nix;
 
     targets = {
