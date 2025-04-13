@@ -4,7 +4,13 @@
     enable = true;
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-      logo.type = "none";
+      logo = {
+          type = "small";
+          padding = {
+            left = 2;
+            top = 1;
+          };
+      };
       general.multithreading = true;
       display.separator = " ";
       modules = [
