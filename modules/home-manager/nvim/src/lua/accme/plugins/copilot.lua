@@ -2,6 +2,7 @@ return {
 	"CopilotC-Nvim/CopilotChat.nvim",
 	dependencies = { "github/copilot.vim" },
 	branch = "main",
+	enabled = false,
 	config = function()
 		local chat = require("CopilotChat")
 
