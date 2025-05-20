@@ -8,7 +8,7 @@
   };
   
   environment.systemPackages = with pkgs; [
-    neovim
+    # neovim
     tmux
     kitty
     yazi
@@ -30,6 +30,7 @@
     enable = true;
     brews = [
       "borders"
+      "neovim"
     ];
     casks = [
       "aerospace"
