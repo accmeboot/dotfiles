@@ -20,18 +20,10 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin }:
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  in {
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin }:{
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
-        inherit system;
-        pkgs = pkgs;
+        system = "x86_64-linux";
         modules = [
           ./hosts/7950x3d-xtx/default.nix
           ./hosts/7950x3d-xtx/packages.nix
@@ -39,7 +31,7 @@
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
+              useGlobalPkgs = false;
               useUserPackages = true;
               backupFileExtension = "backup";
               users.accme = {
@@ -61,7 +53,7 @@
                   ./modules/home-manager/fastfetch/default.nix
 
 
-                  inputs.stylix.homeManagerModules.stylix
+                  inputs.stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];
               };
@@ -96,7 +88,7 @@
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
 
-                  inputs.stylix.homeManagerModules.stylix
+                  inputs.stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];
               };
