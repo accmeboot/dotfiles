@@ -9,6 +9,7 @@
 
     targets = {
       kitty.enable = false;
+      starship.enable = false;
     };
 
     fonts = {
@@ -21,8 +22,8 @@
         name = "Inter";
       };
       monospace = {
-        package = pkgs.nerdfonts;
-        name = "SFMono Nerd Font";
+        package = pkgs.nerd-fonts.meslo-lg;
+        name = "MesloLG";
       };
       sizes = {
         applications = 9.5;

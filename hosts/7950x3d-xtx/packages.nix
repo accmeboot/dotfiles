@@ -93,6 +93,5 @@
   #----------------------------------------------------------------------------#
   # FONTS                                                                       #
   #----------------------------------------------------------------------------#
-  fonts.enableDefaultPackages = true;
-  fonts.packages = [ pkgs.nerdfonts ];
+  fonts.packages = builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

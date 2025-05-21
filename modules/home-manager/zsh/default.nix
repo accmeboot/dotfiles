@@ -9,7 +9,7 @@
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
-      initExtra = ''
+      initContent = ''
         bindkey -v
         fastfetch --load-config "$HOME/.config/fastfetch/config.jsonc"
 
