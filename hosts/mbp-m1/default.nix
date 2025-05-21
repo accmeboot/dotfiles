@@ -1,11 +1,14 @@
 { pkgs, ... }:
 {
-  services.nix-daemon.enable = true;
+  # TODO: Remove this once https://github.com/nix-community/stylix/pull/1316 is merged
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   users.users.Mikhail_Vialov = {
     name = "Mikhail_Vialov";
     home = /Users/Mikhail_Vialov;
   };
+
+  system.primaryUser = "Mikhail_Vialov";
   
   environment.systemPackages = with pkgs; [
     neovim
@@ -24,6 +27,7 @@
     git
     curl
     wget
+    starship
   ];
 
   homebrew = {

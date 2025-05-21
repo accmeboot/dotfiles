@@ -72,8 +72,6 @@
           home-manager.darwinModules.home-manager
           {
             home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
               backupFileExtension = "backup";
               users.Mikhail_Vialov = {
                 imports = [
@@ -88,7 +86,7 @@
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
 
-                  inputs.stylix.homeModules.stylix
+                  stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];
               };
