@@ -16,7 +16,18 @@ return {
 
 		local keymap = vim.keymap
 
-		local on_attach = function(_, bufnr)
+		local on_attach = function(client, bufnr)
+			-- Prevent duplicate ts_ls or emmet_ls
+			local existing_clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+
+			for _, existing in ipairs(existing_clients) do
+				if existing.name == client.name and existing.id ~= client.id then
+					vim.notify("Stopping duplicate LSP client: " .. client.name)
+					client.stop()
+					return
+				end
+			end
+
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
 			-- set keybinds
