@@ -33,7 +33,6 @@ return {
 
 		require("mason-tool-installer").setup({
 			ensure_installed = {
-				"eslint",
 				"prettier",
 				"stylelint",
 				"eslint_d",
