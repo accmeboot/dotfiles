@@ -11,23 +11,10 @@ return {
 		},
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 		local keymap = vim.keymap
 
 		local on_attach = function(client, bufnr)
-			-- Prevent duplicate ts_ls or emmet_ls
-			local existing_clients = vim.lsp.get_active_clients({ bufnr = bufnr })
-
-			for _, existing in ipairs(existing_clients) do
-				if existing.name == client.name and existing.id ~= client.id then
-					vim.notify("Stopping duplicate LSP client: " .. client.name)
-					client.stop()
-					return
-				end
-			end
-
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
 			-- set keybinds
@@ -38,14 +25,13 @@ return {
 			keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- show references
 			keymap.set("n", "<leader>C", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- show references
 			keymap.set("v", "<leader>R", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- rename everywhere
-			keymap.set("n", "gr", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- show diagnostic
 			keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 			keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
 
-		-- LSP config is the same + capabilities
+		-- Rust configuration
 		vim.g.rustaceanvim = {
 			tools = {},
 			server = {
@@ -64,58 +50,59 @@ return {
 			dap = {},
 		}
 
-		lspconfig["html"].setup({
+		-- Configure each server
+		vim.lsp.config("html", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetype = { "html", "tmpl", "gotmpl" },
 		})
 
-		lspconfig["gopls"].setup({
+		vim.lsp.config("gopls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			cmd = { "gopls", "--remote=auto" },
 		})
 
-		lspconfig["sqlls"].setup({
+		vim.lsp.config("sqlls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		lspconfig["ts_ls"].setup({
+		vim.lsp.config("ts_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		lspconfig["cssls"].setup({
+		vim.lsp.config("cssls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		lspconfig["tailwindcss"].setup({
+		vim.lsp.config("tailwindcss", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		lspconfig["emmet_ls"].setup({
+		vim.lsp.config("emmet_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 		})
 
-		lspconfig["svelte"].setup({
+		vim.lsp.config("svelte", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		lspconfig.mdx_analyzer.setup({
+		vim.lsp.config("mdx_analyzer", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			root_dir = function(fname)
-				return lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
+				return vim.fs.find(".git", { path = vim.fs.dirname(fname), upward = true })[1] or vim.fs.dirname(fname)
 			end,
 		})
 
-		lspconfig["lua_ls"].setup({
+		vim.lsp.config("lua_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -133,16 +120,24 @@ return {
 			},
 		})
 
-		lspconfig["pyright"].setup({
+		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
-		vim.diagnostic.config({
-			virtual_text = {
-				prefix = "",
-				spacing = 4,
-			},
+		-- Enable all LSP servers after configuration
+		vim.lsp.enable({
+			"html",
+			"gopls",
+			"sqlls",
+			"ts_ls",
+			"cssls",
+			"tailwindcss",
+			"emmet_ls",
+			"svelte",
+			"mdx_analyzer",
+			"lua_ls",
+			"pyright",
 		})
 	end,
 }
