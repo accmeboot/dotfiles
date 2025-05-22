@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  # TODO: Remove this once https://github.com/nix-community/stylix/pull/1316 is merged
-  nixpkgs.config.allowUnsupportedSystem = true;
-
   users.users.Mikhail_Vialov = {
     name = "Mikhail_Vialov";
     home = /Users/Mikhail_Vialov;

@@ -42,6 +42,3 @@ keymap.set("n", "<leader>e", ":Oil<CR>")
 
 -- LSP
 keymap.set("n", "gl", vim.diagnostic.open_float)
-keymap.set("i", "<C-]>", function()
-	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-x><C-o>", true, false, true), "n", true)
-end, { desc = "Trigger LSP omnifunc completion" })

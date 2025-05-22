@@ -26,11 +26,11 @@ return {
 					max_height = 15,
 				})
 			end, opts) -- show definition
-			keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- show references
-			keymap.set("n", "<leader>C", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- show references
-			keymap.set("v", "<leader>R", "<cmd>lua vim.lsp.buf.rename()<CR>", opts) -- rename everywhere
-			keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-			keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
+			keymap.set("n", "gl", vim.diagnostic.open_float, opts) -- show diagnostics
+			keymap.set("n", "gf", vim.lsp.buf.references, opts) -- show references
+			keymap.set("n", "<leader>C", vim.lsp.buf.code_action, opts) -- code actions
+			keymap.set("v", "<leader>R", vim.lsp.buf.rename, opts) -- rename everywhere
 		end
 
 		local capabilities = cmp_nvim_lsp.default_capabilities()
