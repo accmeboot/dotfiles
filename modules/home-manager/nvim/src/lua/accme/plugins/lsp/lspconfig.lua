@@ -20,7 +20,11 @@ return {
 			-- set keybinds
 			keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts) -- go to definition
 			keymap.set("n", "K", function()
-				vim.lsp.buf.hover({ border = "rounded" })
+				vim.lsp.buf.hover({
+					border = "rounded",
+					max_width = 100,
+					max_height = 15,
+				})
 			end, opts) -- show definition
 			keymap.set("n", "gf", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- show references
 			keymap.set("n", "<leader>C", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) -- show references
