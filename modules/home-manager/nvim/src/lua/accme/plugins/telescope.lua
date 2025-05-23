@@ -52,7 +52,6 @@ return {
 					prompt_position = "top",
 					mirror = true,
 					height = 0.6,
-					preview_height = 0.5,
 					width = 0.6,
 					anchor = "CENTER",
 				},
