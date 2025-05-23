@@ -55,3 +55,7 @@ opt.foldcolumn = "0"
 opt.foldlevelstart = 99
 
 opt.fillchars:append({ eob = " " })
+
+-- Avante specific
+-- views can only be fully collapsed with the global statusline
+opt.laststatus = 3
