@@ -13,6 +13,11 @@
         bindkey -v
         fastfetch --load-config "$HOME/.config/fastfetch/config.jsonc"
 
+        # Source the .env file
+        if [ -f "$HOME/.env" ]; then
+          source "$HOME/.env"
+        fi
+
         ${lib.optionalString config.programs.zsh.enableNvm ''
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
