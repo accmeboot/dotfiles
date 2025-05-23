@@ -8,7 +8,7 @@
       
       directory = {
         format = "[ $path]($style) ";
-        style = "blue";
+        style = "green";
       };
 
       character = {

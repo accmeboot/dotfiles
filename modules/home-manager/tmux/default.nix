@@ -64,7 +64,7 @@
       set -g status-left "#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0A}] #S #[fg=#${config.lib.stylix.colors.base0A},bg=#${config.lib.stylix.colors.base01}]"
 
       set -g window-status-format "#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base02}]#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base02}] #I  #W #[fg=#${config.lib.stylix.colors.base02},bg=#${config.lib.stylix.colors.base01}]"
-      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base0D}]#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0D}] #I  #W #[fg=#${config.lib.stylix.colors.base0D},bg=#${config.lib.stylix.colors.base01}]"
+      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base0B}]#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0B}] #I  #W #[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]"
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]  #[fg=#${config.lib.stylix.colors.base05}]#{pane_current_path}"

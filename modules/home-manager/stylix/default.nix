@@ -4,8 +4,8 @@
     image = ../../../assets/wallpapers/bay.jpeg;
     polarity = "dark";
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-    base16Scheme = import ./src/schemes/dawn.nix;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = import ./src/schemes/gruvbox.nix;
 
     targets = {
       kitty.enable = false;

@@ -61,9 +61,6 @@
       # BEGIN_KITTY_SYMBOL_MAPS
       symbol_map U+E000-U+F8FF,U+F0000-U+FFFFF,U+100000-U+10ffff JetBrainsMonoNL Nerd Font
       # END_KITTY_SYMBOL_MAPS
-
-      background_opacity 0.85
-      background_blur 64
     '';
   };
 }
