@@ -12,6 +12,8 @@
       icons = true;
       default-timeout = 5000;
       ignore-timeout = true;
+      border-color = lib.mkForce "#${config.lib.stylix.colors.base05}";
+      text-color = lib.mkForce "#${config.lib.stylix.colors.base05}";
 
       "app-name=volume" = {
         anchor = "bottom-center";
