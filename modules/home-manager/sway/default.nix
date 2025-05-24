@@ -162,11 +162,11 @@
       # Colors
       colors = {
         focused = {
-          border = lib.mkForce "#${config.lib.stylix.colors.base0D}";
-          background = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          border = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          background = lib.mkForce "#${config.lib.stylix.colors.base05}";
           text = lib.mkForce "#${config.lib.stylix.colors.base00}";
-          indicator = lib.mkForce "#${config.lib.stylix.colors.base0D}";
-          childBorder = lib.mkForce "#${config.lib.stylix.colors.base0D}";
+          indicator = lib.mkForce "#${config.lib.stylix.colors.base05}";
+          childBorder = lib.mkForce "#${config.lib.stylix.colors.base05}";
         };
         focusedInactive = {
           border = lib.mkForce "#${config.lib.stylix.colors.base03}";

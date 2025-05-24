@@ -19,7 +19,7 @@
               all: unset;
 
               &:hover {
-                color: #${config.lib.stylix.colors.base0D};
+                color: #${config.lib.stylix.colors.base0B};
               }
             }
 
@@ -35,11 +35,11 @@
                 border-bottom: 2px solid #${config.lib.stylix.colors.base01};
 
                 &:hover {
-                  color: #${config.lib.stylix.colors.base0D};
+                  color: #${config.lib.stylix.colors.base0B};
                 }
 
                 &.active {
-                  border-bottom: 2px solid #${config.lib.stylix.colors.base0D};
+                  border-bottom: 2px solid #${config.lib.stylix.colors.base0B};
                 }
 
                 &.urgent {
@@ -57,7 +57,7 @@
                 all: unset;
 
                 &:hover {
-                  color: #${config.lib.stylix.colors.base0D};
+                  color: #${config.lib.stylix.colors.base0B};
                 }
               }
 
@@ -74,7 +74,7 @@
                   min-width: 80px;
 
                   highlight {
-                    background-color: #${config.lib.stylix.colors.base0D};
+                    background-color: #${config.lib.stylix.colors.base0B};
                     border-radius: 4px;
                   }
                 }

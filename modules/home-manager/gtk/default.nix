@@ -3,8 +3,8 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Gruvbox-Plus-Dark";
+      package = pkgs.gruvbox-plus-icons;
     };
     cursorTheme = {
       name = "capitaine-cursors";

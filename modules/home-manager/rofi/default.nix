@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  rofi_bg = config.stylix.image;
+  rofi_bg = ../../../assets/wallpapers/wallhaven-2e2xyx.jpg;
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
       font: "SF Pro Text 12";
@@ -18,7 +18,7 @@ let
       border-radius: 4px;
       cursor: "default";
       background-color: #${config.lib.stylix.colors.base00};
-      border-color: #${config.lib.stylix.colors.base0D};
+      border-color: #${config.lib.stylix.colors.base05};
       border: 2px;
     }
 
@@ -94,7 +94,7 @@ let
     }
 
     button selected {
-      background-color: #${config.lib.stylix.colors.base0D};
+      background-color: #${config.lib.stylix.colors.base0B};
       text-color: #${config.lib.stylix.colors.base01};
     }
 
