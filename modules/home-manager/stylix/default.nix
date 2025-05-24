@@ -10,6 +10,7 @@
     targets = {
       kitty.enable = false;
       starship.enable = false;
+      mako.enable = false;
     };
 
     fonts = {
