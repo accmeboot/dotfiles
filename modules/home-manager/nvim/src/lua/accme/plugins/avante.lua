@@ -1,10 +1,8 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  version = false, -- Never set this value to "*"! Never!
+  version = false,
   opts = {
-    -- add any opts here
-    -- for example
     provider = "claude", -- openai
     claude = {
       endpoint = "https://api.anthropic.com",
@@ -12,11 +10,20 @@ return {
     },
     openai = {
       endpoint = "https://api.openai.com/v1",
-      model = "gpt-4.1",            -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000,              -- Timeout in milliseconds, increase this for reasoning models
+      model = "gpt-4.1",             -- your desired model (or use gpt-4o, etc.)
+      timeout = 30000,               -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0,
-      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
+    },
+    hints = { enabled = false },
+    windows = {
+      width = 35,       -- default % based on available width
+      sidebar_header = {
+        enabled = true, -- true, false to enable/disable the header
+      },
+      ask = {
+        floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -34,4 +41,9 @@ return {
       ft = { "markdown", "Avante" },
     },
   },
+  config = function(_, opts)
+    require("avante").setup(opts)
+
+    vim.o.laststatus = 3 -- views can only be fully collapsed with the global statusline
+  end
 }
