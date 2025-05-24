@@ -18,6 +18,7 @@
     go           # go programming language
     rustup       # rust toolchain installer
     lua          # lua programming language
+    luarocks     # package manager for Lua modules
 
     # Terminal Utilities
     kitty        # GPU-accelerated terminal emulator
