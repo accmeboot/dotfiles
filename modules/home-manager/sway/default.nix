@@ -221,9 +221,10 @@
       # Startup applications
       startup = [
         { command = "swaymsg \"workspace T\""; }
+        { command = "blueman-tray"; }
         { command = "blueman-applet"; }
         { command = "nm-applet"; }
-        { command = "eww daemon --restart && eww open bar"; }
+        { command = "eww daemon && eww open bar"; }
         { command = "sleep 5; systemctl --user start kanshi.service"; }
         { command = ''
           swayidle -w \

@@ -180,6 +180,7 @@
                    :space-evenly false
                    :halign "end"
                 (systray :spacing 4
+                         :prepend-new true
                          :icon-size 14)))
 
 

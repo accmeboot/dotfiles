@@ -61,6 +61,7 @@
     eww          # widget system for wayland
     mako         # notification daemon for wayland
     pavucontrol  # PulseAudio volume control
+    easyeffects  # pipewire equalizer
     
     # Gaming
     mangohud     # performance overlay for games
