@@ -18,13 +18,20 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Logitech g-hub alternative
+    solaar = {
+      url = "github:Svenum/Solaar-Flake/main"; # Uncomment line for latest unstable version
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin }:{
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar }:{
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          solaar.nixosModules.default
+
           ./hosts/7950x3d-xtx/default.nix
           ./hosts/7950x3d-xtx/packages.nix
 
