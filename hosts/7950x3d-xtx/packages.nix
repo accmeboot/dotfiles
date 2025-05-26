@@ -74,6 +74,7 @@
     discord      # chat and voice communication platform
     thunderbird  # email client
     transmission_4-gtk # torrent client
+    obs-studio         # screen recording
 
     # System Libraries
     gsettings-desktop-schemas  # GSettings desktop schemas
