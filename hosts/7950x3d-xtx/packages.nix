@@ -62,6 +62,7 @@
     mako         # notification daemon for wayland
     pavucontrol  # PulseAudio volume control
     easyeffects  # pipewire equalizer
+    gowall       # convert wallpaper to the theme
     
     # Gaming
     mangohud     # performance overlay for games

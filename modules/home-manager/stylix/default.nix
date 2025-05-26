@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/gruvbox_image40.png;
+    image = ../../../assets/wallpapers/desk-gruvbox-material.jpg;
     polarity = "dark";
 
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
