@@ -221,11 +221,9 @@
       # Startup applications
       startup = [
         { command = "swaymsg \"workspace T\""; }
-        { command = "blueman-tray"; }
-        { command = "blueman-applet"; }
         { command = "nm-applet"; }
-        { command = "eww daemon && eww open bar"; }
-        { command = "sleep 5; systemctl --user start kanshi.service"; }
+        { command = "sleep 5 && systemctl --user start kanshi.service"; }
+        { command = "sleep 3 && eww open bar"; }
         { command = ''
           swayidle -w \
             timeout 300 'swaylock -f -c 000000' \
