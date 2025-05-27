@@ -52,6 +52,13 @@
 
       bind-key f split-window -v -c "#{pane_current_path}" 'yazi'
 
+      # Start windows and panes index at 1, not 0.
+      set -g base-index 1
+      setw -g pane-base-index 1
+
+      # Ensure window index numbers get reordered on delete.
+      set-option -g renumber-windows on
+
       set -g status-position top
       set -g window-status-separator " "
       set -g status-left-length 50
