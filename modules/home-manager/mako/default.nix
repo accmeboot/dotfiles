@@ -8,7 +8,7 @@
       width = 300;
       height = 110;
       border-size = 2;
-      border-radius = 4;
+      border-radius = 8;
       icons = true;
       default-timeout = 5000;
       ignore-timeout = true;
@@ -19,7 +19,7 @@
       "app-name=volume" = {
         anchor = "bottom-center";
         outer-margin = "0,0,100";
-        border-radius = 4;
+        border-radius = 8;
         progress-color = "#${config.lib.stylix.colors.base02}";
         text-color = "#${config.lib.stylix.colors.base0A}";
         background-color = "#${config.lib.stylix.colors.base01}";
