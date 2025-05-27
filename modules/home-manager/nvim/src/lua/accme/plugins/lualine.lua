@@ -11,12 +11,27 @@ return {
 			},
 			sections = {
 				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-				lualine_b = { "filename", "branch", "diff" },
+				lualine_b = {
+					{
+						"filename",
+						path = 1,
+						shorting_target = 120,
+					},
+					"branch",
+					"diff",
+				},
 				lualine_c = {
 					"%=", --[[ add your center components here in place of this comment ]]
 				},
 				lualine_x = {},
-				lualine_y = { "filetype", "diagnostics", "progress" },
+				lualine_y = {
+					{
+						"filetype",
+						colored = false,
+					},
+					"diagnostics",
+					"progress",
+				},
 				lualine_z = {
 					{ "location", separator = { right = "" }, left_padding = 2 },
 				},
