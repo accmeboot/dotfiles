@@ -53,7 +53,7 @@
       bind-key f split-window -v -c "#{pane_current_path}" 'yazi'
 
       set -g status-position bottom
-      set -g window-status-separator ""
+      set -g window-status-separator " "
       set -g status-left-length 50
 
       set -g message-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
@@ -61,13 +61,13 @@
 
       set -g status-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
 
-      set -g status-left "#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0A}] #S #[fg=#${config.lib.stylix.colors.base0A},bg=#${config.lib.stylix.colors.base01}]"
+      set -g status-left ""
 
-      set -g window-status-format "#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base02}]#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base02}] #I  #W #[fg=#${config.lib.stylix.colors.base02},bg=#${config.lib.stylix.colors.base01}]"
-      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base0B}]#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0B}] #I  #W #[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]"
+      set -g window-status-format "#[fg=#${config.lib.stylix.colors.base03},bg=#${config.lib.stylix.colors.base01}]#[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base03}]#I #[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base02}]  #W#[fg=#${config.lib.stylix.colors.base02},bg=#${config.lib.stylix.colors.base01}]"
+      set -g window-status-current-format "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]#[fg=#${config.lib.stylix.colors.base00},bg=#${config.lib.stylix.colors.base0B}]#I #[fg=#${config.lib.stylix.colors.base06},bg=#${config.lib.stylix.colors.base03}]  #W#[fg=#${config.lib.stylix.colors.base03},bg=#${config.lib.stylix.colors.base01}]"
 
       set -g status-right-length 100
-      set -g status-right "#[fg=#${config.lib.stylix.colors.base0B},bg=#${config.lib.stylix.colors.base01}]  #[fg=#${config.lib.stylix.colors.base05}]#{pane_current_path}"
+      set -g status-right "#[fg=#${config.lib.stylix.colors.base0A},bg=#${config.lib.stylix.colors.base01}]#[fg=#${config.lib.stylix.colors.base01},bg=#${config.lib.stylix.colors.base0A}]#S #[fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base03}] #{pane_current_path}#[fg=#${config.lib.stylix.colors.base03},bg=#${config.lib.stylix.colors.base01}]"
     '';
 
     plugins = with pkgs.tmuxPlugins; [
