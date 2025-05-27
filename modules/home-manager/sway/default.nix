@@ -223,7 +223,6 @@
       # Startup applications
       startup = [
         { command = "swaymsg \"workspace T\""; }
-        { command = "nm-applet"; }
         { command = "sleep 5 && systemctl --user start kanshi.service"; }
         { command = "sleep 3 && eww open bar"; }
         { command = ''
