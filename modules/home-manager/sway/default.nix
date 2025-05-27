@@ -2,6 +2,8 @@
 {
   wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.swayfx;
+    checkConfig = false; # workaround for swayfx see https://github.com/nix-community/home-manager/issues/5379
     config = {
       # Variables
       modifier = "Mod4";
@@ -236,5 +238,11 @@
 
     # Enable sway system configuration
     wrapperFeatures.gtk = true;
+
+    # Mostly swayfx specifics
+    extraConfig = ''
+      corner_radius 8
+      smart_corner_radius on
+    '';
   };
 }
