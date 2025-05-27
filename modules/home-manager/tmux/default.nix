@@ -52,9 +52,13 @@
 
       bind-key f split-window -v -c "#{pane_current_path}" 'yazi'
 
-      set -g status-position bottom
+      set -g status-position top
       set -g window-status-separator " "
       set -g status-left-length 50
+      
+      # Add padding/offset below the status bar
+      set -g pane-border-status top
+      set -g pane-border-format ""
 
       set -g message-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
       set -g message-command-style "fg=#${config.lib.stylix.colors.base05},bg=#${config.lib.stylix.colors.base01}"
