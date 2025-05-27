@@ -18,7 +18,7 @@
       };
 
       git_branch = {
-        format = "[ $branch]($style)";
+        format = "[ $branch]($style)";
         style = "bright-black";
       };
 
