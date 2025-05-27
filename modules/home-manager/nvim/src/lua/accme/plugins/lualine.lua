@@ -5,23 +5,18 @@ return {
 		require("lualine").setup({
 			options = {
 				theme = "auto",
-				component_separators = "",
 				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 				icons_enabled = true,
 			},
 			sections = {
-				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
+				lualine_a = { { "mode", separator = { left = "" }, padding = { left = 0, right = 1 } } },
 				lualine_b = {
-					{
-						"filename",
-						path = 1,
-						shorting_target = 120,
-					},
-					"branch",
+					{ "branch", icon = "" },
 					"diff",
 				},
 				lualine_c = {
-					"%=", --[[ add your center components here in place of this comment ]]
+					{ "filename", icon = "", path = 3 },
 				},
 				lualine_x = {},
 				lualine_y = {
@@ -33,7 +28,7 @@ return {
 					"progress",
 				},
 				lualine_z = {
-					{ "location", separator = { right = "" }, left_padding = 2 },
+					{ "location", separator = { right = "" }, padding = { left = 1, right = 0 } },
 				},
 			},
 
