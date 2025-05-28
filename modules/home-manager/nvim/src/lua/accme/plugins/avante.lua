@@ -3,10 +3,10 @@ return {
 	event = "VeryLazy",
 	version = false,
 	opts = {
-		provider = "claude", -- openai
+		provider = "openai", -- openai
 		claude = {
 			endpoint = "https://api.anthropic.com",
-			model = "claude-3-5-haiku-20241022",
+			model = "claude-sonnet-4-20250514",
 		},
 		openai = {
 			endpoint = "https://api.openai.com/v1",
