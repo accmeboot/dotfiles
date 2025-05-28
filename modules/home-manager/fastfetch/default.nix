@@ -9,10 +9,6 @@
           source = ../../../assets/wallpapers/nix-logo-gruvbox.png;
           width = 22;
           height = 22;
-          padding = {
-            left = 1;
-            top = 0;
-          };
       };
       general.multithreading = true;
       display.separator = " ";
