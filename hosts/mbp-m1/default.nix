@@ -25,6 +25,7 @@
     curl
     wget
     starship
+    rustup
   ];
 
   homebrew = {
