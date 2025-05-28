@@ -23,6 +23,8 @@ return {
 					{
 						"filetype",
 						colored = false,
+						icon_only = true,
+						padding = 0,
 					},
 					"diagnostics",
 					"progress",
