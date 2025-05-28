@@ -13,15 +13,13 @@ vim.cmd("highlight NormalFloat ctermbg=NONE guibg=NONE")
 vim.cmd("highlight Pmenu ctermbg=NONE guibg=NONE")
 
 -- fugitive colors remap for diff
-local visual_bg = vim.api.nvim_get_hl_by_name("Visual", true)["background"]
+local visual_hl = vim.api.nvim_get_hl(0, { name = "Visual" })
+local search_hl = vim.api.nvim_get_hl(0, { name = "Search" })
 
-local search_fg = vim.api.nvim_get_hl_by_name("Search", true)["foreground"]
-local search_bg = vim.api.nvim_get_hl_by_name("Search", true)["background"]
-
-if visual_bg and search_fg and search_bg then
-  visual_bg = string.format("%x", visual_bg)
-  search_fg = string.format("%x", search_fg)
-  search_bg = string.format("%x", search_bg)
+if visual_hl.bg and search_hl.fg and search_hl.bg then
+  local visual_bg = string.format("%06x", visual_hl.bg)
+  local search_fg = string.format("%06x", search_hl.fg)
+  local search_bg = string.format("%06x", search_hl.bg)
 
   vim.cmd("highlight DiffAdd guibg=#" .. visual_bg)
   vim.cmd("highlight DiffDelete guibg=#" .. visual_bg)
