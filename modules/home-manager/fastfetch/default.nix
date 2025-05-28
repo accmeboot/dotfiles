@@ -6,12 +6,12 @@
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
           type = "kitty-icat";
-          source = ../../../assets/wallpapers/nix-logo.png;
-          width = 18;
-          height = 5;
+          source = ../../../assets/wallpapers/nix-logo-gruvbox.png;
+          width = 22;
+          height = 22;
           padding = {
             left = 1;
-            top = 1;
+            top = 0;
           };
       };
       general.multithreading = true;
