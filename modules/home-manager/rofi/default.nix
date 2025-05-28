@@ -15,11 +15,11 @@ let
       x-offset: 0px;
       y-offset: 0px;
       enabled: true;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: "default";
       background-color: #${config.lib.stylix.colors.base00};
       border-color: #${config.lib.stylix.colors.base05};
-      border: 2px;
+      border: 4px;
     }
 
     mainbox {
@@ -54,7 +54,7 @@ let
       expand: false;
       str: " ";
       padding: 12px 10px 12px 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
     }
@@ -64,7 +64,7 @@ let
       expand: false;
       width: 450px;
       padding: 12px 16px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
       cursor: text;
@@ -87,7 +87,7 @@ let
     button {
       width: 50px;
       padding: 12px 8px 12px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #${config.lib.stylix.colors.base01};
       text-color: inherit;
       cursor: pointer;
@@ -120,7 +120,7 @@ let
       enabled: true;
       spacing: 10px;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
       cursor: pointer;
@@ -178,7 +178,7 @@ let
 
     textbox {
       padding: 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #${config.lib.stylix.colors.base01};
       text-color: #${config.lib.stylix.colors.base04};
       vertical-align: 0.5;
@@ -187,7 +187,7 @@ let
 
     error-message {
       padding: 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       background-color: #${config.lib.stylix.colors.base01};
       text-color: #${config.lib.stylix.colors.base04};
     }

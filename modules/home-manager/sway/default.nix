@@ -240,8 +240,9 @@
 
     # Mostly swayfx specifics
     extraConfig = ''
-      corner_radius 8
       smart_corner_radius on
+      corner_radius 10
+      default_border pixel 4
     '';
   };
 }
