@@ -6,7 +6,7 @@
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
           type = "kitty-icat";
-          source = ../../../assets/wallpapers/term-logo.png;
+          source = ../../../assets/wallpapers/nix-logo.png;
           width = 18;
           height = 5;
           padding = {
