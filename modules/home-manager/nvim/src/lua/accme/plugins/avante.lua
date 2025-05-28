@@ -6,7 +6,7 @@ return {
 		provider = "claude", -- openai
 		claude = {
 			endpoint = "https://api.anthropic.com",
-			model = "claude-sonnet-4-20250514",
+			model = "claude-3-5-haiku-20241022",
 		},
 		openai = {
 			endpoint = "https://api.openai.com/v1",
