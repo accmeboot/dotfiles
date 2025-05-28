@@ -3,7 +3,7 @@ local opt = vim.opt -- options gloabals variable
 vim.g.have_nerd_font = true
 
 -- line numbers
-opt.number = true -- Show current line number
+opt.number = true         -- Show current line number
 opt.relativenumber = true -- Show relative line numbers
 
 -- tabs & indentation
@@ -55,3 +55,5 @@ opt.foldcolumn = "0"
 opt.foldlevelstart = 99
 
 opt.fillchars:append({ eob = " " })
+
+opt.cmdheight = 0
