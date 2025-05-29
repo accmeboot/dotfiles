@@ -13,10 +13,10 @@ if [ "$#" -gt 0 ]; then
             systemctl suspend
             ;;
         lock)
-            swaylock -f -c 000000 &
+            pidof hyprlock || hyprlock
             ;;
         logout)
-            sway exit
+            hyprctl dispatch exit
             ;;
     esac
     # Exit without output to make rofi close

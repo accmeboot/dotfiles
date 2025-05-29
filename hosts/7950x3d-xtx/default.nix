@@ -44,8 +44,22 @@
         efiSysMountPoint = "/boot";
       };
     };
+    consoleLogLevel = 3;
+
+    plymouth = {
+      enable = true;
+    };
+
     initrd.kernelModules = [ "amdgpu" ];
-    kernelParams = [ "video=DP-2:1920x1080@360" ];
+
+    kernelParams = [
+      "video=DP-2:1920x1080@360"
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
   };
 
   #----------------------------------------------------------------------------#
@@ -100,6 +114,19 @@
     };
     gamemode.enable = true;
     dconf.enable = true;
+
+    uwsm = {
+      enable = true;
+      waylandCompositors = {
+        hyprland = {
+          prettyName = "Hyprland";
+          comment = "Hyprland compositor managed by UWSM";
+          binPath = "/etc/profiles/per-user/accme/bin/Hyprland";
+        };
+      };
+    };
+
+    hyprland.withUWSM  = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -131,14 +158,17 @@
     blueman.enable = true;
     envfs.enable = true;
     greetd = {
-      enable = true;
+      enable = false;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet \
+                    --time --time-format '%I:%M %p | %a • %h | %F' \
+                    --cmd 'uwsm start hyprland'";
           user = "greeter";
         };
       };
     };
+    xserver.displayManager.gdm.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
