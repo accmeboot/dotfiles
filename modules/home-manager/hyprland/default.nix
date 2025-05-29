@@ -50,8 +50,8 @@
         
         blur = {
           enabled = true;
-          size = 5;
-          passes = 1;
+          size = 10;
+          passes = 3;
         };
 
         shadow = {

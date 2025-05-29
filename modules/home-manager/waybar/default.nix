@@ -7,13 +7,17 @@
         position = "top";
         height = 30;
         
-        modules-left = [ "group/spaces" ];
+        modules-left = [ "group/spaces" "hyprland/window" ];
         modules-center = [];
         modules-right = [ "group/temps" "custom/kblayout" "tray" "clock" ];
 
         "group/spaces" = {
           orientation = "horizontal";
           modules = ["custom/launcher" "hyprland/workspaces"];
+        };
+
+        "hyprland/window" = {
+          format = "{title}";
         };
 
         "hyprland/workspaces" = {
@@ -138,6 +142,11 @@
       }
       #custom-ram {
         color: #${config.lib.stylix.colors.base0B};
+      }
+
+      #window {
+        color: #${config.lib.stylix.colors.base05};
+        margin-left: 10px;
       }
 
       #tray * {
