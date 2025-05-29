@@ -124,12 +124,14 @@
         hyprland = {
           prettyName = "Hyprland";
           comment = "Hyprland compositor managed by UWSM";
-          binPath = "/etc/profiles/per-user/accme/bin/Hyprland";
         };
       };
     };
 
-    hyprland.withUWSM  = true;
+    hyprland = {
+      enable = true;
+      withUWSM  = true;
+    };
   };
 
   #----------------------------------------------------------------------------#
