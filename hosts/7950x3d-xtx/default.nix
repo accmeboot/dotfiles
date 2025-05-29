@@ -50,7 +50,10 @@
       enable = true;
     };
 
-    initrd.kernelModules = [ "amdgpu" ];
+    initrd = {
+      kernelModules = [ "amdgpu" ];
+      verbose = false;
+    };
 
     kernelParams = [
       "video=DP-2:1920x1080@360"
