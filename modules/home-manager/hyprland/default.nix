@@ -12,7 +12,7 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "kitty";
-      "$menu" = "rofi -normal-window";
+      "$menu" = "rofi";
 
       # Monitor configuration
       monitor = [
