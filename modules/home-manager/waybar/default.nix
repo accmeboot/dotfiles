@@ -7,9 +7,14 @@
         position = "top";
         height = 30;
         
-        modules-left = [ "custom/launcher"  "hyprland/workspaces" ];
+        modules-left = [ "group/spaces" ];
         modules-center = [];
         modules-right = [ "group/temps" "custom/kblayout" "tray" "clock" ];
+
+        "group/spaces" = {
+          orientation = "horizontal";
+          modules = ["custom/launcher" "hyprland/workspaces"];
+        };
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -78,6 +83,9 @@
         color: #${config.lib.stylix.colors.base00};
       }
 
+      #workspaces {
+        margin-left: 8px;
+      }
 
       #workspaces button {
         all: initial;
@@ -105,7 +113,7 @@
         color: #${config.lib.stylix.colors.base05};
       }
 
-      #tray, #clock, #workspaces, #custom-launcher, #temps, #custom-kblayout {
+      #tray, #clock, #temps, #custom-kblayout, #spaces {
         background-color: #${config.lib.stylix.colors.base00};
         padding: 2px 10px;
         margin: 2px;
