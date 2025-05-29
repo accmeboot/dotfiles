@@ -68,21 +68,6 @@
   # SYSTEMD SERVICES                                                           #
   #----------------------------------------------------------------------------#
   systemd = {
-    # kanshi systemd service
-    # we don't run Sway itself as a systemd service.
-    # There are auxiliary daemons that we do want to run
-    # as systemd services, for example Kanshi
-    user.services.kanshi = {
-      description = "kanshi daemon";
-      environment = {
-        WAYLAND_DISPLAY = "wayland-1";
-        DISPLAY = ":0";
-      };
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
-      };
-    };
     tmpfiles.rules = let
       rocmEnv = pkgs.symlinkJoin {
         name = "rocm-combined";
@@ -104,17 +89,6 @@
     nix-ld = {
       enable = true;
     };
-    sway = {
-      enable = true;
-      wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [
-        swaylock
-        swayidle
-        swaybg
-        wmenu
-        foot
-      ];
-    };
     zsh.enable = true;
     starship.enable = true;
     steam = {
@@ -134,7 +108,6 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    pam.services.swaylock = {};
   };
 
   #----------------------------------------------------------------------------#
@@ -161,7 +134,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
           user = "greeter";
         };
       };
@@ -219,9 +192,6 @@
       "${pkgs.capitaine-cursors}/share/icons"
     ];
     NIXOS_OZONE_WL = "1";
-
-    XKB_DEFAULT_LAYOUT = "us,ru";
-    XKB_DEFAULT_OPTIONS = "grp:ctrl_space_toggle";
 
     MANGOHUD="1"; # for mangohud
 

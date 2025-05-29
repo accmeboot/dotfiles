@@ -63,6 +63,7 @@
     pavucontrol  # PulseAudio volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
+    pasystray    # audio settings in tray
     
     # Gaming
     mangohud     # performance overlay for games

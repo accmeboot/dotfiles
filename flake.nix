@@ -45,11 +45,11 @@
                 imports = [
                   ./hosts/7950x3d-xtx/home.nix
                   ./modules/home-manager/gtk/default.nix
-                  ./modules/home-manager/eww/default.nix
+                  ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
                   ./modules/home-manager/mangohud/default.nix
                   ./modules/home-manager/rofi/default.nix
-                  ./modules/home-manager/sway/default.nix
+                  ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/nvim/default.nix
                   # ./modules/home-manager/nvim/base16.nix
                   ./modules/home-manager/kitty/default.nix

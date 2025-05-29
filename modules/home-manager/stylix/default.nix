@@ -11,6 +11,7 @@
       kitty.enable = false;
       starship.enable = false;
       mako.enable = false;
+      waybar.enable = false;
     };
 
     fonts = {
