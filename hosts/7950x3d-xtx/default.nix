@@ -43,6 +43,11 @@
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
+      grub2-theme = {
+        enable = true;
+        theme = "vimix";
+        footer = true;
+      };
     };
     consoleLogLevel = 3;
 
