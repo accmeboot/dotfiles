@@ -32,7 +32,6 @@ let
     }
 
     window {
-      transparency: "real";
       location: center;
       anchor: center;
       fullscreen: false;
@@ -65,62 +64,52 @@ let
 
     inputbar {
       enabled: true;
-      spacing: 10px;
-      padding: 100px 60px;
-      background-color: transparent;
-      background-image: url("${rofi_bg}", width);
+      padding: 20px;
+      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base05};
       orientation: horizontal;
-      children: [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+      children: [ "textbox-prompt-colon", "entry", "mode-switcher" ];
     }
 
     textbox-prompt-colon {
       enabled: true;
       expand: false;
       str: " ";
-      padding: 12px 10px 12px 15px;
-      border-radius: 10px;
-      background-color: #${config.lib.stylix.colors.base01};
+      padding: 12px 5px 12px 0px;
+      background-color: transparent;
       text-color: inherit;
+      font: "SF Pro Text 16";
     }
 
     entry {
       enabled: true;
-      expand: false;
-      width: 450px;
-      padding: 12px 16px;
-      border-radius: 10px;
-      background-color: #${config.lib.stylix.colors.base01};
+      expand: true;
+      padding: 12px 16px 12px 0px;
+      background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: "Search";
+      placeholder: "Search...";
       placeholder-color: inherit;
-    }
-
-    dummy {
-      expand: true;
-      background-color: transparent;
+      font: "SF Pro Text 16";
     }
 
     mode-switcher {
       enabled: true;
-      spacing: 10px;
+      spacing: 20px;
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
     }
 
     button {
-      width: 50px;
-      padding: 12px 8px 12px 12px;
-      border-radius: 10px;
-      background-color: #${config.lib.stylix.colors.base01};
+      background-color: transparent;
       text-color: inherit;
       cursor: pointer;
+      font: "SF Pro Text 18";
     }
 
     button selected {
-      background-color: #${config.lib.stylix.colors.base0B};
-      text-color: #${config.lib.stylix.colors.base01};
+      background-color: transparent;
+      text-color: #${config.lib.stylix.colors.base0B};
     }
 
     listview {
@@ -158,27 +147,27 @@ let
     }
 
     element normal.urgent {
-      background-color: #${config.lib.stylix.colors.base09};
+      background-color: ${hexToRgba config.lib.stylix.colors.base09 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
     element normal.active {
-      background-color: #${config.lib.stylix.colors.base02};
+      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
     element selected.normal {
-      background-color: #${config.lib.stylix.colors.base02};
+      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
     element selected.urgent {
-      background-color: #${config.lib.stylix.colors.base09};
+      background-color: ${hexToRgba config.lib.stylix.colors.base09 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
     element selected.active {
-      background-color: #${config.lib.stylix.colors.base02};
+      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
@@ -204,7 +193,7 @@ let
     textbox {
       padding: 15px;
       border-radius: 10px;
-      background-color: #${config.lib.stylix.colors.base01};
+      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
       vertical-align: 0.5;
       horizontal-align: 0.0;
@@ -213,7 +202,7 @@ let
     error-message {
       padding: 15px;
       border-radius: 10px;
-      background-color: #${config.lib.stylix.colors.base01};
+      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
     }
   '';
