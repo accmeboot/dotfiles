@@ -152,7 +152,7 @@ let
     }
 
     element normal.active {
-      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
+      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base05};
     }
 
