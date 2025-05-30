@@ -15,7 +15,7 @@ in {
     # 'after-startup-command' is run after 'after-login-command'
     # Available commands : https://nikitabobko.github.io/AeroSpace/commands
     after-startup-command = [
-      'exec-and-forget borders active_color=0xFF${colors.base05} inactive_color=0xFF${colors.base03} width=8.0 blacklist="Simulator,qemu-system-aarch64"'
+      'exec-and-forget borders active_color=0xFF${colors.base05} inactive_color=0xFF${colors.base03} width=6.0 blacklist="Simulator,qemu-system-aarch64"'
     ]
 
     # Start AeroSpace at login
