@@ -35,7 +35,7 @@
       general = {
         gaps_in = 4;
         gaps_out = 4;
-        border_size = 4;
+        border_size = 2;
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
         layout = "dwindle";
@@ -44,7 +44,7 @@
 
       # Decoration
       decoration = {
-        rounding = 10;
+        rounding = 8;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         

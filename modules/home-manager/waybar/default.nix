@@ -121,7 +121,7 @@
         background-color: #${config.lib.stylix.colors.base00};
         padding: 2px 10px;
         margin: 2px;
-        border-radius: 10px;
+        border-radius: 8px;
       }
 
       #custom-kblayout {
@@ -150,7 +150,7 @@
       }
 
       #tray * {
-        border-radius: 10;
+        border-radius: 8;
       }
     '';
   };

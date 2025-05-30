@@ -39,11 +39,11 @@ let
       x-offset: 0px;
       y-offset: 0px;
       enabled: true;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: "default";
       background-color: ${hexToRgba config.lib.stylix.colors.base00 0.8};
       border-color: #${config.lib.stylix.colors.base05};
-      border: 4px;
+      border: 2px;
     }
 
     mainbox {
@@ -134,7 +134,7 @@ let
       enabled: true;
       spacing: 10px;
       padding: 10px;
-      border-radius: 10px;
+      border-radius: 8px;
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
       cursor: pointer;
@@ -192,7 +192,7 @@ let
 
     textbox {
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 8px;
       background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
       vertical-align: 0.5;
@@ -201,7 +201,7 @@ let
 
     error-message {
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 8px;
       background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
     }
