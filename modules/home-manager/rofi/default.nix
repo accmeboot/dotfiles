@@ -75,10 +75,10 @@ let
       enabled: true;
       expand: false;
       str: " ";
-      padding: 12px 5px 12px 0px;
+      padding: 10px 5px 10px 0px;
       background-color: transparent;
       text-color: inherit;
-      font: "SF Pro Text 16";
+      font: "SF Pro Text 18";
     }
 
     entry {
@@ -88,7 +88,7 @@ let
       background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: "Search...";
+      placeholder: "";
       placeholder-color: inherit;
       font: "SF Pro Text 16";
     }
