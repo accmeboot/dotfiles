@@ -227,6 +227,10 @@
   #----------------------------------------------------------------------------#
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
+  environment.variables = {
+    QT_STYLE_OVERRIDE = "kvantum";
+  };
+
   environment.sessionVariables = {
     XCURSOR_PATH = [
       "${pkgs.capitaine-cursors}/share/icons"
@@ -237,7 +241,5 @@
 
     LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
-
-    QT_QPA_PLATFORMTHEME="qt5ct";
   };
 }

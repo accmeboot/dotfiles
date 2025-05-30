@@ -93,6 +93,8 @@
     networkmanagerapplet # network manager GUI
 
     mission-center # mission control center
+
+    libsForQt5.qtstyleplugin-kvantum # qt-theme framework
   ];
 
   #----------------------------------------------------------------------------#
