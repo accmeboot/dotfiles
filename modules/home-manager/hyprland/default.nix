@@ -275,7 +275,6 @@
         "waybar"
         "nm-applet"
         "blueman-applet"
-        "pasystray"
       ];
 
       # Environment variables
