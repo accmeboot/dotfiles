@@ -26,29 +26,34 @@
           format = "{name}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
+          cursor = 60;
         };
 
         "custom/launcher" = {
           format = " ";
           on-click = "rofi -show drun";
+          cursor = 60;
         };
 
         "custom/cpu" = {
           format = "  {text}°C";
           exec = "sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g'";
           interval = 1;
+          cursor = false;
         };
 
         "custom/gpu" = {
           format = "   {text}°C";
           exec = "sensors | awk '/edge/ {if (!found) {print int($2); found=1}}'";
           interval = 1;
+          cursor = false;
         };
 
         "custom/ram" = {
           format = "  {text}%";
           exec = "free -m | awk '/^Mem:/ {printf \"%d\", $3/$2 * 100}'";
           interval = 1;
+          cursor = false;
         };
 
         "group/temps" = {
@@ -60,16 +65,19 @@
           format = "   {text}";
           exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | awk '{print toupper(substr($0,1,2))}'";
           interval = 1;
+          cursor = false;
         };
 
         clock = {
           format = "{:%A, %d %b %Y, %H:%M}";
           tooltip = false;
           format-alt = "{:%A, %d %b %Y, %H:%M}";
+          cursor = false;
         };
 
         tray = {
           spacing = 10;
+          cursor = 60;
         };
       };
     };
