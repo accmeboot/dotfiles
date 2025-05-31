@@ -18,6 +18,8 @@
 
         "hyprland/window" = {
           format = "{title}";
+          tooltip = false;
+          on-click-middle = "hyprctl dispatch killactive";
         };
 
         "hyprland/workspaces" = {
@@ -62,6 +64,7 @@
 
         clock = {
           format = "{:%A, %d %b %Y, %H:%M}";
+          tooltip = false;
           format-alt = "{:%A, %d %b %Y, %H:%M}";
         };
 
@@ -87,12 +90,20 @@
         color: #${config.lib.stylix.colors.base00};
       }
 
+      tooltip {
+        border-radius: 8px;
+        background-color: #${config.lib.stylix.colors.base01};
+      }
+
+      tooltip label {
+        color: #${config.lib.stylix.colors.base05};
+      }
+
       #workspaces {
         margin-left: 8px;
       }
 
       #workspaces button {
-        all: initial;
         min-width: 0;
         box-shadow: inset 0 -3px transparent;
 
