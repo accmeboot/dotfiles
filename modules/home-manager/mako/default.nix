@@ -40,7 +40,7 @@ in {
       text-color = "#${config.lib.stylix.colors.base05}";
       background-color = "${hexToRgba config.lib.stylix.colors.base00 0.8}";
       progress-color = "${hexToRgba config.lib.stylix.colors.base03 0.8}";
-      font = "SF Pro Text 9";
+      font = "MesloLG 9";
       padding = 10;
 
       icon-border-radius = 32;
