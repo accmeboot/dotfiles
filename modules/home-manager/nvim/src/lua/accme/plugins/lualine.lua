@@ -17,6 +17,12 @@ return {
           "diff",
         },
         lualine_c = {
+          {
+            function()
+              return require("accme.local.codecompanion-spinner").get_lualine_status()
+            end,
+            color = "WarningMsg"
+          },
           { "filename", icon = "", path = 3 },
         },
         lualine_x = {

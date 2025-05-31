@@ -61,6 +61,11 @@ return {
     },
   },
   init = function()
+    local spinner = require("accme.local.codecompanion-spinner")
+
+    -- Setup the autocmd detection
+    spinner.setup_status()
+
     vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat toggle<CR>")
     vim.keymap.set("n", "<leader>ca", ":Telescope codecompanion<CR>")
     vim.keymap.set("n", "<leader>ch", ":CodeCompanionHistory<CR>")
