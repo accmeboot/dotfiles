@@ -41,6 +41,7 @@
     lm_sensors   # hardware monitoring utilities
     pciutils     # PCI utilities for device inspection
     bluez        # bluetooth protocol stack
+    solaar       # logitech controll app
     
     # Wayland Tools
     rofi-wayland # application launcher and window switcher

@@ -39,7 +39,7 @@
         };
 
         "custom/cpu" = {
-          format = "  {text}°C";
+          format = "CPU: {text}°C";
           exec = ''
             temp=$(sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g')
             if [ "$temp" -lt 50 ]; then
@@ -58,7 +58,7 @@
         };
 
         "custom/gpu" = {
-          format = "   {text}°C";
+          format = "GPU: {text}°C";
           exec = ''
             temp=$(sensors | awk '/edge/ {if (!found) {print int($2); found=1}}')
             if [ "$temp" -lt 50 ]; then
@@ -77,7 +77,7 @@
         };
 
         "custom/ram" = {
-          format = "  {text}%";
+          format = "RAM: {text}%";
           exec = ''
             usage=$(free -m | awk '/^Mem:/ {printf "%d", $3/$2 * 100}')
             if [ "$usage" -lt 50 ]; then
