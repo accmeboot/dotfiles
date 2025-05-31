@@ -13,16 +13,16 @@ return {
       sections = {
         lualine_a = { { "mode", separator = { left = "" }, padding = { left = 0, right = 1 } } },
         lualine_b = {
-          { "branch", icon = "" },
-          "diff",
-        },
-        lualine_c = {
           {
             function()
               return require("accme.local.codecompanion-spinner").get_lualine_status()
             end,
             color = "WarningMsg"
           },
+          { "branch", icon = "" },
+          "diff",
+        },
+        lualine_c = {
           { "filename", icon = "", path = 3 },
         },
         lualine_x = {
