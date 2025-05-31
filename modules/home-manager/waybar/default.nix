@@ -9,7 +9,7 @@
         
         modules-left = [ "group/spaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "mpris" "tray" "group/temps" "custom/kblayout" "clock" ];
+        modules-right = [ "tray" "group/temps" "custom/kblayout" "clock" ];
 
         "group/spaces" = {
           orientation = "horizontal";
@@ -31,19 +31,6 @@
           cursor = 60;
         };
 
-        mpris = {
-          format = "{status_icon} {dynamic}";
-          format-paused = "{status_icon} {dynamic}";
-          interval = 1;
-          dynamic-len = 40;
-          title-len = 40;
-          status-icons = {
-            paused = "▶";
-            playing = "⏸";
-            stopped = "⏸";
-          };
-        };
-
         "custom/launcher" = {
           format = " ";
           on-click = "rofi -show drun";
@@ -52,8 +39,19 @@
         };
 
         "custom/cpu" = {
-          format = "  {text}°C";
-          exec = "sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g'";
+          format = "  {text}°C";
+          exec = ''
+            temp=$(sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g')
+            if [ "$temp" -lt 50 ]; then
+              class="normal"
+            elif [ "$temp" -lt 65 ]; then
+              class="medium" 
+            else
+              class="high"
+            fi
+            echo "{\"text\":\"$temp\",\"class\":\"$class\"}"
+          '';
+          return-type = "json";
           interval = 1;
           cursor = false;
           tooltip = false;
@@ -61,7 +59,18 @@
 
         "custom/gpu" = {
           format = "   {text}°C";
-          exec = "sensors | awk '/edge/ {if (!found) {print int($2); found=1}}'";
+          exec = ''
+            temp=$(sensors | awk '/edge/ {if (!found) {print int($2); found=1}}')
+            if [ "$temp" -lt 50 ]; then
+              class="normal"
+            elif [ "$temp" -lt 65 ]; then
+              class="medium"
+            else
+              class="high" 
+            fi
+            echo "{\"text\":\"$temp\",\"class\":\"$class\"}"
+          '';
+          return-type = "json";
           interval = 1;
           cursor = false;
           tooltip = false;
@@ -69,7 +78,18 @@
 
         "custom/ram" = {
           format = "  {text}%";
-          exec = "free -m | awk '/^Mem:/ {printf \"%d\", $3/$2 * 100}'";
+          exec = ''
+            usage=$(free -m | awk '/^Mem:/ {printf "%d", $3/$2 * 100}')
+            if [ "$usage" -lt 50 ]; then
+              class="normal"
+            elif [ "$usage" -lt 75 ]; then
+              class="medium"
+            else
+              class="high"
+            fi
+            echo "{\"text\":\"$usage\",\"class\":\"$class\"}"
+          '';
+          return-type = "json";
           interval = 1;
           cursor = false;
           tooltip = false;
@@ -126,15 +146,6 @@
         color: #${config.lib.stylix.colors.base05};
       }
 
-      #mpris {
-        margin-right: 10px;
-        color: #${config.lib.stylix.colors.base05};
-      }
-
-      #mpris.player {
-        color: #${config.lib.stylix.colors.base00};
-      }
-
       #workspaces {
         margin-left: 8px;
       }
@@ -180,15 +191,18 @@
         font-size: 16px;
       }
 
-      #custom-cpu {
+      #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
+        color: #${config.lib.stylix.colors.base0B};
+      }
+      #custom-cpu.medium, #custom-gpu.medium, #custom-ram.medium {
+        color: #${config.lib.stylix.colors.base0A};
+      }
+      #custom-cpu.high, #custom-gpu.high, #custom-ram.high {
         color: #${config.lib.stylix.colors.base08};
       }
+
       #custom-gpu {
-        color: #${config.lib.stylix.colors.base09};
         margin: 0px 10px;
-      }
-      #custom-ram {
-        color: #${config.lib.stylix.colors.base0B};
       }
 
       #window {
