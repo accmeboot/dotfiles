@@ -35,6 +35,8 @@
           format = "{status_icon} {dynamic}";
           format-paused = "{status_icon} {dynamic}";
           interval = 1;
+          dynamic-len = 40;
+          title-len = 40;
           status-icons = {
             paused = "▶";
             playing = "⏸";
