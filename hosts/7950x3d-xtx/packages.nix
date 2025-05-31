@@ -59,7 +59,6 @@
     
     # Desktop Environment
     eww          # widget system for wayland
-    mako         # notification daemon for wayland
     pavucontrol  # PulseAudio volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme

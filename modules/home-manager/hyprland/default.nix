@@ -118,10 +118,12 @@
         vrr = 1; # adaptive sync
       };
 
-      # Blur eww bar
       layerrule = [
         "blur, waybar"
         "blur, rofi"
+        "blur, notifications"
+        "ignorezero, notifications"
+        "ignorezero, rofi"
       ];
 
       # Window rules
