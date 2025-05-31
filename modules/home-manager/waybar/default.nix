@@ -33,6 +33,7 @@
           format = " ";
           on-click = "rofi -show drun";
           cursor = 60;
+          tooltip-format = "Rofi drun";
         };
 
         "custom/cpu" = {
@@ -40,6 +41,7 @@
           exec = "sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g'";
           interval = 1;
           cursor = false;
+          tooltip = false;
         };
 
         "custom/gpu" = {
@@ -47,6 +49,7 @@
           exec = "sensors | awk '/edge/ {if (!found) {print int($2); found=1}}'";
           interval = 1;
           cursor = false;
+          tooltip = false;
         };
 
         "custom/ram" = {
@@ -54,6 +57,7 @@
           exec = "free -m | awk '/^Mem:/ {printf \"%d\", $3/$2 * 100}'";
           interval = 1;
           cursor = false;
+          tooltip = false;
         };
 
         "group/temps" = {
@@ -66,6 +70,7 @@
           exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | awk '{print toupper(substr($0,1,2))}'";
           interval = 1;
           cursor = false;
+          tooltip = false;
         };
 
         clock = {
