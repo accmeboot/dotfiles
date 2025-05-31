@@ -35,7 +35,7 @@ let
       location: center;
       anchor: center;
       fullscreen: false;
-      width: 800px;
+      width: 600px;
       x-offset: 0px;
       y-offset: 0px;
       enabled: true;
@@ -56,7 +56,7 @@ let
 
     listbox {
       spacing: 20px;
-      padding: 20px;
+      padding: 10px;
       background-color: transparent;
       orientation: vertical;
       children: [ "message", "listview" ];
@@ -64,18 +64,20 @@ let
 
     inputbar {
       enabled: true;
-      padding: 20px;
-      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
+      padding: 10px;
+      background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
       orientation: horizontal;
       children: [ "textbox-prompt-colon", "entry", "mode-switcher" ];
+      border: 0px 0px 1px 0px;
+      border-color: #${config.lib.stylix.colors.base03};
     }
 
     textbox-prompt-colon {
       enabled: true;
       expand: false;
       str: " ";
-      padding: 10px 5px 10px 0px;
+      padding: 16px 14px 12px 20px;
       background-color: transparent;
       text-color: inherit;
       font: "SF Pro Text 18";
@@ -84,7 +86,7 @@ let
     entry {
       enabled: true;
       expand: true;
-      padding: 12px 16px 12px 0px;
+      padding: 18px 16px 16px 0px;
       background-color: transparent;
       text-color: inherit;
       cursor: text;
@@ -95,7 +97,7 @@ let
 
     mode-switcher {
       enabled: true;
-      spacing: 20px;
+      spacing: 10px;
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
     }
@@ -104,7 +106,7 @@ let
       background-color: transparent;
       text-color: inherit;
       cursor: pointer;
-      font: "SF Pro Text 18";
+      font: "SF Pro Text 16";
     }
 
     button selected {
@@ -114,16 +116,10 @@ let
 
     listview {
       enabled: true;
-      columns: 5;
-      lines: 4;
       cycle: true;
+      lines: 4;
       dynamic: true;
       scrollbar: false;
-      layout: vertical;
-      reverse: false;
-      fixed-height: true;
-      fixed-columns: true;
-      flow: horizontal;
       spacing: 10px;
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
@@ -138,7 +134,7 @@ let
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
       cursor: pointer;
-      orientation: vertical;
+      orientation: horizontal;
     }
 
     element normal.normal {
@@ -174,7 +170,7 @@ let
     element-icon {
       background-color: transparent;
       text-color: inherit;
-      size: 64px;
+      size: 42px;
       cursor: inherit;
     }
 
@@ -183,7 +179,7 @@ let
       text-color: inherit;
       cursor: inherit;
       vertical-align: 0.5;
-      horizontal-align: 0.5;
+      horizontal-align: 0.0;
     }
 
     message {
@@ -214,8 +210,8 @@ in {
       show-icons = true;
       "display-drun" = " ";
       "display-powermenu" = " ";
-      "display-window" = " ";
-      "drun-display-format" = "{name}";
+      "display-window" = " ";
+      "drun-display-format" = "{name}\r[<span weight='light' size='small' alpha='70%'><i>({comment})</i></span>]";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
     };
