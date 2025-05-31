@@ -9,7 +9,7 @@
         
         modules-left = [ "group/spaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "group/temps" "custom/kblayout" "tray" "clock" ];
+        modules-right = [ "mpris" "tray" "group/temps" "custom/kblayout" "clock" ];
 
         "group/spaces" = {
           orientation = "horizontal";
@@ -17,9 +17,9 @@
         };
 
         "hyprland/window" = {
-          format = "{title}";
+          format = "   {title}";
           tooltip = false;
-          on-click-middle = "hyprctl dispatch killactive";
+          on-click = "hyprctl dispatch killactive";
         };
 
         "hyprland/workspaces" = {
@@ -27,6 +27,17 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        mpris = {
+          format = "{status_icon} {dynamic}";
+          format-paused = "{status_icon} {dynamic}";
+          interval = 1;
+          status-icons = {
+            paused = "▶";
+            playing = "⏸";
+            stopped = "⏸";
+          };
         };
 
         "custom/launcher" = {
@@ -74,10 +85,9 @@
         };
 
         clock = {
-          format = "{:%A, %d %b %Y, %H:%M}";
-          tooltip = false;
-          format-alt = "{:%A, %d %b %Y, %H:%M}";
-          cursor = false;
+          format = "󱛡  {:%H:%M}";
+          tooltip-format = "{:%A, %d %b %Y, %H:%M}";
+          on-click = "xdg-open https://calendar.google.com/";
         };
 
         tray = {
@@ -110,6 +120,15 @@
 
       tooltip label {
         color: #${config.lib.stylix.colors.base05};
+      }
+
+      #mpris {
+        margin-right: 10px;
+        color: #${config.lib.stylix.colors.base05};
+      }
+
+      #mpris.player {
+        color: #${config.lib.stylix.colors.base00};
       }
 
       #workspaces {

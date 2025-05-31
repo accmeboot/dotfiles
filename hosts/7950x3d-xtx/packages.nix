@@ -80,6 +80,7 @@
     gsettings-desktop-schemas  # GSettings desktop schemas
     glib         # low-level core library for GNOME
     libnotify    # notification library
+    playerctl    # media controls (waybar uses it)
 
     # Gaming Platform
     (lutris.override {
