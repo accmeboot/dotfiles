@@ -17,8 +17,10 @@
         };
 
         "hyprland/window" = {
-          format = "   {title}";
+          format = "{title}";
           tooltip = false;
+          icon = true;
+          icon-size = 18;
           on-click = "hyprctl dispatch killactive";
         };
 
