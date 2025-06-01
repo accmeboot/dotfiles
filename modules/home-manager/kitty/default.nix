@@ -46,7 +46,7 @@
       macos_titlebar_color background
       allow_remote_control yes
 
-      window_padding_width 2
+      window_padding_width 2 4
 
       # BEGIN_KITTY_FONTS
       # Font ligatures settings for Jet Brains Mono Font:
