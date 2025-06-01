@@ -232,7 +232,7 @@
 
         # Layout bindings
         "$mod, SLASH, layoutmsg, togglesplit"
-        "$mod, COMMA, togglegroup"
+        "$mod, COMMA, exec, node ${../../../scripts/hyprland-group-toggle.js}"
         "$mod, j, changegroupactive, b"
         "$mod, k, changegroupactive, f"
         "$mod CTRL, F, fullscreen"
