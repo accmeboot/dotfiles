@@ -64,7 +64,7 @@
       # Group configuration
       group = {
         groupbar = {
-          enabled = true;
+          enabled = false;
           stacked = false;
           priority = 10001;
           render_titles = false;
