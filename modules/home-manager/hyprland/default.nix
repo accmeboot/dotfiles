@@ -64,7 +64,17 @@
       # Group configuration
       group = {
         groupbar = {
-          enabled = false;
+          enabled = true;
+          stacked = false;
+          priority = 10001;
+          render_titles = false;
+          keep_upper_gap = true;
+          gaps_in = 0;
+          gaps_out = 0;
+          indicator_height = 10;
+          rounding = 5;
+          "col.active" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
+          "col.inactive" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
         };
         "col.border_active" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
         "col.border_inactive" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
@@ -237,6 +247,8 @@
         # Resizing
         "$mod, MINUS, resizeactive, -50 0"
         "$mod, EQUAL, resizeactive, 50 0"
+        "$mod SHIFT, MINUS, resizeactive, 0 -50"
+        "$mod SHIFT, EQUAL, resizeactive, 0 50"
 
         # Monitor movement
         "$mod SHIFT, RIGHT, movewindow, mon:+1"
