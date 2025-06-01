@@ -67,7 +67,6 @@
     
     # Gaming
     mangohud     # performance overlay for games
-    goverlay     # GUI for mangohud configuration
     
     # Communication & Entertainment
     telegram-desktop  # messaging application
