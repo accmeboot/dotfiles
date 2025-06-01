@@ -1,7 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  rofi_bg = ../../../assets/wallpapers/wallhaven-2e2xyx.jpg;
-  
   # Function to convert hex color to rgba with specified opacity
   hexToRgba = hexColor: opacity: 
     let
