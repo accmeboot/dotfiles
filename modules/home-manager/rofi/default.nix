@@ -44,6 +44,8 @@ let
       border: 2px;
     }
 
+    /* Containers */
+
     mainbox {
       enabled: true;
       spacing: 0px;
@@ -66,50 +68,30 @@ let
       background-color: transparent;
       text-color: #${config.lib.stylix.colors.base05};
       orientation: horizontal;
-      children: [ "textbox-prompt-colon", "entry", "mode-switcher" ];
+      children: [ "prompt", "entry" ];
       border: 0px 0px 1px 0px;
       border-color: #${config.lib.stylix.colors.base03};
     }
 
-    textbox-prompt-colon {
-      enabled: true;
-      expand: false;
-      str: " ";
-      padding: 16px 14px 12px 20px;
-      background-color: transparent;
-      text-color: inherit;
-      font: "SF Pro Text 18";
+    /* Children */
+
+    prompt {
+      background-color: inherit;
+      color: #${config.lib.stylix.colors.base0D};
+      font: "SF Pro Text 24";
+      margin: 0px 0px 0px 15px;
     }
 
     entry {
       enabled: true;
       expand: true;
-      padding: 18px 16px 16px 0px;
       background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: "";
-      placeholder-color: inherit;
-      font: "SF Pro Text 16";
-    }
-
-    mode-switcher {
-      enabled: true;
-      spacing: 10px;
-      background-color: transparent;
-      text-color: #${config.lib.stylix.colors.base05};
-    }
-
-    button {
-      background-color: transparent;
-      text-color: inherit;
-      cursor: pointer;
-      font: "SF Pro Text 16";
-    }
-
-    button selected {
-      background-color: transparent;
-      text-color: #${config.lib.stylix.colors.base0B};
+      placeholder: " Search...";
+      placeholder-color: #${config.lib.stylix.colors.base03};
+      vertical-align: 0.5;
+      margin: 0px 0px 0px 10px;
     }
 
     listview {
@@ -185,7 +167,7 @@ let
     }
 
     textbox {
-      padding: 15px;
+      padding: 10px;
       border-radius: 8px;
       background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
@@ -194,7 +176,7 @@ let
     }
 
     error-message {
-      padding: 15px;
+      padding: 10px;
       border-radius: 8px;
       background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
       text-color: #${config.lib.stylix.colors.base04};
