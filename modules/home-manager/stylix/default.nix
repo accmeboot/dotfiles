@@ -4,7 +4,7 @@
     image = ../../../assets/wallpapers/Evangelion-mini-gruvbox.png;
     polarity = "dark";
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
     base16Scheme = import ./src/schemes/gruvbox.nix;
 
     targets = {
