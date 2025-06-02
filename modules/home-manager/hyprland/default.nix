@@ -33,18 +33,18 @@
 
       # General settings
       general = {
-        gaps_in = 4;
-        gaps_out = 8;
-        border_size = 2;
-        "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
-        "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
+        gaps_in = config.theme.spacing.xs;
+        gaps_out = config.theme.spacing.s;
+        border_size = config.theme.borderWidth;
+        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base05})";
+        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
         layout = "dwindle";
         allow_tearing = false;
       };
 
       # Decoration
       decoration = {
-        rounding = 8;
+        rounding = config.theme.borderRadius;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         
@@ -73,11 +73,11 @@
           gaps_out = 0;
           indicator_height = 10;
           rounding = 5;
-          "col.active" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
-          "col.inactive" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
+          "col.active" = lib.mkForce "rgb(${config.theme.colors.base05})";
+          "col.inactive" = lib.mkForce "rgb(${config.theme.colors.base03})";
         };
-        "col.border_active" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
-        "col.border_inactive" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
+        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base05})";
+        "col.border_inactive" = lib.mkForce "rgb(${config.theme.colors.base03})";
       };
 
       # Animations
@@ -140,7 +140,7 @@
       windowrule = [
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
-        "opacity 0.8 0.8, floating:1"
+        "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
       ];
 
       # Key bindings

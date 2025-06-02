@@ -52,6 +52,7 @@
               users.accme = {
                 imports = [
                   ./hosts/7950x3d-xtx/home.nix
+                  ./modules/home-manager/theme/default.nix
                   ./modules/home-manager/gtk/default.nix
                   ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix

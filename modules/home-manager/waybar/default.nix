@@ -129,21 +129,21 @@
       }
 
       window#waybar>box {
-        padding:0 8px;
+        padding:0 ${toString config.theme.spacing.s};
       }
 
       window#waybar {
         background-color: transparent;
-        color: #${config.lib.stylix.colors.base00};
+        color: #${config.theme.colors.base00};
       }
 
       tooltip {
-        border-radius: 8px;
-        background-color: #${config.lib.stylix.colors.base01};
+        border-radius: ${toString config.theme.borderRadius}px;
+        background-color: #${config.theme.colors.base01};
       }
 
       tooltip label {
-        color: #${config.lib.stylix.colors.base05};
+        color: #${config.theme.colors.base05};
       }
 
       #workspaces {
@@ -157,48 +157,48 @@
         padding: 0px 8px;
         background-color: transparent;
         font-weight: bold;
-        color: #${config.lib.stylix.colors.base05};
+        color: #${config.theme.colors.base05};
       }
 
       #workspaces button.active {
-        background-color: #${config.lib.stylix.colors.base00};
-        color: #${config.lib.stylix.colors.base0B};
+        background-color: #${config.theme.colors.base00};
+        color: #${config.theme.colors.base0B};
       }
 
       #workspaces button.urgent {
-        background-color: #${config.lib.stylix.colors.base00};
-        color: #${config.lib.stylix.colors.base08};
+        background-color: #${config.theme.colors.base00};
+        color: #${config.theme.colors.base08};
       }
 
       #clock,
       #tray {
-        color: #${config.lib.stylix.colors.base05};
+        color: #${config.theme.colors.base05};
       }
 
       #tray, #clock, #temps, #custom-kblayout, #spaces {
-        background-color: #${config.lib.stylix.colors.base00};
+        background-color: #${config.theme.colors.base00};
         padding: 2px 10px;
         margin: 2px;
-        border-radius: 8px;
+        border-radius: ${toString config.theme.borderRadius}px;
       }
 
       #custom-kblayout {
-        color: #${config.lib.stylix.colors.base05};
+        color: #${config.theme.colors.base05};
       }
 
       #custom-launcher {
-        color: #${config.lib.stylix.colors.base0D};
+        color: #${config.theme.colors.base0D};
         font-size: 16px;
       }
 
       #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
-        color: #${config.lib.stylix.colors.base0B};
+        color: #${config.theme.colors.base0B};
       }
       #custom-cpu.medium, #custom-gpu.medium, #custom-ram.medium {
-        color: #${config.lib.stylix.colors.base0A};
+        color: #${config.theme.colors.base0A};
       }
       #custom-cpu.high, #custom-gpu.high, #custom-ram.high {
-        color: #${config.lib.stylix.colors.base08};
+        color: #${config.theme.colors.base08};
       }
 
       #custom-gpu {
@@ -206,7 +206,7 @@
       }
 
       #window {
-        color: #${config.lib.stylix.colors.base05};
+        color: #${config.theme.colors.base05};
         margin-left: 10px;
       }
 

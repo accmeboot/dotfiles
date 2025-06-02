@@ -1,54 +1,31 @@
 { config, pkgs, lib, ... }:
-let
-  hexToRgba = hexColor: opacity: 
-    let
-      # Convert opacity (0.0-1.0) to hex alpha (00-FF)
-      opacityToHex = opacity:
-        let
-          # Convert float to integer (0-255)
-          alphaInt = builtins.floor (opacity * 255);
-          # Convert to hex
-          toHexChar = n: 
-            if n < 10 then toString n
-            else if n == 10 then "A"
-            else if n == 11 then "B"
-            else if n == 12 then "C"
-            else if n == 13 then "D"
-            else if n == 14 then "E"
-            else "F";
-          high = builtins.floor (alphaInt / 16);
-          low = alphaInt - (high * 16);
-        in
-          toHexChar high + toHexChar low;
-    in
-      "#${hexColor}${opacityToHex opacity}";
-in {
+{
   services.mako = {
     enable = true;
     settings = {
       sort = "-time";
       layer = "overlay";
-      border-size = 2;
-      border-radius = 8;
+      border-size = config.theme.borderWidth;
+      border-radius = config.theme.borderRadius;
       icons = true;
 
       width = 400;
 
       default-timeout = 5000;
       ignore-timeout = true;
-      border-color = "#${config.lib.stylix.colors.base05}";
-      text-color = "#${config.lib.stylix.colors.base05}";
-      background-color = "${hexToRgba config.lib.stylix.colors.base00 0.8}";
-      progress-color = "${hexToRgba config.lib.stylix.colors.base03 0.8}";
+      border-color = "#${config.theme.colors.base05}";
+      text-color = "#${config.theme.colors.base05}";
+      background-color = "${config.theme.hexToHexOpacity config.theme.colors.base00 config.theme.opacity}";
+      progress-color = "${config.theme.hexToHexOpacity config.theme.colors.base03 config.theme.opacity}";
       font = "MesloLG 9";
       padding = 10;
 
-      icon-border-radius = 32;
+      icon-border-radius = 32; # the default with and height of the icon is 64
 
       anchor = "top-right";
 
 
-      outer-margin = "4";
+      outer-margin = toString config.theme.spacing.xxl;
       margin = 0;
 
       "app-name=volume" = {
@@ -56,6 +33,7 @@ in {
         outer-margin = "0,0,100";
         width = 300;
         default-timeout = 2000;
+        font = "MesloLG 14";
       };
     };
   };

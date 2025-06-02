@@ -1,29 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  # Function to convert hex color to rgba with specified opacity
-  hexToRgba = hexColor: opacity: 
-    let
-      hexToDecimal = hex: 
-        let
-          chars = builtins.listToAttrs [
-            { name = "0"; value = 0; } { name = "1"; value = 1; } { name = "2"; value = 2; } { name = "3"; value = 3; }
-            { name = "4"; value = 4; } { name = "5"; value = 5; } { name = "6"; value = 6; } { name = "7"; value = 7; }
-            { name = "8"; value = 8; } { name = "9"; value = 9; } { name = "a"; value = 10; } { name = "b"; value = 11; }
-            { name = "c"; value = 12; } { name = "d"; value = 13; } { name = "e"; value = 14; } { name = "f"; value = 15; }
-            { name = "A"; value = 10; } { name = "B"; value = 11; } { name = "C"; value = 12; } { name = "D"; value = 13; }
-            { name = "E"; value = 14; } { name = "F"; value = 15; }
-          ];
-          char1 = builtins.substring 0 1 hex;
-          char2 = builtins.substring 1 1 hex;
-        in
-          chars.${char1} * 16 + chars.${char2};
-      
-      r = hexToDecimal (builtins.substring 0 2 hexColor);
-      g = hexToDecimal (builtins.substring 2 2 hexColor);
-      b = hexToDecimal (builtins.substring 4 2 hexColor);
-    in
-      "rgba(${toString r}, ${toString g}, ${toString b}, ${toString opacity})";
-  
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
       font: "SF Pro Text 12";
@@ -37,11 +13,11 @@ let
       x-offset: 0px;
       y-offset: 0px;
       enabled: true;
-      border-radius: 8px;
+      border-radius: ${toString config.theme.borderRadius}px;
       cursor: "default";
-      background-color: ${hexToRgba config.lib.stylix.colors.base00 0.8};
-      border-color: #${config.lib.stylix.colors.base05};
-      border: 2px;
+      background-color: ${config.theme.hexToRgba config.theme.colors.base00 config.theme.opacity};
+      border-color: #${config.theme.colors.base05};
+      border: ${toString config.theme.borderWidth}px;
     }
 
     /* Containers */
@@ -66,18 +42,18 @@ let
       enabled: true;
       padding: 10px;
       background-color: transparent;
-      text-color: #${config.lib.stylix.colors.base05};
+      text-color: #${config.theme.colors.base05};
       orientation: horizontal;
       children: [ "prompt", "entry" ];
       border: 0px 0px 1px 0px;
-      border-color: #${config.lib.stylix.colors.base03};
+      border-color: #${config.theme.colors.base03};
     }
 
     /* Children */
 
     prompt {
       background-color: inherit;
-      color: #${config.lib.stylix.colors.base0D};
+      color: #${config.theme.colors.base0D};
       font: "SF Pro Text 24";
       margin: 0px 0px 0px 15px;
     }
@@ -89,7 +65,7 @@ let
       text-color: inherit;
       cursor: text;
       placeholder: " Search...";
-      placeholder-color: #${config.lib.stylix.colors.base03};
+      placeholder-color: #${config.theme.colors.base03};
       vertical-align: 0.5;
       margin: 0px 0px 0px 10px;
     }
@@ -102,7 +78,7 @@ let
       scrollbar: false;
       spacing: 10px;
       background-color: transparent;
-      text-color: #${config.lib.stylix.colors.base05};
+      text-color: #${config.theme.colors.base05};
       cursor: "default";
     }
 
@@ -110,9 +86,9 @@ let
       enabled: true;
       spacing: 10px;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: ${toString config.theme.borderRadius}px;
       background-color: transparent;
-      text-color: #${config.lib.stylix.colors.base05};
+      text-color: #${config.theme.colors.base05};
       cursor: pointer;
       orientation: horizontal;
     }
@@ -123,28 +99,28 @@ let
     }
 
     element normal.urgent {
-      background-color: ${hexToRgba config.lib.stylix.colors.base09 0.8};
-      text-color: #${config.lib.stylix.colors.base05};
+      background-color: ${config.theme.hexToRgba config.theme.colors.base09 config.theme.opacity};
+      text-color: #${config.theme.colors.base05};
     }
 
     element normal.active {
-      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
-      text-color: #${config.lib.stylix.colors.base05};
+      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
+      text-color: #${config.theme.colors.base05};
     }
 
     element selected.normal {
-      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
-      text-color: #${config.lib.stylix.colors.base05};
+      background-color: ${config.theme.hexToRgba config.theme.colors.base03 config.theme.opacity};
+      text-color: #${config.theme.colors.base05};
     }
 
     element selected.urgent {
-      background-color: ${hexToRgba config.lib.stylix.colors.base09 0.8};
-      text-color: #${config.lib.stylix.colors.base05};
+      background-color: ${config.theme.hexToRgba config.theme.colors.base09 config.theme.opacity};
+      text-color: #${config.theme.colors.base05};
     }
 
     element selected.active {
-      background-color: ${hexToRgba config.lib.stylix.colors.base03 0.8};
-      text-color: #${config.lib.stylix.colors.base05};
+      background-color: ${config.theme.hexToRgba config.theme.colors.base03 config.theme.opacity};
+      text-color: #${config.theme.colors.base05};
     }
 
     element-icon {
@@ -168,18 +144,18 @@ let
 
     textbox {
       padding: 10px;
-      border-radius: 8px;
-      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
-      text-color: #${config.lib.stylix.colors.base04};
+      border-radius: ${toString config.theme.borderRadius}px;
+      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
+      text-color: #${config.theme.colors.base04};
       vertical-align: 0.5;
       horizontal-align: 0.0;
     }
 
     error-message {
       padding: 10px;
-      border-radius: 8px;
-      background-color: ${hexToRgba config.lib.stylix.colors.base02 0.8};
-      text-color: #${config.lib.stylix.colors.base04};
+      border-radius: ${toString config.theme.borderRadius}px;
+      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
+      text-color: #${config.theme.colors.base04};
     }
   '';
 in {
