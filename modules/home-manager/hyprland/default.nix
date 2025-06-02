@@ -34,7 +34,7 @@
       # General settings
       general = {
         gaps_in = 4;
-        gaps_out = 4;
+        gaps_out = 8;
         border_size = 2;
         "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base05})";
         "col.inactive_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base03})";
