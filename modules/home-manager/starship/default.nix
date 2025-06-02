@@ -3,7 +3,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "[](color_red)$username[](bg:color_orange fg:color_red)$directory[](fg:color_orange bg:color_green)$git_branch$git_status[](fg:color_green bg:color_blue)$c$cpp$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:color_blue bg:color_bg3)$docker_context$conda$pixi[](fg:color_bg3 bg:color_bg1)$cmd_duration[ ](fg:color_bg1)$line_break$character";
+      format = "[](color_orange)$directory[](fg:color_orange bg:color_red)$git_branch$git_status[](fg:color_red bg:color_blue)$c$cpp$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:color_blue bg:color_bg3)$docker_context$conda$pixi[](fg:color_bg3 bg:color_bg1)$cmd_duration[ ](fg:color_bg1)$line_break$character";
 
       palettes.gruvbox_dark = {
         color_fg0     = "#${config.lib.stylix.colors.base07}";
@@ -20,29 +20,22 @@
 
       palette = "gruvbox_dark";
 
-      username = {
-        show_always = true;
-        style_user = "bg:color_red fg:color_fg0";
-        style_root = "bg:color_red fg:color_fg0";
-        format = "[ $user ]($style)";
-      };
-
       directory = {
         style = "fg:color_fg0 bg:color_orange";
-        format = "[  $path ]($style)";
+        format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
       };
 
       git_branch = {
         symbol = "";
-        style = "bg:color_green";
-        format = "[[ $symbol $branch ](fg:color_fg0 bg:color_green)]($style)";
+        style = "bg:color_red";
+        format = "[[ $symbol $branch ](fg:color_fg0 bg:color_red)]($style)";
       };
 
       git_status = {
-        style = "bg:color_green fg:color_bg1";
-        format = "[[($all_status$ahead_behind )](fg:color_bg1 bg:color_green)]($style)";
+        style = "bg:color_red fg:color_bg1";
+        format = "[[($all_status$ahead_behind )](fg:color_bg1 bg:color_red)]($style)";
       };
 
       nodejs = {
