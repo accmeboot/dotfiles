@@ -10,7 +10,7 @@ if [ "$#" -gt 0 ]; then
             reboot
             ;;
         sleep)
-            systemctl suspend
+            hyprlock & systemctl suspend
             ;;
         lock)
             pidof hyprlock || hyprlock
