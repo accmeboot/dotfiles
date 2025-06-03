@@ -40,7 +40,7 @@ let
 
     inputbar {
       enabled: true;
-      padding: 10px;
+      padding: 20px 10px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
       orientation: horizontal;
@@ -54,8 +54,7 @@ let
     prompt {
       background-color: inherit;
       color: #${config.theme.colors.base0D};
-      font: "SF Pro Text 28";
-      margin: 0px 5px 0px 15px;
+      margin: 0px 10px;
     }
 
     entry {
@@ -163,9 +162,9 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = " ";
-      "display-powermenu" = " ";
-      "display-window" = " ";
+      "display-drun" = "Apps:";
+      "display-powermenu" = "Powr:";
+      "display-window" = "Wins:";
       "drun-display-format" = "{name}\r[<span weight='light' size='small' alpha='70%'><i>({comment})</i></span>]";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
