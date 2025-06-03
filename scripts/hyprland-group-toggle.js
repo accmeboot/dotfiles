@@ -28,20 +28,17 @@ class HyprlandGroups {
   }
 
   async isWindowGrouped(windowAddress) {
-    return new Promise(async (resolve) => {
-      const windows = await this.hypr("clients -j");
+    const windows = await this.hypr("clients -j");
 
-      const window = JSON.parse(windows)?.find(
-        (w) => w.address === windowAddress,
-      );
+    const window = JSON.parse(windows)?.find(
+      (w) => w.address === windowAddress,
+    );
 
-      const isGrouped =
-        window?.grouped &&
-        Array.isArray(window.grouped) &&
-        window.grouped.length > 0;
-
-      resolve(isGrouped);
-    });
+    return (
+      window?.grouped &&
+      Array.isArray(window.grouped) &&
+      window.grouped.length > 0
+    );
   }
 
   async read() {
