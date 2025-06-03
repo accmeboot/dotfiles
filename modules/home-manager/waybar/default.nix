@@ -9,7 +9,7 @@
         
         modules-left = [ "group/spaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "tray" "group/temps" "custom/kblayout" "clock" ];
+        modules-right = [ "tray" "group/temps" "custom/kblayout" "clock" "custom/powermenu" ];
 
         "group/spaces" = {
           orientation = "horizontal";
@@ -21,7 +21,8 @@
           tooltip = false;
           icon = true;
           icon-size = 18;
-          on-click = "hyprctl dispatch killactive";
+          on-click = "rofi -show window";
+          on-click-right = "hyprctl dispatch killactive";
         };
 
         "hyprland/workspaces" = {
@@ -108,6 +109,12 @@
           tooltip = false;
         };
 
+        "custom/powermenu" = {
+          format = " ";
+          tooltip = false;
+          on-click = "rofi -show powermenu";
+        };
+
         clock = {
           format = "󱛡  {:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
@@ -175,11 +182,17 @@
         color: #${config.theme.colors.base05};
       }
 
-      #tray, #clock, #temps, #custom-kblayout, #spaces {
+      #tray, #clock, #temps, #custom-kblayout, #spaces, #custom-powermenu {
         background-color: #${config.theme.colors.base00};
         padding: 2px 10px;
         margin: 2px;
         border-radius: ${toString config.theme.borderRadius}px;
+      }
+
+      #custom-powermenu {
+        color: #${config.theme.colors.base08};
+        padding: 2px 6px 2px 10px;
+        font-size: 16px;
       }
 
       #custom-kblayout {
