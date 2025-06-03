@@ -36,14 +36,13 @@
         specialArgs = { inherit inputs; };
         modules = [
           solaar.nixosModules.default
+          grub2-themes.nixosModules.default
+          home-manager.nixosModules.home-manager
           ./hosts/7950x3d-xtx/solaar.nix
 
           ./hosts/7950x3d-xtx/default.nix
           ./hosts/7950x3d-xtx/packages.nix
 
-          grub2-themes.nixosModules.default
-
-          inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = false;
@@ -72,7 +71,7 @@
                   ./modules/home-manager/fastfetch/default.nix
 
 
-                  inputs.stylix.homeModules.stylix
+                  stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
                 ];
               };
