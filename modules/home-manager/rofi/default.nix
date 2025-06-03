@@ -54,8 +54,8 @@ let
     prompt {
       background-color: inherit;
       color: #${config.theme.colors.base0D};
-      font: "SF Pro Text 32";
-      margin: 0px 0px 0px 12px;
+      font: "SF Pro Text 28";
+      margin: 0px 5px 0px 15px;
     }
 
     entry {
@@ -64,7 +64,7 @@ let
       background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: " Search...";
+      placeholder: "Search...";
       placeholder-color: #${config.theme.colors.base03};
       vertical-align: 0.5;
     }
