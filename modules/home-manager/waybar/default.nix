@@ -190,7 +190,7 @@
       }
 
       #custom-powermenu {
-        color: #${config.theme.colors.base08};
+        color: #${config.theme.colors.base0D};
         padding: 2px 6px 2px 10px;
         font-size: 16px;
       }
