@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 let
-  colors = config.lib.stylix.colors;
+  colors = config.theme.colors;
 in {
   home.file.".config/aerospace/aerospace.toml".text = ''
     # Place a copy of this config to ~/.aerospace.toml

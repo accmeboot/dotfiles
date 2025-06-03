@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let 
   colorHash = builtins.substring 0 6 (builtins.hashString "md5" 
-    "${config.lib.stylix.colors.base00}${config.lib.stylix.colors.base01}${config.lib.stylix.colors.base02}${config.lib.stylix.colors.base03}${config.lib.stylix.colors.base04}${config.lib.stylix.colors.base05}${config.lib.stylix.colors.base06}${config.lib.stylix.colors.base07}${config.lib.stylix.colors.base08}${config.lib.stylix.colors.base09}${config.lib.stylix.colors.base0A}${config.lib.stylix.colors.base0B}${config.lib.stylix.colors.base0C}${config.lib.stylix.colors.base0D}${config.lib.stylix.colors.base0E}${config.lib.stylix.colors.base0F}");
+    "${config.theme.colors.base00}${config.theme.colors.base01}${config.theme.colors.base02}${config.theme.colors.base03}${config.theme.colors.base04}${config.theme.colors.base05}${config.theme.colors.base06}${config.theme.colors.base07}${config.theme.colors.base08}${config.theme.colors.base09}${config.theme.colors.base0A}${config.theme.colors.base0B}${config.theme.colors.base0C}${config.theme.colors.base0D}${config.theme.colors.base0E}${config.theme.colors.base0F}");
 in
 {
     home.file = {
@@ -24,22 +24,22 @@ in
               })
 
               base16.setup({
-                  base00 = "#${config.lib.stylix.colors.base00}",
-                  base01 = "#${config.lib.stylix.colors.base01}",
-                  base02 = "#${config.lib.stylix.colors.base02}",
-                  base03 = "#${config.lib.stylix.colors.base03}",
-                  base04 = "#${config.lib.stylix.colors.base04}",
-                  base05 = "#${config.lib.stylix.colors.base05}",
-                  base06 = "#${config.lib.stylix.colors.base06}",
-                  base07 = "#${config.lib.stylix.colors.base07}",
-                  base08 = "#${config.lib.stylix.colors.base08}",
-                  base09 = "#${config.lib.stylix.colors.base09}",
-                  base0A = "#${config.lib.stylix.colors.base0A}",
-                  base0B = "#${config.lib.stylix.colors.base0B}",
-                  base0C = "#${config.lib.stylix.colors.base0C}",
-                  base0D = "#${config.lib.stylix.colors.base0D}",
-                  base0E = "#${config.lib.stylix.colors.base0E}",
-                  base0F = "#${config.lib.stylix.colors.base0F}",
+                  base00 = "#${config.theme.colors.base00}",
+                  base01 = "#${config.theme.colors.base01}",
+                  base02 = "#${config.theme.colors.base02}",
+                  base03 = "#${config.theme.colors.base03}",
+                  base04 = "#${config.theme.colors.base04}",
+                  base05 = "#${config.theme.colors.base05}",
+                  base06 = "#${config.theme.colors.base06}",
+                  base07 = "#${config.theme.colors.base07}",
+                  base08 = "#${config.theme.colors.base08}",
+                  base09 = "#${config.theme.colors.base09}",
+                  base0A = "#${config.theme.colors.base0A}",
+                  base0B = "#${config.theme.colors.base0B}",
+                  base0C = "#${config.theme.colors.base0C}",
+                  base0D = "#${config.theme.colors.base0D}",
+                  base0E = "#${config.theme.colors.base0E}",
+                  base0F = "#${config.theme.colors.base0F}",
               })
           end,
         }

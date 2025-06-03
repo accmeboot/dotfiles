@@ -6,16 +6,16 @@
       format = "[](color_orange)$directory[](fg:color_orange bg:color_red)$git_branch$git_status[](fg:color_red bg:color_blue)$c$cpp$rust$golang$nodejs$php$java$kotlin$haskell$python[](fg:color_blue bg:color_bg3)$docker_context$conda$pixi[](fg:color_bg3 bg:color_bg1)$cmd_duration[ ](fg:color_bg1)$line_break$character";
 
       palettes.gruvbox_dark = {
-        color_fg0     = "#${config.lib.stylix.colors.base07}";
-        color_bg1     = "#${config.lib.stylix.colors.base01}";
-        color_bg3     = "#${config.lib.stylix.colors.base03}";
-        color_blue    = "#${config.lib.stylix.colors.base0D}";
-        color_aqua    = "#${config.lib.stylix.colors.base0C}";
-        color_green   = "#${config.lib.stylix.colors.base0B}";
-        color_orange  = "#${config.lib.stylix.colors.base09}";
-        color_purple  = "#${config.lib.stylix.colors.base0E}";
-        color_red     = "#${config.lib.stylix.colors.base08}";
-        color_yellow  = "#${config.lib.stylix.colors.base0A}";
+        color_fg0     = "#${config.theme.colors.base07}";
+        color_bg1     = "#${config.theme.colors.base01}";
+        color_bg3     = "#${config.theme.colors.base03}";
+        color_blue    = "#${config.theme.colors.base0D}";
+        color_aqua    = "#${config.theme.colors.base0C}";
+        color_green   = "#${config.theme.colors.base0B}";
+        color_orange  = "#${config.theme.colors.base09}";
+        color_purple  = "#${config.theme.colors.base0E}";
+        color_red     = "#${config.theme.colors.base08}";
+        color_yellow  = "#${config.theme.colors.base0A}";
       };
 
       palette = "gruvbox_dark";
@@ -101,12 +101,12 @@
       docker_context = {
         symbol = "";
         style = "bg:color_bg3";
-        format = "[[ $symbol( $context) ](fg:#${config.lib.stylix.colors.base0D} bg:color_bg3)]($style)";
+        format = "[[ $symbol( $context) ](fg:#${config.theme.colors.base0D} bg:color_bg3)]($style)";
       };
 
       conda = {
         style = "bg:color_bg3";
-        format = "[[ $symbol( $environment) ](fg:#${config.lib.stylix.colors.base0D} bg:color_bg3)]($style)";
+        format = "[[ $symbol( $environment) ](fg:#${config.theme.colors.base0D} bg:color_bg3)]($style)";
       };
 
       pixi = {
