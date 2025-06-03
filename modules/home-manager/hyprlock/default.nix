@@ -14,7 +14,7 @@
         {
           path = "${config.stylix.image}";
           blur_passes = 3;
-          blur_size = 8;
+          blur_size = 10;
         }
       ];
 
@@ -25,12 +25,15 @@
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(${config.lib.stylix.colors.base05})";
-          inner_color = "rgb(${config.lib.stylix.colors.base00})";
-          outer_color = "rgb(${config.lib.stylix.colors.base01})";
-          outline_thickness = 5;
+          font_color = "rgb(${config.theme.colors.base05})";
+          inner_color = "rgb(${config.theme.colors.base00})";
+          outer_color = "rgb(${config.theme.colors.base05})";
+          outline_thickness = config.theme.borderWidth;
+          rounding = config.theme.borderRadius;
           placeholder_text = "Password...";
-          shadow_passes = 2;
+          shadow_passes = 0;
+          shadow_size = 4;
+          shadow_boost = 3;
         }
       ];
 
@@ -38,7 +41,7 @@
         {
           monitor = "";
           text = "$USER";
-          color = "rgb(${config.lib.stylix.colors.base05})";
+          color = "rgb(${config.theme.colors.base05})";
           font_size = 20;
           position = "-100, 160";
           halign = "right";
@@ -50,7 +53,7 @@
         {
           monitor = "";
           text = "cmd[update:1000] echo \"$TIME\"";
-          color = "rgb(${config.lib.stylix.colors.base05})";
+          color = "rgb(${config.theme.colors.base05})";
           font_size = 55;
           position = "-100, 70";
           halign = "right";
