@@ -54,7 +54,7 @@ let
     prompt {
       background-color: inherit;
       color: #${config.theme.colors.base0D};
-      margin: 0px 10px;
+      margin: 0px 10px 0px 15px;
     }
 
     entry {
@@ -162,9 +162,9 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "Apps:";
-      "display-powermenu" = "Powr:";
-      "display-window" = "Wins:";
+      "display-drun" = "Run:";
+      "display-powermenu" = "Pow:";
+      "display-window" = "Win:";
       "drun-display-format" = "{name}\r[<span weight='light' size='small' alpha='70%'><i>({comment})</i></span>]";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";

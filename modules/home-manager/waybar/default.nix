@@ -54,7 +54,7 @@
           '';
           return-type = "json";
           interval = 1;
-          cursor = false;
+          cursor = 68;
           tooltip = false;
         };
 
@@ -73,7 +73,7 @@
           '';
           return-type = "json";
           interval = 1;
-          cursor = false;
+          cursor = 68;
           tooltip = false;
         };
 
@@ -92,7 +92,7 @@
           '';
           return-type = "json";
           interval = 1;
-          cursor = false;
+          cursor = 68;
           tooltip = false;
         };
 
@@ -105,7 +105,7 @@
           format = "   {text}";
           exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | awk '{print toupper(substr($0,1,2))}'";
           interval = 1;
-          cursor = false;
+          cursor = 68;
           tooltip = false;
         };
 
@@ -131,12 +131,12 @@
     style = ''
       * {
         border: none;
-        border-radius: 0;
-        min-height: 0;
+        border-radius: 0px;
+        min-height: 0px;
       }
 
       window#waybar>box {
-        padding:0 ${toString config.theme.spacing.s};
+        padding: 0px ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
@@ -158,8 +158,8 @@
       }
 
       #workspaces button {
-        min-width: 0;
-        box-shadow: inset 0 -3px transparent;
+        min-width: 0px;
+        box-shadow: inset 0px -3px transparent;
 
         padding: 0px 8px;
         background-color: transparent;
@@ -224,7 +224,7 @@
       }
 
       #tray * {
-        border-radius: 8;
+        border-radius: 8px;
       }
     '';
   };
