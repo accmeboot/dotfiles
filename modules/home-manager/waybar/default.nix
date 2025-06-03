@@ -169,7 +169,7 @@
 
       #workspaces button.active {
         background-color: #${config.theme.colors.base00};
-        color: #${config.theme.colors.base0B};
+        color: #${config.theme.colors.base0D};
       }
 
       #workspaces button.urgent {
@@ -190,7 +190,7 @@
       }
 
       #custom-powermenu {
-        color: #${config.theme.colors.base0D};
+        color: #${config.theme.colors.base07};
         padding: 2px 6px 2px 10px;
         font-size: 16px;
       }
@@ -200,7 +200,7 @@
       }
 
       #custom-launcher {
-        color: #${config.theme.colors.base0D};
+        color: #${config.theme.colors.base07};
         font-size: 16px;
       }
 
