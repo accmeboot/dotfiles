@@ -9,7 +9,7 @@
         
         modules-left = [ "group/spaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "cava" "tray" "group/temps" "custom/kblayout" "clock" "custom/powermenu" ];
+        modules-right = [ "tray" "group/temps" "custom/kblayout" "clock" "custom/powermenu" ];
 
         "group/spaces" = {
           orientation = "horizontal";
@@ -30,24 +30,6 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-        };
-
-        cava = {
-          framerate = 60;
-          autosens = 1;
-          bars = 14;
-          method = "pulse";
-          source = "auto";
-          stereo = true;
-          reverse = false;
-          bar_delimiter = 0;
-          monstercat = false;
-          waves = false;
-          noise_reduction = 0.77;
-          input_delay = 2;
-          sleep_timer = 1;
-          hide_on_silence = true; # doesn't work
-          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         "custom/hypr-layout" = {
@@ -252,11 +234,6 @@
       #window {
         color: #${config.theme.colors.base05};
         margin-left: 10px;
-      }
-
-      #cava {
-        color: #${config.theme.colors.base05};
-        margin-right: 10px;
       }
 
       #tray * {
