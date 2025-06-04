@@ -45,7 +45,7 @@
           waves = false;
           noise_reduction = 0.77;
           input_delay = 2;
-          sleep_timer = 2;
+          sleep_timer = 1;
           hide_on_silence = true; # doesn't work
           format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
