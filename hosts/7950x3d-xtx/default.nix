@@ -57,12 +57,10 @@
     };
 
     initrd = {
-      kernelModules = [ "amdgpu" ];
       verbose = false;
     };
 
     kernelParams = [
-      "video=DP-2:1920x1080@360"
       "quiet"
       "splash"
       "boot.shell_on_fail"

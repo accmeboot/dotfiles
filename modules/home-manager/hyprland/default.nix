@@ -21,8 +21,7 @@
 
       # Monitor configuration
       monitor = [
-        "DP-2,1920x1080@360,0x0,1"
-        ",preferred,auto,1"
+        ",highrr,auto,1"
       ];
 
       # Input configuration
