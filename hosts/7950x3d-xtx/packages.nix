@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -11,6 +11,9 @@
     gnumake      # build automation tool
     git          # version control system
     brave        # privacy-focused web browser
+
+    # from flakes
+    inputs.zen-browser.packages.${pkgs.system}.default
     
     # Programming Languages
     python3      # python programming language
