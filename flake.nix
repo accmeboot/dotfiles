@@ -102,6 +102,7 @@
               users.Mikhail_Vialov = {
                 imports = [
                   ./hosts/mbp-m1/home.nix
+                  ./modules/home-manager/theme/default.nix
                   ./modules/home-manager/aerospace/default.nix
                   ./modules/home-manager/nvim/default.nix
                   # ./modules/home-manager/nvim/base16.nix
