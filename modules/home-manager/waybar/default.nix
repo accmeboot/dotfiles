@@ -35,7 +35,7 @@
         "custom/hypr-layout" = {
           format = "{text}";
           exec = "bash ${../../../scripts/hypr-layout.sh}";
-          interval = 1;
+          signal = 8;
         };
 
         "custom/launcher" = {
@@ -203,7 +203,8 @@
       }
 
       #custom-hypr-layout {
-        color: #${config.theme.colors.base0A};
+        color: #${config.theme.colors.base05};
+        padding: 2px 6px 2px 10px;
         font-size: 16px;
       }
 

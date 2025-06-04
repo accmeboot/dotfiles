@@ -294,6 +294,9 @@
         "waybar"
         "nm-applet"
         "blueman-applet"
+        # 8 is a signal code set in waybar
+        # TODO: think of more flexible approach
+        "bash ${../../../scripts/hypr-events.sh} 8"
       ];
 
       # Environment variables

@@ -80,6 +80,7 @@
     gsettings-desktop-schemas  # GSettings desktop schemas
     glib         # low-level core library for GNOME
     libnotify    # notification library
+    socat        # listen to events on sockets
 
     # Gaming Platform
     (lutris.override {
