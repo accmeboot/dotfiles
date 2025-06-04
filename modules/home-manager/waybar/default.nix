@@ -13,7 +13,7 @@
 
         "group/spaces" = {
           orientation = "horizontal";
-          modules = ["custom/launcher" "hyprland/workspaces"];
+          modules = ["custom/launcher" "hyprland/workspaces" "custom/hypr-layout"];
         };
 
         "hyprland/window" = {
@@ -30,6 +30,12 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        "custom/hypr-layout" = {
+          format = "{text}";
+          exec = "bash ${../../../scripts/hypr-layout.sh}";
+          interval = 1;
         };
 
         "custom/launcher" = {
@@ -193,6 +199,11 @@
       #custom-powermenu {
         color: #${config.theme.colors.base07};
         padding: 2px 6px 2px 10px;
+        font-size: 16px;
+      }
+
+      #custom-hypr-layout {
+        color: #${config.theme.colors.base0A};
         font-size: 16px;
       }
 
