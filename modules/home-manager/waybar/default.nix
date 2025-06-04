@@ -187,6 +187,7 @@
         padding: 2px 10px;
         margin: 2px;
         border-radius: ${toString config.theme.borderRadius}px;
+        box-shadow: 0px 0px 2px 1px #${config.theme.colors.base03};
       }
 
       #custom-powermenu {
