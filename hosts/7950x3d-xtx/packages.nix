@@ -47,7 +47,6 @@
     
     # Wayland Tools
     rofi-wayland # application launcher and window switcher
-    wlr-randr    # wayland display configuration tool
     xclip        # command line interface to X clipboard
     wl-clipboard # wayland clipboard utilities
     
@@ -61,7 +60,6 @@
     slurp        # region selector for wayland
     
     # Desktop Environment
-    eww          # widget system for wayland
     pavucontrol  # PulseAudio volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
@@ -94,8 +92,6 @@
 
     # Network Tools
     networkmanagerapplet # network manager GUI
-
-    mission-center # mission control center
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
   ];
