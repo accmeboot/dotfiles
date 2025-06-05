@@ -145,6 +145,7 @@
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
+        "opacity 0.99999, class:zen"
       ];
 
       # Key bindings
