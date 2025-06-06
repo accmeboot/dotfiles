@@ -1,4 +1,51 @@
 { lib, config, ... }:
+let
+ hexToHexOpacity = hexColor: opacity:
+    let
+      # Convert opacity (0.0-1.0) to hex alpha (00-FF)
+      opacityToHex = opacity:
+        let
+          # Convert float to integer (0-255)
+          alphaInt = builtins.floor (opacity * 255);
+          # Convert to hex
+          toHexChar = n: 
+            if n < 10 then toString n
+            else if n == 10 then "A"
+            else if n == 11 then "B"
+            else if n == 12 then "C"
+            else if n == 13 then "D"
+            else if n == 14 then "E"
+            else "F";
+          high = builtins.floor (alphaInt / 16);
+          low = alphaInt - (high * 16);
+        in
+          toHexChar high + toHexChar low;
+    in
+      "#${hexColor}${opacityToHex opacity}";
+
+  hexToRgba = hexColor: opacity: 
+    let
+      hexToDecimal = hex: 
+        let
+          chars = builtins.listToAttrs [
+            { name = "0"; value = 0; } { name = "1"; value = 1; } { name = "2"; value = 2; } { name = "3"; value = 3; }
+            { name = "4"; value = 4; } { name = "5"; value = 5; } { name = "6"; value = 6; } { name = "7"; value = 7; }
+            { name = "8"; value = 8; } { name = "9"; value = 9; } { name = "a"; value = 10; } { name = "b"; value = 11; }
+            { name = "c"; value = 12; } { name = "d"; value = 13; } { name = "e"; value = 14; } { name = "f"; value = 15; }
+            { name = "A"; value = 10; } { name = "B"; value = 11; } { name = "C"; value = 12; } { name = "D"; value = 13; }
+            { name = "E"; value = 14; } { name = "F"; value = 15; }
+          ];
+          char1 = builtins.substring 0 1 hex;
+          char2 = builtins.substring 1 1 hex;
+        in
+          chars.${char1} * 16 + chars.${char2};
+      
+      r = hexToDecimal (builtins.substring 0 2 hexColor);
+      g = hexToDecimal (builtins.substring 2 2 hexColor);
+      b = hexToDecimal (builtins.substring 4 2 hexColor);
+    in
+      "rgba(${toString r}, ${toString g}, ${toString b}, ${toString opacity})";
+in
 {
   options.theme = {
     borderRadius = lib.mkOption {
@@ -37,6 +84,18 @@
       };
       default = {};
     };
+    hexToRgba = lib.mkOption {
+      type = lib.types.raw;
+      default = hexToRgba;
+      internal = true;
+    };
+
+    hexToHexOpacity = lib.mkOption {
+      type = lib.types.raw;
+      default = hexToHexOpacity;
+      internal = true;
+    };
+    
     # default scheme is gruvbox
     colors = lib.mkOption {
       type = lib.types.submodule {
