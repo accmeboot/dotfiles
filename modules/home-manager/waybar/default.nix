@@ -3,24 +3,21 @@
     enable = true;
     settings = {
       mainBar = {
-        layer = "top";
+        layer = "bottom";
         position = "top";
-        height = 30;
+        height = 32;
         
-        modules-left = [ "group/spaces" "hyprland/window" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "tray" "group/temps" "custom/kblayout" "clock" "custom/powermenu" ];
+        modules-right = [ "custom/kblayout" "group/temps" "tray" "clock" ];
 
-        "group/spaces" = {
-          orientation = "horizontal";
-          modules = ["custom/launcher" "hyprland/workspaces" "custom/hypr-layout"];
-        };
+        spacing = config.theme.spacing.m;
 
         "hyprland/window" = {
           format = "{title}";
           tooltip = false;
           icon = true;
-          icon-size = 18;
+          icon-size = 12;
           on-click = "rofi -show window";
           on-click-right = "hyprctl dispatch killactive";
         };
@@ -30,19 +27,6 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-        };
-
-        "custom/hypr-layout" = {
-          format = "{text}";
-          exec = "bash ${../../../scripts/hypr-layout.sh}";
-          signal = 8;
-        };
-
-        "custom/launcher" = {
-          format = " ";
-          on-click = "rofi -show drun";
-          cursor = 60;
-          tooltip-format = "Rofi drun";
         };
 
         "custom/cpu" = {
@@ -108,27 +92,22 @@
         };
 
         "custom/kblayout" = {
-          format = "   {text}";
+          format = "{text}";
           exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | awk '{print toupper(substr($0,1,2))}'";
           interval = 1;
           cursor = 68;
           tooltip = false;
         };
 
-        "custom/powermenu" = {
-          format = " ";
-          tooltip = false;
-          on-click = "rofi -show powermenu";
-        };
-
         clock = {
-          format = "󱛡  {:%H:%M}";
+          format = "{:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
 
         tray = {
-          spacing = 10;
+          spacing = config.theme.spacing.xs;
+          icon-size = 14;
           cursor = 60;
         };
       };
@@ -146,8 +125,8 @@
       }
 
       window#waybar {
-        background-color: transparent;
-        color: #${config.theme.colors.base00};
+        background-color: #${config.theme.colors.base00};
+        color: #${config.theme.colors.base05};
       }
 
       tooltip {
@@ -159,62 +138,18 @@
         color: #${config.theme.colors.base05};
       }
 
-      #workspaces {
-        margin-left: 8px;
-      }
-
       #workspaces button {
-        min-width: 0px;
-        box-shadow: inset 0px -3px transparent;
-
-        padding: 0px 8px;
-        background-color: transparent;
-        font-weight: bold;
-        color: #${config.theme.colors.base05};
+        padding: 0px ${toString config.theme.spacing.xs}px;
       }
 
       #workspaces button.active {
-        background-color: #${config.theme.colors.base00};
-        color: #${config.theme.colors.base0D};
+        background-color: #${config.theme.colors.base0D};
+        color: #${config.theme.colors.base02};
       }
 
       #workspaces button.urgent {
-        background-color: #${config.theme.colors.base00};
-        color: #${config.theme.colors.base08};
-      }
-
-      #clock,
-      #tray {
-        color: #${config.theme.colors.base05};
-      }
-
-      #tray, #clock, #temps, #custom-kblayout, #spaces, #custom-powermenu {
-        background-color: #${config.theme.colors.base00};
-        padding: 2px 10px;
-        margin: 2px;
-        border-radius: ${toString config.theme.borderRadius}px;
-        box-shadow: 0px 0px 2px 1px #${config.theme.colors.base03};
-      }
-
-      #custom-powermenu {
-        color: #${config.theme.colors.base07};
-        padding: 2px 6px 2px 10px;
-        font-size: 16px;
-      }
-
-      #custom-hypr-layout {
-        color: #${config.theme.colors.base05};
-        padding: 2px 6px 2px 10px;
-        font-size: 16px;
-      }
-
-      #custom-kblayout {
-        color: #${config.theme.colors.base05};
-      }
-
-      #custom-launcher {
-        color: #${config.theme.colors.base07};
-        font-size: 16px;
+        background-color: #${config.theme.colors.base08};
+        color: #${config.theme.colors.base02};
       }
 
       #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
@@ -228,16 +163,11 @@
       }
 
       #custom-gpu {
-        margin: 0px 10px;
-      }
-
-      #window {
-        color: #${config.theme.colors.base05};
-        margin-left: 10px;
+        margin: 0px ${toString config.theme.spacing.xs}px;
       }
 
       #tray * {
-        border-radius: 8px;
+        border-radius: ${toString config.theme.borderRadius}px;
       }
     '';
   };

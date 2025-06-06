@@ -2,93 +2,75 @@
 let
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
-      font: "SF Pro Text 12";
+      font: "SF Pro Text 9.5";
     }
 
     window {
-      location: center;
-      anchor: center;
+      location: northwest;
+      anchor: northwest;
       fullscreen: false;
-      width: 600px;
-      x-offset: 0px;
-      y-offset: 0px;
+      x-offset: ${toString config.theme.spacing.s}px;
+      y-offset: -32px; /* the height of waybar*/
+      height: 32px; /* the height of waybar*/
       enabled: true;
-      border-radius: ${toString config.theme.borderRadius}px;
       cursor: "default";
-      background-color: ${config.theme.hexToRgba config.theme.colors.base00 config.theme.opacity};
-      border-color: #${config.theme.colors.base05};
-      border: ${toString config.theme.borderWidth}px;
+      background-color: #${config.theme.colors.base00};
     }
 
     /* Containers */
 
     mainbox {
       enabled: true;
-      spacing: 0px;
       background-color: transparent;
-      orientation: vertical;
+      orientation: horizontal;
       children: [ "inputbar", "listbox" ];
     }
 
     listbox {
       spacing: 20px;
-      padding: 10px;
       background-color: transparent;
-      orientation: vertical;
+      orientation: horizontal;
       children: [ "message", "listview" ];
+      padding: 8px 0px;
     }
 
     inputbar {
       enabled: true;
-      padding: 20px 10px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
       orientation: horizontal;
       children: [ "prompt", "entry" ];
-      border: 0px 0px 1px 0px;
-      border-color: #${config.theme.colors.base03};
     }
 
     /* Children */
 
     prompt {
       background-color: inherit;
-      color: #${config.theme.colors.base0D};
-      margin: 0px 10px 0px 15px;
+      color: #${config.theme.colors.base07};
+      vertical-align: 0.5;
     }
 
     entry {
-      enabled: true;
-      expand: true;
       background-color: transparent;
       text-color: inherit;
       cursor: text;
       placeholder: "Search...";
       placeholder-color: #${config.theme.colors.base03};
       vertical-align: 0.5;
+      margin: 0px ${toString config.theme.spacing.xs}px;
     }
 
     listview {
-      enabled: true;
-      cycle: true;
-      lines: 4;
-      dynamic: true;
-      scrollbar: false;
-      spacing: 10px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
-      cursor: "default";
+      layout: horizontal;
+      spacing: 20px;
     }
 
     element {
-      enabled: true;
       spacing: 10px;
-      padding: 10px;
-      border-radius: ${toString config.theme.borderRadius}px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
-      cursor: pointer;
-      orientation: horizontal;
     }
 
     element normal.normal {
@@ -97,34 +79,34 @@ let
     }
 
     element normal.urgent {
-      background-color: ${config.theme.hexToRgba config.theme.colors.base09 config.theme.opacity};
-      text-color: #${config.theme.colors.base05};
+      background-color: inherit;
+      text-color: #${config.theme.colors.base09};
     }
 
     element normal.active {
-      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
-      text-color: #${config.theme.colors.base05};
+      background-color: inherit;
+      text-color: #${config.theme.colors.base0D};
     }
 
     element selected.normal {
-      background-color: ${config.theme.hexToRgba config.theme.colors.base03 config.theme.opacity};
-      text-color: #${config.theme.colors.base05};
+      background-color: inherit;
+      text-color: #${config.theme.colors.base0D};
     }
 
     element selected.urgent {
-      background-color: ${config.theme.hexToRgba config.theme.colors.base09 config.theme.opacity};
-      text-color: #${config.theme.colors.base05};
+      background-color: inherit;
+      text-color: #${config.theme.colors.base09};
     }
 
     element selected.active {
-      background-color: ${config.theme.hexToRgba config.theme.colors.base03 config.theme.opacity};
-      text-color: #${config.theme.colors.base05};
+      background-color: inherit;
+      text-color: #${config.theme.colors.base0A};
     }
 
     element-icon {
       background-color: transparent;
       text-color: inherit;
-      size: 42px;
+      size: 12px;
       cursor: inherit;
     }
 
@@ -133,7 +115,6 @@ let
       text-color: inherit;
       cursor: inherit;
       vertical-align: 0.5;
-      horizontal-align: 0.0;
     }
 
     message {
@@ -141,18 +122,14 @@ let
     }
 
     textbox {
-      padding: 10px;
       border-radius: ${toString config.theme.borderRadius}px;
-      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
+      background-color: #${config.theme.colors.base02};
       text-color: #${config.theme.colors.base04};
-      vertical-align: 0.5;
-      horizontal-align: 0.0;
     }
 
     error-message {
-      padding: 10px;
       border-radius: ${toString config.theme.borderRadius}px;
-      background-color: ${config.theme.hexToRgba config.theme.colors.base02 config.theme.opacity};
+      background-color: #${config.theme.colors.base02};
       text-color: #${config.theme.colors.base04};
     }
   '';
@@ -162,10 +139,10 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "Run:";
-      "display-powermenu" = "Pow:";
-      "display-window" = "Win:";
-      "drun-display-format" = "{name}\r[<span weight='light' size='small' alpha='70%'><i>({comment})</i></span>]";
+      "display-drun" = "Applications:";
+      "display-powermenu" = "Powermenu:";
+      "display-window" = "Windows:";
+      "drun-display-format" = "{name}";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
     };
