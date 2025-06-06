@@ -9,7 +9,7 @@
         
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "custom/kblayout" "group/temps" "tray" "clock" ];
+        modules-right = [ "tray" "custom/kblayout" "group/temps" "clock" ];
 
         spacing = config.theme.spacing.m;
 
@@ -107,7 +107,7 @@
 
         tray = {
           spacing = config.theme.spacing.xs;
-          icon-size = 14;
+          icon-size = 16;
           cursor = 60;
         };
       };
@@ -140,6 +140,7 @@
 
       #workspaces button {
         padding: 0px ${toString config.theme.spacing.xs}px;
+        background-color: #${config.theme.colors.base01};
       }
 
       #workspaces button.active {
@@ -168,6 +169,10 @@
 
       #tray * {
         border-radius: ${toString config.theme.borderRadius}px;
+      }
+
+      #clock {
+        padding: 0px;
       }
     '';
   };
