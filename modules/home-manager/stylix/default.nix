@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/Evangelion.png;
+    image = ../../../assets/wallpapers/fantasy-gruvbox-material.png;
     polarity = "dark";
 
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
@@ -10,7 +10,6 @@
     targets = {
       kitty.enable = false;
       starship.enable = false;
-      mako.enable = false;
       waybar.enable = false;
     };
 

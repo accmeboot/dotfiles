@@ -13,11 +13,6 @@
 
       default-timeout = 5000;
       ignore-timeout = true;
-      border-color = "#${config.theme.colors.base05}";
-      text-color = "#${config.theme.colors.base05}";
-      background-color = "#${config.theme.colors.base00}";
-      progress-color = "#${config.theme.colors.base03}";
-      font = "MesloLG 9";
       padding = 10;
 
       icon-border-radius = 32; # the default with and height of the icon is 64
@@ -33,7 +28,6 @@
         outer-margin = "0,0,100";
         width = 300;
         default-timeout = 2000;
-        font = "MesloLG 14";
       };
     };
   };
