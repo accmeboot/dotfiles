@@ -5,7 +5,7 @@
       mainBar = {
         layer = "bottom";
         position = "top";
-        height = 32;
+        height = 32 + config.theme.borderWidth;
         
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [];
@@ -106,7 +106,7 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.xs;
+          spacing = config.theme.spacing.s;
           icon-size = 16;
           cursor = 60;
         };
@@ -122,6 +122,7 @@
 
       window#waybar>box {
         padding: 0px ${toString config.theme.spacing.s}px;
+        border-bottom: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base0D};
       }
 
       window#waybar {
@@ -139,7 +140,8 @@
       }
 
       #workspaces button {
-        padding: 0px ${toString config.theme.spacing.xs}px;
+        all: unset;
+        padding: 0px ${toString config.theme.spacing.s}px;
         background-color: #${config.theme.colors.base01};
       }
 

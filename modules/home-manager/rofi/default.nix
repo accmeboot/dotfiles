@@ -10,7 +10,7 @@ let
       anchor: northwest;
       fullscreen: false;
       x-offset: ${toString config.theme.spacing.s}px;
-      y-offset: -32px; /* the height of waybar*/
+      y-offset: -${toString (32 + config.theme.borderWidth)}px; /* the height of waybar*/
       height: 32px; /* the height of waybar*/
       enabled: true;
       cursor: "default";
@@ -80,27 +80,28 @@ let
 
     element normal.urgent {
       background-color: inherit;
-      text-color: #${config.theme.colors.base09};
+      text-color: #${config.theme.colors.base08};
     }
 
     element normal.active {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0D};
+      text-color: #${config.theme.colors.base0B};
     }
 
     element selected.normal {
       background-color: inherit;
+      text-color: inherit;
       text-color: #${config.theme.colors.base0D};
     }
 
     element selected.urgent {
       background-color: inherit;
-      text-color: #${config.theme.colors.base09};
+      text-color: #${config.theme.colors.base08};
     }
 
     element selected.active {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0A};
+      text-color: #${config.theme.colors.base0D};
     }
 
     element-icon {
