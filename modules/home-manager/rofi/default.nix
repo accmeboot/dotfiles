@@ -60,7 +60,7 @@ let
       text-color: inherit;
       cursor: text;
       placeholder: " Search...";
-      placeholder-color: #${config.theme.colors.base03};
+      placeholder-color: #${config.theme.colors.base04};
       vertical-align: 0.5;
       margin: 0px ${toString config.theme.spacing.xs}px;
     }
@@ -145,9 +145,9 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "Menu:";
-      "display-powermenu" = "Open:";
-      "display-window" = "Exit:";
+      "display-drun" = "M:";
+      "display-powermenu" = "L:";
+      "display-window" = "O:";
       "drun-display-format" = "{name}";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
