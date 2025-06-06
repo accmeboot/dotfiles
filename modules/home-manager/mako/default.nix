@@ -15,8 +15,8 @@
       ignore-timeout = true;
       border-color = "#${config.theme.colors.base05}";
       text-color = "#${config.theme.colors.base05}";
-      background-color = "${config.theme.hexToHexOpacity config.theme.colors.base00 (config.theme.opacity * 0.5)}";
-      progress-color = "${config.theme.hexToHexOpacity config.theme.colors.base03 (config.theme.opacity * 0.5)}";
+      background-color = "#${config.theme.colors.base00}";
+      progress-color = "#${config.theme.colors.base03}";
       font = "MesloLG 9";
       padding = 10;
 
