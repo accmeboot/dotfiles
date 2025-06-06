@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/Evangelion-mini-gruvbox.png;
+    image = ../../../assets/wallpapers/Evangelion.png;
     polarity = "dark";
 
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/hardcore.yaml";
