@@ -71,7 +71,7 @@
       set -g status-left ""
 
       set -g window-status-format "#[fg=#${config.theme.colors.base03},bg=#${config.theme.colors.base00}]#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base03}]#I #[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base02}]  #W#[fg=#${config.theme.colors.base02},bg=#${config.theme.colors.base00}]"
-      set -g window-status-current-format "#[fg=#${config.theme.colors.base0B},bg=#${config.theme.colors.base00}]#[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base0B}]#I #[fg=#${config.theme.colors.base06},bg=#${config.theme.colors.base03}]  #W#[fg=#${config.theme.colors.base03},bg=#${config.theme.colors.base00}]"
+      set -g window-status-current-format "#[fg=#${config.theme.colors.base0D},bg=#${config.theme.colors.base00}]#[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base0D}]#I #[fg=#${config.theme.colors.base06},bg=#${config.theme.colors.base03}]  #W#[fg=#${config.theme.colors.base03},bg=#${config.theme.colors.base00}]"
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${config.theme.colors.base02},bg=#${config.theme.colors.base00}]#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base02}]#{session_path} #[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base04}]  #S #[fg=#${config.theme.colors.base04},bg=#${config.theme.colors.base00}]"

@@ -39,8 +39,6 @@
         gaps_in = config.theme.spacing.xs;
         gaps_out = config.theme.spacing.s;
         border_size = config.theme.borderWidth;
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base05})";
-        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
         layout = "dwindle";
         allow_tearing = false;
       };
@@ -51,6 +49,12 @@
         active_opacity = 1.0;
         inactive_opacity = toString config.theme.opacity;
 
+        blur = {
+          enabled = true;
+          size = 10;
+          passes = 3;
+        };
+
         shadow = {
           enabled = true;
           range = 4;
@@ -58,29 +62,19 @@
         };
       };
 
+      # Animations
+      animations = {
+        enabled = false;
+      };
+
       # Group configuration
       group = {
         groupbar = {
           enabled = false;
           stacked = false;
-          priority = 10001;
-          render_titles = false;
-          keep_upper_gap = true;
-          gaps_in = 0;
-          gaps_out = 0;
-          indicator_height = 10;
-          rounding = 5;
-          "col.active" = lib.mkForce "rgb(${config.theme.colors.base05})";
-          "col.inactive" = lib.mkForce "rgb(${config.theme.colors.base03})";
         };
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base05})";
-        "col.border_inactive" = lib.mkForce "rgb(${config.theme.colors.base03})";
       };
 
-      # Animations
-      animations = {
-        enabled = false;
-      };
 
       # Layout
       dwindle = {
@@ -100,6 +94,11 @@
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
+      ];
+
+      layerrule = [
+        "blur, waybar"
+        "blur, rofi"
       ];
 
       # Key bindings

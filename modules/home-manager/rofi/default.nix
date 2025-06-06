@@ -6,15 +6,17 @@ let
     }
 
     window {
-      location: northwest;
-      anchor: northwest;
+      location: southwest;
+      anchor: southwest;
       fullscreen: false;
-      x-offset: ${toString config.theme.spacing.s}px;
-      y-offset: -32px; /* the height of waybar*/
-      height: 32px; /* the height of waybar*/
+      width: 100%;
+      x-offset: 0px;
+      y-offset: 0px;
+      height: 32px;
       enabled: true;
       cursor: "default";
-      background-color: #${config.theme.colors.base00};
+      background-color: transparent;
+      padding: 0px ${toString config.theme.spacing.s}px;
     }
 
     /* Containers */
@@ -45,8 +47,11 @@ let
     /* Children */
 
     prompt {
-      background-color: inherit;
-      color: #${config.theme.colors.base07};
+      background-color: #${config.theme.colors.base0B};
+      color: #${config.theme.colors.base00};
+      border-radius: ${toString config.theme.borderRadius}px;
+      padding: 0px ${toString config.theme.spacing.s}px;
+      margin: ${toString config.theme.spacing.xs}px 0px;
       vertical-align: 0.5;
     }
 
@@ -54,7 +59,7 @@ let
       background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: "Search...";
+      placeholder: " Search...";
       placeholder-color: #${config.theme.colors.base03};
       vertical-align: 0.5;
       margin: 0px ${toString config.theme.spacing.xs}px;

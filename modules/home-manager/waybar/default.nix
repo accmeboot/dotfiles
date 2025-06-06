@@ -152,7 +152,7 @@
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
         margin: ${toString config.theme.spacing.xs}px 0px;
-        background-color: #${config.theme.colors.base01};
+        background-color: #${config.theme.colors.base02};
       }
 
       #workspaces button.active {
