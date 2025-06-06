@@ -10,7 +10,7 @@ let
       anchor: northwest;
       fullscreen: false;
       x-offset: ${toString config.theme.spacing.s}px;
-      y-offset: -${toString (32 + config.theme.borderWidth)}px; /* the height of waybar*/
+      y-offset: -32px; /* the height of waybar*/
       height: 32px; /* the height of waybar*/
       enabled: true;
       cursor: "default";

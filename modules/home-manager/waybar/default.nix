@@ -5,7 +5,7 @@
       mainBar = {
         layer = "bottom";
         position = "top";
-        height = 32 + config.theme.borderWidth;
+        height = 32;
         
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [];
@@ -122,7 +122,6 @@
 
       window#waybar>box {
         padding: 0px ${toString config.theme.spacing.s}px;
-        border-bottom: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base0D};
       }
 
       window#waybar {
