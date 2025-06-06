@@ -52,6 +52,7 @@ let
       padding: 0px ${toString config.theme.spacing.s}px;
       margin: ${toString config.theme.spacing.xs}px 0px;
       vertical-align: 0.5;
+      font: "SF Pro Text 14";
     }
 
     entry {
