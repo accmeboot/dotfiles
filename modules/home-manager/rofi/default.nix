@@ -6,8 +6,8 @@ let
     }
 
     window {
-      location: southwest;
-      anchor: southwest;
+      location: northwest;
+      anchor: northwest;
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
@@ -145,9 +145,9 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "Applications:";
-      "display-powermenu" = "Powermenu:";
-      "display-window" = "Windows:";
+      "display-drun" = "Menu:";
+      "display-powermenu" = "Open:";
+      "display-window" = "Exit:";
       "drun-display-format" = "{name}";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
