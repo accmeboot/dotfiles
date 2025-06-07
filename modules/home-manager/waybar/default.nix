@@ -9,7 +9,7 @@
         
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [];
-        modules-right = [ "tray" "custom/kblayout" "group/temps" "clock" ];
+        modules-right = [ "tray" "hyprland/language" "group/temps" "clock" ];
 
         spacing = config.theme.spacing.m;
 
@@ -91,10 +91,10 @@
           modules = ["custom/cpu" "custom/gpu" "custom/ram"];
         };
 
-        "custom/kblayout" = {
-          format = "{text}";
-          exec = "hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' | awk '{print toupper(substr($0,1,2))}'";
-          interval = 1;
+        "hyprland/language" = {
+          format = "{}";
+          format-en = "EN";
+          format-ru = "RU";
           cursor = 68;
           tooltip = false;
         };

@@ -42,7 +42,7 @@
         layout = "dwindle";
         allow_tearing = false;
 
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 180deg";
+        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 90deg";
       };
 
       # Decoration
@@ -75,7 +75,7 @@
           enabled = false;
           stacked = false;
         };
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 180deg";
+        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 90deg";
       };
 
 
