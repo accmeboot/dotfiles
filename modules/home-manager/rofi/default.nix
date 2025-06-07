@@ -11,7 +11,7 @@ let
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
-      y-offset: 0px;
+      y-offset: -32px;
       height: 32px;
       enabled: true;
       cursor: "default";
@@ -60,7 +60,7 @@ let
       text-color: inherit;
       cursor: text;
       placeholder: " Search...";
-      placeholder-color: #${config.theme.colors.base03};
+      placeholder-color: #${config.theme.colors.base04};
       vertical-align: 0.5;
       margin: 0px ${toString config.theme.spacing.xs}px;
     }
