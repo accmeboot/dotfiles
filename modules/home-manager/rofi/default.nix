@@ -53,7 +53,6 @@ let
       margin: ${toString config.theme.spacing.xs}px 0px;
       border-radius: ${toString config.theme.borderRadius}px;
       vertical-align: 0.5;
-      font: "SF Pro Text 14";
     }
 
     entry {
@@ -146,9 +145,10 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "󰥭";
-      "display-powermenu" = "󰤄";
-      "display-window" = "󰖭";
+      "display-drun" = "Drun:";
+      "display-powermenu" = "Exit:";
+      "display-window" = "Open:";
+
       "drun-display-format" = "{name}";
       "window-format" = "{w} · {c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
