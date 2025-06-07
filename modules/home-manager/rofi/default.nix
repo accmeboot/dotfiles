@@ -152,7 +152,7 @@ in {
       "display-window" = "Open:";
 
       "drun-display-format" = "{name}";
-      "window-format" = "{w} · {c}";
+      "window-format" = "{w}{c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
     };
     package = pkgs.rofi-wayland.override {
