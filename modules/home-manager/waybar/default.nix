@@ -31,17 +31,7 @@
 
         "custom/cpu" = {
           format = "CPU: {text}°C";
-          exec = ''
-            temp=$(sensors | grep 'Tctl:' | awk '{print int($2)}' | sed 's/[^0-9.]*//g')
-            if [ "$temp" -lt 50 ]; then
-              class="normal"
-            elif [ "$temp" -lt 65 ]; then
-              class="medium" 
-            else
-              class="high"
-            fi
-            echo "{\"text\":\"$temp\",\"class\":\"$class\"}"
-          '';
+          exec = "bash ${../../../scripts/cpu-temp.sh}";
           return-type = "json";
           interval = 1;
           cursor = 68;
@@ -50,17 +40,7 @@
 
         "custom/gpu" = {
           format = "GPU: {text}°C";
-          exec = ''
-            temp=$(sensors | awk '/edge/ {if (!found) {print int($2); found=1}}')
-            if [ "$temp" -lt 50 ]; then
-              class="normal"
-            elif [ "$temp" -lt 65 ]; then
-              class="medium"
-            else
-              class="high" 
-            fi
-            echo "{\"text\":\"$temp\",\"class\":\"$class\"}"
-          '';
+          exec = "bash ${../../../scripts/gpu-temp.sh}";
           return-type = "json";
           interval = 1;
           cursor = 68;
@@ -69,17 +49,7 @@
 
         "custom/ram" = {
           format = "RAM: {text}%";
-          exec = ''
-            usage=$(free -m | awk '/^Mem:/ {printf "%d", $3/$2 * 100}')
-            if [ "$usage" -lt 50 ]; then
-              class="normal"
-            elif [ "$usage" -lt 75 ]; then
-              class="medium"
-            else
-              class="high"
-            fi
-            echo "{\"text\":\"$usage\",\"class\":\"$class\"}"
-          '';
+          exec = "bash ${../../../scripts/ram-usage.sh}";
           return-type = "json";
           interval = 1;
           cursor = 68;
