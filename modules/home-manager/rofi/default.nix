@@ -47,10 +47,11 @@ let
     /* Children */
 
     prompt {
-      background-color: inherit;
-      color: #${config.theme.colors.base0B};
+      background-color: #${config.theme.colors.base0D};
+      color: #${config.theme.colors.base02};
       padding: 0px ${toString config.theme.spacing.s}px;
       margin: ${toString config.theme.spacing.xs}px 0px;
+      border-radius: ${toString config.theme.borderRadius}px;
       vertical-align: 0.5;
       font: "SF Pro Text 14";
     }
@@ -73,7 +74,7 @@ let
     }
 
     element {
-      spacing: 10px;
+      spacing: ${toString config.theme.spacing.xs}px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
     }
@@ -145,7 +146,7 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "";
+      "display-drun" = "󰥭";
       "display-powermenu" = "󰤄";
       "display-window" = "󰖭";
       "drun-display-format" = "{name}";
