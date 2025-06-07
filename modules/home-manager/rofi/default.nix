@@ -47,11 +47,10 @@ let
     /* Children */
 
     prompt {
-      background-color: #${config.theme.colors.base0D};
-      color: #${config.theme.colors.base02};
+      background-color: transparent;
+      color: #${config.theme.colors.base07};
       padding: 0px ${toString config.theme.spacing.s}px;
       margin: ${toString config.theme.spacing.xs}px 0px;
-      border-radius: ${toString config.theme.borderRadius}px;
       vertical-align: 0.5;
     }
 

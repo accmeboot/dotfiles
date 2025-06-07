@@ -138,31 +138,23 @@
         color: #${config.theme.colors.base05};
       }
 
-      #workspaces button:first-child {
-        border-top-left-radius: ${toString config.theme.borderRadius}px;
-        border-bottom-left-radius: ${toString config.theme.borderRadius}px;
-      }
-
-      #workspaces button:last-child {
-        border-top-right-radius: ${toString config.theme.borderRadius}px;
-        border-bottom-right-radius: ${toString config.theme.borderRadius}px;
-      }
-
       #workspaces button {
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
-        margin: ${toString config.theme.spacing.xs}px 0px;
-        background-color: #${config.theme.colors.base00};
+        background-color: transparent;
+        box-shadow: inset 0 -${toString config.theme.borderWidth}px transparent;
       }
 
       #workspaces button.active {
-        background-color: #${config.theme.colors.base0D};
-        color: #${config.theme.colors.base02};
+        background-color: transparent;
+        color: #${config.theme.colors.base0D};
+        box-shadow: inset 0 -${toString config.theme.borderWidth}px #${config.theme.colors.base0D};
       }
 
       #workspaces button.urgent {
-        background-color: #${config.theme.colors.base08};
-        color: #${config.theme.colors.base02};
+        background-color: transparent;
+        color: #${config.theme.colors.base08};
+        box-shadow: inset 0 -${toString config.theme.borderWidth}px #${config.theme.colors.base08};
       }
 
       #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
