@@ -33,7 +33,6 @@ let
       background-color: transparent;
       orientation: horizontal;
       children: [ "message", "listview" ];
-      padding: 8px 0px;
     }
 
     inputbar {
@@ -75,6 +74,10 @@ let
       spacing: ${toString config.theme.spacing.xs}px;
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
+      cursor: pointer;
+      border: 0px 0px 4px 0px;
+      border-color: transparent;
+      padding: 8px 0px 4px 0px;
     }
 
     element normal.normal {
@@ -95,7 +98,7 @@ let
     element selected.normal {
       background-color: inherit;
       text-color: inherit;
-      text-color: #${config.theme.colors.base0D};
+      border-color: #${config.theme.colors.base0A};
     }
 
     element selected.urgent {
@@ -105,7 +108,7 @@ let
 
     element selected.active {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0D};
+      border-color: #${config.theme.colors.base0A};
     }
 
     element-icon {
