@@ -95,7 +95,7 @@
       }
 
       window#waybar {
-        background-color: ${config.theme.hexToRgba config.theme.colors.base00 (config.theme.opacity * 0.5)};
+        background-color: ${config.theme.hexToRgba config.theme.colors.base00 config.theme.opacity};
         color: #${config.theme.colors.base05};
       }
 
