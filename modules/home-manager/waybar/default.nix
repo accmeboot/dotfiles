@@ -7,20 +7,11 @@
         position = "top";
         height = 32;
         
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [];
-        modules-right = [ "tray" "hyprland/language" "group/temps" "clock" ];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ "group/temps" ];
+        modules-right = [ "hyprland/language" "tray" "clock" ];
 
         spacing = config.theme.spacing.m;
-
-        "hyprland/window" = {
-          format = "{title}";
-          tooltip = false;
-          icon = true;
-          icon-size = 12;
-          on-click = "rofi -show window";
-          on-click-right = "hyprctl dispatch killactive";
-        };
 
         "hyprland/workspaces" = {
           format = "{name}";

@@ -58,7 +58,7 @@ let
       text-color: inherit;
       cursor: text;
       placeholder: " Search...";
-      placeholder-color: #${config.theme.colors.base04};
+      placeholder-color: #${config.theme.colors.base03};
       vertical-align: 0.5;
       margin: 0px ${toString config.theme.spacing.xs}px;
     }
@@ -112,6 +112,7 @@ let
     }
 
     element-icon {
+      enabled: false;
       background-color: transparent;
       text-color: inherit;
       size: 12px;
