@@ -19,12 +19,11 @@ let
       padding: 0px ${toString config.theme.spacing.s}px;
     }
 
-    /* Containers */
-
     mainbox {
       enabled: true;
       background-color: transparent;
       orientation: horizontal;
+      padding: ${toString config.theme.spacing.s}px 0px;
       children: [ "inputbar", "listbox" ];
     }
 
@@ -43,14 +42,10 @@ let
       children: [ "prompt", "entry" ];
     }
 
-    /* Children */
-
     prompt {
       background-color: transparent;
       color: #${config.theme.colors.base07};
       padding: 0px ${toString config.theme.spacing.s}px;
-      margin: ${toString config.theme.spacing.xs}px 0px;
-      vertical-align: 0.5;
     }
 
     entry {
@@ -59,7 +54,6 @@ let
       cursor: text;
       placeholder: " Search...";
       placeholder-color: #${config.theme.colors.base03};
-      vertical-align: 0.5;
       margin: 0px ${toString config.theme.spacing.xs}px;
     }
 
@@ -75,9 +69,7 @@ let
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
       cursor: pointer;
-      border: 0px 0px 4px 0px;
       border-color: transparent;
-      padding: 8px 0px 4px 0px;
     }
 
     element normal.normal {
@@ -97,8 +89,7 @@ let
 
     element selected.normal {
       background-color: inherit;
-      text-color: inherit;
-      border-color: #${config.theme.colors.base0A};
+      text-color: #${config.theme.colors.base0A};
     }
 
     element selected.urgent {
@@ -108,7 +99,14 @@ let
 
     element selected.active {
       background-color: inherit;
-      border-color: #${config.theme.colors.base0A};
+      text-color: #${config.theme.colors.base0A};
+    }
+
+    element-text {
+      background-color: transparent;
+      text-color: inherit;
+      cursor: inherit;
+      vertical-align: 0.5;
     }
 
     element-icon {
@@ -117,13 +115,6 @@ let
       text-color: inherit;
       size: 12px;
       cursor: inherit;
-    }
-
-    element-text {
-      background-color: transparent;
-      text-color: inherit;
-      cursor: inherit;
-      vertical-align: 0.5;
     }
 
     message {
