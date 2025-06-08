@@ -15,7 +15,7 @@ let
       height: 32px;
       enabled: true;
       cursor: "default";
-      background-color: transparent;
+      background-color: ${config.theme.hexToRgba config.theme.colors.base00 (config.theme.opacity * 0.5)};
       padding: 0px ${toString config.theme.spacing.s}px;
     }
 
