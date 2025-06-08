@@ -134,6 +134,14 @@ return {
       on_attach = on_attach,
     })
 
+    vim.lsp.config("clangd", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = { "clangd", "--fallback-style=Google" },
+      filetypes = { "c", "cpp" },
+      single_file_support = true,
+    })
+
     -- Enable all LSP servers after configuration
     vim.lsp.enable({
       "html",
@@ -148,6 +156,7 @@ return {
       "lua_ls",
       "pyright",
       "nil_ls",
+      "clangd"
     })
   end,
 }
