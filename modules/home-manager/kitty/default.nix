@@ -48,6 +48,9 @@
 
       window_padding_width 2 4
 
+      cursor_trail 1
+      cursor_trail_decay 0.1 0.2
+
       # BEGIN_KITTY_FONTS
       # Font ligatures settings for Jet Brains Mono Font:
       # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
