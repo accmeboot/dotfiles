@@ -103,18 +103,16 @@
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
         background-color: transparent;
-        box-shadow: inset 0 -${toString (config.theme.borderWidth * 2)}px transparent;
       }
 
       #workspaces button.active {
         background-color: transparent;
-        box-shadow: inset 0 -${toString (config.theme.borderWidth * 2)}px #${config.theme.colors.base0A};
+        color: #${config.theme.colors.base0A};
       }
 
       #workspaces button.urgent {
         background-color: transparent;
         color: #${config.theme.colors.base08};
-        box-shadow: inset 0 -${toString (config.theme.borderWidth * 2)}px transparent;
       }
 
       #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
