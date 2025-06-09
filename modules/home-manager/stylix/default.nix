@@ -1,11 +1,11 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/desk-gruvbox-material.jpg;
+    image = ../../../assets/wallpapers/nixos.png;
     polarity = "dark";
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
-    base16Scheme = import ./src/schemes/gruvbox.nix;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    # base16Scheme = import ./src/schemes/gruvbox.nix;
 
     targets = {
       kitty.enable = false;

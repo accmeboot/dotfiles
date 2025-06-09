@@ -42,7 +42,7 @@
         layout = "dwindle";
         allow_tearing = false;
 
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 90deg";
+        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base05})";
       };
 
       # Decoration
@@ -75,7 +75,7 @@
           enabled = false;
           stacked = false;
         };
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base07}) rgb(${config.theme.colors.base0A}) rgb(${config.theme.colors.base0B}) rgb(${config.theme.colors.base0C}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base07}) 90deg";
+        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base0D})";
       };
 
 
@@ -97,14 +97,6 @@
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
-      ];
-
-      layerrule = [
-        "blur, waybar"
-        "blur, rofi"
-
-        "blur, notifications"
-        "ignorezero, notifications"
       ];
 
       # Key bindings
