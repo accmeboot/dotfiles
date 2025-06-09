@@ -19,7 +19,7 @@ return {
             end,
             color = "WarningMsg",
           },
-          { "branch", icon = "", color = "StatusLine", padding = { left = 0 } },
+          { "branch", icon = "", color = "StatusLine", padding = { left = 1 } },
           { "diff", color = { bg = "None" }, },
         },
         lualine_c = {
@@ -46,10 +46,10 @@ return {
             color = "StatusLine"
           },
           { "diagnostics", color = { bg = "None" } },
-          { "progress",    color = "StatusLine" },
+          { "location",    color = "StatusLine",   padding = { right = 0 } },
         },
         lualine_z = {
-          { "location", color = "StatusLine", padding = { right = 0 } },
+          { "progress", color = "StatusLine" },
         },
       },
 
