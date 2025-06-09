@@ -7,11 +7,11 @@
       
       directory = {
         format = "[$path]($style) ";
-        style = "green";
+        style = "blue";
       };
 
       character = {
-        success_symbol = "[❯](green)";
+        success_symbol = "[❯](purple)";
         error_symbol = "[❯](red)";
         vimcmd_symbol = "[❮](green)";
       };
@@ -23,7 +23,7 @@
 
       git_status = {
         format = "[$all_status$ahead_behind]($style) ";
-        style = "cyan";
+        style = "red";
       };
 
       line_break = {
