@@ -16,37 +16,37 @@
         "break"
         {
           key = "󰅐 ";
-          keyColor = "yellow";
+         keyColor = "37";
           type = "uptime";
         }
         {
           key = " ";
-          keyColor = "yellow";
+          keyColor = "31";
           type = "packages";
         }
         {
           key = " ";
-          keyColor = "yellow";
+          keyColor = "32";
           type = "wm";
         }
         {
           key = " ";
-          keyColor = "yellow";
+          keyColor = "33";
           type = "shell";
         }
         {
           key = " ";
-          keyColor = "yellow";
+          keyColor = "34";
           type = "terminal";
         }
         {
           key = " ";
-          keyColor = "yellow";
+          keyColor = "35";
           type = "disk";
         }
         {
           key = "󰑭 ";
-          keyColor = "yellow";
+          keyColor = "36";
           type = "memory";
         }
         "break"
