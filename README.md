@@ -17,9 +17,6 @@ Sensitive data (like API keys) should **not** be committed to the repo. Instead,
 ## Showcase
 
 ![Showcase 1](/assets/showcase/1.png)
-![Showcase 2](/assets/showcase/2.png)
-![Showcase 3](/assets/showcase/3.png)
-![Showcase 4](/assets/showcase/4.png)
 
 ## License
 
