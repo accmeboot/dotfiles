@@ -42,7 +42,8 @@
         layout = "dwindle";
         allow_tearing = false;
 
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base05})";
+        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
+        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base01})";
       };
 
       # Decoration
@@ -75,7 +76,8 @@
           enabled = false;
           stacked = false;
         };
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base0D})";
+        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base03})";
+        "col.border_inactive" = lib.mkForce "rgb(${config.theme.colors.base01})";
       };
 
 
