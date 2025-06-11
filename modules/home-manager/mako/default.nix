@@ -26,9 +26,17 @@
 
 
       outer-margin = toString config.theme.spacing.xxl;
-      margin = 0;
+      margin = toString config.theme.spacing.s;
 
       "app-name=volume" = {
+        anchor = "bottom-center";
+        outer-margin = "0,0,100";
+        width = 300;
+        default-timeout = 2000;
+        font = "MesloLG 12";
+      };
+
+      "app-name=brightness" = {
         anchor = "bottom-center";
         outer-margin = "0,0,100";
         width = 300;

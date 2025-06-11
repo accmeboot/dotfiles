@@ -98,7 +98,7 @@ return {
       on_attach = on_attach,
     })
 
-    vim.lsp.config("nil", {
+    vim.lsp.config("nil_ls", {
       capabilities = capabilities,
       on_attach = on_attach,
     })

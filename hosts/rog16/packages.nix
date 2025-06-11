@@ -81,6 +81,7 @@
     glib         # low-level core library for GNOME
     libnotify    # notification library
     socat        # listen to events on sockets
+    brightnessctl #control brightness
 
     # Gaming Platform
     (lutris.override {

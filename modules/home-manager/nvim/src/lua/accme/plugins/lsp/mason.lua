@@ -26,7 +26,7 @@ return {
         "svelte",
         "rust_analyzer",
         "mdx_analyzer",
-        "nil",
+        "nil_ls",
         "clangd",
       },
       -- auto-install configured servers (with lspconfig)
