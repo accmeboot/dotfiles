@@ -10,7 +10,6 @@
     cmake        # cross-platform build system generator
     gnumake      # build automation tool
     git          # version control system
-    brave        # privacy-focused web browser
 
     # from flakes
     inputs.zen-browser.packages.${pkgs.system}.default
