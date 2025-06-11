@@ -19,10 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    grub2-themes = {
-      url = "github:vinceliuice/grub2-themes";
-    };
-
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,14 +33,13 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, grub2-themes, solaar, zen-browser }:{
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar, zen-browser }:{
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           solaar.nixosModules.default
-          grub2-themes.nixosModules.default
           home-manager.nixosModules.home-manager
           ./hosts/7950x3d-xtx/solaar.nix
 

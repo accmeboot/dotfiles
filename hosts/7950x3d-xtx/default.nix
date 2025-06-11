@@ -41,20 +41,11 @@
   #----------------------------------------------------------------------------#
   boot = {
     loader = {
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-      };
+      systemd-boot.enable = true;
+      timeout = 0;
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
-      };
-      grub2-theme = {
-        enable = true;
-        theme = "vimix";
-        footer = true;
       };
     };
     consoleLogLevel = 3;

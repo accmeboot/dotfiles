@@ -289,24 +289,6 @@
         "type": "github"
       }
     },
-    "grub2-themes": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1734412921,
-        "narHash": "sha256-JeMqc7lLowKn6klrCcOkcOg38yNqF7MPbN4Elh6Xvq0=",
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "rev": "f6ab2438e124f60a340a526543e498e5e33b3c53",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -349,22 +331,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1749393248,
-        "narHash": "sha256-QHio3NbxP4h8pQoRhCdP2AcAh8cRgvf1jv1re9z94O0=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "32e3db8294211e008f4ca9ee20e01d11a45861af",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1749369410,
         "narHash": "sha256-P1eYm8bewiyWg3QaPCHrOp6iWg/7ESi/aGHT4yilyNo=",
@@ -409,9 +375,8 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "solaar": "solaar",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
