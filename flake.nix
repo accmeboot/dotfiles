@@ -93,7 +93,6 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          grub2-themes.nixosModules.default
           home-manager.nixosModules.home-manager
 
           ./hosts/rog16/default.nix
