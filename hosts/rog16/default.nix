@@ -156,13 +156,14 @@
     envfs.enable = true;
     displayManager.gdm.enable = true;
 
+    touchegg.enable = true;
+
     xserver = {
       videoDrivers = ["nvidia"];
       xkb = {
         layout = "us";
         variant = "";
       };
-      desktopManager.gnome.enable = true;
     };
 
     libinput = {
@@ -172,8 +173,13 @@
         accelSpeed = "0";
       };
       touchpad = {
-        accelProfile = "flat";
-        accelSpeed = "0";
+        accelProfile = "adaptive";
+        accelSpeed = "0.3";
+        naturalScrolling = true;
+        clickMethod = "clickfinger";
+        disableWhileTyping = true;  # Prevent accidental touches
+        middleEmulation = false;    # Disable middle click emulation
+        scrollMethod = "twofinger"; # Two-finger scrolling
       };
     };
     keyd = {

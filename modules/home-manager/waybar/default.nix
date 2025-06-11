@@ -9,7 +9,7 @@
         
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "group/temps" ];
-        modules-right = [ "hyprland/language" "tray" "clock" ];
+        modules-right = [ "hyprland/language" "battery" "tray" "clock" ];
 
         spacing = config.theme.spacing.m;
 
@@ -18,6 +18,16 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        "battery" = {
+          format = "[{capacity}%]";
+          interval = 60;
+          states = {
+            warning = 30;
+            critical = 16;
+
+          };
         };
 
         "custom/cpu" = {
@@ -118,10 +128,10 @@
       #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
         color: #${config.theme.colors.base0B};
       }
-      #custom-cpu.medium, #custom-gpu.medium, #custom-ram.medium {
+      #custom-cpu.medium, #custom-gpu.medium, #custom-ram.medium, #battery.warning {
         color: #${config.theme.colors.base0A};
       }
-      #custom-cpu.high, #custom-gpu.high, #custom-ram.high {
+      #custom-cpu.high, #custom-gpu.high, #custom-ram.high, #battery.critical {
         color: #${config.theme.colors.base08};
       }
 

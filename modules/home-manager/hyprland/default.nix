@@ -31,8 +31,18 @@
         follow_mouse = 1;
         kb_layout = "us,ru";
         kb_options = "grp:ctrl_space_toggle";
-      };
 
+        touchpad = {
+          natural_scroll = true;
+          scroll_factor = 0.5;
+          middle_button_emulation = false;
+          tap-and-drag = true;
+          drag_lock = false;
+          disable_while_typing = true;
+          clickfinger_behavior = true;
+          tap-to-click = false;
+        };
+      };
 
       # General settings
       general = {
