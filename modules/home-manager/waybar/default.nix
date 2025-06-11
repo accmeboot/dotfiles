@@ -21,13 +21,14 @@
         };
 
         "battery" = {
-          format = "[{capacity}%]";
           interval = 60;
           states = {
             warning = 30;
             critical = 16;
-
           };
+
+          format = "{icon} {capacity}%";
+          format-icons = [" " " " " " " " " "];
         };
 
         "custom/cpu" = {
