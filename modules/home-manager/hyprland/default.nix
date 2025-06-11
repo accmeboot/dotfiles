@@ -243,6 +243,8 @@
         ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${config.home.homeDirectory}/dotfiles/scripts/volume-notify.sh"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ${config.home.homeDirectory}/dotfiles/scripts/brightness-notify.sh"
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+ && ${config.home.homeDirectory}/dotfiles/scripts/brightness-notify.sh"
+
+        ", switch:on:Lid Switch, exec, hyprlock & systemctl suspend"
       ];
 
       # Mouse wheel workspace switching
