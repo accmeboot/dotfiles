@@ -1,29 +1,23 @@
 { config, pkgs, lib, ... }:
 let
   customTheme = pkgs.writeText "custom.rasi" ''
-    * {
-      font: "SF Pro Text 9.5";
-    }
-
     window {
       location: northwest;
       anchor: northwest;
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
-      y-offset: -32px;
-      height: 32px;
+      y-offset: -33px;
       enabled: true;
       cursor: "default";
       background-color: #${config.theme.colors.base00};
-      padding: 0px ${toString config.theme.spacing.s}px;
+      padding: ${toString config.theme.spacing.s}px;
     }
 
     mainbox {
       enabled: true;
       background-color: transparent;
       orientation: horizontal;
-      padding: ${toString config.theme.spacing.s}px 0px;
       children: [ "inputbar", "listbox" ];
     }
 

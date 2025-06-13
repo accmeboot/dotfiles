@@ -5,7 +5,6 @@
       mainBar = {
         layer = "bottom";
         position = "top";
-        height = 32;
         
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "group/temps" ];
@@ -93,7 +92,7 @@
       }
 
       window#waybar>box {
-        padding: 0px ${toString config.theme.spacing.s}px;
+        padding: ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
