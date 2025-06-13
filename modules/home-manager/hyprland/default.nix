@@ -24,6 +24,11 @@
         ",highrr,auto,1"
       ];
 
+      device = {
+        name = "asuf1205:00-2808:0106-touchpad";
+        accel_profile = "adaptive";
+      };
+
       # Input configuration
       input = {
         accel_profile = "flat";
