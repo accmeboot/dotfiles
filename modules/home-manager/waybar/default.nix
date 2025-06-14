@@ -100,6 +100,7 @@
       window#waybar {
         background-color: #${config.theme.colors.base00};
         color: #${config.theme.colors.base05};
+        font-family: "DepartureMono Nerd Font", monospace;
       }
 
       tooltip {

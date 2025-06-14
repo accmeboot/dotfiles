@@ -1,6 +1,11 @@
 { config, pkgs, lib, ... }:
 let
   customTheme = pkgs.writeText "custom.rasi" ''
+    * {
+      font: "DepartureMono Nerd Font 9.5";
+    }
+
+  
     window {
       location: northwest;
       anchor: northwest;
