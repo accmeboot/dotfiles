@@ -7,16 +7,32 @@
         position = "top";
         
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "group/temps" ];
-        modules-right = [ "hyprland/language" "battery" "tray" "clock" ];
+        modules-center = [];
+        modules-right = [
+          "custom/cpu"
+          "custom/separator"
+          "custom/gpu"
+          "custom/separator"
+          "clock"
+          "custom/separator"
+          "hyprland/language"
+          "custom/separator"
+          "tray"
+          "battery"
+        ];
 
-        spacing = config.theme.spacing.m;
+        spacing = config.theme.spacing.s;
 
         "hyprland/workspaces" = {
           format = "{name}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        "custom/separator" = {
+          format = "󰿟";
+          tooltip = false;
         };
 
         "battery" = {
@@ -46,20 +62,6 @@
           interval = 1;
           cursor = 68;
           tooltip = false;
-        };
-
-        "custom/ram" = {
-          format = "RAM: {text}%";
-          exec = "bash ${../../../scripts/ram-usage.sh}";
-          return-type = "json";
-          interval = 1;
-          cursor = 68;
-          tooltip = false;
-        };
-
-        "group/temps" = {
-          orientation = "horizontal";
-          modules = ["custom/cpu" "custom/gpu" "custom/ram"];
         };
 
         "hyprland/language" = {
@@ -123,20 +125,6 @@
       #workspaces button.urgent {
         background-color: transparent;
         color: #${config.theme.colors.base08};
-      }
-
-      #custom-cpu.normal, #custom-gpu.normal, #custom-ram.normal {
-        color: #${config.theme.colors.base0B};
-      }
-      #custom-cpu.medium, #custom-gpu.medium, #custom-ram.medium, #battery.warning {
-        color: #${config.theme.colors.base0A};
-      }
-      #custom-cpu.high, #custom-gpu.high, #custom-ram.high, #battery.critical {
-        color: #${config.theme.colors.base08};
-      }
-
-      #custom-gpu {
-        margin: 0px ${toString config.theme.spacing.xs}px;
       }
 
       #tray * {
