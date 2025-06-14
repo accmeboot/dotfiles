@@ -80,7 +80,7 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 16;
+          icon-size = 13;
           cursor = 60;
         };
       };
@@ -129,6 +129,7 @@
       }
 
       #tray * {
+        font-family: "Inter", monospace;
         border-radius: ${toString config.theme.borderRadius}px;
       }
 
