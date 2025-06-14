@@ -17,8 +17,8 @@
           "custom/separator"
           "hyprland/language"
           "custom/separator"
-          "tray"
           "battery"
+          "tray"
         ];
 
         spacing = config.theme.spacing.s;
@@ -42,8 +42,7 @@
             critical = 16;
           };
 
-          format = "{icon} {capacity}%";
-          format-icons = [" " " " " " " " " "];
+          format = "[{capacity}%] 󰿟";
         };
 
         "custom/cpu" = {
