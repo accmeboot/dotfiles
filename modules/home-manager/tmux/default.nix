@@ -71,7 +71,7 @@
       set -g status-left " "
 
       set -g window-status-format "#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}]#I:#W"
-      set -g window-status-current-format "#[fg=#${config.theme.colors.base0A},bg=#${config.theme.colors.base00}]#I:#W*"
+      set -g window-status-current-format "#[fg=#${config.theme.colors.base0D},bg=#${config.theme.colors.base00}]#I:#W*"
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}] #{session_path}   #S "

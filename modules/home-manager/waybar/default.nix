@@ -97,7 +97,7 @@
       }
 
       window#waybar {
-        background-color: #${config.theme.colors.base00};
+        background-color: transparent;
         color: #${config.theme.colors.base05};
         font-family: "DepartureMono Nerd Font", monospace;
       }
@@ -119,7 +119,7 @@
 
       #workspaces button.active {
         background-color: transparent;
-        color: #${config.theme.colors.base0A};
+        color: #${config.theme.colors.base0D};
       }
 
       #workspaces button.urgent {

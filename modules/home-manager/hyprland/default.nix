@@ -73,8 +73,8 @@
 
         blur = {
           enabled = true;
-          size = 10;
-          passes = 3;
+          size = 5;
+          passes = 2;
         };
 
         shadow = {
@@ -118,6 +118,10 @@
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
+      ];
+
+      layerrule = [
+        "blur, rofi"
       ];
 
       # Key bindings

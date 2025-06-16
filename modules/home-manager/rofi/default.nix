@@ -1,17 +1,21 @@
 { config, pkgs, lib, ... }:
 let
   customTheme = pkgs.writeText "custom.rasi" ''
+    * {
+      font: "DepartureMono Nerd Font 24";
+    }
+
+
     window {
-      location: northwest;
-      anchor: northwest;
-      fullscreen: false;
-      width: 100%;
+      location: center;
+      anchor: center;
+      fullscreen: true;
       x-offset: 0px;
-      y-offset: -33px;
+      y-offset: 0px;
       enabled: true;
       cursor: "default";
-      background-color: #${config.theme.colors.base00};
-      padding: ${toString config.theme.spacing.s}px;
+      background-color: #${config.theme.colors.base00}80;
+      padding: 35% 0px 0px 30%;
     }
 
     mainbox {
@@ -46,7 +50,7 @@ let
       background-color: transparent;
       text-color: inherit;
       cursor: text;
-      placeholder: " Search...";
+      placeholder: "Search...";
       placeholder-color: #${config.theme.colors.base03};
       margin: 0px ${toString config.theme.spacing.xs}px;
     }
@@ -54,7 +58,7 @@ let
     listview {
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
-      layout: horizontal;
+      layout: vertical;
       spacing: 20px;
     }
 
@@ -78,12 +82,12 @@ let
 
     element normal.active {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0B};
+      text-color: #${config.theme.colors.base05};
     }
 
     element selected.normal {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0A};
+      text-color: #${config.theme.colors.base0D};
     }
 
     element selected.urgent {
@@ -93,7 +97,7 @@ let
 
     element selected.active {
       background-color: inherit;
-      text-color: #${config.theme.colors.base0A};
+      text-color: #${config.theme.colors.base0D};
     }
 
     element-text {
@@ -133,9 +137,9 @@ in {
     extraConfig = {
       modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "Drun:";
-      "display-powermenu" = "Exit:";
-      "display-window" = "Open:";
+      "display-drun" = "->";
+      "display-powermenu" = "<-";
+      "display-window" = "-*";
 
       "drun-display-format" = "{name}";
       "window-format" = "{w}{c}";
