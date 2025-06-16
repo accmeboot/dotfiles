@@ -79,7 +79,7 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 16;
+          icon-size = 14;
           cursor = 60;
         };
       };

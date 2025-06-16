@@ -17,7 +17,7 @@
       text-color = "#${config.theme.colors.base05}";
       background-color = "#${config.theme.colors.base00}";
       progress-color = "#${config.theme.colors.base01}";
-      font = "Inter 11";
+      font = "Inter 9.5";
       padding = 10;
 
       icon-border-radius = 32; # the default with and height of the icon is 64

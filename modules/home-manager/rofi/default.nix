@@ -7,7 +7,7 @@ let
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
-      y-offset: -35px;
+      y-offset: -33px;
       enabled: true;
       cursor: "default";
       background-color: #${config.theme.colors.base00};
