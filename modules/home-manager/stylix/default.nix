@@ -24,8 +24,8 @@
         name = "Inter";
       };
       monospace = {
-        package = pkgs.nerd-fonts.meslo-lg;
-        name = "MesloLG";
+        package = pkgs.inter;
+        name = "Inter";
       };
       sizes = {
         applications = 9.5;

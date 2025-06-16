@@ -2,7 +2,7 @@
 let
   customTheme = pkgs.writeText "custom.rasi" ''
     * {
-      font: "DepartureMono Nerd Font 9.5";
+      font: "Inter 9.5";
     }
 
   
