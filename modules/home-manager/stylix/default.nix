@@ -8,7 +8,6 @@
     # base16Scheme = import ./src/schemes/gruvbox.nix;
 
     targets = {
-      kitty.enable = false;
       starship.enable = false;
       waybar.enable = false;
       mako.enable = false;
