@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/Evangelion.png;
+    image = ../../../assets/wallpapers/Evangelion-gruvbox.png;
     polarity = "dark";
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
