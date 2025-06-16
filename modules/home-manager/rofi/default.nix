@@ -7,13 +7,11 @@ let
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
-      y-offset: 0px;
+      y-offset: -35px;
       enabled: true;
       cursor: "default";
       background-color: #${config.theme.colors.base00};
       padding: ${toString config.theme.spacing.s}px;
-      border: 0px 0px ${toString config.theme.borderWidth} 0px;
-      border-color: #${config.theme.colors.base03};
     }
 
     mainbox {
