@@ -24,6 +24,10 @@
         ",highrr,auto,1"
       ];
 
+      xwayland = {
+        force_zero_scaling = true;
+      };
+
       device = {
         name = "asuf1205:00-2808:0106-touchpad";
         accel_profile = "adaptive";

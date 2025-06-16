@@ -1,23 +1,19 @@
 { config, pkgs, lib, ... }:
 let
   customTheme = pkgs.writeText "custom.rasi" ''
-    * {
-      font: "Inter 9.5";
-    }
-
-  
     window {
       location: northwest;
       anchor: northwest;
       fullscreen: false;
       width: 100%;
       x-offset: 0px;
-      y-offset: -33px;
-      height: 33px;
+      y-offset: 0px;
       enabled: true;
       cursor: "default";
       background-color: #${config.theme.colors.base00};
       padding: ${toString config.theme.spacing.s}px;
+      border: 0px 0px ${toString config.theme.borderWidth} 0px;
+      border-color: #${config.theme.colors.base03};
     }
 
     mainbox {

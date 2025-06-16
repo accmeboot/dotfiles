@@ -1,11 +1,10 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/nixos.png;
+    image = ../../../assets/wallpapers/gruvbox_image40.png;
     polarity = "dark";
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    # base16Scheme = import ./src/schemes/gruvbox.nix;
 
     targets = {
       starship.enable = false;
@@ -27,9 +26,10 @@
         name = "Inter";
       };
       sizes = {
-        applications = 9.5;
-        desktop = 9.5;
-        popups = 9.5;
+        applications = 11;
+        desktop = 11;
+        popups = 11;
+        terminal = 11;
       };
     };
   };
