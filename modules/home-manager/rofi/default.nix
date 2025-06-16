@@ -14,7 +14,7 @@ let
       y-offset: 0px;
       enabled: true;
       cursor: "default";
-      background-color: #${config.theme.colors.base00}80;
+      background-color: #${config.theme.colors.base00}CC;
       padding: 35% 0px 0px 30%;
     }
 
