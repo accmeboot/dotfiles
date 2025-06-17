@@ -1,10 +1,10 @@
 { config, pkgs, ... }: {
   stylix = {
     enable = true;
-    image = ../../../assets/wallpapers/Evangelion-gruvbox.png;
+    image = ../../../assets/wallpapers/Evangelion.png;
     polarity = "dark";
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
     targets = {
       starship.enable = false;
