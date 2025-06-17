@@ -117,6 +117,7 @@
       windowrule = [
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
+        "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
       ];
 
