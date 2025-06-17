@@ -135,11 +135,12 @@ in {
   programs.rofi = {
     enable = true;
     extraConfig = {
-      modi = "drun,window,powermenu:${../../../scripts/powermenu.sh}";
+      modi = "drun,combi,powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
       "display-drun" = "->";
       "display-powermenu" = "<-";
-      "display-window" = "-*";
+      "display-combi" = "-$";
+      "display-window" = "*";
 
       "drun-display-format" = "{name}";
       "window-format" = "{w}{c}";
