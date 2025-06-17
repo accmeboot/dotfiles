@@ -218,7 +218,7 @@
         "$mod, j, changegroupactive, b"
         "$mod, k, changegroupactive, f"
         "$mod CTRL, F, fullscreen"
-        "$mod, APOSTROPHE, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 1000 800"
+        "$mod, APOSTROPHE, exec, hyprctl --batch \"dispatch togglefloating; dispatch resizeactive exact 1000 800; dispatch centerwindow 1\""
         "$mod, SPACE, focusurgentorlast"
 
         # Scratchpad (special workspace)
