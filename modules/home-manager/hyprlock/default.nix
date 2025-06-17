@@ -10,7 +10,7 @@
 
       background = lib.mkForce [
         {
-          path = "${config.stylix.image}";
+          path = "${../../../assets/wallpapers/villag-gruvbox-dark.png}";
           blur_passes = 3;
           blur_size = 10;
         }

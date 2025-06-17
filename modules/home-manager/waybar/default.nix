@@ -97,7 +97,7 @@
       }
 
       window#waybar {
-        background-color: transparent;
+        background-color: alpha(#${config.theme.colors.base00}, 0.0);
         color: #${config.theme.colors.base05};
         font-family: "DepartureMono Nerd Font", monospace;
       }

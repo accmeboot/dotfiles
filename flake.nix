@@ -64,6 +64,7 @@
                   ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/hyprlock/default.nix
                   ./modules/home-manager/hypridle/default.nix
+                  ./modules/home-manager/hyprpaper/default.nix
                   ./modules/home-manager/nvim/default.nix
                   # ./modules/home-manager/nvim/base16.nix
                   ./modules/home-manager/kitty/default.nix

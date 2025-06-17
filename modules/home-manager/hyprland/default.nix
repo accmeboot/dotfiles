@@ -123,6 +123,7 @@
 
       layerrule = [
         "blur, rofi"
+        "blur, waybar"
       ];
 
       # Key bindings
