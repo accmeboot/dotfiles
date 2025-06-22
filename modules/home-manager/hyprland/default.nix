@@ -110,7 +110,7 @@
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
-        vrr = 1; # adaptive sync
+        vrr = 2; # adaptive sync
       };
 
       # Window rules
