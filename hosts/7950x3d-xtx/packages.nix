@@ -72,6 +72,7 @@
     telegram-desktop  # messaging application
     spotify      # music streaming service
     discord      # chat and voice communication platform
+    zoom-us      # chat and voice communication platform
     thunderbird  # email client
     transmission_4-gtk # torrent client
     obs-studio         # screen recording
