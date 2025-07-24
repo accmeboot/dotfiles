@@ -33,6 +33,7 @@
     ripgrep      # fast alternative to grep
     jq           # command-line JSON processor
     unzip        # zip file extraction utility
+    ollama       # running local llms
 
     # File Management
     nemo         # graphical file manager
