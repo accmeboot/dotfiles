@@ -15,34 +15,37 @@ return {
 					},
 				})
 			end,
+			ollama = function()
+				return require("codecompanion.adapters").extend("ollama", {
+					schema = {
+						model = {
+							default = "codellama",
+						},
+					},
+				})
+			end,
+			anthropic = function()
+				return require("codecompanion.adapters").extend("anthropic", {
+					schema = {
+						model = {
+							default = "claude-sonnet-4-20250514",
+						},
+					},
+					env = {
+						api_key = "cmd:echo $ANTHROPIC_API_KEY",
+					},
+				})
+			end,
 		},
 		strategies = {
 			chat = {
-				adapters = {
-					name = "anthropic",
-					model = "claude-sonnet-4-20250514",
-				},
-				env = {
-					api_key = "cmd:echo $ANTHROPIC_API_KEY",
-				},
+				adapter = "ollama",
 			},
 			inline = {
-				adapter = {
-					name = "anthropic",
-					model = "claude-sonnet-4-20250514",
-				},
-				env = {
-					api_key = "cmd:echo $ANTHROPIC_API_KEY",
-				},
+				adapter = "ollama",
 			},
 			cmd = {
-				adapter = {
-					name = "anthropic",
-					model = "claude-sonnet-4-20250514",
-				},
-				env = {
-					api_key = "cmd:echo $ANTHROPIC_API_KEY",
-				},
+				adapter = "ollama",
 			},
 		},
 		display = {
