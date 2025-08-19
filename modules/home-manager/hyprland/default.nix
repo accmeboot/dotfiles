@@ -36,7 +36,7 @@
       # Input configuration
       input = {
         accel_profile = "flat";
-        sensitivity = 0;
+        sensitivity = -0.25;
         follow_mouse = 1;
         kb_layout = "us,ru";
         kb_options = "grp:ctrl_space_toggle";
