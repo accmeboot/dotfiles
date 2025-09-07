@@ -41,13 +41,13 @@ return {
     },
     strategies = {
       chat = {
-        adapter = "ollama",
+        adapter = "anthropic",
       },
       inline = {
-        adapter = "ollama",
+        adapter = "anthropic",
       },
       cmd = {
-        adapter = "ollama",
+        adapter = "anthropic",
       },
     },
     display = {
