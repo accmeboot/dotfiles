@@ -10,7 +10,6 @@
           width = 22;
           height = 22;
       };
-      general.multithreading = true;
       display.separator = " ";
       modules = [
         "break"

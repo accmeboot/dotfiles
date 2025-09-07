@@ -11,7 +11,7 @@
       };
       initContent = ''
         bindkey -v
-        fastfetch --load-config "$HOME/.config/fastfetch/config.jsonc"
+        fastfetch
 
         # Source the .env file
         if [ -f "$HOME/.env" ]; then
