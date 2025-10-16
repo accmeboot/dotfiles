@@ -146,7 +146,7 @@ in {
       "window-format" = "{w}{c}";
       "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
     };
-    package = pkgs.rofi-wayland.override {
+    package = pkgs.rofi.override {
       theme = customTheme;
     };
   };

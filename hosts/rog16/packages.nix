@@ -45,7 +45,7 @@
     bluez        # bluetooth protocol stack
     
     # Wayland Tools
-    rofi-wayland # application launcher and window switcher
+    rofi         # application launcher and window switcher
     xclip        # command line interface to X clipboard
     wl-clipboard # wayland clipboard utilities
     
