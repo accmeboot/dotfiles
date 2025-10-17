@@ -54,6 +54,7 @@
     mupdf        # PDF viewer
     mpv          # video player
     gimp         # image editor
+    mediainfo    # cli to view files mediainfo
     
     # Screenshot & Recording
     grim         # screenshot utility for wayland
