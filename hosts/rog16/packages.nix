@@ -63,7 +63,6 @@
     pavucontrol  # PulseAudio volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
-    pasystray    # audio settings in tray
     cava         # audio visualizer
     
     # Gaming

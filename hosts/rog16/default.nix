@@ -145,7 +145,17 @@
     gnome.gnome-keyring.enable = true;
     blueman.enable = true;
     envfs.enable = true;
-    displayManager.gdm.enable = true;
+
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "accme";
+        };
+      default_session = initial_session;
+      };
+    };
 
     touchegg.enable = true;
 
