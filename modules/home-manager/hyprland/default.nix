@@ -269,10 +269,12 @@
 
       # Startup applications
       exec-once = [
+        "hyprlock"
         "hyprctl dispatch workspace name:T"
         "waybar"
         "nm-applet"
         "blueman-applet"
+        "pasystray"
       ];
 
       # Environment variables

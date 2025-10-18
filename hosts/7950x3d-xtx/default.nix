@@ -34,6 +34,9 @@
       ];
     };
     logitech.wireless.enable = true;
+    openrazer = {
+      enable = true;
+    };
   };
 
   #----------------------------------------------------------------------------#
@@ -149,17 +152,15 @@
     blueman.enable = true;
     envfs.enable = true;
     greetd = {
-      enable = false;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet \
-                    --time --time-format '%I:%M %p | %a • %h | %F' \
-                    --cmd 'uwsm start hyprland'";
-          user = "greeter";
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland";
+          user = "accme";
         };
+      default_session = initial_session;
       };
     };
-    displayManager.gdm.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
@@ -198,7 +199,7 @@
     users.accme = {
       isNormalUser = true;
       description = "accme";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "openrazer" ];
       packages = with pkgs; [];
     };
     defaultUserShell = pkgs.zsh;

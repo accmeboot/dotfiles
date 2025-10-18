@@ -69,6 +69,8 @@
     
     # Gaming
     mangohud     # performance overlay for games
+    openrazer-daemon # razer peripherals support
+    razer-cli    # razer software controller
     
     # Communication & Entertainment
     telegram-desktop  # messaging application
