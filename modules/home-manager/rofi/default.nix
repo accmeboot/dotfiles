@@ -1,34 +1,35 @@
 { config, pkgs, lib, ... }:
 let
   customTheme = pkgs.writeText "custom.rasi" ''
-    * {
-      font: "DepartureMono Nerd Font 24";
-    }
-
-
     window {
-      location: center;
-      anchor: center;
-      fullscreen: true;
-      x-offset: 0px;
-      y-offset: 0px;
+      location: northwest;
+      fullscreen: false;
+      x-offset: ${toString config.theme.spacing.s}px;
+      y-offset: ${toString config.theme.spacing.s}px;
       enabled: true;
       cursor: "default";
-      background-color: #${config.theme.colors.base00}CC;
-      padding: 35% 0px 0px 30%;
+      background-color: transparent;
+      padding: 0px;
+      width: 350px;
+
+      border-radius: ${toString config.theme.borderRadius}px;
+      border: ${toString config.theme.borderWidth}px;
+      border-color: #${config.theme.colors.base03};
     }
 
     mainbox {
       enabled: true;
-      background-color: transparent;
-      orientation: horizontal;
+      background-color: #${config.theme.colors.base00};
+      border-radius: ${toString config.theme.borderRadius}px;
+      padding: ${toString config.theme.spacing.s}px;
+      orientation: vertical;
       children: [ "inputbar", "listbox" ];
     }
 
     listbox {
-      spacing: 20px;
+      spacing: ${toString config.theme.spacing.m}px;
       background-color: transparent;
-      orientation: horizontal;
+      orientation: vertical;
       children: [ "message", "listview" ];
     }
 
@@ -38,12 +39,13 @@ let
       text-color: #${config.theme.colors.base05};
       orientation: horizontal;
       children: [ "prompt", "entry" ];
+      margin: 0px 0px ${toString config.theme.spacing.m}px 0px;
     }
 
     prompt {
       background-color: transparent;
       color: #${config.theme.colors.base07};
-      padding: 0px ${toString config.theme.spacing.s}px;
+      padding: 0px;
     }
 
     entry {
@@ -52,14 +54,17 @@ let
       cursor: text;
       placeholder: "Search...";
       placeholder-color: #${config.theme.colors.base03};
-      margin: 0px ${toString config.theme.spacing.xs}px;
     }
 
     listview {
       background-color: transparent;
       text-color: #${config.theme.colors.base05};
       layout: vertical;
-      spacing: 20px;
+      spacing: ${toString config.theme.spacing.m}px;
+
+
+      fixed-height: false;
+      dynamic: true;
     }
 
     element {
@@ -108,10 +113,10 @@ let
     }
 
     element-icon {
-      enabled: false;
+      enabled: true;
       background-color: transparent;
       text-color: inherit;
-      size: 12px;
+      size: 20px;
       cursor: inherit;
     }
 
@@ -137,9 +142,9 @@ in {
     extraConfig = {
       modi = "drun,audiomenu:${../../../scripts/audio-menu.sh},powermenu:${../../../scripts/powermenu.sh}";
       show-icons = true;
-      "display-drun" = "->";
-      "display-audiomenu" = "-$";
-      "display-powermenu" = "<-";
+      "display-drun" = " -> ";
+      "display-audiomenu" = " -$ ";
+      "display-powermenu" = " <- ";
 
       "drun-display-format" = "{name}";
       "window-format" = "{w}{c}";

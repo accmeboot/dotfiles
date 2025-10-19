@@ -60,7 +60,7 @@ build_menu() {
             is_active="* "
         fi
         
-        echo "$is_active$device_name"
+        echo -en "$is_active$device_name\0icon\x1faudio-speakers\n"
         if [[ -n "$corresponding_sink" ]]; then
             device_to_sink["$device_name"]="$corresponding_sink"
         else

@@ -6,8 +6,8 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [];
+        modules-left = [ "custom/launcher" "custom/separator" "hyprland/workspaces" ];
+        modules-center = [ "hyprland/window" ];
         modules-right = [
           "custom/cpu"
           "custom/separator"
@@ -33,6 +33,11 @@
         "custom/separator" = {
           format = "󰿟";
           tooltip = false;
+        };
+
+        "custom/launcher" = {
+          format = "";
+          on-click = "rofi -show drun";
         };
 
         "battery" = {
@@ -99,7 +104,22 @@
       window#waybar {
         background-color: alpha(#${config.theme.colors.base00}, 0.0);
         color: #${config.theme.colors.base05};
-        font-family: "DepartureMono Nerd Font", monospace;
+        font-family: "Inter", monospace;
+      }
+
+      .modules-left, .modules-right, #window {
+        background-color: alpha(#${config.theme.colors.base00}, 1.0);
+        border-radius: ${toString config.theme.borderRadius}px;
+        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px
+      }
+
+      #custom-launcher {
+        font-size: 18px;
+        color: alpha(#${config.theme.colors.base0A}, 1.0);
+      }
+
+      window#waybar.empty #window {
+        background-color: alpha(#${config.theme.colors.base00}, 0.0);
       }
 
       tooltip {
@@ -116,6 +136,10 @@
         padding: 0px ${toString config.theme.spacing.s}px;
         background-color: transparent;
       }
+
+        #workspaces button:first-child {
+          padding-left: 0px;
+        }
 
       #workspaces button.active {
         background-color: transparent;

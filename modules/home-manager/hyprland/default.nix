@@ -100,7 +100,7 @@
           "windowsIn, 1, 1, overshot, slide top"
           "windowsOut, 1, 1, overshot, slide"
           "windowsMove, 1, 1, bounce, slide"
-          "layersOut, 1, 1, bounce, slidevert bottom"
+          "layersOut, 1, 1, bounce, slidevert top"
           "fadeIn, 1, 1, default"
           "fadeOut, 1, 1, default"
           "fadeSwitch, 1, 1, default"
@@ -109,7 +109,7 @@
           "fadeLayers, 1, 1, default"
           "workspaces, 1, 1, snappyReturn, slide"
           "border, 1, 1, liner"
-          "layers, 1, 1, bounce, slidevert bottom"
+          "layers, 1, 1, bounce, slidevert top"
           "borderangle, 1, 15, liner, loop"
         ];
       };
@@ -147,8 +147,8 @@
       ];
 
       layerrule = [
-        "blur, rofi"
         "noanim, rofi"
+        "blur, waybar"
         "animation fade, notifications"
       ];
 
