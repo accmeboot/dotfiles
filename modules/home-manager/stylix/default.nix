@@ -25,9 +25,9 @@
         name = "Inter";
       };
       sizes = {
-        applications = 9.5;
-        desktop = 9.5;
-        popups = 9.5;
+        applications = 11;
+        desktop = 11;
+        popups = 11;
         terminal = 11;
       };
     };
