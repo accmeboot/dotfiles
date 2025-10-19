@@ -98,7 +98,7 @@
       }
 
       window#waybar>box {
-        padding: ${toString config.theme.spacing.s}px;
+        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
