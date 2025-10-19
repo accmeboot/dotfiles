@@ -10,7 +10,7 @@
 
       background = lib.mkForce [
         {
-          path = "${../../../assets/wallpapers/villag-gruvbox-dark.png}";
+          path = "${../../../assets/wallpapers/Evangelion.png}";
           blur_passes = 3;
           blur_size = 10;
         }
