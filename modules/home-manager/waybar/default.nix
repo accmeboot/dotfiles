@@ -122,6 +122,7 @@
 
       window#waybar.empty #window {
         background-color: alpha(#${config.theme.colors.base00}, 0.0);
+        border: none;
       }
 
       tooltip {
