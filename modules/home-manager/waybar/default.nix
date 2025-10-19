@@ -109,8 +109,10 @@
 
       .modules-left, .modules-right, #window {
         background-color: alpha(#${config.theme.colors.base00}, 1.0);
+        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
-        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px
+        border-width: ${toString config.theme.borderWidth}px;
+        border: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base03};
       }
 
       #custom-launcher {
