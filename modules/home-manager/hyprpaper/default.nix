@@ -8,10 +8,10 @@
       splash_offset = 2.0;
 
       preload =
-        [ "${../../../assets/wallpapers/forest2-gruvbox.png}" ];
+        [ "${../../../assets/wallpapers/halflife.png}" ];
 
       wallpaper = [
-        ",${../../../assets/wallpapers/forest2-gruvbox.png}"
+        ",${../../../assets/wallpapers/halflife.png}"
       ];
     };
   };
