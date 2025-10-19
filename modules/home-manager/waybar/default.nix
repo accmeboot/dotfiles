@@ -107,7 +107,7 @@
         font-family: "Inter", monospace;
       }
 
-      .modules-left, .modules-right, #window {
+      .modules-left, .modules-right {
         background-color: alpha(#${config.theme.colors.base00}, 1.0);
         padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
@@ -118,11 +118,6 @@
       #custom-launcher {
         font-size: 18px;
         color: alpha(#${config.theme.colors.base0A}, 1.0);
-      }
-
-      window#waybar.empty #window {
-        background-color: alpha(#${config.theme.colors.base00}, 0.0);
-        border: none;
       }
 
       tooltip {
