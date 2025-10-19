@@ -84,9 +84,34 @@
         };
       };
 
-      # Animations
       animations = {
-        enabled = false;
+        enabled = true;
+        bezier = [
+          "default, 0.05, 0.9, 0.1, 1.05"
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "overshot, 0.13, 0.99, 0.29, 1.08"
+          "liner, 1, 1, 1, 1"
+          "bounce, 0.4, 0.9, 0.6, 1.0"
+          "snappyReturn, 0.4, 0.9, 0.6, 1.0"
+          "slideInFromRight, 0.5, 0.0, 0.5, 1.0"
+        ];
+        animation = [
+          "windows, 1, 2, overshot, slidevert"
+          "windowsIn, 1, 1, overshot, slide top"
+          "windowsOut, 1, 1, overshot, slide"
+          "windowsMove, 1, 1, bounce, slide"
+          "layersOut, 1, 1, bounce, slidevert bottom"
+          "fadeIn, 1, 1, default"
+          "fadeOut, 1, 1, default"
+          "fadeSwitch, 1, 1, default"
+          "fadeShadow, 1, 1, default"
+          "fadeDim, 1, 1, default"
+          "fadeLayers, 1, 1, default"
+          "workspaces, 1, 1, snappyReturn, slide"
+          "border, 1, 1, liner"
+          "layers, 1, 1, bounce, slidevert bottom"
+          "borderangle, 1, 15, liner, loop"
+        ];
       };
 
       # Group configuration
@@ -123,6 +148,7 @@
 
       layerrule = [
         "blur, rofi"
+        "animation fade, notifications"
       ];
 
       # Key bindings
