@@ -148,6 +148,7 @@
 
       layerrule = [
         "blur, rofi"
+        "noanim, rofi"
         "animation fade, notifications"
       ];
 
@@ -300,6 +301,7 @@
         "waybar"
         "nm-applet"
         "blueman-applet"
+        "wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%"
       ];
 
       # Environment variables
