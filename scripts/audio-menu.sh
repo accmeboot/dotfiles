@@ -57,7 +57,7 @@ build_menu() {
         # Check if this device is currently active
         is_active=""
         if [[ "$current_default" == *"$device_name"* ]] || [[ "$device_name" == *"Bose"* && "$current_default" == *"Bose"* ]] || [[ "$device_name" == *"EarPods"* && "$current_default" == *"EarPods"* ]]; then
-            is_active="* "
+            is_active="~ "
         fi
         
         echo -en "$is_active$device_name\0icon\x1faudio-speakers\n"
@@ -78,7 +78,7 @@ else
     build_menu > /dev/null  # Build mapping without output
     
     # Remove asterisk and get device name
-    device_name=$(echo "$chosen" | sed 's/^\* //')
+    device_name=$(echo "$chosen" | sed 's/^\~ //')
     sink_id="${device_to_sink[$device_name]}"
     
     if [[ -n "$sink_id" ]]; then
