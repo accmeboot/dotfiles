@@ -84,7 +84,7 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 20;
+          icon-size = 16;
           cursor = 60;
         };
       };
@@ -116,7 +116,7 @@
       }
 
       #custom-launcher {
-        font-size: 18px;
+        font-size: 16px;
         color: alpha(#${config.theme.colors.base0A}, 1.0);
       }
 
