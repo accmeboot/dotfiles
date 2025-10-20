@@ -17,7 +17,7 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "kitty";
-      "$menu" = "rofi";
+      "$menu" = "$terminal --class fzflauncher ${../../../scripts/fzf-launcher.sh}";
 
       # Monitor configuration
       monitor = [
@@ -144,6 +144,9 @@
         "float, class:^(nemo)$"
         "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
 
+        "float, class:^(fzflauncher)$" 
+        "size 300 400, class:^(fzflauncher)$"
+
         "float, class:^(wiremix)$" 
         "size 800 600, class:^(wiremix)$"
 
@@ -151,7 +154,6 @@
       ];
 
       layerrule = [
-        "noanim, rofi"
         "blur, waybar"
         "animation fade, notifications"
       ];
@@ -161,9 +163,8 @@
         # Basic bindings
         "$mod, F10, exec, $terminal"
         "$mod, BACKSPACE, killactive"
-        "ALT, SPACE, exec, $menu -show drun"
-        "$mod, RETURN, exec, $menu -show powermenu"
-        "$mod CTRL, M, exec, $terminal --class wiremix wiremix"
+        "ALT, SPACE, exec, $menu"
+        "$mod CTRL, M, exec, $terminal --class wiremix wiremix -v output"
         "$mod, F11, exec, hyprctl reload"
         "$mod, TAB, workspace, previous"
         

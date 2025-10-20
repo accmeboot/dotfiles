@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pjgs, ... }: {
   programs.waybar = {
     enable = true;
     settings = {
@@ -6,7 +6,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "custom/launcher" "custom/separator" "hyprland/workspaces" ];
+        modules-left = [ "image#launcher" "custom/separator" "hyprland/workspaces" ];
         modules-center = [ "hyprland/window" ];
         modules-right = [
           "custom/cpu"
@@ -39,16 +39,10 @@
           tooltip = false;
         };
 
-        "custom/launcher" = {
-          format = "     ";
-          tooltip-format = "System menu ALT+Space";
-          menu = "on-click";
-          menu-file = "${./launcher-menu.xml}";
-          menu-actions = {
-            apps = "rofi -show drun";
-            audio = "rofi -show audiomenu";
-            power = "rofi -show powermenu";
-          };
+        "image#launcher" = {
+          path = "${../../../assets/wallpapers/nixos-icon.svg}";
+          size = 18;
+          on-click = "kitty --class fzflauncher ${../../../scripts/fzf-launcher.sh}";
         };
 
         "battery" = {
@@ -141,6 +135,10 @@
         background-color: transparent;
       }
 
+      #workspaces button:first-child {
+        padding-left: 0px;
+      }
+
       #workspaces button.active {
         background-color: transparent;
         color: #${config.theme.colors.base0D};
@@ -158,23 +156,6 @@
 
       #clock {
         padding: 0px;
-      }
-
-      #custom-launcher {
-        background-image: url("${../../../assets/wallpapers/nixos-icon.svg}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 20px 20px; 
-        font-size: 16px;
-      }
-
-      menu {
-        border-radius: ${toString config.theme.borderRadius}px;
-      }
-
-      menuitem {
-        border-radius: ${toString config.theme.borderRadius}px;
-        padding: ${toString config.theme.spacing.xs}px;
       }
     '';
   };

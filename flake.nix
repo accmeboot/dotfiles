@@ -59,7 +59,6 @@
                   ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
-                  ./modules/home-manager/rofi/default.nix
                   ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/hyprlock/default.nix
                   ./modules/home-manager/hypridle/default.nix
@@ -72,7 +71,6 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
-                  ./modules/home-manager/wiremix/default.nix
 
 
                   stylix.homeModules.stylix
@@ -107,7 +105,6 @@
                   ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
-                  ./modules/home-manager/rofi/default.nix
                   ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/hyprlock/default.nix
                   ./modules/home-manager/hypridle/default.nix
@@ -120,7 +117,6 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
-                  ./modules/home-manager/wiremix/default.nix
 
 
                   stylix.homeModules.stylix
