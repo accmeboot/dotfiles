@@ -40,7 +40,6 @@
     yazi         # terminal file manager
 
     # System Tools
-    nvtopPackages.full  # GPU process monitor
     lm_sensors   # hardware monitoring utilities
     pciutils     # PCI utilities for device inspection
     bluez        # bluetooth protocol stack
@@ -65,10 +64,6 @@
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
     cava         # audio visualizer
-    
-    # Gaming
-    openrazer-daemon # razer peripherals support
-    razer-cli    # razer software controller
     
     # Communication & Entertainment
     telegram-desktop  # messaging application

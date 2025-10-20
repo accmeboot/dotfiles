@@ -41,10 +41,8 @@
         modules = [
           solaar.nixosModules.default
           home-manager.nixosModules.home-manager
-          ./hosts/7950x3d-xtx/solaar.nix
 
           ./hosts/7950x3d-xtx/default.nix
-          ./hosts/7950x3d-xtx/packages.nix
 
           {
             home-manager = {
@@ -90,7 +88,6 @@
           home-manager.nixosModules.home-manager
 
           ./hosts/rog16/default.nix
-          ./hosts/rog16/packages.nix
 
           {
             home-manager = {
