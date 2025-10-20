@@ -43,20 +43,22 @@
         };
 
         "battery" = {
-          interval = 60;
+          interval = 1;
           states = {
             warning = 30;
             critical = 16;
           };
-
           events = {
             on-discharging-warning = "notify-send -u normal 'Low Battery'";
             on-discharging-critical = "notify-send -u critical 'Very Low Battery'";
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
-
           format = "{icon}";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁿" "󰂀" "󰂁" "󰂂"];
+          format-icons = {
+            default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+            charging = [ "󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 " ];
+            plugged = "󰚥";
+          };
           max-length = 25;
         };
 
@@ -135,6 +137,18 @@
 
       #battery {
         font-size: 18px;
+      }
+
+      #battery {
+        color: #${config.theme.colors.base0B};
+      }
+
+      #battery.warning {
+        color: #${config.theme.colors.base0A};
+      }
+
+      #battery.critical {
+        color: #${config.theme.colors.base08};
       }
     '';
   };
