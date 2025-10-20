@@ -65,9 +65,6 @@
     gowall       # convert wallpaper to the theme
     cava         # audio visualizer
     
-    # Gaming
-    mangohud     # performance overlay for games
-    
     # Communication & Entertainment
     telegram-desktop  # messaging application
     spotify      # music streaming service

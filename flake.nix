@@ -59,7 +59,6 @@
                   ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
-                  ./modules/home-manager/mangohud/default.nix
                   ./modules/home-manager/rofi/default.nix
                   ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/hyprlock/default.nix
@@ -107,7 +106,6 @@
                   ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
-                  ./modules/home-manager/mangohud/default.nix
                   ./modules/home-manager/rofi/default.nix
                   ./modules/home-manager/hyprland/default.nix
                   ./modules/home-manager/hyprlock/default.nix

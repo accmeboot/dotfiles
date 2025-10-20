@@ -67,7 +67,6 @@
     cava         # audio visualizer
     
     # Gaming
-    mangohud     # performance overlay for games
     openrazer-daemon # razer peripherals support
     razer-cli    # razer software controller
     
