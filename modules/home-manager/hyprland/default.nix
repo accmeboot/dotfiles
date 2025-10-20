@@ -143,6 +143,10 @@
         "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
         "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
+
+        "float, class:^(wiremix)$" 
+        "size 800 600, class:^(wiremix)$"
+
         "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
       ];
 
@@ -159,6 +163,7 @@
         "$mod, BACKSPACE, killactive"
         "ALT, SPACE, exec, $menu -show drun"
         "$mod, RETURN, exec, $menu -show powermenu"
+        "$mod CTRL, M, exec, $terminal --class wiremix wiremix"
         "$mod, F11, exec, hyprctl reload"
         "$mod, TAB, workspace, previous"
         

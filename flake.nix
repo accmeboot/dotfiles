@@ -72,6 +72,7 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
+                  ./modules/home-manager/wiremix/default.nix
 
 
                   stylix.homeModules.stylix
@@ -119,6 +120,7 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
+                  ./modules/home-manager/wiremix/default.nix
 
 
                   stylix.homeModules.stylix

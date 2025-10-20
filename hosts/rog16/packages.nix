@@ -61,6 +61,7 @@
     
     # Desktop Environment
     pavucontrol  # PulseAudio volume control
+    wiremix      # tui volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
     cava         # audio visualizer
