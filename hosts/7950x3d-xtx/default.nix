@@ -34,7 +34,6 @@
      description = "accme";
      extraGroups = [ "networkmanager" "wheel" "openrazer" ];
    };
-   defaultUserShell = pkgs.zsh;
   };
 
 
