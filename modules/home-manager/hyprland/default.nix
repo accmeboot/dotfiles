@@ -136,7 +136,7 @@
       bind = [
         # Basic bindings
         "$mod, F10, exec, $terminal"
-        "$mod, BACKSPACE, killactive"
+        "$mod, Q, killactive"
         "ALT, SPACE, exec, $menu"
         "$mod CTRL, M, exec, $terminal --class wiremix wiremix -v output"
         "$mod, F11, exec, hyprctl reload"
