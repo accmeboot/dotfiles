@@ -120,6 +120,7 @@
 
         "float, class:^(fzflauncher)$" 
         "size 300 400, class:^(fzflauncher)$"
+        "dimaround, class:^(fzflauncher)$"
 
         "float, class:^(wiremix)$" 
         "size 800 600, class:^(wiremix)$"

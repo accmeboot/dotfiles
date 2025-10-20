@@ -6,19 +6,11 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "image#launcher" "custom/separator" "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
+        modules-left = [ "image#launcher" "hyprland/workspaces" "hyprland/window" ];
+        modules-center = [ "clock"];
         modules-right = [
-          "custom/cpu"
-          "custom/separator"
-          "custom/gpu"
-          "custom/separator"
-          "clock"
-          "custom/separator"
-          "hyprland/language"
-          "custom/separator"
-          "battery"
           "tray"
+          "battery"
         ];
 
         spacing = config.theme.spacing.s;
@@ -32,6 +24,11 @@
 
         "hyprland/window" = {
           on-click-middle = "hyprctl dispatch killactive";
+          icon = true;
+          icon-size = 16;
+          rewrite = {
+            "(.*)-fzf-launcher.sh" = "Drun";
+          };
         };
 
         "custom/separator" = {
@@ -41,7 +38,7 @@
 
         "image#launcher" = {
           path = "${../../../assets/wallpapers/nixos-icon.svg}";
-          size = 18;
+          size = 16;
           on-click = "kitty --class fzflauncher ${../../../scripts/fzf-launcher.sh}";
         };
 
@@ -55,34 +52,8 @@
           format = "[{capacity}%] 󰿟";
         };
 
-        "custom/cpu" = {
-          format = "CPU: {text}°C";
-          exec = "bash ${../../../scripts/cpu-temp.sh}";
-          return-type = "json";
-          interval = 1;
-          cursor = 68;
-          tooltip = false;
-        };
-
-        "custom/gpu" = {
-          format = "GPU: {text}°C";
-          exec = "bash ${../../../scripts/gpu-temp.sh}";
-          return-type = "json";
-          interval = 1;
-          cursor = 68;
-          tooltip = false;
-        };
-
-        "hyprland/language" = {
-          format = "{}";
-          format-en = "EN";
-          format-ru = "RU";
-          cursor = 68;
-          tooltip = false;
-        };
-
         clock = {
-          format = "{:%H:%M}";
+          format = "{:%A, %d %b %Y, %H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
@@ -103,7 +74,7 @@
       }
 
       window#waybar>box {
-        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
+        padding: 0px ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
@@ -133,10 +104,6 @@
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
         background-color: transparent;
-      }
-
-      #workspaces button:first-child {
-        padding-left: 0px;
       }
 
       #workspaces button.active {
