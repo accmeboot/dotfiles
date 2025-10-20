@@ -30,14 +30,25 @@
           cursor = 60;
         };
 
+        "hyprland/window" = {
+          on-click-middle = "hyprctl dispatch killactive";
+        };
+
         "custom/separator" = {
           format = "󰿟";
           tooltip = false;
         };
 
         "custom/launcher" = {
-          format = "";
-          on-click = "rofi -show drun";
+          format = "    ";
+          tooltip-format = "System menu ALT+Space";
+          menu = "on-click";
+          menu-file = "${./launcher-menu.xml}";
+          menu-actions = {
+            apps = "rofi -show drun";
+            audio = "rofi -show audiomenu";
+            power = "rofi -show powermenu";
+          };
         };
 
         "battery" = {
@@ -115,11 +126,6 @@
         border: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base03};
       }
 
-      #custom-launcher {
-        font-size: 16px;
-        color: alpha(#${config.theme.colors.base0A}, 1.0);
-      }
-
       tooltip {
         border-radius: ${toString config.theme.borderRadius}px;
         background-color: #${config.theme.colors.base01};
@@ -156,6 +162,23 @@
 
       #clock {
         padding: 0px;
+      }
+
+      #custom-launcher {
+        background-image: url("${../../../assets/wallpapers/nixos-icon.svg}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px 20px; 
+        font-size: 16px;
+      }
+
+      menu {
+        border-radius: ${toString config.theme.borderRadius}px;
+      }
+
+      menuitem {
+        border-radius: ${toString config.theme.borderRadius}px;
+        padding: ${toString config.theme.spacing.xs}px;
       }
     '';
   };
