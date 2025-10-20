@@ -40,7 +40,7 @@
         };
 
         "custom/launcher" = {
-          format = "    ";
+          format = "     ";
           tooltip-format = "System menu ALT+Space";
           menu = "on-click";
           menu-file = "${./launcher-menu.xml}";
@@ -140,10 +140,6 @@
         padding: 0px ${toString config.theme.spacing.s}px;
         background-color: transparent;
       }
-
-        #workspaces button:first-child {
-          padding-left: 0px;
-        }
 
       #workspaces button.active {
         background-color: transparent;
