@@ -19,7 +19,7 @@ stats="󰻠 ${cpu_temp}°C 󰢮 ${gpu_temp}°C 󰑭 ${ram_usage}% 󰋊 ${disk_us
 get_selection() {
   for p in $PATH; do
     ls "$p" 2>/dev/null
-  done | sort -u | fzf --print-query --color=16 --no-scrollbar --gutter=' ' --highlight-line --footer "$stats" | tail -1
+  done | sort -u | grep -v '^[[]$' | fzf --print-query --color=16 --no-scrollbar --gutter=' ' --highlight-line --footer "$stats" | tail -1
 }
 
 if selection=$( get_selection ); then
