@@ -13,10 +13,10 @@
 
       default-timeout = 5000;
       ignore-timeout = true;
-        border-color = "#${config.theme.colors.base03}B3";
-        text-color = "#${config.theme.colors.base05}B3";
-        background-color = "#${config.theme.colors.base00}B3";
-        progress-color = "#${config.theme.colors.base01}B3";
+        border-color = "#${config.theme.colors.base03}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
+        text-color = "#${config.theme.colors.base05}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
+        background-color = "#${config.theme.colors.base00}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
+        progress-color = "#${config.theme.colors.base01}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
       font = "Inter 9.5";
       padding = 10;
 

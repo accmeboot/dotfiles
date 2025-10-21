@@ -68,8 +68,6 @@
       # Decoration
       decoration = {
         rounding = config.theme.borderRadius;
-        active_opacity = 1.0;
-        inactive_opacity = toString config.theme.opacity;
 
         blur = {
           enabled = true;
@@ -126,7 +124,7 @@
         "float, class:^(wiremix)$" 
         "size 800 600, class:^(wiremix)$"
 
-        "opacity 0.7, floating:1"
+        "opacity ${toString config.theme.opacity}, floating:1"
       ];
 
       layerrule = [
