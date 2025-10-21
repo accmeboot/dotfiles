@@ -26,9 +26,6 @@
           on-click-middle = "hyprctl dispatch killactive";
           icon = true;
           icon-size = 16;
-          rewrite = {
-            "(.*)-fzf-launcher.sh" = "Drun";
-          };
         };
 
         "custom/separator" = {
@@ -39,7 +36,7 @@
         "image#launcher" = {
           path = "${../../../assets/wallpapers/nixos-icon.svg}";
           size = 16;
-          on-click = "kitty --class fzflauncher ${../../../scripts/fzf-launcher.sh}";
+          on-click = "kitty --class fzflauncher ${../../../scripts/launcher/menu.sh}";
         };
 
         "battery" = {

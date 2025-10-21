@@ -17,7 +17,7 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "kitty";
-      "$menu" = "$terminal --class fzflauncher ${../../../scripts/fzf-launcher.sh}";
+      "$menu" = "$terminal --class fzflauncher ${../../../scripts/launcher/menu.sh}";
 
       # Monitor configuration
       monitor = [
@@ -119,7 +119,8 @@
         "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
 
         "float, class:^(fzflauncher)$" 
-        "size 300 400, class:^(fzflauncher)$"
+        "size 275 310, class:^(fzflauncher)$"
+        "move 45% 4%, class:^(fzflauncher)$"
         "dimaround, class:^(fzflauncher)$"
 
         "float, class:^(wiremix)$" 

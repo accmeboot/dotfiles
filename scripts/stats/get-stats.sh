@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-SCRIPT_DIR="$HOME/dotfiles/scripts"
+SCRIPT_DIR="$HOME/dotfiles/scripts/stats"
 
 
 cpu_temp=$("$SCRIPT_DIR/cpu-temp.sh" 2>&1)
