@@ -117,7 +117,7 @@
         "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
 
         "float, class:^(fzflauncher)$" 
-        "size 275 340, class:^(fzflauncher)$"
+        "size 275 360, class:^(fzflauncher)$"
         "move 45% 4%, class:^(fzflauncher)$"
         "dimaround, class:^(fzflauncher)$"
 

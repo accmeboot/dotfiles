@@ -4,7 +4,7 @@ IFS=':'
 
 SCRIPT_DIR="$HOME/dotfiles/scripts"
 
-entries=" Audio\n󰄩 System Monitor\n Files\n Steam\n󰖟 Browser\n Terminal\n󱓞 Drun\n󰝘 Applications\n󰤆 Shutdown\n Reboot\n󰒲 Sleep\n Lock"
+entries=" Audio\n󰄩 System Monitor\n Files\n Steam\n󰖟 Browser\n Terminal\n󱓞 Drun\n󰝘 Applications\n󰤆 Shutdown\n Reboot\n󰒲 Sleep\n Lock\n Configuration"
 
 get_selection() {
   echo -e "$entries" | "$SCRIPT_DIR/launcher/show-launcher.sh"
@@ -53,6 +53,9 @@ if selection=$( get_selection ); then
       ;;
     "Lock")
       run "pidof hyprlock || hyprlock"
+      ;;
+    "Configuration")
+      run "${TERMINAL:-kitty} tmux new -s CONFIG -c ~/dotfiles"
       ;;
     *)
       exit 1
