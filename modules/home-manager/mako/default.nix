@@ -13,10 +13,10 @@
 
       default-timeout = 5000;
       ignore-timeout = true;
-      border-color = "#${config.theme.colors.base03}";
-      text-color = "#${config.theme.colors.base05}";
-      background-color = "#${config.theme.colors.base00}";
-      progress-color = "#${config.theme.colors.base01}";
+        border-color = "#${config.theme.colors.base03}B3";
+        text-color = "#${config.theme.colors.base05}B3";
+        background-color = "#${config.theme.colors.base00}B3";
+        progress-color = "#${config.theme.colors.base01}B3";
       font = "Inter 9.5";
       padding = 10;
 

@@ -126,11 +126,13 @@
         "float, class:^(wiremix)$" 
         "size 800 600, class:^(wiremix)$"
 
-        "opacity ${toString config.theme.opacity} ${toString config.theme.opacity}, floating:1"
+        "opacity 0.7, floating:1"
       ];
 
       layerrule = [
         "blur, waybar"
+        "blur, notifications"
+        "ignorezero, notifications"
       ];
 
       # Key bindings
