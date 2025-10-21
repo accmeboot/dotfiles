@@ -59,7 +59,6 @@
     slurp        # region selector for wayland
     
     # Desktop Environment
-    pavucontrol  # PulseAudio volume control
     wiremix      # tui volume control
     easyeffects  # pipewire equalizer
     gowall       # convert wallpaper to the theme
@@ -69,7 +68,6 @@
     telegram-desktop  # messaging application
     spotify      # music streaming service
     discord      # chat and voice communication platform
-    zoom-us      # chat and voice communication platform
     thunderbird  # email client
     transmission_4-gtk # torrent client
     obs-studio         # screen recording
