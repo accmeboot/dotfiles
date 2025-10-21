@@ -11,7 +11,7 @@
     };
     opacity = lib.mkOption {
       type = lib.types.float;
-      default = 0.5;
+      default = 1.0;
 
     };
     spacing = lib.mkOption {
