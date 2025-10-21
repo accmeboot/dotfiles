@@ -98,6 +98,10 @@
         border: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base03};
       }
 
+      .modules-left {
+        padding: 0px ${toString config.theme.spacing.s}px;
+      }
+
       tooltip {
         border-radius: ${toString config.theme.borderRadius}px;
         background-color: #${config.theme.colors.base01};
@@ -113,9 +117,15 @@
         background-color: transparent;
       }
 
+
+      #workspaces button:hover {
+        background-color: #${config.theme.colors.base01};
+      }
+
       #workspaces button.active {
         background-color: transparent;
-        color: #${config.theme.colors.base0D};
+        color: #${config.theme.colors.base07};
+        background-color: #${config.theme.colors.base03};
       }
 
       #workspaces button.urgent {
