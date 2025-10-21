@@ -17,4 +17,4 @@ get_cpu_temp() {
 temp=$(get_cpu_temp)
 temp=${temp%.*}  # Remove decimal part if present
 
-echo "{\"text\":\"$temp\"}"
+echo "$temp"

@@ -25,8 +25,8 @@ get_gpu_temp() {
 temp=$(get_gpu_temp)
 
 if [ -z "$temp" ] || [ "$temp" = "0" ]; then
-    echo "{\"text\":\"N/A\"}"
+    echo "N/A"
     exit 0
 fi
 
-echo "{\"text\":\"$temp\"}"
+echo "$temp"
