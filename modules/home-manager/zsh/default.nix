@@ -29,6 +29,7 @@
       shellAliases = {
         nv = "nvim";
         icat = "kitten icat";
+        fzfnv = "nvim $(fzf)";
       };
 
       # Use built-in plugin options
