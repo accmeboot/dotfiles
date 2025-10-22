@@ -3,9 +3,7 @@
     enable = true;
     polarity = "dark";
 
-    image = "${../../../assets/wallpapers/evangelion.png}";
-
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    image = "${../../../assets/wallpapers/pastel-window.png}";
 
     targets = {
       starship.enable = false;
