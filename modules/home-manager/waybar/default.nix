@@ -6,7 +6,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "image#launcher" "hyprland/workspaces" "hyprland/window" ];
+        modules-left = [ "image#launcher" "hyprland/workspaces" "mpris" "cava" ];
         modules-center = [ "clock"];
         modules-right = [
           "tray"
@@ -22,10 +22,35 @@
           cursor = 60;
         };
 
-        "hyprland/window" = {
-          on-click-middle = "hyprctl dispatch killactive";
-          icon = false;
-          icon-size = 16;
+
+        mpris = {
+          format = "{status_icon}  {dynamic}";
+          interval = 1;
+          dynamic-len = 40;
+          title-len = 40;
+          status-icons = {
+            paused = " ";
+            playing = " ";
+            stopped = " ";
+          };
+        };
+
+        cava = {
+          framerate = 60;
+          autosens = 1;
+          bars = 14;
+          method = "pulse";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          noise_reduction = 0.77;
+          input_delay = 2;
+          sleep_timer = 1;
+          hide_on_silence = true;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         "custom/separator" = {

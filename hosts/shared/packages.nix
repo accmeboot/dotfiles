@@ -53,6 +53,7 @@
     mpv          # video player
     gimp         # image editor
     mediainfo    # cli to view files mediainfo
+    playerctl    # required by waybar mpris module
     
     # Screenshot & Recording
     grim         # screenshot utility for wayland
