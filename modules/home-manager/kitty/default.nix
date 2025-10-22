@@ -14,6 +14,9 @@
 
       cursor_trail_decay 0.1 0.2
 
+      background_opacity ${toString config.theme.opacity}
+      background_blur 64
+
       # BEGIN_KITTY_FONTS
       # Font ligatures settings for Jet Brains Mono Font:
       # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features

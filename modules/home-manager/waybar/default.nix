@@ -85,7 +85,7 @@
       }
 
       window#waybar {
-        background-color: alpha(#${config.theme.colors.base00}, 0.0);
+        background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
         color: #${config.theme.colors.base05};
         font-family: "Inter", monospace;
       }

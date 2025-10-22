@@ -71,8 +71,8 @@
 
         blur = {
           enabled = true;
-          size = 5;
-          passes = 2;
+          size = 8;
+          passes = 3;
         };
 
         shadow = {
@@ -112,19 +112,16 @@
 
       # Window rules
       windowrule = [
-        "float, class:^(org.pulseaudio.pavucontrol)$"
         "float, class:^(nemo)$"
-        "size 800 600, class:^(org.pulseaudio.pavucontrol)$"
 
         "float, class:^(fzflauncher)$" 
         "size 275 360, class:^(fzflauncher)$"
         "move 45% 4%, class:^(fzflauncher)$"
-        "dimaround, class:^(fzflauncher)$"
+        "pin, class:^(fzflauncher)$"
+        "stayfocused, class:^(fzflauncher)$"
 
-        "float, class:^(wiremix)$" 
-        "size 800 600, class:^(wiremix)$"
-
-        "opacity ${toString config.theme.opacity}, floating:1"
+        "float, class:^(float)$" 
+        "size 800 600, class:^(float)$"
       ];
 
       layerrule = [
@@ -139,7 +136,7 @@
         "$mod, F10, exec, $terminal"
         "$mod, Q, killactive"
         "ALT, SPACE, exec, $menu"
-        "$mod CTRL, M, exec, $terminal --class wiremix wiremix -v output"
+        "$mod CTRL, M, exec, $terminal --class float wiremix -v output"
         "$mod, F11, exec, hyprctl reload"
         "$mod, TAB, workspace, previous"
         

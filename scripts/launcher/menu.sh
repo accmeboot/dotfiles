@@ -19,13 +19,13 @@ if selection=$( get_selection ); then
   
   case "$selection_clean" in
     "Audio")
-      run "${TERMINAL:-kitty} wiremix"
+      run "${TERMINAL:-kitty} --class float wiremix"
       ;;
     "System Monitor")
-      run "${TERMINAL:-kitty} btop"
+      run "${TERMINAL:-kitty} --class float btop"
       ;;
     "Files")
-      run "${TERMINAL:-kitty} yazi"
+      run "${TERMINAL:-kitty} --class float yazi"
       ;;
     "Steam")
       run "steam"
