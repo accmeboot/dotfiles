@@ -3,7 +3,7 @@
     enable = true;
     polarity = "dark";
 
-    image = "${../../../assets/wallpapers/pastel-window.png}";
+    image = "${../../../assets/wallpapers/evangelion.png}";
 
     targets = {
       starship.enable = false;
