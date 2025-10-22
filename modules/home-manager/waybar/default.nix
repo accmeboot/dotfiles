@@ -6,7 +6,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "image#launcher" "hyprland/workspaces" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
         modules-center = [ "mpris" "cava" ];
         modules-right = [
           "tray"
@@ -59,10 +59,10 @@
           tooltip = false;
         };
 
-        "image#launcher" = {
-          path = "${../../../assets/wallpapers/nixos-icon.svg}";
-          size = 16;
+        "custom/launcher" = {
+          format = "󰝘 ";
           on-click = "kitty --class fzflauncher ${../../../scripts/launcher/menu.sh}";
+          tooltip-format = "System menu";
         };
 
         "battery" = {
