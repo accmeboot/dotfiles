@@ -6,12 +6,13 @@
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
           type = "kitty-icat";
-          source = ../../../assets/wallpapers/nix-logo-gruvbox.png;
-          width = 22;
-          height = 22;
+          source = ../../../assets/wallpapers/nixos-icon.svg;
+          width = 24;
+          height = 24;
       };
       display.separator = " ";
       modules = [
+        "break"
         "break"
         {
           key = "󰅐 ";
