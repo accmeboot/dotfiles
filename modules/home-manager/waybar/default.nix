@@ -114,7 +114,6 @@
       #workspaces button {
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
-        margin: 0px ${toString config.theme.spacing.xs}px;
         background-color: transparent;
       }
 
