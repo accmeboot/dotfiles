@@ -118,7 +118,7 @@
         "size 275 360, class:^(fzflauncher)$"
         "move 45% 4%, class:^(fzflauncher)$"
         "pin, class:^(fzflauncher)$"
-        "stayfocused, class:^(fzflauncher)$"
+        # "stayfocused, class:^(fzflauncher)$"
 
         "float, class:^(float)$" 
         "size 800 600, class:^(float)$"
