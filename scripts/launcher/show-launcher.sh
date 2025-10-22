@@ -9,6 +9,5 @@ sort -u \
         --color=16 \
         --no-scrollbar \
         --gutter=' ' \
-        --highlight-line \
         --footer "$stats" \
   | tail -1
