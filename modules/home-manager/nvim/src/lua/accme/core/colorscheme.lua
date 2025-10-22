@@ -11,3 +11,5 @@ vim.cmd("highlight FloatBorder guibg=NONE ctermbg=NONE")
 vim.cmd("highlight link NormalFloat Normal")
 vim.cmd("highlight NormalFloat ctermbg=NONE guibg=NONE")
 vim.cmd("highlight Pmenu ctermbg=NONE guibg=NONE")
+
+vim.cmd('highlight CursorLine cterm=underline gui=underline ctermbg=NONE guibg=NONE')
