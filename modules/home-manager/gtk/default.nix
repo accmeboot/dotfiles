@@ -3,8 +3,8 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Gruvbox-Plus-Dark";
-      package = pkgs.gruvbox-plus-icons;
+      name = "Reversal";
+      package = pkgs.reversal-icon-theme;
     };
     cursorTheme = {
       name = "capitaine-cursors";

@@ -24,7 +24,7 @@
 
         "hyprland/window" = {
           on-click-middle = "hyprctl dispatch killactive";
-          icon = true;
+          icon = false;
           icon-size = 16;
         };
 
@@ -81,7 +81,7 @@
       }
 
       window#waybar>box {
-        padding: 0px ${toString config.theme.spacing.s}px;
+        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
@@ -95,7 +95,7 @@
         padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
         border-width: ${toString config.theme.borderWidth}px;
-        border: ${toString config.theme.borderWidth}px solid #${config.theme.colors.base03};
+        border: ${toString config.theme.borderWidth}px solid alpha(#${config.theme.colors.base03}, ${toString (config.theme.opacity / 2)});
       }
 
       .modules-left {
@@ -114,18 +114,18 @@
       #workspaces button {
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
+        margin: 0px ${toString config.theme.spacing.xs}px;
         background-color: transparent;
       }
 
 
       #workspaces button:hover {
-        background-color: #${config.theme.colors.base01};
+        box-shadow: 0px -${toString config.theme.borderWidth}px 0px #${config.theme.colors.base02} inset;
       }
 
       #workspaces button.active {
         background-color: transparent;
-        color: #${config.theme.colors.base05};
-        background-color: #${config.theme.colors.base03};
+        box-shadow: 0px -${toString config.theme.borderWidth}px 0px #${config.theme.colors.base0D} inset;
       }
 
       #workspaces button.urgent {

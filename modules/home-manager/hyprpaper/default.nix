@@ -8,10 +8,10 @@
       splash_offset = 2.0;
 
       preload =
-        [ "${../../../assets/wallpapers/forest-gruvbox.png}" ];
+        [ config.stylix.image ];
 
       wallpaper = [
-        ",${../../../assets/wallpapers/forest-gruvbox.png}"
+        ",${config.stylix.image}"
       ];
     };
   };

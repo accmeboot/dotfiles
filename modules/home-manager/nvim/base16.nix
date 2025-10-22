@@ -9,6 +9,7 @@ in
         return {
           "RRethy/base16-nvim",
             lazy = false,
+            enabled = true,
             priority = 1000,
             config = function()
               local base16 = require("base16-colorscheme")
