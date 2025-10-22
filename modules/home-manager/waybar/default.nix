@@ -124,7 +124,7 @@
 
       #workspaces button.active {
         background-color: transparent;
-        color: #${config.theme.colors.base07};
+        color: #${config.theme.colors.base05};
         background-color: #${config.theme.colors.base03};
       }
 
