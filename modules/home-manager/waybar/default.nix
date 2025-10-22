@@ -6,11 +6,12 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "image#launcher" "hyprland/workspaces" "mpris" "cava" ];
-        modules-center = [ "clock"];
+        modules-left = [ "image#launcher" "hyprland/workspaces" ];
+        modules-center = [ "mpris" "cava" ];
         modules-right = [
           "tray"
           "battery"
+          "clock"
         ];
 
         spacing = config.theme.spacing.s;
