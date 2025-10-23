@@ -260,7 +260,7 @@
         "$mod SHIFT, DOWN, movewindow, mon:-1"
 
         # Screenshots
-        ", PRINT, exec, grim"
+        ", PRINT, exec, grim ${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')"
         "ALT SHIFT, 4, exec, grim -g \"$(slurp)\" ${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')"
       ];
 
