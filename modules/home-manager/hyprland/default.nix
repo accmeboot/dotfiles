@@ -141,8 +141,8 @@
       ];
 
       layerrule = [
-        "ignorealpha ${toString config.theme.opacity}, notifications"
-        "ignorealpha ${toString config.theme.opacity}, waybar"
+        "ignorealpha 0.0, notifications"
+        "ignorealpha 0.4, waybar"
         "blur, waybar"
         "blur, notifications"
       ];

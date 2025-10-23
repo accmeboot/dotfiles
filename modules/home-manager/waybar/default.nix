@@ -109,7 +109,7 @@
       window#waybar>box {
         background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
         padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
-        box-shadow: 0px ${toString config.theme.spacing.xs}px 3px 0px alpha(#151515, ${toString config.theme.opacity});
+        box-shadow: 0px ${toString config.theme.spacing.xs}px 3px 0px alpha(#151515, 0.4);
         margin: 0px 0px ${toString (config.theme.spacing.s)}px 0px;
       }
 
