@@ -10,10 +10,6 @@
 
       window_padding_width 2 4
 
-      cursor_trail 1
-
-      cursor_trail_decay 0.1 0.2
-
       background_opacity ${toString config.theme.opacity}
       background_blur 64
 
