@@ -124,7 +124,7 @@
         padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
         border-width: ${toString config.theme.borderWidth}px;
-        border: ${toString config.theme.borderWidth}px solid alpha(#${config.theme.colors.base03}, ${toString (config.theme.opacity / 2)});
+        border: ${toString config.theme.borderWidth}px solid alpha(#${config.theme.colors.base01}, 1.0);
       }
 
       .modules-left {

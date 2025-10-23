@@ -135,6 +135,7 @@
         "move 45% 4%, class:^(fzflauncher)$"
         "pin, class:^(fzflauncher)$"
         "stayfocused, class:^(fzflauncher)$"
+        "bordercolor rgb(${config.theme.colors.base01}) rgb(${config.theme.colors.base01}), class:^(fzflauncher)$"
 
         "float, class:^(float)$" 
         "size 800 600, class:^(float)$"
