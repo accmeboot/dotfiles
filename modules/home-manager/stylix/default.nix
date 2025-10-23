@@ -6,12 +6,15 @@
     image = "${../../../assets/wallpapers/evangelion.png}";
 
     # base16Scheme = import ../theme/monochrome-base16.nix;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
 
     targets = {
       starship.enable = false;
       waybar.enable = false;
       mako.enable = false;
+
+      # zen-browser.profileNames = [ "default" ]; currently the theme looks really bad
+      zen-browser.enable = false;
     };
 
     fonts = {

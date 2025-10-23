@@ -12,7 +12,7 @@
     git          # version control system
 
     # from flakes
-    inputs.zen-browser.packages.${pkgs.system}.default
+    # inputs.zen-browser.packages.${pkgs.system}.default
     
     # Programming Languages
     python3      # python programming language
@@ -80,14 +80,11 @@
     socat        # listen to events on sockets
 
     # Gaming Platform
-    (lutris.override {
-      extraLibraries = pkgs: [
-        wineWowPackages.waylandFull  # Wine with Wayland support
-      ];
-    })           # gaming platform manager
+    # lutris
 
     # Network Tools
     networkmanagerapplet # network manager GUI
+    brave
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
   ];
