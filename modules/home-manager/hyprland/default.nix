@@ -56,7 +56,7 @@
       # General settings
       general = {
         gaps_in = config.theme.spacing.xs;
-        gaps_out = config.theme.spacing.s;
+        gaps_out = "0, ${toString config.theme.spacing.s}, ${toString config.theme.spacing.s}, ${toString config.theme.spacing.s}";
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
@@ -141,9 +141,10 @@
       ];
 
       layerrule = [
+        "ignorealpha ${toString config.theme.opacity}, notifications"
+        "ignorealpha ${toString config.theme.opacity}, waybar"
         "blur, waybar"
         "blur, notifications"
-        "ignorezero, notifications"
       ];
 
       # Key bindings
