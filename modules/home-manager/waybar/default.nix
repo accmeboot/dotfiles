@@ -1,4 +1,5 @@
-{ config, pjgs, ... }: {
+{ config, ... }:
+{
   programs.waybar = {
     enable = true;
     settings = {

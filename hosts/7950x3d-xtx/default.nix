@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ../shared/configuration.nix
     ../shared/packages.nix

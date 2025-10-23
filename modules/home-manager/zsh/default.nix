@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 {
   options.programs.zsh.enableNvm = lib.mkEnableOption "nvm support in zsh";
 

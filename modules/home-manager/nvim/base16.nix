@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 let 
   colorHash = builtins.substring 0 6 (builtins.hashString "md5" 
     "${config.theme.colors.base00}${config.theme.colors.base01}${config.theme.colors.base02}${config.theme.colors.base03}${config.theme.colors.base04}${config.theme.colors.base05}${config.theme.colors.base06}${config.theme.colors.base07}${config.theme.colors.base08}${config.theme.colors.base09}${config.theme.colors.base0A}${config.theme.colors.base0B}${config.theme.colors.base0C}${config.theme.colors.base0D}${config.theme.colors.base0E}${config.theme.colors.base0F}");
