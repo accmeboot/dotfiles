@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
    ./packages.nix
   ];
@@ -33,13 +33,18 @@
   #----------------------------------------------------------------------------#
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      timeout = 0;
+      grub = {
+        enable = true;
+        device = "nodev";  # for UEFI systems
+        efiSupport = true;
+        useOSProber = true;  # if you want to detect other OS
+      };
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot";  # your EFI mount point
       };
     };
+
     consoleLogLevel = 3;
 
     plymouth = {
