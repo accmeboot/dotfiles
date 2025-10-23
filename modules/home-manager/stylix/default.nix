@@ -5,6 +5,9 @@
 
     image = "${../../../assets/wallpapers/evangelion.png}";
 
+    # base16Scheme = import ../theme/monochrome-base16.nix;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+
     targets = {
       starship.enable = false;
       waybar.enable = false;
