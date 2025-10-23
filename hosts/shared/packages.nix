@@ -1,11 +1,10 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ pkgs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
   environment.systemPackages = with pkgs; [
     # Core Development Tools
     vim          # terminal text editor
-    neovim       # modern vim-based text editor
     gcc          # GNU Compiler Collection
     cmake        # cross-platform build system generator
     gnumake      # build automation tool
@@ -23,11 +22,7 @@
     luarocks     # package manager for Lua modules
 
     # Terminal Utilities
-    kitty        # GPU-accelerated terminal emulator
     fzf          # command-line fuzzy finder
-    fastfetch    # system information tool
-    starship     # customizable shell prompt
-    tmux         # terminal multiplexer
     btop         # resource monitor with graphs
     fd           # fast alternative to 'find'
     ripgrep      # fast alternative to grep
@@ -37,7 +32,6 @@
 
     # File Management
     nemo         # graphical file manager
-    yazi         # terminal file manager
 
     # System Tools
     lm_sensors   # hardware monitoring utilities

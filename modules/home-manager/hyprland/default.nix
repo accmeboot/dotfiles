@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -290,7 +290,7 @@
 
       # Startup applications
       exec-once = [
-        "hyprlock"
+        "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
         "hyprctl dispatch workspace name:T"
         "waybar"
         "nm-applet"

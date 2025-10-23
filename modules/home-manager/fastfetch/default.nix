@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
   programs.fastfetch = {
     enable = true;
@@ -16,7 +16,7 @@
         "break"
         {
           key = "󰅐 ";
-         keyColor = "37";
+          keyColor = "37";
           type = "uptime";
         }
         {

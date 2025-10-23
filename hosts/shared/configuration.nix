@@ -33,15 +33,11 @@
   #----------------------------------------------------------------------------#
   boot = {
     loader = {
-      grub = {
-        enable = true;
-        device = "nodev";  # for UEFI systems
-        efiSupport = true;
-        useOSProber = true;  # if you want to detect other OS
-      };
+      systemd-boot.enable = true;
+      timeout = 0;
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";  # your EFI mount point
+        efiSysMountPoint = "/boot";
       };
     };
 
@@ -98,19 +94,8 @@
     gamemode.enable = true;
     dconf.enable = true;
 
-    uwsm = {
-      enable = true;
-      waylandCompositors = {
-        hyprland = {
-          prettyName = "Hyprland";
-          comment = "Hyprland compositor managed by UWSM";
-        };
-      };
-    };
-
     hyprland = {
       enable = true;
-      withUWSM  = true;
     };
   };
 
@@ -139,7 +124,7 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland";
+          command = "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
           user = "accme";
         };
       default_session = initial_session;
