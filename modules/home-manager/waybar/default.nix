@@ -175,7 +175,7 @@
       }
 
       #battery {
-        color: #${config.theme.colors.base0B};
+        color: #${config.theme.colors.base05};
       }
 
       #battery.warning {
