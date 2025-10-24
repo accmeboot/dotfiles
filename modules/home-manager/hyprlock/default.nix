@@ -22,8 +22,8 @@
       background = lib.mkForce [
         {
           path = config.stylix.image;
-          blur_passes = 3;
-          blur_size = 10;
+          # blur_passes = 3;
+          # blur_size = 10;
         }
       ];
 
@@ -36,7 +36,7 @@
           fade_on_empty = false;
           font_color = "rgb(${config.theme.colors.base05})";
           inner_color = "rgb(${config.theme.colors.base00})";
-          outer_color = "rgb(${config.theme.colors.base03})";
+          outer_color = "rgb(${config.theme.colors.base0D})";
           outline_thickness = config.theme.borderWidth;
           rounding = config.theme.borderRadius;
           placeholder_text = "Password...";
