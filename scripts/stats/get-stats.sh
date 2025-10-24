@@ -14,6 +14,6 @@ disk_usage=$("$SCRIPT_DIR/disk-usage.sh" 2>&1)
 [ -z "$ram_usage" ] && ram_usage="N/A"
 [ -z "$disk_usage" ] && disk_usage="N/A"
 
-stats="󰻠 ${cpu_temp}°C 󰢮 ${gpu_temp}°C 󰑭 ${ram_usage}% 󰋊 ${disk_usage}%"
+stats="CPU: ${cpu_temp}°C  GPU: ${gpu_temp}°C  RAM: ${ram_usage}%  DISK: ${disk_usage}%"
 
 echo "$stats"

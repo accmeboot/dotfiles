@@ -126,8 +126,8 @@
         "float, class:^(nemo)$"
 
         "float, class:^(fzflauncher)$" 
-        "size 275 360, class:^(fzflauncher)$"
-        "move 45% 4%, class:^(fzflauncher)$"
+        "size 310 320, class:^(fzflauncher)$"
+        "move 44% 4%, class:^(fzflauncher)$"
         "pin, class:^(fzflauncher)$"
         "stayfocused, class:^(fzflauncher)$"
 
