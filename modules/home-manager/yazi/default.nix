@@ -4,8 +4,8 @@
     enable = true;
     theme = {
       status = {
-        sep_left = { close = ""; open = ""; };
-        sep_right = { open = ""; close = ""; };
+        sep_left = { close = ""; open = ""; };
+        sep_right = { open = ""; close = ""; };
       };
     };
     settings = {
