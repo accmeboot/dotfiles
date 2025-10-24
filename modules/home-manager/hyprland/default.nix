@@ -126,8 +126,9 @@
         "float, class:^(nemo)$"
 
         "float, class:^(fzflauncher)$" 
-        "size 310 320, class:^(fzflauncher)$"
-        "move 44% 4%, class:^(fzflauncher)$"
+        "size 350 320, class:^(fzflauncher)$"
+        # 33 - waybar height
+        "move ${toString config.theme.spacing.s} ${toString (config.theme.spacing.s + 33)}, class:^(fzflauncher)$"
         "pin, class:^(fzflauncher)$"
         "stayfocused, class:^(fzflauncher)$"
 
