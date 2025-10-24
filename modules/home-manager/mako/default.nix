@@ -13,10 +13,10 @@
 
       default-timeout = 5000;
       ignore-timeout = true;
-        border-color = "#${config.theme.colors.base03}";
+        border-color = "#${config.theme.colors.base0D}";
         text-color = "#${config.theme.colors.base05}";
         background-color = "#${config.theme.colors.base00}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
-        progress-color = "#${config.theme.colors.base02}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
+        progress-color = "#${config.theme.colors.base0D}${lib.toHexString (builtins.floor (config.theme.opacity * 255))}";
       font = "Inter 9.5";
       padding = 10;
 
@@ -34,6 +34,7 @@
         width = 300;
         default-timeout = 2000;
         font = "Inter 16";
+        text-color = "#${config.theme.colors.base00}";
       };
 
       "app-name=brightness" = {
@@ -42,6 +43,7 @@
         width = 300;
         default-timeout = 2000;
         font = "Inter 16";
+        text-color = "#${config.theme.colors.base00}";
       };
     };
   };

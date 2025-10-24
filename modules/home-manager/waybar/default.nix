@@ -108,28 +108,14 @@
       }
 
       window#waybar>box {
-        background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
-        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
-        box-shadow: 0px ${toString config.theme.spacing.xs}px 3px 0px alpha(#151515, 0.4);
-        margin: 0px 0px ${toString (config.theme.spacing.s)}px 0px;
+        background-color: alpha(#${config.theme.colors.base00}, 1.0);
+        padding: 0px ${toString config.theme.spacing.s}px;
       }
 
       window#waybar {
         background-color: transparent;
         color: #${config.theme.colors.base05};
         font-family: "Inter", monospace;
-      }
-
-      .modules-left, .modules-right {
-        background-color: alpha(#${config.theme.colors.base00}, 1.0);
-        padding: ${toString config.theme.spacing.xs}px ${toString config.theme.spacing.s}px;
-        border-radius: ${toString config.theme.borderRadius}px;
-        border-width: ${toString config.theme.borderWidth}px;
-        border: ${toString config.theme.borderWidth}px solid alpha(#${config.theme.colors.base01}, 1.0);
-      }
-
-      .modules-left {
-        padding: 0px ${toString config.theme.spacing.s}px;
       }
 
       tooltip {
@@ -143,18 +129,18 @@
 
       #workspaces button {
         all: unset;
-        padding: 0px ${toString config.theme.spacing.s}px;
+        padding: ${toString config.theme.spacing.s}px;
         background-color: transparent;
       }
 
 
       #workspaces button:hover {
-        box-shadow: 0px -${toString config.theme.borderWidth}px 0px #${config.theme.colors.base02} inset;
+        box-shadow: 0px -2px 0px #${config.theme.colors.base02} inset;
       }
 
       #workspaces button.active {
         background-color: transparent;
-        box-shadow: 0px -${toString config.theme.borderWidth}px 0px #${config.theme.colors.base0D} inset;
+        box-shadow: 0px -2px 0px #${config.theme.colors.base05} inset;
       }
 
       #workspaces button.urgent {

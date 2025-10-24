@@ -1,7 +1,7 @@
 return {
   "rose-pine/neovim",
   name = "rose-pine",
-  enabled = true,
+  enabled = false,
   config = function()
     require("rose-pine").setup({
       variant = "auto",      -- auto, main, moon, or dawn

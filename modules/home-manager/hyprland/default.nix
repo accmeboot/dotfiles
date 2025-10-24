@@ -56,13 +56,10 @@
       # General settings
       general = {
         gaps_in = config.theme.spacing.xs;
-        gaps_out = "0, ${toString config.theme.spacing.s}, ${toString config.theme.spacing.s}, ${toString config.theme.spacing.s}";
+        gaps_out = config.theme.spacing.s;
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
-
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
-        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base01})";
       };
 
       # Decoration
@@ -70,7 +67,7 @@
         rounding = config.theme.borderRadius;
 
         blur = {
-          enabled = true;
+          enabled = false;
           size = 8;
           passes = 3;
         };
@@ -108,8 +105,6 @@
           enabled = false;
           stacked = false;
         };
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base03})";
-        "col.border_inactive" = lib.mkForce "rgb(${config.theme.colors.base01})";
       };
 
 
@@ -135,7 +130,6 @@
         "move 45% 4%, class:^(fzflauncher)$"
         "pin, class:^(fzflauncher)$"
         "stayfocused, class:^(fzflauncher)$"
-        "bordercolor rgb(${config.theme.colors.base01}) rgb(${config.theme.colors.base01}), class:^(fzflauncher)$"
 
         "float, class:^(float)$" 
         "size 800 600, class:^(float)$"

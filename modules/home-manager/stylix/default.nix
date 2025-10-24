@@ -4,10 +4,10 @@
     enable = true;
     polarity = "dark";
 
-    image = "${../../../assets/wallpapers/evangelion.png}";
+    image = "${../../../assets/wallpapers/cyberpunk_1.jpg}";
 
-    # base16Scheme = import ../theme/monochrome-base16.nix;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/grayscale-dark.yaml";
+    base16Scheme = import ../theme/base16-colors.nix;
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
     targets = {
       starship.enable = false;
