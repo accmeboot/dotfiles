@@ -8,5 +8,4 @@ sort -u \
         --color=16 \
         --no-scrollbar \
         --gutter=' ' \
-        --layout=reverse \
   | tail -1
