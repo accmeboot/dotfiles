@@ -10,7 +10,6 @@
       window_padding_width 2 4
 
       background_opacity ${toString config.theme.opacity}
-      background_blur 64
 
       # BEGIN_KITTY_FONTS
       # Font ligatures settings for Jet Brains Mono Font:
