@@ -109,6 +109,7 @@
                   ./modules/home-manager/nvim/default.nix
                   ./modules/home-manager/nvim/base16.nix
                   ./modules/home-manager/tmux/default.nix
+                  ./modules/home-manager/ghostty/default.nix
                   ./modules/home-manager/yazi/default.nix
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
