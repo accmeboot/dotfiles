@@ -7,6 +7,7 @@
       background-opacity = config.theme.opacity;
       cursor-style = "block";
       shell-integration-features = "no-cursor";
+      app-notifications = false;
 
       window-padding-x = config.theme.spacing.m;
       window-padding-y = config.theme.spacing.m;
