@@ -16,8 +16,8 @@
       "$down" = "j";
       "$up" = "k";
       "$right" = "l";
-      "$terminal" = "kitty";
-      "$menu" = "$terminal --class fzflauncher ${../../../scripts/launcher/menu.sh}";
+      "$terminal" = "ghostty";
+      "$menu" = "$terminal --class=com.accme.fzflauncher --command=${../../../scripts/launcher/menu.sh}";
 
       # Monitor configuration
       monitor = [
@@ -128,13 +128,14 @@
       windowrule = [
         "float, class:^(nemo)$"
 
-        "float, class:^(fzflauncher)$" 
-        "size 350 320, class:^(fzflauncher)$"
-        "pin, class:^(fzflauncher)$"
-        "stayfocused, class:^(fzflauncher)$"
+        "float, class:^(com.accme.fzflauncher)$" 
+        "size 350 320, class:^(com.accme.fzflauncher)$"
+        "pin, class:^(com.accme.fzflauncher)$"
+        "stayfocused, class:^(com.accme.fzflauncher)$"
 
-        "float, class:^(float)$" 
-        "size 800 600, class:^(float)$"
+        "float, class:^(com.accme.float)$" 
+
+        "size 800 600, class:^(com.accme.float)$"
       ];
 
       layerrule = [
@@ -150,7 +151,7 @@
         "$mod, F10, exec, $terminal"
         "$mod, Q, killactive"
         "ALT, SPACE, exec, $menu"
-        "$mod CTRL, M, exec, $terminal --class float wiremix -v output"
+        "$mod CTRL, M, exec, $terminal --class=com.accme.float --command='wiremix -v output'"
         "$mod, F11, exec, hyprctl reload"
         "$mod, TAB, workspace, previous"
         

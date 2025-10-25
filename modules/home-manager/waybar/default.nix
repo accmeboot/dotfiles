@@ -28,7 +28,7 @@
           format = "{text}";
           exec = "${../../../scripts/stats/get-stats.sh}";
           interval = 5;
-          on-click = "kitty --class float btop";
+          on-click = "ghostty --class=com.accme.float --command=btop";
         };
 
         "custom/separator" = {
@@ -38,7 +38,7 @@
 
         "custom/launcher" = {
           format = "󰝘 ";
-          on-click = "kitty --class fzflauncher ${../../../scripts/launcher/menu.sh}";
+          on-click = "ghostty --class=com.accme.fzflauncher --command=${../../../scripts/launcher/menu.sh}";
           tooltip-format = "System menu";
         };
 

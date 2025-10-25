@@ -8,10 +8,6 @@
   system.primaryUser = "Mikhail_Vialov";
   
   environment.systemPackages = with pkgs; [
-    neovim
-    tmux
-    kitty
-    yazi
     ffmpegthumbnailer
     unar
     jq
@@ -20,11 +16,9 @@
     ripgrep
     fzf
     zoxide
-    fastfetch
     git
     curl
     wget
-    starship
     rustup
   ];
 

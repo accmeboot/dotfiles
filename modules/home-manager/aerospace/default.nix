@@ -274,7 +274,7 @@ in {
 
 
     [[on-window-detected]]
-    if.app-id = 'net.kovidgoyal.kitty'
+    if.app-id = 'com.mitchellh.ghostty'
     run = 'move-node-to-workspace T'
 
     [[on-window-detected]]

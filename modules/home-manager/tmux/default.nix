@@ -63,18 +63,22 @@
       set -g window-status-separator " | "
       set -g status-left-length 50
 
-      set -g message-style "fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}"
-      set -g message-command-style "fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}"
+      set -Fg "status-format[0]" "#{status-format[0]}"
+      set -g "status-format[1]" ""
+      set -g status 2
 
-      set -g status-style "fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}"
+      set -g message-style "fg=#${config.theme.colors.base05},bg=terminal"
+      set -g message-command-style "fg=#${config.theme.colors.base05},bg=terminal"
+
+      set -g status-style "fg=#${config.theme.colors.base05},bg=default"
 
       set -g status-left " "
 
-      set -g window-status-format "#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}]#I:#W"
-      set -g window-status-current-format "#[fg=#${config.theme.colors.base0D},bg=#${config.theme.colors.base00}]#I:#W*"
+      set -g window-status-format "#[fg=#${config.theme.colors.base05},bg=terminal]#I:#W"
+      set -g window-status-current-format "#[fg=#${config.theme.colors.base0D},bg=terminal]#I:#W*"
 
       set -g status-right-length 100
-      set -g status-right "#[fg=#${config.theme.colors.base05},bg=#${config.theme.colors.base00}] #{session_path}   #S "
+      set -g status-right "#[fg=#${config.theme.colors.base05},bg=terminal] #{session_path}   #S "
     '';
 
     plugins = with pkgs.tmuxPlugins; [

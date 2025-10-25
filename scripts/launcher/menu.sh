@@ -19,13 +19,13 @@ if selection=$( get_selection ); then
   
   case "$selection_clean" in
     "Audio")
-      run "${TERMINAL:-kitty} --class float wiremix -v output"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command='wiremix -v output'"
       ;;
     "System Monitor")
-      run "${TERMINAL:-kitty} --class float btop"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command=btop"
       ;;
     "Files")
-      run "${TERMINAL:-kitty} --class float yazi"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command=yazi"
       ;;
     "Steam")
       run "steam"
@@ -34,7 +34,7 @@ if selection=$( get_selection ); then
       run "zen"
       ;;
     "Terminal")
-      run "${TERMINAL:-kitty}"
+      run "${TERMINAL:-ghostty}"
       ;;
     "Drun")
       exec "$SCRIPT_DIR/launcher/drun.sh"
@@ -55,7 +55,7 @@ if selection=$( get_selection ); then
       run "pidof hyprlock || hyprlock"
       ;;
     "Configuration")
-      run "${TERMINAL:-kitty} tmux new -s CONFIG -c ~/dotfiles"
+      run "${TERMINAL:-ghostty} --command='tmux new -s CONFIG -c ~/dotfiles'"
       ;;
     *)
       exit 1
