@@ -269,12 +269,12 @@
 
       # Media keys
       bindl = [
-        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ${config.home.homeDirectory}/dotfiles/scripts/volume-notify.sh"
-        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%- && ${config.home.homeDirectory}/dotfiles/scripts/volume-notify.sh"
-        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+ && ${config.home.homeDirectory}/dotfiles/scripts/volume-notify.sh"
-        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && ${config.home.homeDirectory}/dotfiles/scripts/volume-notify.sh"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ${config.home.homeDirectory}/dotfiles/scripts/brightness-notify.sh"
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+ && ${config.home.homeDirectory}/dotfiles/scripts/brightness-notify.sh"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
 
         ", switch:on:Lid Switch, exec, hyprlock & systemctl suspend"
       ];

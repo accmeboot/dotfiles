@@ -27,7 +27,7 @@
         "custom/stats" = {
           format = "{text}";
           exec = "${../../../scripts/stats/get-stats.sh}";
-          interval = 5;
+          interval = 1;
           on-click = "ghostty --class=com.accme.float --command=btop";
         };
 
