@@ -8,7 +8,7 @@
         position = "top";
         
         modules-left = [ "custom/launcher" "hyprland/workspaces" ];
-        modules-center = [ "custom/stats" ];
+        modules-center = [ "custom/stats" "pulseaudio" ];
         modules-right = [
           "tray"
           "battery"
@@ -29,6 +29,14 @@
           exec = "${../../../scripts/stats/get-stats.sh}";
           interval = 1;
           on-click = "ghostty --class=com.accme.float --command=btop";
+        };
+
+        pulseaudio = {
+          format = " VOL: {volume}%";
+          format-bluetooth = " VOL: {volume}%";
+          format-muted = " VOL: {volume}% [MUTED]";
+          scroll-step = 1;
+          on-click = "ghostty --class=com.accme.float --command='wiremix -v output'";
         };
 
         "custom/separator" = {
@@ -137,8 +145,9 @@
         border-radius: ${toString config.theme.borderRadius}px;
       }
 
-      #clock {
+      #clock, #pulseaudio, #custom-stats {
         padding: 0px;
+        margin: 0px;
       }
 
       #battery {
