@@ -3,31 +3,24 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   enabled = true,
   config = function()
-    local transparent_theme = require("lualine.themes.base16")
+    local transparent_auto_theme = require('lualine.themes.auto')
 
-    -- Make all sections transparent
-    for mode, sections in pairs(transparent_theme) do
-      if type(sections) == "table" then
-        for section, colors in pairs(sections) do
-          if type(colors) == "table" then
-            colors.bg = 'NONE'
-          end
-        end
-      end
-    end
+    transparent_auto_theme.normal.c.bg = 'none'
+    transparent_auto_theme.insert.c.bg = 'none'
+    transparent_auto_theme.visual.c.bg = 'none'
 
     require("lualine").setup({
       options = {
-        theme = transparent_theme,
+        theme = transparent_auto_theme,
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         icons_enabled = true,
         globalstatus = true,
       },
       sections = {
-        lualine_a = {},
+        lualine_a = { "mode" },
         lualine_b = {
-          { "branch", icon = "", color = "StatusLine", padding = { left = 1 } },
+          { "branch", icon = "", padding = { left = 1 }, color = "StatusLine", },
           { "diff", color = { bg = "None" }, },
         },
         lualine_c = {
@@ -66,17 +59,6 @@ return {
           { "progress", color = "StatusLine" },
         },
       },
-
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {},
-      extensions = {},
     })
   end,
 }
