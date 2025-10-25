@@ -85,7 +85,7 @@
 
       window#waybar>box {
         background-color: alpha(#${config.theme.colors.base00}, 1.0);
-        padding: 0px ${toString config.theme.spacing.s}px;
+        padding: 0px ${toString (config.theme.spacing.s + config.theme.borderRadius + config.theme.borderWidth)}px;
       }
 
       window#waybar {
