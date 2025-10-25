@@ -3,15 +3,15 @@
   options.theme = {
     borderRadius = lib.mkOption {
       type = lib.types.int;
-      default = 0;
+      default = 8;
     };
     borderWidth = lib.mkOption {
       type = lib.types.int;
-      default = 2;
+      default = 3;
     };
     opacity = lib.mkOption {
       type = lib.types.float;
-      default = 0.9;
+      default = 0.95;
 
     };
     spacing = lib.mkOption {

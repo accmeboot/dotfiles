@@ -60,6 +60,9 @@
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
+
+        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
+        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
       };
 
       # Decoration
@@ -92,8 +95,6 @@
           "windowsIn, 1, 4, winIn, slide"
           "windowsOut, 1, 3, winOut, slide"
           "windowsMove, 1, 3, wind, slide"
-          "border, 1, 1, liner"
-          "borderangle, 1, 13, liner, loop"
           "fade, 1, 8, default"
           "workspaces, 1, 3, wind"
         ];
@@ -105,6 +106,8 @@
           enabled = false;
           stacked = false;
         };
+
+        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
 
