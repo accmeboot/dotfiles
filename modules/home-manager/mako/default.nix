@@ -20,8 +20,8 @@
       font = "Inter 9.5";
       padding = 10;
 
-      # icon-border-radius = 32; # the default with and height of the icon is 64
-      max-icon-size = 128;
+      icon-border-radius = config.theme.borderRadius;
+      max-icon-size = 128; # the default with and height of the icon is 64
 
       anchor = "top-right";
 

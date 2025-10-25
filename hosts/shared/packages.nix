@@ -53,6 +53,7 @@
     # Screenshot & Recording
     grim         # screenshot utility for wayland
     slurp        # region selector for wayland
+    wl-clipboard # wayland based clipboard command tool
     
     # Desktop Environment
     wiremix      # tui volume control
