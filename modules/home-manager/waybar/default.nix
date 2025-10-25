@@ -84,14 +84,22 @@
       }
 
       window#waybar>box {
-        background-color: alpha(#${config.theme.colors.base00}, 1.0);
-        padding: 0px ${toString (config.theme.spacing.s + config.theme.borderRadius + config.theme.borderWidth)}px;
+        background-color: transparent;
+        padding: 0px;
       }
 
       window#waybar {
         background-color: transparent;
         color: #${config.theme.colors.base05};
         font-family: "Inter", monospace;
+      }
+
+      .modules-left, .modules-right, .modules-center {
+        background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
+        padding: 0px ${toString config.theme.spacing.s}px;
+        border-radius: ${toString config.theme.borderRadius}px;
+        box-shadow: 1 1 3 1px alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
+        margin: ${toString config.theme.spacing.s}px;
       }
 
       tooltip {
