@@ -23,16 +23,9 @@
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-      # to have it up-to-date or simply don't specify the nixpkgs input
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar, zen-browser }:{
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar }:{
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -67,10 +60,6 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
-
-                   zen-browser.homeModules.beta
-                  ./modules/home-manager/zen-browser/default.nix
-
 
                   stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
@@ -114,10 +103,6 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
-
-                   zen-browser.homeModules.beta
-                  ./modules/home-manager/zen-browser/default.nix
-
 
                   stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix

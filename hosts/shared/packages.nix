@@ -11,9 +11,6 @@
     gnumake      # build automation tool
     git          # version control system
     nil          # nix language server
-
-    # from flakes
-    # inputs.zen-browser.packages.${pkgs.system}.default
     
     # Programming Languages
     python3      # python programming language

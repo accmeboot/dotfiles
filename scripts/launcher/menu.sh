@@ -31,7 +31,7 @@ if selection=$( get_selection ); then
       run "steam"
       ;;
     "Browser")
-      run "zen"
+      run "brave"
       ;;
     "Terminal")
       run "${TERMINAL:-ghostty}"

@@ -12,9 +12,6 @@
       starship.enable = false;
       waybar.enable = false;
       mako.enable = false;
-
-      # zen-browser.profileNames = [ "default" ]; currently the theme looks really bad
-      zen-browser.enable = false;
     };
 
     fonts = {
