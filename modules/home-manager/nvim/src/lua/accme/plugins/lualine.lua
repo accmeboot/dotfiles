@@ -29,12 +29,6 @@ return {
         lualine_x = {
           {
             function()
-              return require("accme.local.codecompanion-spinner").get_lualine_status()
-            end,
-            color = "WarningMsg",
-          },
-          {
-            function()
               local reg = vim.fn.reg_recording()
               if reg == "" then
                 return ""
