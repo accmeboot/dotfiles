@@ -29,6 +29,7 @@
     ];
     casks = [
       "aerospace"
+      "ghostty"
     ];
     taps = [
       "FelixKratz/formulae"
