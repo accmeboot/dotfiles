@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   stylix = {
     enable = true;
@@ -7,7 +7,6 @@
     image = "${../../../assets/wallpapers/cyberpunk_1.jpg}";
 
     base16Scheme = import ../theme/base16-colors.nix;
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
     targets = {
       starship.enable = false;
@@ -19,22 +18,19 @@
     };
 
     fonts = {
-      serif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
-      sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
-      monospace = {
-        package = pkgs.inter;
-        name = "Inter";
-      };
+        serif = {
+          name = "JetBrainsMono Nerd Font";
+        };
+        sansSerif = {
+          name = "JetBrainsMono Nerd Font";
+        };
+        monospace = {
+          name = "JetBrainsMono Nerd Font";
+        };
       sizes = {
-        applications = 9.5;
-        desktop = 11;
-        popups = 11;
+        applications = 10;
+        desktop = 10;
+        popups = 10;
         terminal = 11;
       };
     };
