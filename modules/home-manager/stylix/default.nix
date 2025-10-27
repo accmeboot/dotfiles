@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   stylix = {
     enable = true;
@@ -15,19 +15,22 @@
     };
 
     fonts = {
-        serif = {
-          name = "JetBrainsMono Nerd Font";
-        };
-        sansSerif = {
-          name = "JetBrainsMono Nerd Font";
-        };
-        monospace = {
-          name = "JetBrainsMono Nerd Font";
-        };
+      serif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
+      monospace = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
       sizes = {
-        applications = 10;
-        desktop = 10;
-        popups = 10;
+        applications = 9;
+        desktop = 9;
+        popups = 9;
         terminal = 11;
       };
     };

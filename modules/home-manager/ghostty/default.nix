@@ -2,7 +2,7 @@
 # TODO: need to monitor ghostty nix package, currently it doesn't allow darwin (macos) as a platform
 {
   home.file.".config/ghostty/config".text = ''
-    font-family=
+    font-family=""
     font-size=11
     background-opacity=${toString config.theme.opacity}
     cursor-style=block
