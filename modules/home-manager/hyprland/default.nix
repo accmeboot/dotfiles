@@ -77,9 +77,9 @@
 
         shadow = {
           enabled = true;
-          range = 40;
+          range = 20;
           render_power = 8;
-          offset = "5 5";
+          offset = "2 2";
         };
       };
 
