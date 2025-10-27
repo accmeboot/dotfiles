@@ -132,15 +132,6 @@
     };
     picom = {
       enable = true;
-      vSync = false;        # Since you have VRR
-      
-      settings = {
-        # Minimal config for dwm
-        shadow = true;
-        fading = true;
-        inactive-opacity = 1.0;
-        active-opacity = 1.0;
-      };
     };
     # END of DWM xserver setup
 

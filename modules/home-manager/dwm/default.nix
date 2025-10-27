@@ -21,7 +21,7 @@
         
         # Replace color variable definitions with theme colors
         sed -i 's/static const char col_gray1\[\].*$/static const char col_gray1[]       = "#${config.theme.colors.base00}";/' config.def.h
-        sed -i 's/static const char col_gray2\[\].*$/static const char col_gray2[]       = "#${config.theme.colors.base01}";/' config.def.h
+        sed -i 's/static const char col_gray2\[\].*$/static const char col_gray2[]       = "#${config.theme.colors.base03}";/' config.def.h
         sed -i 's/static const char col_gray3\[\].*$/static const char col_gray3[]       = "#${config.theme.colors.base05}";/' config.def.h
         sed -i 's/static const char col_gray4\[\].*$/static const char col_gray4[]       = "#${config.theme.colors.base00}";/' config.def.h
         sed -i 's/static const char col_cyan\[\].*$/static const char col_cyan[]        = "#${config.theme.colors.base0D}";/' config.def.h
