@@ -34,5 +34,11 @@
         terminal = 11;
       };
     };
+
+   cursor = {
+     package = pkgs.capitaine-cursors;
+     name = "capitaine-cursors";
+     size = 16;
+   };
   };
 }

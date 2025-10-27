@@ -288,7 +288,6 @@
 
       # Startup applications
       exec-once = [
-        "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
         "hyprctl dispatch workspace name:T"
         "waybar"
         "nm-applet"

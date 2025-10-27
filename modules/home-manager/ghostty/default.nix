@@ -11,6 +11,7 @@
     window-padding-x=${toString config.theme.spacing.m}
     window-padding-y=${toString config.theme.spacing.m}
     window-padding-balance=true
+    window-decoration=false
 
     background=${config.theme.colors.base00}
     foreground=${config.theme.colors.base05}

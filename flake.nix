@@ -60,6 +60,8 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
+                  ./modules/home-manager/dwm/default.nix
+                  ./modules/home-manager/dunst/default.nix
 
                   stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix
@@ -103,6 +105,9 @@
                   ./modules/home-manager/starship/default.nix
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
+                  ./modules/home-manager/dunst/default.nix
+                  ./modules/home-manager/dwm/default.nix
+                  ./modules/home-manager/dunst/default.nix
 
                   stylix.homeModules.stylix
                   ./modules/home-manager/stylix/default.nix

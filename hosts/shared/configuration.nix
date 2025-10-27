@@ -112,6 +112,38 @@
   # SERVICES                                                                   #
   #----------------------------------------------------------------------------#
   services = {
+    # DWM xserver setup
+    xserver = {
+      enable = true;
+      displayManager.sessionPackages = [
+        (pkgs.runCommand "dwm-custom-session" {
+          passthru.providedSessions = [ "dwm-custom" ];
+        } ''
+          mkdir -p $out/share/xsessions
+          cat > $out/share/xsessions/dwm-custom.desktop << EOF
+          [Desktop Entry]
+          Name=DWM (Custom)
+          Comment=Dynamic Window Manager with custom config
+          Exec=~/.xinitrc
+          Type=Application
+          EOF
+        '')
+      ];
+    };
+    picom = {
+      enable = true;
+      vSync = false;        # Since you have VRR
+      
+      settings = {
+        # Minimal config for dwm
+        shadow = true;
+        fading = true;
+        inactive-opacity = 1.0;
+        active-opacity = 1.0;
+      };
+    };
+    # END of DWM xserver setup
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -121,15 +153,8 @@
     gnome.gnome-keyring.enable = true;
     blueman.enable = true;
     envfs.enable = true;
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
-          user = "accme";
-        };
-      default_session = initial_session;
-      };
+    displayManager = {
+      ly.enable = true;
     };
     xserver.xkb = {
       layout = "us";
@@ -176,9 +201,6 @@
   };
 
   environment.sessionVariables = {
-    XCURSOR_PATH = [
-      "${pkgs.capitaine-cursors}/share/icons"
-    ];
     NIXOS_OZONE_WL = "1";
 
     LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";

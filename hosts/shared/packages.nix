@@ -82,6 +82,13 @@
     brave
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
+
+    # dwm dependacy
+    dmenu # app launcher for dwm
+    feh
+    scrot
+    xclip
+    wireplumber
   ];
 
   #----------------------------------------------------------------------------#

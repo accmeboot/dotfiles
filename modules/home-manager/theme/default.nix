@@ -33,6 +33,14 @@
             type = lib.types.int;
             default = 24;
           };
+          xxs = lib.mkOption {
+            type = lib.types.int;
+            default = 32;
+          };
+          xxm = lib.mkOption {
+            type = lib.types.int;
+            default = 40;
+          };
         };
       };
       default = {};
