@@ -60,7 +60,7 @@
       set-option -g renumber-windows on
 
       set -g status-position top
-      set -g window-status-separator " | "
+      set -g window-status-separator "  "
       set -g status-left-length 50
 
       set -Fg "status-format[0]" "#{status-format[0]}"
@@ -75,7 +75,7 @@
       set -g status-left " "
 
       set -g window-status-format "#[fg=#${config.theme.colors.base05},bg=terminal]#I:#W"
-      set -g window-status-current-format "#[fg=#${config.theme.colors.base0D},bg=terminal]#I:#W*"
+      set -g window-status-current-format "#[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base0D}] #I:#W "
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${config.theme.colors.base05},bg=terminal] #{session_path}   #S "
