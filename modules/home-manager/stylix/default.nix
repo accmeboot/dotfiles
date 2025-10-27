@@ -4,7 +4,7 @@
     enable = true;
     polarity = "dark";
 
-    image = "${../../../assets/wallpapers/cyberpunk_2.jpg}";
+    image = "${../../../assets/wallpapers/cyberpunk_catppuccin.jpg}";
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 

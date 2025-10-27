@@ -6,11 +6,6 @@
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
           type = "none";
-          source = ../../../assets/wallpapers/nixos-colors.png;
-          width = 24;
-          padding = {
-            top = 1;
-          };
       };
       display.separator = " ";
       modules = [
