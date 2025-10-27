@@ -127,12 +127,12 @@
 
 
       #workspaces button:hover {
-        background-color: #${config.theme.colors.base01};
+        background-color: transparent;
         box-shadow: 0px -2px 0px #${config.theme.colors.base04} inset;
       }
 
       #workspaces button.active {
-        background-color: #${config.theme.colors.base02};
+        background-color: transparent;
         box-shadow: 0px -2px 0px #${config.theme.colors.base0D} inset;
       }
 

@@ -4,9 +4,9 @@
     enable = true;
     polarity = "dark";
 
-    image = "${../../../assets/wallpapers/cyberpunk_1.jpg}";
+    image = "${../../../assets/wallpapers/cyberpunk_2.jpg}";
 
-    base16Scheme = import ../theme/base16-colors.nix;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     targets = {
       starship.enable = false;
