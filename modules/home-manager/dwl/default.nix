@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     (dwl.overrideAttrs (oldAttrs: rec {
-      # Use your local submodule source
       src = ./src;
       
       # Remove any existing patches since we're using custom source
