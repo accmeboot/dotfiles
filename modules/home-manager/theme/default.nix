@@ -3,7 +3,7 @@
   options.theme = {
     borderRadius = lib.mkOption {
       type = lib.types.int;
-      default = 8;
+      default = 4;
     };
     borderWidth = lib.mkOption {
       type = lib.types.int;
