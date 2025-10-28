@@ -18,10 +18,17 @@
         spacing = config.theme.spacing.s;
 
         "hyprland/workspaces" = {
-          format = "{name}";
+          format = "{icon}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+          format-icons = {
+            active = "󰮯";
+            default = "";
+          };
+          persistent-workspaces = {
+           "*" = 5;
+          };
         };
 
         "custom/stats" = {
@@ -45,7 +52,7 @@
         };
 
         "custom/launcher" = {
-          format = "󰝘 ";
+          format = "";
           on-click = "ghostty --class=com.accme.fzflauncher --command=${../../../scripts/launcher/menu.sh}";
           tooltip-format = "System menu";
         };
@@ -128,12 +135,11 @@
 
       #workspaces button:hover {
         background-color: transparent;
-        box-shadow: 0px -2px 0px #${config.theme.colors.base04} inset;
       }
 
       #workspaces button.active {
         background-color: transparent;
-        box-shadow: 0px -2px 0px #${config.theme.colors.base0D} inset;
+        color: #${config.theme.colors.base0D};
       }
 
       #workspaces button.urgent {
@@ -165,6 +171,11 @@
 
       #battery.critical {
         color: #${config.theme.colors.base08};
+      }
+
+      #custom-launcher {
+        font-size: 20px;
+        color: #${config.theme.colors.base0B};
       }
     '';
   };

@@ -71,8 +71,6 @@
 
         blur = {
           enabled = false;
-          size = 8;
-          passes = 3;
         };
 
         shadow = {
@@ -84,21 +82,7 @@
       };
 
       animations = {
-        enabled = true;
-        bezier = [
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "winIn, 0.1, 1.1, 0.1, 1.1"
-          "winOut, 0.3, -0.3, 0, 1"
-          "liner, 1, 1, 1, 1"
-        ];
-        animation = [
-          "windows, 1, 4, wind, slide"
-          "windowsIn, 1, 4, winIn, slide"
-          "windowsOut, 1, 3, winOut, slide"
-          "windowsMove, 1, 3, wind, slide"
-          "fade, 1, 8, default"
-          "workspaces, 1, 3, wind"
-        ];
+        enabled = false;
       };
 
       # Group configuration
@@ -135,26 +119,27 @@
         "stayfocused, class:^(com.accme.fzflauncher)$"
 
         "float, class:^(com.accme.float)$" 
-
         "size 800 600, class:^(com.accme.float)$"
-      ];
-
-      layerrule = [
-        "ignorealpha 0.0, notifications"
-        "ignorealpha 0.4, waybar"
-        "blur, waybar"
-        "blur, notifications"
       ];
 
       # Key bindings
       bind = [
         # Basic bindings
-        "$mod, F10, exec, $terminal"
-        "$mod, Q, killactive"
-        "ALT, SPACE, exec, $menu"
-        "$mod CTRL, M, exec, $terminal --class=com.accme.float --command='wiremix -v output'"
-        "$mod, F11, exec, hyprctl reload"
-        "$mod, TAB, workspace, previous"
+        "$mod, Q,   exec, $terminal"
+        "$mod, C,   killactive"
+        "$mod, R,   exec, $menu"
+        "$mod, W,   exec, $terminal --class=com.accme.float --command='wiremix -v output'"
+        "$mod, F,   togglefloating"
+        "$mod, P,   pseudo"
+        "$mod, J,   togglesplit"
+        "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
+
+        "$mod, j,   changegroupactive, b"
+        "$mod, k,   changegroupactive, f"
+
+        "$mod, E,   fullscreen"
+        "$mod, TAB, focusurgentorlast"
+
         
         # Movement
         "$mod, $left, movefocus, l"
@@ -177,27 +162,6 @@
         "$mod, 7, workspace, 7"
         "$mod, 8, workspace, 8"
         "$mod, 9, workspace, 9"
-        "$mod, A, workspace, name:A"
-        "$mod, B, workspace, name:B"
-        "$mod, C, workspace, name:C"
-        "$mod, D, workspace, name:D"
-        "$mod, E, workspace, name:E"
-        "$mod, F, workspace, name:F"
-        "$mod, G, workspace, name:G"
-        "$mod, I, workspace, name:I"
-        "$mod, M, workspace, name:M"
-        "$mod, N, workspace, name:N"
-        "$mod, O, workspace, name:O"
-        "$mod, P, workspace, name:P"
-        "$mod, R, workspace, name:R"
-        "$mod, S, workspace, name:S"
-        "$mod, T, workspace, name:T"
-        "$mod, U, workspace, name:U"
-        "$mod, V, workspace, name:V"
-        "$mod, W, workspace, name:W"
-        "$mod, X, workspace, name:X"
-        "$mod, Y, workspace, name:Y"
-        "$mod, Z, workspace, name:Z"
 
         # Move container to workspace
         "$mod SHIFT, 1, movetoworkspace, 1"
@@ -209,47 +173,14 @@
         "$mod SHIFT, 7, movetoworkspace, 7"
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
-        "$mod SHIFT, A, movetoworkspace, name:A"
-        "$mod SHIFT, B, movetoworkspace, name:B"
-        "$mod SHIFT, C, movetoworkspace, name:C"
-        "$mod SHIFT, D, movetoworkspace, name:D"
-        "$mod SHIFT, E, movetoworkspace, name:E"
-        "$mod SHIFT, F, movetoworkspace, name:F"
-        "$mod SHIFT, G, movetoworkspace, name:G"
-        "$mod SHIFT, I, movetoworkspace, name:I"
-        "$mod SHIFT, M, movetoworkspace, name:M"
-        "$mod SHIFT, N, movetoworkspace, name:N"
-        "$mod SHIFT, O, movetoworkspace, name:O"
-        "$mod SHIFT, P, movetoworkspace, name:P"
-        "$mod SHIFT, R, movetoworkspace, name:R"
-        "$mod SHIFT, S, movetoworkspace, name:S"
-        "$mod SHIFT, T, movetoworkspace, name:T"
-        "$mod SHIFT, U, movetoworkspace, name:U"
-        "$mod SHIFT, V, movetoworkspace, name:V"
-        "$mod SHIFT, W, movetoworkspace, name:W"
-        "$mod SHIFT, X, movetoworkspace, name:X"
-        "$mod SHIFT, Y, movetoworkspace, name:Y"
-        "$mod SHIFT, Z, movetoworkspace, name:Z"
 
-        # Layout bindings
-        "$mod, SLASH, layoutmsg, togglesplit"
-        "$mod, COMMA, exec, bash ${../../../scripts/hypr-group.sh}"
-        "$mod, j, changegroupactive, b"
-        "$mod, k, changegroupactive, f"
-        "$mod CTRL, F, fullscreen"
-        "$mod, APOSTROPHE, exec, hyprctl --batch \"dispatch togglefloating; dispatch resizeactive exact 1000 800; dispatch centerwindow 1\""
-        "$mod, SPACE, focusurgentorlast"
-
-        # Scratchpad (special workspace)
+        # Special workspace)
         "$mod, BRACKETRIGHT, movetoworkspace, special"
         "$mod, BRACKETLEFT, togglespecialworkspace"
-        "$mod, BACKSLASH, togglefloating"
 
         # Resizing
         "$mod, MINUS, resizeactive, -50 0"
         "$mod, EQUAL, resizeactive, 50 0"
-        "$mod SHIFT, MINUS, resizeactive, 0 -50"
-        "$mod SHIFT, EQUAL, resizeactive, 0 50"
 
         # Monitor movement
         "$mod SHIFT, RIGHT, movewindow, mon:+1"
