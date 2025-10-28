@@ -61,6 +61,7 @@
                   ./modules/home-manager/zsh/default.nix
                   ./modules/home-manager/fastfetch/default.nix
                   ./modules/home-manager/dwm/default.nix
+                  ./modules/home-manager/dwl/default.nix
                   ./modules/home-manager/dunst/default.nix
 
                   stylix.homeModules.stylix
