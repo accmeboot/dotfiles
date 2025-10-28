@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   stylix = {
     enable = true;
@@ -16,21 +16,21 @@
 
     fonts = {
       serif = {
-        package = pkgs.inter;
-        name = "Inter";
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SFProDisplay Nerd Font";
       };
       sansSerif = {
-        package = pkgs.inter;
-        name = "Inter";
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SFProDisplay Nerd Font";
       };
       monospace = {
-        package = pkgs.inter;
-        name = "Inter";
+        package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+        name = "SFProDisplay Nerd Font";
       };
       sizes = {
-        applications = 9;
-        desktop = 9;
-        popups = 9;
+        applications = 10;
+        desktop = 10;
+        popups = 10;
         terminal = 11;
       };
     };

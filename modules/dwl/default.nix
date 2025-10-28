@@ -61,7 +61,6 @@ let
       ./src/patches/bar-0.7.patch
       ./src/patches/bar-systray-0.7.patch
       ./src/patches/autostart-0.7.patch
-      ./src/patches/gaps.patch
       ./src/patches/alwayscenter.patch
     ];
 
@@ -85,8 +84,8 @@ let
     exec bash -c '
       (while true; do 
         stats=$($HOME/dotfiles/scripts/stats/get-stats.sh || echo "Stats Error")
-        datetime=$(date +"%a %d %H:%M")
-        echo " $stats  $datetime"
+        datetime=$(date +"%H:%M")
+        echo " $stats $datetime"
         sleep 1
       done) | exec ${customDwl}/bin/dwl "$@"
     '

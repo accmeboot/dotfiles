@@ -19,13 +19,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    apple-fonts = { 
+      url= "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar }:{
+  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar, apple-fonts }:{
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -42,6 +47,7 @@
               useGlobalPkgs = false;
               useUserPackages = true;
               backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
               users.accme = {
                 imports = [
                   ./hosts/7950x3d-xtx/home.nix

@@ -87,6 +87,7 @@
     wmenu
     wlr-randr
     wbg
+    tray-tui # tui to interact with apps in systray
   ];
 
   #----------------------------------------------------------------------------#
