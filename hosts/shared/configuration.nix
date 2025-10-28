@@ -112,29 +112,6 @@
   # SERVICES                                                                   #
   #----------------------------------------------------------------------------#
   services = {
-    # DWM xserver setup
-    xserver = {
-      enable = true;
-      displayManager.sessionPackages = [
-        (pkgs.runCommand "dwm-custom-session" {
-          passthru.providedSessions = [ "dwm-custom" ];
-        } ''
-          mkdir -p $out/share/xsessions
-          cat > $out/share/xsessions/dwm-custom.desktop << EOF
-          [Desktop Entry]
-          Name=DWM (Custom)
-          Comment=Dynamic Window Manager with custom config
-          Exec=~/.xinitrc
-          Type=Application
-          EOF
-        '')
-      ];
-    };
-    picom = {
-      enable = true;
-    };
-    # END of DWM xserver setup
-
     pipewire = {
       enable = true;
       alsa.enable = true;
