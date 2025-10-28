@@ -85,12 +85,14 @@
           home-manager.nixosModules.home-manager
 
           ./hosts/rog16/default.nix
+          ./modules/dwl/default.nix
 
           {
             home-manager = {
               useGlobalPkgs = false;
               useUserPackages = true;
               backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
               users.accme = {
                 imports = [
                   ./hosts/rog16/home.nix
