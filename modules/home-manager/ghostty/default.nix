@@ -3,7 +3,6 @@
 {
   home.file.".config/ghostty/config".text = ''
     font-family=""
-    font-size=11
     background-opacity=${toString config.theme.opacity}
     cursor-style=block
     shell-integration-features=no-cursor
@@ -11,7 +10,6 @@
     window-padding-x=${toString config.theme.spacing.m}
     window-padding-y=${toString config.theme.spacing.m}
     window-padding-balance=true
-    window-decoration=false
 
     background=${config.theme.colors.base00}
     foreground=${config.theme.colors.base05}

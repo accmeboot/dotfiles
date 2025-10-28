@@ -114,7 +114,7 @@
         "float, class:^(nemo)$"
 
         "float, class:^(com.accme.fzflauncher)$" 
-        "size 350 350, class:^(com.accme.fzflauncher)$"
+        "size 350 380, class:^(com.accme.fzflauncher)$"
         "pin, class:^(com.accme.fzflauncher)$"
         "stayfocused, class:^(com.accme.fzflauncher)$"
 
