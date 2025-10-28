@@ -128,10 +128,9 @@
 
       #workspaces button {
         all: unset;
-        padding: 0px ${toString config.theme.spacing.s}px;
+        padding: ${toString config.theme.spacing.xs}px;
         background-color: transparent;
       }
-
 
       #workspaces button:hover {
         background-color: transparent;
