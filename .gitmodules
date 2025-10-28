@@ -1,0 +1,3 @@
+[submodule "modules/home-manager/dwl/src"]
+	path = modules/home-manager/dwl/src
+	url = https://codeberg.org/dwl/dwl.git
