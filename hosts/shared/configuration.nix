@@ -121,8 +121,15 @@
     gnome.gnome-keyring.enable = true;
     blueman.enable = true;
     envfs.enable = true;
-    displayManager = {
-      ly.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+          user = "accme";
+        };
+      default_session = initial_session;
+      };
     };
     xserver.xkb = {
       layout = "us";

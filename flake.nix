@@ -40,7 +40,6 @@
           home-manager.nixosModules.home-manager
 
           ./hosts/7950x3d-xtx/default.nix
-          ./modules/dwl/default.nix
 
           {
             home-manager = {
@@ -85,7 +84,6 @@
           home-manager.nixosModules.home-manager
 
           ./hosts/rog16/default.nix
-          ./modules/dwl/default.nix
 
           {
             home-manager = {

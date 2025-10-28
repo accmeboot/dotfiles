@@ -11,6 +11,7 @@
     gnumake      # build automation tool
     git          # version control system
     nil          # nix language server
+    brave
     
     # Programming Languages
     python3      # python programming language
@@ -79,15 +80,8 @@
 
     # Network Tools
     networkmanagerapplet # network manager GUI
-    brave
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
-
-    # dwl dependency
-    wmenu
-    wlr-randr
-    wbg
-    tray-tui # tui to interact with apps in systray
   ];
 
   #----------------------------------------------------------------------------#

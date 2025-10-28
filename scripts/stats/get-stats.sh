@@ -16,6 +16,6 @@ volume=$("$SCRIPT_DIR/volume.sh" 2>&1)
 [ -z "$disk_usage" ] && disk_usage="N/A"
 [ -z "$volume" ] && volume="N/A"
 
-stats=" ${cpu_temp}°C 󰾲 ${gpu_temp}°C  ${ram_usage}% 󰉉 ${disk_usage}%"
+stats="CPU: ${cpu_temp}°C  GPU: ${gpu_temp}°C  RAM: ${ram_usage}%  DISK: ${disk_usage}%"
 
 echo "$stats"
