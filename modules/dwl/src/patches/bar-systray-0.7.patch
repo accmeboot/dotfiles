@@ -1,0 +1,3023 @@
+From cf228147250f4616d150fbe5276088c5f9969bba Mon Sep 17 00:00:00 2001
+From: vetu104 <vetu104@proton.me>
+Date: Sat, 29 Mar 2025 19:22:37 +0200
+Subject: [PATCH] Add a system tray next to sewn's bar
+
+---
+ Makefile          |  23 +-
+ config.def.h      |   5 +
+ dbus.c            | 242 +++++++++++++++
+ dbus.h            |  10 +
+ dwl.c             | 107 ++++++-
+ systray/helpers.c |  43 +++
+ systray/helpers.h |  12 +
+ systray/icon.c    | 149 +++++++++
+ systray/icon.h    |  26 ++
+ systray/item.c    | 403 ++++++++++++++++++++++++
+ systray/item.h    |  46 +++
+ systray/menu.c    | 757 ++++++++++++++++++++++++++++++++++++++++++++++
+ systray/menu.h    |  11 +
+ systray/tray.c    | 237 +++++++++++++++
+ systray/tray.h    |  37 +++
+ systray/watcher.c | 551 +++++++++++++++++++++++++++++++++
+ systray/watcher.h |  35 +++
+ 17 files changed, 2681 insertions(+), 13 deletions(-)
+ create mode 100644 dbus.c
+ create mode 100644 dbus.h
+ create mode 100644 systray/helpers.c
+ create mode 100644 systray/helpers.h
+ create mode 100644 systray/icon.c
+ create mode 100644 systray/icon.h
+ create mode 100644 systray/item.c
+ create mode 100644 systray/item.h
+ create mode 100644 systray/menu.c
+ create mode 100644 systray/menu.h
+ create mode 100644 systray/tray.c
+ create mode 100644 systray/tray.h
+ create mode 100644 systray/watcher.c
+ create mode 100644 systray/watcher.h
+
+diff --git a/Makefile b/Makefile
+index 9bc67db..9d50189 100644
+--- a/Makefile
++++ b/Makefile
+@@ -12,17 +12,28 @@ DWLDEVCFLAGS = -g -pedantic -Wall -Wextra -Wdeclaration-after-statement \
+ 	-Wfloat-conversion
+ 
+ # CFLAGS / LDFLAGS
+-PKGS      = wlroots-0.18 wayland-server xkbcommon libinput pixman-1 fcft $(XLIBS)
++PKGS      = wlroots-0.18 wayland-server xkbcommon libinput pixman-1 fcft $(XLIBS) dbus-1
+ DWLCFLAGS = `$(PKG_CONFIG) --cflags $(PKGS)` $(DWLCPPFLAGS) $(DWLDEVCFLAGS) $(CFLAGS)
+ LDLIBS    = `$(PKG_CONFIG) --libs $(PKGS)` -lm $(LIBS)
+ 
++TRAYOBJS = systray/watcher.o systray/tray.o systray/item.o systray/icon.o systray/menu.o systray/helpers.o
++TRAYDEPS = systray/watcher.h systray/tray.h systray/item.h systray/icon.h systray/menu.h systray/helpers.h
++
+ all: dwl
+-dwl: dwl.o util.o
+-	$(CC) dwl.o util.o $(DWLCFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+-dwl.o: dwl.c client.h config.h config.mk cursor-shape-v1-protocol.h \
++dwl: dwl.o util.o dbus.o $(TRAYOBJS) $(TRAYDEPS)
++	$(CC) dwl.o util.o dbus.o $(TRAYOBJS) $(DWLCFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
++dwl.o: dwl.c client.h dbus.h config.h config.mk cursor-shape-v1-protocol.h \
+ 	pointer-constraints-unstable-v1-protocol.h wlr-layer-shell-unstable-v1-protocol.h \
+-	wlr-output-power-management-unstable-v1-protocol.h xdg-shell-protocol.h
++	wlr-output-power-management-unstable-v1-protocol.h xdg-shell-protocol.h \
++	$(TRAYDEPS)
+ util.o: util.c util.h
++dbus.o: dbus.c dbus.h
++systray/watcher.o: systray/watcher.c $(TRAYDEPS)
++systray/tray.o: systray/tray.c $(TRAYDEPS)
++systray/item.o: systray/item.c $(TRAYDEPS)
++systray/icon.o: systray/icon.c $(TRAYDEPS)
++systray/menu.o: systray/menu.c $(TRAYDEPS)
++systray/helpers.o: systray/helpers.c $(TRAYDEPS)
+ 
+ # wayland-scanner is a tool which generates C headers and rigging for Wayland
+ # protocols, which are specified in XML. wlroots requires you to rig these up
+@@ -49,7 +60,7 @@ xdg-shell-protocol.h:
+ config.h:
+ 	cp config.def.h $@
+ clean:
+-	rm -f dwl *.o *-protocol.h
++	rm -f dwl *.o *-protocol.h systray/*.o
+ 
+ dist: clean
+ 	mkdir -p dwl-$(VERSION)
+diff --git a/config.def.h b/config.def.h
+index 5d1dc2b..451643e 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -7,6 +7,8 @@
+ static const int sloppyfocus               = 1;  /* focus follows mouse */
+ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
+ static const unsigned int borderpx         = 1;  /* border pixel of windows */
++static const unsigned int systrayspacing   = 2; /* systray spacing */
++static const int showsystray               = 1; /* 0 means no systray */
+ static const int showbar                   = 1; /* 0 means no bar */
+ static const int topbar                    = 1; /* 0 means bottom bar */
+ static const char *fonts[]                 = {"monospace:size=10"};
+@@ -127,6 +129,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
+ /* commands */
+ static const char *termcmd[] = { "foot", NULL };
+ static const char *menucmd[] = { "wmenu-run", NULL };
++static const char *dmenucmd[] = { "wmenu", NULL };
+ 
+ static const Key keys[] = {
+ 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+@@ -188,4 +191,6 @@ static const Button buttons[] = {
+ 	{ ClkTagBar,   0,      BTN_RIGHT,  toggleview,     {0} },
+ 	{ ClkTagBar,   MODKEY, BTN_LEFT,   tag,            {0} },
+ 	{ ClkTagBar,   MODKEY, BTN_RIGHT,  toggletag,      {0} },
++	{ ClkTray,     0,      BTN_LEFT,   trayactivate,   {0} },
++	{ ClkTray,     0,      BTN_RIGHT,  traymenu,       {0} },
+ };
+diff --git a/dbus.c b/dbus.c
+new file mode 100644
+index 0000000..125312c
+--- /dev/null
++++ b/dbus.c
+@@ -0,0 +1,242 @@
++#include "dbus.h"
++
++#include "util.h"
++
++#include <dbus/dbus.h>
++#include <stdlib.h>
++#include <wayland-server-core.h>
++
++#include <fcntl.h>
++#include <stddef.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <unistd.h>
++
++static void
++close_pipe(void *data)
++{
++	int *pipefd = data;
++
++	close(pipefd[0]);
++	close(pipefd[1]);
++	free(pipefd);
++}
++
++static int
++dwl_dbus_dispatch(int fd, unsigned int mask, void *data)
++{
++	DBusConnection *conn = data;
++
++	int pending;
++	DBusDispatchStatus oldstatus, newstatus;
++
++	oldstatus = dbus_connection_get_dispatch_status(conn);
++	newstatus = dbus_connection_dispatch(conn);
++
++	/* Don't clear pending flag if status didn't change */
++	if (oldstatus == newstatus)
++		return 0;
++
++	if (read(fd, &pending, sizeof(int)) < 0) {
++		perror("read");
++		die("Error in dbus dispatch");
++	}
++
++	return 0;
++}
++
++static int
++dwl_dbus_watch_handle(int fd, uint32_t mask, void *data)
++{
++	DBusWatch *watch = data;
++
++	uint32_t flags = 0;
++
++	if (!dbus_watch_get_enabled(watch))
++		return 0;
++
++	if (mask & WL_EVENT_READABLE)
++		flags |= DBUS_WATCH_READABLE;
++	if (mask & WL_EVENT_WRITABLE)
++		flags |= DBUS_WATCH_WRITABLE;
++	if (mask & WL_EVENT_HANGUP)
++		flags |= DBUS_WATCH_HANGUP;
++	if (mask & WL_EVENT_ERROR)
++		flags |= DBUS_WATCH_ERROR;
++
++	dbus_watch_handle(watch, flags);
++
++	return 0;
++}
++
++static dbus_bool_t
++dwl_dbus_add_watch(DBusWatch *watch, void *data)
++{
++	struct wl_event_loop *loop = data;
++
++	int fd;
++	struct wl_event_source *watch_source;
++	uint32_t mask = 0, flags;
++
++	if (!dbus_watch_get_enabled(watch))
++		return TRUE;
++
++	flags = dbus_watch_get_flags(watch);
++	if (flags & DBUS_WATCH_READABLE)
++		mask |= WL_EVENT_READABLE;
++	if (flags & DBUS_WATCH_WRITABLE)
++		mask |= WL_EVENT_WRITABLE;
++
++	fd = dbus_watch_get_unix_fd(watch);
++	watch_source = wl_event_loop_add_fd(loop, fd, mask,
++	                                    dwl_dbus_watch_handle, watch);
++
++	dbus_watch_set_data(watch, watch_source, NULL);
++
++	return TRUE;
++}
++
++static void
++dwl_dbus_remove_watch(DBusWatch *watch, void *data)
++{
++	struct wl_event_source *watch_source = dbus_watch_get_data(watch);
++
++	if (watch_source)
++		wl_event_source_remove(watch_source);
++}
++
++static int
++dwl_dbus_timeout_handle(void *data)
++{
++	DBusTimeout *timeout = data;
++
++	if (dbus_timeout_get_enabled(timeout))
++		dbus_timeout_handle(timeout);
++
++	return 0;
++}
++
++static dbus_bool_t
++dwl_dbus_add_timeout(DBusTimeout *timeout, void *data)
++{
++	struct wl_event_loop *loop = data;
++
++	int r, interval;
++	struct wl_event_source *timeout_source;
++
++	if (!dbus_timeout_get_enabled(timeout))
++		return TRUE;
++
++	interval = dbus_timeout_get_interval(timeout);
++
++	timeout_source =
++		wl_event_loop_add_timer(loop, dwl_dbus_timeout_handle, timeout);
++
++	r = wl_event_source_timer_update(timeout_source, interval);
++	if (r < 0) {
++		wl_event_source_remove(timeout_source);
++		return FALSE;
++	}
++
++	dbus_timeout_set_data(timeout, timeout_source, NULL);
++
++	return TRUE;
++}
++
++static void
++dwl_dbus_remove_timeout(DBusTimeout *timeout, void *data)
++{
++	struct wl_event_source *timeout_source;
++
++	timeout_source = dbus_timeout_get_data(timeout);
++
++	if (timeout_source) {
++		wl_event_source_timer_update(timeout_source, 0);
++		wl_event_source_remove(timeout_source);
++	}
++}
++
++static void
++dwl_dbus_dispatch_status(DBusConnection *conn, DBusDispatchStatus status,
++                         void *data)
++{
++	int *pipefd = data;
++
++	if (status != DBUS_DISPATCH_COMPLETE) {
++		int pending = 1;
++		if (write(pipefd[1], &pending, sizeof(int)) < 0) {
++			perror("write");
++			die("Error in dispatch status");
++		}
++	}
++}
++
++struct wl_event_source *
++startbus(DBusConnection *conn, struct wl_event_loop *loop)
++{
++	int *pipefd;
++	int pending = 1, flags;
++	struct wl_event_source *bus_source = NULL;
++
++	pipefd = ecalloc(2, sizeof(int));
++
++	/*
++	 * Libdbus forbids calling dbus_connection_dipatch from the
++	 * DBusDispatchStatusFunction directly. Notify the event loop of
++	 * updates via a self-pipe.
++	 */
++	if (pipe(pipefd) < 0)
++		goto fail;
++	if (((flags = fcntl(pipefd[0], F_GETFD)) < 0) ||
++	    fcntl(pipefd[0], F_SETFD, flags | FD_CLOEXEC) < 0 ||
++	    ((flags = fcntl(pipefd[1], F_GETFD)) < 0) ||
++	    fcntl(pipefd[1], F_SETFD, flags | FD_CLOEXEC) < 0) {
++		goto fail;
++	}
++
++	dbus_connection_set_exit_on_disconnect(conn, FALSE);
++
++	bus_source = wl_event_loop_add_fd(loop, pipefd[0], WL_EVENT_READABLE,
++	                                  dwl_dbus_dispatch, conn);
++	if (!bus_source)
++		goto fail;
++
++	dbus_connection_set_dispatch_status_function(conn,
++	                                             dwl_dbus_dispatch_status,
++	                                             pipefd, close_pipe);
++	if (!dbus_connection_set_watch_functions(conn, dwl_dbus_add_watch,
++	                                         dwl_dbus_remove_watch, NULL,
++	                                         loop, NULL)) {
++		goto fail;
++	}
++	if (!dbus_connection_set_timeout_functions(conn, dwl_dbus_add_timeout,
++	                                           dwl_dbus_remove_timeout,
++	                                           NULL, loop, NULL)) {
++		goto fail;
++	}
++	if (dbus_connection_get_dispatch_status(conn) != DBUS_DISPATCH_COMPLETE)
++		if (write(pipefd[1], &pending, sizeof(int)) < 0)
++			goto fail;
++
++	return bus_source;
++
++fail:
++	if (bus_source)
++		wl_event_source_remove(bus_source);
++	dbus_connection_set_timeout_functions(conn, NULL, NULL, NULL, NULL,
++	                                      NULL);
++	dbus_connection_set_watch_functions(conn, NULL, NULL, NULL, NULL, NULL);
++	dbus_connection_set_dispatch_status_function(conn, NULL, NULL, NULL);
++
++	return NULL;
++}
++
++void
++stopbus(DBusConnection *conn, struct wl_event_source *bus_source)
++{
++	wl_event_source_remove(bus_source);
++	dbus_connection_set_watch_functions(conn, NULL, NULL, NULL, NULL, NULL);
++	dbus_connection_set_timeout_functions(conn, NULL, NULL, NULL, NULL,
++	                                      NULL);
++	dbus_connection_set_dispatch_status_function(conn, NULL, NULL, NULL);
++}
+diff --git a/dbus.h b/dbus.h
+new file mode 100644
+index 0000000..b374b98
+--- /dev/null
++++ b/dbus.h
+@@ -0,0 +1,10 @@
++#ifndef DWLDBUS_H
++#define DWLDBUS_H
++
++#include <dbus/dbus.h>
++#include <wayland-server-core.h>
++
++struct wl_event_source* startbus (DBusConnection *conn, struct wl_event_loop *loop);
++void stopbus (DBusConnection *conn, struct wl_event_source *bus_source);
++
++#endif /* DWLDBUS_H */
+diff --git a/dwl.c b/dwl.c
+index ece537a..7753ef6 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -1,6 +1,7 @@
+ /*
+  * See LICENSE file for copyright and license details.
+  */
++#include <dbus/dbus.h>
+ #include <getopt.h>
+ #include <libinput.h>
+ #include <linux/input-event-codes.h>
+@@ -71,6 +72,9 @@
+ 
+ #include "util.h"
+ #include "drwl.h"
++#include "dbus.h"
++#include "systray/tray.h"
++#include "systray/watcher.h"
+ 
+ /* macros */
+ #define MAX(A, B)               ((A) > (B) ? (A) : (B))
+@@ -89,7 +93,7 @@ enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
+ enum { CurNormal, CurPressed, CurMove, CurResize }; /* cursor */
+ enum { XDGShell, LayerShell, X11 }; /* client types */
+ enum { LyrBg, LyrBottom, LyrTile, LyrFloat, LyrTop, LyrFS, LyrOverlay, LyrBlock, NUM_LAYERS }; /* scene layers */
+-enum { ClkTagBar, ClkLtSymbol, ClkStatus, ClkTitle, ClkClient, ClkRoot }; /* clicks */
++enum { ClkTagBar, ClkLtSymbol, ClkStatus, ClkTitle, ClkClient, ClkRoot, ClkTray }; /* clicks */
+ #ifdef XWAYLAND
+ enum { NetWMWindowTypeDialog, NetWMWindowTypeSplash, NetWMWindowTypeToolbar,
+ 	NetWMWindowTypeUtility, NetLast }; /* EWMH atoms */
+@@ -218,6 +222,7 @@ struct Monitor {
+ 		int real_width, real_height; /* non-scaled */
+ 		float scale;
+ 	} b; /* bar area */
++	Tray *tray;
+ 	struct wlr_box w; /* window area, layout-relative */
+ 	struct wl_list layers[4]; /* LayerSurface.link */
+ 	const Layout *lt[2];
+@@ -376,6 +381,9 @@ static void togglefloating(const Arg *arg);
+ static void togglefullscreen(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
++static void trayactivate(const Arg *arg);
++static void traymenu(const Arg *arg);
++static void traynotify(void *data);
+ static void unlocksession(struct wl_listener *listener, void *data);
+ static void unmaplayersurfacenotify(struct wl_listener *listener, void *data);
+ static void unmapnotify(struct wl_listener *listener, void *data);
+@@ -451,6 +459,10 @@ static Monitor *selmon;
+ static char stext[256];
+ static struct wl_event_source *status_event_source;
+ 
++static DBusConnection *bus_conn;
++static struct wl_event_source *bus_source;
++static Watcher watcher = {.running = 0};
++
+ static const struct wlr_buffer_impl buffer_impl = {
+     .destroy = bufdestroy,
+     .begin_data_ptr_access = bufdatabegin,
+@@ -721,8 +733,8 @@ bufrelease(struct wl_listener *listener, void *data)
+ void
+ buttonpress(struct wl_listener *listener, void *data)
+ {
+-	unsigned int i = 0, x = 0;
+-	double cx;
++	unsigned int i = 0, x = 0, ti = 0;
++	double cx, tx = 0;
+ 	unsigned int click;
+ 	struct wlr_pointer_button_event *event = data;
+ 	struct wlr_keyboard *keyboard;
+@@ -732,6 +744,7 @@ buttonpress(struct wl_listener *listener, void *data)
+ 	Arg arg = {0};
+ 	Client *c;
+ 	const Button *b;
++	int traywidth;
+ 
+ 	wlr_idle_notifier_v1_notify_activity(idle_notifier, seat);
+ 
+@@ -751,6 +764,8 @@ buttonpress(struct wl_listener *listener, void *data)
+ 			(node = wlr_scene_node_at(&layers[LyrBottom]->node, cursor->x, cursor->y, NULL, NULL)) &&
+ 			(buffer = wlr_scene_buffer_from_node(node)) && buffer == selmon->scene_buffer) {
+ 			cx = (cursor->x - selmon->m.x) * selmon->wlr_output->scale;
++			traywidth = tray_get_width(selmon->tray);
++
+ 			do
+ 				x += TEXTW(selmon, tags[i]);
+ 			while (cx >= x && ++i < LENGTH(tags));
+@@ -759,8 +774,16 @@ buttonpress(struct wl_listener *listener, void *data)
+ 				arg.ui = 1 << i;
+ 			} else if (cx < x + TEXTW(selmon, selmon->ltsymbol))
+ 				click = ClkLtSymbol;
+-			else if (cx > selmon->b.width - (TEXTW(selmon, stext) - selmon->lrpad + 2)) {
++			else if (cx > selmon->b.width - (TEXTW(selmon, stext) - selmon->lrpad + 2) && cx < selmon->b.width - traywidth) {
+ 				click = ClkStatus;
++			} else if (cx > selmon->b.width - (TEXTW(selmon, stext) - selmon->lrpad + 2)) {
++				unsigned int tray_n_items = watcher_get_n_items(&watcher);
++				tx = selmon->b.width - traywidth;
++				do
++					tx += tray_n_items ? (int)(traywidth / tray_n_items) : 0;
++				while (cx >= tx && ++ti < tray_n_items);
++				click = ClkTray;
++				arg.ui = ti;
+ 			} else
+ 				click = ClkTitle;
+ 		}
+@@ -774,7 +797,12 @@ buttonpress(struct wl_listener *listener, void *data)
+ 		mods = keyboard ? wlr_keyboard_get_modifiers(keyboard) : 0;
+ 		for (b = buttons; b < END(buttons); b++) {
+ 			if (CLEANMASK(mods) == CLEANMASK(b->mod) && event->button == b->button && click == b->click && b->func) {
+-				b->func(click == ClkTagBar && b->arg.i == 0 ? &arg : &b->arg);
++				if (click == ClkTagBar && b->arg.i == 0)
++					b->func(&arg);
++				else if (click == ClkTray && b->arg.i == 0)
++					b->func(&arg);
++				else
++					b->func(&b->arg);
+ 				return;
+ 			}
+ 		}
+@@ -840,6 +868,14 @@ cleanup(void)
+ 
+ 	destroykeyboardgroup(&kb_group->destroy, NULL);
+ 
++	if (watcher.running)
++		watcher_stop(&watcher);
++
++	if (showbar && showsystray) {
++		stopbus(bus_conn, bus_source);
++		dbus_connection_unref(bus_conn);
++	}
++
+ 	/* If it's not destroyed manually it will cause a use-after-free of wlr_seat.
+ 	 * Destroy it until it's fixed in the wlroots side */
+ 	wlr_backend_destroy(backend);
+@@ -868,6 +904,9 @@ cleanupmon(struct wl_listener *listener, void *data)
+ 	for (i = 0; i < LENGTH(m->pool); i++)
+ 		wlr_buffer_drop(&m->pool[i]->base);
+ 
++	if (showsystray)
++		destroytray(m->tray);
++
+ 	drwl_setimage(m->drw, NULL);
+ 	drwl_destroy(m->drw);
+ 
+@@ -1506,6 +1545,7 @@ dirtomon(enum wlr_direction dir)
+ void
+ drawbar(Monitor *m)
+ {
++	int traywidth = 0;
+ 	int x, w, tw = 0;
+ 	int boxs = m->drw->font->height / 9;
+ 	int boxw = m->drw->font->height / 6 + 2;
+@@ -1518,11 +1558,13 @@ drawbar(Monitor *m)
+ 	if (!(buf = bufmon(m)))
+ 		return;
+ 
++	traywidth = tray_get_width(m->tray);
++
+ 	/* draw status first so it can be overdrawn by tags later */
+ 	if (m == selmon) { /* status is only drawn on selected monitor */
+ 		drwl_setscheme(m->drw, colors[SchemeNorm]);
+ 		tw = TEXTW(m, stext) - m->lrpad + 2; /* 2px right padding */
+-		drwl_text(m->drw, m->b.width - tw, 0, tw, m->b.height, 0, stext, 0);
++		drwl_text(m->drw, m->b.width - (tw + traywidth), 0, tw, m->b.height, 0, stext, 0);
+ 	}
+ 
+ 	wl_list_for_each(c, &clients, link) {
+@@ -1548,7 +1590,7 @@ drawbar(Monitor *m)
+ 	drwl_setscheme(m->drw, colors[SchemeNorm]);
+ 	x = drwl_text(m->drw, x, 0, w, m->b.height, m->lrpad / 2, m->ltsymbol, 0);
+ 
+-	if ((w = m->b.width - tw - x) > m->b.height) {
++	if ((w = m->b.width - (tw + x + traywidth)) > m->b.height) {
+ 		if (c) {
+ 			drwl_setscheme(m->drw, colors[m == selmon ? SchemeSel : SchemeNorm]);
+ 			drwl_text(m->drw, x, 0, w, m->b.height, m->lrpad / 2, client_get_title(c), 0);
+@@ -1560,6 +1602,15 @@ drawbar(Monitor *m)
+ 		}
+ 	}
+ 
++	if (traywidth > 0) {
++		pixman_image_composite32(PIXMAN_OP_SRC,
++		                         m->tray->image, NULL, m->drw->image,
++		                         0, 0,
++		                         0, 0,
++		                         m->b.width - traywidth, 0,
++		                         traywidth, m->b.height);
++	}
++
+ 	wlr_scene_buffer_set_dest_size(m->scene_buffer,
+ 		m->b.real_width, m->b.real_height);
+ 	wlr_scene_node_set_position(&m->scene_buffer->node, m->m.x,
+@@ -1568,6 +1619,26 @@ drawbar(Monitor *m)
+ 	wlr_buffer_unlock(&buf->base);
+ }
+ 
++void
++traynotify(void *data)
++{
++	Monitor *m = data;
++
++	drawbar(m);
++}
++
++void
++trayactivate(const Arg *arg)
++{
++	tray_leftclicked(selmon->tray, arg->ui);
++}
++
++void
++traymenu(const Arg *arg)
++{
++	tray_rightclicked(selmon->tray, arg->ui, dmenucmd);
++}
++
+ void
+ drawbars(void)
+ {
+@@ -2818,6 +2889,15 @@ setup(void)
+ 	status_event_source = wl_event_loop_add_fd(wl_display_get_event_loop(dpy),
+ 		STDIN_FILENO, WL_EVENT_READABLE, statusin, NULL);
+ 
++	bus_conn = dbus_bus_get(DBUS_BUS_SESSION, NULL);
++	if (!bus_conn)
++		die("Failed to connect to bus");
++	bus_source = startbus(bus_conn, event_loop);
++	if (!bus_source)
++		die("Failed to start listening to bus events");
++	if (showbar && showsystray)
++		watcher_start(&watcher, bus_conn, event_loop);
++
+ 	/* Make sure XWayland clients don't connect to the parent X server,
+ 	 * e.g when running in the x11 backend or the wayland backend and the
+ 	 * compositor has Xwayland support */
+@@ -3160,6 +3240,7 @@ updatebar(Monitor *m)
+ 	size_t i;
+ 	int rw, rh;
+ 	char fontattrs[12];
++	Tray *tray;
+ 
+ 	wlr_output_transformed_resolution(m->wlr_output, &rw, &rh);
+ 	m->b.width = rw;
+@@ -3185,6 +3266,18 @@ updatebar(Monitor *m)
+ 	m->lrpad = m->drw->font->height;
+ 	m->b.height = m->drw->font->height + 2;
+ 	m->b.real_height = (int)((float)m->b.height / m->wlr_output->scale);
++
++	if (showsystray) {
++		if (m->tray)
++			destroytray(m->tray);
++		tray = createtray(m,
++		                  m->b.height, systrayspacing, colors[SchemeNorm], fonts, fontattrs,
++		                  &traynotify, &watcher);
++		if (!tray)
++			die("Couldn't create tray for monitor");
++		m->tray = tray;
++		wl_list_insert(&watcher.trays, &tray->link);
++	}
+ }
+ 
+ void
+diff --git a/systray/helpers.c b/systray/helpers.c
+new file mode 100644
+index 0000000..d1af9f8
+--- /dev/null
++++ b/systray/helpers.c
+@@ -0,0 +1,43 @@
++#include "helpers.h"
++
++#include <dbus/dbus.h>
++
++#include <errno.h>
++#include <stddef.h>
++
++// IWYU pragma: no_include "dbus/dbus-protocol.h"
++// IWYU pragma: no_include "dbus/dbus-shared.h"
++
++int
++request_property(DBusConnection *conn, const char *busname, const char *busobj,
++                 const char *prop, const char *iface, PropHandler handler,
++                 void *data)
++{
++	DBusMessage *msg = NULL;
++	DBusPendingCall *pending = NULL;
++	int r;
++
++	if (!(msg = dbus_message_new_method_call(busname, busobj,
++	                                         DBUS_INTERFACE_PROPERTIES,
++	                                         "Get")) ||
++	    !dbus_message_append_args(msg, DBUS_TYPE_STRING, &iface,
++	                              DBUS_TYPE_STRING, &prop,
++	                              DBUS_TYPE_INVALID) ||
++	    !dbus_connection_send_with_reply(conn, msg, &pending, -1) ||
++	    !dbus_pending_call_set_notify(pending, handler, data, NULL)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_unref(msg);
++	return 0;
++
++fail:
++	if (pending) {
++		dbus_pending_call_cancel(pending);
++		dbus_pending_call_unref(pending);
++	}
++	if (msg)
++		dbus_message_unref(msg);
++	return r;
++}
+diff --git a/systray/helpers.h b/systray/helpers.h
+new file mode 100644
+index 0000000..2c592e0
+--- /dev/null
++++ b/systray/helpers.h
+@@ -0,0 +1,12 @@
++#ifndef HELPERS_H
++#define HELPERS_H
++
++#include <dbus/dbus.h>
++
++typedef void (*PropHandler)(DBusPendingCall *pcall, void *data);
++
++int request_property (DBusConnection *conn, const char *busname,
++                      const char *busobj, const char *prop, const char *iface,
++                      PropHandler handler, void *data);
++
++#endif /* HELPERS_H */
+diff --git a/systray/icon.c b/systray/icon.c
+new file mode 100644
+index 0000000..1b97866
+--- /dev/null
++++ b/systray/icon.c
+@@ -0,0 +1,149 @@
++#include "icon.h"
++
++#include <fcft/fcft.h>
++#include <pixman.h>
++
++#include <ctype.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <string.h>
++
++#define PREMUL_ALPHA(chan, alpha) (chan * alpha + 127) / 255
++
++/*
++ * Converts pixels from uint8_t[4] to uint32_t and
++ * straight alpha to premultiplied alpha.
++ */
++static uint32_t *
++to_pixman(const uint8_t *src, int n_pixels, size_t *pix_size)
++{
++	uint32_t *dest = NULL;
++
++	*pix_size = n_pixels * sizeof(uint32_t);
++	dest = malloc(*pix_size);
++	if (!dest)
++		return NULL;
++
++	for (int i = 0; i < n_pixels; i++) {
++		uint8_t a = src[i * 4 + 0];
++		uint8_t r = src[i * 4 + 1];
++		uint8_t g = src[i * 4 + 2];
++		uint8_t b = src[i * 4 + 3];
++
++		/*
++		 * Skip premultiplying fully opaque and fully transparent
++		 * pixels.
++		 */
++		if (a == 0) {
++			dest[i] = 0;
++
++		} else if (a == 255) {
++			dest[i] = ((uint32_t)a << 24) | ((uint32_t)r << 16) |
++			          ((uint32_t)g << 8) | ((uint32_t)b);
++
++		} else {
++			dest[i] = ((uint32_t)a << 24) |
++			          ((uint32_t)PREMUL_ALPHA(r, a) << 16) |
++			          ((uint32_t)PREMUL_ALPHA(g, a) << 8) |
++			          ((uint32_t)PREMUL_ALPHA(b, a));
++		}
++	}
++
++	return dest;
++}
++
++Icon *
++createicon(const uint8_t *buf, int width, int height, int size)
++{
++	Icon *icon = NULL;
++
++	int n_pixels;
++	pixman_image_t *img = NULL;
++	size_t pixbuf_size;
++	uint32_t *buf_pixman = NULL;
++	uint8_t *buf_orig = NULL;
++
++	n_pixels = size / 4;
++
++	icon = calloc(1, sizeof(Icon));
++	buf_orig = malloc(size);
++	buf_pixman = to_pixman(buf, n_pixels, &pixbuf_size);
++	if (!icon || !buf_orig || !buf_pixman)
++		goto fail;
++
++	img = pixman_image_create_bits(PIXMAN_a8r8g8b8, width, height,
++	                               buf_pixman, width * 4);
++	if (!img)
++		goto fail;
++
++	memcpy(buf_orig, buf, size);
++
++	icon->buf_orig = buf_orig;
++	icon->buf_pixman = buf_pixman;
++	icon->img = img;
++	icon->size_orig = size;
++	icon->size_pixman = pixbuf_size;
++
++	return icon;
++
++fail:
++	free(buf_orig);
++	if (img)
++		pixman_image_unref(img);
++	free(buf_pixman);
++	free(icon);
++	return NULL;
++}
++
++void
++destroyicon(Icon *icon)
++{
++	if (icon->img)
++		pixman_image_unref(icon->img);
++	free(icon->buf_orig);
++	free(icon->buf_pixman);
++	free(icon);
++}
++
++FallbackIcon *
++createfallbackicon(const char *appname, int fgcolor, struct fcft_font *font)
++{
++	const struct fcft_glyph *glyph;
++	char initial;
++
++	if ((unsigned char)appname[0] > 127) {
++		/* first character is not ascii */
++		initial = '?';
++	} else {
++		initial = toupper(*appname);
++	}
++
++	glyph = fcft_rasterize_char_utf32(font, initial, FCFT_SUBPIXEL_DEFAULT);
++	if (!glyph)
++		return NULL;
++
++	return glyph;
++}
++
++int
++resize_image(pixman_image_t *image, int new_width, int new_height)
++{
++	int src_width = pixman_image_get_width(image);
++	int src_height = pixman_image_get_height(image);
++	pixman_transform_t transform;
++	pixman_fixed_t scale_x, scale_y;
++
++	if (src_width == new_width && src_height == new_height)
++		return 0;
++
++	scale_x = pixman_double_to_fixed((double)src_width / new_width);
++	scale_y = pixman_double_to_fixed((double)src_height / new_height);
++
++	pixman_transform_init_scale(&transform, scale_x, scale_y);
++	if (!pixman_image_set_filter(image, PIXMAN_FILTER_BEST, NULL, 0) ||
++	    !pixman_image_set_transform(image, &transform)) {
++		return -1;
++	}
++
++	return 0;
++}
+diff --git a/systray/icon.h b/systray/icon.h
+new file mode 100644
+index 0000000..20f281b
+--- /dev/null
++++ b/systray/icon.h
+@@ -0,0 +1,26 @@
++#ifndef ICON_H
++#define ICON_H
++
++#include <fcft/fcft.h>
++#include <pixman.h>
++
++#include <stddef.h>
++#include <stdint.h>
++
++typedef const struct fcft_glyph FallbackIcon;
++
++typedef struct {
++	pixman_image_t *img;
++	uint32_t *buf_pixman;
++	uint8_t *buf_orig;
++	size_t size_orig;
++	size_t size_pixman;
++} Icon;
++
++Icon *createicon (const uint8_t *buf, int width, int height, int size);
++FallbackIcon *createfallbackicon (const char *appname, int fgcolor,
++                                  struct fcft_font *font);
++void destroyicon (Icon *icon);
++int resize_image (pixman_image_t *orig, int new_width, int new_height);
++
++#endif /* ICON_H */
+diff --git a/systray/item.c b/systray/item.c
+new file mode 100644
+index 0000000..4359a28
+--- /dev/null
++++ b/systray/item.c
+@@ -0,0 +1,403 @@
++#include "item.h"
++
++#include "helpers.h"
++#include "icon.h"
++#include "watcher.h"
++
++#include <dbus/dbus.h>
++
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++
++// IWYU pragma: no_include "dbus/dbus-protocol.h"
++// IWYU pragma: no_include "dbus/dbus-shared.h"
++
++#define RULEBSIZE 256
++#define MIN(A, B) ((A) < (B) ? (A) : (B))
++
++static const char *match_string =
++	"type='signal',"
++	"sender='%s',"
++	"interface='" SNI_NAME
++	"',"
++	"member='NewIcon'";
++
++static Watcher *
++item_get_watcher(const Item *item)
++{
++	if (!item)
++		return NULL;
++
++	return item->watcher;
++}
++
++static DBusConnection *
++item_get_connection(const Item *item)
++{
++	if (!item || !item->watcher)
++		return NULL;
++
++	return item->watcher->conn;
++}
++
++static const uint8_t *
++extract_image(DBusMessageIter *iter, dbus_int32_t *width, dbus_int32_t *height,
++              int *size)
++{
++	DBusMessageIter vals, bytes;
++	const uint8_t *buf;
++
++	dbus_message_iter_recurse(iter, &vals);
++	if (dbus_message_iter_get_arg_type(&vals) != DBUS_TYPE_INT32)
++		goto fail;
++	dbus_message_iter_get_basic(&vals, width);
++
++	dbus_message_iter_next(&vals);
++	if (dbus_message_iter_get_arg_type(&vals) != DBUS_TYPE_INT32)
++		goto fail;
++	dbus_message_iter_get_basic(&vals, height);
++
++	dbus_message_iter_next(&vals);
++	if (dbus_message_iter_get_arg_type(&vals) != DBUS_TYPE_ARRAY)
++		goto fail;
++	dbus_message_iter_recurse(&vals, &bytes);
++	if (dbus_message_iter_get_arg_type(&bytes) != DBUS_TYPE_BYTE)
++		goto fail;
++	dbus_message_iter_get_fixed_array(&bytes, &buf, size);
++	if (size == 0)
++		goto fail;
++
++	return buf;
++
++fail:
++	return NULL;
++}
++
++static int
++select_image(DBusMessageIter *iter, int target_width)
++{
++	DBusMessageIter vals;
++	dbus_int32_t cur_width;
++	int i = 0;
++
++	do {
++		dbus_message_iter_recurse(iter, &vals);
++		if (dbus_message_iter_get_arg_type(&vals) != DBUS_TYPE_INT32)
++			return -1;
++		dbus_message_iter_get_basic(&vals, &cur_width);
++		if (cur_width >= target_width)
++			return i;
++
++		i++;
++	} while (dbus_message_iter_next(iter));
++
++	/* return last index if desired not found */
++	return --i;
++}
++
++static void
++menupath_ready_handler(DBusPendingCall *pending, void *data)
++{
++	Item *item = data;
++
++	DBusError err = DBUS_ERROR_INIT;
++	DBusMessage *reply = NULL;
++	DBusMessageIter iter, opath;
++	char *path_dup = NULL;
++	const char *path;
++
++	reply = dbus_pending_call_steal_reply(pending);
++	if (!reply)
++		goto fail;
++
++	if (dbus_set_error_from_message(&err, reply)) {
++		fprintf(stderr, "DBus Error: %s - %s: Couldn't get menupath\n",
++		        err.name, err.message);
++		goto fail;
++	}
++
++	dbus_message_iter_init(reply, &iter);
++	if (dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_VARIANT)
++		goto fail;
++	dbus_message_iter_recurse(&iter, &opath);
++	if (dbus_message_iter_get_arg_type(&opath) != DBUS_TYPE_OBJECT_PATH)
++		goto fail;
++	dbus_message_iter_get_basic(&opath, &path);
++
++	path_dup = strdup(path);
++	if (!path_dup)
++		goto fail;
++
++	item->menu_busobj = path_dup;
++
++	dbus_message_unref(reply);
++	dbus_pending_call_unref(pending);
++	return;
++
++fail:
++	free(path_dup);
++	dbus_error_free(&err);
++	if (reply)
++		dbus_message_unref(reply);
++	if (pending)
++		dbus_pending_call_unref(pending);
++}
++
++/*
++ * Gets the Id dbus property, which is the name of the application,
++ * most of the time...
++ * The initial letter will be used as a fallback icon
++ */
++static void
++id_ready_handler(DBusPendingCall *pending, void *data)
++{
++	Item *item = data;
++
++	DBusError err = DBUS_ERROR_INIT;
++	DBusMessage *reply = NULL;
++	DBusMessageIter iter, string;
++	Watcher *watcher;
++	char *id_dup = NULL;
++	const char *id;
++
++	watcher = item_get_watcher(item);
++
++	reply = dbus_pending_call_steal_reply(pending);
++	if (!reply)
++		goto fail;
++
++	if (dbus_set_error_from_message(&err, reply)) {
++		fprintf(stderr, "DBus Error: %s - %s: Couldn't get appid\n",
++		        err.name, err.message);
++		goto fail;
++	}
++
++	dbus_message_iter_init(reply, &iter);
++	if (dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_VARIANT)
++		goto fail;
++	dbus_message_iter_recurse(&iter, &string);
++	if (dbus_message_iter_get_arg_type(&string) != DBUS_TYPE_STRING)
++		goto fail;
++	dbus_message_iter_get_basic(&string, &id);
++
++	id_dup = strdup(id);
++	if (!id_dup)
++		goto fail;
++	item->appid = id_dup;
++
++	/* Don't trigger update if this item already has a real icon */
++	if (!item->icon)
++		watcher_update_trays(watcher);
++
++	dbus_message_unref(reply);
++	dbus_pending_call_unref(pending);
++	return;
++
++fail:
++	dbus_error_free(&err);
++	if (id_dup)
++		free(id_dup);
++	if (reply)
++		dbus_message_unref(reply);
++	if (pending)
++		dbus_pending_call_unref(pending);
++}
++
++static void
++pixmap_ready_handler(DBusPendingCall *pending, void *data)
++{
++	Item *item = data;
++
++	DBusMessage *reply = NULL;
++	DBusMessageIter iter, array, select, strct;
++	Icon *icon = NULL;
++	Watcher *watcher;
++	dbus_int32_t width, height;
++	int selected_index, size;
++	const uint8_t *buf;
++
++	watcher = item_get_watcher(item);
++
++	reply = dbus_pending_call_steal_reply(pending);
++	if (!reply || dbus_message_get_type(reply) == DBUS_MESSAGE_TYPE_ERROR)
++		goto fail;
++	dbus_message_iter_init(reply, &iter);
++	if (dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_VARIANT)
++		goto fail;
++	dbus_message_iter_recurse(&iter, &array);
++	if (dbus_message_iter_get_arg_type(&array) != DBUS_TYPE_ARRAY)
++		goto fail;
++	dbus_message_iter_recurse(&array, &select);
++	if (dbus_message_iter_get_arg_type(&select) != DBUS_TYPE_STRUCT)
++		goto fail;
++	selected_index = select_image(&select, 22); // Get the 22*22 image
++	if (selected_index < 0)
++		goto fail;
++
++	dbus_message_iter_recurse(&array, &strct);
++	if (dbus_message_iter_get_arg_type(&strct) != DBUS_TYPE_STRUCT)
++		goto fail;
++	for (int i = 0; i < selected_index; i++)
++		dbus_message_iter_next(&strct);
++	buf = extract_image(&strct, &width, &height, &size);
++	if (!buf)
++		goto fail;
++
++	if (!item->icon) {
++		/* First icon */
++		icon = createicon(buf, width, height, size);
++		if (!icon)
++			goto fail;
++		item->icon = icon;
++		watcher_update_trays(watcher);
++
++	} else if (memcmp(item->icon->buf_orig, buf,
++	                  MIN(item->icon->size_orig, (size_t)size)) != 0) {
++		/* New icon */
++		destroyicon(item->icon);
++		item->icon = NULL;
++		icon = createicon(buf, width, height, size);
++		if (!icon)
++			goto fail;
++		item->icon = icon;
++		watcher_update_trays(watcher);
++
++	} else {
++		/* Icon didn't change */
++	}
++
++	dbus_message_unref(reply);
++	dbus_pending_call_unref(pending);
++	return;
++
++fail:
++	if (icon)
++		destroyicon(icon);
++	if (reply)
++		dbus_message_unref(reply);
++	if (pending)
++		dbus_pending_call_unref(pending);
++}
++
++static DBusHandlerResult
++handle_newicon(Item *item, DBusConnection *conn, DBusMessage *msg)
++{
++	const char *sender = dbus_message_get_sender(msg);
++
++	if (sender && strcmp(sender, item->busname) == 0) {
++		request_property(conn, item->busname, item->busobj,
++		                 "IconPixmap", SNI_IFACE, pixmap_ready_handler,
++		                 item);
++
++		return DBUS_HANDLER_RESULT_HANDLED;
++
++	} else {
++		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++	}
++}
++
++static DBusHandlerResult
++filter_bus(DBusConnection *conn, DBusMessage *msg, void *data)
++{
++	Item *item = data;
++
++	if (dbus_message_is_signal(msg, SNI_IFACE, "NewIcon"))
++		return handle_newicon(item, conn, msg);
++	else
++		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++}
++
++Item *
++createitem(const char *busname, const char *busobj, Watcher *watcher)
++{
++	DBusConnection *conn;
++	Item *item;
++	char *busname_dup = NULL;
++	char *busobj_dup = NULL;
++	char match_rule[RULEBSIZE];
++
++	item = calloc(1, sizeof(Item));
++	busname_dup = strdup(busname);
++	busobj_dup = strdup(busobj);
++	if (!item || !busname_dup || !busobj_dup)
++		goto fail;
++
++	conn = watcher->conn;
++	item->busname = busname_dup;
++	item->busobj = busobj_dup;
++	item->watcher = watcher;
++
++	request_property(conn, busname, busobj, "IconPixmap", SNI_IFACE,
++	                 pixmap_ready_handler, item);
++
++	request_property(conn, busname, busobj, "Id", SNI_IFACE,
++	                 id_ready_handler, item);
++
++	request_property(conn, busname, busobj, "Menu", SNI_IFACE,
++	                 menupath_ready_handler, item);
++
++	if (snprintf(match_rule, sizeof(match_rule), match_string, busname) >=
++	    RULEBSIZE) {
++		goto fail;
++	}
++
++	if (!dbus_connection_add_filter(conn, filter_bus, item, NULL))
++		goto fail;
++	dbus_bus_add_match(conn, match_rule, NULL);
++
++	return item;
++
++fail:
++	free(busname_dup);
++	free(busobj_dup);
++	return NULL;
++}
++
++void
++destroyitem(Item *item)
++{
++	DBusConnection *conn;
++	char match_rule[RULEBSIZE];
++
++	conn = item_get_connection(item);
++
++	if (snprintf(match_rule, sizeof(match_rule), match_string,
++	             item->busname) < RULEBSIZE) {
++		dbus_bus_remove_match(conn, match_rule, NULL);
++		dbus_connection_remove_filter(conn, filter_bus, item);
++	}
++	if (item->icon)
++		destroyicon(item->icon);
++	free(item->menu_busobj);
++	free(item->busname);
++	free(item->busobj);
++	free(item->appid);
++	free(item);
++}
++
++void
++item_activate(Item *item)
++{
++	DBusConnection *conn;
++	DBusMessage *msg = NULL;
++	dbus_int32_t x = 0, y = 0;
++
++	conn = item_get_connection(item);
++
++	if (!(msg = dbus_message_new_method_call(item->busname, item->busobj,
++	                                         SNI_IFACE, "Activate")) ||
++	    !dbus_message_append_args(msg, DBUS_TYPE_INT32, &x, DBUS_TYPE_INT32,
++	                              &y, DBUS_TYPE_INVALID) ||
++	    !dbus_connection_send_with_reply(conn, msg, NULL, -1)) {
++		goto fail;
++	}
++
++	dbus_message_unref(msg);
++	return;
++
++fail:
++	if (msg)
++		dbus_message_unref(msg);
++}
+diff --git a/systray/item.h b/systray/item.h
+new file mode 100644
+index 0000000..dc22e25
+--- /dev/null
++++ b/systray/item.h
+@@ -0,0 +1,46 @@
++#ifndef ITEM_H
++#define ITEM_H
++
++#include "icon.h"
++#include "watcher.h"
++
++#include <wayland-util.h>
++
++/*
++ * The FDO spec says "org.freedesktop.StatusNotifierItem"[1],
++ * but both the client libraries[2,3] actually use "org.kde.StatusNotifierItem"
++ *
++ * [1] https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/
++ * [2] https://github.com/AyatanaIndicators/libayatana-appindicator-glib
++ * [3] https://invent.kde.org/frameworks/kstatusnotifieritem
++ *
++ */
++#define SNI_NAME "org.kde.StatusNotifierItem"
++#define SNI_OPATH "/StatusNotifierItem"
++#define SNI_IFACE "org.kde.StatusNotifierItem"
++
++typedef struct Item {
++	struct wl_list icons;
++	char *busname;
++	char *busobj;
++	char *menu_busobj;
++	char *appid;
++	Icon *icon;
++	FallbackIcon *fallback_icon;
++
++	Watcher *watcher;
++
++	int fgcolor;
++
++	int ready;
++
++	struct wl_list link;
++} Item;
++
++Item *createitem (const char *busname, const char *busobj, Watcher *watcher);
++void destroyitem (Item *item);
++
++void item_activate (Item *item);
++void item_show_menu (Item *item);
++
++#endif /* ITEM_H */
+diff --git a/systray/menu.c b/systray/menu.c
+new file mode 100644
+index 0000000..ff3bfb5
+--- /dev/null
++++ b/systray/menu.c
+@@ -0,0 +1,757 @@
++#include "menu.h"
++
++#include <dbus/dbus.h>
++#include <wayland-server-core.h>
++#include <wayland-util.h>
++
++#include <errno.h>
++#include <signal.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <time.h>
++#include <unistd.h>
++
++// IWYU pragma: no_include "dbus/dbus-protocol.h"
++// IWYU pragma: no_include "dbus/dbus-shared.h"
++
++#define DBUSMENU_IFACE "com.canonical.dbusmenu"
++#define BUFSIZE 512
++#define LABEL_MAX 64
++
++typedef struct {
++	struct wl_array layout;
++	DBusConnection *conn;
++	struct wl_event_loop *loop;
++	char *busname;
++	char *busobj;
++	const char **menucmd;
++} Menu;
++
++typedef struct {
++	char label[LABEL_MAX];
++	dbus_int32_t id;
++	struct wl_array submenu;
++	int has_submenu;
++} MenuItem;
++
++typedef struct {
++	struct wl_event_loop *loop;
++	struct wl_event_source *fd_source;
++	struct wl_array *layout_node;
++	Menu *menu;
++	pid_t menu_pid;
++	int fd;
++} MenuShowContext;
++
++static int extract_menu (DBusMessageIter *av, struct wl_array *menu);
++static int real_show_menu (Menu *menu, struct wl_array *m);
++static void submenus_destroy_recursive (struct wl_array *m);
++
++static void
++menuitem_init(MenuItem *mi)
++{
++	wl_array_init(&mi->submenu);
++	mi->id = -1;
++	*mi->label = '\0';
++	mi->has_submenu = 0;
++}
++
++static void
++submenus_destroy_recursive(struct wl_array *layout_node)
++{
++	MenuItem *mi;
++
++	wl_array_for_each(mi, layout_node) {
++		if (mi->has_submenu) {
++			submenus_destroy_recursive(&mi->submenu);
++			wl_array_release(&mi->submenu);
++		}
++	}
++}
++
++static void
++menu_destroy(Menu *menu)
++{
++	submenus_destroy_recursive(&menu->layout);
++	wl_array_release(&menu->layout);
++	free(menu->busname);
++	free(menu->busobj);
++	free(menu);
++}
++
++static void
++menu_show_ctx_finalize(MenuShowContext *ctx, int error)
++{
++	if (ctx->fd_source)
++		wl_event_source_remove(ctx->fd_source);
++
++	if (ctx->fd >= 0)
++		close(ctx->fd);
++
++	if (ctx->menu_pid >= 0) {
++		if (waitpid(ctx->menu_pid, NULL, WNOHANG) == 0)
++			kill(ctx->menu_pid, SIGTERM);
++	}
++
++	if (error)
++		menu_destroy(ctx->menu);
++
++	free(ctx);
++}
++
++static void
++remove_newline(char *buf)
++{
++	size_t len;
++
++	len = strlen(buf);
++	if (len > 0 && buf[len - 1] == '\n')
++		buf[len - 1] = '\0';
++}
++
++static void
++send_clicked(const char *busname, const char *busobj, int itemid,
++             DBusConnection *conn)
++{
++	DBusMessage *msg = NULL;
++	DBusMessageIter iter = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	DBusMessageIter sub = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	const char *data = "";
++	const char *eventid = "clicked";
++	time_t timestamp;
++
++	timestamp = time(NULL);
++
++	msg = dbus_message_new_method_call(busname, busobj, DBUSMENU_IFACE,
++	                                   "Event");
++	if (!msg)
++		goto fail;
++
++	dbus_message_iter_init_append(msg, &iter);
++	if (!dbus_message_iter_append_basic(&iter, DBUS_TYPE_INT32, &itemid) ||
++	    !dbus_message_iter_append_basic(&iter, DBUS_TYPE_STRING,
++	                                    &eventid) ||
++	    !dbus_message_iter_open_container(&iter, DBUS_TYPE_VARIANT,
++	                                      DBUS_TYPE_STRING_AS_STRING,
++	                                      &sub) ||
++	    !dbus_message_iter_append_basic(&sub, DBUS_TYPE_STRING, &data) ||
++	    !dbus_message_iter_close_container(&iter, &sub) ||
++	    !dbus_message_iter_append_basic(&iter, DBUS_TYPE_UINT32,
++	                                    &timestamp)) {
++		goto fail;
++	}
++
++	if (!dbus_connection_send_with_reply(conn, msg, NULL, -1))
++		goto fail;
++
++	dbus_message_unref(msg);
++	return;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(&iter, &sub);
++	if (msg)
++		dbus_message_unref(msg);
++}
++
++static void
++menuitem_selected(const char *label, struct wl_array *m, Menu *menu)
++{
++	MenuItem *mi;
++
++	wl_array_for_each(mi, m) {
++		if (strcmp(mi->label, label) == 0) {
++			if (mi->has_submenu) {
++				real_show_menu(menu, &mi->submenu);
++
++			} else {
++				send_clicked(menu->busname, menu->busobj,
++				             mi->id, menu->conn);
++				menu_destroy(menu);
++			}
++
++			return;
++		}
++	}
++}
++
++static int
++read_pipe(int fd, uint32_t mask, void *data)
++{
++	MenuShowContext *ctx = data;
++
++	char buf[BUFSIZE];
++	ssize_t bytes_read;
++
++	bytes_read = read(fd, buf, BUFSIZE);
++	/* 0 == Got EOF, menu program closed without writing to stdout */
++	if (bytes_read <= 0)
++		goto fail;
++
++	buf[bytes_read] = '\0';
++	remove_newline(buf);
++
++	menuitem_selected(buf, ctx->layout_node, ctx->menu);
++	menu_show_ctx_finalize(ctx, 0);
++	return 0;
++
++fail:
++	menu_show_ctx_finalize(ctx, 1);
++	return 0;
++}
++
++static MenuShowContext *
++prepare_show_ctx(struct wl_event_loop *loop, int monitor_fd, int dmenu_pid,
++                 struct wl_array *layout_node, Menu *menu)
++{
++	MenuShowContext *ctx = NULL;
++	struct wl_event_source *fd_src = NULL;
++
++	ctx = calloc(1, sizeof(MenuShowContext));
++	if (!ctx)
++		goto fail;
++
++	fd_src = wl_event_loop_add_fd(menu->loop, monitor_fd, WL_EVENT_READABLE,
++	                              read_pipe, ctx);
++	if (!fd_src)
++		goto fail;
++
++	ctx->fd_source = fd_src;
++	ctx->fd = monitor_fd;
++	ctx->menu_pid = dmenu_pid;
++	ctx->layout_node = layout_node;
++	ctx->menu = menu;
++
++	return ctx;
++
++fail:
++	if (fd_src)
++		wl_event_source_remove(fd_src);
++	free(ctx);
++	return NULL;
++}
++
++static int
++write_dmenu_buf(char *buf, struct wl_array *layout_node)
++{
++	MenuItem *mi;
++	int r;
++	size_t curlen = 0;
++
++	*buf = '\0';
++
++	wl_array_for_each(mi, layout_node) {
++		curlen += strlen(mi->label) +
++		          2; /* +2 is newline + nul terminator */
++		if (curlen + 1 > BUFSIZE) {
++			r = -1;
++			goto fail;
++		}
++
++		strcat(buf, mi->label);
++		strcat(buf, "\n");
++	}
++	remove_newline(buf);
++
++	return 0;
++
++fail:
++	fprintf(stderr, "Failed to construct dmenu input\n");
++	return r;
++}
++
++static int
++real_show_menu(Menu *menu, struct wl_array *layout_node)
++{
++	MenuShowContext *ctx = NULL;
++	char buf[BUFSIZE];
++	int to_pipe[2], from_pipe[2];
++	pid_t pid;
++
++	if (pipe(to_pipe) < 0 || pipe(from_pipe) < 0)
++		goto fail;
++
++	pid = fork();
++	if (pid < 0) {
++		goto fail;
++	} else if (pid == 0) {
++		dup2(to_pipe[0], STDIN_FILENO);
++		dup2(from_pipe[1], STDOUT_FILENO);
++
++		close(to_pipe[0]);
++		close(to_pipe[1]);
++		close(from_pipe[1]);
++		close(from_pipe[0]);
++
++		if (execvp(menu->menucmd[0], (char *const *)menu->menucmd)) {
++			perror("Error spawning menu program");
++			exit(EXIT_FAILURE);
++		}
++	}
++
++	ctx = prepare_show_ctx(menu->loop, from_pipe[0], pid, layout_node,
++	                       menu);
++	if (!ctx)
++		goto fail;
++
++	if (write_dmenu_buf(buf, layout_node) < 0 ||
++	    write(to_pipe[1], buf, strlen(buf)) < 0) {
++		goto fail;
++	}
++
++	close(to_pipe[0]);
++	close(to_pipe[1]);
++	close(from_pipe[1]);
++	return 0;
++
++fail:
++	close(to_pipe[0]);
++	close(to_pipe[1]);
++	close(from_pipe[1]);
++	menu_show_ctx_finalize(ctx, 1);
++	return -1;
++}
++
++static void
++createmenuitem(MenuItem *mi, dbus_int32_t id, const char *label,
++               int toggle_state, int has_submenu)
++{
++	char *tok;
++	char temp[LABEL_MAX];
++
++	if (toggle_state == 0)
++		strcpy(mi->label, "☐ ");
++	else if (toggle_state == 1)
++		strcpy(mi->label, "✓ ");
++	else
++		strcpy(mi->label, "  ");
++
++	/* Remove "mnemonics" (underscores which mark keyboard shortcuts) */
++	strcpy(temp, label);
++	tok = strtok(temp, "_");
++	do {
++		strcat(mi->label, tok);
++	} while ((tok = strtok(NULL, "_")));
++
++	if (has_submenu) {
++		mi->has_submenu = 1;
++		strcat(mi->label, " →");
++	}
++
++	mi->id = id;
++}
++
++/**
++ * Populates the passed in menuitem based on the dictionary contents.
++ *
++ * @param[in] dict
++ * @param[in] itemid
++ * @param[in] mi
++ * @param[out] has_submenu
++ * @param[out] status <0 on error, 0 on success, >0 if menuitem was skipped
++ */
++static int
++read_dict(DBusMessageIter *dict, dbus_int32_t itemid, MenuItem *mi,
++          int *has_submenu)
++{
++	DBusMessageIter member, val;
++	const char *children_display = NULL, *label = NULL, *toggle_type = NULL;
++	const char *key;
++	dbus_bool_t visible = TRUE, enabled = TRUE;
++	dbus_int32_t toggle_state = 1;
++	int r;
++
++	do {
++		dbus_message_iter_recurse(dict, &member);
++		if (dbus_message_iter_get_arg_type(&member) !=
++		    DBUS_TYPE_STRING) {
++			r = -1;
++			goto fail;
++		}
++		dbus_message_iter_get_basic(&member, &key);
++
++		dbus_message_iter_next(&member);
++		if (dbus_message_iter_get_arg_type(&member) !=
++		    DBUS_TYPE_VARIANT) {
++			r = -1;
++			goto fail;
++		}
++		dbus_message_iter_recurse(&member, &val);
++
++		if (strcmp(key, "visible") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_BOOLEAN) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &visible);
++
++		} else if (strcmp(key, "enabled") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_BOOLEAN) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &enabled);
++
++		} else if (strcmp(key, "toggle-type") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_STRING) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &toggle_type);
++
++		} else if (strcmp(key, "toggle-state") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_INT32) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &toggle_state);
++
++		} else if (strcmp(key, "children-display") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_STRING) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &children_display);
++
++			if (strcmp(children_display, "submenu") == 0)
++				*has_submenu = 1;
++
++		} else if (strcmp(key, "label") == 0) {
++			if (dbus_message_iter_get_arg_type(&val) !=
++			    DBUS_TYPE_STRING) {
++				r = -1;
++				goto fail;
++			}
++			dbus_message_iter_get_basic(&val, &label);
++		}
++	} while (dbus_message_iter_next(dict));
++
++	/* Skip hidden etc items */
++	if (!label || !visible || !enabled)
++		return 1;
++
++	/*
++	 * 4 characters for checkmark and submenu indicator,
++	 * 1 for nul terminator
++	 */
++	if (strlen(label) + 5 > LABEL_MAX) {
++		fprintf(stderr, "Too long menu entry label: %s! Skipping...\n",
++		        label);
++		return 1;
++	}
++
++	if (toggle_type && strcmp(toggle_type, "checkmark") == 0)
++		createmenuitem(mi, itemid, label, toggle_state, *has_submenu);
++	else
++		createmenuitem(mi, itemid, label, -1, *has_submenu);
++
++	return 0;
++
++fail:
++	fprintf(stderr, "Error parsing menu data\n");
++	return r;
++}
++
++/**
++ * Extracts a menuitem from a DBusMessage
++ *
++ * @param[in] strct
++ * @param[in] mi
++ * @param[out] status <0 on error, 0 on success, >0 if menuitem was skipped
++ */
++static int
++extract_menuitem(DBusMessageIter *strct, MenuItem *mi)
++{
++	DBusMessageIter val, dict;
++	dbus_int32_t itemid;
++	int has_submenu = 0;
++	int r;
++
++	dbus_message_iter_recurse(strct, &val);
++	if (dbus_message_iter_get_arg_type(&val) != DBUS_TYPE_INT32) {
++		r = -1;
++		goto fail;
++	}
++	dbus_message_iter_get_basic(&val, &itemid);
++
++	if (!dbus_message_iter_next(&val) ||
++	    dbus_message_iter_get_arg_type(&val) != DBUS_TYPE_ARRAY) {
++		r = -1;
++		goto fail;
++	}
++	dbus_message_iter_recurse(&val, &dict);
++	if (dbus_message_iter_get_arg_type(&dict) != DBUS_TYPE_DICT_ENTRY) {
++		r = -1;
++		goto fail;
++	}
++
++	r = read_dict(&dict, itemid, mi, &has_submenu);
++	if (r < 0) {
++		goto fail;
++
++	} else if (r == 0 && has_submenu) {
++		dbus_message_iter_next(&val);
++		if (dbus_message_iter_get_arg_type(&val) != DBUS_TYPE_ARRAY)
++			goto fail;
++		r = extract_menu(&val, &mi->submenu);
++		if (r < 0)
++			goto fail;
++	}
++
++	return r;
++
++fail:
++	return r;
++}
++
++static int
++extract_menu(DBusMessageIter *av, struct wl_array *layout_node)
++{
++	DBusMessageIter variant, menuitem;
++	MenuItem *mi;
++	int r;
++
++	dbus_message_iter_recurse(av, &variant);
++	if (dbus_message_iter_get_arg_type(&variant) != DBUS_TYPE_VARIANT) {
++		r = -1;
++		goto fail;
++	}
++
++	mi = wl_array_add(layout_node, sizeof(MenuItem));
++	if (!mi) {
++		r = -ENOMEM;
++		goto fail;
++	}
++	menuitem_init(mi);
++
++	do {
++		dbus_message_iter_recurse(&variant, &menuitem);
++		if (dbus_message_iter_get_arg_type(&menuitem) !=
++		    DBUS_TYPE_STRUCT) {
++			r = -1;
++			goto fail;
++		}
++
++		r = extract_menuitem(&menuitem, mi);
++		if (r < 0)
++			goto fail;
++		else if (r == 0) {
++			mi = wl_array_add(layout_node, sizeof(MenuItem));
++			if (!mi) {
++				r = -ENOMEM;
++				goto fail;
++			}
++			menuitem_init(mi);
++		}
++		/* r > 0: no action was performed on mi */
++	} while (dbus_message_iter_next(&variant));
++
++	return 0;
++
++fail:
++	return r;
++}
++
++static void
++layout_ready(DBusPendingCall *pending, void *data)
++{
++	Menu *menu = data;
++
++	DBusMessage *reply = NULL;
++	DBusMessageIter iter, strct;
++	dbus_uint32_t revision;
++	int r;
++
++	reply = dbus_pending_call_steal_reply(pending);
++	if (!reply || dbus_message_get_type(reply) == DBUS_MESSAGE_TYPE_ERROR) {
++		r = -1;
++		goto fail;
++	}
++
++	dbus_message_iter_init(reply, &iter);
++	if (dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_UINT32) {
++		r = -1;
++		goto fail;
++	}
++	dbus_message_iter_get_basic(&iter, &revision);
++
++	if (!dbus_message_iter_next(&iter) ||
++	    dbus_message_iter_get_arg_type(&iter) != DBUS_TYPE_STRUCT) {
++		r = -1;
++		goto fail;
++	}
++	dbus_message_iter_recurse(&iter, &strct);
++
++	/*
++	 * id 0 is the root, which contains nothing of interest.
++	 * Traverse past it.
++	 */
++	if (dbus_message_iter_get_arg_type(&strct) != DBUS_TYPE_INT32 ||
++	    !dbus_message_iter_next(&strct) ||
++	    dbus_message_iter_get_arg_type(&strct) != DBUS_TYPE_ARRAY ||
++	    !dbus_message_iter_next(&strct) ||
++	    dbus_message_iter_get_arg_type(&strct) != DBUS_TYPE_ARRAY) {
++		r = -1;
++		goto fail;
++	}
++
++	/* Root traversed over, extract the menu */
++	wl_array_init(&menu->layout);
++	r = extract_menu(&strct, &menu->layout);
++	if (r < 0)
++		goto fail;
++
++	r = real_show_menu(menu, &menu->layout);
++	if (r < 0)
++		goto fail;
++
++	dbus_message_unref(reply);
++	dbus_pending_call_unref(pending);
++	return;
++
++fail:
++	menu_destroy(menu);
++	if (reply)
++		dbus_message_unref(reply);
++	if (pending)
++		dbus_pending_call_unref(pending);
++}
++
++static int
++request_layout(Menu *menu)
++{
++	DBusMessage *msg = NULL;
++	DBusMessageIter iter = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	DBusMessageIter strings = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	DBusPendingCall *pending = NULL;
++	dbus_int32_t parentid, depth;
++	int r;
++
++	parentid = 0;
++	depth = -1;
++
++	/* menu busobj request answer didn't arrive yet. */
++	if (!menu->busobj) {
++		r = -1;
++		goto fail;
++	}
++
++	msg = dbus_message_new_method_call(menu->busname, menu->busobj,
++	                                   DBUSMENU_IFACE, "GetLayout");
++	if (!msg) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_iter_init_append(msg, &iter);
++	if (!dbus_message_iter_append_basic(&iter, DBUS_TYPE_INT32,
++	                                    &parentid) ||
++	    !dbus_message_iter_append_basic(&iter, DBUS_TYPE_INT32, &depth) ||
++	    !dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY,
++	                                      DBUS_TYPE_STRING_AS_STRING,
++	                                      &strings) ||
++	    !dbus_message_iter_close_container(&iter, &strings)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	if (!dbus_connection_send_with_reply(menu->conn, msg, &pending, -1) ||
++	    !dbus_pending_call_set_notify(pending, layout_ready, menu, NULL)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_unref(msg);
++	return 0;
++
++fail:
++	if (pending) {
++		dbus_pending_call_cancel(pending);
++		dbus_pending_call_unref(pending);
++	}
++	dbus_message_iter_abandon_container_if_open(&iter, &strings);
++	if (msg)
++		dbus_message_unref(msg);
++	menu_destroy(menu);
++	return r;
++}
++
++static void
++about_to_show_handle(DBusPendingCall *pending, void *data)
++{
++	Menu *menu = data;
++
++	DBusMessage *reply = NULL;
++
++	reply = dbus_pending_call_steal_reply(pending);
++	if (!reply)
++		goto fail;
++
++	if (request_layout(menu) < 0)
++		goto fail;
++
++	dbus_message_unref(reply);
++	dbus_pending_call_unref(pending);
++	return;
++
++fail:
++	if (reply)
++		dbus_message_unref(reply);
++	if (pending)
++		dbus_pending_call_unref(pending);
++	menu_destroy(menu);
++}
++
++void
++menu_show(DBusConnection *conn, struct wl_event_loop *loop, const char *busname,
++          const char *busobj, const char **menucmd)
++{
++	DBusMessage *msg = NULL;
++	DBusPendingCall *pending = NULL;
++	Menu *menu = NULL;
++	char *busname_dup = NULL, *busobj_dup = NULL;
++	dbus_int32_t parentid = 0;
++
++	menu = calloc(1, sizeof(Menu));
++	busname_dup = strdup(busname);
++	busobj_dup = strdup(busobj);
++	if (!menu || !busname_dup || !busobj_dup)
++		goto fail;
++
++	menu->conn = conn;
++	menu->loop = loop;
++	menu->busname = busname_dup;
++	menu->busobj = busobj_dup;
++	menu->menucmd = menucmd;
++
++	msg = dbus_message_new_method_call(menu->busname, menu->busobj,
++	                                   DBUSMENU_IFACE, "AboutToShow");
++	if (!msg)
++		goto fail;
++
++	if (!dbus_message_append_args(msg, DBUS_TYPE_INT32, &parentid,
++	                              DBUS_TYPE_INVALID) ||
++	    !dbus_connection_send_with_reply(menu->conn, msg, &pending, -1) ||
++	    !dbus_pending_call_set_notify(pending, about_to_show_handle, menu,
++	                                  NULL)) {
++		goto fail;
++	}
++
++	dbus_message_unref(msg);
++	return;
++
++fail:
++	if (pending)
++		dbus_pending_call_unref(pending);
++	if (msg)
++		dbus_message_unref(msg);
++	free(menu);
++}
+diff --git a/systray/menu.h b/systray/menu.h
+new file mode 100644
+index 0000000..7f48ada
+--- /dev/null
++++ b/systray/menu.h
+@@ -0,0 +1,11 @@
++#ifndef MENU_H
++#define MENU_H
++
++#include <dbus/dbus.h>
++#include <wayland-server-core.h>
++
++/* The menu is built on demand and not kept around */
++void menu_show (DBusConnection *conn, struct wl_event_loop *loop,
++                const char *busname, const char *busobj, const char **menucmd);
++
++#endif /* MENU_H */
+diff --git a/systray/tray.c b/systray/tray.c
+new file mode 100644
+index 0000000..7f9b1b0
+--- /dev/null
++++ b/systray/tray.c
+@@ -0,0 +1,237 @@
++#include "tray.h"
++
++#include "icon.h"
++#include "item.h"
++#include "menu.h"
++#include "watcher.h"
++
++#include <fcft/fcft.h>
++#include <pixman.h>
++#include <wayland-util.h>
++
++#include <stddef.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++
++#define PIXMAN_COLOR(hex)                        \
++	{ .red = ((hex >> 24) & 0xff) * 0x101,   \
++	  .green = ((hex >> 16) & 0xff) * 0x101, \
++	  .blue = ((hex >> 8) & 0xff) * 0x101,   \
++	  .alpha = (hex & 0xff) * 0x101 }
++
++static Watcher *
++tray_get_watcher(const Tray *tray)
++{
++	if (!tray)
++		return NULL;
++
++	return tray->watcher;
++}
++
++static pixman_image_t *
++createcanvas(int width, int height, int bgcolor)
++{
++	pixman_image_t *src, *dest;
++	pixman_color_t bgcolor_pix = PIXMAN_COLOR(bgcolor);
++
++	dest = pixman_image_create_bits(PIXMAN_a8r8g8b8, width, height, NULL,
++	                                0);
++	src = pixman_image_create_solid_fill(&bgcolor_pix);
++
++	pixman_image_composite32(PIXMAN_OP_SRC, src, NULL, dest, 0, 0, 0, 0, 0,
++	                         0, width, height);
++
++	pixman_image_unref(src);
++	return dest;
++}
++
++void
++tray_update(Tray *tray)
++{
++	Item *item;
++	Watcher *watcher;
++	int icon_size, i = 0, canvas_width, canvas_height, n_items, spacing;
++	pixman_image_t *canvas = NULL, *img;
++
++	watcher = tray_get_watcher(tray);
++	n_items = watcher_get_n_items(watcher);
++
++	if (!n_items) {
++		if (tray->image) {
++			pixman_image_unref(tray->image);
++			tray->image = NULL;
++		}
++		tray->cb(tray->monitor);
++		return;
++	}
++
++	icon_size = tray->height;
++	spacing = tray->spacing;
++	canvas_width = n_items * (icon_size + spacing) + spacing;
++	canvas_height = tray->height;
++
++	canvas = createcanvas(canvas_width, canvas_height, tray->scheme[1]);
++	if (!canvas)
++		goto fail;
++
++	wl_list_for_each(item, &watcher->items, link) {
++		int slot_x_start = spacing + i * (icon_size + spacing);
++		int slot_x_end = slot_x_start + icon_size + spacing;
++		int slot_x_width = slot_x_end - slot_x_start;
++
++		int slot_y_start = 0;
++		int slot_y_end = canvas_height;
++		int slot_y_width = slot_y_end - slot_y_start;
++
++		if (item->icon) {
++			/* Real icon */
++			img = item->icon->img;
++			if (resize_image(img, icon_size, icon_size) < 0)
++				goto fail;
++			pixman_image_composite32(PIXMAN_OP_OVER, img, NULL,
++			                         canvas, 0, 0, 0, 0,
++			                         slot_x_start, 0, canvas_width,
++			                         canvas_height);
++
++		} else if (item->appid) {
++			/* Font glyph alpha mask */
++			const struct fcft_glyph *g;
++			int pen_y, pen_x;
++			pixman_color_t fg_color = PIXMAN_COLOR(tray->scheme[0]);
++			pixman_image_t *fg;
++
++			if (item->fallback_icon) {
++				g = item->fallback_icon;
++			} else {
++				g = createfallbackicon(item->appid,
++				                       item->fgcolor,
++				                       tray->font);
++				if (!g)
++					goto fail;
++				item->fallback_icon = g;
++			}
++
++			pen_x = slot_x_start + (slot_x_width - g->width) / 2;
++			pen_y = slot_y_start + (slot_y_width - g->height) / 2;
++
++			fg = pixman_image_create_solid_fill(&fg_color);
++			pixman_image_composite32(PIXMAN_OP_OVER, fg, g->pix,
++			                         canvas, 0, 0, 0, 0, pen_x,
++			                         pen_y, canvas_width,
++			                         canvas_height);
++			pixman_image_unref(fg);
++		}
++		i++;
++	}
++
++	if (tray->image)
++		pixman_image_unref(tray->image);
++	tray->image = canvas;
++	tray->cb(tray->monitor);
++
++	return;
++
++fail:
++	if (canvas)
++		pixman_image_unref(canvas);
++	return;
++}
++
++void
++destroytray(Tray *tray)
++{
++	if (tray->image)
++		pixman_image_unref(tray->image);
++	if (tray->font)
++		fcft_destroy(tray->font);
++	free(tray);
++}
++
++Tray *
++createtray(void *monitor, int height, int spacing, uint32_t *colorscheme,
++           const char **fonts, const char *fontattrs, TrayNotifyCb cb,
++           Watcher *watcher)
++{
++	Tray *tray = NULL;
++	char fontattrs_my[128];
++	struct fcft_font *font = NULL;
++
++	sprintf(fontattrs_my, "%s:%s", fontattrs, "weight:bold");
++
++	tray = calloc(1, sizeof(Tray));
++	font = fcft_from_name(1, fonts, fontattrs_my);
++	if (!tray || !font)
++		goto fail;
++
++	tray->monitor = monitor;
++	tray->height = height;
++	tray->spacing = spacing;
++	tray->scheme = colorscheme;
++	tray->cb = cb;
++	tray->watcher = watcher;
++	tray->font = font;
++
++	return tray;
++
++fail:
++	if (font)
++		fcft_destroy(font);
++	free(tray);
++	return NULL;
++}
++
++int
++tray_get_width(const Tray *tray)
++{
++	if (tray && tray->image)
++		return pixman_image_get_width(tray->image);
++	else
++		return 0;
++}
++
++int
++tray_get_icon_width(const Tray *tray)
++{
++	if (!tray)
++		return 0;
++
++	return tray->height;
++}
++
++void
++tray_rightclicked(Tray *tray, unsigned int index, const char **menucmd)
++{
++	Item *item;
++	Watcher *watcher;
++	unsigned int count = 0;
++
++	watcher = tray_get_watcher(tray);
++
++	wl_list_for_each(item, &watcher->items, link) {
++		if (count == index) {
++			menu_show(watcher->conn, watcher->loop, item->busname,
++			          item->menu_busobj, menucmd);
++			return;
++		}
++		count++;
++	}
++}
++
++void
++tray_leftclicked(Tray *tray, unsigned int index)
++{
++	Item *item;
++	Watcher *watcher;
++	unsigned int count = 0;
++
++	watcher = tray_get_watcher(tray);
++
++	wl_list_for_each(item, &watcher->items, link) {
++		if (count == index) {
++			item_activate(item);
++			return;
++		}
++		count++;
++	}
++}
+diff --git a/systray/tray.h b/systray/tray.h
+new file mode 100644
+index 0000000..af4e5e3
+--- /dev/null
++++ b/systray/tray.h
+@@ -0,0 +1,37 @@
++#ifndef TRAY_H
++#define TRAY_H
++
++#include "watcher.h"
++
++#include <pixman.h>
++#include <wayland-util.h>
++
++#include <stdint.h>
++
++typedef void (*TrayNotifyCb)(void *data);
++
++typedef struct {
++	pixman_image_t *image;
++	struct fcft_font *font;
++	uint32_t *scheme;
++	TrayNotifyCb cb;
++	Watcher *watcher;
++	void *monitor;
++	int height;
++	int spacing;
++
++	struct wl_list link;
++} Tray;
++
++Tray *createtray (void *monitor, int height, int spacing, uint32_t *colorscheme,
++                  const char **fonts, const char *fontattrs, TrayNotifyCb cb,
++                  Watcher *watcher);
++void destroytray (Tray *tray);
++
++int tray_get_width (const Tray *tray);
++int tray_get_icon_width (const Tray *tray);
++void tray_update (Tray *tray);
++void tray_leftclicked (Tray *tray, unsigned int index);
++void tray_rightclicked (Tray *tray, unsigned int index, const char **menucmd);
++
++#endif /* TRAY_H */
+diff --git a/systray/watcher.c b/systray/watcher.c
+new file mode 100644
+index 0000000..8dd84b9
+--- /dev/null
++++ b/systray/watcher.c
+@@ -0,0 +1,551 @@
++#include "watcher.h"
++
++#include "item.h"
++#include "tray.h"
++
++#include <dbus/dbus.h>
++#include <wayland-util.h>
++
++#include <errno.h>
++#include <stdio.h>
++#include <string.h>
++
++// IWYU pragma: no_include "dbus/dbus-protocol.h"
++// IWYU pragma: no_include "dbus/dbus-shared.h"
++
++static const char *const match_rule =
++	"type='signal',"
++	"interface='" DBUS_INTERFACE_DBUS
++	"',"
++	"member='NameOwnerChanged'";
++
++static const char *const snw_xml =
++	"<!DOCTYPE node PUBLIC \"-//freedesktop//DTD D-BUS Object Introspection 1.0//EN\"\n"
++	" \"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd\">\n"
++	"<node>\n"
++	"    <interface name=\"" DBUS_INTERFACE_PROPERTIES
++	"\">\n"
++	"        <method name=\"Get\">\n"
++	"            <arg type=\"s\" name=\"interface_name\" direction=\"in\"/>\n"
++	"            <arg type=\"s\" name=\"property_name\" direction=\"in\"/>\n"
++	"            <arg type=\"v\" name=\"value\" direction=\"out\"/>\n"
++	"        </method>\n"
++	"        <method name=\"GetAll\">\n"
++	"            <arg type=\"s\" name=\"interface_name\" direction=\"in\"/>\n"
++	"            <arg type=\"a{sv}\" name=\"properties\" direction=\"out\"/>\n"
++	"        </method>\n"
++	"        <method name=\"Set\">\n"
++	"            <arg type=\"s\" name=\"interface_name\" direction=\"in\"/>\n"
++	"            <arg type=\"s\" name=\"property_name\" direction=\"in\"/>\n"
++	"            <arg type=\"v\" name=\"value\" direction=\"in\"/>\n"
++	"        </method>\n"
++	"        <signal name=\"PropertiesChanged\">\n"
++	"            <arg type=\"s\" name=\"interface_name\"/>\n"
++	"            <arg type=\"a{sv}\" name=\"changed_properties\"/>\n"
++	"            <arg type=\"as\" name=\"invalidated_properties\"/>\n"
++	"        </signal>\n"
++	"    </interface>\n"
++	"    <interface name=\"" DBUS_INTERFACE_INTROSPECTABLE
++	"\">\n"
++	"        <method name=\"Introspect\">\n"
++	"            <arg type=\"s\" name=\"xml_data\" direction=\"out\"/>\n"
++	"        </method>\n"
++	"    </interface>\n"
++	"    <interface name=\"" DBUS_INTERFACE_PEER
++	"\">\n"
++	"        <method name=\"Ping\"/>\n"
++	"        <method name=\"GetMachineId\">\n"
++	"            <arg type=\"s\" name=\"machine_uuid\" direction=\"out\"/>\n"
++	"        </method>\n"
++	"    </interface>\n"
++	"    <interface name=\"" SNW_IFACE
++	"\">\n"
++	"        <!-- methods -->\n"
++	"        <method name=\"RegisterStatusNotifierItem\">\n"
++	"            <arg name=\"service\" type=\"s\" direction=\"in\" />\n"
++	"        </method>\n"
++	"        <!-- properties -->\n"
++	"        <property name=\"IsStatusNotifierHostRegistered\" type=\"b\" access=\"read\" />\n"
++	"        <property name=\"ProtocolVersion\" type=\"i\" access=\"read\" />\n"
++	"        <property name=\"RegisteredStatusNotifierItems\" type=\"as\" access=\"read\" />\n"
++	"        <!-- signals -->\n"
++	"        <signal name=\"StatusNotifierHostRegistered\">\n"
++	"        </signal>\n"
++	"    </interface>\n"
++	"</node>\n";
++
++static void
++unregister_item(Watcher *watcher, Item *item)
++{
++	wl_list_remove(&item->link);
++	destroyitem(item);
++
++	watcher_update_trays(watcher);
++}
++
++static Item *
++item_name_to_ptr(const Watcher *watcher, const char *busname)
++{
++	Item *item;
++
++	wl_list_for_each(item, &watcher->items, link) {
++		if (!item || !item->busname)
++			return NULL;
++		if (strcmp(item->busname, busname) == 0)
++			return item;
++	}
++
++	return NULL;
++}
++
++static DBusHandlerResult
++handle_nameowner_changed(Watcher *watcher, DBusConnection *conn,
++                         DBusMessage *msg)
++{
++	char *name, *old_owner, *new_owner;
++	Item *item;
++
++	if (!dbus_message_get_args(msg, NULL, DBUS_TYPE_STRING, &name,
++	                           DBUS_TYPE_STRING, &old_owner,
++	                           DBUS_TYPE_STRING, &new_owner,
++	                           DBUS_TYPE_INVALID)) {
++		return DBUS_HANDLER_RESULT_HANDLED;
++	}
++
++	if (*new_owner != '\0' || *name == '\0')
++		return DBUS_HANDLER_RESULT_HANDLED;
++
++	item = item_name_to_ptr(watcher, name);
++	if (!item)
++		return DBUS_HANDLER_RESULT_HANDLED;
++
++	unregister_item(watcher, item);
++
++	return DBUS_HANDLER_RESULT_HANDLED;
++}
++
++static DBusHandlerResult
++filter_bus(DBusConnection *conn, DBusMessage *msg, void *data)
++{
++	Watcher *watcher = data;
++
++	if (dbus_message_is_signal(msg, DBUS_INTERFACE_DBUS,
++	                           "NameOwnerChanged"))
++		return handle_nameowner_changed(watcher, conn, msg);
++
++	else
++		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++}
++
++static DBusHandlerResult
++respond_register_item(Watcher *watcher, DBusConnection *conn, DBusMessage *msg)
++{
++	DBusHandlerResult res = DBUS_HANDLER_RESULT_HANDLED;
++
++	DBusMessage *reply = NULL;
++	Item *item;
++	const char *sender, *param, *busobj, *registree_name;
++
++	if (!(sender = dbus_message_get_sender(msg)) ||
++	    !dbus_message_get_args(msg, NULL, DBUS_TYPE_STRING, &param,
++	                           DBUS_TYPE_INVALID)) {
++		reply = dbus_message_new_error(msg, DBUS_ERROR_INVALID_ARGS,
++		                               "Malformed message");
++		goto send;
++	}
++
++	switch (*param) {
++	case '/':
++		registree_name = sender;
++		busobj = param;
++		break;
++	case ':':
++		registree_name = param;
++		busobj = SNI_OPATH;
++		break;
++	default:
++		reply = dbus_message_new_error_printf(msg,
++		                                      DBUS_ERROR_INVALID_ARGS,
++		                                      "Bad argument: \"%s\"",
++		                                      param);
++		goto send;
++	}
++
++	if (*registree_name != ':' ||
++	    !dbus_validate_bus_name(registree_name, NULL)) {
++		reply = dbus_message_new_error_printf(msg,
++		                                      DBUS_ERROR_INVALID_ARGS,
++		                                      "Invalid busname %s",
++		                                      registree_name);
++		goto send;
++	}
++
++	if (item_name_to_ptr(watcher, registree_name)) {
++		reply = dbus_message_new_error_printf(msg,
++		                                      DBUS_ERROR_INVALID_ARGS,
++		                                      "%s already tracked",
++		                                      registree_name);
++		goto send;
++	}
++
++	item = createitem(registree_name, busobj, watcher);
++	wl_list_insert(&watcher->items, &item->link);
++	watcher_update_trays(watcher);
++
++	reply = dbus_message_new_method_return(msg);
++
++send:
++	if (!reply || !dbus_connection_send(conn, reply, NULL))
++		res = DBUS_HANDLER_RESULT_NEED_MEMORY;
++
++	if (reply)
++		dbus_message_unref(reply);
++	return res;
++}
++
++static int
++get_registered_items(const Watcher *watcher, DBusMessageIter *iter)
++{
++	DBusMessageIter names = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	Item *item;
++	int r;
++
++	if (!dbus_message_iter_open_container(iter, DBUS_TYPE_ARRAY,
++	                                      DBUS_TYPE_STRING_AS_STRING,
++	                                      &names)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	wl_list_for_each(item, &watcher->items, link) {
++		if (!dbus_message_iter_append_basic(&names, DBUS_TYPE_STRING,
++		                                    &item->busname)) {
++			r = -ENOMEM;
++			goto fail;
++		}
++	}
++
++	dbus_message_iter_close_container(iter, &names);
++	return 0;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(iter, &names);
++	return r;
++}
++
++static int
++get_registered_items_variant(const Watcher *watcher, DBusMessageIter *iter)
++{
++	DBusMessageIter variant = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	int r;
++
++	if (!dbus_message_iter_open_container(iter, DBUS_TYPE_VARIANT, "as",
++	                                      &variant) ||
++	    get_registered_items(watcher, &variant) < 0) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_iter_close_container(iter, &variant);
++	return 0;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(iter, &variant);
++	return r;
++}
++
++static int
++get_isregistered(DBusMessageIter *iter)
++{
++	DBusMessageIter variant = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	dbus_bool_t is_registered = TRUE;
++	int r;
++
++	if (!dbus_message_iter_open_container(iter, DBUS_TYPE_VARIANT,
++	                                      DBUS_TYPE_BOOLEAN_AS_STRING,
++	                                      &variant) ||
++	    !dbus_message_iter_append_basic(&variant, DBUS_TYPE_BOOLEAN,
++	                                    &is_registered)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_iter_close_container(iter, &variant);
++	return 0;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(iter, &variant);
++	return r;
++}
++
++static int
++get_version(DBusMessageIter *iter)
++{
++	DBusMessageIter variant = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	dbus_int32_t protovers = 0;
++	int r;
++
++	if (!dbus_message_iter_open_container(iter, DBUS_TYPE_VARIANT,
++	                                      DBUS_TYPE_INT32_AS_STRING,
++	                                      &variant) ||
++	    !dbus_message_iter_append_basic(&variant, DBUS_TYPE_INT32,
++	                                    &protovers)) {
++		r = -ENOMEM;
++		goto fail;
++	}
++
++	dbus_message_iter_close_container(iter, &variant);
++	return 0;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(iter, &variant);
++	return r;
++}
++
++static DBusHandlerResult
++respond_get_prop(Watcher *watcher, DBusConnection *conn, DBusMessage *msg)
++{
++	DBusError err = DBUS_ERROR_INIT;
++	DBusMessage *reply = NULL;
++	DBusMessageIter iter = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	const char *iface, *prop;
++
++	if (!dbus_message_get_args(msg, &err, DBUS_TYPE_STRING, &iface,
++	                           DBUS_TYPE_STRING, &prop,
++	                           DBUS_TYPE_INVALID)) {
++		reply = dbus_message_new_error(msg, err.name, err.message);
++		dbus_error_free(&err);
++		goto send;
++	}
++
++	if (strcmp(iface, SNW_IFACE) != 0) {
++		reply = dbus_message_new_error_printf(
++			msg, DBUS_ERROR_UNKNOWN_INTERFACE,
++			"Unknown interface \"%s\"", iface);
++		goto send;
++	}
++
++	reply = dbus_message_new_method_return(msg);
++	if (!reply)
++		goto fail;
++
++	if (strcmp(prop, "ProtocolVersion") == 0) {
++		dbus_message_iter_init_append(reply, &iter);
++		if (get_version(&iter) < 0)
++			goto fail;
++
++	} else if (strcmp(prop, "IsStatusNotifierHostRegistered") == 0) {
++		dbus_message_iter_init_append(reply, &iter);
++		if (get_isregistered(&iter) < 0)
++			goto fail;
++
++	} else if (strcmp(prop, "RegisteredStatusNotifierItems") == 0) {
++		dbus_message_iter_init_append(reply, &iter);
++		if (get_registered_items_variant(watcher, &iter) < 0)
++			goto fail;
++
++	} else {
++		dbus_message_unref(reply);
++		reply = dbus_message_new_error_printf(
++			reply, DBUS_ERROR_UNKNOWN_PROPERTY,
++			"Property \"%s\" does not exist", prop);
++	}
++
++send:
++	if (!reply || !dbus_connection_send(conn, reply, NULL))
++		goto fail;
++
++	if (reply)
++		dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_HANDLED;
++
++fail:
++	if (reply)
++		dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_NEED_MEMORY;
++}
++
++static DBusHandlerResult
++respond_all_props(Watcher *watcher, DBusConnection *conn, DBusMessage *msg)
++{
++	DBusMessage *reply = NULL;
++	DBusMessageIter array = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	DBusMessageIter dict = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	DBusMessageIter iter = DBUS_MESSAGE_ITER_INIT_CLOSED;
++	const char *prop;
++
++	reply = dbus_message_new_method_return(msg);
++	if (!reply)
++		goto fail;
++	dbus_message_iter_init_append(reply, &iter);
++
++	if (!dbus_message_iter_open_container(&iter, DBUS_TYPE_ARRAY, "{sv}",
++	                                      &array))
++		goto fail;
++
++	prop = "ProtocolVersion";
++	if (!dbus_message_iter_open_container(&array, DBUS_TYPE_DICT_ENTRY,
++	                                      NULL, &dict) ||
++	    !dbus_message_iter_append_basic(&dict, DBUS_TYPE_STRING, &prop) ||
++	    get_version(&dict) < 0 ||
++	    !dbus_message_iter_close_container(&array, &dict)) {
++		goto fail;
++	}
++
++	prop = "IsStatusNotifierHostRegistered";
++	if (!dbus_message_iter_open_container(&array, DBUS_TYPE_DICT_ENTRY,
++	                                      NULL, &dict) ||
++	    !dbus_message_iter_append_basic(&dict, DBUS_TYPE_STRING, &prop) ||
++	    get_isregistered(&dict) < 0 ||
++	    !dbus_message_iter_close_container(&array, &dict)) {
++		goto fail;
++	}
++
++	prop = "RegisteredStatusNotifierItems";
++	if (!dbus_message_iter_open_container(&array, DBUS_TYPE_DICT_ENTRY,
++	                                      NULL, &dict) ||
++	    !dbus_message_iter_append_basic(&dict, DBUS_TYPE_STRING, &prop) ||
++	    get_registered_items_variant(watcher, &dict) < 0 ||
++	    !dbus_message_iter_close_container(&array, &dict)) {
++		goto fail;
++	}
++
++	if (!dbus_message_iter_close_container(&iter, &array) ||
++	    !dbus_connection_send(conn, reply, NULL)) {
++		goto fail;
++	}
++
++	dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_HANDLED;
++
++fail:
++	dbus_message_iter_abandon_container_if_open(&array, &dict);
++	dbus_message_iter_abandon_container_if_open(&iter, &array);
++	if (reply)
++		dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_NEED_MEMORY;
++}
++
++static DBusHandlerResult
++respond_introspect(DBusConnection *conn, DBusMessage *msg)
++{
++	DBusMessage *reply = NULL;
++
++	reply = dbus_message_new_method_return(msg);
++	if (!reply)
++		goto fail;
++
++	if (!dbus_message_append_args(reply, DBUS_TYPE_STRING, &snw_xml,
++	                              DBUS_TYPE_INVALID) ||
++	    !dbus_connection_send(conn, reply, NULL)) {
++		goto fail;
++	}
++
++	dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_HANDLED;
++
++fail:
++	if (reply)
++		dbus_message_unref(reply);
++	return DBUS_HANDLER_RESULT_NEED_MEMORY;
++}
++
++static DBusHandlerResult
++snw_message_handler(DBusConnection *conn, DBusMessage *msg, void *data)
++{
++	Watcher *watcher = data;
++
++	if (dbus_message_is_method_call(msg, DBUS_INTERFACE_INTROSPECTABLE,
++	                                "Introspect"))
++		return respond_introspect(conn, msg);
++
++	else if (dbus_message_is_method_call(msg, DBUS_INTERFACE_PROPERTIES,
++	                                     "GetAll"))
++		return respond_all_props(watcher, conn, msg);
++
++	else if (dbus_message_is_method_call(msg, DBUS_INTERFACE_PROPERTIES,
++	                                     "Get"))
++		return respond_get_prop(watcher, conn, msg);
++
++	else if (dbus_message_is_method_call(msg, SNW_IFACE,
++	                                     "RegisterStatusNotifierItem"))
++		return respond_register_item(watcher, conn, msg);
++
++	else
++		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
++}
++
++static const DBusObjectPathVTable snw_vtable = { .message_function =
++	                                                 snw_message_handler };
++
++void
++watcher_start(Watcher *watcher, DBusConnection *conn,
++              struct wl_event_loop *loop)
++{
++	DBusError err = DBUS_ERROR_INIT;
++	int r, flags;
++
++	wl_list_init(&watcher->items);
++	wl_list_init(&watcher->trays);
++	watcher->conn = conn;
++	watcher->loop = loop;
++
++	flags = DBUS_NAME_FLAG_REPLACE_EXISTING | DBUS_NAME_FLAG_DO_NOT_QUEUE;
++	r = dbus_bus_request_name(conn, SNW_NAME,
++	                          flags, NULL);
++	if (r != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER)
++		goto fail;
++
++	if (!dbus_connection_add_filter(conn, filter_bus, watcher, NULL)) {
++		dbus_bus_release_name(conn, SNW_NAME, NULL);
++		goto fail;
++	}
++
++	dbus_bus_add_match(conn, match_rule, &err);
++	if (dbus_error_is_set(&err)) {
++		dbus_connection_remove_filter(conn, filter_bus, watcher);
++		dbus_bus_release_name(conn, SNW_NAME, NULL);
++		goto fail;
++	}
++
++	if (!dbus_connection_register_object_path(conn, SNW_OPATH, &snw_vtable,
++	                                          watcher)) {
++		dbus_bus_remove_match(conn, match_rule, NULL);
++		dbus_connection_remove_filter(conn, filter_bus, watcher);
++		dbus_bus_release_name(conn, SNW_NAME, NULL);
++		goto fail;
++	}
++
++	watcher->running = 1;
++	return;
++
++fail:
++	fprintf(stderr, "Couldn't start watcher, systray not available\n");
++	dbus_error_free(&err);
++	return;
++}
++
++void
++watcher_stop(Watcher *watcher)
++{
++	dbus_connection_unregister_object_path(watcher->conn, SNW_OPATH);
++	dbus_bus_remove_match(watcher->conn, match_rule, NULL);
++	dbus_connection_remove_filter(watcher->conn, filter_bus, watcher);
++	dbus_bus_release_name(watcher->conn, SNW_NAME, NULL);
++	watcher->running = 0;
++}
++
++int
++watcher_get_n_items(const Watcher *watcher)
++{
++	return wl_list_length(&watcher->items);
++}
++
++void
++watcher_update_trays(Watcher *watcher)
++{
++	Tray *tray;
++
++	wl_list_for_each(tray, &watcher->trays, link)
++		tray_update(tray);
++}
+diff --git a/systray/watcher.h b/systray/watcher.h
+new file mode 100644
+index 0000000..127eb64
+--- /dev/null
++++ b/systray/watcher.h
+@@ -0,0 +1,35 @@
++#ifndef WATCHER_H
++#define WATCHER_H
++
++#include <dbus/dbus.h>
++#include <wayland-server-core.h>
++#include <wayland-util.h>
++
++/*
++ * The FDO spec says "org.freedesktop.StatusNotifierWatcher"[1],
++ * but both the client libraries[2,3] actually use "org.kde.StatusNotifierWatcher"
++ *
++ * [1] https://www.freedesktop.org/wiki/Specifications/StatusNotifierItem/
++ * [2] https://github.com/AyatanaIndicators/libayatana-appindicator-glib
++ * [3] https://invent.kde.org/frameworks/kstatusnotifieritem
++ */
++#define SNW_NAME "org.kde.StatusNotifierWatcher"
++#define SNW_OPATH "/StatusNotifierWatcher"
++#define SNW_IFACE "org.kde.StatusNotifierWatcher"
++
++typedef struct {
++	struct wl_list items;
++	struct wl_list trays;
++	struct wl_event_loop *loop;
++	DBusConnection *conn;
++	int running;
++} Watcher;
++
++void watcher_start (Watcher *watcher, DBusConnection *conn,
++                   struct wl_event_loop *loop);
++void watcher_stop (Watcher *watcher);
++
++int watcher_get_n_items (const Watcher *watcher);
++void watcher_update_trays (Watcher *watcher);
++
++#endif /* WATCHER_H */
+-- 
+2.49.0
+

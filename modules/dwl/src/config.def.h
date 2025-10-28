@@ -10,6 +10,8 @@ static const int smartgaps                 = 0;  /* 1 means no outer gap when th
 static int gaps                            = 1;  /* 1 means gaps between windows are added */
 static const unsigned int gappx            = 8; /* gap pixel between windows */
 static const unsigned int borderpx         = 3;  /* border pixel of windows */
+static const unsigned int systrayspacing   = 2; /* systray spacing */
+static const int showsystray               = 1; /* 0 means no systray */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
 static const char *fonts[]                 = {"JetBrainsMono Nerd Font:size=11"};
@@ -33,6 +35,9 @@ static int log_level = WLR_ERROR;
 static const char *const autostart[] = {
         "wlr-randr", "--output", "DP-2", "--mode", "2560x1440@239.970001Hz", NULL,
         "sh", "-c", "sleep 1 && wbg -s $HOME/dotfiles/assets/wallpapers/cyberpunk_catppuccin.jpg", NULL,
+        "nm-applet", NULL,
+        "blueman-applet", NULL,
+        "sh", "-c", "while true; do echo $(date +'%Y-%m-%d %H:%M:%S') > /tmp/dwl-test.log; sleep 5; done", NULL,  // Test this first
         NULL /* terminate */
 };
 
@@ -138,7 +143,30 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "ghostty", NULL };
-static const char *menucmd[] = { "wmenu-run", NULL };
+static const char *menucmd[] = { 
+    "wmenu-run", 
+    "-f", "JetBrainsMono Nerd Font 11",
+    "-N", "1e1e2e",           // Normal background (SchemeNorm bg)
+    "-n", "cdd6f4",           // Normal foreground (SchemeNorm fg)  
+    "-S", "89b4fa",           // Selection background (SchemeSel bg)
+    "-s", "1e1e2e",           // Selection foreground (SchemeSel fg)
+    "-M", "1e1e2e",           // Prompt background (same as normal bg)
+    "-m", "cdd6f4",           // Prompt foreground (same as normal fg)
+    "-p", "Run: ",            // Custom prompt
+    NULL 
+};
+static const char *dmenucmd[] = { 
+    "wmenu", 
+    "-f", "JetBrainsMono Nerd Font 11",
+    "-N", "1e1e2e",           // Normal background (SchemeNorm bg)
+    "-n", "cdd6f4",           // Normal foreground (SchemeNorm fg)
+    "-S", "89b4fa",           // Selection background (SchemeSel bg) 
+    "-s", "1e1e2e",           // Selection foreground (SchemeSel fg)
+    "-M", "1e1e2e",           // Prompt background
+    "-m", "cdd6f4",           // Prompt foreground
+    "-p", "Tray: ",           // Custom prompt
+    NULL 
+};
 
 /* Screenshot commands */
 static const char *screenshot_full[] = { "sh", "-c", 
@@ -238,4 +266,6 @@ static const Button buttons[] = {
 	{ ClkTagBar,   0,      BTN_RIGHT,  toggleview,     {0} },
 	{ ClkTagBar,   MODKEY, BTN_LEFT,   tag,            {0} },
 	{ ClkTagBar,   MODKEY, BTN_RIGHT,  toggletag,      {0} },
+	{ ClkTray,     0,      BTN_LEFT,   trayactivate,   {0} },
+	{ ClkTray,     0,      BTN_RIGHT,  traymenu,       {0} },
 };
