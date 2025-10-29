@@ -40,5 +40,12 @@
      name = "capitaine-cursors";
      size = 16;
    };
+
+   icons = {
+    enable = true;
+    package = pkgs.reversal-icon-theme;
+    dark = "Reversal";
+    light = "Reversal";
+   };
   };
 }

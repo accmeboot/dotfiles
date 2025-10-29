@@ -51,8 +51,6 @@
                 imports = [
                   ./hosts/7950x3d-xtx/home.nix
                   ./modules/home-manager/theme/default.nix
-                  ./modules/home-manager/gtk/default.nix
-                  ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
                   ./modules/home-manager/hyprland/default.nix
@@ -95,8 +93,6 @@
                 imports = [
                   ./hosts/rog16/home.nix
                   ./modules/home-manager/theme/default.nix
-                  ./modules/home-manager/gtk/default.nix
-                  ./modules/home-manager/qt/default.nix
                   ./modules/home-manager/waybar/default.nix
                   ./modules/home-manager/mako/default.nix
                   ./modules/home-manager/hyprland/default.nix
