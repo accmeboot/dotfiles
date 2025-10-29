@@ -111,15 +111,15 @@
 
       # Window rules
       windowrule = [
-        "float, class:^(nemo)$"
+        "float, class:nemo"
 
-        "float, class:^(com.accme.fzflauncher)$" 
-        "size 350 350, class:^(com.accme.fzflauncher)$"
-        "pin, class:^(com.accme.fzflauncher)$"
-        "stayfocused, class:^(com.accme.fzflauncher)$"
+        "float, class:com.accme.fzflauncher" 
+        "size 350 350, class:com.accme.fzflauncher"
+        "pin, class:com.accme.fzflauncher"
+        "stayfocused, class:com.accme.fzflauncher"
 
-        "float, class:^(com.accme.float)$" 
-        "size 800 800, class:^(com.accme.float)$"
+        "float, class:com.accme.float" 
+        "size 800 800, class:com.accme.float"
         "center, floating:1"
       ];
 
