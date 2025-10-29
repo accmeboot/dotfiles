@@ -78,7 +78,7 @@
         };
 
         clock = {
-          format = "{:%A, %d %b %Y, %H:%M}";
+          format = "{:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
