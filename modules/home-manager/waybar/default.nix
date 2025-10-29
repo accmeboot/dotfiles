@@ -16,10 +16,9 @@
           "custom/ram"
           "custom/separator"
           "custom/disk"
-          "custom/separator"
-          "cava"
         ];
         modules-right = [
+          "cava"
           "tray"
           "custom/separator"
           "battery"
@@ -44,7 +43,7 @@
         };
 
         mpris = {
-          format = "{status_icon}  {dynamic}";
+          format = " {status_icon}  {dynamic}";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
