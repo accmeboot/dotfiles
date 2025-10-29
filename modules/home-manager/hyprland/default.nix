@@ -57,6 +57,7 @@
       general = {
         gaps_in = config.theme.spacing.xs;
         gaps_out = "0,${toString config.theme.spacing.s},${toString config.theme.spacing.s},${toString config.theme.spacing.s}";
+        float_gaps = config.theme.spacing.m;
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
