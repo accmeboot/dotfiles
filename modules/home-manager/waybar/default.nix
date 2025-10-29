@@ -39,9 +39,9 @@
         };
 
         pulseaudio = {
-          format = " VOL: {volume}%";
-          format-bluetooth = " VOL: {volume}%";
-          format-muted = " VOL: {volume}% [MUTED]";
+          format = " {icon} {volume}%";
+          format-muted = "   {volume}%";
+          format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click = "ghostty --class=com.accme.float --command='wiremix -v output'";
         };
