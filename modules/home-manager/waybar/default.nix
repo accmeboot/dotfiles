@@ -113,7 +113,7 @@
         background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
         padding: 0px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
-        box-shadow: 1 1 3 1px alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
+        box-shadow: 4px 4px 2px 1px alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
         margin: ${toString config.theme.spacing.s}px;
       }
 
