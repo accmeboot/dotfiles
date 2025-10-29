@@ -7,7 +7,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "custom/launcher" "hyprland/workspaces" "mpris" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" "mpris" "cava" ];
         modules-center = [
           "custom/cpu"
           "custom/separator"
@@ -18,7 +18,6 @@
           "disk"
         ];
         modules-right = [
-          "cava"
           "tray"
           "custom/separator"
           "battery"
