@@ -114,12 +114,13 @@
         "float, class:^(nemo)$"
 
         "float, class:^(com.accme.fzflauncher)$" 
-        "size 350 380, class:^(com.accme.fzflauncher)$"
+        "size 300 350, class:^(com.accme.fzflauncher)$"
         "pin, class:^(com.accme.fzflauncher)$"
         "stayfocused, class:^(com.accme.fzflauncher)$"
 
         "float, class:^(com.accme.float)$" 
         "size 800 600, class:^(com.accme.float)$"
+        "center, floating:1"
       ];
 
       # Key bindings
@@ -220,7 +221,6 @@
       # Startup applications
       exec-once = [
         "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
-        "hyprctl dispatch workspace name:T"
         "waybar"
         "nm-applet"
         "blueman-applet"
