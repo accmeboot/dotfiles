@@ -13,9 +13,9 @@
           "custom/separator"
           "custom/gpu"
           "custom/separator"
-          "custom/ram"
+          "memory"
           "custom/separator"
-          "custom/disk"
+          "disk"
         ];
         modules-right = [
           "cava"
@@ -86,22 +86,20 @@
           on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
-        "custom/ram" = {
-          format = "  {text}%";
-          exec = "${../../../scripts/stats/ram-usage.sh}";
-          interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=htop";
-        };
-
-        "custom/disk" = {
-          format = "󰉉 {text}%";
-          exec = "${../../../scripts/stats/disk-usage.sh}";
-          interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=htop";
-        };
-
         "custom/separator" = {
           format = "";
+        };
+
+        memory = {
+          format = "  {percentage}%";
+          interval = 30;
+          on-click = "ghostty --class=com.accme.float --command=htop";
+        };
+
+        disk = {
+          format = "󰉉 {percentage_used}%";
+          interval = 30;
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         pulseaudio = {
@@ -233,6 +231,10 @@
         color: #${config.theme.colors.base08};
       }
 
+      #cava {
+        color: #${config.theme.colors.base0F};
+      }
+
       #custom-launcher {
         font-size: 20px;
         color: #${config.theme.colors.base0B};
@@ -244,14 +246,11 @@
       #custom-gpu {
         color: #${config.theme.colors.base0C};
       }
-      #custom-ram {
+      #memory {
         color: #${config.theme.colors.base0D};
       }
-      #custom-disk {
+      #disk {
         color: #${config.theme.colors.base0E};
-      }
-      #cava {
-        color: #${config.theme.colors.base0F};
       }
     '';
   };
