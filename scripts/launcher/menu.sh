@@ -22,7 +22,7 @@ if selection=$( get_selection ); then
       run "${TERMINAL:-ghostty} --class=com.accme.float --command='wiremix -v output'"
       ;;
     "System Monitor")
-      run "${TERMINAL:-ghostty} --class=com.accme.float --command=btop"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command=htop"
       ;;
     "Files")
       run "${TERMINAL:-ghostty} --class=com.accme.float --command=yazi"

@@ -76,28 +76,28 @@
           format = "󰍛 {text}°C";
           exec = "${../../../scripts/stats/cpu-temp.sh}";
           interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=btop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/gpu" = {
           format = "󰾲 {text}°C";
           exec = "${../../../scripts/stats/gpu-temp.sh}";
           interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=btop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/ram" = {
           format = "  {text}%";
           exec = "${../../../scripts/stats/ram-usage.sh}";
           interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=btop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/disk" = {
           format = "󰉉 {text}%";
           exec = "${../../../scripts/stats/disk-usage.sh}";
           interval = 1;
-          on-click = "ghostty --class=com.accme.float --command=btop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/separator" = {

@@ -112,15 +112,15 @@
       # Window rules
       windowrule = [
         "float, class:nemo"
+        "float, class:com.accme.float" 
+        "size 1000 800, class:com.accme.float"
+
+        "center, floating:1"
 
         "float, class:com.accme.fzflauncher" 
-        "size 350 350, class:com.accme.fzflauncher"
+        "size 400 400, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
         "stayfocused, class:com.accme.fzflauncher"
-
-        "float, class:com.accme.float" 
-        "size 800 800, class:com.accme.float"
-        "center, floating:1"
       ];
 
       # Key bindings
@@ -128,10 +128,9 @@
         # Basic bindings
         "$mod, Q,   exec, $terminal"
         "$mod, C,   killactive"
+        "$mod, F,   togglefloating"
         "$mod, R,   exec, $menu"
         "$mod, W,   exec, $terminal --class=com.accme.float --command='wiremix -v output'"
-        "$mod, F,   exec, hyprctl --batch \"dispatch togglefloating; dispatch resizeactive exact 1000 800; dispatch centerwindow 1\""
-        "$mod, P,   pseudo"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 
