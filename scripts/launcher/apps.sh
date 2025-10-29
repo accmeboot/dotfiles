@@ -55,6 +55,6 @@ if selection=$(get_selection); then
     if [[ -n "$exec_cmd" ]]; then
         # Clean up desktop entry field codes
         exec_cmd=$(echo "$exec_cmd" | sed 's/ %[fFuUdDnNickvm]//g')
-        exec systemd-run --user -- sh -c "$exec_cmd"
+        exec systemd-run --user --quiet -- sh -c "$exec_cmd"
     fi
 fi

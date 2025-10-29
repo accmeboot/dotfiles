@@ -8,7 +8,17 @@
         position = "top";
         
         modules-left = [ "custom/launcher" "hyprland/workspaces" ];
-        modules-center = [ "custom/stats" "pulseaudio" ];
+        modules-center = [
+          "custom/cpu"
+          "custom/separator"
+          "custom/gpu"
+          "custom/separator"
+          "custom/ram"
+          "custom/separator"
+          "custom/disk"
+          "custom/separator"
+          "pulseaudio"
+        ];
         modules-right = [
           "tray"
           "battery"
@@ -31,24 +41,44 @@
           };
         };
 
-        "custom/stats" = {
-          format = "{text}";
-          exec = "${../../../scripts/stats/get-stats.sh}";
+        "custom/cpu" = {
+          format = "󰍛 {text}°C";
+          exec = "${../../../scripts/stats/cpu-temp.sh}";
           interval = 1;
           on-click = "ghostty --class=com.accme.float --command=btop";
         };
 
+        "custom/gpu" = {
+          format = "󰾲 {text}°C";
+          exec = "${../../../scripts/stats/gpu-temp.sh}";
+          interval = 1;
+          on-click = "ghostty --class=com.accme.float --command=btop";
+        };
+
+        "custom/ram" = {
+          format = "  {text}%";
+          exec = "${../../../scripts/stats/ram-usage.sh}";
+          interval = 1;
+          on-click = "ghostty --class=com.accme.float --command=btop";
+        };
+
+        "custom/disk" = {
+          format = "󰉉 {text}%";
+          exec = "${../../../scripts/stats/disk-usage.sh}";
+          interval = 1;
+          on-click = "ghostty --class=com.accme.float --command=btop";
+        };
+
+        "custom/separator" = {
+          format = "";
+        };
+
         pulseaudio = {
-          format = " {icon} {volume}%";
+          format = "{icon} {volume}%";
           format-muted = "   {volume}%";
           format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click = "ghostty --class=com.accme.float --command='wiremix -v output'";
-        };
-
-        "custom/separator" = {
-          format = "󰿟";
-          tooltip = false;
         };
 
         "custom/launcher" = {
@@ -175,6 +205,22 @@
       #custom-launcher {
         font-size: 20px;
         color: #${config.theme.colors.base0B};
+      }
+
+      #custom-cpu {
+        color: #${config.theme.colors.base0B};
+      }
+      #custom-gpu {
+        color: #${config.theme.colors.base0C};
+      }
+      #custom-ram {
+        color: #${config.theme.colors.base0D};
+      }
+      #custom-disk {
+        color: #${config.theme.colors.base0E};
+      }
+      #pulseaudio {
+        color: #${config.theme.colors.base0F};
       }
     '';
   };

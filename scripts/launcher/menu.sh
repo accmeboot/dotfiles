@@ -11,7 +11,7 @@ get_selection() {
 }
 
 run() {
-  exec systemd-run --user -- sh -c "$1"
+  exec systemd-run --user --quiet -- sh -c "$1"
 }
 
 if selection=$( get_selection ); then
