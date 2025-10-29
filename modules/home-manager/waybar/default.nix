@@ -7,7 +7,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" "mpris" ];
         modules-center = [
           "custom/cpu"
           "custom/separator"
@@ -16,6 +16,8 @@
           "custom/ram"
           "custom/separator"
           "custom/disk"
+          "custom/separator"
+          "cava"
         ];
         modules-right = [
           "tray"
@@ -39,6 +41,36 @@
           persistent-workspaces = {
            "*" = 5;
           };
+        };
+
+        mpris = {
+          format = "{status_icon}  {dynamic}";
+          interval = 1;
+          dynamic-len = 40;
+          title-len = 40;
+          status-icons = {
+            paused = " ";
+            playing = " ";
+            stopped = " ";
+          };
+        };
+
+        cava = {
+          framerate = 60;
+          autosens = 1;
+          bars = 14;
+          method = "pulse";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          noise_reduction = 0.77;
+          input_delay = 2;
+          sleep_timer = 1;
+          hide_on_silence = true;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         "custom/cpu" = {
@@ -219,7 +251,7 @@
       #custom-disk {
         color: #${config.theme.colors.base0E};
       }
-      #pulseaudio {
+      #cava {
         color: #${config.theme.colors.base0F};
       }
     '';
