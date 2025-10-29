@@ -19,6 +19,7 @@
         ];
         modules-right = [
           "tray"
+          "custom/separator"
           "battery"
           "pulseaudio"
           "clock"
@@ -74,7 +75,7 @@
 
         pulseaudio = {
           format = "{icon} {volume}%";
-          format-muted = "   {volume}%";
+          format-muted = "  {volume}%";
           format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click = "ghostty --class=com.accme.float --command='wiremix -v output'";
