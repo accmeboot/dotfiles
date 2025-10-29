@@ -7,7 +7,7 @@ let
   };
 
   light = {
-    image = "${../../../assets/wallpapers/trees_1.png}";
+    image = "${../../../assets/wallpapers/rocket-launch.jpg}";
     scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
     polarity = "light";
   };
