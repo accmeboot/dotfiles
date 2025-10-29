@@ -130,8 +130,7 @@
         "$mod, C,   killactive"
         "$mod, R,   exec, $menu"
         "$mod, W,   exec, $terminal --class=com.accme.float --command='wiremix -v output'"
-        "$mod, F,   togglefloating"
-        "$mod, F,   centerwindow"
+        "$mod, F,   exec, hyprctl --batch \"dispatch togglefloating; dispatch resizeactive exact 1000 800; dispatch centerwindow 1\""
         "$mod, P,   pseudo"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
@@ -144,15 +143,15 @@
 
         
         # Movement
-        "$mod, $left, movefocus, l"
-        "$mod, $down, movefocus, d"
-        "$mod, $up, movefocus, u"
+        "$mod, $left,  movefocus, l"
+        "$mod, $down,  movefocus, d"
+        "$mod, $up,    movefocus, u"
         "$mod, $right, movefocus, r"
 
-        "$mod SHIFT, $left, movewindow, l"
-        "$mod SHIFT, $down, movewindow, d"
-        "$mod SHIFT, $up, movewindow, u"
-        "$mod SHIFT, $right, movewindow, r"
+        "$mod SHIFT,   $left, movewindow, l"
+        "$mod SHIFT,   $down, movewindow, d"
+        "$mod SHIFT,   $up, movewindow, u"
+        "$mod SHIFT,   $right, movewindow, r"
 
         # Workspaces
         "$mod, 1, workspace, 1"

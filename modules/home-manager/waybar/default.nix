@@ -16,12 +16,11 @@
           "custom/ram"
           "custom/separator"
           "custom/disk"
-          "custom/separator"
-          "pulseaudio"
         ];
         modules-right = [
           "tray"
           "battery"
+          "pulseaudio"
           "clock"
         ];
 
