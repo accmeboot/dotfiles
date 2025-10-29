@@ -4,7 +4,7 @@ IFS=':'
 
 SCRIPT_DIR="$HOME/dotfiles/scripts"
 
-entries=" Audio\n󰄩 System Monitor\n Files\n Steam\n󰖟 Browser\n Terminal\n󱓞 Drun\n󰝘 Applications\n󰤆 Shutdown\n Reboot\n󰒲 Sleep\n Lock\n Configuration"
+entries=" Audio\n󰄩 System Monitor\n Files\n Steam\n󰖟 Browser\n Terminal\n󱓞 Drun\n󰝘 Applications\n󰤆 Shutdown\n Reboot\n󰒲 Sleep\n Lock\n Configuration\n󰖨 Light Mode\n Dark Mode"
 
 get_selection() {
   echo -e "$entries" | "$SCRIPT_DIR/launcher/show-launcher.sh"
@@ -56,6 +56,12 @@ if selection=$( get_selection ); then
       ;;
     "Configuration")
       run "${TERMINAL:-kitty} tmux new -s CONFIG -c ~/dotfiles"
+      ;;
+    "Light Mode")
+      run "set-light-theme"
+      ;;
+    "Dark Mode")
+      run "set-dark-theme"
       ;;
     *)
       exit 1
