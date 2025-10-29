@@ -131,6 +131,7 @@
         "$mod, R,   exec, $menu"
         "$mod, W,   exec, $terminal --class=com.accme.float --command='wiremix -v output'"
         "$mod, F,   togglefloating"
+        "$mod, F,   centerwindow"
         "$mod, P,   pseudo"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
