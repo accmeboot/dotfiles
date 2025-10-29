@@ -272,11 +272,6 @@ in {
     if.app-id = 'org.mozilla.firefox'
     run = 'move-node-to-workspace B'
 
-
-    [[on-window-detected]]
-    if.app-id = 'com.mitchellh.ghostty'
-    run = 'move-node-to-workspace T'
-
     [[on-window-detected]]
     if.app-id = 'com.microsoft.teams2'
     run = 'move-node-to-workspace M'

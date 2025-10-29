@@ -57,5 +57,3 @@ opt.foldlevelstart = 99
 opt.fillchars:append({ eob = " " })
 
 opt.cmdheight = 0
-
-vim.opt.guicursor = "n-v-i-c:block-Cursor"

@@ -16,8 +16,8 @@
       "$down" = "j";
       "$up" = "k";
       "$right" = "l";
-      "$terminal" = "ghostty";
-      "$menu" = "$terminal --class=com.accme.fzflauncher --command=${../../../scripts/launcher/menu.sh}";
+      "$terminal" = "kitty";
+      "$menu" = "$terminal --class com.accme.fzflauncher ${../../../scripts/launcher/menu.sh}";
 
       # Monitor configuration
       monitor = [
@@ -61,9 +61,6 @@
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
-
-        "col.active_border" = lib.mkForce "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
-        "col.inactive_border" = lib.mkForce "rgb(${config.theme.colors.base03})";
       };
 
       # Decoration
@@ -79,7 +76,11 @@
           range = 2;
           render_power = 1;
           offset = "4 4";
+          color = lib.mkForce "rgba(1B161099)";
         };
+
+        dim_inactive = true;
+        dim_strength = 0.2;
       };
 
       animations = {
@@ -92,8 +93,6 @@
           enabled = false;
           stacked = false;
         };
-
-        "col.border_active" = lib.mkForce "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
 
@@ -114,12 +113,12 @@
       windowrule = [
         "float, class:nemo"
         "float, class:com.accme.float" 
-        "size 1000 800, class:com.accme.float"
+        "size 800 800, class:com.accme.float"
 
         "center, floating:1"
 
         "float, class:com.accme.fzflauncher" 
-        "size 400 400, class:com.accme.fzflauncher"
+        "size 320 350, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
         "stayfocused, class:com.accme.fzflauncher"
       ];
@@ -131,7 +130,7 @@
         "$mod, C,   killactive"
         "$mod, F,   togglefloating"
         "$mod, R,   exec, $menu"
-        "$mod, W,   exec, $terminal --class=com.accme.float --command='wiremix -v output'"
+        "$mod, W,   exec, $terminal --class com.accme.float wiremix -v output"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 

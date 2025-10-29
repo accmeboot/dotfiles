@@ -22,7 +22,6 @@
     luarocks     # package manager for Lua modules
 
     # Terminal Utilities
-    ghostty
     fzf          # command-line fuzzy finder
     htop         # resource monitor
     fd           # fast alternative to 'find'
