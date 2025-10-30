@@ -55,7 +55,7 @@ if selection=$( get_selection ); then
       run "pidof hyprlock || hyprlock"
       ;;
     "Configuration")
-      run "${TERMINAL:-kitty} tmux new -s CONFIG -c ~/dotfiles"
+      run "${TERMINAL:-kitty} --directory ~/dotfiles sh -c 'nvim .; exec \$SHELL'"
       ;;
     "Light Mode")
       run "set-light-theme"
