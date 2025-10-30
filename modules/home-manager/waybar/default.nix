@@ -145,6 +145,9 @@
           spacing = config.theme.spacing.s;
           icon-size = 16;
           cursor = 60;
+          icons = {
+            steam = "${../../../assets/icons/steam.png}";
+          };
         };
       };
     };
