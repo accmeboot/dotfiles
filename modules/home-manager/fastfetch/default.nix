@@ -5,10 +5,7 @@
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-          type = "kitty-icat";
-          source = ../../../assets/icons/nixos.png;
-          width = 20;
-          height = 20;
+          type = "none";
       };
       display.separator = " ";
       modules = [

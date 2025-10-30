@@ -30,6 +30,7 @@
         nv = "nvim";
         icat = "kitten icat";
         fzfnv = "nvim $(fzf)";
+        cf = "clear && fastfetch";
       };
 
       # Use built-in plugin options

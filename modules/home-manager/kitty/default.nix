@@ -51,7 +51,7 @@
       map ctrl+n>m next_layout
 
 
-      map ctrl+n>bracketleft launch --type=overlay --stdin-source=@screen_scrollback nvim -c "set readonly nomodifiable noswapfile" -c "set buftype=nofile" -
+      map ctrl+n>slash launch --type=overlay --stdin-source=@screen_scrollback nvim -c "set readonly nomodifiable noswapfile" -c "set buftype=nofile" -
       map ctrl+n>f new_window_with_cwd yazi
     '';
   };
