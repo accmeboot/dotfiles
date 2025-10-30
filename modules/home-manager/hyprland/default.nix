@@ -118,7 +118,7 @@
         "center, floating:1"
 
         "float, class:com.accme.fzflauncher" 
-        "size 320 380, class:com.accme.fzflauncher"
+        "size 320 360, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
         "stayfocused, class:com.accme.fzflauncher"
       ];
