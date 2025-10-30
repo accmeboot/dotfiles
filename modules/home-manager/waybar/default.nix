@@ -230,26 +230,8 @@
         color: #${config.theme.colors.base08};
       }
 
-      #cava {
-        color: #${config.theme.colors.base0F};
-      }
-
       #custom-launcher {
         font-size: 20px;
-        color: #${config.theme.colors.base0B};
-      }
-
-      #custom-cpu {
-        color: #${config.theme.colors.base0B};
-      }
-      #custom-gpu {
-        color: #${config.theme.colors.base0C};
-      }
-      #memory {
-        color: #${config.theme.colors.base0D};
-      }
-      #disk {
-        color: #${config.theme.colors.base0E};
       }
     '';
   };
