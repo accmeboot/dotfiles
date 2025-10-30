@@ -28,13 +28,14 @@
         spacing = config.theme.spacing.s;
 
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{icon}{name}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
           format-icons = {
-            active = "󰮯";
-            default = "";
+            active = " ";
+            default = " ";
+            empty = " ";
           };
           persistent-workspaces = {
            "*" = 5;
