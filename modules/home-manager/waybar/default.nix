@@ -110,7 +110,7 @@
         };
 
         "custom/launcher" = {
-          format = "";
+          format = "";
           on-click = "kitty --class com.accme.fzflauncher ${../../../scripts/launcher/menu.sh}";
           tooltip-format = "System menu";
         };
@@ -231,7 +231,7 @@
       }
 
       #custom-launcher {
-        font-size: 20px;
+        font-size: 18px;
       }
     '';
   };
