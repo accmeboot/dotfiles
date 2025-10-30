@@ -33,7 +33,6 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
           format-icons = {
-            active = "";
             default = "";
             empty = "";
           };
