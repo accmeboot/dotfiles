@@ -28,7 +28,7 @@
       tab_bar_edge top
       tab_bar_style separator
       tab_separator " "
-      tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent} {index}:{title} "
+      tab_title_template " {fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}:{title} "
 
       active_tab_foreground   #${config.theme.colors.base00}
       active_tab_background   #${config.theme.colors.base0D}
