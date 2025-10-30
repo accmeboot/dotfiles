@@ -21,28 +21,24 @@
             type = "uptime";
           }
           {
-            key = "│ {#34}{icon} distro   {#keys}│";
+            key = "│ {#32}{icon} distro   {#keys}│";
             type = "os";
           }
           {
-            key = "│ {#35} kernel   {#keys}│";
+            key = "│ {#34} kernel   {#keys}│";
             type = "kernel";
           }
           {
-            key = "│ {#36}󰇄 desktop  {#keys}│";
-            type = "de";
-          }
-          {
-            key = "│ {#33}󰏖 packages {#keys}│";
+            key = "│ {#35}󰏖 packages {#keys}│";
             type = "packages";
           }
           {
-            key = "│ {#34}󰉉 disk     {#keys}│";
+            key = "│ {#31}󰉉 disk     {#keys}│";
             type = "disk";
             folders = "/";
           }
           {
-            key = "│ {#35} memory   {#keys}│";
+            key = "│ {#36} memory   {#keys}│";
             type = "memory";
           }
           {
