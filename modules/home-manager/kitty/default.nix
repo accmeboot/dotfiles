@@ -7,7 +7,7 @@
 
       allow_remote_control yes
 
-      window_padding_width ${toString config.theme.spacing.m}
+      window_padding_width ${toString config.theme.spacing.xs}
 
       background_opacity ${toString config.theme.opacity}
 
