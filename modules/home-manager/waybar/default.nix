@@ -7,7 +7,7 @@
         layer = "bottom";
         position = "top";
         
-        modules-left = [ "custom/launcher" "hyprland/workspaces" "mpris" "cava" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" "hyprland/window" ];
         modules-center = [
           "custom/cpu"
           "custom/separator"
@@ -40,36 +40,6 @@
           persistent-workspaces = {
            "*" = 5;
           };
-        };
-
-        mpris = {
-          format = " {status_icon}  {dynamic}";
-          interval = 1;
-          dynamic-len = 40;
-          title-len = 40;
-          status-icons = {
-            paused = " ";
-            playing = " ";
-            stopped = " ";
-          };
-        };
-
-        cava = {
-          framerate = 60;
-          autosens = 1;
-          bars = 14;
-          method = "pulse";
-          source = "auto";
-          stereo = true;
-          reverse = false;
-          bar_delimiter = 0;
-          monstercat = false;
-          waves = false;
-          noise_reduction = 0.77;
-          input_delay = 2;
-          sleep_timer = 1;
-          hide_on_silence = true;
-          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         "custom/cpu" = {
@@ -236,6 +206,12 @@
 
       #custom-launcher {
         font-size: 18px;
+      }
+
+      window#waybar.empty #window {
+        font-size: 0;
+        margin: 0;
+        padding: 0;
       }
     '';
   };
