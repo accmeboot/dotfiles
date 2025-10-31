@@ -1,0 +1,5 @@
+{ ... }: {
+  imports = [
+    ../aerospace/default.nix
+  ];
+}

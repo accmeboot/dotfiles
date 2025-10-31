@@ -51,21 +51,8 @@
                 users.accme = {
                   imports = [
                     ./hosts/7950x3d-xtx/home.nix
-                    ./modules/home-manager/theme/default.nix
-                    ./modules/home-manager/waybar/default.nix
-                    ./modules/home-manager/mako/default.nix
-                    ./modules/home-manager/hyprland/default.nix
-                    ./modules/home-manager/hyprlock/default.nix
-                    ./modules/home-manager/hypridle/default.nix
-                    ./modules/home-manager/nvim/default.nix
-                    ./modules/home-manager/yazi/default.nix
-                    ./modules/home-manager/starship/default.nix
-                    ./modules/home-manager/zsh/default.nix
-                    ./modules/home-manager/fastfetch/default.nix
-                    ./modules/home-manager/kitty/default.nix
-
-                    stylix.homeModules.stylix
-                    ./modules/home-manager/stylix/default.nix
+                    ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
@@ -90,21 +77,8 @@
                 users.accme = {
                   imports = [
                     ./hosts/rog16/home.nix
-                    ./modules/home-manager/theme/default.nix
-                    ./modules/home-manager/waybar/default.nix
-                    ./modules/home-manager/mako/default.nix
-                    ./modules/home-manager/hyprland/default.nix
-                    ./modules/home-manager/hyprlock/default.nix
-                    ./modules/home-manager/hypridle/default.nix
-                    ./modules/home-manager/nvim/default.nix
-                    ./modules/home-manager/yazi/default.nix
-                    ./modules/home-manager/starship/default.nix
-                    ./modules/home-manager/zsh/default.nix
-                    ./modules/home-manager/fastfetch/default.nix
-                    ./modules/home-manager/kitty/default.nix
-
-                    stylix.homeModules.stylix
-                    ./modules/home-manager/stylix/default.nix
+                    ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
@@ -127,17 +101,8 @@
                 users.Mikhail_Vialov = {
                   imports = [
                     ./hosts/mbp-m1/home.nix
-                    ./modules/home-manager/theme/default.nix
-                    ./modules/home-manager/aerospace/default.nix
-                    ./modules/home-manager/nvim/default.nix
-                    ./modules/home-manager/yazi/default.nix
-                    ./modules/home-manager/starship/default.nix
-                    ./modules/home-manager/zsh/default.nix
-                    ./modules/home-manager/fastfetch/default.nix
-                    ./modules/home-manager/kitty/default.nix
-
-                    stylix.homeModules.stylix
-                    ./modules/home-manager/stylix/default.nix
+                    ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/darwin.nix
                   ];
                 };
               };

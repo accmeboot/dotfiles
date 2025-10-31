@@ -63,6 +63,9 @@
 
       map ctrl+n>slash launch --type=overlay --stdin-source=@screen_scrollback nvim -c "set readonly nomodifiable noswapfile" -c "set buftype=nofile" -
       map ctrl+n>f new_window_with_cwd yazi
+
+      # this is needed for opencode to accept new line with shift+enter
+      map shift+enter send_text all \x1b[13;2u
     '';
   };
 }

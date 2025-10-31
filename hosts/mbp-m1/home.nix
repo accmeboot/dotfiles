@@ -6,4 +6,11 @@
   };
 
   programs.zsh.enableNvm = true;
+
+  stylix.desktop = {
+    enableFonts = false;
+    enableIcons = false;
+    enableCursor = false;
+    enableWallpaper = false;
+  };
 }
