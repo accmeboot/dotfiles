@@ -134,6 +134,7 @@
                     ./modules/home-manager/starship/default.nix
                     ./modules/home-manager/zsh/default.nix
                     ./modules/home-manager/fastfetch/default.nix
+                    ./modules/home-manager/kitty/default.nix
 
                     stylix.homeModules.stylix
                     ./modules/home-manager/stylix/default.nix

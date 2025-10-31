@@ -23,9 +23,8 @@
 
   homebrew = {
     enable = true;
-    brews = [ "borders" ];
     casks = [ "aerospace" ];
-    taps = [ "FelixKratz/formulae" "nikitabobko/aerospace" ];
+    taps = [ "nikitabobko/aerospace" ];
   };
 
   system = {

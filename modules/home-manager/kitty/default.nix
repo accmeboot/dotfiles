@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      macos_titlebar_color background
+      macos_titlebar_color system
 
       allow_remote_control yes
 
