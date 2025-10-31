@@ -6,10 +6,16 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- splitting windows
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
-keymap.set("n", "<leader>sc", ":close<CR>") -- close current split window
+keymap.set("n", "<leader>sv", "<C-w>v")     -- split window vertically
+keymap.set("n", "<leader>sh", "<C-w>s")     -- split window horizontally
+keymap.set("n", "<leader>se", "<C-w>=")     -- make split windows equal width
+keymap.set("n", "<leader>cs", ":close<CR>") -- close current split window
+
+-- moving between splits
+vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to bottom split' })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to top split' })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
 
 -- save file --
 keymap.set("n", "<leader>w", ":update<CR>")
