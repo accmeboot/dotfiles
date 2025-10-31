@@ -11,7 +11,14 @@
       background_opacity ${toString config.theme.opacity}
       background_blur 60
 
-      font_family JetBrainsMono Nerd Font
+      # BEGIN_KITTY_FONTS
+      # Font ligatures settings for Jet Brains Mono Font:
+      # https://github.com/JetBrains/JetBrainsMono/wiki/OpenType-features
+      font_family      family='JetBrainsMono Nerd Font Mono' style=Light
+      bold_font        family='JetBrainsMono Nerd Font Mono' style=Bold
+      italic_font      family='JetBrainsMono Nerd Font Mono' style='Light Italic'
+      bold_italic_font family='JetBrainsMono Nerd Font Mono' style='Bold Italic'
+      # END_KITTY_FONTS
 
       tab_bar_edge top
       tab_bar_style separator
