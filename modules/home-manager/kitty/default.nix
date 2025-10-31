@@ -7,7 +7,7 @@
 
       allow_remote_control yes
 
-      window_padding_width ${toString config.theme.spacing.xs}
+      window_margin_width ${toString config.theme.spacing.s}
 
       background_opacity ${toString config.theme.opacity}
       background_blur 60
@@ -20,11 +20,17 @@
       tab_title_template " {fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}:{title} "
 
       tab_bar_min_tabs 0
+      tab_bar_margin_width ${toString config.theme.spacing.s}
+      tab_bar_margin_height ${toString config.theme.spacing.s} ${toString config.theme.spacing.s}
+      tab_bar_margin_color #${config.theme.colors.base00}
+      tab_bar_align left
 
       active_tab_foreground   #${config.theme.colors.base00}
       active_tab_background   #${config.theme.colors.base0D}
       inactive_tab_foreground #${config.theme.colors.base05}
       inactive_tab_background #${config.theme.colors.base00}
+
+      tab_bar_background #${config.theme.colors.base00}
 
       enabled_layouts horizontal,vertical
 
