@@ -17,7 +17,7 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "kitty";
-      "$menu" = "$terminal --class com.accme.fzflauncher ${../../../scripts/launcher/menu.sh}";
+      "$menu" = "$terminal --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${../../../scripts/launcher/menu.sh}";
 
       # Monitor configuration
       monitor = [
@@ -132,7 +132,7 @@
         "$mod, C,   killactive"
         "$mod, F,   togglefloating"
         "$mod, R,   exec, $menu"
-        "$mod, W,   exec, $terminal --class com.accme.float wiremix -v output"
+        "$mod, W,   exec, $terminal --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 

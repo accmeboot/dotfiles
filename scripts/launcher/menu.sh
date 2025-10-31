@@ -19,13 +19,13 @@ if selection=$( get_selection ); then
   
   case "$selection_clean" in
     "Audio")
-      run "${TERMINAL:-kitty} --class com.accme.float wiremix -v output"
+      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output"
       ;;
     "System Monitor")
-      run "${TERMINAL:-kitty} --class com.accme.float htop"
+      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 htop"
       ;;
     "Files")
-      run "${TERMINAL:-kitty} --class com.accme.float yazi"
+      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 yazi"
       ;;
     "Steam")
       run "steam"
