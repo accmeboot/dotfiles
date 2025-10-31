@@ -115,7 +115,7 @@
       windowrule = [
         "float, class:nemo"
         "float, class:com.accme.float" 
-        "size 800 800, class:com.accme.float"
+        "size 800 600, class:com.accme.float"
 
         "center, floating:1"
 
