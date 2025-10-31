@@ -20,6 +20,11 @@
       bold_italic_font family='JetBrainsMono Nerd Font Mono' style='Bold Italic'
       # END_KITTY_FONTS
 
+
+      # BEGIN_KITTY_SYMBOL_MAPS
+      symbol_map U+E000-U+F8FF,U+F0000-U+FFFFF,U+100000-U+10ffff JetBrainsMonoNL Nerd Font
+      # END_KITTY_SYMBOL_MAPS
+
       tab_bar_edge top
       tab_bar_style separator
       tab_separator " "
