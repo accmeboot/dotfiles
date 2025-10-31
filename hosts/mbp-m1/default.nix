@@ -23,7 +23,7 @@
 
   homebrew = {
     enable = true;
-    casks = [ "aerospace" ];
+    casks = [ "aerospace" "ghostty" ];
     taps = [ "nikitabobko/aerospace" ];
   };
 

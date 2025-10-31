@@ -4,6 +4,7 @@
   home.file.".config/ghostty/config".text = ''
     font-family=""
     background-opacity=${toString config.theme.opacity}
+    background-blur=true
     cursor-style=block
     shell-integration-features=no-cursor
     app-notifications=false
