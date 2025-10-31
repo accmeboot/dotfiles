@@ -6,7 +6,7 @@
 
       allow_remote_control yes
 
-      window_margin_width ${toString config.theme.spacing.s}
+      window_padding_width ${toString config.theme.spacing.s}
 
       background_opacity ${toString config.theme.opacity}
       background_blur 60
