@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 let
   dark = {
     image = "${../../../assets/wallpapers/cyberpunk_catppuccin.jpg}";
@@ -36,16 +36,16 @@ in {
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
+          package = pkgs.inter;
+          name = "Inter";
         };
         sansSerif = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
+          package = pkgs.inter;
+          name = "Inter";
         };
         monospace = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
+          package = pkgs.inter;
+          name = "Inter";
         };
         sizes = {
           applications = 11;

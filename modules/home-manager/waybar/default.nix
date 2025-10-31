@@ -28,21 +28,21 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
           format-icons = {
-            default = "";
-            empty = "";
+            default = " ";
+            empty = " ";
           };
           persistent-workspaces = { "*" = 5; };
         };
 
         "custom/cpu" = {
-          format = "󰍛 {text}°C";
+          format = "󰍛  {text}°C";
           exec = "${../../../scripts/stats/cpu-temp.sh}";
           interval = 1;
           on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
         };
 
         "custom/gpu" = {
-          format = "󰾲 {text}°C";
+          format = "󰾲  {text}°C";
           exec = "${../../../scripts/stats/gpu-temp.sh}";
           interval = 1;
           on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
@@ -57,7 +57,7 @@
         };
 
         disk = {
-          format = "󰉉 {percentage_used}%";
+          format = "󰉉  {percentage_used}%";
           interval = 30;
           on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
         };
@@ -72,7 +72,7 @@
         };
 
         "custom/launcher" = {
-          format = "";
+          format = " ";
           on-click =
             "kitty --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${
               ../../../scripts/launcher/menu.sh
