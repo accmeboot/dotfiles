@@ -38,14 +38,14 @@
           format = "󰍛  {text}°C";
           exec = "${../../../scripts/stats/cpu-temp.sh}";
           interval = 1;
-          on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/gpu" = {
           format = "󰾲  {text}°C";
           exec = "${../../../scripts/stats/gpu-temp.sh}";
           interval = 1;
-          on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         "custom/separator" = { format = ""; };
@@ -53,13 +53,13 @@
         memory = {
           format = "  {percentage}%";
           interval = 30;
-          on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         disk = {
           format = "󰉉  {percentage_used}%";
           interval = 30;
-          on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
+          on-click = "ghostty --class=com.accme.float --command=htop";
         };
 
         pulseaudio = {
@@ -68,13 +68,12 @@
           format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click =
-            "kitty --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output";
+            "ghostty --class=com.accme.float --command='wiremix -v output'";
         };
 
         "custom/launcher" = {
           format = " ";
-          on-click =
-            "kitty --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${
+          on-click = "ghostty --class=com.accme.fzflauncher --command=${
               ../../../scripts/launcher/menu.sh
             }";
           tooltip-format = "System menu";

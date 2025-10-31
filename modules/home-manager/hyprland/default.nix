@@ -15,9 +15,8 @@
       "$down" = "j";
       "$up" = "k";
       "$right" = "l";
-      "$terminal" = "kitty";
-      "$menu" =
-        "$terminal --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${
+      "$terminal" = "ghostty";
+      "$menu" = "$terminal --class=com.accme.fzflauncher --command=${
           ../../../scripts/launcher/menu.sh
         }";
 

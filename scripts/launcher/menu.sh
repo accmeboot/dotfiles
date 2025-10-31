@@ -19,13 +19,13 @@ if selection=$( get_selection ); then
   
   case "$selection_clean" in
     "Audio")
-      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command='wiremix -v output'"
       ;;
     "System Monitor")
-      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 htop"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command=btop"
       ;;
     "Files")
-      run "${TERMINAL:-kitty} --class com.accme.float -o tab_bar_min_tabs=2 yazi"
+      run "${TERMINAL:-ghostty} --class=com.accme.float --command=yazi"
       ;;
     "Steam")
       run "steam"
@@ -34,7 +34,7 @@ if selection=$( get_selection ); then
       run "brave"
       ;;
     "Terminal")
-      run "${TERMINAL:-kitty}"
+      run "${TERMINAL:-ghostty}"
       ;;
     "Drun")
       exec "$SCRIPT_DIR/launcher/drun.sh"
@@ -55,7 +55,7 @@ if selection=$( get_selection ); then
       run "pidof hyprlock || hyprlock"
       ;;
     "Configuration")
-      run "${TERMINAL:-kitty} --directory ~/dotfiles sh -c 'nvim .; exec \$SHELL'"
+      run "${TERMINAL:-ghostty} --command='tmux new -s CONFIG -c ~/dotfiles'"
       ;;
     "Light Mode")
       run "set-light-theme"

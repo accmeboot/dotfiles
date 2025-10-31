@@ -1,4 +1,4 @@
-{ ... }:{
+{ ... }: {
   home.file.".config/aerospace/aerospace.toml".text = ''
     after-login-command = []
     after-startup-command = []
@@ -26,7 +26,7 @@
         outer.right =      10
 
     [mode.main.binding]
-        alt-q = 'exec-and-forget open -n -a "kitty"'
+        alt-q = 'exec-and-forget open -n -a "ghostty"'
         alt-c = 'close'
         alt-f = 'layout floating tiling'
         alt-e = 'macos-native-fullscreen'
