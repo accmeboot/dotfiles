@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options.theme = {
     borderRadius = lib.mkOption {
       type = lib.types.int;
@@ -43,32 +42,80 @@
           };
         };
       };
-      default = {};
+      default = { };
     };
 
     # default scheme is gruvbox
     colors = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          base00 = lib.mkOption { type = lib.types.str; default = "282828"; }; # bg
-          base01 = lib.mkOption { type = lib.types.str; default = "3c3836"; }; # bg1
-          base02 = lib.mkOption { type = lib.types.str; default = "504945"; }; # bg2
-          base03 = lib.mkOption { type = lib.types.str; default = "665c54"; }; # bg3
-          base04 = lib.mkOption { type = lib.types.str; default = "bdae93"; }; # fg2
-          base05 = lib.mkOption { type = lib.types.str; default = "d5c4a1"; }; # fg1
-          base06 = lib.mkOption { type = lib.types.str; default = "ebdbb2"; }; # fg0
-          base07 = lib.mkOption { type = lib.types.str; default = "fbf1c7"; }; # fg
-          base08 = lib.mkOption { type = lib.types.str; default = "fb4934"; }; # red
-          base09 = lib.mkOption { type = lib.types.str; default = "fe8019"; }; # orange
-          base0A = lib.mkOption { type = lib.types.str; default = "fabd2f"; }; # yellow
-          base0B = lib.mkOption { type = lib.types.str; default = "b8bb26"; }; # green
-          base0C = lib.mkOption { type = lib.types.str; default = "8ec07c"; }; # aqua
-          base0D = lib.mkOption { type = lib.types.str; default = "83a598"; }; # blue
-          base0E = lib.mkOption { type = lib.types.str; default = "d3869b"; }; # purple
-          base0F = lib.mkOption { type = lib.types.str; default = "d65d0e"; }; # brown
+          base00 = lib.mkOption {
+            type = lib.types.str;
+            default = "282828";
+          }; # bg
+          base01 = lib.mkOption {
+            type = lib.types.str;
+            default = "3c3836";
+          }; # bg1
+          base02 = lib.mkOption {
+            type = lib.types.str;
+            default = "504945";
+          }; # bg2
+          base03 = lib.mkOption {
+            type = lib.types.str;
+            default = "665c54";
+          }; # bg3
+          base04 = lib.mkOption {
+            type = lib.types.str;
+            default = "bdae93";
+          }; # fg2
+          base05 = lib.mkOption {
+            type = lib.types.str;
+            default = "d5c4a1";
+          }; # fg1
+          base06 = lib.mkOption {
+            type = lib.types.str;
+            default = "ebdbb2";
+          }; # fg0
+          base07 = lib.mkOption {
+            type = lib.types.str;
+            default = "fbf1c7";
+          }; # fg
+          base08 = lib.mkOption {
+            type = lib.types.str;
+            default = "fb4934";
+          }; # red
+          base09 = lib.mkOption {
+            type = lib.types.str;
+            default = "fe8019";
+          }; # orange
+          base0A = lib.mkOption {
+            type = lib.types.str;
+            default = "fabd2f";
+          }; # yellow
+          base0B = lib.mkOption {
+            type = lib.types.str;
+            default = "b8bb26";
+          }; # green
+          base0C = lib.mkOption {
+            type = lib.types.str;
+            default = "8ec07c";
+          }; # aqua
+          base0D = lib.mkOption {
+            type = lib.types.str;
+            default = "83a598";
+          }; # blue
+          base0E = lib.mkOption {
+            type = lib.types.str;
+            default = "d3869b";
+          }; # purple
+          base0F = lib.mkOption {
+            type = lib.types.str;
+            default = "d65d0e";
+          }; # brown
         };
       };
-      default = {};
+      default = { };
     };
   };
 

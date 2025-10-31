@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [
-   ../shared/configuration.nix
-   ../shared/packages.nix
+    ../shared/configuration.nix
+    ../shared/packages.nix
 
-   ./hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   hardware = {
@@ -23,7 +22,7 @@
 
   services = {
     touchegg.enable = true;
-    xserver.videoDrivers = ["nvidia"];
+    xserver.videoDrivers = [ "nvidia" ];
     asusd = {
       enable = true;
       enableUserService = true;
@@ -40,16 +39,13 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-  ];
+  environment.systemPackages = with pkgs; [ brightnessctl ];
 
   users.users.accme = {
     isNormalUser = true;
     description = "accme";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
 
   system.stateVersion = "25.05";
 }

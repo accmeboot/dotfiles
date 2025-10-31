@@ -1,12 +1,11 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   users.users.Mikhail_Vialov = {
     name = "Mikhail_Vialov";
     home = /Users/Mikhail_Vialov;
   };
 
   system.primaryUser = "Mikhail_Vialov";
-  
+
   environment.systemPackages = with pkgs; [
     ffmpegthumbnailer
     unar
@@ -24,16 +23,9 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "borders"
-    ];
-    casks = [
-      "aerospace"
-    ];
-    taps = [
-      "FelixKratz/formulae"
-      "nikitabobko/aerospace"
-    ];
+    brews = [ "borders" ];
+    casks = [ "aerospace" ];
+    taps = [ "FelixKratz/formulae" "nikitabobko/aerospace" ];
   };
 
   system = {

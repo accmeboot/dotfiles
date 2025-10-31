@@ -1,13 +1,13 @@
-{ config, ... }:
-{
+{ config, ... }: {
   programs.waybar = {
     enable = true;
     settings = {
       mainBar = {
         layer = "bottom";
         position = "top";
-        
-        modules-left = [ "custom/launcher" "hyprland/workspaces" "hyprland/window" ];
+
+        modules-left =
+          [ "custom/launcher" "hyprland/workspaces" "hyprland/window" ];
         modules-center = [
           "custom/cpu"
           "custom/separator"
@@ -17,13 +17,8 @@
           "custom/separator"
           "disk"
         ];
-        modules-right = [
-          "tray"
-          "custom/separator"
-          "battery"
-          "pulseaudio"
-          "clock"
-        ];
+        modules-right =
+          [ "tray" "custom/separator" "battery" "pulseaudio" "clock" ];
 
         spacing = config.theme.spacing.s;
 
@@ -36,9 +31,7 @@
             default = "";
             empty = "";
           };
-          persistent-workspaces = {
-           "*" = 5;
-          };
+          persistent-workspaces = { "*" = 5; };
         };
 
         "custom/cpu" = {
@@ -55,9 +48,7 @@
           on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 htop";
         };
 
-        "custom/separator" = {
-          format = "";
-        };
+        "custom/separator" = { format = ""; };
 
         memory = {
           format = "  {percentage}%";
@@ -76,12 +67,16 @@
           format-muted = "  {volume}%";
           format-icons = [ " " " " " " ];
           scroll-step = 1;
-          on-click = "kitty --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output";
+          on-click =
+            "kitty --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output";
         };
 
         "custom/launcher" = {
           format = "";
-          on-click = "kitty --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${../../../scripts/launcher/menu.sh}";
+          on-click =
+            "kitty --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${
+              ../../../scripts/launcher/menu.sh
+            }";
           tooltip-format = "System menu";
         };
 
@@ -93,13 +88,15 @@
           };
           events = {
             on-discharging-warning = "notify-send -u normal 'Low Battery'";
-            on-discharging-critical = "notify-send -u critical 'Very Low Battery'";
+            on-discharging-critical =
+              "notify-send -u critical 'Very Low Battery'";
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
           format = "{icon}";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
-            charging = [ "󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 " ];
+            charging =
+              [ "󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 " ];
             plugged = "󰚥";
           };
           max-length = 25;
@@ -115,9 +112,7 @@
           spacing = config.theme.spacing.s;
           icon-size = 16;
           cursor = 60;
-          icons = {
-            steam = "${../../../assets/icons/steam.png}";
-          };
+          icons = { steam = "${../../../assets/icons/steam.png}"; };
         };
       };
     };

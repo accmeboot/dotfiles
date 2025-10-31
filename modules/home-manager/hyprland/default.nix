@@ -1,5 +1,4 @@
-{ config, lib, ... }:
-{
+{ config, lib, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -7,8 +6,8 @@
     package = null;
     portalPackage = null;
 
-    systemd.variables = ["--all"];
-    
+    systemd.variables = [ "--all" ];
+
     settings = {
       # Variables
       "$mod" = "SUPER";
@@ -17,16 +16,15 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "kitty";
-      "$menu" = "$terminal --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${../../../scripts/launcher/menu.sh}";
+      "$menu" =
+        "$terminal --class com.accme.fzflauncher -o tab_bar_min_tabs=2 ${
+          ../../../scripts/launcher/menu.sh
+        }";
 
       # Monitor configuration
-      monitor = [
-        ",highrr,auto,1"
-      ];
+      monitor = [ ",highrr,auto,1" ];
 
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      xwayland = { force_zero_scaling = true; };
 
       device = {
         name = "asuf1205:00-2808:0106-touchpad";
@@ -56,7 +54,9 @@
       # General settings
       general = {
         gaps_in = config.theme.spacing.xs;
-        gaps_out = "0,${toString config.theme.spacing.s},${toString config.theme.spacing.s},${toString config.theme.spacing.s}";
+        gaps_out = "0,${toString config.theme.spacing.s},${
+            toString config.theme.spacing.s
+          },${toString config.theme.spacing.s}";
         float_gaps = config.theme.spacing.m;
         border_size = config.theme.borderWidth;
         layout = "dwindle";
@@ -85,9 +85,7 @@
         dim_strength = 0.2;
       };
 
-      animations = {
-        enabled = false;
-      };
+      animations = { enabled = false; };
 
       # Group configuration
       group = {
@@ -96,7 +94,6 @@
           stacked = false;
         };
       };
-
 
       # Layout
       dwindle = {
@@ -114,12 +111,12 @@
       # Window rules
       windowrule = [
         "float, class:nemo"
-        "float, class:com.accme.float" 
+        "float, class:com.accme.float"
         "size 800 600, class:com.accme.float"
 
         "center, floating:1"
 
-        "float, class:com.accme.fzflauncher" 
+        "float, class:com.accme.fzflauncher"
         "size 320 360, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
         "stayfocused, class:com.accme.fzflauncher"
@@ -142,7 +139,6 @@
         "$mod, E,   fullscreen"
         "$mod, TAB, focusurgentorlast"
 
-        
         # Movement
         "$mod, $left,  movefocus, l"
         "$mod, $down,  movefocus, d"
@@ -191,15 +187,14 @@
         "$mod SHIFT, DOWN, movewindow, mon:-1"
 
         # Screenshots
-        ", PRINT, exec, filename=\"${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')\" && grim \"$filename\" && wl-copy < \"$filename\" && notify-send 'Screenshot' \"Full screen captured\\nSaved to: $filename\\nCopied to clipboard\" -i \"$filename\""
-        "ALT SHIFT, 4, exec, filename=\"${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')\" && grim -g \"$(slurp)\" \"$filename\" && wl-copy < \"$filename\" && notify-send 'Screenshot' \"Area selection captured\\nSaved to: $filename\\nCopied to clipboard\" -i \"$filename\""
+        ''
+          , PRINT, exec, filename="${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')" && grim "$filename" && wl-copy < "$filename" && notify-send 'Screenshot' "Full screen captured\nSaved to: $filename\nCopied to clipboard" -i "$filename"''
+        ''
+          ALT SHIFT, 4, exec, filename="${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')" && grim -g "$(slurp)" "$filename" && wl-copy < "$filename" && notify-send 'Screenshot' "Area selection captured\nSaved to: $filename\nCopied to clipboard" -i "$filename"''
       ];
 
       # Mouse bindings
-      bindm = [
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-      ];
+      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
 
       # Media keys
       bindl = [
@@ -214,10 +209,8 @@
       ];
 
       # Mouse wheel workspace switching
-      binde = [
-        "$mod, mouse_down, workspace, e+1"
-        "$mod, mouse_up, workspace, e-1"
-      ];
+      binde =
+        [ "$mod, mouse_down, workspace, e+1" "$mod, mouse_up, workspace, e-1" ];
 
       # Startup applications
       exec-once = [
@@ -229,10 +222,7 @@
       ];
 
       # Environment variables
-      env = [
-        "XCURSOR_THEME,capitaine-cursors"
-        "XCURSOR_SIZE,16"
-      ];
+      env = [ "XCURSOR_THEME,capitaine-cursors" "XCURSOR_SIZE,16" ];
     };
   };
 }

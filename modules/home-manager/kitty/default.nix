@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   programs.kitty = {
     enable = true;
     extraConfig = ''
@@ -21,7 +20,9 @@
 
       tab_bar_min_tabs 0
       tab_bar_margin_width ${toString config.theme.spacing.s}
-      tab_bar_margin_height ${toString config.theme.spacing.s} ${toString config.theme.spacing.s}
+      tab_bar_margin_height ${toString config.theme.spacing.s} ${
+        toString config.theme.spacing.s
+      }
       tab_bar_margin_color #${config.theme.colors.base00}
       tab_bar_align left
 

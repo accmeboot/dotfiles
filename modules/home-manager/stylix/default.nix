@@ -81,7 +81,7 @@ in {
             break
           fi
         done)
-        
+
         if [[ -n "$current_gen" ]]; then
           echo "Switching to light theme: $current_gen/specialisation/light"
           "$current_gen"/specialisation/light/activate
@@ -102,7 +102,7 @@ in {
             break
           fi
         done)
-        
+
         if [[ -n "$current_gen" ]]; then
           echo "Switching to dark theme: $current_gen"
           "$current_gen"/activate

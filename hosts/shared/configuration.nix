@@ -1,16 +1,11 @@
-{ pkgs, ... }:
-{
-  imports = [
-   ./packages.nix
-  ];
+{ pkgs, ... }: {
+  imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
   # NIX SETTINGS                                                               #
   #----------------------------------------------------------------------------#
-  nix =  {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-    };
+  nix = {
+    settings = { experimental-features = [ "nix-command" "flakes" ]; };
     gc = {
       automatic = true;
       dates = "weekly";
@@ -44,13 +39,9 @@
 
     consoleLogLevel = 3;
 
-    plymouth = {
-      enable = true;
-    };
+    plymouth = { enable = true; };
 
-    initrd = {
-      verbose = false;
-    };
+    initrd = { verbose = false; };
 
     kernelParams = [
       "quiet"
@@ -80,9 +71,7 @@
   # PROGRAMS                                                                   #
   #----------------------------------------------------------------------------#
   programs = {
-    nix-ld = {
-      enable = true;
-    };
+    nix-ld = { enable = true; };
     zsh.enable = true;
     starship.enable = true;
     steam = {
@@ -95,9 +84,7 @@
     gamemode.enable = true;
     dconf.enable = true;
 
-    hyprland = {
-      enable = true;
-    };
+    hyprland = { enable = true; };
   };
 
   #----------------------------------------------------------------------------#
@@ -125,10 +112,11 @@
       enable = true;
       settings = rec {
         initial_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+          command =
+            "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
           user = "accme";
         };
-      default_session = initial_session;
+        default_session = initial_session;
       };
     };
     xserver.xkb = {
@@ -148,10 +136,8 @@
         default = {
           ids = [ "*" ];
           settings = {
-            main = {
-              rightcontrol = "rightmeta";
-            };
-            otherlayer = {};
+            main = { rightcontrol = "rightmeta"; };
+            otherlayer = { };
           };
         };
       };
@@ -175,7 +161,8 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
 
-    LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
+    LUA_PATH =
+      "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
   };
 }

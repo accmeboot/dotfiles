@@ -41,6 +41,7 @@ return {
         "prettierd",
         "goimports",
         "pylint",
+        "nixfmt"
       },
     })
   end,

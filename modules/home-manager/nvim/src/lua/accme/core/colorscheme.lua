@@ -15,8 +15,8 @@ vim.cmd("highlight Pmenu ctermbg=NONE guibg=NONE")
 vim.cmd('highlight CursorLine cterm=underline gui=underline ctermbg=NONE guibg=NONE')
 vim.cmd('highlight CursorLineNr ctermbg=NONE guibg=NONE')
 
-local base_statusline_highlights = { 'StatusLine', 'StatusLineNC', 'Tabline', 'TabLineFill', 'Winbar',
-  'WinbarNC' }
-for _, hl_group in pairs(base_statusline_highlights) do
-  vim.api.nvim_set_hl(0, hl_group, { bg = 'none' })
-end
+-- local base_statusline_highlights = { 'StatusLine', 'StatusLineNC', 'Tabline', 'TabLineFill', 'Winbar',
+--   'WinbarNC' }
+-- for _, hl_group in pairs(base_statusline_highlights) do
+--   vim.api.nvim_set_hl(0, hl_group, { bg = 'none' })
+-- end

@@ -1,6 +1,5 @@
 { config, ... }:
-let
-  colors = config.theme.colors;
+let colors = config.theme.colors;
 in {
   home.file.".config/aerospace/aerospace.toml".text = ''
     # Place a copy of this config to ~/.aerospace.toml

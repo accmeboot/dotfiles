@@ -1,10 +1,10 @@
-{ ... }:
-{
+{ ... }: {
   programs.starship = {
     enable = true;
     settings = {
-      format = "$directory$git_branch$git_state$git_status$cmd_duration$line_break$python$character";
-      
+      format =
+        "$directory$git_branch$git_state$git_status$cmd_duration$line_break$python$character";
+
       directory = {
         format = "[$path]($style) ";
         style = "blue";
@@ -26,9 +26,7 @@
         style = "red";
       };
 
-      line_break = {
-        disabled = true;
-      };
+      line_break = { disabled = true; };
 
       git_state = {
         format = "\\([$state( $progress_current/$progress_total)]($style)\\) ";
