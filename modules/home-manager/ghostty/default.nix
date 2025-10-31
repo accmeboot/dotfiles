@@ -7,6 +7,7 @@
     background-blur=true
     cursor-style=block
     shell-integration-features=no-cursor
+    shell-integration = zsh
     app-notifications=false
     window-padding-x=${toString config.theme.spacing.s}
     window-padding-y=${toString config.theme.spacing.s}
