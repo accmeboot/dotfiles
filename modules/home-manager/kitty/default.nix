@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     extraConfig = ''
-      macos_titlebar_color system
+      hide_window_decorations titlebar-only
 
       allow_remote_control yes
 
