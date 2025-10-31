@@ -141,7 +141,7 @@
       }
 
       .modules-left, .modules-right, .modules-center {
-        background-color: alpha(#${config.theme.colors.base00}, ${toString config.theme.opacity});
+        background-color: #${config.theme.colors.base00};
         padding: 0px ${toString config.theme.spacing.s}px;
         border-radius: ${toString config.theme.borderRadius}px;
         box-shadow: 4px 4px 2px 1px alpha(#1B1610, 0.6);

@@ -68,7 +68,9 @@
         rounding = config.theme.borderRadius;
 
         blur = {
-          enabled = false;
+          enabled = true;
+          size = 8;
+          passes = 3;
         };
 
         shadow = {

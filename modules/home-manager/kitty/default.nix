@@ -10,6 +10,7 @@
       window_padding_width ${toString config.theme.spacing.xs}
 
       background_opacity ${toString config.theme.opacity}
+      background_blur 60
 
       font_family JetBrainsMono Nerd Font
 
@@ -17,6 +18,8 @@
       tab_bar_style separator
       tab_separator " "
       tab_title_template " {fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{tab.last_focused_progress_percent}{index}:{title} "
+
+      tab_bar_min_tabs 0
 
       active_tab_foreground   #${config.theme.colors.base00}
       active_tab_background   #${config.theme.colors.base0D}
