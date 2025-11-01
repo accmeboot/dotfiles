@@ -15,4 +15,5 @@
   };
 
   wezterm.desktop.disableWindowDecoration = true;
+  wezterm.desktop.increasePadding = true;
 }

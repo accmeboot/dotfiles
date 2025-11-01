@@ -4,6 +4,7 @@
       // {
         dfault = false;
       };
+      increasePadding = lib.mkEnableOption "bigger paddings" // { default = false; };
   };
   config.programs.wezterm = {
     enable = true;
@@ -25,10 +26,10 @@
         font_size = 12.0,
         enable_tab_bar = false,
         window_padding = {
-          left = ${toString config.theme.spacing.s},
-          right = ${toString config.theme.spacing.s},
-          top = ${toString config.theme.spacing.s},
-          bottom = ${toString config.theme.spacing.s},
+          left = ${if config.wezterm.desktop.increasePadding then toString config.theme.spacing.m else toString config.theme.spacing.s},
+          right = ${if config.wezterm.desktop.increasePadding then toString config.theme.spacing.m else toString config.theme.spacing.s},
+          top = ${if config.wezterm.desktop.increasePadding then toString config.theme.spacing.m else toString config.theme.spacing.s},
+          bottom = ${if config.wezterm.desktop.increasePadding then toString config.theme.spacing.m else toString config.theme.spacing.s},
         },
       }
     '';
