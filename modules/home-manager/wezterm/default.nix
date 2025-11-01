@@ -1,13 +1,24 @@
-{ config, ... }: {
-  programs.wezterm = {
+{ config, lib, ... }: {
+  options.wezterm.desktop = {
+    disableWindowDecoration = lib.mkEnableOption "different window decoration"
+      // {
+        dfault = false;
+      };
+  };
+  config.programs.wezterm = {
     enable = true;
     extraConfig = ''
       local wezterm = require 'wezterm'
 
       return {
         window_background_opacity = ${toString config.theme.opacity},
-        window_decorations = "RESIZE",
         macos_window_background_blur = 60,
+        ${
+          if config.wezterm.desktop.disableWindowDecoration then
+            "window_decorations = 'RESIZE',"
+          else
+            ""
+        }
         default_cursor_style = "SteadyBlock",
         default_prog = {"zsh"},
         font = wezterm.font 'JetBrainsMono Nerd Font',

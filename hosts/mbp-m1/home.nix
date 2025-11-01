@@ -13,4 +13,6 @@
     enableCursor = false;
     enableWallpaper = false;
   };
+
+  wezterm.desktop.disableWindowDecoration = true;
 }

@@ -20,10 +20,7 @@
       unbind C-b
       bind-key C-n send-prefix
 
-      set -g default-terminal "tmux-256color"
-      set -as terminal-features ",xterm-256color:RGB"
-      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-      set -as terminal-overrides ',*:Smulc=\E[4::%p1%dm'
+      set-option -sa terminal-overrides ",xterm*:Tc"
 
       set-option -g focus-events on
 
