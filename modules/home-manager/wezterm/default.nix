@@ -6,6 +6,8 @@
 
       return {
         window_background_opacity = ${toString config.theme.opacity},
+        window_decorations = "RESIZE",
+        macos_window_background_blur = 60,
         default_cursor_style = "SteadyBlock",
         default_prog = {"zsh"},
         font = wezterm.font 'JetBrainsMono Nerd Font',
