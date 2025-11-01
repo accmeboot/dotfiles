@@ -11,5 +11,5 @@ get_selection() {
 }
 
 if selection=$( get_selection ); then
-  exec systemd-run --user --quiet -- sh -c "$selection"
+  hyprctl dispatch exec "$selection" 
 fi

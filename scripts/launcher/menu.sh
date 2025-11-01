@@ -11,7 +11,7 @@ get_selection() {
 }
 
 run() {
-  exec systemd-run --user --quiet -- sh -c "$1"
+  hyprctl dispatch exec "$1" 
 }
 
 if selection=$( get_selection ); then
@@ -22,7 +22,7 @@ if selection=$( get_selection ); then
       run "${TERMINAL:-wezterm} -e --class com.accme.float wiremix -v output"
       ;;
     "System Monitor")
-      run "${TERMINAL:-wezterm} -e --class com.accme.float btop"
+      run "${TERMINAL:-wezterm} -e --class com.accme.float htop"
       ;;
     "Files")
       run "${TERMINAL:-wezterm} -e --class com.accme.float yazi"
