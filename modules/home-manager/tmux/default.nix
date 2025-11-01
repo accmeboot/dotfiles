@@ -69,13 +69,13 @@
 
       set -g status-style "fg=#${config.theme.colors.base05},bg=default"
 
-      set -g status-left " "
+      set -g status-left ""
 
       set -g window-status-format "#[fg=#${config.theme.colors.base05},bg=terminal]#I:#W"
-      set -g window-status-current-format "#[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base0D}] #I:#W "
+      set -g window-status-current-format "#[fg=#${config.theme.colors.base00},bg=#${config.theme.colors.base0D}] #I:#W* "
 
       set -g status-right-length 100
-      set -g status-right "#[fg=#${config.theme.colors.base05},bg=terminal] #{session_path}   #S "
+      set -g status-right "#[fg=#${config.theme.colors.base05},bg=terminal] #S"
     '';
 
     plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator yank resurrect ];
