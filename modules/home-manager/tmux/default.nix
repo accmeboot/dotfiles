@@ -20,7 +20,7 @@
       unbind C-b
       bind-key C-n send-prefix
 
-      set-option -sa terminal-overrides ",xterm*:Tc"
+      set-option -sa terminal-overrides "wezterm"
 
       set-option -g focus-events on
 
@@ -55,6 +55,10 @@
 
       # Ensure window index numbers get reordered on delete.
       set-option -g renumber-windows on
+
+
+      set -g pane-border-style fg=#${config.theme.colors.base05}
+      set -g pane-active-border-style fg=#${config.theme.colors.base05}
 
       set -g status-position top
       set -g window-status-separator "  "

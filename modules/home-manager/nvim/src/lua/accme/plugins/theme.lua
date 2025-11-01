@@ -16,7 +16,14 @@ return {
         transparent = true, -- enable transparent floating windows
         solid = true,       -- use solid styling for floating windows, see |winborder|
       },
+      custom_highlights = function(colors)
+        return {
+          CursorLine = { bg = colors.none, underline = true },
+          CursorLineNr = { bg = colors.none, underline = true },
+        }
+      end
     })
+
 
     -- setup must be called before loading
     vim.cmd.colorscheme "catppuccin"

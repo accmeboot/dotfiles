@@ -22,6 +22,7 @@
           else
             ""
         }
+        term = "wezterm",
         default_cursor_style = "SteadyBlock",
         default_prog = {"zsh"},
         font = wezterm.font 'JetBrainsMono Nerd Font',
