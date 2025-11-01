@@ -90,7 +90,7 @@
               "notify-send -u critical 'Very Low Battery'";
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
-          format = "{icon}";
+          format = "{icon} {capacity}%";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
             charging =
@@ -178,10 +178,6 @@
       #clock, #pulseaudio, #custom-stats {
         padding: 0px;
         margin: 0px;
-      }
-
-      #battery {
-        font-size: 18px;
       }
 
       #battery {
