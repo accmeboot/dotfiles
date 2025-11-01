@@ -15,8 +15,8 @@
       "$down" = "j";
       "$up" = "k";
       "$right" = "l";
-      "$terminal" = "ghostty";
-      "$menu" = "$terminal --class=com.accme.fzflauncher --command=${
+      "$terminal" = "wezterm";
+      "$menu" = "$terminal -e --class 'com.accme.fzflauncher' ${
           ../../../scripts/launcher/menu.sh
         }";
 
@@ -116,7 +116,7 @@
         "center, floating:1"
 
         "float, class:com.accme.fzflauncher"
-        "size 320 360, class:com.accme.fzflauncher"
+        "size 320 400, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
         "stayfocused, class:com.accme.fzflauncher"
       ];
@@ -128,7 +128,7 @@
         "$mod, C,   killactive"
         "$mod, F,   togglefloating"
         "$mod, R,   exec, $menu"
-        "$mod, W,   exec, $terminal --class com.accme.float -o tab_bar_min_tabs=2 wiremix -v output"
+        "$mod, W,   exec, $terminal -e --class 'com.accme.float' wiremix -v output"
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 

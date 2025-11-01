@@ -7,7 +7,7 @@
     ../zsh/default.nix
     ../fastfetch/default.nix
     ../opencode/default.nix
-    ../ghostty/default.nix
+    ../wezterm/default.nix
     ../tmux/default.nix
 
     inputs.stylix.homeModules.stylix
