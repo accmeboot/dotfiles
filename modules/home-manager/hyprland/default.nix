@@ -186,10 +186,8 @@
         "$mod SHIFT, DOWN, movewindow, mon:-1"
 
         # Screenshots
-        ''
-          , PRINT, exec, filename="${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')" && grim "$filename" && wl-copy < "$filename" && notify-send 'Screenshot' "Full screen captured\nSaved to: $filename\nCopied to clipboard" -i "$filename"''
-        ''
-          ALT SHIFT, 4, exec, filename="${config.home.homeDirectory}/Screenshots/$(date +'%Y-%m-%d-%H%M%S_screenshot.png')" && grim -g "$(slurp)" "$filename" && wl-copy < "$filename" && notify-send 'Screenshot' "Area selection captured\nSaved to: $filename\nCopied to clipboard" -i "$filename"''
+        ", PRINT, exec, bash ${../../../scripts/screenshot-full.sh}"
+        "ALT SHIFT, 4, exec, bash ${../../../scripts/screenshot-area.sh}"
       ];
 
       # Mouse bindings

@@ -92,6 +92,7 @@ in {
           if [[ -n "$current_gen" ]]; then
             echo "Switching to light theme: $current_gen/specialisation/light"
             "$current_gen"/specialisation/light/activate
+            pkill waybar && setsid waybar > /dev/null 2>&1 &
           else
             echo "No home-manager generation with light specialisation found"
             exit 1
@@ -113,6 +114,7 @@ in {
           if [[ -n "$current_gen" ]]; then
             echo "Switching to dark theme: $current_gen"
             "$current_gen"/activate
+            pkill waybar && setsid waybar > /dev/null 2>&1 &
           else
             echo "Something went terrible wrong ACHTUNG!"
             exit 1
