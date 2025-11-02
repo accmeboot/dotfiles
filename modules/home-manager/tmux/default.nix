@@ -22,6 +22,8 @@
 
       set-option -sa terminal-overrides "wezterm"
 
+      set -g extended-keys always
+
       set-option -g focus-events on
 
       unbind %
