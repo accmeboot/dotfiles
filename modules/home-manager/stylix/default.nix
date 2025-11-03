@@ -35,18 +35,9 @@ in {
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
-        serif = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
-        };
-        sansSerif = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
-        };
-        monospace = {
-          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-          name = "SFProDisplay Nerd Font";
-        };
+        serif = { name = "RobotoMono Nerd Font"; };
+        sansSerif = { name = "RobotoMono Nerd Font"; };
+        monospace = { name = "RobotoMono Nerd Font"; };
         sizes = {
           applications = 11;
           desktop = 11;

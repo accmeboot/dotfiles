@@ -28,8 +28,8 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
           format-icons = {
-            default = "";
-            empty = "";
+            default = " ";
+            empty = " ";
           };
           persistent-workspaces = { "*" = 5; };
         };
@@ -71,7 +71,7 @@
         };
 
         "custom/launcher" = {
-          format = "";
+          format = " ";
           on-click = "wezterm -e --class com.accme.fzflauncher ${
               ../../../scripts/launcher/menu.sh
             }";
