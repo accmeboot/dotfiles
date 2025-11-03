@@ -8,7 +8,6 @@
     ../fastfetch/default.nix
     ../opencode/default.nix
     ../wezterm/default.nix
-    ../tmux/default.nix
 
     inputs.stylix.homeModules.stylix
     ../stylix/default.nix

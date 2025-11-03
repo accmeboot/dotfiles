@@ -55,25 +55,50 @@ function M.apply_to_config(config)
     },
 
     -- Resize panes (like bind -r j/k/l/h resize-pane)
+    -- Enter resize mode with leader key, then keep pressing w/a/s/d
     {
-      key = 'h',
+      key = 'a',
       mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Left', 5 },
+      action = act.Multiple {
+        act.AdjustPaneSize { 'Left', 5 },
+        act.ActivateKeyTable {
+          name = 'resize_pane',
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
-      key = 'j',
+      key = 's',
       mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Down', 5 },
+      action = act.Multiple {
+        act.AdjustPaneSize { 'Down', 5 },
+        act.ActivateKeyTable {
+          name = 'resize_pane',
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
-      key = 'k',
+      key = 'w',
       mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Up', 5 },
+      action = act.Multiple {
+        act.AdjustPaneSize { 'Up', 5 },
+        act.ActivateKeyTable {
+          name = 'resize_pane',
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
-      key = 'l',
+      key = 'd',
       mods = 'LEADER',
-      action = act.AdjustPaneSize { 'Right', 5 },
+      action = act.Multiple {
+        act.AdjustPaneSize { 'Right', 5 },
+        act.ActivateKeyTable {
+          name = 'resize_pane',
+          timeout_milliseconds = 1000,
+        },
+      },
     },
 
     -- Zoom/maximize pane (like bind -r m resize-pane -Z)
@@ -104,22 +129,22 @@ function M.apply_to_config(config)
     -- Navigate between panes (vim-tmux-navigator style)
     {
       key = 'h',
-      mods = 'CTRL',
+      mods = 'LEADER',
       action = act.ActivatePaneDirection 'Left',
     },
     {
       key = 'j',
-      mods = 'CTRL',
+      mods = 'LEADER',
       action = act.ActivatePaneDirection 'Down',
     },
     {
       key = 'k',
-      mods = 'CTRL',
+      mods = 'LEADER',
       action = act.ActivatePaneDirection 'Up',
     },
     {
       key = 'l',
-      mods = 'CTRL',
+      mods = 'LEADER',
       action = act.ActivatePaneDirection 'Right',
     },
 
@@ -220,6 +245,54 @@ function M.apply_to_config(config)
 
   -- Copy mode key table (vi-style like tmux)
   config.key_tables = {
+    -- Resize pane mode - allows repeating w/a/s/d without leader key
+    resize_pane = {
+      {
+        key = 'a',
+        action = act.Multiple {
+          act.AdjustPaneSize { 'Left', 5 },
+          act.ActivateKeyTable {
+            name = 'resize_pane',
+            timeout_milliseconds = 1000,
+          },
+        },
+      },
+      {
+        key = 's',
+        action = act.Multiple {
+          act.AdjustPaneSize { 'Down', 5 },
+          act.ActivateKeyTable {
+            name = 'resize_pane',
+            timeout_milliseconds = 1000,
+          },
+        },
+      },
+      {
+        key = 'w',
+        action = act.Multiple {
+          act.AdjustPaneSize { 'Up', 5 },
+          act.ActivateKeyTable {
+            name = 'resize_pane',
+            timeout_milliseconds = 1000,
+          },
+        },
+      },
+      {
+        key = 'd',
+        action = act.Multiple {
+          act.AdjustPaneSize { 'Right', 5 },
+          act.ActivateKeyTable {
+            name = 'resize_pane',
+            timeout_milliseconds = 1000,
+          },
+        },
+      },
+      -- Exit resize mode with Escape
+      {
+        key = 'Escape',
+        action = 'PopKeyTable',
+      },
+    },
     copy_mode = {
       -- Navigation (vi-style)
       {
