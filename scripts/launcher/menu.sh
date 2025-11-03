@@ -55,7 +55,7 @@ if selection=$( get_selection ); then
       run "pidof hyprlock || hyprlock"
       ;;
     "Configuration")
-      run "${TERMINAL:-wezterm} -e tmux new -s CONFIG -c ~/dotfiles"
+      run "${TERMINAL:-wezterm} start --cwd ~/dotfiles"
       ;;
     "Light Mode")
       run "set-light-theme"
