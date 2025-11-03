@@ -28,21 +28,21 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
           format-icons = {
-            default = " ";
-            empty = " ";
+            default = "";
+            empty = "";
           };
           persistent-workspaces = { "*" = 5; };
         };
 
         "custom/cpu" = {
-          format = "󰍛  {text}°C";
+          format = "󰍛 {text}°C";
           exec = "${../../../scripts/stats/cpu-temp.sh}";
           interval = 1;
           on-click = "wezterm -e --class com.accme.float htop";
         };
 
         "custom/gpu" = {
-          format = "󰾲  {text}°C";
+          format = "󰾲 {text}°C";
           exec = "${../../../scripts/stats/gpu-temp.sh}";
           interval = 1;
           on-click = "wezterm -e --class com.accme.float htop";
@@ -51,13 +51,13 @@
         "custom/separator" = { format = ""; };
 
         memory = {
-          format = "  {percentage}%";
+          format = " {percentage}%";
           interval = 30;
           on-click = "wezterm -e --class com.accme.float htop";
         };
 
         disk = {
-          format = "󰉉  {percentage_used}%";
+          format = "󰉉 {percentage_used}%";
           interval = 30;
           on-click = "wezterm -e --class com.accme.float htop";
         };
@@ -71,7 +71,7 @@
         };
 
         "custom/launcher" = {
-          format = " ";
+          format = "";
           on-click = "wezterm -e --class com.accme.fzflauncher ${
               ../../../scripts/launcher/menu.sh
             }";
@@ -130,7 +130,6 @@
       window#waybar {
         background-color: transparent;
         color: #${config.theme.colors.base05};
-        font-family: "Inter", monospace;
       }
 
       .modules-left, .modules-right, .modules-center {

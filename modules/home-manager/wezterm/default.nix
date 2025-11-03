@@ -26,7 +26,6 @@
         default_cursor_style = "SteadyBlock",
         default_prog = {"zsh"},
         font = wezterm.font 'JetBrainsMono Nerd Font',
-        font_size = 12.0,
         enable_tab_bar = false,
         window_padding = {
           left = ${
