@@ -50,7 +50,7 @@
           format = "{icon}";
           tooltip-format = "{volume}%";
           format-muted = "";
-          format-icons = [ "" "" "" ];
+          format-icons = [ "" ];
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
