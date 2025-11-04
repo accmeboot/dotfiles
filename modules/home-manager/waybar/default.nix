@@ -101,8 +101,8 @@
       #workspaces button {
         all: unset;
         padding: 0px ${toString config.theme.spacing.s}px;
-        margin: ${toString config.theme.spacing.xs}px;
-        background-color: #${config.theme.colors.base02};
+        margin: ${toString config.theme.spacing.xs}px 0px;
+        background-color: transparent;
         border-radius: ${toString config.theme.borderRadius}px;
       }
 
@@ -116,7 +116,6 @@
       }
 
       #workspaces button.urgent {
-        background-color: #${config.theme.colors.base02};
         color: #${config.theme.colors.base08};
       }
 
