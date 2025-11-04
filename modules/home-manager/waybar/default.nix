@@ -108,9 +108,8 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 24;
+          icon-size = 20;
           cursor = 60;
-          icons = { steam = "${../../../assets/icons/steam.png}"; };
         };
       };
     };
