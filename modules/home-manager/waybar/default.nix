@@ -6,10 +6,9 @@
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [ ];
-        modules-right =
-          [ "tray" "custom/separator" "battery" "pulseaudio" "clock" ];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ "clock" ];
+        modules-right = [ "tray" "battery" "pulseaudio" "network" "bluetooth" ];
 
         spacing = config.theme.spacing.s;
 
@@ -20,22 +19,43 @@
           cursor = 60;
         };
 
-        "hyprland/window" = {
-          format = "{title}";
-          icon = true;
-          icon-size = 22;
+        network = {
+          format = "{ifname}";
+          format-wifi = "󰤨 ";
+          format-ethernet = " ";
+          format-disconnected = "󱃓 ";
+          tooltip-format = "{ifname}";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{bandwidthTotalBits}";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+          on-click = "nm-connection-editor";
         };
-        "custom/separator" = { format = ""; };
+
+        bluetooth = {
+          format = "󰂯";
+          format-disabled = "󰂲";
+          format-connected = "󰂯";
+          tooltip-format = "{controller_alias}	{controller_address}";
+          tooltip-format-connected = ''
+            {controller_alias}	{controller_address}
+
+            {device_enumerate}'';
+          tooltip-format-enumerate-connected =
+            "{device_alias}	{device_address}";
+          on-click = "blueman-manager";
+        };
 
         pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "  {volume}%";
+          format = "{icon}";
+          tooltip-format = "{volume}%";
+          format-muted = " ";
           format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
 
-        "battery" = {
+        battery = {
           interval = 1;
           states = {
             warning = 30;
@@ -58,7 +78,7 @@
         };
 
         clock = {
-          format = "{:%H:%M}";
+          format = "{:%A %H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
@@ -145,10 +165,8 @@
         color: #${config.theme.colors.base08};
       }
 
-      window#waybar.empty #window {
-        font-size: 0;
-        margin: 0;
-        padding: 0;
+      #battery, #pulseaudio, #network, #bluetooth {
+        font-size: 18px;
       }
     '';
   };

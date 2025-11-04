@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, lib, config, ... }:
 let
   dark = {
     image = "${../../../assets/wallpapers/cyberpunk_catppuccin.jpg}";

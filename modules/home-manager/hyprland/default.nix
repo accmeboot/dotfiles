@@ -213,8 +213,6 @@
       exec-once = [
         "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
         "waybar"
-        "nm-applet"
-        "blueman-applet"
         "wpctl set-volume @DEFAULT_AUDIO_SINK@ 50%"
       ];
 
