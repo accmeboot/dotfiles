@@ -10,7 +10,7 @@
         modules-center = [ "clock" ];
         modules-right = [ "tray" "battery" "pulseaudio" "network" "bluetooth" ];
 
-        spacing = config.theme.spacing.s;
+        spacing = config.theme.spacing.m;
 
         "hyprland/workspaces" = {
           format = "{id}";
@@ -33,9 +33,9 @@
         };
 
         bluetooth = {
-          format = "󰂯";
-          format-disabled = "󰂲";
-          format-connected = "󰂯";
+          format = "󰂯 ";
+          format-disabled = "󰂲 ";
+          format-connected = "󰂯 ";
           tooltip-format = "{controller_alias}	{controller_address}";
           tooltip-format-connected = ''
             {controller_alias}	{controller_address}
@@ -86,7 +86,7 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.s;
+          spacing = config.theme.spacing.m;
           icon-size = 22;
           cursor = 60;
         };
