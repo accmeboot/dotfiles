@@ -6,8 +6,7 @@
         layer = "bottom";
         position = "top";
 
-        modules-left =
-          [ "hyprland/workspaces" "custom/separator" "hyprland/window" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ ];
         modules-right =
           [ "tray" "custom/separator" "battery" "pulseaudio" "clock" ];
@@ -22,7 +21,11 @@
           persistent-workspaces = { "*" = 5; };
         };
 
-        "hyprland/window" = { format = " {title}"; };
+        "hyprland/window" = {
+          format = "{title}";
+          icon = true;
+          icon-size = 20;
+        };
         "custom/separator" = { format = ""; };
 
         pulseaudio = {
