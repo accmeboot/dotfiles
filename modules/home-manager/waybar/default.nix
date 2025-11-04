@@ -11,7 +11,7 @@
         modules-right =
           [ "tray" "battery" "pulseaudio" "network" "bluetooth" "clock" ];
 
-        spacing = config.theme.spacing.m;
+        spacing = config.theme.spacing.s;
 
         "hyprland/workspaces" = {
           format = "{id}";
@@ -51,7 +51,7 @@
           format = "{icon}";
           tooltip-format = "{volume}%";
           format-muted = "";
-          format-icons = [ "" ];
+          format-icons = [ "" ];
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
@@ -85,7 +85,7 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.xxl;
+          spacing = config.theme.spacing.xxl - config.theme.spacing.s;
           icon-size = 20;
           cursor = 60;
         };
@@ -168,9 +168,7 @@
 
       #battery, #pulseaudio, #network, #bluetooth {
         font-size: 18px;
-        min-width: ${
-          toString (config.theme.spacing.xxl + config.theme.spacing.s)
-        }px;
+        min-width: ${toString config.theme.spacing.xxl}px;
       }
     '';
   };
