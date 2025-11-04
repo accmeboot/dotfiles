@@ -108,7 +108,7 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 16;
+          icon-size = 24;
           cursor = 60;
           icons = { steam = "${../../../assets/icons/steam.png}"; };
         };
@@ -130,6 +130,7 @@
       window#waybar {
         background-color: transparent;
         color: #${config.theme.colors.base05};
+        font-size: 16px;
       }
 
       .modules-left, .modules-right, .modules-center {

@@ -48,9 +48,9 @@ in {
           name = "Inter";
         };
         sizes = {
-          applications = 11;
-          desktop = 11;
-          popups = 11;
+          applications = 10;
+          desktop = 10;
+          popups = 10;
           terminal = 12;
         };
       };
