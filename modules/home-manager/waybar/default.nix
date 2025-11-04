@@ -23,8 +23,8 @@
         network = {
           format = "{ifname}";
           format-wifi = "󰤨";
-          format-ethernet = "";
-          format-disconnected = "󱃓";
+          format-ethernet = "󰖟";
+          format-disconnected = "󰪎";
           tooltip-format = "{ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{bandwidthTotalBits}";
@@ -34,9 +34,9 @@
         };
 
         bluetooth = {
-          format = "󰂯";
+          format = "";
           format-disabled = "󰂲";
-          format-connected = "󰂯";
+          format-connected = "";
           tooltip-format = "{controller_alias}	{controller_address}";
           tooltip-format-connected = ''
             {controller_alias}	{controller_address}
