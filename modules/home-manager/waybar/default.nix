@@ -34,9 +34,9 @@
         };
 
         bluetooth = {
-          format = "";
+          format = "󰂯";
           format-disabled = "󰂲";
-          format-connected = "";
+          format-connected = "󰂱";
           tooltip-format = "{controller_alias}	{controller_address}";
           tooltip-format-connected = ''
             {controller_alias}	{controller_address}
