@@ -67,9 +67,11 @@
               "notify-send -u critical 'Very Low Battery'";
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
-          format = "{icon} {capacity}%";
+          format = "{icon}";
+          tooltip-format = "{capacity}%";
           format-icons = {
-            default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+            default =
+              [ "󰂎 " "󰁺 " "󰁻 " "󰁼 " "󰁽 " "󰁾 " "󰁿 " "󰂀 " "󰂁 " "󰂂 " "󰁹 " ];
             charging =
               [ "󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 " ];
             plugged = "󰚥";
