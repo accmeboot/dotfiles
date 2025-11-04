@@ -35,9 +35,18 @@ in {
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
-        serif = { name = "RobotoMono Nerd Font"; };
-        sansSerif = { name = "RobotoMono Nerd Font"; };
-        monospace = { name = "RobotoMono Nerd Font"; };
+        serif = {
+          package = pkgs.inter;
+          name = "Inter";
+        };
+        sansSerif = {
+          package = pkgs.inter;
+          name = "Inter";
+        };
+        monospace = {
+          package = pkgs.inter;
+          name = "Inter";
+        };
         sizes = {
           applications = 11;
           desktop = 11;

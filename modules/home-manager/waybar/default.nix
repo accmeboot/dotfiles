@@ -42,7 +42,7 @@
         };
 
         "custom/gpu" = {
-          format = "󰾲 {text}°C";
+          format = "󰾲  {text}°C";
           exec = "${../../../scripts/stats/gpu-temp.sh}";
           interval = 1;
           on-click = "wezterm -e --class com.accme.float htop";
@@ -51,13 +51,13 @@
         "custom/separator" = { format = ""; };
 
         memory = {
-          format = " {percentage}%";
+          format = "  {percentage}%";
           interval = 30;
           on-click = "wezterm -e --class com.accme.float htop";
         };
 
         disk = {
-          format = "󰉉 {percentage_used}%";
+          format = "󰉉  {percentage_used}%";
           interval = 30;
           on-click = "wezterm -e --class com.accme.float htop";
         };
