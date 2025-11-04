@@ -7,60 +7,23 @@
         position = "top";
 
         modules-left =
-          [ "custom/launcher" "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [
-          "custom/cpu"
-          "custom/separator"
-          "custom/gpu"
-          "custom/separator"
-          "memory"
-          "custom/separator"
-          "disk"
-        ];
+          [ "hyprland/workspaces" "custom/separator" "hyprland/window" ];
+        modules-center = [ ];
         modules-right =
           [ "tray" "custom/separator" "battery" "pulseaudio" "clock" ];
 
         spacing = config.theme.spacing.s;
 
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{id}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-          format-icons = {
-            default = " ";
-            empty = " ";
-          };
           persistent-workspaces = { "*" = 5; };
         };
 
-        "custom/cpu" = {
-          format = "󰍛 {text}°C";
-          exec = "${../../../scripts/stats/cpu-temp.sh}";
-          interval = 1;
-          on-click = "wezterm -e --class com.accme.float htop";
-        };
-
-        "custom/gpu" = {
-          format = "󰾲  {text}°C";
-          exec = "${../../../scripts/stats/gpu-temp.sh}";
-          interval = 1;
-          on-click = "wezterm -e --class com.accme.float htop";
-        };
-
+        "hyprland/window" = { format = " {title}"; };
         "custom/separator" = { format = ""; };
-
-        memory = {
-          format = "  {percentage}%";
-          interval = 30;
-          on-click = "wezterm -e --class com.accme.float htop";
-        };
-
-        disk = {
-          format = "󰉉  {percentage_used}%";
-          interval = 30;
-          on-click = "wezterm -e --class com.accme.float htop";
-        };
 
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -68,14 +31,6 @@
           format-icons = [ " " " " " " ];
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
-        };
-
-        "custom/launcher" = {
-          format = " ";
-          on-click = "wezterm -e --class com.accme.fzflauncher ${
-              ../../../scripts/launcher/menu.sh
-            }";
-          tooltip-format = "System menu";
         };
 
         "battery" = {
@@ -122,22 +77,16 @@
       }
 
       window#waybar>box {
-        background-color: transparent;
-        padding: 0px;
+        background-color: #${config.theme.colors.base00};
+        padding: 0px ${toString config.theme.spacing.s}px;
+        box-shadow: 4px 4px 2px 1px alpha(#1B1610, 0.6);
+        margin: 0px 0px ${toString config.theme.spacing.s}px 0px;
       }
 
       window#waybar {
         background-color: transparent;
         color: #${config.theme.colors.base05};
         font-size: 16px;
-      }
-
-      .modules-left, .modules-right, .modules-center {
-        background-color: #${config.theme.colors.base00};
-        padding: 0px ${toString config.theme.spacing.s}px;
-        border-radius: ${toString config.theme.borderRadius}px;
-        box-shadow: 4px 4px 2px 1px alpha(#1B1610, 0.6);
-        margin: ${toString config.theme.spacing.s}px;
       }
 
       tooltip {
@@ -151,30 +100,31 @@
 
       #workspaces button {
         all: unset;
-        padding: ${toString config.theme.spacing.xs}px;
-        background-color: transparent;
+        padding: 0px ${toString config.theme.spacing.s}px;
+        margin: ${toString config.theme.spacing.xs}px;
+        background-color: #${config.theme.colors.base02};
+        border-radius: ${toString config.theme.borderRadius}px;
       }
 
       #workspaces button:hover {
-        background-color: transparent;
+        background-color: #${config.theme.colors.base03};
       }
 
       #workspaces button.active {
-        background-color: transparent;
+        background-color: #${config.theme.colors.base0D};
         color: #${config.theme.colors.base0D};
       }
 
       #workspaces button.urgent {
-        background-color: transparent;
+        background-color: #${config.theme.colors.base02};
         color: #${config.theme.colors.base08};
       }
 
       #tray * {
-        font-family: "Inter", monospace;
         border-radius: ${toString config.theme.borderRadius}px;
       }
 
-      #clock, #pulseaudio, #custom-stats {
+      #clock, #pulseaudio {
         padding: 0px;
         margin: 0px;
       }
@@ -189,10 +139,6 @@
 
       #battery.critical {
         color: #${config.theme.colors.base08};
-      }
-
-      #custom-launcher {
-        font-size: 18px;
       }
 
       window#waybar.empty #window {
