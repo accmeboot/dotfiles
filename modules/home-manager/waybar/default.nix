@@ -24,7 +24,7 @@
         "hyprland/window" = {
           format = "{title}";
           icon = true;
-          icon-size = 20;
+          icon-size = 22;
         };
         "custom/separator" = { format = ""; };
 
@@ -66,7 +66,7 @@
 
         tray = {
           spacing = config.theme.spacing.s;
-          icon-size = 20;
+          icon-size = 22;
           cursor = 60;
         };
       };
@@ -103,10 +103,13 @@
 
       #workspaces button {
         all: unset;
-        padding: 0px ${toString config.theme.spacing.s}px;
-        margin: ${toString config.theme.spacing.xs}px 0px;
+        padding: 0px ${toString config.theme.spacing.xs}px;
+        margin: ${toString config.theme.spacing.xs}px;
         background-color: transparent;
         border-radius: ${toString config.theme.borderRadius}px;
+        min-width: ${
+          toString (config.theme.spacing.s + config.theme.spacing.xs)
+        }px
       }
 
       #workspaces button:hover {
