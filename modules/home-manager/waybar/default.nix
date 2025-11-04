@@ -84,8 +84,8 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.m;
-          icon-size = 22;
+          spacing = config.theme.spacing.xxl;
+          icon-size = 20;
           cursor = 60;
         };
       };
