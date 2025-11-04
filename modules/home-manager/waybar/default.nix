@@ -18,7 +18,6 @@
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-          persistent-workspaces = { "*" = 5; };
         };
 
         "hyprland/window" = {
@@ -110,22 +109,15 @@
         min-width: ${
           toString (config.theme.spacing.s + config.theme.spacing.xs)
         }px;
-        border: 1px solid #${config.theme.colors.base02};
       }
 
       #workspaces button:hover {
         background-color: #${config.theme.colors.base03};
-        border: 1px solid #${config.theme.colors.base03};
       }
 
       #workspaces button.active {
         background-color: #${config.theme.colors.base0D};
         color: #${config.theme.colors.base0D};
-        border: 1px solid #${config.theme.colors.base0D};
-      }
-
-      #workspaces button.empty {
-        border: 1px solid transparent;
       }
 
       #workspaces button.urgent {
