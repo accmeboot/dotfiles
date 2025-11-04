@@ -6,9 +6,10 @@
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "tray" "battery" "pulseaudio" "network" "bluetooth" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+        modules-center = [ ];
+        modules-right =
+          [ "tray" "battery" "pulseaudio" "network" "bluetooth" "clock" ];
 
         spacing = config.theme.spacing.m;
 
