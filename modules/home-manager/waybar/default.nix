@@ -21,9 +21,9 @@
 
         network = {
           format = "{ifname}";
-          format-wifi = "󰤨 ";
-          format-ethernet = " ";
-          format-disconnected = "󱃓 ";
+          format-wifi = "󰤨";
+          format-ethernet = "";
+          format-disconnected = "󱃓";
           tooltip-format = "{ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{bandwidthTotalBits}";
@@ -33,9 +33,9 @@
         };
 
         bluetooth = {
-          format = "󰂯 ";
-          format-disabled = "󰂲 ";
-          format-connected = "󰂯 ";
+          format = "󰂯";
+          format-disabled = "󰂲";
+          format-connected = "󰂯";
           tooltip-format = "{controller_alias}	{controller_address}";
           tooltip-format-connected = ''
             {controller_alias}	{controller_address}
@@ -49,8 +49,8 @@
         pulseaudio = {
           format = "{icon}";
           tooltip-format = "{volume}%";
-          format-muted = " ";
-          format-icons = [ " " " " " " ];
+          format-muted = "";
+          format-icons = [ "" "" "" ];
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
@@ -70,10 +70,8 @@
           format = "{icon}";
           tooltip-format = "{capacity}%";
           format-icons = {
-            default =
-              [ "󰂎 " "󰁺 " "󰁻 " "󰁼 " "󰁽 " "󰁾 " "󰁿 " "󰂀 " "󰂁 " "󰂂 " "󰁹 " ];
-            charging =
-              [ "󰢟 " "󰢜 " "󰂆 " "󰂇 " "󰂈 " "󰢝 " "󰂉 " "󰢞 " "󰂊 " "󰂋 " "󰂅 " ];
+            default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+            charging = [ "󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
             plugged = "󰚥";
           };
           max-length = 25;
@@ -169,6 +167,9 @@
 
       #battery, #pulseaudio, #network, #bluetooth {
         font-size: 18px;
+        min-width: ${
+          toString (config.theme.spacing.xxl + config.theme.spacing.s)
+        }px;
       }
     '';
   };
