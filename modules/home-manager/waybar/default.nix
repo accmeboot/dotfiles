@@ -170,6 +170,12 @@
         font-size: 18px;
         min-width: ${toString config.theme.spacing.xxl}px;
       }
+
+
+      #window, #clock {
+        font-size: 14px;
+      }
+
     '';
   };
 }
