@@ -60,6 +60,9 @@
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
+
+        "col.active_border" = lib.mkForce
+          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Decoration
@@ -92,6 +95,9 @@
           enabled = false;
           stacked = false;
         };
+
+        "col.border_active" = lib.mkForce
+          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Layout
