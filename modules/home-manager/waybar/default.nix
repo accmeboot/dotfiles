@@ -88,6 +88,7 @@
           spacing = config.theme.spacing.xxl - config.theme.spacing.s;
           icon-size = 20;
           cursor = 60;
+          icons = { steam = "steam"; };
         };
       };
     };
