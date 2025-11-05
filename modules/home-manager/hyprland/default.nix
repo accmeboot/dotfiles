@@ -62,7 +62,7 @@
         allow_tearing = false;
 
         "col.active_border" = lib.mkForce
-          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
+          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Decoration
@@ -97,7 +97,7 @@
         };
 
         "col.border_active" = lib.mkForce
-          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0D}) rgb(${config.theme.colors.base0E}) 45deg";
+          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Layout
