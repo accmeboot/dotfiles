@@ -119,8 +119,6 @@
         "float, class:com.accme.float"
         "size 800 600, class:com.accme.float"
 
-        "center, floating:1"
-
         "float, class:com.accme.fzflauncher"
         "size 320 400, class:com.accme.fzflauncher"
         "pin, class:com.accme.fzflauncher"
