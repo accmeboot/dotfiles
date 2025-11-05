@@ -6,7 +6,7 @@
     };
     borderWidth = lib.mkOption {
       type = lib.types.int;
-      default = 4;
+      default = 1;
     };
     opacity = lib.mkOption {
       type = lib.types.float;
