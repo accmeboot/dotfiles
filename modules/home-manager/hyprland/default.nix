@@ -61,9 +61,6 @@
         border_size = config.theme.borderWidth;
         layout = "dwindle";
         allow_tearing = false;
-
-        "col.active_border" = lib.mkForce
-          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Decoration
@@ -84,7 +81,7 @@
           color = lib.mkForce "rgba(1B161099)";
         };
 
-        dim_inactive = true;
+        dim_inactive = false;
         dim_strength = 0.2;
       };
 
@@ -96,9 +93,6 @@
           enabled = false;
           stacked = false;
         };
-
-        "col.border_active" = lib.mkForce
-          "rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) rgb(${config.theme.colors.base0F}) rgb(${config.theme.colors.base0E}) 45deg";
       };
 
       # Layout
