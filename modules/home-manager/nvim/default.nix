@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.neovim.enable = true;
 
   home.file = {
@@ -7,4 +7,6 @@
       recursive = true;
     };
   };
+
+  home.packages = with pkgs; [ tree-sitter ];
 }

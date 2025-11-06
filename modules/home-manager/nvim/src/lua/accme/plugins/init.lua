@@ -1,6 +1,7 @@
 return {
   "https://github.com/christoomey/vim-tmux-navigator",
   "nvim-tree/nvim-web-devicons",
+  "xiyaowong/transparent.nvim",
   {
     -- Make sure to set this up properly if you have lazy=true
     "MeanderingProgrammer/render-markdown.nvim",
