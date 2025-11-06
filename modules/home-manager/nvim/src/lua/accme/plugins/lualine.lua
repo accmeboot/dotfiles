@@ -3,9 +3,13 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   enabled = true,
   config = function()
+    local transparent_auto_theme = require('lualine.themes.auto')
+
+    transparent_auto_theme.normal.c.bg = 'None'
+
     require("lualine").setup({
       options = {
-        theme = "auto",
+        theme = transparent_auto_theme,
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         icons_enabled = true,
@@ -41,7 +45,7 @@ return {
             color = "StatusLine"
           },
           { "diagnostics", color = { bg = "None" } },
-          { "location",    color = "StatusLine",   padding = { right = 0 } },
+          { "location",    color = "StatusLine", padding = { right = 0 } },
         },
         lualine_z = {
           { "progress", color = "StatusLine" },
