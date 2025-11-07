@@ -16,7 +16,7 @@ return {
         globalstatus = true,
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = {},
         lualine_b = {
           { "branch", icon = "", padding = { left = 1 }, color = "StatusLine", },
           { "diff", color = { bg = "None" }, },
@@ -45,7 +45,7 @@ return {
             color = "StatusLine"
           },
           { "diagnostics", color = { bg = "None" } },
-          { "location",    color = "StatusLine", padding = { right = 0 } },
+          { "location",    color = "StatusLine",   padding = { right = 0 } },
         },
         lualine_z = {
           { "progress", color = "StatusLine" },
