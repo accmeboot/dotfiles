@@ -110,13 +110,11 @@ in {
                 orange = "#${config.theme.colors.base09}",
                 purple = "#${purpleColor}",
             },
-          })
 
-          vim.api.nvim_create_autocmd('ColorScheme', {
-            command = [[
-              highlight CursorLine guibg=NONE cterm=underline
-              highlight CursorLineNr guibg=NONE cterm=underline
-            ]]
+            highlights = {
+                CursorLine = { bg = "NONE", underline = true },
+                CursorLineNr = { bg = "NONE", underline = true },
+            },
           })
 
           vim.cmd("colorscheme cyberdream")

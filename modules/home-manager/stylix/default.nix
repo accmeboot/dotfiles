@@ -1,14 +1,14 @@
 { pkgs, lib, config, ... }:
 let
   dark = {
-    image = "${../../../assets/wallpapers/cyberpunk_catppuccin.jpg}";
-    scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    image = "${../../../assets/wallpapers/horizon-dark.png}";
+    scheme = import ../theme/horizon-dark.nix;
     polarity = "dark";
   };
 
   light = {
-    image = "${../../../assets/wallpapers/rocket-launch.jpg}";
-    scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
+    image = "${../../../assets/wallpapers/horizon-light.png}";
+    scheme = import ../theme/horizon-light.nix;
     polarity = "light";
   };
 in {
