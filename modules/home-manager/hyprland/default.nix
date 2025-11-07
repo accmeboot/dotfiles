@@ -28,7 +28,7 @@
       device = {
         name = "asuf1205:00-2808:0106-touchpad";
         accel_profile = "adaptive";
-        sensitivity = 0.5;
+        sensitivity = 0;
       };
 
       # Input configuration
