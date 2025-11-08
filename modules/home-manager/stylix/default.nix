@@ -32,6 +32,7 @@ in {
         starship.enable = false;
         waybar.enable = false;
         mako.enable = false;
+        rofi.enable = false;
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {

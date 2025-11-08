@@ -16,9 +16,7 @@
       "$up" = "k";
       "$right" = "l";
       "$terminal" = "wezterm";
-      "$menu" = "$terminal -e --class 'com.accme.fzflauncher' ${
-          ../../../scripts/launcher/menu.sh
-        }";
+      "$menu" = "rofi -show menu";
 
       # Monitor configuration
       monitor = [ ",highrr,auto,1" ];
@@ -113,11 +111,6 @@
         "float, class:nemo"
         "float, class:com.accme.float"
         "size 800 600, class:com.accme.float"
-
-        "float, class:com.accme.fzflauncher"
-        "size 320 400, class:com.accme.fzflauncher"
-        "pin, class:com.accme.fzflauncher"
-        "stayfocused, class:com.accme.fzflauncher"
       ];
 
       # Key bindings
