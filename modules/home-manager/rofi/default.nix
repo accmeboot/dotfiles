@@ -77,10 +77,6 @@ let
     	background-color: #${config.theme.colors.base03};
     }
 
-    element-icon {
-    	size: 0.75em;
-    }
-
     element-text {
     	text-color: inherit;
     }
@@ -91,7 +87,7 @@ in {
     terminal = "wezterm";
     extraConfig = {
       modi = "drun,window,menu:${../../../scripts/system-menu.sh},run";
-      show-icons = false;
+      show-icons = true;
 
       "display-drun" = "Apps:";
       "display-run" = "Run:";

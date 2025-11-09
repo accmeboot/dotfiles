@@ -64,9 +64,9 @@ in {
 
       icons = lib.mkIf config.stylix.desktop.enableIcons {
         enable = true;
-        package = pkgs.papirus-icon-theme;
-        dark = "Papirus-Dark";
-        light = "Papirus-Light";
+        package = pkgs.numix-icon-theme;
+        dark = "Numix";
+        light = "Numix-light";
       };
     };
 

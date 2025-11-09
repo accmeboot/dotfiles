@@ -5,9 +5,8 @@ run() {
 }
 
 if [ "$#" -gt 0 ]; then
-  selection_clean=$(echo "$1" | sed 's/^[^ ]*  //')
 
-    case "$selection_clean" in
+    case $1 in
       "Audio")
         run "${TERMINAL:-wezterm} -e --class com.accme.float wiremix -v output"
         ;;
@@ -59,18 +58,18 @@ if [ "$#" -gt 0 ]; then
 fi
 
 # If no arguments, show the menu
-echo "󰖟  Browser"
-echo "  Files"
-echo "  Steam"
-echo "󰝘  Applications"
-echo "󰤆  Shutdown"
-echo "  Reboot"
-echo "󰒲  Sleep"
-echo "  Lock"
-echo "  Audio"
-echo "󰄩  System Monitor"
-echo "  Terminal"
-echo "󱓞  Run"
-echo "  Configuration"
-echo "󰖨  Light Mode"
-echo "󰖔  Dark Mode"
+echo -en "Browser\0icon\x1fbrave-browser\n"
+echo -en "Files\0icon\x1ffolder\n"
+echo -en "Steam\0icon\x1fsteam\n"
+echo -en "Applications\0icon\x1fapplication-x-executable\n"
+echo -en "Shutdown\0icon\x1fsystem-shutdown\n"
+echo -en "Reboot\0icon\x1fsystem-reboot\n"
+echo -en "Sleep\0icon\x1fsystem-suspend\n"
+echo -en "Lock\0icon\x1fsystem-lock-screen\n"
+echo -en "Audio\0icon\x1faudio-volume-high\n"
+echo -en "System Monitor\0icon\x1fhtop\n"
+echo -en "Terminal\0icon\x1futilities-terminal\n"
+echo -en "Run\0icon\x1fsystem-run\n"
+echo -en "Configuration\0icon\x1fpreferences-system\n"
+echo -en "Light Mode\0icon\x1fweather-clear\n"
+echo -en "Dark Mode\0icon\x1fweather-clear-night\n"
