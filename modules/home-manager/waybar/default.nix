@@ -134,7 +134,7 @@
       }
 
       #workspaces button:hover {
-        background-color: #${config.theme.colors.base03};
+        background-color: #${config.theme.colors.base02};
       }
 
       #workspaces button.active {
