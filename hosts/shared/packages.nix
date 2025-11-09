@@ -73,9 +73,6 @@
     libnotify # notification library
     socat # listen to events on sockets
 
-    # Gaming Platform
-    lutris
-
     # Network Tools
     networkmanagerapplet # network manager GUI
 
