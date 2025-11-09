@@ -5,12 +5,13 @@
     configuration {
       display-drun: "Apps:";
       display-menu: "Menu:";
-      display-run: "Run:";
-      display-window: "Windows:";
-      window-format: "{t}";
+
       kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
-      modi: "drun,window,menu:${../../../scripts/system-menu.sh},run";
+
+      modi: "drun,menu:${../../../scripts/system-menu.sh}";
+
       show-icons: true;
+
       terminal: "wezterm";
     }
 
