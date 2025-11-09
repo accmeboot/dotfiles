@@ -74,7 +74,7 @@
     socat # listen to events on sockets
 
     # Gaming Platform
-    # lutris
+    lutris
 
     # Network Tools
     networkmanagerapplet # network manager GUI
