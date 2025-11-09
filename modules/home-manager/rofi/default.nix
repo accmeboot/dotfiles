@@ -1,6 +1,19 @@
-{ config, pkgs, ... }:
-let
-  customTheme = pkgs.writeText "custom.rasi" ''
+{ config, pkgs, ... }: {
+  home.packages = with pkgs; [ rofi ];
+
+  home.file.".config/rofi/config.rasi".text = ''
+    configuration {
+      display-drun: "Apps:";
+      display-menu: "Menu:";
+      display-run: "Run:";
+      display-window: "Windows:";
+      window-format: "{t}";
+      kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
+      modi: "drun,window,menu:${../../../scripts/system-menu.sh},run";
+      show-icons: true;
+      terminal: "wezterm";
+    }
+
     * {
     	font: "Inter 12";
     	margin: 0px;
@@ -9,7 +22,7 @@ let
 
     	background-color: transparent;
     	text-color: #${config.theme.colors.base05};
-    	accnet-color: #${config.theme.colors.base0D};
+      border: 0px;
     }
 
     window {
@@ -18,6 +31,8 @@ let
     	background-color: #${config.theme.colors.base00};
     	children: [ mainbox, message];
     	y-offset: -36px;
+      border: inherit;
+      padding: 0;
     }
 
     mainbox {
@@ -32,14 +47,24 @@ let
      }px;
       spacing: ${toString config.theme.spacing.s}px;
       children: [ prompt, entry];
+      text-color: inherit;
     }
 
     prompt {
     	text-color: #${config.theme.colors.base0D};
+    	border-radius: ${toString config.theme.borderRadius}px;
+    }
+
+    entry {
+      text-color: inherit;
+      border: inherit;
+      placeholder: "";
     }
 
     listview {
     	layout: horizontal;
+      border: inherit;
+      padding: 0;
     }
 
     element {
@@ -49,15 +74,25 @@ let
     	border-radius: ${toString config.theme.borderRadius}px;
     }
 
-    element normal urgent {
+    element normal.normal {
+    	text-color: inherit;
+    	background-color: inherit;
+    }
+
+    element normal.urgent {
     	text-color: #${config.theme.colors.base08};
     }
 
-    element normal active {
+    element normal.active {
     	text-color: #${config.theme.colors.base0D};
     }
 
-    element alternate active {
+    element alternate.normal {
+    	text-color: inherit;
+    	background-color: inherit;
+    }
+
+    element alternate.active {
     	text-color: #${config.theme.colors.base0D};
     }
 
@@ -65,37 +100,26 @@ let
     	text-color: #${config.theme.colors.base00};
     }
 
-    element selected normal {
+    element selected.normal {
     	background-color: #${config.theme.colors.base0D};
+    	text-color: #${config.theme.colors.base00};
     }
 
-    element selected urgent {
+    element selected.urgent {
     	background-color: #${config.theme.colors.base08};
     }
 
-    element selected active {
+    element selected.active {
     	background-color: #${config.theme.colors.base03};
     }
 
     element-text {
-    	text-color: inherit;
+      background-color: inherit;
+      text-color: inherit;
+    }
+
+    element-icon {
+      size: 18px;
     }
   '';
-in {
-  programs.rofi = {
-    enable = true;
-    terminal = "wezterm";
-    extraConfig = {
-      modi = "drun,window,menu:${../../../scripts/system-menu.sh},run";
-      show-icons = true;
-
-      "display-drun" = "Apps:";
-      "display-run" = "Run:";
-      "display-window" = "Window:";
-      "display-menu" = "Menu:";
-
-      "kb-cancel" = "Escape,Control+g,Control+bracketleft,MouseSecondary";
-    };
-    package = pkgs.rofi.override { theme = customTheme; };
-  };
 }
