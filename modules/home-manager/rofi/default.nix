@@ -10,7 +10,7 @@
 
       modi: "drun,menu:${../../../scripts/system-menu.sh}";
 
-      show-icons: true;
+      show-icons: false;
 
       terminal: "wezterm";
     }
