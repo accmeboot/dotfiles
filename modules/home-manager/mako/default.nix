@@ -10,7 +10,7 @@
 
       width = 400;
 
-      default-timeout = 5000;
+      default-timeout = 0;
       ignore-timeout = true;
       border-color = "#${config.theme.colors.base03}";
       text-color = "#${config.theme.colors.base05}";
