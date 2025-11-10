@@ -21,7 +21,7 @@ if [ "$#" -gt 0 ]; then
         run "steam"
         ;;
       "Browser")
-        run "brave"
+        run "zen"
         ;;
       "Terminal")
         run "${TERMINAL:-wezterm}"

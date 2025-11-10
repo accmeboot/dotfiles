@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -10,7 +10,8 @@
     gnumake # build automation tool
     git # version control system
     nil # nix language server
-    brave
+
+    inputs.zen-browser.packages."${system}".default
 
     # Programming Languages
     python3 # python programming language
