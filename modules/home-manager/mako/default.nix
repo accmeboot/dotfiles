@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   services.mako = {
     enable = true;
     settings = {
@@ -6,9 +6,14 @@
       layer = "overlay";
       border-size = 1;
       border-radius = config.theme.borderRadius;
-      icons = true;
+      icons = 1;
+
+      icon-path =
+        "${pkgs.papirus-icon-theme}/share/icons/Papirus:${pkgs.hicolor-icon-theme}/share/icons/hicolor";
 
       width = 400;
+
+      on-notify = "exec makoctl menu -- rofi -p 'Select:' -dmenu";
 
       default-timeout = 0;
       ignore-timeout = true;
