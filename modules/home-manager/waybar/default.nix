@@ -6,15 +6,15 @@
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+        modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ ];
         modules-right =
           [ "tray" "battery" "pulseaudio" "network" "bluetooth" "clock" ];
 
         spacing = config.theme.spacing.s;
 
-        "hyprland/workspaces" = {
-          format = "{id}";
+        "niri/workspaces" = {
+          format = "{value}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
@@ -103,8 +103,6 @@
       window#waybar>box {
         background-color: #${config.theme.colors.base00};
         padding: 0px ${toString config.theme.spacing.s}px;
-        box-shadow: 4px 4px 2px 1px alpha(#1B1610, 0.6);
-        margin: 0px 0px ${toString config.theme.spacing.s}px 0px;
       }
 
       window#waybar {

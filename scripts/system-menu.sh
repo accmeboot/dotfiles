@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 run() {
-  hyprctl -q dispatch exec "$1" 
+  niri msg action spawn-sh -- "$1"
 }
 
 if [ "$#" -gt 0 ]; then

@@ -31,7 +31,7 @@
     	width: 700px;
     	background-color: #${config.theme.colors.base00};
     	children: [ mainbox, message];
-    	y-offset: -36px;
+    	y-offset: -30px;
       border: inherit;
       padding: 0;
     }
