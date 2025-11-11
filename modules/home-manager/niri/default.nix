@@ -60,6 +60,7 @@
     }
 
     spawn-at-startup "waybar"
+    spawn-sh-at-startup "wbg -s ${config.stylix.image}"
     spawn-sh-at-startup "sleep 0.5 && pkill nm-applet"
     spawn-sh-at-startup "sleep 0.5 && hyprlock"
 
@@ -107,7 +108,7 @@
     // Make the wallpaper stationary, rather than moving with workspaces.
     layer-rule {
         // Find the right namespace by running niri msg layers.
-        match namespace="^hyprpaper$"
+        match namespace="^wallpaper$"
         place-within-backdrop true
     }
 

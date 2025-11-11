@@ -77,7 +77,8 @@
     networkmanagerapplet
 
     # niri dependency
-    xwayland-satellite
+    xwayland-satellite # xwayland compatibility
+    wbg # wallpaper
   ];
 
   #----------------------------------------------------------------------------#
