@@ -74,8 +74,7 @@
     socat # listen to events on sockets
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
-    xwayland-satellite
-    networkmanager
+    networkmanagerapplet
   ];
 
   #----------------------------------------------------------------------------#
