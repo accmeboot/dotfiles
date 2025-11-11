@@ -126,11 +126,9 @@
     }
 
     binds {
-        Mod+Shift+Slash { show-hotkey-overlay; }
 
-        Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm"; }
-        Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "menu"; }
-        Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+        Mod+T { spawn "wezterm"; }
+        Mod+D { spawn "rofi" "-show" "menu"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"; }
@@ -140,7 +138,6 @@
         XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
         Mod+O repeat=false { toggle-overview; }
-
         Mod+Q repeat=false { close-window; }
 
         Mod+H     { focus-column-left; }
@@ -165,8 +162,6 @@
 
         Mod+U              { focus-workspace-down; }
         Mod+I              { focus-workspace-up; }
-        Mod+Ctrl+U         { move-column-to-workspace-down; }
-        Mod+Ctrl+I         { move-column-to-workspace-up; }
 
         Mod+Shift+U         { move-workspace-down; }
         Mod+Shift+I         { move-workspace-up; }
@@ -206,21 +201,22 @@
         Mod+Shift+8 { move-column-to-workspace 8; }
         Mod+Shift+9 { move-column-to-workspace 9; }
 
-        // Switches focus between the current and the previous workspace.
         Mod+Tab { focus-window-previous; }
 
         Mod+BracketLeft  { consume-or-expel-window-left; }
         Mod+BracketRight { consume-or-expel-window-right; }
+
         Mod+Comma  { consume-window-into-column; }
         Mod+Period { expel-window-from-column; }
         Mod+R { switch-preset-column-width; }
         Mod+Shift+R { switch-preset-window-height; }
         Mod+Ctrl+R { reset-window-height; }
-        Mod+F { maximize-column; }
-        Mod+Shift+F { fullscreen-window; }
+
+        Mod+M { maximize-column; }
+        Mod+E { fullscreen-window; }
+
         Mod+Ctrl+F { expand-column-to-available-width; }
         Mod+C { center-column; }
-        Mod+Ctrl+C { center-visible-columns; }
 
         Mod+Minus { set-column-width "-10%"; }
         Mod+Equal { set-column-width "+10%"; }
@@ -228,8 +224,8 @@
         Mod+Shift+Minus { set-window-height "-10%"; }
         Mod+Shift+Equal { set-window-height "+10%"; }
 
-        Mod+V       { toggle-window-floating; }
-        Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+        Mod+F       { toggle-window-floating; }
+        Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 
         Mod+W { toggle-column-tabbed-display; }
 
