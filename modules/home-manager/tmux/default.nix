@@ -49,7 +49,6 @@
       unbind -T copy-mode-vi MouseDragEnd1Pane
 
       bind-key f split-window -v -c "#{pane_current_path}" 'yazi'
-      bind-key o split-window -h -c "#{pane_current_path}" 'opencode'
 
       # Start windows and panes index at 1, not 0.
       set -g base-index 1

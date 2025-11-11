@@ -4,7 +4,6 @@
     ../rofi/default.nix
     ../dunst/default.nix
     ../niri/default.nix
-    ../hyprland/default.nix
     ../hyprlock/default.nix
     ../hypridle/default.nix
   ];
