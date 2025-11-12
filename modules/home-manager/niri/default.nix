@@ -80,7 +80,7 @@
         // off
 
         // Slow down all animations by this factor. Values below 1 speed them up instead.
-        // slowdown 3.0
+        slowdown 0.5
     }
 
     layer-rule {

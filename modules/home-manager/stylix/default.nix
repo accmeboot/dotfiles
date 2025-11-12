@@ -36,18 +36,9 @@ in {
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
-        serif = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
-        sansSerif = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
-        monospace = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
+        serif = { name = "MesloLGL Nerd Font"; };
+        sansSerif = { name = "MesloLGL Nerd Font"; };
+        monospace = { name = "MesloLGL Nerd Font"; };
         sizes = {
           applications = 10;
           desktop = 10;

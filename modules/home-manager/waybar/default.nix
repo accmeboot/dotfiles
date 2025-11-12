@@ -88,7 +88,6 @@
           spacing = config.theme.spacing.xxl - config.theme.spacing.s;
           icon-size = 20;
           cursor = 60;
-          icons = { steam = "steam"; };
         };
       };
     };
@@ -146,6 +145,7 @@
 
       #tray * {
         border-radius: ${toString config.theme.borderRadius}px;
+        font-size: 14px;
       }
 
       #clock, #pulseaudio {
@@ -169,7 +169,6 @@
         font-size: 18px;
         min-width: ${toString config.theme.spacing.xxl}px;
       }
-
 
       #window, #clock {
         font-size: 14px;

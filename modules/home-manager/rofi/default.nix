@@ -16,7 +16,7 @@
     }
 
     * {
-    	font: "Inter 12";
+    	font: "${config.stylix.fonts.monospace.name} 11";
     	margin: 0px;
     	padding: 0px;
     	spacing: 0px;
@@ -29,11 +29,12 @@
     window {
     	location: north;
     	width: 700px;
+      height: 33px;
     	background-color: #${config.theme.colors.base00};
     	children: [ mainbox, message];
-    	y-offset: -30px;
+    	y-offset: -33px;
       border: inherit;
-      padding: 0;
+      padding: ${toString config.theme.spacing.xs}px 0px;
     }
 
     mainbox {
@@ -43,9 +44,7 @@
 
     inputbar {
     	width: 5%;
-    	padding: ${toString config.theme.spacing.xs}px ${
-       toString config.theme.spacing.s
-     }px;
+    	padding: 0px ${toString config.theme.spacing.s}px;
       spacing: ${toString config.theme.spacing.s}px;
       children: [ prompt, entry];
       text-color: inherit;
@@ -70,7 +69,7 @@
 
     element {
     	padding: 0px ${toString config.theme.spacing.s}px;
-    	margin: ${toString config.theme.spacing.xs}px 0px;
+    	margin: 0px;
     	spacing: ${toString config.theme.spacing.xs}px;
     	border-radius: ${toString config.theme.borderRadius}px;
     }
