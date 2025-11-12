@@ -16,7 +16,7 @@
     }
 
     * {
-    	font: "${config.stylix.fonts.monospace.name} 11";
+    	font: "${config.stylix.fonts.serif.name} 12";
     	margin: 0px;
     	padding: 0px;
     	spacing: 0px;
@@ -29,10 +29,9 @@
     window {
     	location: north;
     	width: 700px;
-      height: 33px;
     	background-color: #${config.theme.colors.base00};
     	children: [ mainbox, message];
-    	y-offset: -33px;
+    	y-offset: -29px;
       border: inherit;
       padding: ${toString config.theme.spacing.xs}px 0px;
     }

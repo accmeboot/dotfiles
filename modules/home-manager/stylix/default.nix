@@ -36,8 +36,8 @@ in {
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
-        serif = { name = "MesloLGL Nerd Font"; };
-        sansSerif = { name = "MesloLGL Nerd Font"; };
+        serif = { name = "MesloLGS Nerd Font"; };
+        sansSerif = { name = "MesloLGS Nerd Font"; };
         monospace = { name = "MesloLGL Nerd Font"; };
         sizes = {
           applications = 10;
