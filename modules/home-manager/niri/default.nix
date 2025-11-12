@@ -11,6 +11,7 @@
         touchpad {
             tap
             natural-scroll
+            click-method "clickfinger"
         }
         mouse {
             accel-speed 0.0
