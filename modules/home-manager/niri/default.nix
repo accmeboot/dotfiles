@@ -25,7 +25,7 @@
     output "DP-2" {
         mode "2560x1440@239.970"
         scale 1
-        variable-refresh-rate
+        variable-refresh-rate on-demand=true
         transform "normal"
     }
 
@@ -126,6 +126,11 @@
     window-rule {
         geometry-corner-radius ${toString config.theme.borderRadius}
         clip-to-geometry true
+    }
+
+    window-rule {
+        match app-id=r#"^steam_app_[0-9]+$"#
+        variable-refresh-rate true
     }
 
     binds {
