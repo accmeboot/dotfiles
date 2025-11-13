@@ -17,6 +17,10 @@
     	background-color: transparent;
     	text-color: #${config.theme.colors.base05};
       border: 0px;
+
+      font: "${config.stylix.fonts.serif.name} ${
+        toString config.stylix.fonts.sizes.popups
+      }";
     }
 
     window {

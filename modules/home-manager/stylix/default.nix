@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, ... }:
 let
   dark = {
     image = "${../../../assets/wallpapers/pond.png}";
@@ -37,12 +37,12 @@ in {
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
-          package = pkgs.nerd-fonts.meslo-lg;
-          name = "MesloLGS Nerd Font";
+          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+          name = "SFProDisplay Nerd Font";
         };
         sansSerif = {
-          package = pkgs.nerd-fonts.meslo-lg;
-          name = "MesloLGS Nerd Font";
+          package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+          name = "SFProDisplay Nerd Font";
         };
         monospace = {
           package = pkgs.nerd-fonts.meslo-lg;
@@ -51,7 +51,7 @@ in {
         sizes = {
           applications = 10;
           desktop = 10;
-          popups = 10;
+          popups = 12;
           terminal = 12;
         };
       };

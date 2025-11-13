@@ -28,10 +28,14 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar
-    , zen-browser }: {
+    , zen-browser, apple-fonts }: {
       nixosConfigurations = {
         "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
