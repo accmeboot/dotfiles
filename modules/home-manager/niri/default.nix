@@ -52,9 +52,9 @@
         }
         shadow {
             on
-            softness 1
+            softness 5
             spread 2
-            offset x=4 y=4
+            offset x=2 y=2
             draw-behind-window true
             color "#1B161099"
         }
@@ -92,9 +92,9 @@
 
         shadow {
             on
-            softness 1
+            softness 5
             spread 2
-            offset x=4 y=4
+            offset x=2 y=2
             draw-behind-window true
             color "#1B161099"
         }
