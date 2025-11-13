@@ -85,6 +85,7 @@
 
     layer-rule {
         match namespace="waybar"
+        match namespace="rofi"
         match namespace="^notifications$"
 
         match at-startup=true
@@ -102,6 +103,7 @@
     }
 
     layer-rule {
+      match namespace="rofi"
       match namespace="^notifications$"
       geometry-corner-radius ${toString config.theme.borderRadius}
     }
