@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 run() {
-  hyprctl -q dispatch exec "$1" 
+  niri msg action spawn-sh -- "$1"
 }
 
 if [ "$#" -gt 0 ]; then
-  selection_clean=$(echo "$1" | sed 's/^[^ ]*  //')
+  selection_clean=$(echo "$1" | sed 's/^[^ ]* //')
 
     case "$selection_clean" in
       "Audio")
@@ -53,16 +53,16 @@ if [ "$#" -gt 0 ]; then
 fi
 
 # If no arguments, show the menu
-echo "󰖟  Browser"
-echo "  Files"
-echo "  Steam"
-echo "󰤆  Shutdown"
-echo "  Reboot"
-echo "󰒲  Sleep"
-echo "  Lock"
-echo "  Audio"
-echo "󰄩  System Monitor"
-echo "  Terminal"
-echo "  Configuration"
-echo "󰖨  Light Mode"
-echo "󰖔  Dark Mode"
+echo "󰖟 Browser"
+echo " Files"
+echo " Steam"
+echo "󰤆 Shutdown"
+echo " Reboot"
+echo "󰒲 Sleep"
+echo " Lock"
+echo " Audio"
+echo "󰄩 System Monitor"
+echo " Terminal"
+echo " Configuration"
+echo "󰖨 Light Mode"
+echo "󰖔 Dark Mode"

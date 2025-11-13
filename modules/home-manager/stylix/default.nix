@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }:
 let
   dark = {
-    image = "${../../../assets/wallpapers/horizon-dark.png}";
+    image = "${../../../assets/wallpapers/pond.png}";
     scheme = import ../theme/horizon-dark.nix;
     polarity = "dark";
   };
 
   light = {
-    image = "${../../../assets/wallpapers/horizon-light.png}";
+    image = "${../../../assets/wallpapers/street.png}";
     scheme = import ../theme/horizon-light.nix;
     polarity = "light";
   };
@@ -36,18 +36,9 @@ in {
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
-        serif = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
-        sansSerif = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
-        monospace = {
-          package = pkgs.inter;
-          name = "Inter";
-        };
+        serif = { name = "MesloLGS Nerd Font"; };
+        sansSerif = { name = "MesloLGS Nerd Font"; };
+        monospace = { name = "MesloLGL Nerd Font"; };
         sizes = {
           applications = 10;
           desktop = 10;
@@ -94,6 +85,7 @@ in {
             echo "Switching to light theme: $current_gen/specialisation/light"
             "$current_gen"/specialisation/light/activate
             pkill waybar && setsid waybar > /dev/null 2>&1 &
+            pkill wbg && wbg -s ${light.image} > /dev/null 2>&1 &
           else
             echo "No home-manager generation with light specialisation found"
             exit 1
@@ -116,6 +108,7 @@ in {
             echo "Switching to dark theme: $current_gen"
             "$current_gen"/activate
             pkill waybar && setsid waybar > /dev/null 2>&1 &
+            pkill wbg && wbg -s ${dark.image} > /dev/null 2>&1 &
           else
             echo "Something went terrible wrong ACHTUNG!"
             exit 1

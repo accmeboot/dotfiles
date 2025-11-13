@@ -6,7 +6,6 @@
     ../starship/default.nix
     ../zsh/default.nix
     ../fastfetch/default.nix
-    ../opencode/default.nix
     ../wezterm/default.nix
     ../tmux/default.nix
 

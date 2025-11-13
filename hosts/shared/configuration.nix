@@ -84,7 +84,7 @@
     gamemode.enable = true;
     dconf.enable = true;
 
-    hyprland = { enable = true; };
+    niri.enable = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -113,7 +113,7 @@
       settings = rec {
         initial_session = {
           command =
-            "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+            "${pkgs.niri}/bin/niri-session > $XDG_RUNTIME_DIR/niri.log 2>&1";
           user = "accme";
         };
         default_session = initial_session;

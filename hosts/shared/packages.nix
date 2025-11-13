@@ -36,7 +36,6 @@
     # System Tools
     lm_sensors # hardware monitoring utilities
     pciutils # PCI utilities for device inspection
-    bluez # bluetooth protocol stack
 
     # Wayland Tools
     xclip # command line interface to X clipboard
@@ -74,10 +73,12 @@
     libnotify # notification library
     socat # listen to events on sockets
 
-    # Network Tools
-    networkmanagerapplet # network manager GUI
-
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
+    networkmanagerapplet
+
+    # niri dependency
+    xwayland-satellite # xwayland compatibility
+    wbg # wallpaper
   ];
 
   #----------------------------------------------------------------------------#
