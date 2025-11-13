@@ -37,6 +37,8 @@
     inputbar {
       children: [entry];
       text-color: inherit;
+      padding: 0;
+      border: none;
     }
 
     message {
@@ -52,8 +54,6 @@
     	padding: ${toString config.theme.spacing.s}px ${
        toString config.theme.spacing.xs
      }px;
-      border-color: #${config.theme.colors.base01};
-      border: ${toString config.theme.borderWidth};
     }
 
     listview {
