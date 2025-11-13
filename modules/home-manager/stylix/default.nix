@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }:
 let
   dark = {
-    image = "${../../../assets/wallpapers/horizon-dark.png}";
+    image = "${../../../assets/wallpapers/pond.png}";
     scheme = import ../theme/horizon-dark.nix;
     polarity = "dark";
   };
 
   light = {
-    image = "${../../../assets/wallpapers/horizon-light.png}";
+    image = "${../../../assets/wallpapers/street.png}";
     scheme = import ../theme/horizon-light.nix;
     polarity = "light";
   };
