@@ -116,11 +116,6 @@
     }
 
     window-rule {
-        match app-id=r#"^org\.wezfurlong\.wezterm$"#
-        default-column-width {}
-    }
-
-    window-rule {
         match app-id=r#"^com\.accme\.float$"#
         open-floating true
     }
@@ -133,6 +128,13 @@
     window-rule {
         match app-id=r#"^steam_app_[0-9]+$"#
         variable-refresh-rate true
+    }
+
+    window-rule {
+        match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+        default-floating-position x=${toString config.theme.spacing.xxl} y=${
+          toString config.theme.spacing.xxl
+        } relative-to="bottom-right"
     }
 
     binds {

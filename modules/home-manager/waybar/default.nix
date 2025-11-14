@@ -11,13 +11,18 @@
         modules-right =
           [ "tray" "battery" "pulseaudio" "network" "bluetooth" "clock" ];
 
-        spacing = config.theme.spacing.s;
+        spacing = config.theme.spacing.m;
 
         "niri/workspaces" = {
           format = "{value}";
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        "niri/window" = {
+          icon = true;
+          icon-size = 20;
         };
 
         network = {
@@ -85,7 +90,8 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.xxl - config.theme.spacing.s;
+          spacing = config.theme.spacing.m
+            + 2; # 2 is needed because icons are rendered by font take 2 cells
           icon-size = 20;
           cursor = 60;
         };
@@ -167,7 +173,6 @@
 
       #battery, #pulseaudio, #network, #bluetooth {
         font-size: 18px;
-        min-width: ${toString config.theme.spacing.xxl}px;
       }
 
       #window, #clock {
