@@ -134,7 +134,7 @@
         match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
         default-floating-position x=${toString config.theme.spacing.xxl} y=${
           toString config.theme.spacing.xxl
-        } relative-to="bottom-right"
+        } relative-to="top-right"
     }
 
     binds {
