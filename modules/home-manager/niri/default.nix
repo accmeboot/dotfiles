@@ -1,5 +1,9 @@
 { config, ... }: {
   home.file.".config/niri/config.kdl".text = ''
+    debug {
+        deactivate-unfocused-windows
+    }
+
     input {
         keyboard {
             xkb {
@@ -128,13 +132,6 @@
     window-rule {
         match app-id=r#"^steam_app_[0-9]+$"#
         variable-refresh-rate true
-    }
-
-    window-rule {
-        match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-        default-floating-position x=${toString config.theme.spacing.xxl} y=${
-          toString config.theme.spacing.xxl
-        } relative-to="top-right"
     }
 
     binds {
