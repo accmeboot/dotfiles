@@ -24,7 +24,6 @@
         }
         term = "wezterm",
         default_cursor_style = "SteadyBlock",
-        default_prog = {"zsh"},
         font = wezterm.font '${config.stylix.fonts.monospace.name}',
         enable_tab_bar = false,
         window_padding = {
