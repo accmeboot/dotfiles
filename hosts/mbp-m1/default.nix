@@ -19,6 +19,7 @@
     curl
     wget
     rustup
+    htop
   ];
 
   homebrew = {

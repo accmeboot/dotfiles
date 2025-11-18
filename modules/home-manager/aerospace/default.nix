@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   home.file.".config/aerospace/aerospace.toml".text = ''
     after-login-command = []
     after-startup-command = []
@@ -18,16 +18,17 @@
         preset = 'qwerty'
 
     [gaps]
-        inner.horizontal = 4
-        inner.vertical =   4
-        outer.left =       10
-        outer.bottom =     10
-        outer.top =        10
-        outer.right =      10
+        inner.horizontal = ${toString config.theme.spacing.s}
+        inner.vertical =   ${toString config.theme.spacing.s}
+
+        outer.left =       ${toString config.theme.spacing.s}
+        outer.bottom =     ${toString config.theme.spacing.s}
+        outer.top =        ${toString config.theme.spacing.s}
+        outer.right =      ${toString config.theme.spacing.s}
 
     [mode.main.binding]
-        alt-q = 'exec-and-forget open -n -a "wezterm"'
-        alt-c = 'close'
+        alt-t = 'exec-and-forget open -n -a "wezterm"'
+        alt-q = 'close'
         alt-f = 'layout floating tiling'
         alt-e = 'macos-native-fullscreen'
         alt-s = 'layout tiles vertical horizontal'
