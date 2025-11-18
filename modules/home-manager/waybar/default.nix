@@ -127,6 +127,7 @@
 
       #workspaces button {
         all: unset;
+        font-weight: bold;
         padding: 0px ${toString config.theme.spacing.xs}px;
         margin: ${toString config.theme.spacing.xs}px;
         background-color: transparent;
@@ -173,10 +174,12 @@
 
       #battery, #pulseaudio, #network, #bluetooth {
         font-size: 18px;
+        font-weight: bold;
       }
 
       #window, #clock {
         font-size: 14px;
+        font-weight: bold;
       }
 
     '';
