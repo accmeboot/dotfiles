@@ -108,17 +108,7 @@
     gnome.gnome-keyring.enable = true;
     blueman.enable = true;
     envfs.enable = true;
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command =
-            "${pkgs.niri}/bin/niri-session > $XDG_RUNTIME_DIR/niri.log 2>&1";
-          user = "accme";
-        };
-        default_session = initial_session;
-      };
-    };
+    displayManager.ly.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
