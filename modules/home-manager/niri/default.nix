@@ -212,11 +212,9 @@
 
         Mod+Tab { focus-window-previous; }
 
-        Mod+BracketLeft  { consume-or-expel-window-left; }
-        Mod+BracketRight { consume-or-expel-window-right; }
+        Mod+Shift+S  { consume-or-expel-window-left; }
+        Mod+S { consume-or-expel-window-right; }
 
-        Mod+Comma  { consume-window-into-column; }
-        Mod+Period { expel-window-from-column; }
         Mod+R { switch-preset-column-width; }
         Mod+Shift+R { switch-preset-window-height; }
         Mod+Ctrl+R { reset-window-height; }
