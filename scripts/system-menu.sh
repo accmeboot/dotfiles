@@ -18,7 +18,7 @@ if [ "$#" -gt 0 ]; then
         run "${TERMINAL:-wezterm} -e --class com.accme.float yazi"
         ;;
       "Steam")
-        run "steam"
+        run "sleep 0.1 && steam -system-composer"
         ;;
       "Browser")
         run "zen"
