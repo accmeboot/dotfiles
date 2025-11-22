@@ -14,6 +14,15 @@ return {
 			python = { "pylint" },
 		}
 
+		-- Configure eslint_d to use project root as cwd
+		lint.linters.eslint_d = require("lint").linters.eslint_d
+		lint.linters.eslint_d.cwd = function(params)
+			-- Try to find project root by looking for common root markers
+			local root_markers = { ".git", "package.json", ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
+			local root = vim.fs.dirname(vim.fs.find(root_markers, { upward = true, path = params.bufname })[1])
+			return root or vim.fn.getcwd()
+		end
+
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
