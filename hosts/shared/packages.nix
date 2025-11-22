@@ -11,7 +11,7 @@
     git # version control system
     nil # nix language server
 
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
 
     # Programming Languages
     python3 # python programming language
@@ -44,6 +44,7 @@
     # Media & Viewers
     mupdf # PDF viewer
     mpv # video player
+    vlc # video player
     gimp # image editor
     mediainfo # cli to view files mediainfo
     playerctl # required by waybar mpris module
