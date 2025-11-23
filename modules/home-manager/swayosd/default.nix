@@ -18,7 +18,7 @@
     }
 
     progressbar {
-      min-height: 33px;
+      min-height: 28px;
       border-radius: ${toString config.theme.borderRadius}px;
       background: transparent;
       border: none;
