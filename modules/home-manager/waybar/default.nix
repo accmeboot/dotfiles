@@ -92,8 +92,12 @@
         tray = {
           spacing = config.theme.spacing.m
             + 2; # 2 is needed because icons are rendered by font take 2 cells
-          icon-size = 20;
+          icon-size = 18;
           cursor = 60;
+          icons = {
+            steam = ../../../assets/icons/steam.png;
+            jamesdsp = ../../../assets/icons/eq.png;
+          };
         };
       };
     };
