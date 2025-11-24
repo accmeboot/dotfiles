@@ -1,9 +1,5 @@
 { config, ... }: {
   home.file.".config/niri/config.kdl".text = ''
-    debug {
-        deactivate-unfocused-windows
-    }
-
     input {
         keyboard {
             xkb {
