@@ -108,15 +108,6 @@
     gnome.gnome-keyring.enable = true;
     blueman.enable = true;
     envfs.enable = true;
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet -t -r";
-          user = "greeter";
-        };
-      };
-    };
     xserver.xkb = {
       layout = "us";
       variant = "";
