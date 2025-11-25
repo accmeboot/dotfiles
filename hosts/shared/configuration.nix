@@ -107,6 +107,7 @@
       jack.enable = true;
     };
     gnome.gnome-keyring.enable = true;
+    displayManager.gdm.enable = true;
     blueman.enable = true;
     envfs.enable = true;
     xserver.xkb = {

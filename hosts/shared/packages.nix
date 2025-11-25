@@ -79,8 +79,6 @@
 
     # niri dependency
     xwayland-satellite # xwayland compatibility
-    xdg-desktop-portal-gnome # x11 stuff
-    xdg-desktop-portal-gtk # x11 stuff
     wbg # wallpaper
   ];
 
