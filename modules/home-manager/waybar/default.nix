@@ -8,8 +8,7 @@
 
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ ];
-        modules-right =
-          [ "tray" "battery" "pulseaudio" "network" "bluetooth" "clock" ];
+        modules-right = [ "tray" "battery" "clock" ];
 
         spacing = config.theme.spacing.m;
 
@@ -23,42 +22,6 @@
         "niri/window" = {
           icon = true;
           icon-size = 20;
-        };
-
-        network = {
-          format = "{ifname}";
-          format-wifi = "󰤨";
-          format-ethernet = "󰖟";
-          format-disconnected = "󰪎";
-          tooltip-format = "{ifname}";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)";
-          tooltip-format-ethernet = "{bandwidthTotalBits}";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-          on-click = "nm-connection-editor";
-        };
-
-        bluetooth = {
-          format = "󰂯";
-          format-disabled = "󰂲";
-          format-connected = "󰂱";
-          tooltip-format = "{controller_alias}	{controller_address}";
-          tooltip-format-connected = ''
-            {controller_alias}	{controller_address}
-
-            {device_enumerate}'';
-          tooltip-format-enumerate-connected =
-            "{device_alias}	{device_address}";
-          on-click = "blueman-manager";
-        };
-
-        pulseaudio = {
-          format = "{icon}";
-          tooltip-format = "{volume}%";
-          format-muted = "";
-          format-icons = [ "" ];
-          scroll-step = 1;
-          on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
 
         battery = {
@@ -155,11 +118,6 @@
         font-size: 14px;
       }
 
-      #clock, #pulseaudio {
-        padding: 0px;
-        margin: 0px;
-      }
-
       #battery {
         color: #${config.theme.colors.base05};
       }
@@ -172,7 +130,7 @@
         color: #${config.theme.colors.base08};
       }
 
-      #battery, #pulseaudio, #network, #bluetooth {
+      #battery {
         font-size: 18px;
         font-weight: bold;
       }
