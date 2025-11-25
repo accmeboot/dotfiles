@@ -107,7 +107,17 @@
       jack.enable = true;
     };
     gnome.gnome-keyring.enable = true;
-    displayManager.gdm.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command =
+            "${pkgs.niri}/bin/niri-session > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+          user = "accme";
+        };
+        default_session = initial_session;
+      };
+    };
     blueman.enable = true;
     envfs.enable = true;
     xserver.xkb = {

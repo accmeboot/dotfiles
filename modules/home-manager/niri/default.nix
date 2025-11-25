@@ -62,6 +62,7 @@
 
     spawn-at-startup "waybar"
     spawn-sh-at-startup "wbg -s ${config.stylix.image}"
+    spawn-sh-at-startup "hyprlock -q"
 
     hotkey-overlay {
         skip-at-startup
