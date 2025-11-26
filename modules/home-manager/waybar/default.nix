@@ -1,4 +1,8 @@
-{ config, ... }: {
+{ config, ... }:
+let
+  theme = config.stylix.theme;
+  colors = config.lib.stylix.colors;
+in {
   programs.waybar = {
     enable = true;
     settings = {
@@ -10,7 +14,7 @@
         modules-center = [ ];
         modules-right = [ "tray" "battery" "clock" ];
 
-        spacing = config.theme.spacing.m;
+        spacing = theme.spacing.m;
 
         "niri/workspaces" = {
           format = "{value}";
@@ -53,7 +57,7 @@
         };
 
         tray = {
-          spacing = config.theme.spacing.m
+          spacing = theme.spacing.m
             + 2; # 2 is needed because icons are rendered by font take 2 cells
           icon-size = 20;
           cursor = 60;
@@ -69,65 +73,63 @@
       }
 
       window#waybar>box {
-        background-color: #${config.theme.colors.base00};
-        padding: 0px ${toString config.theme.spacing.s}px;
+        background-color: #${colors.base00};
+        padding: 0px ${toString theme.spacing.s}px;
       }
 
       window#waybar {
         background-color: transparent;
-        color: #${config.theme.colors.base05};
+        color: #${colors.base05};
         font-size: 16px;
       }
 
       tooltip {
-        border-radius: ${toString config.theme.borderRadius}px;
-        background-color: #${config.theme.colors.base01};
+        border-radius: ${toString theme.borderRadius}px;
+        background-color: #${colors.base01};
       }
 
       tooltip label {
-        color: #${config.theme.colors.base05};
+        color: #${colors.base05};
       }
 
       #workspaces button {
         all: unset;
         font-weight: bold;
-        padding: 0px ${toString config.theme.spacing.xs}px;
-        margin: ${toString config.theme.spacing.xs}px;
+        padding: 0px ${toString theme.spacing.xs}px;
+        margin: ${toString theme.spacing.xs}px;
         background-color: transparent;
-        border-radius: ${toString config.theme.borderRadius}px;
-        min-width: ${
-          toString (config.theme.spacing.s + config.theme.spacing.xs)
-        }px;
+        border-radius: ${toString theme.borderRadius}px;
+        min-width: ${toString (theme.spacing.s + theme.spacing.xs)}px;
       }
 
       #workspaces button:hover {
-        background-color: #${config.theme.colors.base02};
+        background-color: #${colors.base02};
       }
 
       #workspaces button.active {
-        background-color: #${config.theme.colors.base0D};
-        color: #${config.theme.colors.base0D};
+        background-color: #${colors.base0D};
+        color: #${colors.base0D};
       }
 
       #workspaces button.urgent {
-        color: #${config.theme.colors.base08};
+        color: #${colors.base08};
       }
 
       #tray * {
-        border-radius: ${toString config.theme.borderRadius}px;
+        border-radius: ${toString theme.borderRadius}px;
         font-size: 14px;
       }
 
       #battery {
-        color: #${config.theme.colors.base05};
+        color: #${colors.base05};
       }
 
       #battery.warning {
-        color: #${config.theme.colors.base0A};
+        color: #${colors.base0A};
       }
 
       #battery.critical {
-        color: #${config.theme.colors.base08};
+        color: #${colors.base08};
       }
 
       #battery {

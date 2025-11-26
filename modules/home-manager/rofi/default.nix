@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  theme = config.stylix.theme;
+  colors = config.lib.stylix.colors;
+in {
   home.packages = with pkgs; [ rofi ];
 
   home.file.".config/rofi/config.rasi".text = ''
@@ -15,7 +19,7 @@
     	spacing: 0px;
 
     	background-color: transparent;
-    	text-color: #${config.theme.colors.base05};
+    	text-color: #${colors.base05};
       border: 0px;
 
       font: "serif";
@@ -24,8 +28,8 @@
     window {
     	location: center;
     	width: 350px;
-    	background-color: #${config.theme.colors.base01};
-      border-radius: ${toString config.theme.borderRadius};
+    	background-color: #${colors.base01};
+      border-radius: ${toString theme.borderRadius};
     	children: [ mainbox, message];
       border: inherit;
       padding: 0;
@@ -44,18 +48,16 @@
     }
 
     message {
-    	background-color: #${config.theme.colors.base00};
-    	text-color: #${config.theme.colors.base05};
+    	background-color: #${colors.base00};
+    	text-color: #${colors.base05};
     }
 
     entry {
       text-color: inherit;
       border: inherit;
       placeholder: "";
-    	background-color: #${config.theme.colors.base00};
-    	padding: ${toString config.theme.spacing.s}px ${
-       toString config.theme.spacing.xs
-     }px;
+    	background-color: #${colors.base00};
+    	padding: ${toString theme.spacing.s}px ${toString theme.spacing.xs}px;
     }
 
     listview {
@@ -69,11 +71,11 @@
     }
 
     element {
-    	padding: ${toString config.theme.spacing.s}px ${
-       toString (config.theme.spacing.xs + config.theme.borderWidth)
+    	padding: ${toString theme.spacing.s}px ${
+       toString (theme.spacing.xs + theme.borderWidth)
      }px;
     	margin: 0px;
-    	spacing: ${toString config.theme.spacing.xs}px;
+    	spacing: ${toString theme.spacing.xs}px;
     }
 
     element normal.normal {
@@ -82,11 +84,11 @@
     }
 
     element normal.urgent {
-    	text-color: #${config.theme.colors.base08};
+    	text-color: #${colors.base08};
     }
 
     element normal.active {
-    	text-color: #${config.theme.colors.base0D};
+    	text-color: #${colors.base0D};
     }
 
     element alternate.normal {
@@ -95,24 +97,24 @@
     }
 
     element alternate.active {
-    	text-color: #${config.theme.colors.base0D};
+    	text-color: #${colors.base0D};
     }
 
     element selected {
-    	text-color: #${config.theme.colors.base00};
+    	text-color: #${colors.base00};
     }
 
     element selected.normal {
-    	background-color: #${config.theme.colors.base0D};
-    	text-color: #${config.theme.colors.base00};
+    	background-color: #${colors.base0D};
+    	text-color: #${colors.base00};
     }
 
     element selected.urgent {
-    	background-color: #${config.theme.colors.base08};
+    	background-color: #${colors.base08};
     }
 
     element selected.active {
-    	background-color: #${config.theme.colors.base03};
+    	background-color: #${colors.base03};
     }
 
     element-text {

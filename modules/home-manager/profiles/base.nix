@@ -1,6 +1,5 @@
 { inputs, ... }: {
   imports = [
-    ../theme/default.nix
     ../nvim/default.nix
     ../yazi/default.nix
     ../starship/default.nix

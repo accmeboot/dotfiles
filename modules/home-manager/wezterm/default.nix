@@ -1,4 +1,6 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+let theme = config.stylix.theme;
+in {
   options.wezterm.desktop = {
     disableWindowDecoration = lib.mkEnableOption "different window decoration"
       // {
@@ -14,7 +16,7 @@
       local wezterm = require 'wezterm'
 
       return {
-        window_background_opacity = ${toString config.theme.opacity},
+        window_background_opacity = ${toString theme.opacity},
         macos_window_background_blur = 60,
         ${
           if config.wezterm.desktop.disableWindowDecoration then
@@ -29,27 +31,27 @@
         window_padding = {
           left = ${
             if config.wezterm.desktop.increasePadding then
-              toString config.theme.spacing.m
+              toString theme.spacing.m
             else
-              toString config.theme.spacing.s
+              toString theme.spacing.s
           },
           right = ${
             if config.wezterm.desktop.increasePadding then
-              toString config.theme.spacing.m
+              toString theme.spacing.m
             else
-              toString config.theme.spacing.s
+              toString theme.spacing.s
           },
           top = ${
             if config.wezterm.desktop.increasePadding then
-              toString config.theme.spacing.m
+              toString theme.spacing.m
             else
-              toString config.theme.spacing.s
+              toString theme.spacing.s
           },
           bottom = ${
             if config.wezterm.desktop.increasePadding then
-              toString config.theme.spacing.m
+              toString theme.spacing.m
             else
-              toString config.theme.spacing.s
+              toString theme.spacing.s
           },
         },
       }

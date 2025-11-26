@@ -1,4 +1,8 @@
-{ config, ... }: {
+{ config, ... }:
+let
+  theme = config.stylix.theme;
+  colors = config.lib.stylix.colors;
+in {
   home.file.".config/niri/config.kdl".text = ''
     input {
         keyboard {
@@ -30,7 +34,7 @@
     }
 
     layout {
-        gaps ${toString config.theme.spacing.s}
+        gaps ${toString theme.spacing.s}
         background-color "transparent"
         center-focused-column "never"
 
@@ -45,10 +49,10 @@
             off
         }
         border {
-            width ${toString config.theme.borderWidth}
-            active-color "#${config.theme.colors.base0D}"
-            inactive-color "#${config.theme.colors.base03}"
-            urgent-color "#${config.theme.colors.base08}"
+            width ${toString theme.borderWidth}
+            active-color "#${colors.base0D}"
+            inactive-color "#${colors.base03}"
+            urgent-color "#${colors.base08}"
         }
         shadow {
             on
@@ -105,7 +109,7 @@
     layer-rule {
       match namespace="rofi"
       match namespace="^notifications$"
-      geometry-corner-radius ${toString config.theme.borderRadius}
+      geometry-corner-radius ${toString theme.borderRadius}
     }
 
     // Make the wallpaper stationary, rather than moving with workspaces.
@@ -121,7 +125,7 @@
     }
 
     window-rule {
-        geometry-corner-radius ${toString config.theme.borderRadius}
+        geometry-corner-radius ${toString theme.borderRadius}
         clip-to-geometry true
     }
 

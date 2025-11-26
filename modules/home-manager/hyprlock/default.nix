@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+let
+  theme = config.stylix.theme;
+  colors = config.lib.stylix.colors;
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -17,11 +21,11 @@
         monitor = "";
         dots_center = true;
         fade_on_empty = false;
-        font_color = "rgb(${config.theme.colors.base05})";
-        inner_color = "rgb(${config.theme.colors.base00})";
-        outer_color = "rgb(${config.theme.colors.base0D})";
-        outline_thickness = config.theme.borderWidth;
-        rounding = config.theme.borderRadius;
+        font_color = "rgb(${colors.base05})";
+        inner_color = "rgb(${colors.base00})";
+        outer_color = "rgb(${colors.base0D})";
+        outline_thickness = theme.borderWidth;
+        rounding = theme.borderRadius;
         placeholder_text = "Password...";
         shadow_passes = 0;
         shadow_size = 4;
@@ -32,7 +36,7 @@
         {
           monitor = "";
           text = "$USER";
-          color = "rgb(${config.theme.colors.base05})";
+          color = "rgb(${colors.base05})";
           font_size = 20;
           position = "-100, 160";
           halign = "right";
@@ -44,7 +48,7 @@
         {
           monitor = "";
           text = ''cmd[update:1000] echo "$TIME"'';
-          color = "rgb(${config.theme.colors.base05})";
+          color = "rgb(${colors.base05})";
           font_size = 55;
           position = "-100, 70";
           halign = "right";

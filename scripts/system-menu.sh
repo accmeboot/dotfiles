@@ -41,12 +41,6 @@ if [ "$#" -gt 0 ]; then
       "Configuration")
         run "${TERMINAL:-wezterm} -e tmux new -s CONFIG -c ~/dotfiles"
         ;;
-      "Light Mode")
-        run "set-light-theme"
-        ;;
-      "Dark Mode")
-        run "set-dark-theme"
-        ;;
     esac
     # Exit without output to make rofi close
     exit 0
@@ -64,5 +58,3 @@ echo " Audio"
 echo "󰄩 System Monitor"
 echo " Terminal"
 echo " Configuration"
-echo "󰖨 Light Mode"
-echo "󰖔 Dark Mode"

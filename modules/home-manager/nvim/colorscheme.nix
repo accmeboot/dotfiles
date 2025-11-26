@@ -1,7 +1,8 @@
 { config, lib, ... }:
 let
+  colors = config.lib.stylix.colors;
   colorHash = builtins.substring 0 6 (builtins.hashString "md5"
-    "${config.theme.colors.base00}${config.theme.colors.base01}${config.theme.colors.base02}${config.theme.colors.base03}${config.theme.colors.base04}${config.theme.colors.base05}${config.theme.colors.base06}${config.theme.colors.base07}${config.theme.colors.base08}${config.theme.colors.base09}${config.theme.colors.base0A}${config.theme.colors.base0B}${config.theme.colors.base0C}${config.theme.colors.base0D}${config.theme.colors.base0E}${config.theme.colors.base0F}");
+    "${colors.base00}${colors.base01}${colors.base02}${colors.base03}${colors.base04}${colors.base05}${colors.base06}${colors.base07}${colors.base08}${colors.base09}${colors.base0A}${colors.base0B}${colors.base0C}${colors.base0D}${colors.base0E}${colors.base0F}");
 
   # Helper function to parse hex digit to int
   hexToInt = hex:
@@ -67,11 +68,9 @@ let
     in intToHex r' + intToHex g' + intToHex b';
 
   # Create color variants from base0E (purple/magenta)
-  magentaColor = adjustBrightness config.theme.colors.base0E 1.0; # Original
-  pinkColor =
-    adjustBrightness config.theme.colors.base0E 1.15; # Lighter (more pink)
-  purpleColor =
-    adjustBrightness config.theme.colors.base0E 0.85; # Darker (more purple)
+  magentaColor = adjustBrightness colors.base0E 1.0; # Original
+  pinkColor = adjustBrightness colors.base0E 1.15; # Lighter (more pink)
+  purpleColor = adjustBrightness colors.base0E 0.85; # Darker (more purple)
 in {
   home.file = {
     ".config/nvim/lua/accme/plugins/base16-${colorHash}.lua".text = ''
@@ -95,19 +94,19 @@ in {
                 -- For a list of colors see `lua/cyberdream/colours.lua`
 
                 -- Override colors for both light and dark variants
-                bg = "#${config.theme.colors.base00}",
-                bg_alt = "#${config.theme.colors.base01}",
-                bg_highlight = "#${config.theme.colors.base02}",
-                fg = "#${config.theme.colors.base05}",
-                grey = "#${config.theme.colors.base03}",
-                blue = "#${config.theme.colors.base0D}",
-                green = "#${config.theme.colors.base0B}",
-                cyan = "#${config.theme.colors.base0C}",
-                red = "#${config.theme.colors.base08}",
-                yellow = "#${config.theme.colors.base0A}",
+                bg = "#${colors.base00}",
+                bg_alt = "#${colors.base01}",
+                bg_highlight = "#${colors.base02}",
+                fg = "#${colors.base05}",
+                grey = "#${colors.base03}",
+                blue = "#${colors.base0D}",
+                green = "#${colors.base0B}",
+                cyan = "#${colors.base0C}",
+                red = "#${colors.base08}",
+                yellow = "#${colors.base0A}",
                 magenta = "#${magentaColor}",
                 pink = "#${pinkColor}",
-                orange = "#${config.theme.colors.base09}",
+                orange = "#${colors.base09}",
                 purple = "#${purpleColor}",
             },
 

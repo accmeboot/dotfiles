@@ -1,17 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
-let
-  dark = {
-    image = "${../../../assets/wallpapers/pond.png}";
-    scheme = import ../theme/horizon-dark.nix;
-    polarity = "dark";
-  };
-
-  light = {
-    image = "${../../../assets/wallpapers/street.png}";
-    scheme = import ../theme/horizon-light.nix;
-    polarity = "light";
-  };
-in {
+{ pkgs, lib, config, inputs, ... }: {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
     enableIcons = lib.mkEnableOption "icon theme" // { default = true; };
@@ -19,19 +6,30 @@ in {
     enableWallpaper = lib.mkEnableOption "wallpaper" // { default = true; };
   };
 
+  options.stylix.theme = {
+    borderRadius = lib.mkOption { default = 4; };
+    borderWidth = lib.mkOption { default = 2; };
+    opacity = lib.mkOption { default = 1.0; };
+    spacing = {
+      xs = lib.mkOption { default = 4; };
+      s = lib.mkOption { default = 8; };
+      m = lib.mkOption { default = 12; };
+      xxl = lib.mkOption { default = 24; };
+      xxs = lib.mkOption { default = 32; };
+    };
+  };
+
   config = {
     stylix = {
       enable = true;
 
-      polarity = lib.mkDefault dark.polarity;
-      image = lib.mkIf config.stylix.desktop.enableWallpaper
-        (lib.mkDefault dark.image);
-      base16Scheme = lib.mkDefault dark.scheme;
+      polarity = "dark";
+      image = ../../../assets/wallpapers/pond.png;
+      base16Scheme = import ./schemes/horizon-dark.nix;
 
       targets = {
         starship.enable = false;
         waybar.enable = false;
-        mako.enable = false;
         rofi.enable = false;
       };
 
@@ -66,66 +64,10 @@ in {
 
       icons = lib.mkIf config.stylix.desktop.enableIcons {
         enable = true;
-        package = pkgs.kora-icon-theme;
-        dark = "kora";
-        light = "kora-light";
+        package = pkgs.papirus-icon-theme;
+        dark = "Papirus";
+        light = "Papirus";
       };
     };
-
-    specialisation.light.configuration = {
-      stylix = {
-        image = light.image;
-        base16Scheme = light.scheme;
-        polarity = light.polarity;
-      };
-    };
-
-    home.packages = [
-      (lib.lowPrio (pkgs.writeShellApplication {
-        name = "set-light-theme";
-        runtimeInputs = with pkgs; [ coreutils nix ];
-        text = ''
-          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
-            if [[ -d "$gen/specialisation/light" ]]; then
-              echo "$gen"
-              break
-            fi
-          done)
-
-          if [[ -n "$current_gen" ]]; then
-            echo "Switching to light theme: $current_gen/specialisation/light"
-            "$current_gen"/specialisation/light/activate
-            pkill waybar && setsid waybar > /dev/null 2>&1 &
-            pkill wbg && wbg -s ${light.image} > /dev/null 2>&1 &
-          else
-            echo "No home-manager generation with light specialisation found"
-            exit 1
-          fi
-        '';
-      }))
-
-      (lib.lowPrio (pkgs.writeShellApplication {
-        name = "set-dark-theme";
-        runtimeInputs = with pkgs; [ coreutils nix ];
-        text = ''
-          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
-            if [[ -d "$gen/specialisation/light" ]]; then
-              echo "$gen"
-              break
-            fi
-          done)
-
-          if [[ -n "$current_gen" ]]; then
-            echo "Switching to dark theme: $current_gen"
-            "$current_gen"/activate
-            pkill waybar && setsid waybar > /dev/null 2>&1 &
-            pkill wbg && wbg -s ${dark.image} > /dev/null 2>&1 &
-          else
-            echo "Something went terrible wrong ACHTUNG!"
-            exit 1
-          fi
-        '';
-      }))
-    ];
   };
 }
