@@ -76,6 +76,7 @@
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
     networkmanagerapplet
+    pasystray
 
     # niri dependency
     xwayland-satellite # xwayland compatibility

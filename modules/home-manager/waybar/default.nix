@@ -60,6 +60,7 @@ in {
           spacing = theme.spacing.m;
           icon-size = 20;
           cursor = 60;
+          icons = { jamesdsp = ../../../assets/icons/eq.png; };
         };
       };
     };
