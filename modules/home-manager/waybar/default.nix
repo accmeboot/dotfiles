@@ -57,8 +57,7 @@ in {
         };
 
         tray = {
-          spacing = theme.spacing.m
-            + 2; # 2 is needed because icons are rendered by font take 2 cells
+          spacing = theme.spacing.m;
           icon-size = 20;
           cursor = 60;
         };
