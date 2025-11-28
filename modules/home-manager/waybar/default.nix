@@ -10,8 +10,8 @@ in {
         layer = "top";
         position = "top";
 
-        modules-left = [ "niri/workspaces" "niri/window" ];
-        modules-center = [ ];
+        modules-left = [ "niri/workspaces" ];
+        modules-center = [ "niri/window" ];
         modules-right = [ "tray" "battery" "clock" ];
 
         spacing = theme.spacing.m;
@@ -21,11 +21,6 @@ in {
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-        };
-
-        "niri/window" = {
-          icon = true;
-          icon-size = 20;
         };
 
         battery = {
