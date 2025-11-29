@@ -10,7 +10,7 @@ in {
         layer = "top";
         position = "top";
 
-        modules-left = [ "niri/workspaces" ];
+        modules-left = [ "image#launcher" "niri/workspaces" ];
         modules-center = [ "niri/window" ];
         modules-right = [ "tray" "battery" "clock" ];
 
@@ -21,6 +21,13 @@ in {
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        "image#launcher" = {
+          path = ../../../assets/icons/niri-logo.svg;
+          cursor = 60;
+          size = 32;
+          on-click = "rofi -show menu";
         };
 
         battery = {
@@ -136,7 +143,6 @@ in {
         font-size: 14px;
         font-weight: bold;
       }
-
     '';
   };
 }
