@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -10,8 +10,6 @@
     gnumake # build automation tool
     git # version control system
     nil # nix language server
-
-    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
 
     # Programming Languages
     python3 # python programming language
@@ -48,6 +46,7 @@
     gimp # image editor
     mediainfo # cli to view files mediainfo
     playerctl # required by waybar mpris module
+    brave # browser
 
     # Screenshot & Recording
     grim # screenshot utility for wayland
