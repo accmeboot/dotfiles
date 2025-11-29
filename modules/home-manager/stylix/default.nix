@@ -24,7 +24,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/pond.png;
+      image = ../../../assets/wallpapers/bar-jack.png;
       base16Scheme = import ./schemes/horizon-dark.nix;
 
       targets = {
