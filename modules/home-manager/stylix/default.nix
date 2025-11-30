@@ -69,5 +69,29 @@
         light = "Papirus";
       };
     };
+
+    home.packages =
+      lib.mkIf config.stylix.desktop.enableIcons [ pkgs.papirus-folders ];
+
+    home.activation = lib.mkIf config.stylix.desktop.enableIcons {
+      applyPapirusFolderColor = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        export PATH="${
+          lib.makeBinPath [ pkgs.gawk pkgs.gnused pkgs.gnugrep pkgs.coreutils ]
+        }:$PATH"
+
+        # Create local icons directory
+        mkdir -p $HOME/.local/share/icons
+
+        # Copy Papirus themes if not already present or if package changed
+        for theme in Papirus Papirus-Dark Papirus-Light; do
+          if [ ! -d "$HOME/.local/share/icons/$theme" ]; then
+            $DRY_RUN_CMD cp -r ${pkgs.papirus-icon-theme}/share/icons/$theme $HOME/.local/share/icons/
+            $DRY_RUN_CMD chmod -R u+w $HOME/.local/share/icons/$theme
+          fi
+        done
+
+        $DRY_RUN_CMD ${pkgs.papirus-folders}/bin/papirus-folders -C white --theme Papirus-Dark
+      '';
+    };
   };
 }
