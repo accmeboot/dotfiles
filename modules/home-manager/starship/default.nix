@@ -11,7 +11,7 @@
       };
 
       character = {
-        success_symbol = "[❯](purple)";
+        success_symbol = "[❯](white)";
         error_symbol = "[❯](red)";
         vimcmd_symbol = "[❮](green)";
       };

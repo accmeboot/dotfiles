@@ -10,7 +10,6 @@
       };
       initContent = ''
         bindkey -v
-        fastfetch
 
         # Source the .env file
         if [ -f "$HOME/.env" ]; then

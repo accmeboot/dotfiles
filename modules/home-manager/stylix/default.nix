@@ -24,7 +24,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/statue.png;
+      image = ../../../assets/wallpapers/statue-horizon.png;
       base16Scheme = import ./schemes/horizon-dark.nix;
 
       targets = {
