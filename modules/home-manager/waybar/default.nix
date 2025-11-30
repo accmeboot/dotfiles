@@ -24,7 +24,7 @@ in {
         };
 
         "image#launcher" = {
-          path = ../../../assets/icons/niri-logo.svg;
+          path = ../../../assets/icons/niri-logo-gray.png;
           cursor = 60;
           size = 32;
           on-click = "rofi -show menu";
