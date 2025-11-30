@@ -109,8 +109,8 @@ in {
       }
 
       #workspaces button.active {
-        background-color: #${colors.base0D};
-        color: #${colors.base0D};
+        background-color: #${colors.base05};
+        color: #${colors.base05};
       }
 
       #workspaces button.urgent {
