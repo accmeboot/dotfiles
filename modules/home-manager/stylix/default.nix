@@ -25,7 +25,7 @@
 
       polarity = "dark";
       image = ../../../assets/wallpapers/book.png;
-      base16Scheme = import ./schemes/cyberdream.nix;
+      base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
         starship.enable = false;
