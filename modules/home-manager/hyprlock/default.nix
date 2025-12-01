@@ -23,7 +23,7 @@ in {
         fade_on_empty = false;
         font_color = "rgb(${colors.base05})";
         inner_color = "rgb(${colors.base00})";
-        outer_color = "rgb(${colors.base0D})";
+        outer_color = "rgb(${colors.base05})";
         outline_thickness = theme.borderWidth;
         rounding = theme.borderRadius;
         placeholder_text = "Password...";

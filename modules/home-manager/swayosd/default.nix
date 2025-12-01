@@ -32,14 +32,14 @@ in {
       min-height: inherit;
       border-radius: inherit;
       border: none;
-      background: alpha(#${colors.base0D}, 0.5);
+      background: alpha(#${colors.base05}, 0.5);
     }
 
     progress {
       min-height: inherit;
       border-radius: 0px;
       border: none;
-      background: #${colors.base0D};
+      background: #${colors.base05};
     }
   '';
 }
