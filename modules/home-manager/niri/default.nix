@@ -50,7 +50,7 @@ in {
         }
         border {
             width ${toString theme.borderWidth}
-            active-color "#${colors.base0D}"
+            active-color "#${colors.base05}"
             inactive-color "#${colors.base03}"
             urgent-color "#${colors.base08}"
         }

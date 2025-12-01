@@ -24,8 +24,8 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/statue-horizon.png;
-      base16Scheme = import ./schemes/horizon-dark.nix;
+      image = ../../../assets/wallpapers/statue.png;
+      base16Scheme = import ./schemes/cyberdream.nix;
 
       targets = {
         starship.enable = false;
