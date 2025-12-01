@@ -24,7 +24,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/book.png;
+      image = ../../../assets/wallpapers/statue.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
