@@ -24,7 +24,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/statue.png;
+      image = ../../../assets/wallpapers/evangelion.png;
       base16Scheme = import ./schemes/cyberdream.nix;
 
       targets = {
