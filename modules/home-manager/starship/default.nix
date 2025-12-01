@@ -7,11 +7,11 @@
 
       directory = {
         format = "[$path]($style) ";
-        style = "blue";
+        style = "magenta";
       };
 
       character = {
-        success_symbol = "[❯](white)";
+        success_symbol = "[❯](green)";
         error_symbol = "[❯](red)";
         vimcmd_symbol = "[❮](green)";
       };
