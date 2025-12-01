@@ -64,7 +64,7 @@ in {
         }
     }
 
-    spawn-at-startup "waybar"
+    spawn-sh-at-startup "sleep 0.5 && waybar"
     spawn-sh-at-startup "wbg -s ${config.stylix.image}"
     spawn-sh-at-startup "hyprlock -q"
 
