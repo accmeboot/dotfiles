@@ -29,6 +29,7 @@
         icat = "kitten icat";
         fzfnv = "nvim $(fzf)";
         cf = "clear && fastfetch";
+        temps = "~/dotfiles/scripts/stats/log-temps.sh";
       };
 
       # Use built-in plugin options
