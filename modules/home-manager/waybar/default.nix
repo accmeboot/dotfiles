@@ -3,6 +3,10 @@ let
   theme = config.stylix.theme;
   colors = config.lib.stylix.colors;
 in {
+  home.file.".config/waybar/launcher.svg".text = ''
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#${colors.base05}" d="M50.732 43.771L20.525 96.428l-7.052-12.033 8.14-14.103-16.167-.042L2 64.237l3.519-6.15 23.013.073 8.27-14.352 13.93-.037zm2.318 42.094l60.409.003-6.827 12.164-16.205-.045 8.047 14.115-3.45 6.01-7.05.008-11.445-20.097-16.483-.034-6.996-12.124zm35.16-23.074l-30.202-52.66L71.888 10l8.063 14.148 8.12-14.072 6.897.002 3.532 6.143-11.57 20.024 8.213 14.386-6.933 12.16z" clip-rule="evenodd" fill-rule="evenodd"/><path fill="#${colors.base04}" d="M39.831 65.463l30.202 52.66-13.88.131-8.063-14.148-8.12 14.072-6.897-.002-3.532-6.143 11.57-20.024-8.213-14.386 6.933-12.16zm35.08-23.207l-60.409-.003L21.33 30.09l16.204.045-8.047-14.115 3.45-6.01 7.051-.01 11.444 20.097 16.484.034 6.996 12.124zm2.357 42.216l30.207-52.658 7.052 12.034-8.141 14.102 16.168.043L126 64.006l-3.519 6.15-23.013-.073-8.27 14.352-13.93.037z" clip-rule="evenodd" fill-rule="evenodd"/></svg>
+  '';
+
   programs.waybar = {
     enable = true;
     settings = {
@@ -24,7 +28,7 @@ in {
         };
 
         "image#launcher" = {
-          path = ../../../assets/icons/nixos.png;
+          path = "${config.xdg.configHome}/waybar/launcher.svg";
           cursor = 60;
           size = 20;
           on-click = "rofi -show menu";
@@ -116,7 +120,7 @@ in {
       }
 
       #workspaces button.active {
-        background-color: #${colors.base0D};
+        background-color: #${colors.base05};
         min-width: ${toString theme.spacing.xxl}px
       }
 
