@@ -80,7 +80,7 @@ in {
 
     animations {
         // Uncomment to turn off all animations.
-        off
+        // off
 
         // Slow down all animations by this factor. Values below 1 speed them up instead.
         slowdown 0.5
