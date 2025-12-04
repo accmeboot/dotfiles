@@ -1,5 +1,6 @@
 return {
   "olimorris/codecompanion.nvim",
+  version = "v17.33.0", -- check for the updates regularly, next version would have a lot of dope features (https://github.com/olimorris/codecompanion.nvim/releases)
   opts = {
     adapters = {
       http = {
