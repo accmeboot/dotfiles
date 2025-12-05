@@ -7,5 +7,6 @@
     ../niri/default.nix
     ../hyprlock/default.nix
     ../hypridle/default.nix
+    ../recolor/default.nix
   ];
 }

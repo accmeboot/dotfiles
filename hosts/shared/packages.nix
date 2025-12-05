@@ -57,6 +57,9 @@
     wiremix # tui volume control
     jamesdsp # pipewire equalizer
     gowall # convert wallpaper to the theme
+    librsvg # convert svg to png
+    inkscape # convert png to svg
+    imagemagick # image format conversion
     cava # audio visualizer
 
     # Communication & Entertainment

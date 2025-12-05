@@ -105,7 +105,7 @@ in {
     }
 
     element selected.normal {
-    	background-color: #${colors.base05};
+    	background-color: #${colors.base0D};
     	text-color: #${colors.base00};
     }
 
