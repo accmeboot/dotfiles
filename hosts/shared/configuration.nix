@@ -87,6 +87,7 @@
     niri.enable = true;
 
     firefox.enable = true;
+    thunar.enable = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -164,6 +165,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     SDL_JOYSTICK_HIDAPI = "0"; # is required for xpadneo
+    QT_QPA_PLATFORM = "wayland";
 
     LUA_PATH =
       "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";

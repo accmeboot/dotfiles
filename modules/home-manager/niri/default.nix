@@ -64,7 +64,7 @@ in {
         }
     }
 
-    spawn-sh-at-startup "sleep 0.5 && waybar"
+    spawn-sh-at-startup "qs -p ~/dotfiles/modules/home-manager/quickshell/src/shell.qml"
     spawn-sh-at-startup "wbg -s ${config.stylix.image}"
     spawn-sh-at-startup "hyprlock -q"
 

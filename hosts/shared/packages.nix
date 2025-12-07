@@ -28,9 +28,6 @@
     unzip # zip file extraction utility
     ollama # running local llms
 
-    # File Management
-    nemo # graphical file manager
-
     # System Tools
     lm_sensors # hardware monitoring utilities
     pciutils # PCI utilities for device inspection
@@ -78,7 +75,6 @@
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
     networkmanagerapplet
-    pasystray
 
     # niri dependency
     xwayland-satellite # xwayland compatibility
