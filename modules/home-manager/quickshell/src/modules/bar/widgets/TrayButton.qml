@@ -2,10 +2,13 @@ import QtQuick
 
 import "../../../settings"
 import "../../../widgets"
+import "../../../services"
 
 Item {
   property int iconSize: Theme.spacing.xxl
   property int popupOffset: Theme.spacing.s
+
+  property int isEmpty: TrayManager.itemsFilteredCount <= 0
 
   implicitWidth: iconSize
   implicitHeight: iconSize
@@ -13,7 +16,7 @@ Item {
   opacity: mouseArea.containsMouse ? 0.7 : 1.0
 
   ColoredIcon {
-    icon: "tray.svg"
+    icon: isEmpty ? "tray-empty.svg" :  "tray.svg"
     color: Theme.colors.base05
     size: iconSize
   }
@@ -23,6 +26,7 @@ Item {
     anchors.fill: parent
     hoverEnabled: true
     cursorShape: Qt.PointingHandCursor
+    visible: !isEmpty
 
     onClicked: {
       var pos = mapToItem(null, 0, 0)

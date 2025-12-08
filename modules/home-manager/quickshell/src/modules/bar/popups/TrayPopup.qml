@@ -22,7 +22,7 @@ PopupWindow {
 
     SystemTray {
       id: tray
-      iconSize: 24
+      iconSize: Theme.icons.xxl
     }
   }
 }

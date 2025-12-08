@@ -1,33 +1,33 @@
 import Quickshell
 import Quickshell.Io
-import Quickshell.Services.SystemTray
 import QtQuick
 
 import "../../../settings"
 import "../../../widgets"
+import "../../../services"
 
 
 Grid {
   property int iconSize
-  property var hiddenTrayItems: [ "Network", "jamesdsp" ]
+
+  property var tm: TrayManager
 
   spacing: Theme.spacing.m
-  columns: 3
+
+  columns: tm.itemsFilteredCount < 3 ? tm.itemsFilteredCount : 3 
 
   padding: Theme.spacing.s
 
   Repeater {
-    model: SystemTray.items
+    model: tm.itemsFiltered
 
     delegate: Item {
       id: trayItem
-      required property SystemTrayItem modelData
+
+      required property var modelData
 
       width: iconSize
       height: iconSize
-
-
-      visible: !hiddenTrayItems.includes(modelData.title)
 
       Image {
         anchors.fill: parent
