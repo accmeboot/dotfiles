@@ -29,7 +29,7 @@ Container {
 
           return "ethernet-disconnected.svg"
         } 
-        color: Theme.colors.base0C
+        color: Theme.colors.base0E
         size: iconSize
       }
 

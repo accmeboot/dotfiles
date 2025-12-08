@@ -31,7 +31,7 @@ Container {
 
           return "volume-full.svg"
         } 
-        color: Theme.colors.base0B
+        color: Theme.colors.base0E
         size: iconSize
       }
 

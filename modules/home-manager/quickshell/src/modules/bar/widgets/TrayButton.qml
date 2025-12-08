@@ -14,7 +14,7 @@ Item {
 
   ColoredIcon {
     icon: "tray.svg"
-    color: Theme.colors.base0A
+    color: Theme.colors.base0C
     size: iconSize
   }
 

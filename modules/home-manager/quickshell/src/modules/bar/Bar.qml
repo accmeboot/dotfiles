@@ -3,6 +3,7 @@ import Quickshell.Io
 import Quickshell.Services.SystemTray
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Effects
 
 import "./widgets"
 import "./popups"
@@ -34,75 +35,92 @@ Scope {
       implicitHeight: iconSize + paddingVertical + cornerRadius
       exclusiveZone: iconSize + paddingVertical
 
-      // Main bar background
-      Rectangle {
-        id: barBackground
+      Item {
+        id: barContainer
         anchors.fill: parent
-        anchors.bottomMargin: cornerRadius
-        color: Theme.colors.base00
-      }
 
-      // Left inverted corner (concave curve at inner angle)
-      Canvas {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        width: cornerRadius
-        height: cornerRadius
+        RectangularShadow {
+          anchors.fill: parent
+          anchors.bottomMargin: cornerRadius
 
-        onPaint: {
-          var ctx = getContext("2d")
-          ctx.fillStyle = "#212121"
-          ctx.beginPath()
-          ctx.moveTo(0, 0)
-          ctx.lineTo(width, 0)
-          ctx.quadraticCurveTo(0, 0, 0, height)
-          ctx.closePath()
-          ctx.fill()
+          color: "#1B1610"
+          radius: 0
+          blur: 5
+          spread: 0.2
+          offset: Qt.vector2d(0, 1)
+          z: -1
         }
-      }
 
-      // Right inverted corner (concave curve at inner angle)
-      Canvas {
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        width: cornerRadius
-        height: cornerRadius
-
-        onPaint: {
-          var ctx = getContext("2d")
-          ctx.fillStyle = "#212121"
-          ctx.beginPath()
-          ctx.moveTo(width, 0)
-          ctx.lineTo(0, 0)
-          ctx.quadraticCurveTo(width, 0, width, height)
-          ctx.closePath()
-          ctx.fill()
+        // Main bar background
+        Rectangle {
+          id: barBackground
+          anchors.fill: parent
+          anchors.bottomMargin: cornerRadius
+          color: Theme.colors.base00
         }
-      }
 
-      RowLayout {
-        anchors.left: barBackground.left
-        anchors.right: barBackground.right
-        anchors.verticalCenter: barBackground.verticalCenter
+        // Left inverted corner (concave curve at inner angle)
+        Canvas {
+          anchors.left: parent.left
+          anchors.bottom: parent.bottom
+          width: cornerRadius
+          height: cornerRadius
 
-        anchors.rightMargin: paddingHorizontal
-        anchors.leftMargin: paddingHorizontal
-        anchors.topMargin: paddingVertical
-        anchors.bottomMargin: paddingVertical
+          onPaint: {
+            var ctx = getContext("2d")
+            ctx.fillStyle = "#212121"
+            ctx.beginPath()
+            ctx.moveTo(0, 0)
+            ctx.lineTo(width, 0)
+            ctx.quadraticCurveTo(0, 0, 0, height)
+            ctx.closePath()
+            ctx.fill()
+          }
+        }
 
-        spacing: Theme.spacing.m
-        Launcher { iconSize: panel.iconSize }
-        Workspaces {}
+        // Right inverted corner (concave curve at inner angle)
+        Canvas {
+          anchors.right: parent.right
+          anchors.bottom: parent.bottom
+          width: cornerRadius
+          height: cornerRadius
 
-        Window { iconSize: panel.iconSize }
+          onPaint: {
+            var ctx = getContext("2d")
+            ctx.fillStyle = "#212121"
+            ctx.beginPath()
+            ctx.moveTo(width, 0)
+            ctx.lineTo(0, 0)
+            ctx.quadraticCurveTo(width, 0, width, height)
+            ctx.closePath()
+            ctx.fill()
+          }
+        }
 
-        Item { Layout.fillWidth: true }
+        RowLayout {
+          anchors.left: barBackground.left
+          anchors.right: barBackground.right
+          anchors.verticalCenter: barBackground.verticalCenter
 
-        PipewireButton { iconSize: panel.iconSize }
-        NetworkButton { iconSize: panel.iconSize }
-        ClockWidget { iconSize: panel.iconSize }
+          anchors.rightMargin: paddingHorizontal
+          anchors.leftMargin: paddingHorizontal
+          anchors.topMargin: paddingVertical
+          anchors.bottomMargin: paddingVertical
 
-        TrayButton { iconSize: panel.iconSize }
+          spacing: Theme.spacing.m
+          Launcher { iconSize: panel.iconSize }
+          Workspaces {}
+
+          Window { iconSize: panel.iconSize }
+
+          Item { Layout.fillWidth: true }
+
+          PipewireButton { iconSize: panel.iconSize }
+          NetworkButton { iconSize: panel.iconSize }
+          ClockWidget { iconSize: panel.iconSize }
+
+          TrayButton { iconSize: panel.iconSize }
+        }
       }
 
       TrayPopup {

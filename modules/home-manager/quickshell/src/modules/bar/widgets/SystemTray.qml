@@ -9,7 +9,7 @@ import "../../../widgets"
 
 Grid {
   property int iconSize
-  property var hiddenTrayItems: [ "nm-applet", "jamesdsp" ]
+  property var hiddenTrayItems: [ "Network", "jamesdsp" ]
 
   spacing: Theme.spacing.m
   columns: 3
