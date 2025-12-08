@@ -4,6 +4,7 @@ import QtQuick.Controls
 
 import "../../../settings"
 import "../../../services"
+import "../../../widgets"
 
 PopupWindow {
   id: root
@@ -69,21 +70,19 @@ PopupWindow {
 
               padding: Theme.spacing.xs
 
-              Image {
+              ColoredIcon {
                 anchors.verticalCenter: parent.verticalCenter
-                source: {
+                icon: {
                   if (modelData === PipewireManager.defaultSink) {
-                    return "../../../assets/selected.svg"
+                    return "circle-filled.svg"
                   }
 
-                  return "../../../assets/unselected.svg"
+                  return "circle.svg"
                 } 
-
-                width: Theme.icons.m
-                height: Theme.icons.m 
-
-                sourceSize: Qt.size(Theme.icons.m, Theme.icons.m)
+                color: Theme.colors.base0D
+                size: Theme.icons.m
               }
+
 
               Text {
                 id: sinkText
@@ -149,20 +148,17 @@ PopupWindow {
 
               padding: Theme.spacing.xs
 
-              Image {
+              ColoredIcon {
                 anchors.verticalCenter: parent.verticalCenter
-                source: {
+                icon: {
                   if (modelData === PipewireManager.defaultSource) {
-                    return "../../../assets/selected.svg"
+                    return "circle-filled.svg"
                   }
 
-                  return "../../../assets/unselected.svg"
+                  return "circle.svg"
                 } 
-
-                width: Theme.icons.m
-                height: Theme.icons.m 
-
-                sourceSize: Qt.size(Theme.icons.m, Theme.icons.m)
+                color: Theme.colors.base0D
+                size: Theme.icons.m
               }
 
               Text {
