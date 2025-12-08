@@ -22,7 +22,7 @@ Container {
         height: Theme.icons.m
         radius: Theme.icons.m * 2
 
-        color: modelData.is_active ? Theme.colors.base0D : Theme.colors.base05
+        color: modelData.is_active ? Theme.colors.base0D : Theme.colors.base03
 
         opacity: {
           if (mouseArea.containsMouse && !modelData.is_active) return 0.75

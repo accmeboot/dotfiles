@@ -18,7 +18,7 @@ Rectangle {
     anchors.centerIn: parent
 
     icon: "launcher"
-    color: Theme.colors.base0C
+    color: Theme.colors.base05
     size: iconSize // need to use id because withing coloredicons scoupe size referes to local value
   }
 
