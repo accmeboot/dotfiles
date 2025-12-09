@@ -12,7 +12,7 @@ Container {
   property UPowerDevice device: UPower.displayDevice
   property int percentage: device ? device.percentage * 100 : null
 
-  visible: Boolean(device)
+  visible: device.isPresent
 
   Item {
     implicitWidth: row.implicitWidth
@@ -40,6 +40,7 @@ Container {
 
 
   function getIcon() {
+    console.log(device)
     switch (device.state) {
       case UPowerDeviceState.Discharging:
       case UPowerDeviceState.PendingDischarge:
