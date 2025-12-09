@@ -40,7 +40,6 @@ Container {
 
 
   function getIcon() {
-    console.log(device)
     switch (device.state) {
       case UPowerDeviceState.Discharging:
       case UPowerDeviceState.PendingDischarge:
