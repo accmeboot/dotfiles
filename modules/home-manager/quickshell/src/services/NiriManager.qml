@@ -6,11 +6,13 @@ import Quickshell.Io
 QtObject {
   id: root
 
+  property ProcessManager pm: ProcessManager {}
+
   property var workspaces: []
   property var windows: []
 
   function switchToWorkspace(workspaceIdx) {
-    ProcessManager.execute(["niri", "msg", "action", "focus-workspace", String(workspaceIdx)])
+    pm.execute(["niri", "msg", "action", "focus-workspace", String(workspaceIdx)])
   }
 
   property Process eventStream: Process {
@@ -76,7 +78,7 @@ QtObject {
   }
 
   function updateWindows() {
-    ProcessManager.query(["niri", "msg", "--json", "windows"], data => {
+    pm.query(["niri", "msg", "--json", "windows"], data => {
       try {
         if (data) {
           root.windows = JSON.parse(data)

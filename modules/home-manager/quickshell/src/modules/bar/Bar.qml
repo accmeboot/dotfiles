@@ -117,6 +117,7 @@ Scope {
 
           PipewireButton { iconSize: panel.iconSize }
           NetworkButton { iconSize: panel.iconSize }
+          BatteryButton { iconSize: panel.iconSize }
           ClockWidget { iconSize: panel.iconSize }
 
           TrayButton { iconSize: panel.iconSize }

@@ -5,6 +5,7 @@ import "../../../services"
 import "../../../widgets"
 
 Rectangle {
+  property ProcessManager pm: ProcessManager {}
   property int iconSize: Theme.spacing.xxl
 
   width: iconSize 
@@ -19,7 +20,7 @@ Rectangle {
 
     icon: "launcher"
     color: Theme.colors.base05
-    size: iconSize // need to use id because withing coloredicons scoupe size referes to local value
+    size: iconSize
   }
 
   MouseArea {
@@ -29,7 +30,7 @@ Rectangle {
     cursorShape: Qt.PointingHandCursor
 
     onClicked: {
-      ProcessManager.execute(["rofi", "-show", "menu"])
+      pm.execute(["rofi", "-show", "menu"])
     }
   }
 }

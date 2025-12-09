@@ -21,6 +21,7 @@
   };
 
   services = {
+    upower.enable = true; # quickshell battery reading
     touchegg.enable = true;
     xserver.videoDrivers = [ "nvidia" ];
     asusd = {

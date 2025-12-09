@@ -5,6 +5,8 @@ import "../../../widgets"
 import "../../../services"
 
 Container {
+  property ProcessManager pm: ProcessManager {}
+
   property int iconSize: Theme.spacing.xxl
   property int popupOffset: Theme.spacing.s
 
@@ -22,13 +24,7 @@ Container {
 
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
-        icon: {
-          if (nm.isConnected) {
-            return "ethernet.svg"
-          }
-
-          return "ethernet-disconnected.svg"
-        } 
+        icon: getIcon() 
         color: Theme.colors.base0D
         size: iconSize
       }
@@ -49,8 +45,31 @@ Container {
       cursorShape: Qt.PointingHandCursor
 
       onClicked: {
-        ProcessManager.execute("nm-connection-editor")
+        pm.execute("nm-connection-editor")
       }
     }
+  }
+
+  function getIcon() {
+    switch (nm.connectionType) {
+      case "wifi": return getWifiIcon()
+      default: return getEthernetIcon()
+    }
+  }
+
+  function getWifiIcon() {
+    if (!nm.isConnected) return "wifi-disconnected.svg"
+
+    switch (true) {
+      case nm.signalStrength >= 75: return "wifi-100.svg"
+      case nm.signalStrength >= 50: return "wifi-75.svg"
+      case nm.signalStrength >= 25: return "wifi-50.svg"
+
+      default: return "wifi-25.svg"
+    }
+  }
+
+  function getEthernetIcon() {
+    return nm.isConnected ? "ethernet.svg" : "ethernet-disconnected.svg"
   }
 }

@@ -13,8 +13,8 @@ in {
             numlock
         }
         touchpad {
-            tap
             natural-scroll
+            scroll-factor vertical=0.2 horizontal=-2.0
             click-method "clickfinger"
         }
         mouse {
