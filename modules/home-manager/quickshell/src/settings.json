@@ -1,5 +1,5 @@
 {
   "bar": {
-    "hiddenTrayItems": ["Network", "jamesdsp"]
+    "hiddenTrayItems": ["Network", "jamesdsp", "blueman"]
   }
 }

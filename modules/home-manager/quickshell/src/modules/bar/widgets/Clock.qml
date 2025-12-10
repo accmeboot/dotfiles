@@ -19,7 +19,7 @@ Container {
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
         icon: "calendar.svg"
-        color: Theme.colors.base0D
+        color: Theme.colors.base0C
         size: iconSize
       }
 

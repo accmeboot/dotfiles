@@ -25,7 +25,7 @@ Container {
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
         icon: getIcon() 
-        color: Theme.colors.base0D
+        color: Theme.colors.base0C
         size: iconSize
       }
 

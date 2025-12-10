@@ -53,7 +53,7 @@ Grid {
           if (mouse.button === Qt.LeftButton) {
             modelData.activate()
           } else if (mouse.button === Qt.RightButton) {
-            var pos = trayItem.mapToGlobal(null, 0, 0)
+            var pos = trayItem.mapToGlobal(0, 0)
 
             menuAnchor.anchor.rect.x = pos.x
             menuAnchor.anchor.rect.y = pos.y + trayItem.height

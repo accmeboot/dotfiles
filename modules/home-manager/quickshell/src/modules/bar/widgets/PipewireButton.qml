@@ -31,7 +31,7 @@ Container {
 
           return "volume-full.svg"
         } 
-        color: Theme.colors.base0D
+        color: Theme.colors.base0C
         size: iconSize
       }
 
@@ -50,11 +50,16 @@ Container {
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
 
-      onClicked: {
+      onEntered: {
         var pos = mapToItem(null, 0, 0)
+        var barRect = itemRect(barContainer)
 
-        pipewirePopup.anchor.rect.x = pos.x
-        pipewirePopup.anchor.rect.y = pos.y + height + popupOffset
+        var buttonWidth = row.width
+        var popupWidth = pipewirePopup.width
+        var centeredX = pos.x + (buttonWidth / 2) - (popupWidth / 2)
+        
+        pipewirePopup.anchor.rect.x = centeredX
+        pipewirePopup.anchor.rect.y = barRect.height - Theme.border.radius
 
         pipewirePopup.visible = !pipewirePopup.visible
       }
