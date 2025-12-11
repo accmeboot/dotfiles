@@ -25,7 +25,7 @@ Container {
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
         icon: getIcon() 
-        color: Theme.colors.base0C
+        color: Theme.colors.base05
         size: iconSize
       }
 
@@ -33,7 +33,7 @@ Container {
         anchors.verticalCenter: parent.verticalCenter
         text: percentage + "%"
         font.bold: true
-        color: Theme.colors.base05
+        color: Theme.colors.base04
       }
     }
   }

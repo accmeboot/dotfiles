@@ -14,75 +14,84 @@ Scope {
   Variants {
     model: Quickshell.screens
 
-    PanelWindow {
-      id: panel
+    delegate: Item {
       required property var modelData
 
-      property int cornerRadius: Theme.border.radius
-      property int paddingHorizontal: Theme.spacing.s
-      property int paddingVertical: Theme.spacing.l
+      PanelWindow {
+        id: panel
+        screen: modelData
 
-      property int iconSize: Theme.icons.l
+        property int cornerRadius: Theme.border.radius
+        property int paddingHorizontal: Theme.spacing.s
+        property int paddingVertical: Theme.spacing.l
 
-      screen: modelData
-      color: "transparent"
+        property int iconSize: Theme.icons.l
 
-      anchors {
-        top: true
-        left: true
-        right: true
-      }
+        color: "transparent"
 
-      implicitHeight: iconSize + paddingVertical + cornerRadius
-      exclusiveZone: iconSize + paddingVertical
+        anchors {
+          top: true
+          left: true
+          right: true
+        }
 
-      Item {
-        id: barContainer
-        anchors.fill: parent
+        implicitHeight: iconSize + paddingVertical + cornerRadius
+        exclusiveZone: iconSize + paddingVertical
 
-        Shadow { anchors.bottomMargin: cornerRadius }
-        InvertedCorner { position: "bottomLeft"}
-        InvertedCorner { position: "bottomRight"}
-
-        Rectangle {
-          id: barBackground
+        Item {
+          id: barContainer
           anchors.fill: parent
-          anchors.bottomMargin: cornerRadius
-          color: Theme.colors.base00
+
+          Shadow { anchors.bottomMargin: panel.cornerRadius }
+          InvertedCorner { position: "bottomLeft"}
+          InvertedCorner { position: "bottomRight"}
+
+          Rectangle {
+            id: barBackground
+            anchors.fill: parent
+            anchors.bottomMargin: panel.cornerRadius
+            color: Theme.colors.base00
+          }
+
+          RowLayout {
+            anchors.left: barBackground.left
+            anchors.right: barBackground.right
+            anchors.verticalCenter: barBackground.verticalCenter
+
+            anchors.rightMargin: panel.paddingHorizontal
+            anchors.leftMargin: panel.paddingHorizontal
+            anchors.topMargin: panel.paddingVertical
+            anchors.bottomMargin: panel.paddingVertical
+
+            spacing: Theme.spacing.m
+
+            Launcher { iconSize: panel.iconSize }
+            Workspaces {}
+            Window { iconSize: panel.iconSize }
+
+            Item { Layout.fillWidth: true }
+
+            PipewireButton { iconSize: panel.iconSize }
+            NetworkButton { iconSize: panel.iconSize }
+            BluetoothButton { iconSize: panel.iconSize }
+            BatteryButton { iconSize: panel.iconSize }
+            Clock { iconSize: panel.iconSize }
+            TrayButton { iconSize: panel.iconSize }
+          }
         }
 
-        RowLayout {
-          anchors.left: barBackground.left
-          anchors.right: barBackground.right
-          anchors.verticalCenter: barBackground.verticalCenter
-
-          anchors.rightMargin: paddingHorizontal
-          anchors.leftMargin: paddingHorizontal
-          anchors.topMargin: paddingVertical
-          anchors.bottomMargin: paddingVertical
-
-          spacing: Theme.spacing.m
-
-          Launcher { iconSize: panel.iconSize }
-          Workspaces {}
-          Window { iconSize: panel.iconSize }
-
-          Item { Layout.fillWidth: true }
-
-          PipewireButton { iconSize: panel.iconSize }
-          NetworkButton { iconSize: panel.iconSize }
-          BluetoothButton { iconSize: panel.iconSize }
-          BatteryButton { iconSize: panel.iconSize }
-          Clock { iconSize: panel.iconSize }
-          TrayButton { iconSize: panel.iconSize }
+        TrayPopup {
+          id: trayPopup
+        }
+        PipewirePopup {
+          id: pipewirePopup
         }
       }
 
-      TrayPopup {
-        id: trayPopup
-      }
-      PipewirePopup {
-        id: pipewirePopup
+      LauncherPopup {
+        id: launcherPopup
+        barPanel: panel
+        screen: modelData
       }
     }
   }

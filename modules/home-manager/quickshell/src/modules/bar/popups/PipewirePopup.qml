@@ -19,19 +19,27 @@ ContextMenu {
 
   Column {
     id: column
-    anchors.centerIn: parent
 
-    padding: Theme.spacing.s
-    spacing: Theme.spacing.s
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+
+    spacing: Theme.spacing.xs
+
+    topPadding: Theme.spacing.s
+    bottomPadding: Theme.spacing.s
 
     readonly property real contentWidth: {
       return Math.max(...children.map((child) => child.implicitWidth))
     }
 
-    Text {
-      text: "Output devices"
-      color: Theme.colors.base05
-      font.bold: true
+    Row {
+      leftPadding: Theme.spacing.s
+
+      Text {
+        text: "Output devices"
+        color: Theme.colors.base04
+        font.bold: true
+      }
     }
 
     Repeater {
@@ -49,23 +57,32 @@ ContextMenu {
 
         Rectangle {
           anchors.fill: parent
-
-          color: mouseArea.containsMouse ? Theme.colors.base03 : Theme.colors.base01
-
-          radius: Theme.border.radius
+          color: mouseArea.containsMouse ? Theme.colors.base01 : Theme.colors.base00
 
           Row {
             id: sinkRow
             spacing: Theme.spacing.s
 
-            padding: Theme.spacing.xs
+            rightPadding: Theme.spacing.m
+            leftPadding: Theme.spacing.m
 
+            topPadding: Theme.spacing.xs
+            bottomPadding: Theme.spacing.xs
+
+            Rectangle {
+              anchors.verticalCenter: parent.verticalCenter
+              color: Theme.colors.base0D
+              implicitWidth: Theme.icons.l
+              implicitHeight: Theme.icons.s
+              opacity: modelData === PipewireManager.defaultSink 
+              radius: 999
+            }
 
             Text {
               id: sinkText
               anchors.verticalCenter: parent.verticalCenter
               text: modelData.nickname
-              color: modelData === PipewireManager.defaultSink ? Theme.colors.base0D : Theme.colors.base05
+              color: Theme.colors.base05
             }
           }
 
@@ -87,21 +104,27 @@ ContextMenu {
     Rectangle {
       color: "transparent"
       width: column.contentWidth
-      height: Theme.spacing.s
+      height: Theme.spacing.l
     }
 
 
-    Text {
-      text: "Input devices"
-      color: Theme.colors.base05
-      font.bold: true
+    Row {
+      leftPadding: Theme.spacing.s
+
+      Text {
+        text: "Input devices"
+        color: Theme.colors.base04
+        font.bold: true
+      }
     }
 
     Repeater {
+      id: inputRepeater
       model: PipewireManager.nodesModel
 
       delegate: Item {
         required property var modelData
+        required property int index
 
         property bool isSource: !modelData.isSink && !modelData.isStream
 
@@ -114,21 +137,33 @@ ContextMenu {
 
         Rectangle {
           anchors.fill: parent
-
-          color: mouseArea.containsMouse ? Theme.colors.base03 : Theme.colors.base01
-
-          radius: Theme.border.radius
+          color: mouseArea.containsMouse ? Theme.colors.base01 : Theme.colors.base00
 
           Row {
             id: sourceRow
             spacing: Theme.spacing.s
-            padding: Theme.spacing.xs
+
+            rightPadding: Theme.spacing.m
+            leftPadding: Theme.spacing.m
+
+            topPadding: Theme.spacing.xs
+            bottomPadding: Theme.spacing.xs
+
+
+            Rectangle {
+              anchors.verticalCenter: parent.verticalCenter
+              color: Theme.colors.base0D
+              implicitWidth: Theme.icons.l
+              implicitHeight: Theme.icons.s
+              opacity: modelData === PipewireManager.defaultSource
+              radius: 999
+            }
 
             Text {
               id: sinkText
               anchors.verticalCenter: parent.verticalCenter
               text: modelData.nickname
-              color: modelData === PipewireManager.defaultSource ? Theme.colors.base0D : Theme.colors.base05
+              color: Theme.colors.base05
             }
           }
 

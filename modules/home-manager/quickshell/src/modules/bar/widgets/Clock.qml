@@ -19,7 +19,7 @@ Container {
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
         icon: "calendar.svg"
-        color: Theme.colors.base0C
+        color: Theme.colors.base05
         size: iconSize
       }
 
@@ -30,7 +30,7 @@ Container {
           Qt.formatDateTime(clock.date, "dddd hh:mm")
         }
 
-        color: Theme.colors.base05
+        color: Theme.colors.base04
         font.bold: true
         text: time
 

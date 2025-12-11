@@ -1,11 +1,12 @@
 import Quickshell
 import QtQuick
 import Quickshell.Widgets
+import Quickshell.Wayland
 
 import "../settings"
 import "../widgets"
 
-PopupWindow {
+PanelWindow {
   required property int intendedWidth
   required property int intendedHeight
 
@@ -17,6 +18,9 @@ PopupWindow {
 
   implicitWidth: calculatedWidth
   implicitHeight: calculatedHeight
+
+  WlrLayershell.layer: WlrLayer.Top
+  WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
 
   WrapperItem {
     anchors.fill: parent

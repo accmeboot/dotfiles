@@ -25,14 +25,14 @@ Container {
       ColoredIcon {
         anchors.verticalCenter: parent.verticalCenter
         icon: getIcon() 
-        color: Theme.colors.base0C
+        color: Theme.colors.base05
         size: iconSize
       }
 
       Text {
         anchors.verticalCenter: parent.verticalCenter
         text: nm.isConnected ? nm.connectionName : "Disconnected"
-        color: Theme.colors.base05
+        color: Theme.colors.base04
         font.bold: true
       }
     }

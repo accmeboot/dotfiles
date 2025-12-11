@@ -33,13 +33,13 @@ Container {
             default: return "bluetooth-off.svg"
           }
         }
-        color: Theme.colors.base0C
+        color: Theme.colors.base05
         size: iconSize
       }
 
       Text {
         anchors.verticalCenter: parent.verticalCenter
-        color: Theme.colors.base05
+        color: Theme.colors.base04
         font.bold: true
         text: bm.currentDeviceName ?? bm.adapter?.name ?? ""
       }
