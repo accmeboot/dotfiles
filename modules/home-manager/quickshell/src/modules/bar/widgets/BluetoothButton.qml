@@ -4,7 +4,7 @@ import QtQuick
 import Quickshell.Bluetooth
 
 import "../../../settings"
-import "../../../widgets"
+import "../../../components"
 import "../../../services"
 
 Container {

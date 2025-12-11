@@ -4,7 +4,7 @@ import QtQuick
 
 import "../../../settings"
 import "../../../services"
-import "../../../widgets"
+import "../../../components"
 
 Container {
   id: root

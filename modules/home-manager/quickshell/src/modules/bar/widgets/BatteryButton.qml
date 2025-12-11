@@ -3,7 +3,7 @@ import Quickshell
 import Quickshell.Services.UPower
 
 import "../../../settings"
-import "../../../widgets"
+import "../../../components"
 
 Container {
   property int iconSize: Theme.spacing.xxl

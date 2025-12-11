@@ -3,7 +3,7 @@ import Quickshell.Io
 import QtQuick
 
 import "../../../settings"
-import "../../../widgets"
+import "../../../components"
 import "../../../services"
 
 

@@ -1,8 +1,9 @@
 import QtQuick
+import Quickshell
 
 import "../../../settings"
 import "../../../services"
-import "../../../widgets"
+import "../../../components"
 
 Rectangle {
   property ProcessManager pm: ProcessManager {}
@@ -30,7 +31,7 @@ Rectangle {
     cursorShape: Qt.PointingHandCursor
 
     onClicked: {
-      pm.execute(["rofi", "-show", "menu"])
+      launcherWindow.visible = !launcherWindow.visible
     }
   }
 }

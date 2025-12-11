@@ -4,7 +4,7 @@ import Quickshell.Io
 
 import "../../../settings"
 import "../../../services"
-import "../../../widgets"
+import "../../../components"
 
 Container {
   paddingVertical: Theme.icons.m - Theme.spacing.xs - Theme.spacing.xxs

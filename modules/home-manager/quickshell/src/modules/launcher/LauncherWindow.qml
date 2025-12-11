@@ -5,15 +5,13 @@ import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
 
-import "../../../settings"
-import "../../../services"
-import "../../../widgets"
-import "../../../windows"
+import "../../settings"
+import "../../services"
+import "../../components"
+import "../../windows"
 
 Window {
   id: launcher
-
-  property var barPanel: null
 
   intendedWidth: content.implicitWidth
   intendedHeight: content.implicitHeight

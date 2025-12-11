@@ -1,7 +1,7 @@
 import QtQuick
 
 import "../../../settings"
-import "../../../widgets"
+import "../../../components"
 import "../../../services"
 
 Item {

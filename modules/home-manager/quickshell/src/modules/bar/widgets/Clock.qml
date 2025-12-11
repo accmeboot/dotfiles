@@ -3,7 +3,7 @@ import Quickshell
 import QtQuick
 
 import "../../../settings"
-import "../../../widgets"
+import "../../../components"
 
 Container {
   property int iconSize: Theme.spacing.xxl

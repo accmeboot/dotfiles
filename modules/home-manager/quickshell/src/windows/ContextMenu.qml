@@ -3,7 +3,7 @@ import QtQuick
 import Quickshell.Widgets
 
 import "../settings"
-import "../widgets"
+import "../components"
 
 PopupWindow {
   required property int intendedWidth

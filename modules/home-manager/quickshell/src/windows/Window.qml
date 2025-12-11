@@ -4,7 +4,7 @@ import Quickshell.Widgets
 import Quickshell.Wayland
 
 import "../settings"
-import "../widgets"
+import "../components"
 
 PanelWindow {
   required property int intendedWidth

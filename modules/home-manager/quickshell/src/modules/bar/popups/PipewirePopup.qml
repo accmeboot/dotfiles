@@ -5,7 +5,7 @@ import QtQuick.Effects
 
 import "../../../settings"
 import "../../../services"
-import "../../../widgets"
+import "../../../components"
 import "../../../windows"
 
 
