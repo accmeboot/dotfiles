@@ -52,14 +52,13 @@ Container {
 
       onEntered: {
         var pos = mapToItem(null, 0, 0)
-        var barRect = itemRect(barContainer)
 
         var buttonWidth = row.width
         var popupWidth = pipewirePopup.width
         var centeredX = pos.x + (buttonWidth / 2) - (popupWidth / 2)
         
         pipewirePopup.anchor.rect.x = centeredX
-        pipewirePopup.anchor.rect.y = barRect.height - Theme.border.radius
+        pipewirePopup.anchor.rect.y = barContainer.height - Theme.border.radius
 
         pipewirePopup.visible = !pipewirePopup.visible
       }
