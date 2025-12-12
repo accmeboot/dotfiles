@@ -11,63 +11,75 @@ import "./popups"
 PanelWindow {
   id: panel
   screen: modelData
+  color: "transparent"
+  implicitWidth: mainLayout.implicitWidth + Theme.border.radius * 2
+  implicitHeight: mainLayout.implicitHeight + barShadow.blur
 
-  property int cornerRadius: Theme.border.radius
-  property int paddingHorizontal: Theme.spacing.s
-  property int paddingVertical: Theme.spacing.l
+  exclusiveZone: mainLayout.implicitHeight
 
   property int iconSize: Theme.icons.l
 
-  color: "transparent"
-
   anchors {
     top: true
-    left: true
-    right: true
   }
 
-  implicitHeight: iconSize + paddingVertical + cornerRadius
-  exclusiveZone: iconSize + paddingVertical
+  InvertedCorner {
+    position: "topLeft"
+    anchors.left: parent.left
+    anchors.top: parent.top
+  }
+
+  InvertedCorner {
+    position: "topRight"
+    anchors.right: parent.right
+    anchors.top: parent.top
+  }
 
   Item {
     id: barContainer
-    anchors.fill: parent
+    anchors.horizontalCenter: parent.horizontalCenter
 
-    Shadow { anchors.bottomMargin: panel.cornerRadius }
-    InvertedCorner { position: "bottomLeft"}
-    InvertedCorner { position: "bottomRight"}
+    implicitWidth: panel.implicitWidth - Theme.border.radius * 2
+    implicitHeight: panel.implicitHeight - barShadow.blur
+
+    Shadow { id: barShadow }
 
     Rectangle {
-      id: barBackground
       anchors.fill: parent
-      anchors.bottomMargin: panel.cornerRadius
       color: Theme.colors.base00
+      bottomLeftRadius: Theme.border.radius
+      bottomRightRadius: Theme.border.radius
     }
 
-    RowLayout {
-      anchors.left: barBackground.left
-      anchors.right: barBackground.right
-      anchors.verticalCenter: barBackground.verticalCenter
+    Column {
+      id: mainLayout
+      anchors.verticalCenter: barContainer.verticalCenter
 
-      anchors.rightMargin: panel.paddingHorizontal
-      anchors.leftMargin: panel.paddingHorizontal
-      anchors.topMargin: panel.paddingVertical
-      anchors.bottomMargin: panel.paddingVertical
+      leftPadding: Theme.spacing.s
+      rightPadding: Theme.spacing.s
+      topPadding: Theme.spacing.xs
+      bottomPadding: Theme.spacing.xs
 
-      spacing: Theme.spacing.m
+      RowLayout {
+        spacing: Theme.spacing.s
 
-      Launcher { iconSize: panel.iconSize }
-      Workspaces {}
-      Window { iconSize: panel.iconSize }
-
-      Item { Layout.fillWidth: true }
-
-      PipewireButton { iconSize: panel.iconSize }
-      NetworkButton { iconSize: panel.iconSize }
-      BluetoothButton { iconSize: panel.iconSize }
-      BatteryButton { iconSize: panel.iconSize }
-      Clock { iconSize: panel.iconSize }
-      TrayButton { iconSize: panel.iconSize }
+        Launcher { iconSize: panel.iconSize }
+        Workspaces {}
+        Item {
+          implicitWidth: activeWindow.maxWidth
+          implicitHeight: activeWindow.implicitHeight
+          Window {
+            id: activeWindow
+            iconSize: panel.iconSize
+          }
+        }
+        PipewireButton { iconSize: panel.iconSize }
+        NetworkButton { iconSize: panel.iconSize }
+        BluetoothButton { iconSize: panel.iconSize }
+        BatteryButton { iconSize: panel.iconSize }
+        Clock { iconSize: panel.iconSize }
+        TrayButton { iconSize: panel.iconSize }
+      }
     }
   }
 

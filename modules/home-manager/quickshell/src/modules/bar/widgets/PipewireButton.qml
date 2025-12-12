@@ -50,7 +50,7 @@ Container {
       hoverEnabled: true
       cursorShape: Qt.PointingHandCursor
 
-      onEntered: {
+      onClicked: {
         var pos = mapToItem(null, 0, 0)
 
         var buttonWidth = row.width
@@ -58,7 +58,7 @@ Container {
         var centeredX = pos.x + (buttonWidth / 2) - (popupWidth / 2)
         
         pipewirePopup.anchor.rect.x = centeredX
-        pipewirePopup.anchor.rect.y = barContainer.height - Theme.border.radius
+        pipewirePopup.anchor.rect.y = barContainer.height
 
         pipewirePopup.visible = !pipewirePopup.visible
       }
