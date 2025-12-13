@@ -27,11 +27,7 @@
       image = ../../../assets/wallpapers/nixos.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
-      targets = {
-        starship.enable = false;
-        waybar.enable = false;
-        rofi.enable = false;
-      };
+      targets = { starship.enable = false; };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {

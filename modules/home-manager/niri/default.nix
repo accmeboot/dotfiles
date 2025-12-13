@@ -86,32 +86,6 @@ in {
         slowdown 0.5
     }
 
-    layer-rule {
-        match namespace="waybar"
-        match namespace="rofi"
-        match namespace="^notifications$"
-        match namespace="swayosd"
-
-        match at-startup=true
-
-        shadow {
-            on
-            softness 5
-            spread 2
-            offset x=2 y=2
-            draw-behind-window true
-            color "#1B161099"
-        }
-
-        place-within-backdrop true
-    }
-
-    layer-rule {
-      match namespace="rofi"
-      match namespace="^notifications$"
-      geometry-corner-radius ${toString theme.borderRadius}
-    }
-
     // Make the wallpaper stationary, rather than moving with workspaces.
     layer-rule {
         // Find the right namespace by running niri msg layers.
@@ -139,12 +113,12 @@ in {
         Mod+T { spawn "wezterm"; }
         Mod+D { spawn-sh "qs -p ~/dotfiles/modules/home-manager/quickshell/src/shell.qml ipc call launcher toggle"; }
 
-        XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
-        XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
-        XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-        XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
-        XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-        XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+        XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%+"; }
+        XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%-"; }
+        XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+        XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+        XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+        XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
         Mod+O repeat=false { toggle-overview; }
         Mod+Q repeat=false { close-window; }
