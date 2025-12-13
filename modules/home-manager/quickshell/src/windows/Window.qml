@@ -1,26 +1,48 @@
 import Quickshell
 import QtQuick
 import Quickshell.Widgets
-import Quickshell.Wayland
 
 import "../settings"
 import "../components"
 
 PanelWindow {
+  id: root
+
   required property int intendedWidth
   required property int intendedHeight
+
+  property string position: "top" // left, right, bottom
 
   color: "transparent"
   visible: false
 
-  property int calculatedWidth: intendedWidth + (Theme.border.radius * 2)
-  property int calculatedHeight: intendedHeight + (Theme.border.radius * 2)
+  property int calculatedWidth: {
+    switch (position) {
+      case "top":
+      case "bottom":
+        return intendedWidth + (Theme.border.radius * 2)
+      default: return intendedWidth + shadow.blur
+    }
+  } 
+
+  property int calculatedHeight: {
+    switch (position) {
+      case "left":
+      case "right":
+        return intendedHeight + (Theme.border.radius * 2)
+      default: return intendedHeight + shadow.blur
+    }
+  }
 
   implicitWidth: calculatedWidth
   implicitHeight: calculatedHeight
 
-  WlrLayershell.layer: WlrLayer.Top
-  WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+  anchors {
+    top: position === "top"
+    left: position === "left"
+    right: position === "right"
+    bottom: position === "bottom"
+  }
 
   WrapperItem {
     anchors.fill: parent
@@ -29,42 +51,169 @@ PanelWindow {
       anchors.fill: parent
 
       InvertedCorner {
-        position: "topLeft"
-        anchors.left: corenrsBg.left
-        anchors.top: corenrsBg.top
+        position: {
+          switch (root.position) {
+            case "top": return "topLeft"
+            case "bottom": return "bottomLeft"
+            case "left": return "topLeft"
+
+            default: return "topRight"
+          }
+        }
+        orientation: {
+          switch (root.position) {
+            case "top":
+            case "bottom":
+              return "horizontal"
+            default: return "vertical"
+          }
+        }
       }
 
       InvertedCorner {
-        position: "topRight"
-        anchors.right: corenrsBg.right
-        anchors.top: corenrsBg.top
+        position: {
+          switch (root.position) {
+            case "top": return "topRight"
+            case "bottom": return "bottomRight"
+            case "left": return "bottomLeft"
+
+            default: return "bottomRight"
+          }
+        }
+        orientation: {
+          switch (root.position) {
+            case "top":
+            case "bottom":
+              return "horizontal"
+            default: return "vertical"
+          }
+        }
       }
 
       Rectangle {
         id: corenrsBg
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
 
-        implicitWidth: intendedWidth + Theme.border.radius * 2
-        implicitHeight: intendedHeight
+        anchors.horizontalCenter: {
+          switch (root.position) {
+            case "left":
+            case "right":
+              return undefined
+            default: return parent.horizontalCenter
+          }
+        }
+        anchors.verticalCenter: {
+          switch (root.position) {
+            case "top":
+            case "bottom":
+              return undefined
+            default: return  parent.verticalCenter
+          }
+        }
+
+        implicitWidth: calculatedWidth
+        implicitHeight: calculatedHeight
 
         color: "transparent"
 
-        bottomLeftRadius: Theme.border.radius
-        bottomRightRadius: Theme.border.radius
+        topLeftRadius: {
+          switch (position) {
+            case "right":
+            case "bottom":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        topRightRadius: {
+          switch (position) {
+            case "left":
+            case "bottom":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        bottomLeftRadius: {
+          switch (position) {
+            case "top":
+            case "right":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        bottomRightRadius: {
+          switch (position) {
+            case "top":
+            case "left":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
       }
 
       Rectangle {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
+        anchors.horizontalCenter: {
+          switch (root.position) {
+            case "left":
+            case "right":
+              return undefined
+            default: return parent.horizontalCenter
+          }
+        }
+        anchors.verticalCenter: {
+          switch (root.position) {
+            case "top":
+            case "bottom":
+              return undefined
+            default: return parent.verticalCenter
+          }
+        }
+
+        anchors.right: {
+          switch (root.position) {
+            case "top":
+            case "bottom":
+            case "left":
+              return undefined
+            default: return parent.right
+          }
+        }
 
         implicitWidth: intendedWidth
         implicitHeight: intendedHeight
 
         color: Theme.colors.base00
 
-        bottomLeftRadius: Theme.border.radius
-        bottomRightRadius: Theme.border.radius
+        topLeftRadius: {
+          switch (position) {
+            case "right":
+            case "bottom":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        topRightRadius: {
+          switch (position) {
+            case "left":
+            case "bottom":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        bottomLeftRadius: {
+          switch (position) {
+            case "top":
+            case "right":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
+        bottomRightRadius: {
+          switch (position) {
+            case "top":
+            case "left":
+              return Theme.border.radius
+            default: return 0
+          }
+        }
 
         Shadow { id: shadow }
       }

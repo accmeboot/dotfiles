@@ -24,7 +24,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/statue.png;
+      image = ../../../assets/wallpapers/nixos.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {

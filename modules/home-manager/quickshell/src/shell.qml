@@ -4,6 +4,7 @@ import QtQuick
 
 import "./modules/bar"
 import "./modules/launcher"
+import "./modules/osd"
 
 Scope {
   Variants {
@@ -19,6 +20,11 @@ Scope {
 
       LauncherWindow {
         id: launcherWindow
+        screen: modelData
+      }
+
+      VolumeWindow {
+        id: volumeWindow
         screen: modelData
       }
     }

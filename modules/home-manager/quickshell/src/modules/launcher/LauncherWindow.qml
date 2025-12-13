@@ -4,6 +4,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
+import Quickshell.Wayland
 
 import "../../settings"
 import "../../services"
@@ -15,6 +16,9 @@ Window {
 
   intendedWidth: content.implicitWidth
   intendedHeight: content.implicitHeight
+
+  WlrLayershell.layer: WlrLayer.Top
+  WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
 
   visible: false
 
