@@ -59,7 +59,7 @@ QtObject {
       updateWindows()
     }
 
-    if ((event.WindowFocusChanged || event.WindowOpenedOrChanged) && event.WindowFocusChanged?.id !== null) {
+    if (event.WindowFocusChanged || event.WindowOpenedOrChanged) {
       updateWindows()
 
       if (event.WindowFocusChanged?.id) {
