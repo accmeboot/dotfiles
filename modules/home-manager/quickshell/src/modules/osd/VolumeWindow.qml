@@ -5,6 +5,7 @@ import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell.Widgets
+import Quickshell.Wayland
 
 import "../../settings"
 import "../../services"
@@ -21,6 +22,7 @@ Window {
   position: "right"
 
   exclusionMode: ExclusionMode.Normal
+  WlrLayershell.layer: WlrLayer.Overlay
 
   property PipewireManager pm: PipewireManager
 
