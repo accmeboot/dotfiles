@@ -7,6 +7,7 @@ Item {
   property string icon: ""
   property color color: Theme.colors.base05
   property int size: 24
+  property bool isFullPath: false
 
   width: size
   height: size
@@ -14,7 +15,7 @@ Item {
   Image {
     id: img
     anchors.fill: parent
-    source: "../assets/" + icon
+    source: isFullPath ? icon : "../assets/" + icon
     sourceSize: Qt.size(size, size)
     visible: false
   }

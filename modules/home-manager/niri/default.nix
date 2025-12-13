@@ -137,7 +137,7 @@ in {
     binds {
 
         Mod+T { spawn "wezterm"; }
-        Mod+D { spawn "rofi" "-show" "menu"; }
+        Mod+D { spawn-sh "qs -p ~/dotfiles/modules/home-manager/quickshell/src/shell.qml ipc call launcher toggle"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }

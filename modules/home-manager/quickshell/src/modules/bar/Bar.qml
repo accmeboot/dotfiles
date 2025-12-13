@@ -19,6 +19,12 @@ PanelWindow {
 
   property int iconSize: Theme.icons.l
 
+  function getWindowPosX() {
+    var panelX = screen.x + (screen.width - implicitWidth) / 2
+
+    return panelX + activeWindowContainer.x
+  }
+
   anchors {
     top: true
   }
@@ -64,8 +70,9 @@ PanelWindow {
         spacing: Theme.spacing.s
 
         Launcher { iconSize: panel.iconSize }
-        Workspaces {}
+        Workspaces { }
         Item {
+          id: activeWindowContainer
           implicitWidth: activeWindow.maxWidth
           implicitHeight: activeWindow.implicitHeight
           Window {

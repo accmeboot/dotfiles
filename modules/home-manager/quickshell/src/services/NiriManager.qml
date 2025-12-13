@@ -59,10 +59,10 @@ QtObject {
       updateWindows()
     }
 
-    if (event.WindowFocusChanged || event.WindowOpenedOrChanged) {
+    if ((event.WindowFocusChanged || event.WindowOpenedOrChanged) && event.WindowFocusChanged?.id !== null) {
       updateWindows()
 
-      if (event.WindowFocusChanged.id) {
+      if (event.WindowFocusChanged?.id) {
         windows = windows.slice().map(window => {
           window.is_focused = window.id === event.WindowFocusChanged.id
 

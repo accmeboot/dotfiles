@@ -6,7 +6,9 @@ let
 
     src = ./src/backend/deutils;
 
-    vendorHash = "sha256-f444cTmN5WrgcFTvF2+cl98wc1ASpGH+2LCy0/81Up4=";
+    vendorHash = "sha256-EyBaDT8Mco/+R7A+F6oeJCBRbJNvtcIaCzNEXHwsNZY=";
+
+    goSum = ./src/backend/deutils/go.sum;
 
     meta = with lib; {
       description = "Desktop entry utilities for quickshell app launcher";
