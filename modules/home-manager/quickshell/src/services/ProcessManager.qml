@@ -37,11 +37,8 @@ QtObject {
 
   function execute(command) {
     executer.command = command
-
-    executer.running = false
-    executer.running = true
+    executer.startDetached()
   }
-
 
   function query(command, queryCallback) {
     callback = queryCallback
