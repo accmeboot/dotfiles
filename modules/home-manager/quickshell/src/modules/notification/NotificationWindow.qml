@@ -103,7 +103,7 @@ Window {
                 anchors.verticalCenter: parent.verticalCenter
                 source: {
                   if (modelData.icon) {
-                    if (modelData.icon.startsWith("files:")) return modelData.icon
+                    if (modelData.icon.startsWith("file:")) return modelData.icon
 
                     var prefix = modelData.icon.startsWith("/") ? "file://" : "image://icon/" 
 
