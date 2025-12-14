@@ -11,7 +11,7 @@ PanelWindow {
   required property int intendedWidth
   required property int intendedHeight
 
-  property string position: "top" // left, right, bottom
+  property string position: "top" // left, right, bottom, top-right
 
   color: "transparent"
   visible: false
@@ -21,6 +21,8 @@ PanelWindow {
       case "top":
       case "bottom":
         return intendedWidth + (Theme.border.radius * 2)
+      case "top-right":
+        return intendedWidth + Theme.border.radius
       default: return intendedWidth + shadow.blur
     }
   } 
@@ -30,6 +32,8 @@ PanelWindow {
       case "left":
       case "right":
         return intendedHeight + (Theme.border.radius * 2)
+      case "top-right":
+        return intendedHeight + Theme.border.radius
       default: return intendedHeight + shadow.blur
     }
   }
@@ -38,9 +42,9 @@ PanelWindow {
   implicitHeight: calculatedHeight
 
   anchors {
-    top: position === "top"
+    top: position === "top" || position === "top-right"
     left: position === "left"
-    right: position === "right"
+    right: position === "right" || position === "top-right"
     bottom: position === "bottom"
   }
 
@@ -56,6 +60,7 @@ PanelWindow {
             case "top": return "topLeft"
             case "bottom": return "bottomLeft"
             case "left": return "topLeft"
+            case "top-right": return "topLeft"
 
             default: return "topRight"
           }
@@ -64,6 +69,7 @@ PanelWindow {
           switch (root.position) {
             case "top":
             case "bottom":
+            case "top-right":
               return "horizontal"
             default: return "vertical"
           }
@@ -97,6 +103,7 @@ PanelWindow {
           switch (root.position) {
             case "left":
             case "right":
+            case "top-right":
               return undefined
             default: return parent.horizontalCenter
           }
@@ -105,6 +112,7 @@ PanelWindow {
           switch (root.position) {
             case "top":
             case "bottom":
+            case "top-right":
               return undefined
             default: return  parent.verticalCenter
           }
@@ -135,6 +143,7 @@ PanelWindow {
           switch (position) {
             case "top":
             case "right":
+            case "top-right":
               return Theme.border.radius
             default: return 0
           }
@@ -154,6 +163,7 @@ PanelWindow {
           switch (root.position) {
             case "left":
             case "right":
+            case "top-right":
               return undefined
             default: return parent.horizontalCenter
           }
@@ -162,6 +172,7 @@ PanelWindow {
           switch (root.position) {
             case "top":
             case "bottom":
+            case "top-right":
               return undefined
             default: return parent.verticalCenter
           }
@@ -202,6 +213,7 @@ PanelWindow {
           switch (position) {
             case "top":
             case "right":
+            case "top-right":
               return Theme.border.radius
             default: return 0
           }

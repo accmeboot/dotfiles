@@ -52,6 +52,7 @@ QtObject {
         property int l: 16
         property int xl: 20
         property int xxl: 24
+        property int xxxl: 32
       }
     }
   }

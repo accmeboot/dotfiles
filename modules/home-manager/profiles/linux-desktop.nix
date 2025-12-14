@@ -1,6 +1,5 @@
 { ... }: {
   imports = [
-    ../dunst/default.nix
     ../niri/default.nix
     ../hyprlock/default.nix
     ../hypridle/default.nix

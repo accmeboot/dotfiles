@@ -5,6 +5,7 @@ import QtQuick
 import "./modules/bar"
 import "./modules/launcher"
 import "./modules/osd"
+import "./modules/notification"
 
 Scope {
   Variants {
@@ -25,6 +26,11 @@ Scope {
 
       VolumeWindow {
         id: volumeWindow
+        screen: modelData
+      }
+
+      NotificationWindow {
+        id: notificationWindow
         screen: modelData
       }
     }
