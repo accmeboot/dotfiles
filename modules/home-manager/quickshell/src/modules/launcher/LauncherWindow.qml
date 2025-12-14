@@ -47,7 +47,7 @@ Window {
 
   Item {
     id: content
-    anchors.centerIn: parent
+    anchors.horizontalCenter: parent.horizontalCenter
 
     property ProcessManager pmlist: ProcessManager {}
     property ProcessManager pmsearch: ProcessManager {}
