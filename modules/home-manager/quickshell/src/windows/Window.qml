@@ -55,6 +55,7 @@ PanelWindow {
       anchors.fill: parent
 
       InvertedCorner {
+        invertBottom: root.position === "bottom"
         position: {
           switch (root.position) {
             case "top": return "topLeft"
@@ -77,6 +78,7 @@ PanelWindow {
       }
 
       InvertedCorner {
+        invertBottom: root.position === "bottom"
         position: {
           switch (root.position) {
             case "top": return "topRight"
@@ -185,6 +187,14 @@ PanelWindow {
             case "left":
               return undefined
             default: return parent.right
+          }
+        }
+
+        anchors.bottom: {
+          switch (root.position) {
+            case "bottom":
+              return parent.bottom
+            default: return undefined
           }
         }
 

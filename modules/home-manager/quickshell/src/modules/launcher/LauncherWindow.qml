@@ -22,14 +22,7 @@ Window {
 
   visible: false
 
-  anchors {
-    top: true
-    left: true
-  }
-
-  margins {
-    left: barPanel.getWindowPosX()
-  }
+  position: "bottom"
 
   exclusionMode: ExclusionMode.Normal
 
@@ -65,8 +58,7 @@ Window {
     implicitWidth: contentColumn.implicitWidth
     implicitHeight: contentColumn.implicitHeight
 
-    anchors.horizontalCenter: parent.horizontalCenter
-    anchors.top: parent.top
+    anchors.bottom: parent.bottom
 
     Component.onCompleted: {
       pmlist.query(["deutils", "list"], data => {

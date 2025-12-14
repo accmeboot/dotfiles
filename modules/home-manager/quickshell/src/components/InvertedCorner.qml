@@ -7,6 +7,7 @@ Canvas {
 
   property string position: "topLeft" // topRight bottomLeft bottomRight
   property string orientation: "horizontal" // vertical
+  property bool invertBottom: false
 
   property bool isLeft: position === "topLeft" || position === "bottomLeft"
   property bool isTop: position === "topLeft" || position === "topRight"
@@ -61,14 +62,26 @@ Canvas {
   }
 
   function drawBottomLeft(ctx) {
-    ctx.moveTo(0, 0)
-    ctx.lineTo(width, 0)
-    ctx.quadraticCurveTo(0, 0, 0, height)
+    if (invertBottom) {
+      ctx.moveTo(width, height)
+      ctx.lineTo(0, height)
+      ctx.quadraticCurveTo(width, height, width, 0)
+    } else {
+      ctx.moveTo(0, 0)
+      ctx.lineTo(width, 0)
+      ctx.quadraticCurveTo(0, 0, 0, height)
+    }
   }
 
   function drawBottomRight(ctx) {
-    ctx.moveTo(width, 0)
-    ctx.lineTo(0, 0)
-    ctx.quadraticCurveTo(width, 0, width, height)
+    if (invertBottom) {
+      ctx.moveTo(0, height)
+      ctx.lineTo(width, height)
+      ctx.quadraticCurveTo(0, height, 0, 0)
+    } else {
+      ctx.moveTo(width, 0)
+      ctx.lineTo(0, 0)
+      ctx.quadraticCurveTo(width, 0, width, height)
+    }
   }
 }
