@@ -11,7 +11,7 @@ QtObject {
   property var notificationsWatchers: []
 
   property NotificationServer server: NotificationServer {
-    keepOnReload: true
+    keepOnReload: false
     imageSupported: true
     actionsSupported: true
     onNotification: notification => handleNotification(notification)
