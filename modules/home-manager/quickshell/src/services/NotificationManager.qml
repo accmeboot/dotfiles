@@ -6,7 +6,9 @@ QtObject {
   id: root
 
   property ListModel activeList: ListModel {}
+
   property var notificationsActions: []
+  property var notificationsWatchers: []
 
   property NotificationServer server: NotificationServer {
     keepOnReload: true
@@ -15,8 +17,93 @@ QtObject {
     onNotification: notification => handleNotification(notification)
   }
 
+  property Component watcherComponent: Component {
+    id: notificationWatcherComponent
+    Connections {
+      property var targetNotification
+
+      target: targetNotification
+
+      function onSummaryChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onBodyChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onAppNameChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onUrgencyChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onAppIconChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onImageChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+      function onActionsChanged() {
+        updateNotificationFromObject(targetNotification);
+      }
+    }
+  }
+
+  function updateNotificationFromObject(notification) {
+    var notificationIdx = getNotificationIndexById(notification.id)
+
+    if (notificationIdx === -1) return
+
+    var item = prepareNotificationObject(notification)
+
+    activeList.setProperty(notificationIdx, "title", item.title)
+    activeList.setProperty(notificationIdx, "body", item.body)
+    activeList.setProperty(notificationIdx, "image", item.image)
+    activeList.setProperty(notificationIdx, "icon", item.icon)
+    activeList.setProperty(notificationIdx, "actions", item.actions)
+
+    notificationsActions = notificationsActions.map((action) => {
+      if (action.id === item.id) {
+        return prepareActionsObject(notification)
+      }
+
+      return action
+    })
+  }
+
   function handleNotification(notification) {
-    var item = {
+    var item = prepareNotificationObject(notification)
+
+    notification.tracked = true;
+
+    var watcher = notificationWatcherComponent.createObject(root, {
+      "targetNotification": notification,
+    });
+
+    activeList.append(item)
+    notificationsWatchers.push({ id: notification.id, watcher: watcher })
+    notificationsActions.push(prepareActionsObject(notification))
+  }
+
+  function makeNotificationActionId(notificationId, actionId) {
+    return String(notificationId) + ":" + String(actionId)
+  }
+
+  function prepareActionsObject(notification) {
+    return {
+      id: notification.id,
+      dismiss: notification.dismiss,
+      expire: notification.expire,
+      list: notification.actions.map((action, index) => {
+        return {
+          id: makeNotificationActionId(notification.id, index),
+          invoke: action.invoke,
+        }
+      }),
+    }
+  }
+
+  function prepareNotificationObject(notification) {
+    return {
       id: notification.id,
       title: notification.summary,
       body: notification.body,
@@ -27,43 +114,34 @@ QtObject {
       timestamp: Date.now(),
       actions: notification.actions.map((action, index) => {
         return {
-          id: String(notification.id) + ":" + String(index),
+          id: makeNotificationActionId(notification.id, index),
           identifier: action.identifier, // this is icon name
           text: action.text,
         }
-      })
-    }
-
-    notification.tracked = true;
-
-    activeList.append(item)
-    notificationsActions.push({
-      id: notification.id,
-      dismiss: notification.dismiss,
-      list: notification.actions.map((action, index) => {
-        return {
-          id: String(notification.id) + ":" + String(index),
-          invoke: action.invoke,
-        }
       }),
-    })
+    }
   }
 
-  function dismissNotification(index) {
-    var notification = activeList.get(index)
+  function dismissOrExpireNotification(notificationId, isExpire = false) {
+    var notificationIdx = getNotificationIndexById(notificationId)
+
+    if (notificationIdx === -1) return
+
+    var notification = activeList.get(notificationIdx)
 
     if (notification) {
-      var notificationActions = notificationsActions.find((item) => item.id === notification.id)
+      var notificationActions = notificationsActions.find((item) => item.id === notificationId)
 
       if (notificationActions) {
-        notificationActions.dismiss()
-        activeList.remove(index)
-        notificationsActions = notificationsActions.filter((item) => item.id !== notification.id)
+        if (isExpire) notificationActions.expire()
+        if (!isExpire) notificationActions.dismiss()
+
+        removeNotification(notificationId)
       }
     }
   }
 
-  function invokeAction(notificationId, actionId, notificationIndex) {
+  function invokeAction(notificationId, actionId) {
     var actions = notificationsActions.find((item) => item.id === notificationId)
 
     if (actions) {
@@ -71,10 +149,40 @@ QtObject {
 
       if (action) {
         action?.invoke()
-        activeList.remove(notificationIndex)
-        notificationsActions = notificationsActions.filter((item) => item.id !== notificationId)
+        removeNotification(notificationId)
       }
     }
+  }
+
+  function removeNotification(notificationId) {
+    var notificationIdx = getNotificationIndexById(notificationId)
+
+    if (notificationIdx === -1) return
+
+    var watcher = notificationsWatchers.find((item) => item.id === notificationId)
+
+    watcher?.watcher?.destroy()
+
+    activeList.remove(notificationIdx)
+    notificationsActions = notificationsActions.filter((item) => item.id !== notificationId)
+    notificationsWatchers = notificationsWatchers.filter((item) => item.id !== notificationId)
+  }
+
+  function getNotificationIndexById(notificationId) {
+    var idx = -1
+
+    for (var i = 0; i < activeList.count; i++) {
+      var item = activeList.get(i)
+
+      if (item.id === notificationId) {
+        idx = i
+        break
+      }
+    }
+
+    if (idx === -1) console.warn("Notification with id: " + notificationId + "not found")
+
+    return idx
   }
 
   property Timer timer: Timer {
@@ -82,7 +190,7 @@ QtObject {
     running: activeList.count > 0
     repeat: true
     onTriggered: () => {
-      for (var i = 0; i < activeList.count; i++) {
+      for (var i = activeList.count - 1; i >= 0; --i) {
         var notification = activeList.get(i)
 
         var hasActions = notification.actions.count > 0
@@ -93,7 +201,7 @@ QtObject {
         var passed = Date.now() - notification.timestamp
 
         if (passed > notification.expireTimeout) {
-          dismissNotification(i)
+          dismissOrExpireNotification(notification.id, true)
         }
       }
     }

@@ -47,7 +47,6 @@ Window {
         model: root.nm.activeList
         delegate: Rectangle {
           required property QtObject modelData
-          required property int index
 
           id: notificationRectangle
 
@@ -77,7 +76,7 @@ Window {
               hoverEnabled: true
 
               onClicked: {
-                root.nm.dismissNotification(index)
+                root.nm.dismissOrExpireNotification(modelData.id)
               }
             }
           }
@@ -193,7 +192,7 @@ Window {
                         hoverEnabled: true
 
                         onClicked: {
-                          root.nm.invokeAction(notificationRectangle.modelData.id, modelData.id, notificationRectangle.index)
+                          root.nm.invokeAction(notificationRectangle.modelData.id, modelData.id)
                         }
                       }
                     }
