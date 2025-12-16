@@ -52,7 +52,7 @@ Window {
           id: notificationRectangle
 
           implicitWidth: 350 + Theme.spacing.s * 2
-          implicitHeight: 84 + Theme.spacing.s * 2
+          implicitHeight: 100 + Theme.spacing.s * 2
 
           color: Theme.colors.base01
           clip: true
@@ -113,6 +113,8 @@ Window {
                   if (modelData.image) {
                     return modelData.image
                   }
+
+                  return ""
                 } 
               }
 
@@ -129,11 +131,12 @@ Window {
                 id: notificationBodyText
                 spacing: Theme.spacing.xs
                 Text {
-                  text: modelData.appName
+                  text: modelData.appName + "<font color='" + Theme.colors.base04 + "'>&#8195;" + getTime(modelData.timestamp) + "</font>"
                   color: Theme.colors.base0A
                   wrapMode: Text.Wrap
                   font.bold: true
                   width: notificationRectangle.width - notificationImage.width - Theme.spacing.s * 2 - Theme.spacing.s
+                  textFormat: Text.StyledText
                 }
                 Text {
                   text: modelData.title
@@ -151,6 +154,50 @@ Window {
                   width: notificationRectangle.width - notificationImage.width - Theme.spacing.s * 2 - Theme.spacing.s
                   maximumLineCount: 2
                   elide: Text.ElideRight
+                  textFormat: Text.StyledText
+                }
+
+                Row {
+                  id: actionsRow
+                  spacing: Theme.spacing.s
+                  topPadding: Theme.spacing.s
+
+                  Repeater {
+                    model: notificationRectangle.modelData.actions
+                    delegate: Rectangle {
+                      required property QtObject modelData
+
+                      implicitWidth: actionText.width
+                      implicitHeight: actionText.height
+
+                      color: Theme.colors.base0E
+                      radius: Theme.border.radius
+
+                      opacity: actionMouseArea.containsMouse ? 0.7 : 1
+
+                      Text {
+                        id: actionText
+                        color: Theme.colors.base00
+                        text: modelData.text
+                        leftPadding: Theme.spacing.xs
+                        rightPadding: Theme.spacing.xs
+                        elide: Text.ElideRight
+                        width: Math.min(implicitWidth, 100)
+                        textFormat: Text.StyledText
+                      }
+
+                      MouseArea {
+                        id: actionMouseArea
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        hoverEnabled: true
+
+                        onClicked: {
+                          root.nm.invokeAction(notificationRectangle.modelData.id, modelData.id, notificationRectangle.index)
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -158,5 +205,13 @@ Window {
         }
       }
     }
+  }
+
+  function getTime(timestamp) {
+    var date = new Date(timestamp)
+    var hours = String(date.getHours()).padStart(2, '0')
+    var minutes = String(date.getMinutes()).padStart(2, '0')
+
+    return hours + ":" + minutes
   }
 }
