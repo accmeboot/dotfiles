@@ -1,6 +1,5 @@
 return {
   "olimorris/codecompanion.nvim",
-  branch = "v18",
   opts = {
     adapters = {
       http = {
