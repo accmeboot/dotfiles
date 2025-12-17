@@ -60,6 +60,7 @@ QtObject {
     activeList.setProperty(notificationIdx, "image", item.image)
     activeList.setProperty(notificationIdx, "icon", item.icon)
     activeList.setProperty(notificationIdx, "actions", item.actions)
+    activeList.setProperty(notificationIdx, "urgency", item.urgency)
 
     notificationsActions = notificationsActions.map((action) => {
       if (action.id === item.id) {
@@ -108,6 +109,7 @@ QtObject {
       title: notification.summary,
       body: notification.body,
       image: notification.image,
+      urgency: notification.urgency,
       icon: notification.appIcon,
       appName: notification.appName,
       expireTimeout: notification.expireTimeout,

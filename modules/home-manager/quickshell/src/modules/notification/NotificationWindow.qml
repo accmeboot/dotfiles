@@ -5,6 +5,7 @@ import QtQuick.Controls
 import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell.Wayland
+import Quickshell.Services.Notifications
 
 import "../../settings"
 import "../../services"
@@ -51,7 +52,7 @@ Window {
           id: notificationRectangle
 
           implicitWidth: 350 + Theme.spacing.s * 2
-          implicitHeight: 100 + Theme.spacing.s * 2
+          implicitHeight: notificationContainer.implicitHeight
 
           color: Theme.colors.base01
           clip: true
@@ -130,8 +131,14 @@ Window {
                 id: notificationBodyText
                 spacing: Theme.spacing.xs
                 Text {
-                  text: modelData.appName + "<font color='" + Theme.colors.base04 + "'>&#8195;" + getTime(modelData.timestamp) + "</font>"
-                  color: Theme.colors.base0A
+                  text: modelData.appName + "<font color='" + Theme.colors.base04 + "'>&#8194;" + getTime(modelData.timestamp) + "</font>"
+                  color: {
+                    switch (modelData.urgency) {
+                      case NotificationUrgency.Critical: return Theme.colors.base08
+                      case NotificationUrgency.Normal: return Theme.colors.base0A
+                      default: return Theme.colors.base0C
+                    }
+                  } 
                   wrapMode: Text.Wrap
                   font.bold: true
                   width: notificationRectangle.width - notificationImage.width - Theme.spacing.s * 2 - Theme.spacing.s
@@ -159,7 +166,7 @@ Window {
                 Row {
                   id: actionsRow
                   spacing: Theme.spacing.s
-                  topPadding: Theme.spacing.s
+                  topPadding: Theme.spacing.xs
 
                   Repeater {
                     model: notificationRectangle.modelData.actions
@@ -169,7 +176,7 @@ Window {
                       implicitWidth: actionText.width
                       implicitHeight: actionText.height
 
-                      color: Theme.colors.base0E
+                      color: Theme.colors.base0A
                       radius: Theme.border.radius
 
                       opacity: actionMouseArea.containsMouse ? 0.7 : 1
@@ -178,8 +185,7 @@ Window {
                         id: actionText
                         color: Theme.colors.base00
                         text: modelData.text
-                        leftPadding: Theme.spacing.xs
-                        rightPadding: Theme.spacing.xs
+                        padding: Theme.spacing.xs
                         elide: Text.ElideRight
                         width: Math.min(implicitWidth, 100)
                         textFormat: Text.StyledText
