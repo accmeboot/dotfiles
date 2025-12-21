@@ -18,7 +18,7 @@ Window {
   intendedWidth: content.implicitWidth
   intendedHeight: content.implicitHeight
 
-  WlrLayershell.layer: WlrLayer.Overlay
+  WlrLayershell.layer: WlrLayer.Top
 
   property NotificationManager nm: NotificationManager
 

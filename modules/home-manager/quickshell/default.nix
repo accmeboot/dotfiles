@@ -17,5 +17,9 @@ let
   };
 in {
   programs.quickshell.enable = true;
-  home.packages = with pkgs; [ kdePackages.qt5compat deutils ];
+  home.packages = with pkgs; [
+    kdePackages.qt5compat
+    deutils
+    kdePackages.qtdeclarative
+  ];
 }
