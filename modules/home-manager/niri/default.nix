@@ -64,9 +64,9 @@ in {
         }
     }
 
-    spawn-sh-at-startup "qs -p ~/dotfiles/modules/home-manager/quickshell/src/shell.qml"
+    spawn-sh-at-startup "qs -c monte-shell"
     spawn-sh-at-startup "wbg -s ${config.stylix.image}"
-    spawn-sh-at-startup "hyprlock -q"
+    // spawn-sh-at-startup "hyprlock -q"
 
     hotkey-overlay {
         skip-at-startup
@@ -111,7 +111,7 @@ in {
     binds {
 
         Mod+T { spawn "wezterm"; }
-        Mod+D { spawn-sh "qs -p ~/dotfiles/modules/home-manager/quickshell/src/shell.qml ipc call launcher toggle"; }
+        Mod+D { spawn-sh "qs -c monte-shell ipc call launcher toggle"; }
 
         XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%+"; }
         XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume --limit 1.0 @DEFAULT_AUDIO_SINK@ 5%-"; }
