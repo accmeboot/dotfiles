@@ -52,7 +52,6 @@
 
     # Desktop Environment
     wiremix # tui volume control
-    jamesdsp # pipewire equalizer
     gowall # convert wallpaper to the theme
     librsvg # convert svg to png
     inkscape # convert png to svg
@@ -74,7 +73,7 @@
     socat # listen to events on sockets
 
     libsForQt5.qtstyleplugin-kvantum # qt-theme framework
-    networkmanagerapplet
+    networkmanager
 
     # niri dependency
     xwayland-satellite # xwayland compatibility
