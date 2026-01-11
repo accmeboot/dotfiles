@@ -44,7 +44,7 @@ in {
             proportion 0.66667
         }
 
-        default-column-width { proportion 0.66667; }
+        default-column-width { proportion 1.0; }
         focus-ring {
             off
         }
