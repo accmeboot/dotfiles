@@ -72,6 +72,12 @@ in {
         skip-at-startup
     }
 
+    overview {
+      workspace-shadow {
+        off
+      }
+    }
+
     // Uncomment this line to ask the clients to omit their client-side decorations if possible.
     // This option will also fix border/focus ring drawing behind some semitransparent windows.
     prefer-no-csd
