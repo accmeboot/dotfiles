@@ -10,8 +10,8 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/evangelion.png;
-      base16Scheme = import ./schemes/material-darker.nix;
+      image = ../../../assets/wallpapers/sun-mountains.png;
+      base16Scheme = import ./schemes/tokyodark.nix;
 
       targets = { starship.enable = false; };
 
