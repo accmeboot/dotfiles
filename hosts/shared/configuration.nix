@@ -82,12 +82,21 @@
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
-    dconf.enable = true;
-
-    niri.enable = true;
-
-    firefox.enable = true;
-    thunar.enable = true;
+    dconf = {
+      enable = true;
+      profiles.user.databases = [{
+        settings = {
+          "org/gnome/mutter" = {
+            experimental-features = [
+              "scale-monitor-framebuffer" # Enables fractional scaling (125% 150% 175%)
+              "variable-refresh-rate" # Enables Variable Refresh Rate (VRR) on compatible displays
+              "xwayland-native-scaling" # Scales Xwayland applications to look crisp on HiDPI screens
+              "autoclose-xwayland" # automatically terminates Xwayland if all relevant X11 clients are gone
+            ];
+          };
+        };
+      }];
+    };
   };
 
   #----------------------------------------------------------------------------#
@@ -109,8 +118,12 @@
       pulse.enable = true;
       jack.enable = true;
     };
-    gnome.gnome-keyring.enable = true;
-    displayManager.ly.enable = true;
+
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
+    gnome.games.enable = false;
+
     blueman.enable = true;
     envfs.enable = true;
     xserver.xkb = {
