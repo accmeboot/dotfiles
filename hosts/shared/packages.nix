@@ -43,9 +43,7 @@
     obs-studio # screen recording
 
     # Gnome dependencies
-    gnomeExtensions.appindicator
     gsettings-desktop-schemas # GSettings desktop schemas
-    gnome-control-center
   ];
 
   #----------------------------------------------------------------------------#
