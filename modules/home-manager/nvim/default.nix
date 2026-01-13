@@ -30,5 +30,5 @@ in {
     base0F: "${colors.base0F}"
   '';
 
-  home.packages = with pkgs; [ tree-sitter ];
+  home.packages = with pkgs; [ tree-sitter file ];
 }

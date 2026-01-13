@@ -82,11 +82,21 @@
       gamescopeSession.enable = true;
     };
     gamemode.enable = true;
-    dconf.enable = true;
-
-    niri.enable = true;
-
-    firefox.enable = true;
+    dconf = {
+      enable = true;
+      profiles.user.databases = [{
+        settings = {
+          "org/gnome/mutter" = {
+            experimental-features = [
+              "scale-monitor-framebuffer" # Enables fractional scaling (125% 150% 175%)
+              "variable-refresh-rate" # Enables Variable Refresh Rate (VRR) on compatible displays
+              "xwayland-native-scaling" # Scales Xwayland applications to look crisp on HiDPI screens
+              "autoclose-xwayland" # automatically terminates Xwayland if all relevant X11 clients are gone
+            ];
+          };
+        };
+      }];
+    };
   };
 
   #----------------------------------------------------------------------------#
@@ -108,18 +118,12 @@
       pulse.enable = true;
       jack.enable = true;
     };
-    gnome.gnome-keyring.enable = true;
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command =
-            "${pkgs.niri}/bin/niri-session > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
-          user = "accme";
-        };
-        default_session = initial_session;
-      };
-    };
+
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
+    gnome.games.enable = false;
+
     blueman.enable = true;
     envfs.enable = true;
     xserver.xkb = {
@@ -164,6 +168,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     SDL_JOYSTICK_HIDAPI = "0"; # is required for xpadneo
+    QT_QPA_PLATFORM = "wayland";
 
     LUA_PATH =
       "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";

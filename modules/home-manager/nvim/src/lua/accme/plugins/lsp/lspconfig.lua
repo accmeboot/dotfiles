@@ -142,6 +142,11 @@ return {
       single_file_support = true,
     })
 
+    vim.lsp.config("qmlls", {
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
     -- Enable all LSP servers after configuration
     vim.lsp.enable({
       "html",
@@ -156,7 +161,8 @@ return {
       "lua_ls",
       "pyright",
       "nil_ls",
-      "clangd"
+      "clangd",
+      "qmlls",
     })
   end,
 }

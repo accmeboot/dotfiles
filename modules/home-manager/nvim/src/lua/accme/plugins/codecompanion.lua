@@ -1,6 +1,5 @@
 return {
   "olimorris/codecompanion.nvim",
-  version = "v17.33.0", -- check for the updates regularly, next version would have a lot of dope features (https://github.com/olimorris/codecompanion.nvim/releases)
   opts = {
     adapters = {
       http = {
@@ -40,7 +39,7 @@ return {
         end,
       },
     },
-    strategies = {
+    interactions = {
       chat = {
         adapter = "anthropic",
       },
@@ -68,19 +67,9 @@ return {
         },
       },
     },
-
     extensions = {
       history = {
         enable = true,
-      },
-
-      mcphub = {
-        callback = "mcphub.extensions.codecompanion",
-        opts = {
-          show_result_in_chat = true, -- Show mcp tool results in chat
-          make_vars = true,           -- Convert resources to #variables
-          make_slash_commands = true, -- Add prompts as /slash commands
-        },
       },
     },
   },
@@ -91,12 +80,5 @@ return {
   end,
   dependencies = {
     "ravitemer/codecompanion-history.nvim",
-    {
-      "ravitemer/mcphub.nvim",
-      build = "bundled_build.lua",
-      opts = {
-        use_bundled_binary = true,
-      },
-    },
   },
 }

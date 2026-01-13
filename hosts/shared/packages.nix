@@ -28,39 +28,11 @@
     unzip # zip file extraction utility
     ollama # running local llms
 
-    # File Management
-    nemo # graphical file manager
-
-    # System Tools
-    lm_sensors # hardware monitoring utilities
-    pciutils # PCI utilities for device inspection
-
-    # Wayland Tools
-    xclip # command line interface to X clipboard
-    wl-clipboard # wayland clipboard utilities
-
     # Media & Viewers
-    mupdf # PDF viewer
     mpv # video player
     vlc # video player
     gimp # image editor
-    mediainfo # cli to view files mediainfo
-    playerctl # required by waybar mpris module
     brave # browser
-
-    # Screenshot & Recording
-    grim # screenshot utility for wayland
-    slurp # region selector for wayland
-    wl-clipboard # wayland based clipboard command tool
-
-    # Desktop Environment
-    wiremix # tui volume control
-    jamesdsp # pipewire equalizer
-    gowall # convert wallpaper to the theme
-    librsvg # convert svg to png
-    inkscape # convert png to svg
-    imagemagick # image format conversion
-    cava # audio visualizer
 
     # Communication & Entertainment
     telegram-desktop # messaging application
@@ -70,19 +42,10 @@
     transmission_4-gtk # torrent client
     obs-studio # screen recording
 
-    # System Libraries
+    # Gnome dependencies
+    gnomeExtensions.appindicator
     gsettings-desktop-schemas # GSettings desktop schemas
-    glib # low-level core library for GNOME
-    libnotify # notification library
-    socat # listen to events on sockets
-
-    libsForQt5.qtstyleplugin-kvantum # qt-theme framework
-    networkmanagerapplet
-    pasystray
-
-    # niri dependency
-    xwayland-satellite # xwayland compatibility
-    wbg # wallpaper
+    gnome-control-center
   ];
 
   #----------------------------------------------------------------------------#
