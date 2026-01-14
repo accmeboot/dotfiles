@@ -109,7 +109,6 @@
     desktopManager.cosmic.enable = true;
     system76-scheduler.enable = true;
 
-    blueman.enable = true;
     envfs.enable = true;
     xserver.xkb = {
       layout = "us";
