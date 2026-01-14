@@ -1,6 +1,6 @@
 { config, lib, ... }: {
   options.wezterm.desktop = {
-    disableWindowDecoration = lib.mkEnableOption "different window decoration"
+    windowDecorationResize = lib.mkEnableOption "different window decoration"
       // {
         dfault = false;
       };
@@ -16,7 +16,7 @@
         enable_tab_bar = false,
         font = wezterm.font '${config.stylix.fonts.monospace.name}',
         ${
-          if config.wezterm.desktop.disableWindowDecoration then
+          if config.wezterm.desktop.windowDecorationResize then
             "window_decorations = 'RESIZE',"
           else
             ""
