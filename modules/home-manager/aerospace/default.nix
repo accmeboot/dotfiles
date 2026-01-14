@@ -1,6 +1,4 @@
-{ config, ... }:
-let theme = config.stylix.theme;
-in {
+{ ... }: {
   home.file.".config/aerospace/aerospace.toml".text = ''
     after-login-command = []
     after-startup-command = []
@@ -20,13 +18,13 @@ in {
         preset = 'qwerty'
 
     [gaps]
-        inner.horizontal = ${toString theme.spacing.s}
-        inner.vertical =   ${toString theme.spacing.s}
+        inner.horizontal = 0
+        inner.vertical =   0
 
-        outer.left =       ${toString theme.spacing.s}
-        outer.bottom =     ${toString theme.spacing.s}
-        outer.top =        ${toString theme.spacing.s}
-        outer.right =      ${toString theme.spacing.s}
+        outer.left =       0
+        outer.bottom =     0
+        outer.top =        0
+        outer.right =      0
 
     [mode.main.binding]
         alt-t = 'exec-and-forget open -n -a "wezterm"'
