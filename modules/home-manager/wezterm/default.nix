@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   programs.wezterm = {
     enable = true;
     extraConfig = ''
@@ -8,7 +8,8 @@
         term = "wezterm",
         default_cursor_style = "SteadyBlock",
         enable_tab_bar = false,
-        font = wezterm.font 'JetBrains Mono',
+        window_decorations = 'RESIZE',
+        font = wezterm.font '${config.stylix.fonts.monospace.name}',
       }
     '';
   };
