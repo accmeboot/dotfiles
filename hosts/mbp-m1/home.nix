@@ -8,7 +8,6 @@
   programs.zsh.enableNvm = true;
 
   stylix.desktop = {
-    enableIcons = false;
     enableCursor = false;
     enableWallpaper = false;
   };
