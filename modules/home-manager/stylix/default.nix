@@ -27,8 +27,8 @@
           name = "SFProDisplay Nerd Font";
         };
         monospace = {
-          package = pkgs.nerd-fonts.meslo-lg;
-          name = "MesloLGL Nerd Font";
+          package = inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd;
+          name = "SFMono Nerd Font";
         };
         sizes = {
           applications = 10;
