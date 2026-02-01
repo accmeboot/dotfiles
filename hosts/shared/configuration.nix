@@ -105,15 +105,36 @@
       jack.enable = true;
     };
 
-    displayManager.cosmic-greeter.enable = true;
+    # displayManager.cosmic-greeter.enable = true;
     desktopManager.cosmic.enable = true;
     system76-scheduler.enable = true;
+
+    displayManager.ly.enable = true;
 
     envfs.enable = true;
     xserver.xkb = {
       layout = "us";
       variant = "";
     };
+
+    xserver = {
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+      deviceSection = ''
+        Option "VariableRefresh" "true"
+      '';
+    };
+
+    # picom = {
+    #   enable = true;
+    #
+    #   settings = {
+    #     shadow = false;
+    #     fading = false;
+    #     inactive-opacity = 0.8;
+    #     active-opacity = 1.0;
+    #   };
+    # };
     libinput = {
       enable = true;
       mouse = {
@@ -147,6 +168,7 @@
   environment.variables = {
     QT_STYLE_OVERRIDE = "kvantum";
     EDITOR = "nvim";
+    AMD_VULKAN_ICD = "RADV"; # Use RADV for better FreeSync support
   };
 
   environment.sessionVariables = {

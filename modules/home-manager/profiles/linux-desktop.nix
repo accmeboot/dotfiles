@@ -1,0 +1,1 @@
+{ ... }: { imports = [ ../dwm/default.nix ]; }
