@@ -13,10 +13,7 @@
       image = ../../../assets/wallpapers/evangelion.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
-      targets = {
-        starship.enable = false;
-        gtk.enable = false;
-      };
+      targets = { starship.enable = false; };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
