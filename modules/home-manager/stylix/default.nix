@@ -13,7 +13,10 @@
       image = ../../../assets/wallpapers/evangelion.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
-      targets = { starship.enable = false; };
+      targets = {
+        starship.enable = false;
+        gtk.enable = false;
+      };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
@@ -27,7 +30,8 @@
           name = "SFProDisplay Nerd Font";
         };
         monospace = {
-          package = inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd;
+          package =
+            inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd;
           name = "SFMono Nerd Font";
         };
         sizes = {
