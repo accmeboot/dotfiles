@@ -12,7 +12,7 @@ while true; do
 	DATE="$(date +'%A %H:%M')"
 	BATTERY="$($SCRIPT_DIR/get-battery.sh)"
 
-	xsetroot -name "    $VOLUME%  󰇙   $MIC%${BATTERY:+  󰇙    $BATTERY%}  󰇙  $DATE  "
+	xsetroot -name "   $VOLUME%  󰇙   $MIC%${BATTERY:+  󰇙    $BATTERY%}  󰇙  $DATE"
 
 	sleep 1
 done &

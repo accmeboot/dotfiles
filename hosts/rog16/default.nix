@@ -14,9 +14,7 @@
       prime = {
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
-
         offload.enable = true;
-        offload.enableOffloadCmd = true;
       };
     };
     graphics.enable = true;
@@ -24,12 +22,7 @@
 
   services = {
     touchegg.enable = true;
-    xserver = {
-      videoDrivers = [ "nvidia" ];
-      screenSection = ''
-        Option "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-      '';
-    };
+    xserver = { videoDrivers = [ "nvidia" ]; };
     asusd = {
       enable = true;
       enableUserService = true;
