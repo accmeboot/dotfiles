@@ -54,7 +54,6 @@
     wireplumber
     xrandr
     wiremix
-    tray-tui
     bluez
   ];
 
