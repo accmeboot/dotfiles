@@ -27,6 +27,7 @@
     jq # command-line JSON processor
     unzip # zip file extraction utility
     ollama # running local llms
+    pciutils # get hardware info
 
     # Media & Viewers
     mpv # video player

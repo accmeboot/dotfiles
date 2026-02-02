@@ -25,11 +25,11 @@
         Driver "amdgpu"
         Option "TearFree" "false"
         Option "VariableRefresh" "true"
+        Option "DRI" "3"
       EndSection
     '';
   };
 
-  # AMD-specific environment variable
   environment.variables = {
     AMD_VULKAN_ICD = "RADV"; # Use RADV for better FreeSync support
   };
