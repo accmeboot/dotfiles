@@ -47,7 +47,6 @@
     gsettings-desktop-schemas # GSettings desktop schemas
 
     # dwm
-    dmenu # app launcher for dwm
     feh
     scrot
     xclip

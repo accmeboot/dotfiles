@@ -135,11 +135,32 @@
       settings = {
         shadow = false;
         fading = false;
-        inactive-opacity = 0.9;
+        inactive-opacity = 1.0;
         active-opacity = 1.0;
         unredir-if-possible = true;
         glx-no-stencil = true;
         glx-no-rebind-pixmap = true;
+
+        # Blur settings
+        blur = {
+          method = "dual_kawase";
+          strength = 4;
+          deviation = 1.0;
+        };
+        blur-background = true;
+        blur-background-frame = false;
+        blur-background-fixed = false;
+
+        # Exclude popup/dropdown menus from blur
+        blur-background-exclude = [
+          "window_type = 'dock'"
+          "window_type = 'desktop'"
+          "window_type = 'dropdown_menu'"
+          "window_type = 'popup_menu'"
+          "window_type = 'tooltip'"
+          "class_g = 'slop'"
+          "_GTK_FRAME_EXTENTS@:c"
+        ];
       };
     };
 
