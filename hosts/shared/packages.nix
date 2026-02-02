@@ -55,6 +55,7 @@
     xrandr
     wiremix
     bluez
+    libnotify # notification library
   ];
 
   #----------------------------------------------------------------------------#

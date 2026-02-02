@@ -10,6 +10,7 @@
   stylix.desktop = {
     enableCursor = false;
     enableWallpaper = false;
+    enableIcons = false;
   };
 
   wezterm.desktop.windowDecorationResize = true;

@@ -1,1 +1,3 @@
-{ ... }: { imports = [ ../dwm/default.nix ../tray-tui/default.nix ]; }
+{ ... }: {
+  imports = [ ../dwm/default.nix ../tray-tui/default.nix ../dunst/default.nix ];
+}
