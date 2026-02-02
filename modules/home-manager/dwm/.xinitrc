@@ -1,15 +1,20 @@
 #!/bin/sh
 
-# Set display configuration
 xrandr --output DP-2 --mode 2560x1440 --rate 240 &
 
-# Set background wallpaper
 feh --bg-fill ~/dotfiles/assets/wallpapers/evangelion.png &
 
+SCRIPT_DIR="$HOME/dotfiles/modules/home-manager/dwm/scripts"
+
 while true; do
-	DATE="$(date +' %A %H:%M ')"
-	xsetroot -name "$DATE"
-	sleep 2
+	VOLUME="$($SCRIPT_DIR/get-volume.sh)"
+	MIC="$($SCRIPT_DIR/get-mic.sh)"
+	DATE="$(date +'%A %H:%M')"
+	BATTERY="$($SCRIPT_DIR/get-battery.sh)"
+
+	xsetroot -name "    $VOLUME%  󰇙   $MIC%${BATTERY:+  󰇙    $BATTERY%}  󰇙  $DATE  "
+
+	sleep 1
 done &
 
 exec dwm
