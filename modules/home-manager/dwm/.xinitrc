@@ -2,7 +2,7 @@
 
 xrandr --output DP-2 --mode 2560x1440 --rate 240 &
 
-feh --bg-fill ~/dotfiles/assets/wallpapers/evangelion.png &
+feh --bg-fill ~/dotfiles/assets/wallpapers/stairs.png &
 
 SCRIPT_DIR="$HOME/dotfiles/modules/home-manager/dwm/scripts"
 
