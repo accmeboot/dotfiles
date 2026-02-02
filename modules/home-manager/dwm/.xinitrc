@@ -3,9 +3,6 @@
 # Set display configuration
 xrandr --output DP-2 --mode 2560x1440 --rate 240 &
 
-nm-applet &
-blueman-applet &
-
 # Set background wallpaper
 feh --bg-fill ~/dotfiles/assets/wallpapers/evangelion.png &
 

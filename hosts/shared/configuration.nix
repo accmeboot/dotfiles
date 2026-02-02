@@ -110,6 +110,7 @@
     system76-scheduler.enable = true;
 
     displayManager.ly.enable = true;
+    blueman.enable = true;
 
     envfs.enable = true;
     xserver.xkb = {
@@ -119,22 +120,26 @@
 
     xserver = {
       enable = true;
-      videoDrivers = [ "amdgpu" ];
-      deviceSection = ''
-        Option "VariableRefresh" "true"
+      exportConfiguration = true;
+      monitorSection = ''
+        Option "DPMS" "true"
       '';
     };
 
-    # picom = {
-    #   enable = true;
-    #
-    #   settings = {
-    #     shadow = false;
-    #     fading = false;
-    #     inactive-opacity = 0.8;
-    #     active-opacity = 1.0;
-    #   };
-    # };
+    picom = {
+      enable = true;
+      backend = "glx";
+      settings = {
+        shadow = false;
+        fading = false;
+        inactive-opacity = 0.9;
+        active-opacity = 1.0;
+        unredir-if-possible = true;
+        glx-no-stencil = true;
+        glx-no-rebind-pixmap = true;
+      };
+    };
+
     libinput = {
       enable = true;
       mouse = {

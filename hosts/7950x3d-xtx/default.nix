@@ -16,6 +16,24 @@
     openrazer = { enable = true; };
   };
 
+  services.xserver = {
+    videoDrivers = [ "amdgpu" ];
+    extraConfig = ''
+      Section "OutputClass"
+        Identifier "AMDgpu"
+        MatchDriver "amdgpu"
+        Driver "amdgpu"
+        Option "TearFree" "false"
+        Option "VariableRefresh" "true"
+      EndSection
+    '';
+  };
+
+  # AMD-specific environment variable
+  environment.variables = {
+    AMD_VULKAN_ICD = "RADV"; # Use RADV for better FreeSync support
+  };
+
   system.stateVersion = "24.11";
 
   systemd = {
