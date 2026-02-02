@@ -82,7 +82,8 @@ static const char* screenshot_full[] = {
     NULL};
 static const char* screenshot_select[] = {
     "sh", "-c",
-    "mkdir -p ~/Screenshots && filename=\"$HOME/Screenshots/$(date "
+    "sleep 0.1 && mkdir -p ~/Screenshots && "
+    "filename=\"$HOME/Screenshots/$(date "
     "+'%Y-%m-%d-%H%M%S_screenshot.png')\" && scrot -s \"$filename\" && xclip "
     "-selection clipboard -t image/png < \"$filename\" && notify-send -a "
     "'Screenshot' 'Screenshot' \"Area selection captured\\nSaved to: "
@@ -134,7 +135,7 @@ static const Key keys[] = {
 
     /* Screenshot bindings */
     {0, XK_Print, spawn, {.v = screenshot_full}},
-    {Mod1Mask | ShiftMask, XK_4, spawn, {.v = screenshot_select}},
+    {MODKEY, XK_Print, spawn, {.v = screenshot_select}},
 
     /* Media keys */
     {0, XF86XK_AudioMute, spawn, {.v = vol_mute}},
