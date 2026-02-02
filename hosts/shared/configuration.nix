@@ -109,7 +109,6 @@
     desktopManager.cosmic.enable = true;
     system76-scheduler.enable = true;
 
-    displayManager.ly.enable = true;
     blueman.enable = true;
 
     envfs.enable = true;
@@ -119,14 +118,38 @@
       options = "grp:alt_shift_toggle";
     };
 
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command =
+            "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
+          user = "greeter";
+        };
+      };
+    };
+
     xserver = {
       enable = true;
       exportConfiguration = true;
+      displayManager.startx.enable = true;
       monitorSection = ''
         Option "DPMS" "true"
       '';
       autoRepeatDelay = 300;
       autoRepeatInterval = 25;
+
+      displayManager.session = [{
+        manage = "desktop";
+        name = "dwm";
+        start = ''
+          if [ -f "$HOME/.xinitrc" ]; then
+            exec $HOME/.xinitrc
+          elif [ -f "$HOME/.xsession" ]; then
+            exec $HOME/.xsession
+          fi
+        '';
+      }];
     };
 
     picom = {

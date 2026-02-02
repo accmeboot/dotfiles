@@ -23,7 +23,6 @@
         Identifier "AMDgpu"
         MatchDriver "amdgpu"
         Driver "amdgpu"
-        Option "TearFree" "false"
         Option "VariableRefresh" "true"
         Option "DRI" "3"
       EndSection
