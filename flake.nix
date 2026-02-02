@@ -78,6 +78,7 @@
                   imports = [
                     ./hosts/rog16/home.nix
                     ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
