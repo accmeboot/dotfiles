@@ -114,8 +114,9 @@
 
     envfs.enable = true;
     xserver.xkb = {
-      layout = "us";
+      layout = "us,ru";
       variant = "";
+      options = "grp:alt_shift_toggle";
     };
 
     xserver = {
@@ -124,6 +125,8 @@
       monitorSection = ''
         Option "DPMS" "true"
       '';
+      autoRepeatDelay = 300;
+      autoRepeatInterval = 25;
     };
 
     picom = {
