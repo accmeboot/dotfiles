@@ -10,7 +10,7 @@ blueman-applet &
 feh --bg-fill ~/dotfiles/assets/wallpapers/evangelion.png &
 
 while true; do
-	DATE="$(date +'%a %d %H:%M')"
+	DATE="$(date +' %A %H:%M ')"
 	xsetroot -name "$DATE"
 	sleep 2
 done &

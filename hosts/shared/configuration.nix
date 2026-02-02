@@ -168,13 +168,10 @@
   environment.variables = {
     QT_STYLE_OVERRIDE = "kvantum";
     EDITOR = "nvim";
-    AMD_VULKAN_ICD = "RADV"; # Use RADV for better FreeSync support
   };
 
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
     SDL_JOYSTICK_HIDAPI = "0"; # is required for xpadneo
-    QT_QPA_PLATFORM = "wayland";
 
     LUA_PATH =
       "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
