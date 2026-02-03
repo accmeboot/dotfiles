@@ -12,8 +12,7 @@
       enable32Bit = true;
       extraPackages = with pkgs; [ rocmPackages.clr.icd ];
     };
-    logitech.wireless.enable = false;
-    openrazer = { enable = true; };
+    logitech.wireless.enable = true;
   };
 
   boot.kernelParams = [ "amdgpu.dc=1" "amdgpu.freesync_video=1" ];
@@ -48,19 +47,17 @@
     users.accme = {
       isNormalUser = true;
       description = "accme";
-      extraGroups = [ "networkmanager" "wheel" "openrazer" ];
+      extraGroups = [ "networkmanager" "wheel" ];
     };
   };
 
   services.solaar = {
-    enable = false;
+    enable = true;
     package = pkgs.solaar;
     window =
       "hide"; # Show the window on startup (show, *hide*, only [window only])
     batteryIcons =
-      "symbolic"; # Which battery icons to use (*regular*, symbolic, solaar)
+      "regular"; # Which battery icons to use (*regular*, symbolic, solaar)
     extraArgs = ""; # Extra arguments to pass to solaar on startup
   };
-
-  environment.systemPackages = with pkgs; [ openrazer-daemon razer-cli ];
 }
