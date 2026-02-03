@@ -16,6 +16,8 @@
     openrazer = { enable = true; };
   };
 
+  boot.kernelParams = [ "amdgpu.dc=1" "amdgpu.freesync_video=1" ];
+
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
     extraConfig = ''
@@ -23,8 +25,10 @@
         Identifier "AMDgpu"
         MatchDriver "amdgpu"
         Driver "amdgpu"
+        Option "TearFree" "false"
         Option "VariableRefresh" "true"
         Option "DRI" "3"
+        Option "AsyncFlipSecondaries" "true"
       EndSection
     '';
   };
