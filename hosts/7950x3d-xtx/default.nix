@@ -19,17 +19,17 @@
 
   services.xserver = {
     videoDrivers = [ "amdgpu" ];
-    extraConfig = ''
-      Section "OutputClass"
-        Identifier "AMDgpu"
-        MatchDriver "amdgpu"
-        Driver "amdgpu"
-        Option "TearFree" "false"
-        Option "VariableRefresh" "true"
-        Option "DRI" "3"
-        Option "AsyncFlipSecondaries" "true"
-      EndSection
-    '';
+    # extraConfig = ''
+    #   Section "OutputClass"
+    #     Identifier "AMDgpu"
+    #     MatchDriver "amdgpu"
+    #     Driver "amdgpu"
+    #     Option "TearFree" "false"
+    #     Option "VariableRefresh" "true"
+    #     Option "DRI" "3"
+    #     Option "AsyncFlipSecondaries" "true"
+    #   EndSection
+    # '';
   };
 
   environment.variables = {
