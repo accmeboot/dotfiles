@@ -106,6 +106,7 @@
     };
 
     # displayManager.cosmic-greeter.enable = true;
+    displayManager.gdm.enable = true;
     desktopManager.cosmic.enable = true;
     system76-scheduler.enable = true;
 
@@ -118,21 +119,9 @@
       options = "grp:alt_shift_toggle";
     };
 
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command =
-            "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session";
-          user = "greeter";
-        };
-      };
-    };
-
     xserver = {
       enable = true;
       exportConfiguration = true;
-      displayManager.startx.enable = true;
       monitorSection = ''
         Option "DPMS" "true"
       '';
