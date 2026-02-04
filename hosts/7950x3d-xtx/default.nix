@@ -15,26 +15,7 @@
     logitech.wireless.enable = true;
   };
 
-  boot.kernelParams = [ "amdgpu.dc=1" "amdgpu.freesync_video=1" ];
-
-  services.xserver = {
-    videoDrivers = [ "amdgpu" ];
-    # extraConfig = ''
-    #   Section "OutputClass"
-    #     Identifier "AMDgpu"
-    #     MatchDriver "amdgpu"
-    #     Driver "amdgpu"
-    #     Option "TearFree" "false"
-    #     Option "VariableRefresh" "true"
-    #     Option "DRI" "3"
-    #     Option "AsyncFlipSecondaries" "true"
-    #   EndSection
-    # '';
-  };
-
-  environment.variables = {
-    AMD_VULKAN_ICD = "RADV"; # Use RADV for better FreeSync support
-  };
+  services.xserver = { videoDrivers = [ "amdgpu" ]; };
 
   system.stateVersion = "24.11";
 
