@@ -40,6 +40,12 @@
         };
       };
 
+      cursor = lib.mkIf config.stylix.desktop.enableCursor {
+        package = pkgs.capitaine-cursors;
+        name = "capitaine-cursors";
+        size = 16;
+      };
+
       icons = lib.mkIf config.stylix.desktop.enableIcons {
         enable = true;
         package = pkgs.papirus-icon-theme;
