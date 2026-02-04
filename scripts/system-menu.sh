@@ -9,16 +9,19 @@ if [ "$#" -gt 0 ]; then
 
     case "$selection_clean" in
       "Audio")
-        run "${TERMINAL:-wezterm} start -e wiremix -v output"
+        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat wiremix -v output"
         ;;
       "System Monitor")
-        run "${TERMINAL:-wezterm} start -e btop"
+        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat btop"
         ;;
       "Files")
-        run "${TERMINAL:-wezterm} start -e yazi"
+        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat yazi"
         ;;
       "Steam")
         run "steam"
+        ;;
+      "Tray")
+        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat tray-tui"
         ;;
       "Browser")
         run "brave"
@@ -45,13 +48,13 @@ fi
 
 # If no arguments, show the menu
 echo "󰖟 Browser"
+echo " Audio"
 echo " Files"
+echo "󱊖 Tray"
 echo " Steam"
 echo "󰤆 Shutdown"
 echo " Reboot"
 echo "󰒲 Sleep"
-echo " Lock"
-echo " Audio"
 echo "󰄩 System Monitor"
 echo " Terminal"
 echo " Configuration"

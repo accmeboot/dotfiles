@@ -110,10 +110,7 @@
       jack.enable = true;
     };
 
-    # displayManager.cosmic-greeter.enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.cosmic.enable = true;
-    system76-scheduler.enable = true;
 
     blueman.enable = true;
 

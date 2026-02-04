@@ -10,7 +10,7 @@
     extraConfig = ''
       local wezterm = require 'wezterm'
 
-      return {
+      local config = {
         term = "wezterm",
         default_cursor_style = "SteadyBlock",
         enable_tab_bar = false,
@@ -22,6 +22,15 @@
             ""
         }
       }
+
+      -- Check for SystemMenuFloat class via environment variable
+      local class = os.getenv('WEZTERM_CLASS')
+      if class == 'SystemMenuFloat' then
+        config.initial_cols = 90
+        config.initial_rows = 30
+      end
+
+      return config
     '';
   };
 }
