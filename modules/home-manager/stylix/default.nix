@@ -1,7 +1,9 @@
 { pkgs, lib, config, inputs, ... }: {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
-    enableCursor = lib.mkEnableOption "cursor theme" // { default = true; };
+    enableCursor = lib.mkEnableOption "cursor theme" // {
+      default = false;
+    }; # disabling by default, because xsession doesn't pick it up
     enableWallpaper = lib.mkEnableOption "wallpaper" // { default = true; };
     enableIcons = lib.mkEnableOption "icon theme" // { default = true; };
   };
