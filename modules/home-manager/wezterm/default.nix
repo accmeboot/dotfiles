@@ -14,7 +14,7 @@
         term = "wezterm",
         default_cursor_style = "SteadyBlock",
         enable_tab_bar = false,
-        window_background_opacity = 0.966,
+        window_background_opacity = 0.95,
         macos_window_background_blur = 60,
         font = wezterm.font '${config.stylix.fonts.monospace.name}',
         ${

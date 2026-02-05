@@ -2,7 +2,7 @@
 
 xrandr --output DisplayPort-1 --mode 2560x1440 --rate 240 &
 
-feh --bg-fill ~/dotfiles/assets/wallpapers/stairs.png &
+feh --bg-fill ~/dotfiles/assets/wallpapers/wallhaven-ogyeol_2560x1440.png &
 
 SCRIPT_DIR="$HOME/dotfiles/modules/home-manager/dwm/scripts"
 

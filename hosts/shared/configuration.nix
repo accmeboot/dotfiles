@@ -155,15 +155,13 @@
         glx-no-stencil = true;
         glx-no-rebind-pixmap = true;
 
-        # Blur settings
         blur = {
           method = "dual_kawase";
-          strength = 4;
-          deviation = 1.0;
+          strength = 12;
+          background = false;
+          background-frame = false;
+          background-fixed = false;
         };
-        blur-background = true;
-        blur-background-frame = false;
-        blur-background-fixed = false;
 
         # Exclude popup/dropdown menus from blur
         blur-background-exclude = [
