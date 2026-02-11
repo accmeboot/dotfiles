@@ -108,6 +108,26 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+
+      wireplumber.configPackages = [
+        (pkgs.writeTextDir
+          "share/wireplumber/wireplumber.conf.d/51-disable-suspension.conf" ''
+            monitor.alsa.rules = [
+              {
+                matches = [
+                  {
+                    node.name = "~alsa_output.*"
+                  }
+                ]
+                actions = {
+                  update-props = {
+                    session.suspend-timeout-seconds = 0
+                  }
+                }
+              }
+            ]
+          '')
+      ];
     };
 
     displayManager.gdm.enable = true;
