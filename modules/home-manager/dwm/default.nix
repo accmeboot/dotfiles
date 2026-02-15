@@ -16,8 +16,6 @@
         static const int vertpadbar = 10;       /* vertical padding for statusbar */
         static const char* fonts[] = {"SFProDisplay Nerd Font:size=12"};
         static const char dmenufont[] = "SFProDisplay Nerd Font:size=12";
-        static unsigned int baralpha = 0xe6;
-        static unsigned int borderalpha = OPAQUE;
         static const char col_gray1[] = "#${colors.base00}";
         static const char col_gray2[] = "#${colors.base03}";
         static const char col_gray3[] = "#${colors.base04}";
@@ -171,7 +169,6 @@
       '';
       patches = [
         ./patches/dwm-titlecolor-20210815-ed3ab6b4.diff
-        ./patches/dwm-alpha-20250918-74edc27.diff
         ./patches/dwm-statuspadding-6.3.diff
         ./patches/dwm-alwayscenter-20200625-f04cac6.diff
         ./patches/dwm-actualfullscreen-20211013-cb3f58a.diff

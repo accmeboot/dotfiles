@@ -28,17 +28,17 @@ in {
         mouse_middle_click = "context";
       };
       urgency_low = lib.mkForce {
-        background = "#${colors.base01}e6";
+        background = "#${colors.base01}";
         foreground = "#${colors.base05}";
       };
 
       urgency_normal = lib.mkForce {
-        background = "#${colors.base01}e6";
+        background = "#${colors.base01}";
         foreground = "#${colors.base05}";
       };
 
       urgency_critical = lib.mkForce {
-        background = "#${colors.base08}e6";
+        background = "#${colors.base08}";
         foreground = "#${colors.base00}";
       };
     };

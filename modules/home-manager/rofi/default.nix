@@ -26,7 +26,7 @@ in {
     window {
     	location: center;
     	width: 350px;
-    	background-color: #${colors.base01}e6;
+    	background-color: #${colors.base01};
       border-radius: 0;
     	children: [ mainbox, message];
       border: inherit;
@@ -46,7 +46,7 @@ in {
     }
 
     message {
-    	background-color: #${colors.base00}e6;
+    	background-color: #${colors.base00};
     	text-color: #${colors.base05};
     }
 
@@ -54,7 +54,7 @@ in {
       text-color: inherit;
       border: inherit;
       placeholder: "";
-    	background-color: #${colors.base00}e6;
+    	background-color: #${colors.base00};
     	padding: 8px 4px;
     }
 
@@ -106,11 +106,11 @@ in {
     }
 
     element selected.urgent {
-    	background-color: #${colors.base08}e6;
+    	background-color: #${colors.base08};
     }
 
     element selected.active {
-    	background-color: #${colors.base03}e6;
+    	background-color: #${colors.base03};
     }
 
     element-text {
