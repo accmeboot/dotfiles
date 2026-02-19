@@ -27,7 +27,7 @@ in {
 
         network = {
           format = "{ifname}";
-          format-wifi = "󰤨 {ifname}";
+          format-wifi = "󰤨 {essid}";
           format-ethernet = "󰖟 {bandwidthTotalBits}";
           format-disconnected = "󰪎 {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
@@ -38,17 +38,20 @@ in {
         };
 
         pulseaudio = {
-          format = " {volume}%";
+          format = " {volume}%  <span foreground='#${colors.base05}'>󰇙</span>";
           tooltip-format = "Output: {volume}%";
-          format-muted = " {volume}%";
+          format-muted =
+            " {volume}%  <span foreground='#${colors.base05}'>󰇙</span>";
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
 
         "pulseaudio#source" = {
           format = "{format_source}";
-          format-source = " {volume}%";
-          format-source-muted = "󰍭 {volume}%";
+          format-source =
+            " {volume}%  <span foreground='#${colors.base05}'>󰇙</span>";
+          format-source-muted =
+            "󰍭 {volume}%  <span foreground='#${colors.base05}'>󰇙</span>";
           tooltip-format = "Microphone: {volume}%";
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v input";
@@ -66,7 +69,8 @@ in {
               "notify-send -u critical 'Very Low Battery'";
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
-          format = "{icon} {capacity}%";
+          format =
+            "{icon} {capacity}%  <span foreground='#${colors.base05}'>󰇙</span>";
           tooltip-format = "Battery: {capacity}%";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
@@ -133,25 +137,17 @@ in {
       }
 
       #pulseaudio {
-        color: #${colors.base0B};
+        color: #${colors.base0A};
       }
       #pulseaudio.source {
-        color: #${colors.base0C};
+        color: #${colors.base0B};
       }
       #network {
-        color: #${colors.base0A};
+        color: #${colors.base0C};
       }
 
       #battery {
-        color: #${colors.base05};
-      }
-
-      #battery.warning {
-        color: #${colors.base0A};
-      }
-
-      #battery.critical {
-        color: #${colors.base08};
+        color: #${colors.base09};
       }
     '';
   };
