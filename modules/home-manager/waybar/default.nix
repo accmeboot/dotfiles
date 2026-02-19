@@ -89,7 +89,7 @@ in {
         border: none;
         border-radius: 0px;
         min-height: 0px;
-        font-size: 15px;
+        font-size: 16px;
         font-family: ${font};
       }
 
@@ -130,11 +130,6 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
-      }
-
-      #clock, #pulseaudio {
-        padding: 0px;
-        margin: 0px;
       }
 
       #pulseaudio {
