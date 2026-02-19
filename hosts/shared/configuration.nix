@@ -74,6 +74,11 @@
     nix-ld = { enable = true; };
     zsh.enable = true;
     starship.enable = true;
+    gamescope = {
+      enable = true;
+      package = pkgs.gamescope.overrideAttrs
+        (_: { NIX_CFLAGS_COMPILE = [ "-fno-fast-math" ]; });
+    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
@@ -83,6 +88,7 @@
     };
     gamemode.enable = true;
     dconf.enable = true;
+    hyprland = { enable = true; };
   };
 
   #----------------------------------------------------------------------------#
@@ -103,17 +109,49 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+
+      wireplumber.configPackages = [
+        (pkgs.writeTextDir
+          "share/wireplumber/wireplumber.conf.d/51-disable-suspension.conf" ''
+            monitor.alsa.rules = [
+              {
+                matches = [
+                  {
+                    node.name = "~alsa_output.*"
+                  }
+                ]
+                actions = {
+                  update-props = {
+                    session.suspend-timeout-seconds = 0
+                  }
+                }
+              }
+            ]
+          '')
+      ];
     };
 
-    displayManager.cosmic-greeter.enable = true;
-    desktopManager.cosmic.enable = true;
-    system76-scheduler.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command =
+            "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+          user = "accme";
+        };
+        default_session = initial_session;
+      };
+    };
+
+    blueman.enable = true;
 
     envfs.enable = true;
     xserver.xkb = {
-      layout = "us";
+      layout = "us,ru";
       variant = "";
+      options = "grp:alt_shift_toggle";
     };
+
     libinput = {
       enable = true;
       mouse = {
@@ -150,9 +188,7 @@
   };
 
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
     SDL_JOYSTICK_HIDAPI = "0"; # is required for xpadneo
-    QT_QPA_PLATFORM = "wayland";
 
     LUA_PATH =
       "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";

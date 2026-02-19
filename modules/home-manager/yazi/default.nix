@@ -12,6 +12,12 @@
           close = "";
         };
       };
+      indicator = {
+        padding = {
+          open = "█";
+          close = "█";
+        };
+      };
     };
     settings = {
       opener = {

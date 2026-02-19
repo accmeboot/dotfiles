@@ -17,13 +17,10 @@
       };
     };
     graphics.enable = true;
-    logitech.wireless.enable = true;
   };
 
   services = {
-    upower.enable = true; # quickshell battery reading
     touchegg.enable = true;
-    xserver.videoDrivers = [ "nvidia" ];
     asusd = {
       enable = true;
       enableUserService = true;

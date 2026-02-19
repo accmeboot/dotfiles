@@ -3,6 +3,7 @@
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
     enableCursor = lib.mkEnableOption "cursor theme" // { default = true; };
     enableWallpaper = lib.mkEnableOption "wallpaper" // { default = true; };
+    enableIcons = lib.mkEnableOption "icon theme" // { default = true; };
   };
 
   config = {
@@ -13,7 +14,10 @@
       image = ../../../assets/wallpapers/evangelion.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
-      targets = { starship.enable = false; };
+      targets = {
+        starship.enable = false;
+        waybar.enable = false;
+      };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
@@ -43,6 +47,13 @@
         package = pkgs.capitaine-cursors;
         name = "capitaine-cursors";
         size = 16;
+      };
+
+      icons = lib.mkIf config.stylix.desktop.enableIcons {
+        enable = true;
+        package = pkgs.papirus-icon-theme;
+        dark = "Papirus";
+        light = "Papirus";
       };
     };
   };

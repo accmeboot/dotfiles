@@ -52,6 +52,7 @@
                   imports = [
                     ./hosts/7950x3d-xtx/home.nix
                     ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
@@ -77,6 +78,7 @@
                   imports = [
                     ./hosts/rog16/home.nix
                     ./modules/home-manager/profiles/base.nix
+                    ./modules/home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
