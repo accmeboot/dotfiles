@@ -15,18 +15,6 @@
     logitech.wireless.enable = true;
   };
 
-  services.xserver = {
-    videoDrivers = [ "amdgpu" ];
-    extraConfig = ''
-      Section "OutputClass"
-        Identifier "AMDgpu"
-        MatchDriver "amdgpu"
-        Driver "amdgpu"
-        Option "VariableRefresh" "true"
-      EndSection
-    '';
-  };
-
   system.stateVersion = "24.11";
 
   systemd = {

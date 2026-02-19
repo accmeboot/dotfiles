@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 run() {
-  setsid -f sh -c "$*" >/dev/null 2>&1
+  hyprctl -q dispatch exec "$1" 
 }
 
 if [ "$#" -gt 0 ]; then
@@ -9,19 +9,19 @@ if [ "$#" -gt 0 ]; then
 
     case "$selection_clean" in
       "Audio")
-        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat wiremix -v output"
+        run "${TERMINAL:-wezterm} start -e --class com.accme.float wiremix -v output"
         ;;
       "System Monitor")
-        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat btop"
+        run "${TERMINAL:-wezterm} start -e --class com.accme.float btop"
         ;;
       "Files")
-        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat yazi"
+        run "${TERMINAL:-wezterm} start -e --class com.accme.float yazi"
         ;;
       "Steam")
         run "steam"
         ;;
       "Tray")
-        run "WEZTERM_CLASS=SystemMenuFloat ${TERMINAL:-wezterm} start -e --class SystemMenuFloat tray-tui"
+        run "${TERMINAL:-wezterm} start -e --class com.accme.float tray-tui"
         ;;
       "Browser")
         run "brave"
@@ -35,8 +35,11 @@ if [ "$#" -gt 0 ]; then
       "Reboot")
         run "reboot"
         ;;
+      "Lock")
+        run "pidof hyprlock || hyprlock"
+        ;;
       "Sleep")
-        run "systemctl suspend"
+        run "hyprlock & systemctl suspend"
         ;;
       "Configuration")
         run "${TERMINAL:-wezterm} start -e tmux new -s CONFIG -c ~/dotfiles"
@@ -54,6 +57,7 @@ echo "󱊖 Tray"
 echo " Steam"
 echo "󰤆 Shutdown"
 echo " Reboot"
+echo " Lock"
 echo "󰒲 Sleep"
 echo "󰄩 System Monitor"
 echo " Terminal"

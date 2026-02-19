@@ -28,6 +28,7 @@
     unzip # zip file extraction utility
     ollama # running local llms
     pciutils # get hardware info
+    wiremix # audio control
 
     # Media & Viewers
     mpv # video player
@@ -46,13 +47,11 @@
     # Gnome dependencies
     gsettings-desktop-schemas # GSettings desktop schemas
 
-    # dwm
-    feh
-    scrot
-    xclip
-    wireplumber
-    xrandr
-    wiremix
+    # Wayland Tools
+    xclip # command line interface to X clipboard
+    grim # screenshot utility for wayland
+    slurp # region selector for wayland
+    wl-clipboard # wayland based clipboard command tool
     bluez
     libnotify # notification library
   ];

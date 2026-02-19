@@ -88,6 +88,7 @@
     };
     gamemode.enable = true;
     dconf.enable = true;
+    hyprland = { enable = true; };
   };
 
   #----------------------------------------------------------------------------#
@@ -130,7 +131,17 @@
       ];
     };
 
-    displayManager.gdm.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command =
+            "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+          user = "accme";
+        };
+        default_session = initial_session;
+      };
+    };
 
     blueman.enable = true;
 
@@ -139,28 +150,6 @@
       layout = "us,ru";
       variant = "";
       options = "grp:alt_shift_toggle";
-    };
-
-    xserver = {
-      enable = true;
-      exportConfiguration = true;
-      monitorSection = ''
-        Option "DPMS" "true"
-      '';
-      autoRepeatDelay = 300;
-      autoRepeatInterval = 25;
-
-      displayManager.session = [{
-        manage = "desktop";
-        name = "dwm";
-        start = ''
-          if [ -f "$HOME/.xinitrc" ]; then
-            exec $HOME/.xinitrc
-          elif [ -f "$HOME/.xsession" ]; then
-            exec $HOME/.xsession
-          fi
-        '';
-      }];
     };
 
     libinput = {

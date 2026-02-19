@@ -1,9 +1,7 @@
 { pkgs, lib, config, inputs, ... }: {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
-    enableCursor = lib.mkEnableOption "cursor theme" // {
-      default = false;
-    }; # disabling by default, because xsession doesn't pick it up
+    enableCursor = lib.mkEnableOption "cursor theme" // { default = true; };
     enableWallpaper = lib.mkEnableOption "wallpaper" // { default = true; };
     enableIcons = lib.mkEnableOption "icon theme" // { default = true; };
   };
@@ -16,7 +14,10 @@
       image = ../../../assets/wallpapers/evangelion.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
-      targets = { starship.enable = false; };
+      targets = {
+        starship.enable = false;
+        waybar.enable = false;
+      };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
         serif = {
