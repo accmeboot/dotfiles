@@ -144,7 +144,7 @@ in {
         color: #${colors.base0C};
       }
       #network {
-        color: #${colors.base0E};
+        color: #${colors.base0A};
       }
 
       #battery {

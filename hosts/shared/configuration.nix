@@ -136,7 +136,7 @@
       settings = rec {
         initial_session = {
           command =
-            "${pkgs.hyprland}/bin/Hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
+            "${pkgs.hyprland}/bin/start-hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
           user = "accme";
         };
         default_session = initial_session;
