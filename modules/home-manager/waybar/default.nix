@@ -10,7 +10,7 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ "hyprland/workspaces" "mpris" ];
         modules-center = [ "clock" ];
         modules-right = [
           "battery"
@@ -28,6 +28,18 @@ in {
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        mpris = {
+          format = "󰇙     {status_icon}  {dynamic}";
+          interval = 1;
+          dynamic-len = 40;
+          title-len = 40;
+          status-icons = {
+            paused = " ";
+            playing = " ";
+            stopped = " ";
+          };
         };
 
         temperature = {
@@ -176,10 +188,6 @@ in {
 
       #battery {
         color: #${colors.base0E};
-      }
-
-      #clock {
-        font-size: 14px;
       }
     '';
   };

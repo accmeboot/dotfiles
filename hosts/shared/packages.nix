@@ -29,6 +29,8 @@
     ollama # running local llms
     pciutils # get hardware info
     wiremix # audio control
+    playerctl # required by waybar mpris module
+    libnotify # notification library
 
     # Media & Viewers
     mpv # video player
@@ -53,7 +55,6 @@
     slurp # region selector for wayland
     wl-clipboard # wayland based clipboard command tool
     bluez
-    libnotify # notification library
   ];
 
   #----------------------------------------------------------------------------#
