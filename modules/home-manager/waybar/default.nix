@@ -10,9 +10,10 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "mpris" ];
+        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
         modules-right = [
+          "mpris"
           "battery"
           "temperature"
           "pulseaudio"
@@ -30,8 +31,14 @@ in {
           cursor = 60;
         };
 
+        "hyprland/window" = {
+          format = "{}";
+          icon = true;
+          icon-size = 16;
+        };
+
         mpris = {
-          format = "󰇙     {status_icon}  {dynamic}";
+          format = "{dynamic}  {status_icon}  󰇙";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
