@@ -140,12 +140,10 @@ in {
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
-        font-style: italic;
         color: #${colors.base05};
       }
 
       #workspaces button.empty {
-        font-style: normal;
         color: #${colors.base03};
       }
 
@@ -178,6 +176,10 @@ in {
 
       #battery {
         color: #${colors.base0E};
+      }
+
+      #clock {
+        font-size: 14px;
       }
     '';
   };
