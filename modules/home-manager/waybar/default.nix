@@ -13,7 +13,7 @@ in {
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right =
-          [ "battery" "pulseaudio" "pulseaudio#source" "network" ];
+          [ "battery" "memory" "pulseaudio" "pulseaudio#source" "network" ];
 
         spacing = 8;
 
@@ -23,6 +23,12 @@ in {
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
+        };
+
+        memory = {
+          interval = 30;
+          format =
+            " {used:0.1f}G / {total:0.1f}G   <span foreground='#${colors.base05}'>󰇙</span>";
         };
 
         network = {
@@ -143,6 +149,10 @@ in {
         color: #${colors.base08};
       }
 
+      #memory {
+        color: #${colors.base09};
+      }
+
       #pulseaudio {
         color: #${colors.base0A};
       }
@@ -154,7 +164,7 @@ in {
       }
 
       #battery {
-        color: #${colors.base09};
+        color: #${colors.base0E};
       }
     '';
   };
