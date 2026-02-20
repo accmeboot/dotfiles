@@ -12,8 +12,13 @@ in {
 
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right =
-          [ "battery" "memory" "pulseaudio" "pulseaudio#source" "network" ];
+        modules-right = [
+          "battery"
+          "temperature"
+          "pulseaudio"
+          "pulseaudio#source"
+          "network"
+        ];
 
         spacing = 8;
 
@@ -25,10 +30,18 @@ in {
           cursor = 60;
         };
 
-        memory = {
-          interval = 30;
+        temperature = {
+          interval = 10;
+          hwmon-path = [
+            "/sys/class/hwmon/hwmon7/temp1_input" # Intel coretemp
+            "/sys/class/hwmon/hwmon5/temp1_input" # AMD k10temp (common)
+            "/sys/class/hwmon/hwmon4/temp1_input" # AMD k10temp (alternative)
+            "/sys/class/hwmon/hwmon3/temp1_input" # Fallback
+          ];
+          critical-threshold = 80;
           format =
-            " {used:0.1f}G / {total:0.1f}G   <span foreground='#${colors.base05}'>󰇙</span>";
+            " {temperatureC}°C  <span foreground='#${colors.base05}'>󰇙</span>";
+          tooltip-format = "CPU Temperature: {temperatureC}°C";
         };
 
         network = {
@@ -149,7 +162,7 @@ in {
         color: #${colors.base08};
       }
 
-      #memory {
+      #temperature {
         color: #${colors.base09};
       }
 
