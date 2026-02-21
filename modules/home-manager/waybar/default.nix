@@ -100,7 +100,7 @@ in {
         };
 
         clock = {
-          format = "󰃰 {:%A %H:%M}";
+          format = "{:%A %H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
@@ -140,11 +140,6 @@ in {
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
-        color: #${colors.base05};
-      }
-
-      #workspaces button.empty {
-        color: #${colors.base03};
       }
 
       #workspaces button:hover {
