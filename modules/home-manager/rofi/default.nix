@@ -84,15 +84,6 @@ in {
     }
 
     element normal.active {
-    	text-color: #${colors.base0D};
-    }
-
-    element alternate.normal {
-    	text-color: inherit;
-    	background-color: inherit;
-    }
-
-    element alternate.active {
     	text-color: #${colors.base05};
     	background-color: #${colors.base03};
     }
@@ -111,7 +102,22 @@ in {
     }
 
     element selected.active {
+    	text-color: #${colors.base00};
     	background-color: #${colors.base0D};
+    }
+
+    element alternate.normal {
+    	text-color: inherit;
+    	background-color: inherit;
+    }
+
+    element alternate.urgent {
+    	text-color: #${colors.base08};
+    }
+
+    element alternate.active {
+    	text-color: #${colors.base05};
+    	background-color: #${colors.base03};
     }
 
     element-text {
