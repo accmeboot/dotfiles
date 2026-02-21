@@ -10,10 +10,9 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
-          "mpris"
           "battery"
           "temperature"
           "pulseaudio"
@@ -29,24 +28,6 @@ in {
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
           cursor = 60;
-        };
-
-        "hyprland/window" = {
-          format = "{}";
-          icon = true;
-          icon-size = 16;
-        };
-
-        mpris = {
-          format = "{dynamic}  {status_icon}  󰇙";
-          interval = 1;
-          dynamic-len = 40;
-          title-len = 40;
-          status-icons = {
-            paused = " ";
-            playing = " ";
-            stopped = " ";
-          };
         };
 
         temperature = {
@@ -119,7 +100,7 @@ in {
         };
 
         clock = {
-          format = "{:%A %H:%M}";
+          format = "󰃰 {:%A %H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
