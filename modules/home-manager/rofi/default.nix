@@ -6,7 +6,7 @@ in {
   home.file.".config/rofi/config.rasi".text = ''
     configuration {
       kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
-      modi: "drun,menu:${../../../scripts/system-menu.sh}";
+      modi: "drun,menu:${../../../scripts/system-menu.sh},window";
       show-icons: false;
       terminal: "wezterm";
     }
@@ -93,7 +93,8 @@ in {
     }
 
     element alternate.active {
-    	text-color: #${colors.base0D};
+    	text-color: #${colors.base05};
+    	background-color: #${colors.base03};
     }
 
     element selected {
@@ -110,7 +111,7 @@ in {
     }
 
     element selected.active {
-    	background-color: #${colors.base03};
+    	background-color: #${colors.base0D};
     }
 
     element-text {
