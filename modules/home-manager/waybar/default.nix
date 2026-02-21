@@ -14,9 +14,9 @@ in {
         modules-center = [ "clock" ];
         modules-right = [
           "battery"
-          "temperature"
           "pulseaudio"
           "pulseaudio#source"
+          "hyprland/language"
           "network"
         ];
 
@@ -30,18 +30,12 @@ in {
           cursor = 60;
         };
 
-        temperature = {
-          interval = 10;
-          hwmon-path = [
-            "/sys/class/hwmon/hwmon7/temp1_input" # Intel coretemp
-            "/sys/class/hwmon/hwmon5/temp1_input" # AMD k10temp (common)
-            "/sys/class/hwmon/hwmon4/temp1_input" # AMD k10temp (alternative)
-            "/sys/class/hwmon/hwmon3/temp1_input" # Fallback
-          ];
-          critical-threshold = 80;
-          format =
-            " {temperatureC}°C  <span foreground='#${colors.base03}'>󰇙</span>";
-          tooltip-format = "CPU Temperature: {temperatureC}°C";
+        "hyprland/language" = {
+          format = "󰌌 {}  <span foreground='#${colors.base03}'>󰇙</span>";
+          format-en = "EN";
+          format-ru = "RU";
+          cursor = 68;
+          tooltip = false;
         };
 
         network = {

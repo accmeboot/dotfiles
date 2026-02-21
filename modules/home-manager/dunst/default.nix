@@ -1,15 +1,8 @@
 { config, pkgs, lib, ... }:
-let
-  icons = config.stylix.icons;
-  colors = config.lib.stylix.colors;
+let colors = config.lib.stylix.colors;
 in {
   services.dunst = {
     enable = true;
-    iconTheme = {
-      name = icons.dark;
-      package = icons.package;
-    };
-
     settings = {
       global = {
         width = "350";
