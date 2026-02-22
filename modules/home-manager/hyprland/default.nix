@@ -51,10 +51,10 @@
 
       # General settings
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 4;
+        gaps_out = 12;
         float_gaps = 0;
-        border_size = 1;
+        border_size = 0;
         layout = "dwindle";
         allow_tearing = true;
       };
@@ -62,9 +62,15 @@
       # Decoration
       decoration = {
         rounding = 0;
-        blur = { enabled = false; };
+        blur = {
+          enabled = true;
+          size = 18;
+          passes = 6;
+          new_optimizations = true;
+        };
         shadow = { enabled = false; };
-        dim_inactive = false;
+        dim_inactive = true;
+        dim_strength = 0.4;
       };
       animations = { enabled = false; };
 
@@ -96,6 +102,12 @@
         "match:class ^steam_app_[0-9]+$, immediate yes"
       ];
 
+      layerrule = [
+        "blur on, match:namespace waybar"
+        "blur on, match:namespace rofi"
+        "blur on, match:namespace notifications"
+      ];
+
       # Key bindings
       bind = [
         # Basic bindings
@@ -107,11 +119,12 @@
         "$mod, S,   togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 
-        "$mod, j,   changegroupactive, b"
-        "$mod, k,   changegroupactive, f"
+        "$mod, $down,   changegroupactive, b"
+        "$mod, $up,   changegroupactive, f"
 
         "$mod, E,   fullscreen"
-        "$mod, TAB, focusurgentorlast"
+        "$mod, TAB, workspace, previous"
+        "$mod, SPACE, exec, bash ${../../../scripts/hypr-float-focus.sh}"
 
         # Movement
         "$mod, $left,  movefocus, l"

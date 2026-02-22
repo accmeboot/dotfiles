@@ -14,6 +14,8 @@
         term = "wezterm",
         default_cursor_style = "SteadyBlock",
         enable_tab_bar = false,
+        window_background_opacity = 0.90,
+        macos_window_background_blur = 60,
         font = wezterm.font '${config.stylix.fonts.monospace.name}',
         ${
           if config.wezterm.desktop.windowDecorationResize then

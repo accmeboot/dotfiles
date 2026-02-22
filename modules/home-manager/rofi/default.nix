@@ -26,7 +26,7 @@ in {
     window {
     	location: center;
     	width: 350px;
-    	background-color: #${colors.base01};
+    	background-color: #${colors.base01}E6;
       border-radius: 0;
     	children: [ mainbox, message];
       border: inherit;
@@ -46,7 +46,7 @@ in {
     }
 
     message {
-    	background-color: #${colors.base00};
+    	background-color: #${colors.base00}E6;
     	text-color: #${colors.base05};
     }
 
@@ -54,7 +54,7 @@ in {
       text-color: inherit;
       border: inherit;
       placeholder: "";
-    	background-color: #${colors.base00};
+    	background-color: #${colors.base00}E6;
     	padding: 8px 4px;
     }
 

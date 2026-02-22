@@ -11,7 +11,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/evangelion.png;
+      image = ../../../assets/wallpapers/stairs.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {

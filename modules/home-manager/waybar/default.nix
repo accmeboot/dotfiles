@@ -115,7 +115,7 @@ in {
       }
 
       window#waybar {
-        background-color: #${colors.base00};
+        background-color: alpha(#${colors.base00}, 0.9);
         color: #${colors.base05};
       }
 
