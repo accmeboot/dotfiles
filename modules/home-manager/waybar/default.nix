@@ -52,7 +52,7 @@ in {
 
         pulseaudio = {
           format = " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
-          tooltip-format = "Output: {volume}%";
+          tooltip = false;
           format-muted =
             " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           scroll-step = 1;
@@ -65,7 +65,7 @@ in {
             " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           format-source-muted =
             "󰍭 {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
-          tooltip-format = "Microphone: {volume}%";
+          tooltip = false;
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v input";
         };
