@@ -1,6 +1,7 @@
 { ... }: {
   programs.yazi = {
     enable = true;
+    shellWrapperName = "y";
     theme = {
       status = {
         sep_left = {
