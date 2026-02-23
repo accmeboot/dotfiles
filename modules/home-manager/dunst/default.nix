@@ -7,7 +7,7 @@ in {
       global = {
         width = "350";
         height = "(0,200)";
-        offset = "(24, 48)";
+        offset = "(24, 24)";
         corner_radius = 0;
         icon_corner_radius = 0;
         frame_width = 0;
