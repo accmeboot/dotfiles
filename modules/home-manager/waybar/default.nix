@@ -31,7 +31,8 @@ in {
         };
 
         "hyprland/language" = {
-          format = "󰌌 {}  <span foreground='#${colors.base03}'>󰇙</span>";
+          format =
+            "<span foreground='#${colors.base0B}'>󰌌</span> {}  <span foreground='#${colors.base03}'>󰇙</span>";
           format-en = "EN";
           format-ru = "RU";
           cursor = 68;
@@ -40,9 +41,11 @@ in {
 
         network = {
           format = "{ifname}";
-          format-wifi = "󰤨 {essid}";
-          format-ethernet = "󰖟 {bandwidthTotalBits}";
-          format-disconnected = "󰪎 {bandwidthTotalBits}";
+          format-wifi = "<span foreground='#${colors.base0C}'>󰤨</span> {essid}";
+          format-ethernet =
+            "<span foreground='#${colors.base0C}'>󰖟</span> {bandwidthTotalBits}";
+          format-disconnected =
+            "<span foreground='#${colors.base0C}'>󰪎</span> {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
@@ -51,10 +54,11 @@ in {
         };
 
         pulseaudio = {
-          format = " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+          format =
+            "<span foreground='#${colors.base09}'></span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           tooltip = false;
           format-muted =
-            " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base09}'></span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
@@ -62,9 +66,9 @@ in {
         "pulseaudio#source" = {
           format = "{format_source}";
           format-source =
-            " {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base0A}'></span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           format-source-muted =
-            "󰍭 {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
           tooltip = false;
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v input";
@@ -83,7 +87,7 @@ in {
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
           format =
-            "{icon} {capacity}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base08}'>{icon}</span> {capacity}%  <span foreground='#${colors.base03}'>󰇙</span>";
           tooltip-format = "Battery: {capacity}%";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
