@@ -43,7 +43,7 @@ in {
 
         "hyprland/language" = {
           format =
-            "<span foreground='#${colors.base0B}'>KEY</span> {}  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base0B}'>KBD</span> {}  <span foreground='#${colors.base03}'>󰇙</span>";
           format-en = "EN";
           format-ru = "RU";
           cursor = 68;
