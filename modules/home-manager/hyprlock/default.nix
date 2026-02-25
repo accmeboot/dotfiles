@@ -13,8 +13,8 @@ in {
 
       background = lib.mkForce [{
         path = config.stylix.image;
-        blur_passes = 3;
-        blur_size = 8;
+        blur_size = 14;
+        blur_passes = 4;
       }];
 
       input-field = lib.mkForce [{
