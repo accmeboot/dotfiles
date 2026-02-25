@@ -23,7 +23,18 @@ in {
         spacing = 8;
 
         "hyprland/workspaces" = {
-          format = "{id}";
+          format = "{icon}";
+          format-icons = {
+            "1" = "one";
+            "2" = "two";
+            "3" = "three";
+            "4" = "four";
+            "5" = "five";
+            "6" = "six";
+            "7" = "seven";
+            "8" = "eight";
+            "9" = "nine";
+          };
           persistent-workspaces = { "*" = [ 1 2 3 4 5 6 7 8 9 ]; };
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
@@ -138,6 +149,11 @@ in {
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
+        font-style: italic;
+      }
+
+      #workspaces button.empty {
+        font-style: normal;
       }
 
       #workspaces button:hover {
