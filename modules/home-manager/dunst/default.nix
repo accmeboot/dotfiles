@@ -8,9 +8,10 @@ in {
         width = "350";
         height = "(0,200)";
         offset = "(24, 24)";
-        corner_radius = 0;
+        corner_radius = 12;
         icon_corner_radius = 0;
-        frame_width = 0;
+        frame_width = 1;
+        frame_color = "#${colors.base03}";
         gap_size = 4;
         max_icon_size = 128;
         dmenu = "${pkgs.rofi}/bin/rofi -p 'Select:' -dmenu";

@@ -27,9 +27,10 @@ in {
     	location: center;
     	width: 350px;
     	background-color: #${colors.base01}E6;
-      border-radius: 0;
+      border-radius: 12px;
     	children: [ mainbox, message];
-      border: inherit;
+      border: 1px solid;
+      border-color: #${colors.base03};
       padding: 0;
     }
 
@@ -55,7 +56,7 @@ in {
       border: inherit;
       placeholder: "";
     	background-color: #${colors.base00}E6;
-    	padding: 8px 4px;
+    	padding: 8px;
     }
 
     listview {

@@ -1,4 +1,6 @@
-{ ... }: {
+{ config, lib, ... }:
+let colors = config.lib.stylix.colors;
+in {
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -54,23 +56,26 @@
         gaps_in = 4;
         gaps_out = 12;
         float_gaps = 0;
-        border_size = 0;
+        border_size = 1;
         layout = "dwindle";
         allow_tearing = true;
+        "col.active_border" = lib.mkForce "rgb(${colors.base03})";
+        "col.inactive_border" = lib.mkForce "rgb(${colors.base03})";
       };
 
       # Decoration
       decoration = {
-        rounding = 0;
+        rounding = 12;
         blur = {
           enabled = true;
-          size = 18;
-          passes = 6;
+          size = 16;
+          passes = 4;
           new_optimizations = true;
+          noise = 0.1;
         };
         shadow = { enabled = false; };
         dim_inactive = true;
-        dim_strength = 0.4;
+        dim_strength = 0.1;
       };
       animations = { enabled = false; };
 
@@ -80,6 +85,8 @@
           enabled = false;
           stacked = false;
         };
+        "col.border_active" = lib.mkForce "rgb(${colors.base03})";
+        "col.border_inactive" = lib.mkForce "rgb(${colors.base03})";
       };
 
       # Layout
@@ -106,6 +113,10 @@
         "blur on, match:namespace waybar"
         "blur on, match:namespace rofi"
         "blur on, match:namespace notifications"
+
+        "ignore_alpha 0, match:namespace waybar"
+        "ignore_alpha 0, match:namespace rofi"
+        "ignore_alpha 0, match:namespace notifications"
       ];
 
       # Key bindings

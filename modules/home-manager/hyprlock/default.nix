@@ -13,7 +13,7 @@ in {
 
       background = lib.mkForce [{
         path = config.stylix.image;
-        blur_size = 14;
+        blur_size = 16;
         blur_passes = 4;
       }];
 
@@ -27,7 +27,7 @@ in {
         inner_color = "rgb(${colors.base00})";
         outer_color = "rgb(${colors.base0D})";
         outline_thickness = 1;
-        rounding = 0;
+        rounding = 12;
         placeholder_text = "Password...";
         shadow_passes = 0;
         shadow_size = 4;
