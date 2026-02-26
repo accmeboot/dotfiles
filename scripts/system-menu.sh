@@ -24,7 +24,7 @@ if [ "$#" -gt 0 ]; then
         run "${TERMINAL:-wezterm} start -e --class com.accme.float tray-tui"
         ;;
       "Browser")
-        run "brave"
+        run "zen"
         ;;
       "Terminal")
         run "${TERMINAL:-wezterm}"

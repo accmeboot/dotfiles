@@ -14,6 +14,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      # optional, but recommended if you closely follow NixOS unstable so it shares
+      # system libraries, and improves startup time
+      # NOTE: if you experience a build failure with Zen, the first thing to check is to remove this line!
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +39,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar
-    , apple-fonts }: {
+    , apple-fonts, zen-browser }: {
       nixosConfigurations = {
         "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

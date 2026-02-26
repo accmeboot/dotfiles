@@ -286,7 +286,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "solaar": "solaar",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "zen-browser": "zen-browser"
       }
     },
     "sf-arabic": {
@@ -556,6 +557,26 @@
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
         "rev": "afcb15b845e74ac5e998358709b2b5fe42a948d1",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771735013,
+        "narHash": "sha256-QAh0iw/AgjcaNvBE5OIZstxVxagLVK0RAuH7EhIL/N8=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "32b69f03007507fc012be9203efdd414f4bc0d66",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

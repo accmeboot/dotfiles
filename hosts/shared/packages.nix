@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -37,6 +37,7 @@
     vlc # video player
     gimp # image editor
     brave # browser
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Communication & Entertainment
     telegram-desktop # messaging application
