@@ -149,11 +149,11 @@ in {
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
-        font-style: italic;
+        font-weight: 900;
       }
 
       #workspaces button.empty {
-        font-style: normal;
+        font-weight: 100;
       }
 
       #workspaces button:hover {
