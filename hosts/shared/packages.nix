@@ -38,6 +38,8 @@
     gimp # image editor
     brave # browser
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pinta # image viewer
+    nautilus # file manager
 
     # Communication & Entertainment
     telegram-desktop # messaging application
