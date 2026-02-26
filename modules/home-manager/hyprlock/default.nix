@@ -25,7 +25,7 @@ in {
         fade_on_empty = false;
         font_color = "rgb(${colors.base05})";
         inner_color = "rgb(${colors.base00})";
-        outer_color = "rgb(${colors.base0D})";
+        outer_color = "rgb(${colors.base03})";
         outline_thickness = 1;
         rounding = 12;
         placeholder_text = "Password...";
