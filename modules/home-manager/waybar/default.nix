@@ -161,8 +161,8 @@ in {
       }
 
       #workspaces button.active {
-        background-color: #${colors.base0D};
-        color: #${colors.base00};
+        box-shadow: 0px -2px 0px #${colors.base0D} inset;
+        background-color: #${colors.base02};
       }
 
       #workspaces button.urgent {
