@@ -9,7 +9,7 @@ in {
         height = "(0,200)";
         offset = "(24, 24)";
         corner_radius = 12;
-        icon_corner_radius = 0;
+        icon_corner_radius = 12;
         frame_width = 1;
         frame_color = "#${colors.base03}";
         gap_size = 4;
