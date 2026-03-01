@@ -2,6 +2,8 @@
 let
   colors = config.lib.stylix.colors;
   font = config.stylix.fonts.serif.name;
+  rounding = config.stylix.desktop.rounding;
+  opacity = config.stylix.desktop.opacity;
 in {
   programs.waybar = {
     enable = true;
@@ -141,7 +143,7 @@ in {
       }
 
       window#waybar {
-        background-color: alpha(#${colors.base00}, 0.9);
+        background-color: alpha(#${colors.base00}, ${toString opacity});
         color: #${colors.base05};
       }
 
@@ -188,15 +190,19 @@ in {
       }
 
       window#waybar.secondBar .modules-left {
-        border-top-left-radius: 12px;
+        border-top-left-radius: ${toString rounding}px;
         background-color: transparent;
-        box-shadow: -12px -12px 0 12px alpha(#${colors.base00}, 0.9);
+        box-shadow: -${toString rounding}px -${toString rounding}px 0 ${
+          toString rounding
+        }px alpha(#${colors.base00}, ${toString opacity});
       }
 
       window#waybar.secondBar .modules-right {
         border-top-right-radius: 12px;
         background-color: transparent;
-        box-shadow: 12px -12px 0 12px alpha(#${colors.base00}, 0.9);
+        box-shadow: ${toString rounding}px -${toString rounding}px 0 ${
+          toString rounding
+        }px alpha(#${colors.base00}, ${toString opacity});
       }
     '';
   };

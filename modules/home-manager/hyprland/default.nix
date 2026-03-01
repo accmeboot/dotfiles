@@ -1,5 +1,7 @@
 { config, lib, ... }:
-let colors = config.lib.stylix.colors;
+let
+  colors = config.lib.stylix.colors;
+  rounding = config.stylix.desktop.rounding;
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -65,7 +67,7 @@ in {
 
       # Decoration
       decoration = {
-        rounding = 12;
+        rounding = rounding;
         blur = {
           enabled = true;
           size = 16;

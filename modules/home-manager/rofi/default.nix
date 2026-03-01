@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
-let colors = config.lib.stylix.colors;
+let
+  colors = config.lib.stylix.colors;
+  rounding = config.stylix.desktop.rounding;
+  opacityHex = config.stylix.desktop.opacityHex;
 in {
   home.packages = with pkgs; [ rofi ];
 
@@ -26,8 +29,8 @@ in {
     window {
     	location: center;
     	width: 350px;
-    	background-color: #${colors.base01}E6;
-      border-radius: 12px;
+    	background-color: #${colors.base01}${opacityHex};
+      border-radius: ${toString rounding}px;
     	children: [ mainbox, message];
       border: 1px solid;
       border-color: #${colors.base03};
@@ -47,7 +50,7 @@ in {
     }
 
     message {
-    	background-color: #${colors.base00}E6;
+    	background-color: #${colors.base00}${opacityHex};
     	text-color: #${colors.base05};
     }
 
@@ -55,7 +58,7 @@ in {
       text-color: inherit;
       border: inherit;
       placeholder: "";
-    	background-color: #${colors.base00}E6;
+    	background-color: #${colors.base00}${opacityHex};
     	padding: 8px;
     }
 
