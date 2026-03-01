@@ -114,6 +114,21 @@ in {
           on-click = "xdg-open https://calendar.google.com/";
         };
       };
+
+      secondBar = {
+        layer = "bottom";
+        position = "top";
+        mode = "overlay";
+        height = 12;
+        name = "secondBar";
+
+        expand-left = true;
+        expand-right = true;
+
+        modules-left = [ ];
+        modules-center = [ ];
+        modules-right = [ ];
+      };
     };
 
     style = ''
@@ -123,10 +138,6 @@ in {
         min-height: 0px;
         font-size: 16px;
         font-family: ${font};
-      }
-
-      window#waybar>box {
-        padding-right: 8px;
       }
 
       window#waybar {
@@ -157,16 +168,35 @@ in {
       }
 
       #workspaces button:hover {
-        background-color: #${colors.base02};
+        color: alpha(#${colors.base0D}, 0.5);
       }
 
       #workspaces button.active {
-        box-shadow: 0px -2px 0px #${colors.base0D} inset;
-        background-color: #${colors.base02};
+        color: #${colors.base0D};
       }
 
       #workspaces button.urgent {
         color: #${colors.base08};
+      }
+
+      #network {
+        margin-right: 8px;
+      }
+
+      window#waybar.secondBar {
+        background-color: transparent;
+      }
+
+      window#waybar.secondBar .modules-left {
+        border-top-left-radius: 12px;
+        background-color: transparent;
+        box-shadow: -12px -12px 0 12px alpha(#${colors.base00}, 0.9);
+      }
+
+      window#waybar.secondBar .modules-right {
+        border-top-right-radius: 12px;
+        background-color: transparent;
+        box-shadow: 12px -12px 0 12px alpha(#${colors.base00}, 0.9);
       }
     '';
   };
