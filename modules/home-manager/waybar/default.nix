@@ -120,7 +120,7 @@ in {
       secondBar = {
         layer = "bottom";
         position = "top";
-        mode = "overlay";
+        exclusive = false;
         height = 12;
         name = "secondBar";
 
