@@ -197,7 +197,11 @@ in {
 
 
       #pulseaudio, #pulseaudio.source, #battery, #language, #network {
-        padding: 2px 8px;
+        padding: 2px 12px;
+      }
+
+      #workspaces {
+        padding: 0px 8px;
       }
 
       #workspaces button {
