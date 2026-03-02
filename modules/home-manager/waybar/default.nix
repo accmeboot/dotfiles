@@ -20,6 +20,7 @@ in {
           "pulseaudio#source"
           "hyprland/language"
           "network"
+          "custom/tray"
         ];
 
         spacing = 8;
@@ -28,6 +29,12 @@ in {
           format = "";
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
+        };
+
+        "custom/tray" = {
+          format = "";
+          tooltip-format = "Tray menu";
+          on-click = "wezterm -e --class com.accme.float tray-tui";
         };
 
         "hyprland/workspaces" = {
@@ -61,7 +68,7 @@ in {
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
-          on-click = "nm-connection-editor";
+          on-click = "wezterm -e --class com.accme.float nmtui";
         };
 
         pulseaudio = {
@@ -91,10 +98,12 @@ in {
             critical = 16;
           };
           events = {
-            on-discharging-warning = "notify-send -u normal 'Low Battery'";
+            on-discharging-warning =
+              "notify-send -u normal -i battery-caution 'Low Battery'";
             on-discharging-critical =
-              "notify-send -u critical 'Very Low Battery'";
-            on-charging-100 = "notify-send -u normal 'Battery Full!'";
+              "notify-send -u critical -i battery-empty 'Very Low Battery'";
+            on-charging-100 =
+              "notify-send -u normal -i battery-full-charged 'Battery Full!'";
           };
           format =
             "<span foreground='#${colors.base08}'>{icon}</span> {capacity}%";
@@ -120,6 +129,21 @@ in {
         exclusive = false;
         height = 12;
         name = "secondBar";
+
+        expand-left = true;
+        expand-right = true;
+
+        modules-left = [ ];
+        modules-center = [ ];
+        modules-right = [ ];
+      };
+
+      bottomBar = {
+        layer = "bottom";
+        position = "bottom";
+        exclusive = false;
+        height = 12;
+        name = "bottomBar";
 
         expand-left = true;
         expand-right = true;
@@ -161,7 +185,7 @@ in {
         color: #${colors.base05};
       }
 
-      #custom-launcher {
+      #custom-launcher, #custom-tray {
         font-size: 20px;
       }
 
@@ -212,6 +236,26 @@ in {
         border-top-right-radius: 12px;
         background-color: transparent;
         box-shadow: ${toString rounding}px -${toString rounding}px 0 ${
+          toString rounding
+        }px alpha(#${colors.base00}, ${toString opacity});
+      }
+
+      window#waybar.bottomBar {
+        background-color: transparent;
+      }
+
+      window#waybar.bottomBar .modules-left {
+        border-bottom-left-radius: ${toString rounding}px;
+        background-color: transparent;
+        box-shadow: -${toString rounding}px ${toString rounding}px 0 ${
+          toString rounding
+        }px alpha(#${colors.base00}, ${toString opacity});
+      }
+
+      window#waybar.bottomBar .modules-right {
+        border-bottom-right-radius: 12px;
+        background-color: transparent;
+        box-shadow: ${toString rounding}px ${toString rounding}px 0 ${
           toString rounding
         }px alpha(#${colors.base00}, ${toString opacity});
       }

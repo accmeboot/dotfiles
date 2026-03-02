@@ -21,10 +21,7 @@
 
   services = {
     touchegg.enable = true;
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
+    asusd = { enable = true; };
     supergfxd.enable = true;
     libinput.touchpad = {
       accelProfile = "adaptive";
