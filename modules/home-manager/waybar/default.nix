@@ -12,7 +12,7 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
           "battery"
@@ -24,18 +24,17 @@ in {
 
         spacing = 8;
 
+        "custom/launcher" = {
+          format = "";
+          tooltip-format = "System menu";
+          on-click = "rofi -show menu";
+        };
+
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{id}{icon}";
           format-icons = {
-            "1" = "one";
-            "2" = "two";
-            "3" = "three";
-            "4" = "four";
-            "5" = "five";
-            "6" = "six";
-            "7" = "seven";
-            "8" = "eight";
-            "9" = "nine";
+            default = "*";
+            empty = " ";
           };
           persistent-workspaces = { "*" = [ 1 2 3 4 5 6 7 8 9 ]; };
           on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -44,8 +43,7 @@ in {
         };
 
         "hyprland/language" = {
-          format =
-            "<span foreground='#${colors.base0B}'>KBD</span> {}  <span foreground='#${colors.base03}'>󰇙</span>";
+          format = "<span foreground='#${colors.base0B}'>󰌌</span> {}";
           format-en = "EN";
           format-ru = "RU";
           cursor = 68;
@@ -54,12 +52,11 @@ in {
 
         network = {
           format = "{ifname}";
-          format-wifi =
-            "<span foreground='#${colors.base0C}'>NET</span> {essid}";
+          format-wifi = "<span foreground='#${colors.base0C}'>󰤨</span> {essid}";
           format-ethernet =
-            "<span foreground='#${colors.base0C}'>NET</span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0C}'>󰖟</span> {bandwidthTotalBits}";
           format-disconnected =
-            "<span foreground='#${colors.base0C}'><s>NET</s></span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0C}'>󰪎</span> {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
@@ -68,11 +65,10 @@ in {
         };
 
         pulseaudio = {
-          format =
-            "<span foreground='#${colors.base09}'>VOL</span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+          format = "<span foreground='#${colors.base09}'></span> {volume}%";
           tooltip = false;
           format-muted =
-            "<span foreground='#${colors.base09}'><s>VOL</s></span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base09}'></span> {volume}%";
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v output";
         };
@@ -80,9 +76,9 @@ in {
         "pulseaudio#source" = {
           format = "{format_source}";
           format-source =
-            "<span foreground='#${colors.base0A}'>MIC</span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base0A}'></span> {volume}%";
           format-source-muted =
-            "<span foreground='#${colors.base0A}'><s>MIC</s></span> {volume}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%";
           tooltip = false;
           scroll-step = 1;
           on-click = "wezterm -e --class com.accme.float wiremix -v input";
@@ -101,12 +97,13 @@ in {
             on-charging-100 = "notify-send -u normal 'Battery Full!'";
           };
           format =
-            "<span foreground='#${colors.base08}'>BAT</span> {capacity}%  <span foreground='#${colors.base03}'>󰇙</span>";
-          format-charging =
-            "<span foreground='#${colors.base08}'>BAT*</span> {capacity}%  <span foreground='#${colors.base03}'>󰇙</span>";
-          format-plugged =
-            "<span foreground='#${colors.base08}'>BAT+</span> {capacity}%  <span foreground='#${colors.base03}'>󰇙</span>";
+            "<span foreground='#${colors.base08}'>{icon}</span> {capacity}%";
           tooltip-format = "Battery: {capacity}%";
+          format-icons = {
+            default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+            charging = [ "󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
+            plugged = "󰚥";
+          };
           max-length = 25;
         };
 
@@ -147,8 +144,16 @@ in {
         color: #${colors.base05};
       }
 
+      .modules-left {
+        padding-left: ${toString rounding}px;
+      }
+
+      .modules-right {
+        padding-right: ${toString rounding}px;
+      }
+
       tooltip {
-        border-radius: 0px;
+        border-radius: ${toString rounding}px;
         background-color: #${colors.base01};
       }
 
@@ -156,17 +161,27 @@ in {
         color: #${colors.base05};
       }
 
+      #custom-launcher {
+        font-size: 20px;
+      }
+
+      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #language, #network {
+        background-color: #${colors.base01};
+        border-radius: ${toString rounding}px;
+        margin: 4px 0px;
+      }
+
+
+      #pulseaudio, #pulseaudio.source, #battery, #language, #network {
+        padding: 2px 8px;
+      }
+
       #workspaces button {
         all: unset;
-        padding: 4px 8px;
+        padding: 2px 8px;
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
-        font-weight: 900;
-      }
-
-      #workspaces button.empty {
-        font-weight: 100;
       }
 
       #workspaces button:hover {
@@ -179,10 +194,6 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
-      }
-
-      #network {
-        margin-right: 8px;
       }
 
       window#waybar.secondBar {
