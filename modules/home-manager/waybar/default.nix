@@ -237,7 +237,7 @@ in {
       }
 
       window#waybar.secondBar .modules-right {
-        border-top-right-radius: 12px;
+        border-top-right-radius: ${toString rounding}px;
         background-color: transparent;
         box-shadow: ${toString rounding}px -${toString rounding}px 0 ${
           toString rounding

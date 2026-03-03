@@ -1,5 +1,7 @@
 { config, lib, ... }:
-let colors = config.lib.stylix.colors;
+let
+  colors = config.lib.stylix.colors;
+  rounding = config.stylix.desktop.rounding;
 in {
   programs.hyprlock = {
     enable = true;
@@ -27,7 +29,7 @@ in {
         inner_color = "rgb(${colors.base00})";
         outer_color = "rgb(${colors.base03})";
         outline_thickness = 1;
-        rounding = 12;
+        rounding = rounding;
         placeholder_text = "Password...";
         shadow_passes = 0;
         shadow_size = 4;

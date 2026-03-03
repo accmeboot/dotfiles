@@ -56,7 +56,7 @@ in {
       # General settings
       general = {
         gaps_in = 4;
-        gaps_out = 12;
+        gaps_out = 8;
         float_gaps = 0;
         border_size = 1;
         layout = "dwindle";
@@ -73,7 +73,7 @@ in {
           size = 16;
           passes = 4;
           new_optimizations = true;
-          noise = 0.1;
+          noise = 5.0e-2;
         };
         shadow = { enabled = false; };
         dim_inactive = true;
