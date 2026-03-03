@@ -29,6 +29,7 @@
         icat = "kitten icat";
         fzfnv = "nvim $(fzf)";
         cf = "clear && fastfetch";
+        mpv-picker = "${../../../scripts/mpv-select.sh}";
       };
 
       # Use built-in plugin options
