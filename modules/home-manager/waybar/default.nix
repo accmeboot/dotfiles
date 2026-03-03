@@ -193,20 +193,12 @@ in {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
-      }
-
-
-      #pulseaudio, #pulseaudio.source, #battery, #language, #network {
-        padding: 2px 12px;
-      }
-
-      #workspaces {
-        padding: 0px 8px;
+        padding: 2px 8px;
       }
 
       #workspaces button {
         all: unset;
-        padding: 2px 8px;
+        padding: 0px 8px;
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
