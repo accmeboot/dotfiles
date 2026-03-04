@@ -5,7 +5,10 @@
     homeDirectory = /Users/Mikhail_Vialov;
   };
 
-  programs.zsh.enableNvm = true;
+  programs.zsh = {
+    enableNvm = true;
+    enableDirenv = true;
+  };
 
   stylix.desktop = {
     enableCursor = false;

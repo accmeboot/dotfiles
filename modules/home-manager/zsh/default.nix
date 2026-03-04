@@ -1,5 +1,7 @@
 { config, lib, ... }: {
   options.programs.zsh.enableNvm = lib.mkEnableOption "nvm support in zsh";
+  options.programs.zsh.enableDirenv =
+    lib.mkEnableOption "direnv support in zsh";
 
   config = {
     programs.zsh = {
@@ -23,7 +25,9 @@
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
         ''}
 
-        eval "$(direnv hook zsh)"
+        ${lib.optionalString config.programs.zsh.enableDirenv ''
+          eval "$(direnv hook zsh)" 
+        ''}
       '';
 
       # Aliases
