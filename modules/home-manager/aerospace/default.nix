@@ -18,17 +18,17 @@
         preset = 'qwerty'
 
     [gaps]
-        inner.horizontal = 0
-        inner.vertical =   0
+        inner.horizontal = 4
+        inner.vertical =   4
 
-        outer.left =       0
-        outer.bottom =     0
-        outer.top =        0
-        outer.right =      0
+        outer.left =       8
+        outer.bottom =     8
+        outer.top =        8
+        outer.right =      8
 
     [mode.main.binding]
-        alt-t = 'exec-and-forget open -n -a "wezterm"'
-        alt-q = 'close'
+        alt-q = 'exec-and-forget open -n -a "wezterm"'
+        alt-c = 'close'
         alt-f = 'layout floating tiling'
         alt-e = 'macos-native-fullscreen'
         alt-s = 'layout tiles vertical horizontal'
