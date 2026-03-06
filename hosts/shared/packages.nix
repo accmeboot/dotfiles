@@ -31,6 +31,7 @@
     wiremix # audio control
     playerctl # required by waybar mpris module
     libnotify # notification library
+    ghostty # modern terminal emulator
 
     # Media & Viewers
     mpv # video player

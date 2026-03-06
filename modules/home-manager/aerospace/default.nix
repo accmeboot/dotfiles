@@ -27,7 +27,7 @@
         outer.right =      8
 
     [mode.main.binding]
-        alt-q = 'exec-and-forget open -n -a "wezterm"'
+        alt-q = 'exec-and-forget open -n -a "ghostty"'
         alt-c = 'close'
         alt-f = 'layout floating tiling'
         alt-e = 'macos-native-fullscreen'
