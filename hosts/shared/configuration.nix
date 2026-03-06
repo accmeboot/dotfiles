@@ -92,6 +92,20 @@
   };
 
   #----------------------------------------------------------------------------#
+  # XDG PORTAL                                                                 #
+  #----------------------------------------------------------------------------#
+  xdg.portal = {
+    enable = true;
+    extraPortals =
+      [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-hyprland ];
+    config = {
+      common = { default = [ "gnome" ]; };
+      hyprland = { default = [ "gnome" "hyprland" ]; };
+    };
+    xdgOpenUsePortal = true;
+  }; # this section makes default file chooser to be nautilus (gnome)
+
+  #----------------------------------------------------------------------------#
   # SECURITY                                                                   #
   #----------------------------------------------------------------------------#
   security = {
