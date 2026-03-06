@@ -25,7 +25,7 @@
 
   homebrew = {
     enable = true;
-    casks = [ "aerospace" "wezterm" "ghostty" ];
+    casks = [ "aerospace" "ghostty" ];
     taps = [ "nikitabobko/aerospace" ];
   };
 

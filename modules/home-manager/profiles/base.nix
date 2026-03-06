@@ -5,8 +5,8 @@
     ../starship/default.nix
     ../zsh/default.nix
     ../fastfetch/default.nix
-    ../wezterm/default.nix
     ../tmux/default.nix
+    ../ghostty/default.nix
 
     inputs.stylix.homeModules.stylix
     ../stylix/default.nix

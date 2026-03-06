@@ -9,25 +9,25 @@ if [ "$#" -gt 0 ]; then
 
     case "$selection_clean" in
       "Audio")
-        run "${TERMINAL:-wezterm} start -e --class com.accme.float wiremix -v output"
+        run "${TERMINAL:-ghostty} --class=com.accme.float --command='wiremix -v output'"
         ;;
       "System Monitor")
-        run "${TERMINAL:-wezterm} start -e --class com.accme.float btop"
+        run "${TERMINAL:-ghostty} --class=com.accme.float --command=btop"
         ;;
       "Files")
-        run "${TERMINAL:-wezterm} start -e --class com.accme.float yazi"
+        run "${TERMINAL:-ghostty} --class=com.accme.float --command=yazi"
         ;;
       "Steam")
         run "steam"
         ;;
       "Tray")
-        run "${TERMINAL:-wezterm} start -e --class com.accme.float tray-tui"
+        run "${TERMINAL:-ghostty} --class=com.accme.float --command=tray-tui"
         ;;
       "Browser")
         run "zen"
         ;;
       "Terminal")
-        run "${TERMINAL:-wezterm}"
+        run "${TERMINAL:-ghostty}"
         ;;
       "Shutdown")
         run "shutdown now"
@@ -42,7 +42,7 @@ if [ "$#" -gt 0 ]; then
         run "hyprlock & systemctl suspend"
         ;;
       "Configuration")
-        run "${TERMINAL:-wezterm} start -e tmux new -s CONFIG -c ~/dotfiles"
+        run "${TERMINAL:-ghostty} --command='tmux new -s CONFIG -c ~/dotfiles'"
         ;;
     esac
     # Exit without output to make rofi close

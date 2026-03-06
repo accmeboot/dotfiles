@@ -34,7 +34,7 @@ in {
         "custom/tray" = {
           format = "";
           tooltip-format = "Tray menu";
-          on-click = "wezterm -e --class com.accme.float tray-tui";
+          on-click = "ghostty --class=com.accme.float --command=tray-tui";
         };
 
         "hyprland/workspaces" = {
@@ -68,7 +68,7 @@ in {
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
-          on-click = "wezterm -e --class com.accme.float nmtui";
+          on-click = "ghostty --class=com.accme.float --command=nmtui";
         };
 
         pulseaudio = {
@@ -77,7 +77,8 @@ in {
           format-muted =
             "<span foreground='#${colors.base09}'></span> {volume}%";
           scroll-step = 1;
-          on-click = "wezterm -e --class com.accme.float wiremix -v output";
+          on-click =
+            "ghostty --class=com.accme.float --command='wiremix -v output'";
         };
 
         "pulseaudio#source" = {
@@ -88,7 +89,8 @@ in {
             "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%";
           tooltip = false;
           scroll-step = 1;
-          on-click = "wezterm -e --class com.accme.float wiremix -v input";
+          on-click =
+            "ghostty --class=com.accme.float --command='wiremix -v input'";
         };
 
         battery = {

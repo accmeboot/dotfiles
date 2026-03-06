@@ -2,6 +2,7 @@
 let
   opacity = config.stylix.desktop.opacity;
   colors = config.lib.stylix.colors;
+
 in {
   home.file.".config/ghostty/config".text = ''
     font-family=""
@@ -10,8 +11,8 @@ in {
     cursor-style=block
     shell-integration-features=no-cursor
     app-notifications=false
-    window-padding-x=12
-    window-padding-y=12
+    window-padding-x=8
+    window-padding-y=8
     window-padding-balance=true
 
     background=${colors.base00}

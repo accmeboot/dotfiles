@@ -15,6 +15,4 @@
     enableWallpaper = false;
     enableIcons = false;
   };
-
-  wezterm.desktop.windowDecorationResize = true;
 }

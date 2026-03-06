@@ -19,7 +19,7 @@ in {
       "$down" = "j";
       "$up" = "k";
       "$right" = "l";
-      "$terminal" = "wezterm";
+      "$terminal" = "ghostty";
       "$menu" = "rofi -show menu";
 
       # Monitor configuration

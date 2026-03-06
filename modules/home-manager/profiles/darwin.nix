@@ -1,6 +1,1 @@
-{ ... }: {
-  imports = [
-    ../aerospace/default.nix
-    ../ghostty/default.nix
-  ];
-}
+{ ... }: { imports = [ ../aerospace/default.nix ]; }

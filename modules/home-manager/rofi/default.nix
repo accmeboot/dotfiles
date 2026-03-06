@@ -3,6 +3,7 @@ let
   colors = config.lib.stylix.colors;
   rounding = config.stylix.desktop.rounding;
   opacityHex = config.stylix.desktop.opacityHex;
+  font = config.stylix.fonts.serif.name;
 in {
   home.packages = with pkgs; [ rofi ];
 
@@ -11,7 +12,7 @@ in {
       kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
       modi: "drun,menu:${../../../scripts/system-menu.sh},window";
       show-icons: false;
-      terminal: "wezterm";
+      terminal: "ghostty";
     }
 
     * {
@@ -23,7 +24,7 @@ in {
     	text-color: #${colors.base05};
       border: 0px;
 
-      font: "serif";
+      font: "${font}";
     }
 
     window {

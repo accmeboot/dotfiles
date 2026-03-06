@@ -22,7 +22,7 @@ in {
       unbind C-b
       bind-key C-n send-prefix
 
-      set-option -sa terminal-overrides "wezterm"
+      set-option -sa terminal-overrides "ghostty"
 
       set -g extended-keys always
 

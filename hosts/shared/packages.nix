@@ -52,6 +52,7 @@
 
     # Gnome dependencies
     gsettings-desktop-schemas # GSettings desktop schemas
+    xdg-desktop-portal-gnome # ghostty start up time improved
 
     # Wayland Tools
     xclip # command line interface to X clipboard
