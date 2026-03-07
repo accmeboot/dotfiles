@@ -73,7 +73,6 @@ in {
 
         pulseaudio = {
           format = "<span foreground='#${colors.base09}'></span> {volume}%";
-          tooltip = false;
           format-muted =
             "<span foreground='#${colors.base09}'></span> {volume}%";
           scroll-step = 1;
@@ -87,8 +86,10 @@ in {
             "<span foreground='#${colors.base0A}'></span> {volume}%";
           format-source-muted =
             "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%";
-          tooltip = false;
+          tooltip-format = "{source_desc}";
           scroll-step = 1;
+          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+";
+          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-";
           on-click =
             "ghostty --class=com.accme.float --command='wiremix -v input'";
         };
