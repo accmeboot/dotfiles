@@ -18,7 +18,6 @@ in {
           "battery"
           "pulseaudio"
           "pulseaudio#source"
-          "hyprland/language"
           "network"
           "custom/tray"
         ];
@@ -49,21 +48,13 @@ in {
           cursor = 60;
         };
 
-        "hyprland/language" = {
-          format = "<span foreground='#${colors.base0B}'>󰌌</span> {}";
-          format-en = "EN";
-          format-ru = "RU";
-          cursor = 68;
-          tooltip = false;
-        };
-
         network = {
           format = "{ifname}";
-          format-wifi = "<span foreground='#${colors.base0C}'>󰤨</span> {essid}";
+          format-wifi = "<span foreground='#${colors.base0B}'>󰤨</span> {essid}";
           format-ethernet =
-            "<span foreground='#${colors.base0C}'>󰖟</span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0B}'>󰖟</span> {bandwidthTotalBits}";
           format-disconnected =
-            "<span foreground='#${colors.base0C}'>󰪎</span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0B}'>󰪎</span> {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
@@ -192,7 +183,7 @@ in {
         font-size: 20px;
       }
 
-      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #language, #network {
+      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #network {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
