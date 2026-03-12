@@ -11,6 +11,7 @@ in {
     configuration {
       kb-cancel: "Escape,Control+g,Control+bracketleft,MouseSecondary";
       modi: "drun,menu:${../../../scripts/system-menu.sh},window";
+      window-format: "{t}";
       show-icons: false;
       terminal: "ghostty";
     }
