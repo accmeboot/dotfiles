@@ -60,7 +60,6 @@ in {
         float_gaps = 0;
         border_size = 1;
         layout = "dwindle";
-        allow_tearing = true;
         "col.active_border" = lib.mkForce "rgb(${colors.base03})";
         "col.inactive_border" = lib.mkForce "rgb(${colors.base03})";
       };
@@ -108,7 +107,6 @@ in {
       windowrule = [
         "match:class com.accme.float, float on"
         "match:class com.accme.float, size 850 600"
-        "match:class ^steam_app_[0-9]+$, immediate yes"
       ];
 
       layerrule = [
