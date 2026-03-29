@@ -54,7 +54,7 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/redhead.png;
+      image = ../../../assets/wallpapers/pond.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
