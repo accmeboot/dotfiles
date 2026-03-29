@@ -210,6 +210,10 @@ in {
         color: #${colors.base08};
       }
 
+      #clock {
+        font-size: 14px;
+      }
+
       window#waybar.secondBar {
         background-color: transparent;
       }
