@@ -2,6 +2,8 @@
 let
   colors = config.lib.stylix.colors;
   rounding = config.stylix.desktop.rounding;
+  cursorName = config.stylix.cursor.name;
+  cursorSize = toString config.stylix.cursor.size;
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -213,7 +215,7 @@ in {
         [ "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'" "waybar" ];
 
       # Environment variables
-      env = [ "XCURSOR_THEME,capitaine-cursors" "XCURSOR_SIZE,16" ];
+      env = [ "XCURSOR_THEME,${cursorName}" "XCURSOR_SIZE,${cursorSize}" ];
     };
   };
 }

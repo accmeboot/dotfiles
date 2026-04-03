@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }: {
+{ pkgs, lib, config, ... }: {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
     enableCursor = lib.mkEnableOption "cursor theme" // { default = true; };
@@ -75,8 +75,8 @@
       };
 
       cursor = lib.mkIf config.stylix.desktop.enableCursor {
-        package = pkgs.capitaine-cursors;
-        name = "capitaine-cursors";
+        package = pkgs.vanilla-dmz;
+        name = "Vanilla-DMZ";
         size = 16;
       };
 
