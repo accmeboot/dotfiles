@@ -12,8 +12,8 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
-        modules-center = [ "clock" ];
+        modules-left = [ "custom/launcher" "clock" "hyprland/workspaces" ];
+        modules-center = [ "mpris" "cava" ];
         modules-right = [
           "battery"
           "pulseaudio"
@@ -28,6 +28,36 @@ in {
           format = "";
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
+        };
+
+        mpris = {
+          format = " {status_icon}  {dynamic}";
+          interval = 1;
+          dynamic-len = 40;
+          title-len = 40;
+          status-icons = {
+            paused = " ";
+            playing = " ";
+            stopped = " ";
+          };
+        };
+
+        cava = {
+          framerate = 60;
+          autosens = 1;
+          bars = 14;
+          method = "pulse";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          noise_reduction = 0.77;
+          input_delay = 2;
+          sleep_timer = 1;
+          hide_on_silence = true;
+          format-icons = [ "⣀" "⣤" "⣶" "⣿" ];
         };
 
         "custom/tray" = {
@@ -210,7 +240,7 @@ in {
         color: #${colors.base08};
       }
 
-      #clock {
+      #clock, #cava, #mpris {
         font-size: 14px;
       }
 
