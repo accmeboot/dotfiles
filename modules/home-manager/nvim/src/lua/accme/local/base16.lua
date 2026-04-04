@@ -42,7 +42,7 @@ end
 
 -- Generate pink from base08 (red) by increasing blue
 function M.get_pink(color)
-  return M.adjust_color(color, 0, -16, 66)
+  return M.adjust_color(color, 0, 16, 32)
 end
 
 return M
