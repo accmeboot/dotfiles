@@ -187,7 +187,7 @@ in {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
-        padding: 2px 8px;
+        padding: 4px 8px;
       }
 
       #workspaces button {

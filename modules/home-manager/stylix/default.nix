@@ -1,4 +1,7 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }:
+
+let utils = import ./utils.nix { inherit pkgs lib; };
+in {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
     enableCursor = lib.mkEnableOption "cursor theme" // { default = true; };
@@ -7,38 +10,14 @@
 
     opacity = lib.mkOption {
       type = lib.types.float;
-      default = 0.9;
+      default = 0.5;
       description = "System wide opacity value";
     };
 
     opacityHex = lib.mkOption {
       type = lib.types.str;
       readOnly = true;
-      default = let
-        opacityValue = config.stylix.desktop.opacity;
-        alphaInt = builtins.floor (opacityValue * 255);
-        toHexDigit = n:
-          builtins.elemAt [
-            "0"
-            "1"
-            "2"
-            "3"
-            "4"
-            "5"
-            "6"
-            "7"
-            "8"
-            "9"
-            "a"
-            "b"
-            "c"
-            "d"
-            "e"
-            "f"
-          ] n;
-        high = toHexDigit (alphaInt / 16);
-        low = toHexDigit (lib.mod alphaInt 16);
-      in high + low;
+      default = utils.opacityToHex config.stylix.desktop.opacity;
       description = "Opacity as hex alpha value (00-FF)";
     };
 
@@ -54,8 +33,10 @@
       enable = true;
 
       polarity = "dark";
-      image = ../../../assets/wallpapers/pond.png;
-      base16Scheme = import ./schemes/material-darker.nix;
+
+      image = ../../../assets/wallpapers/sidonia.png;
+      base16Scheme =
+        utils.generateMatugenScheme config.stylix.image config.stylix.polarity;
 
       targets = {
         starship.enable = false;
