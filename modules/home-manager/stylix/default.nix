@@ -10,7 +10,7 @@ in {
 
     opacity = lib.mkOption {
       type = lib.types.float;
-      default = 0.5;
+      default = 0.9;
       description = "System wide opacity value";
     };
 

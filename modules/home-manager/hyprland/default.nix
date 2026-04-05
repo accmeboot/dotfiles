@@ -74,6 +74,7 @@ in {
           size = 16;
           passes = 4;
           new_optimizations = true;
+          noise = 5.0e-2;
         };
         shadow = { enabled = false; };
         dim_inactive = true;
