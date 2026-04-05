@@ -2,22 +2,22 @@
   generateMatugenScheme = imagePath: polarity:
     let
       colorMapping = {
-        base00 = "surface_container_lowest";
-        base01 = "surface_container";
-        base02 = "surface_container_highest";
-        base03 = "outline";
-        base04 = "on_surface_variant";
-        base05 = "on_surface";
-        base06 = "secondary_fixed";
-        base07 = "primary";
-        base08 = "error";
-        base09 = "tertiary";
-        base0A = "secondary";
-        base0B = "primary";
-        base0C = "primary_fixed";
-        base0D = "surface_tint";
-        base0E = "tertiary_fixed";
-        base0F = "on_error_container";
+        base00 = "surface_container_lowest"; # Darkest background
+        base01 = "surface_container"; # Container background
+        base02 = "surface_container_high"; # Elevated surface
+        base03 = "outline"; # Borders/comments
+        base04 = "on_surface_variant"; # Muted text
+        base05 = "on_surface"; # Primary text
+        base06 = "surface_bright"; # Bright surface
+        base07 = "inverse_surface"; # Lightest foreground
+        base08 = "error"; # Red/errors
+        base09 = "on_error_container"; # Orange-ish (light red variant)
+        base0A = "on_primary_container"; # Yellow (from primary palette)
+        base0B = "tertiary"; # Green (this is the green palette!)
+        base0C = "on_tertiary_container"; # Cyan (light green variant)
+        base0D = "primary"; # Blue/primary accent
+        base0E = "on_secondary_container"; # Purple-ish (light secondary)
+        base0F = "secondary"; # Brown/secondary accent
       };
 
       matugenColors = pkgs.runCommand "matugen-colors" {
