@@ -29,13 +29,13 @@ return {
         cyan = colors.base0C,
         red = colors.base08,
         yellow = colors.base0A,
-        magenta = colors.base0F,
+        magenta = colors.base0E,
 
         -- Generate pink from base08 (red) by increasing blue
         pink = base16.get_pink(colors.base08),
 
         orange = colors.base09,
-        purple = colors.base0E,
+        purple = colors.base0F,
       },
 
       saturation = 0.5,
