@@ -34,7 +34,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/futuristic.png;
+      image = ../../../assets/wallpapers/thefinals.png;
       base16Scheme =
         utils.generateMatugenScheme config.stylix.image config.stylix.polarity;
 
