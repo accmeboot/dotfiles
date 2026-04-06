@@ -12,14 +12,14 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "custom/launcher" "clock" "mpris" ];
+        modules-left = [ "custom/launcher" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
-          "cava"
           "battery"
           "pulseaudio"
           "pulseaudio#source"
           "network"
+          "clock"
           "custom/tray"
         ];
 
@@ -42,24 +42,6 @@ in {
             playing = " ";
             stopped = " ";
           };
-        };
-
-        cava = {
-          framerate = 60;
-          autosens = 1;
-          bars = 14;
-          method = "pulse";
-          source = "auto";
-          stereo = true;
-          reverse = false;
-          bar_delimiter = 0;
-          monstercat = false;
-          waves = false;
-          noise_reduction = 0.77;
-          input_delay = 1;
-          sleep_timer = 1;
-          hide_on_silence = true;
-          format-icons = [ "⣀" "⣤" "⣶" "⣿" ];
         };
 
         "custom/tray" = {
@@ -215,7 +197,7 @@ in {
         font-size: 20px;
       }
 
-      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #network, #mpris {
+      #workspaces, #pulseaudio.source, #battery, #network, #mpris, #pulseaudio {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
@@ -246,7 +228,7 @@ in {
         color: #${colors.base08};
       }
 
-      #clock, #cava, #mpris {
+      #clock, #mpris {
         font-size: 14px;
       }
 
