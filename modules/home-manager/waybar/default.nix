@@ -12,14 +12,13 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "custom/launcher" "mpris" ];
+        modules-left = [ "custom/launcher" "clock" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
           "battery"
           "pulseaudio"
           "pulseaudio#source"
           "network"
-          "clock"
           "custom/tray"
         ];
 
@@ -33,7 +32,7 @@ in {
 
         mpris = {
           format =
-            "<span foreground='#${colors.base0F}' size='13pt'>{status_icon}</span> {dynamic}";
+            "<span foreground='#${colors.base0F}'>{status_icon}</span> {dynamic}";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
@@ -125,7 +124,7 @@ in {
         };
 
         clock = {
-          format = "{:%A %H:%M}";
+          format = "<span foreground='#${colors.base0C}'>󰖉</span> {:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
@@ -194,10 +193,10 @@ in {
       }
 
       #custom-launcher, #custom-tray {
-        font-size: 20px;
+        font-size: 24px;
       }
 
-      #workspaces, #pulseaudio.source, #battery, #network, #mpris, #pulseaudio {
+      #workspaces, #pulseaudio.source, #battery, #network, #mpris, #pulseaudio, #clock {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
@@ -226,10 +225,6 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
-      }
-
-      #clock, #mpris {
-        font-size: 14px;
       }
 
       window#waybar.secondBar {
