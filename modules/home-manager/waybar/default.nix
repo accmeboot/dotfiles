@@ -32,7 +32,8 @@ in {
         };
 
         mpris = {
-          format = "    {status_icon} {dynamic}";
+          format =
+            "<span foreground='#${colors.base0F}' size='13pt'>{status_icon}</span> {dynamic}";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
@@ -214,7 +215,7 @@ in {
         font-size: 20px;
       }
 
-      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #network {
+      #workspaces, #pulseaudio, #pulseaudio.source, #battery, #network, #mpris {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         margin: 4px 0px;
