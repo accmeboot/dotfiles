@@ -12,28 +12,28 @@
           type = "custom";
         }
         {
-          key = "│ {#33}󰅐 uptime   {#keys}│";
+          key = "│ {#39}󰅐 uptime   {#keys}│";
           type = "uptime";
         }
         {
-          key = "│ {#32}{icon} distro   {#keys}│";
+          key = "│ {#39}{icon} distro   {#keys}│";
           type = "os";
         }
         {
-          key = "│ {#34} kernel   {#keys}│";
+          key = "│ {#39} kernel   {#keys}│";
           type = "kernel";
         }
         {
-          key = "│ {#35}󰏖 packages {#keys}│";
+          key = "│ {#39}󰏖 packages {#keys}│";
           type = "packages";
         }
         {
-          key = "│ {#31}󰉉 disk     {#keys}│";
+          key = "│ {#39}󰉉 disk     {#keys}│";
           type = "disk";
           folders = "/";
         }
         {
-          key = "│ {#36} memory   {#keys}│";
+          key = "│ {#39} memory   {#keys}│";
           type = "memory";
         }
         {

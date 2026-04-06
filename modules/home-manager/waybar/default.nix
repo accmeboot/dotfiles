@@ -12,9 +12,10 @@ in {
         layer = "bottom";
         position = "top";
 
-        modules-left = [ "custom/launcher" "clock" "hyprland/workspaces" ];
-        modules-center = [ "mpris" "cava" ];
+        modules-left = [ "custom/launcher" "clock" "mpris" ];
+        modules-center = [ "hyprland/workspaces" ];
         modules-right = [
+          "cava"
           "battery"
           "pulseaudio"
           "pulseaudio#source"
@@ -31,7 +32,7 @@ in {
         };
 
         mpris = {
-          format = " {status_icon}  {dynamic}";
+          format = "    {status_icon} {dynamic}";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
@@ -54,7 +55,7 @@ in {
           monstercat = false;
           waves = false;
           noise_reduction = 0.77;
-          input_delay = 2;
+          input_delay = 1;
           sleep_timer = 1;
           hide_on_silence = true;
           format-icons = [ "⣀" "⣤" "⣶" "⣿" ];
@@ -233,7 +234,11 @@ in {
       }
 
       #workspaces button.active {
-        color: #${colors.base0D};
+        color: transparent;
+        background-image: url("${../../../assets/icons/nama-tama.png}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
       }
 
       #workspaces button.urgent {
