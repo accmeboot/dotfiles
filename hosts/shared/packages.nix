@@ -60,7 +60,6 @@
     slurp # region selector for wayland
     wl-clipboard # wayland based clipboard command tool
     bluez
-    matugen # colorscheme generation
   ];
 
   #----------------------------------------------------------------------------#

@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
 
 let utils = import ./utils.nix { inherit pkgs lib; };
+
 in {
   options.stylix.desktop = {
     enableFonts = lib.mkEnableOption "custom fonts" // { default = true; };
@@ -34,9 +35,8 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/thefinals.jpg;
-      base16Scheme =
-        utils.generateMatugenScheme config.stylix.image config.stylix.polarity;
+      image = ../../../assets/wallpapers/sidonia.png;
+      base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
         starship.enable = false;
