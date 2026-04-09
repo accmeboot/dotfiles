@@ -64,6 +64,7 @@ in {
         layout = "dwindle";
         "col.active_border" = lib.mkForce "rgb(${colors.base03})";
         "col.inactive_border" = lib.mkForce "rgb(${colors.base03})";
+        allow_tearing = true;
       };
 
       # Decoration
