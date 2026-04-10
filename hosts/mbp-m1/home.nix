@@ -6,8 +6,8 @@
   };
 
   programs.zsh = {
-    enableNvm = true;
-    enableDirenv = true;
+    enableNvm = false;
+    enableDirenv = false;
   };
 
   stylix.desktop = {
