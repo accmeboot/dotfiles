@@ -41,6 +41,7 @@
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pinta # image viewer
     nautilus # file manager
+    protonup-ng # installing proton ge
 
     # Communication & Entertainment
     telegram-desktop # messaging application
