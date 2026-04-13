@@ -212,8 +212,12 @@ in {
         [ "$mod, mouse_down, workspace, e+1" "$mod, mouse_up, workspace, e-1" ];
 
       # Startup applications
-      exec-once =
-        [ "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'" "waybar" ];
+      exec-once = [
+        "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
+        "jamesdsp"
+        "waybar"
+        "steam"
+      ];
 
       # Environment variables
       env = [ "XCURSOR_THEME,${cursorName}" "XCURSOR_SIZE,${cursorSize}" ];
