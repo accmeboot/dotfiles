@@ -214,9 +214,8 @@ in {
       # Startup applications
       exec-once = [
         "hyprctl dispatch exec 'sleep 0.5 && hyprlock -q'"
-        "jamesdsp"
         "waybar"
-        "steam"
+        "jamesdsp"
       ];
 
       # Environment variables
