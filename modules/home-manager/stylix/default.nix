@@ -36,7 +36,10 @@ in {
       polarity = "dark";
 
       image = ../../../assets/wallpapers/sidonia.png;
-      base16Scheme = import ./schemes/material-darker.nix;
+      base16Scheme = utils.adaptSchemeToWallpaper {
+        scheme = import ./schemes/material-darker.nix;
+        wallpaperPath = config.stylix.image;
+      };
 
       targets = {
         starship.enable = false;

@@ -32,7 +32,7 @@ in {
 
         mpris = {
           format =
-            "<span foreground='#${colors.base0F}'>{status_icon}</span> {dynamic}";
+            "<span foreground='#${colors.base0D}'>{status_icon}</span> {dynamic}";
           interval = 1;
           dynamic-len = 40;
           title-len = 40;
@@ -63,11 +63,11 @@ in {
 
         network = {
           format = "{ifname}";
-          format-wifi = "<span foreground='#${colors.base0B}'>󰤨</span> {essid}";
+          format-wifi = "<span foreground='#${colors.base0D}'>󰤨</span> {essid}";
           format-ethernet =
-            "<span foreground='#${colors.base0B}'>󰖟</span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0D}'>󰖟</span> {bandwidthTotalBits}";
           format-disconnected =
-            "<span foreground='#${colors.base0B}'>󰪎</span> {bandwidthTotalBits}";
+            "<span foreground='#${colors.base0D}'>󰪎</span> {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
@@ -76,9 +76,9 @@ in {
         };
 
         pulseaudio = {
-          format = "<span foreground='#${colors.base09}'></span> {volume}%";
+          format = "<span foreground='#${colors.base0D}'></span> {volume}%";
           format-muted =
-            "<span foreground='#${colors.base09}'></span> {volume}%";
+            "<span foreground='#${colors.base0D}'></span> {volume}%";
           scroll-step = 1;
           on-click =
             "ghostty --class=com.accme.float --command='wiremix -v output'";
@@ -87,9 +87,9 @@ in {
         "pulseaudio#source" = {
           format = "{format_source}";
           format-source =
-            "<span foreground='#${colors.base0A}'></span> {volume}%";
+            "<span foreground='#${colors.base0D}'></span> {volume}%";
           format-source-muted =
-            "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%";
+            "<span foreground='#${colors.base0D}'>󰍭</span> {volume}%";
           tooltip-format = "{source_desc}";
           scroll-step = 1;
           on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+";
@@ -113,7 +113,7 @@ in {
               "notify-send -u normal -i battery-full-charged 'Battery Full!'";
           };
           format =
-            "<span foreground='#${colors.base08}'>{icon}</span> {capacity}%";
+            "<span foreground='#${colors.base0D}'>{icon}</span> {capacity}%";
           tooltip-format = "Battery: {capacity}%";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
@@ -124,7 +124,7 @@ in {
         };
 
         clock = {
-          format = "<span foreground='#${colors.base0C}'>󰖉</span> {:%H:%M}";
+          format = "<span foreground='#${colors.base0D}'>󰖉</span> {:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
@@ -212,7 +212,7 @@ in {
       }
 
       #workspaces button:hover {
-        color: alpha(#${colors.base0D}, 0.5);
+        color: alpha(#${colors.base05}, 0.5);
       }
 
       #workspaces button.active {
