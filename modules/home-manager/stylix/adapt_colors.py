@@ -12,7 +12,7 @@ from colorsys import rgb_to_hls, hls_to_rgb
 from PIL import Image
 
 # Tuning parameters
-SATURATION_BLEND = 0.3  # How much to adjust saturation (0 = no change, 1 = full match)
+SATURATION_BLEND = 1  # How much to adjust saturation (0 = no change, 1 = full match)
 MIN_SATURATION_THRESHOLD = 0.15  # What counts as a "color" vs grayscale
 NUM_DOMINANT_COLORS = 8  # Number of dominant colors to extract from wallpaper
 
