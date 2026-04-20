@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/sidonia.png;
+      image = ../../../assets/wallpapers/futuristic.png;
       base16Scheme = utils.adaptSchemeToWallpaper {
         scheme = import ./schemes/material-darker.nix;
         wallpaperPath = config.stylix.image;
