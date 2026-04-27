@@ -79,7 +79,7 @@ in {
       set -g status-left ""
 
       set -g window-status-format "#[fg=#${colors.base05},bg=terminal]#I:#W"
-      set -g window-status-current-format "#[fg=#${colors.base0D},bg=#${colors.base00}]#[fg=#${colors.base00},bg=#${colors.base0D}]#I:#W#[fg=#${colors.base0D},bg=#${colors.base00}]"
+      set -g window-status-current-format "#[fg=#${colors.base05},bg=#${colors.base00}]#[fg=#${colors.base00},bg=#${colors.base05}]#I:#W#[fg=#${colors.base05},bg=#${colors.base00}]"
 
       set -g status-right-length 100
       set -g status-right "#[fg=#${colors.base05},bg=terminal] #S"

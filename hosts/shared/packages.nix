@@ -32,6 +32,7 @@
     playerctl # required by waybar mpris module
     libnotify # notification library
     ghostty # modern terminal emulator
+    gowall # image manipulation
 
     # Media & Viewers
     mpv # video player

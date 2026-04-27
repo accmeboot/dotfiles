@@ -35,15 +35,13 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/futuristic.png;
-      base16Scheme = utils.adaptSchemeToWallpaper {
-        scheme = import ./schemes/material-darker.nix;
-        wallpaperPath = config.stylix.image;
-      };
+      image = ../../../assets/wallpapers/deck-material.png;
+      base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
         starship.enable = false;
         waybar.enable = false;
+        yazi.enable = false;
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
