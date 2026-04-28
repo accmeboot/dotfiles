@@ -20,7 +20,7 @@
     wget
     rustup
     htop
-    direnv
+    # direnv
   ];
 
   homebrew = {
