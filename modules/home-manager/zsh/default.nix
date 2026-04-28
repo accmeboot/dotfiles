@@ -28,6 +28,7 @@
         ${lib.optionalString config.programs.zsh.enableDirenv ''
           eval "$(direnv hook zsh)" 
         ''}
+        fastfetch
       '';
 
       # Aliases
