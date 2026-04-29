@@ -41,7 +41,6 @@ in {
       targets = {
         starship.enable = false;
         waybar.enable = false;
-        yazi.enable = false;
       };
 
       fonts = lib.mkIf config.stylix.desktop.enableFonts {
