@@ -94,10 +94,7 @@ in {
       };
 
       # Layout
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
+      dwindle = { preserve_split = true; };
 
       # Misc
       misc = {
@@ -130,7 +127,7 @@ in {
         "$mod, F,   togglefloating"
         "$mod, R,   exec, $menu"
         "$mod, W,   exec, $terminal -e --class 'com.accme.float' wiremix -v output"
-        "$mod, S,   togglesplit"
+        "$mod, S,   layoutmsg, togglesplit"
         "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
 
         "$mod, $down,   changegroupactive, b"
