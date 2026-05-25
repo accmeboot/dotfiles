@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/futuristic.png;
+      image = ../../../assets/wallpapers/redhead.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
