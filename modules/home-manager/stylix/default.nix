@@ -11,7 +11,7 @@ in {
 
     opacity = lib.mkOption {
       type = lib.types.float;
-      default = 0.7;
+      default = 1.0;
       description = "System wide opacity value";
     };
 
@@ -24,7 +24,7 @@ in {
 
     rounding = lib.mkOption {
       type = lib.types.int;
-      default = 12;
+      default = 4;
       description = "System wide rounding value in pixels";
     };
   };
@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/deck-material.png;
+      image = ../../../assets/wallpapers/futuristic.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {

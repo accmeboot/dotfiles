@@ -11,7 +11,7 @@ in {
       mainBar = {
         layer = "bottom";
         position = "top";
-
+        margin = "8 8 4 8";
         modules-left = [ "custom/launcher" "clock" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
@@ -117,40 +117,10 @@ in {
         };
 
         clock = {
-          format = "󰖉 {:%H:%M}";
+          format = "{:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
-      };
-
-      secondBar = {
-        layer = "bottom";
-        position = "top";
-        exclusive = false;
-        height = 12;
-        name = "secondBar";
-
-        expand-left = true;
-        expand-right = true;
-
-        modules-left = [ ];
-        modules-center = [ ];
-        modules-right = [ ];
-      };
-
-      bottomBar = {
-        layer = "bottom";
-        position = "bottom";
-        exclusive = false;
-        height = 12;
-        name = "bottomBar";
-
-        expand-left = true;
-        expand-right = true;
-
-        modules-left = [ ];
-        modules-center = [ ];
-        modules-right = [ ];
       };
     };
 
@@ -164,16 +134,8 @@ in {
       }
 
       window#waybar {
-        background-color: alpha(#${colors.base00}, ${toString opacity});
+        background-color: transparent;
         color: #${colors.base05};
-      }
-
-      .modules-left {
-        padding-left: ${toString rounding}px;
-      }
-
-      .modules-right {
-        padding-right: ${toString rounding}px;
       }
 
       tooltip {
@@ -189,11 +151,19 @@ in {
         font-size: 24px;
       }
 
-      #workspaces, #pulseaudio.source, #battery, #network, #mpris, #pulseaudio, #clock {
-        background-color: #${colors.base01};
+      .modules-left, .modules-right, .modules-center {
+        background-color: #${colors.base00};
         border-radius: ${toString rounding}px;
-        margin: 4px 0px;
-        padding: 4px 8px;
+        padding: 0px 4px;
+        border: 1px solid #${colors.base03};
+      }
+
+      #pulseaudio.source, #battery, #network, #mpris, #pulseaudio, #clock {
+        padding: 4px;
+      }
+
+      #workspaces {
+        padding: 4px 0px;
       }
 
       #workspaces button {
@@ -218,46 +188,6 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
-      }
-
-      window#waybar.secondBar {
-        background-color: transparent;
-      }
-
-      window#waybar.secondBar .modules-left {
-        border-top-left-radius: ${toString rounding}px;
-        background-color: transparent;
-        box-shadow: -${toString rounding}px -${toString rounding}px 0 ${
-          toString rounding
-        }px alpha(#${colors.base00}, ${toString opacity});
-      }
-
-      window#waybar.secondBar .modules-right {
-        border-top-right-radius: ${toString rounding}px;
-        background-color: transparent;
-        box-shadow: ${toString rounding}px -${toString rounding}px 0 ${
-          toString rounding
-        }px alpha(#${colors.base00}, ${toString opacity});
-      }
-
-      window#waybar.bottomBar {
-        background-color: transparent;
-      }
-
-      window#waybar.bottomBar .modules-left {
-        border-bottom-left-radius: ${toString rounding}px;
-        background-color: transparent;
-        box-shadow: -${toString rounding}px ${toString rounding}px 0 ${
-          toString rounding
-        }px alpha(#${colors.base00}, ${toString opacity});
-      }
-
-      window#waybar.bottomBar .modules-right {
-        border-bottom-right-radius: 12px;
-        background-color: transparent;
-        box-shadow: ${toString rounding}px ${toString rounding}px 0 ${
-          toString rounding
-        }px alpha(#${colors.base00}, ${toString opacity});
       }
     '';
   };

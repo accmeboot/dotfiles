@@ -29,11 +29,19 @@ in {
 
       xwayland = { force_zero_scaling = true; };
 
-      device = {
-        name = "asuf1205:00-2808:0106-touchpad";
-        accel_profile = "adaptive";
-        sensitivity = 0;
-      };
+      device = [
+        {
+          name =
+            "sony-interactive-entertainment-dualsense-edge-wireless-controller-touchpad";
+          enabled = false;
+        }
+        {
+          name = "asuf1205:00-2808:0106-touchpad";
+          accel_profile = "adaptive";
+          sensitivity = 0;
+        }
+
+      ];
 
       # Input configuration
       input = {
