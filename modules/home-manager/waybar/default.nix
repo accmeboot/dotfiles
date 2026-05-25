@@ -3,7 +3,6 @@ let
   colors = config.lib.stylix.colors;
   font = config.stylix.fonts.serif.name;
   rounding = config.stylix.desktop.rounding;
-  opacity = config.stylix.desktop.opacity;
 in {
   programs.waybar = {
     enable = true;
@@ -49,11 +48,7 @@ in {
         };
 
         "hyprland/workspaces" = {
-          format = "{id}{icon}";
-          format-icons = {
-            default = "*";
-            empty = " ";
-          };
+          format = "{id}";
           persistent-workspaces = { "*" = [ 1 2 3 4 5 6 7 8 9 ]; };
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
@@ -152,7 +147,7 @@ in {
       }
 
       .modules-left, .modules-right, .modules-center {
-        background-color: #${colors.base00};
+        background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
         padding: 0px 4px;
         border: 1px solid #${colors.base03};
@@ -168,7 +163,8 @@ in {
 
       #workspaces button {
         all: unset;
-        padding: 0px 8px;
+        margin: 0px 4px;
+        padding: 0px 4px;
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
@@ -179,11 +175,7 @@ in {
       }
 
       #workspaces button.active {
-        color: transparent;
-        background-image: url("${../../../assets/icons/nama-tama.png}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
+        box-shadow: inset 0px -1px #${colors.base05};
       }
 
       #workspaces button.urgent {
