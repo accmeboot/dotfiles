@@ -11,7 +11,7 @@ in {
       mainBar = {
         layer = "bottom";
         position = "top";
-        margin = "8 8 4 8";
+        margin = "8 8 0 8";
         modules-left = [ "custom/launcher" "clock" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
