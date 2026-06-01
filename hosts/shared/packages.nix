@@ -51,10 +51,6 @@
     thunderbird # email client
     transmission_4-gtk # torrent client
 
-    # Gnome dependencies
-    gsettings-desktop-schemas # GSettings desktop schemas
-    xdg-desktop-portal-gnome # ghostty start up time improved
-
     # Wayland Tools
     xclip # command line interface to X clipboard
     grim # screenshot utility for wayland
