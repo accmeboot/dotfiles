@@ -43,7 +43,6 @@
     pinta # image viewer
     nautilus # file manager
     protonup-ng # installing proton ge
-    jamesdsp # audio equalizer
 
     # Communication & Entertainment
     telegram-desktop # messaging application

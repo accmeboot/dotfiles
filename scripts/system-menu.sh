@@ -20,9 +20,6 @@ if [ "$#" -gt 0 ]; then
       "Steam")
         run "steam"
         ;;
-      "Tray")
-        run "${TERMINAL:-ghostty} --class=com.accme.float --command=tray-tui"
-        ;;
       "Browser")
         run "zen"
         ;;
@@ -53,7 +50,6 @@ fi
 echo "󰖟 Browser"
 echo " Audio"
 echo " Files"
-echo "󱊖 Tray"
 echo " Steam"
 echo "󰤆 Shutdown"
 echo " Reboot"

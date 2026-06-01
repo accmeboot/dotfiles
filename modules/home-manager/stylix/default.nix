@@ -24,7 +24,7 @@ in {
 
     rounding = lib.mkOption {
       type = lib.types.int;
-      default = 4;
+      default = 8;
       description = "System wide rounding value in pixels";
     };
   };
@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/redhead.png;
+      image = ../../../assets/wallpapers/sidonia.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {

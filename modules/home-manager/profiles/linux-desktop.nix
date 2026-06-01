@@ -8,4 +8,6 @@
     ../rofi/default.nix
     ../tray-tui/default.nix
   ];
+
+  services.easyeffects.enable = true;
 }

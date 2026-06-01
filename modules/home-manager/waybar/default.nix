@@ -18,7 +18,8 @@ in {
           "pulseaudio"
           "pulseaudio#source"
           "network"
-          "custom/tray"
+          "custom/separator"
+          "tray"
         ];
 
         spacing = 8;
@@ -27,6 +28,14 @@ in {
           format = "";
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
+        };
+
+        "custom/separator" = { format = ""; };
+
+        tray = {
+          icon-size = 20;
+          spacing = 8;
+          cursor = 60;
         };
 
         mpris = {
@@ -39,12 +48,6 @@ in {
             playing = " ";
             stopped = " ";
           };
-        };
-
-        "custom/tray" = {
-          format = "";
-          tooltip-format = "Tray menu";
-          on-click = "ghostty --class=com.accme.float --command=tray-tui";
         };
 
         "hyprland/workspaces" = {
@@ -180,6 +183,10 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
+      }
+
+      #tray * {
+        border-radius: ${toString rounding}px;
       }
     '';
   };
