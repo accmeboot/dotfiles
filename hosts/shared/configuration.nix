@@ -89,6 +89,7 @@
     gamemode.enable = true;
     dconf.enable = true;
     hyprland = { enable = true; };
+    obs-studio = { enable = true; };
   };
 
   #----------------------------------------------------------------------------#

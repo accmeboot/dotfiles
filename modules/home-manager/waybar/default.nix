@@ -14,12 +14,12 @@ in {
         modules-left = [ "custom/launcher" "clock" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
+          "tray"
+          "custom/separator"
           "battery"
           "pulseaudio"
           "pulseaudio#source"
           "network"
-          "custom/separator"
-          "tray"
         ];
 
         spacing = 8;
@@ -36,6 +36,10 @@ in {
           icon-size = 20;
           spacing = 8;
           cursor = 60;
+          icons = {
+            indicator-solaar = ../../../assets/icons/g-hub.png;
+            steam = ../../../assets/icons/steam.png;
+          };
         };
 
         mpris = {
@@ -145,7 +149,7 @@ in {
         color: #${colors.base05};
       }
 
-      #custom-launcher, #custom-tray {
+      #custom-launcher {
         font-size: 24px;
       }
 
@@ -187,6 +191,10 @@ in {
 
       #tray * {
         border-radius: ${toString rounding}px;
+      }
+
+      #tray {
+        margin-left: 4px;
       }
     '';
   };
