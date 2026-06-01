@@ -49,7 +49,7 @@ in {
         sensitivity = -0.25;
         follow_mouse = 1;
         kb_layout = "us,ru";
-        kb_options = "grp:alt_shift_toggle";
+        kb_options = "grp:ctrl_space_toggle";
 
         touchpad = {
           natural_scroll = true;
@@ -136,14 +136,14 @@ in {
         "$mod, R,   exec, $menu"
         "$mod, W,   exec, $terminal -e --class 'com.accme.float' wiremix -v output"
         "$mod, S,   layoutmsg, togglesplit"
-        "$mod, M,   exec, bash ${../../../scripts/hypr-group.sh}"
+        "$mod, M,   exec, ${../../../scripts/hypr-group.sh}"
 
         "$mod, $down,   changegroupactive, b"
         "$mod, $up,   changegroupactive, f"
 
         "$mod, E,   fullscreen"
         "$mod, TAB, workspace, previous"
-        "$mod, SPACE, exec, bash ${../../../scripts/hypr-float-focus.sh}"
+        "$mod, SPACE, exec, ${../../../scripts/hypr-float-focus.sh}"
 
         # Movement
         "$mod, $left,  movefocus, l"
@@ -193,8 +193,8 @@ in {
         "$mod SHIFT, DOWN, movewindow, mon:-1"
 
         # Screenshots
-        ", PRINT, exec, bash ${../../../scripts/screenshot-full.sh}"
-        "ALT SHIFT, 4, exec, bash ${../../../scripts/screenshot-area.sh}"
+        ", PRINT, exec, ${../../../scripts/screenshot-full.sh}"
+        "ALT SHIFT, 4, exec, ${../../../scripts/screenshot-area.sh}"
       ];
 
       # Mouse bindings
