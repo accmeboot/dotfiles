@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/sidonia.png;
+      image = ../../../assets/wallpapers/futuristic.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
