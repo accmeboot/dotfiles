@@ -36,11 +36,6 @@ in {
           icon-size = 20;
           spacing = 8;
           cursor = 60;
-          icons = {
-            indicator-solaar = ../../../assets/icons/g-hub.png;
-            solaar = ../../../assets/icons/g-hub.png;
-            steam = ../../../assets/icons/steam.png;
-          };
         };
 
         mpris = {
