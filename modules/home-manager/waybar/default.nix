@@ -14,11 +14,12 @@ in {
         modules-left = [ "custom/launcher" "clock" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
-          "tray"
-          "custom/separator"
           "battery"
           "pulseaudio"
           "pulseaudio#source"
+          "custom/separator"
+          "tray"
+          "custom/separator"
           "network"
         ];
 
