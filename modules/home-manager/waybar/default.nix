@@ -18,6 +18,10 @@ in {
           "pulseaudio"
           "pulseaudio#source"
           "network"
+          "custom/separator"
+          "custom/cpu-temp"
+          "custom/gpu-temp"
+          "custom/separator"
           "custom/notifications"
         ];
 
@@ -42,6 +46,22 @@ in {
           on-click = "dunstctl history-pop";
           on-click-middle = "dunstctl set-paused toggle";
           cursor = 60;
+        };
+
+        "custom/separator" = { format = ""; };
+
+        "custom/cpu-temp" = {
+          exec = "${config.home.homeDirectory}/dotfiles/scripts/cpu-temp.sh";
+          format = " {}°C";
+          interval = 5;
+          tooltip-format = "CPU Temperature: {}°C";
+        };
+
+        "custom/gpu-temp" = {
+          exec = "${config.home.homeDirectory}/dotfiles/scripts/gpu-temp.sh";
+          format = "󰢮 {}°C";
+          interval = 5;
+          tooltip-format = "GPU Temperature: {}°C";
         };
 
         mpris = {

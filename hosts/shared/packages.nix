@@ -33,6 +33,7 @@
     libnotify # notification library
     ghostty # modern terminal emulator
     gowall # image manipulation
+    lm_sensors # hardware info
 
     # Media & Viewers
     mpv # video player
