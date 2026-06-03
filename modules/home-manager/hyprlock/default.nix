@@ -17,7 +17,7 @@ in {
 
       input-field = lib.mkForce [{
         size = "200, 50";
-        position = "0, -80";
+        position = "0, -250";
         monitor = "";
         dots_center = true;
         fade_on_empty = false;

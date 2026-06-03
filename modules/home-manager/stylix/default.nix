@@ -35,7 +35,7 @@ in {
 
       polarity = "dark";
 
-      image = ../../../assets/wallpapers/hyprland.png;
+      image = ../../../assets/wallpapers/hyprland-material.png;
       base16Scheme = import ./schemes/material-darker.nix;
 
       targets = {
