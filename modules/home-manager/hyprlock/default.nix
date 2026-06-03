@@ -13,7 +13,11 @@ in {
 
       animations = { enabled = false; };
 
-      background = lib.mkForce [{ path = config.stylix.image; }];
+      background = lib.mkForce [{
+        path = config.stylix.image;
+        blur_size = 8;
+        blur_passes = 2;
+      }];
 
       input-field = lib.mkForce [{
         size = "200, 50";

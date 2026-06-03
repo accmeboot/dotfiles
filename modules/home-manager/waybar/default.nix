@@ -3,6 +3,7 @@ let
   colors = config.lib.stylix.colors;
   font = config.stylix.fonts.serif.name;
   rounding = config.stylix.desktop.rounding;
+  opacity = config.stylix.desktop.opacity;
 in {
   programs.waybar = {
     enable = true;
@@ -153,7 +154,7 @@ in {
       }
 
       .modules-left, .modules-right, .modules-center {
-        background-color: #${colors.base01};
+        background-color: alpha(#${colors.base01}, ${toString opacity});
         border-radius: ${toString rounding}px;
         padding: 0px 8px;
         border: 1px solid #${colors.base03};
