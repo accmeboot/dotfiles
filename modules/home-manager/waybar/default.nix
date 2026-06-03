@@ -25,7 +25,7 @@ in {
         spacing = 8;
 
         "custom/launcher" = {
-          format = "";
+          format = "";
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
         };
@@ -148,24 +148,15 @@ in {
         color: #${colors.base05};
       }
 
-      #custom-launcher {
-        font-size: 24px;
-      }
-
-      #custom-notifications {
+      #custom-notifications, #custom-launcher {
         font-size: 20px;
-        margin-right: 4px;
       }
 
       .modules-left, .modules-right, .modules-center {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
-        padding: 0px 4px;
+        padding: 0px 8px;
         border: 1px solid #${colors.base03};
-      }
-
-      #pulseaudio.source, #battery, #network, #pulseaudio, #clock {
-        padding: 4px;
       }
 
       #workspaces {
@@ -179,10 +170,6 @@ in {
         background-color: transparent;
         border-radius: 0px;
         min-width: 12px;
-      }
-
-      #workspaces button:hover {
-        color: alpha(#${colors.base05}, 0.5);
       }
 
       #workspaces button.active {
