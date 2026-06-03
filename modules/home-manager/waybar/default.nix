@@ -126,7 +126,7 @@ in {
         };
 
         clock = {
-          format = "{:%H:%M}";
+          format = "<span foreground='#${colors.base0A}'>󰖉</span> {:%H:%M}";
           tooltip-format = "{:%A, %d %b %Y, %H:%M}";
           on-click = "xdg-open https://calendar.google.com/";
         };
