@@ -11,8 +11,7 @@ in {
         layer = "bottom";
         position = "top";
         margin = "8 8 0 8";
-        modules-left =
-          [ "custom/launcher" "custom/cpu-temp" "custom/gpu-temp" "mpris" ];
+        modules-left = [ "custom/launcher" "custom/temps" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
           "battery"
@@ -46,30 +45,12 @@ in {
           cursor = 60;
         };
 
-        "custom/cpu-temp" = {
-          exec = "${config.home.homeDirectory}/dotfiles/scripts/cpu-temp.sh";
-          format = " {}°C";
+        "custom/temps" = {
+          exec =
+            "echo $(${config.home.homeDirectory}/dotfiles/scripts/cpu-temp.sh)° $(${config.home.homeDirectory}/dotfiles/scripts/gpu-temp.sh)°";
+          format = " {}";
           interval = 5;
-          tooltip-format = "CPU Temperature: {}°C";
-        };
-
-        "custom/gpu-temp" = {
-          exec = "${config.home.homeDirectory}/dotfiles/scripts/gpu-temp.sh";
-          format = "󰢮 {}°C";
-          interval = 5;
-          tooltip-format = "GPU Temperature: {}°C";
-        };
-
-        mpris = {
-          format = "{status_icon} {dynamic}";
-          interval = 1;
-          dynamic-len = 40;
-          title-len = 40;
-          status-icons = {
-            paused = " ";
-            playing = " ";
-            stopped = " ";
-          };
+          tooltip-format = "System Temperatures: {}";
         };
 
         "hyprland/workspaces" = {
@@ -183,7 +164,7 @@ in {
         border: 1px solid #${colors.base03};
       }
 
-      #pulseaudio.source, #battery, #network, #mpris, #pulseaudio, #clock {
+      #pulseaudio.source, #battery, #network, #pulseaudio, #clock {
         padding: 4px;
       }
 
