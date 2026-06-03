@@ -11,17 +11,15 @@ in {
         layer = "bottom";
         position = "top";
         margin = "8 8 0 8";
-        modules-left = [ "custom/launcher" "clock" "mpris" ];
+        modules-left =
+          [ "custom/launcher" "custom/cpu-temp" "custom/gpu-temp" "mpris" ];
         modules-center = [ "hyprland/workspaces" ];
         modules-right = [
           "battery"
           "pulseaudio"
           "pulseaudio#source"
           "network"
-          "custom/separator"
-          "custom/cpu-temp"
-          "custom/gpu-temp"
-          "custom/separator"
+          "clock"
           "custom/notifications"
         ];
 
@@ -47,8 +45,6 @@ in {
           on-click-middle = "dunstctl set-paused toggle";
           cursor = 60;
         };
-
-        "custom/separator" = { format = ""; };
 
         "custom/cpu-temp" = {
           exec = "${config.home.homeDirectory}/dotfiles/scripts/cpu-temp.sh";
