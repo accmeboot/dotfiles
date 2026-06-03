@@ -17,10 +17,8 @@ in {
           "battery"
           "pulseaudio"
           "pulseaudio#source"
-          "custom/separator"
-          "tray"
-          "custom/separator"
           "network"
+          "custom/notifications"
         ];
 
         spacing = 8;
@@ -31,11 +29,18 @@ in {
           on-click = "rofi -show menu";
         };
 
-        "custom/separator" = { format = ""; };
-
-        tray = {
-          icon-size = 20;
-          spacing = 8;
+        "custom/notifications" = {
+          exec = ''
+            if [ "$(dunstctl is-paused)" = "true" ]; then
+              echo '{"text":"󰂛","tooltip":"Notifications (do not disturb)"}'
+            else
+              echo '{"text":"󰂚","tooltip":"Notifications (click to show history)"}'
+            fi
+          '';
+          return-type = "json";
+          interval = 2;
+          on-click = "dunstctl history-pop";
+          on-click-middle = "dunstctl set-paused toggle";
           cursor = 60;
         };
 
@@ -150,6 +155,11 @@ in {
         font-size: 24px;
       }
 
+      #custom-notifications {
+        font-size: 20px;
+        margin-right: 4px;
+      }
+
       .modules-left, .modules-right, .modules-center {
         background-color: #${colors.base01};
         border-radius: ${toString rounding}px;
@@ -184,14 +194,6 @@ in {
 
       #workspaces button.urgent {
         color: #${colors.base08};
-      }
-
-      #tray * {
-        border-radius: ${toString rounding}px;
-      }
-
-      #tray {
-        margin-left: 4px;
       }
     '';
   };

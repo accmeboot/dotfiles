@@ -17,6 +17,9 @@ if [ "$#" -gt 0 ]; then
       "Files")
         run "${TERMINAL:-ghostty} --class=com.accme.float --command=yazi"
         ;;
+      "Tray")
+        run "${TERMINAL:-ghostty} --class=com.accme.float --command=tray-tui"
+        ;;
       "Steam")
         run "steam"
         ;;
@@ -49,6 +52,7 @@ fi
 # If no arguments, show the menu
 echo "󰖟 Browser"
 echo " Audio"
+echo "󱊖 Tray"
 echo " Files"
 echo " Steam"
 echo "󰤆 Shutdown"
