@@ -26,7 +26,7 @@ in {
         spacing = 8;
 
         "custom/launcher" = {
-          format = "";
+          format = "<span foreground='#${colors.base09}'></span>";
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
         };
@@ -40,6 +40,7 @@ in {
             fi
           '';
           return-type = "json";
+          format = "<span color='#${colors.base09}'>{}</span>";
           interval = 2;
           on-click = "dunstctl history-pop";
           on-click-middle = "dunstctl set-paused toggle";
@@ -49,7 +50,7 @@ in {
         "custom/temps" = {
           exec =
             "echo $(${config.home.homeDirectory}/dotfiles/scripts/cpu-temp.sh)° $(${config.home.homeDirectory}/dotfiles/scripts/gpu-temp.sh)°";
-          format = " {}";
+          format = "<span foreground='#${colors.base0A}'></span> {}";
           interval = 5;
           tooltip-format = "System Temperatures: {}";
         };
@@ -64,9 +65,11 @@ in {
 
         network = {
           format = "{ifname}";
-          format-wifi = "󰤨 {essid}";
-          format-ethernet = "󰖟 {bandwidthTotalBits}";
-          format-disconnected = "󰪎 {bandwidthTotalBits}";
+          format-wifi = "<span foreground='#${colors.base0A}'>󰤨</span> {essid}";
+          format-ethernet =
+            "<span foreground='#${colors.base0A}'>󰖟</span> {bandwidthTotalBits}";
+          format-disconnected =
+            "<span foreground='#${colors.base0A}'>󰪎</span> {bandwidthTotalBits}";
           tooltip-format = "Network: {ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-disconnected = "Disconnected";
@@ -75,8 +78,9 @@ in {
         };
 
         pulseaudio = {
-          format = " {volume}%";
-          format-muted = " {volume}%";
+          format = "<span foreground='#${colors.base0A}'></span> {volume}%";
+          format-muted =
+            "<span foreground='#${colors.base0A}'></span> {volume}%";
           scroll-step = 1;
           on-click =
             "ghostty --class=com.accme.float --command='wiremix -v output'";
@@ -84,8 +88,10 @@ in {
 
         "pulseaudio#source" = {
           format = "{format_source}";
-          format-source = " {volume}%";
-          format-source-muted = "󰍭 {volume}%";
+          format-source =
+            "<span foreground='#${colors.base0A}'></span> {volume}%";
+          format-source-muted =
+            "<span foreground='#${colors.base0A}'>󰍭</span> {volume}%";
           tooltip-format = "{source_desc}";
           scroll-step = 1;
           on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+";
@@ -108,7 +114,8 @@ in {
             on-charging-100 =
               "notify-send -u normal -i battery-full-charged 'Battery Full!'";
           };
-          format = "{icon} {capacity}%";
+          format =
+            "<span foreground='#${colors.base0A}'>{icon}</span> {capacity}%";
           tooltip-format = "Battery: {capacity}%";
           format-icons = {
             default = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
@@ -174,7 +181,7 @@ in {
       }
 
       #workspaces button.active {
-        box-shadow: inset 0px -1px #${colors.base05};
+        box-shadow: inset 0px -1px #${colors.base0D};
       }
 
       #workspaces button.urgent {
