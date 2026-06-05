@@ -12,13 +12,14 @@ in {
         layer = "bottom";
         position = "top";
         margin = "8 8 0 8";
-        modules-left = [ "custom/launcher" "custom/temps" ];
-        modules-center = [ "hyprland/workspaces" ];
+        modules-left = [ "custom/launcher" "hyprland/workspaces" ];
+        modules-center = [ "hyprland/window" ];
         modules-right = [
           "battery"
           "pulseaudio"
           "pulseaudio#source"
           "network"
+          "custom/temps"
           "clock"
           "custom/notifications"
         ];
@@ -30,6 +31,8 @@ in {
           tooltip-format = "System menu";
           on-click = "rofi -show menu";
         };
+
+        "hyprland/window" = { format = "{}"; };
 
         "custom/notifications" = {
           exec = ''
@@ -160,7 +163,7 @@ in {
         font-size: 20px;
       }
 
-      .modules-left, .modules-right, .modules-center {
+      .modules-left, .modules-right {
         background-color: alpha(#${colors.base01}, ${toString opacity});
         border-radius: ${toString rounding}px;
         padding: 0px 8px;
