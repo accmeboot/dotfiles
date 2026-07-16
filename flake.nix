@@ -17,6 +17,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,8 +34,8 @@
     };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, home-manager, darwin, solaar, zen-browser }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, solaar, zen-browser
+    , plasma-manager }: {
       nixosConfigurations = {
         "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
