@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       # optional, but recommended if you closely follow NixOS unstable so it shares
@@ -33,8 +28,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar
-    , zen-browser }: {
+  outputs =
+    inputs@{ self, nixpkgs, home-manager, darwin, solaar, zen-browser }: {
       nixosConfigurations = {
         "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

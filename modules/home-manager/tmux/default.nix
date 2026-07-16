@@ -1,5 +1,6 @@
-{ config, pkgs, ... }:
-let colors = config.lib.stylix.colors;
+{ pkgs, ... }:
+let
+  colors = import ../colorschemes/material-darker.nix;
 in {
   programs.tmux = {
     enable = true;

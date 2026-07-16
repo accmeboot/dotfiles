@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
-let colors = config.lib.stylix.colors;
+{ pkgs, ... }:
+let colors = import ../colorschemes/material-darker.nix;
 in {
   programs.neovim.enable = true;
+
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
 
   home.file = {
     ".config/nvim" = {

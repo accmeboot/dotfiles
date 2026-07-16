@@ -1,12 +1,9 @@
-{ config, ... }:
+{ ... }:
 let
-  opacity = config.stylix.desktop.opacity;
-  colors = config.lib.stylix.colors;
-
+  colors = import ../colorschemes/material-darker.nix;
 in {
   home.file.".config/ghostty/config".text = ''
     font-family=""
-    background-opacity=${toString opacity}
     background-blur=90
     cursor-style=block
     shell-integration-features=no-cursor

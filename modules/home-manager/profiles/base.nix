@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ ... }: {
   imports = [
     ../nvim/default.nix
     ../yazi/default.nix
@@ -7,8 +7,5 @@
     ../fastfetch/default.nix
     ../tmux/default.nix
     ../ghostty/default.nix
-
-    inputs.stylix.homeModules.stylix
-    ../stylix/default.nix
   ];
 }
