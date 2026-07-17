@@ -95,9 +95,6 @@
       jack.enable = true;
     };
 
-    # displayManager.cosmic-greeter.enable = true;
-    # desktopManager.cosmic.enable = true;
-
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
 

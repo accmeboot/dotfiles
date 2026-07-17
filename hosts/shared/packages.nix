@@ -28,8 +28,6 @@
     unzip # zip file extraction utility
     ollama # running local llms
     pciutils # get hardware info
-    wiremix # audio control
-    playerctl # required by waybar mpris module
     libnotify # notification library
     ghostty # modern terminal emulator
     gowall # image manipulation

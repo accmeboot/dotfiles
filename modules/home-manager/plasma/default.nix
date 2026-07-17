@@ -1,5 +1,10 @@
-{ inputs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+
+  home.file.".local/share/icons/default" = {
+    source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors/";
+    recursive = true;
+  };
 
   programs.plasma = {
     enable = true;
