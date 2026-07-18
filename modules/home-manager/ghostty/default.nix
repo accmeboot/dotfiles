@@ -1,12 +1,10 @@
-{ config, ... }:
+{ ... }:
 let
-  opacity = config.stylix.desktop.opacity;
-  colors = config.lib.stylix.colors;
-
+  lightColors = import ../colorschemes/cyberdream-light.nix;
+  darkColors = import ../colorschemes/cyberdream.nix;
 in {
   home.file.".config/ghostty/config".text = ''
     font-family=""
-    background-opacity=${toString opacity}
     background-blur=90
     cursor-style=block
     shell-integration-features=no-cursor
@@ -15,27 +13,56 @@ in {
     window-padding-y=8
     window-padding-balance=true
 
-    background=${colors.base00}
-    foreground=${colors.base05}
-    cursor-color=${colors.base05}
-    selection-background=${colors.base02}
-    selection-foreground=${colors.base05}
+    theme=dark:cyberdream-dark,light:cyberdream-light
+  '';
 
-    palette=0=${colors.base00}
-    palette=1=${colors.base08}
-    palette=2=${colors.base0B}
-    palette=3=${colors.base0A}
-    palette=4=${colors.base0D}
-    palette=5=${colors.base0E}
-    palette=6=${colors.base0C}
-    palette=7=${colors.base05}
-    palette=8=${colors.base03}
-    palette=9=${colors.base08}
-    palette=10=${colors.base0B}
-    palette=11=${colors.base0A}
-    palette=12=${colors.base0D}
-    palette=13=${colors.base0E}
-    palette=14=${colors.base0C}
-    palette=15=${colors.base07}
+  home.file.".config/ghostty/themes/cyberdream-light".text = ''
+    background=${lightColors.base00}
+    foreground=${lightColors.base05}
+    cursor-color=${lightColors.base05}
+    selection-background=${lightColors.base02}
+    selection-foreground=${lightColors.base05}
+
+    palette=0=${lightColors.base00}
+    palette=1=${lightColors.base08}
+    palette=2=${lightColors.base0B}
+    palette=3=${lightColors.base0A}
+    palette=4=${lightColors.base0D}
+    palette=5=${lightColors.base0E}
+    palette=6=${lightColors.base0C}
+    palette=7=${lightColors.base05}
+    palette=8=${lightColors.base03}
+    palette=9=${lightColors.base08}
+    palette=10=${lightColors.base0B}
+    palette=11=${lightColors.base0A}
+    palette=12=${lightColors.base0D}
+    palette=13=${lightColors.base0E}
+    palette=14=${lightColors.base0C}
+    palette=15=${lightColors.base07}
+  '';
+
+  home.file.".config/ghostty/themes/cyberdream-dark".text = ''
+    background=${darkColors.base00}
+    foreground=${darkColors.base05}
+    cursor-color=${darkColors.base05}
+    selection-background=${darkColors.base02}
+    selection-foreground=${darkColors.base05}
+
+    palette=0=${darkColors.base00}
+    palette=1=${darkColors.base08}
+    palette=2=${darkColors.base0B}
+    palette=3=${darkColors.base0A}
+    palette=4=${darkColors.base0D}
+    palette=5=${darkColors.base0E}
+    palette=6=${darkColors.base0C}
+    palette=7=${darkColors.base05}
+    palette=8=${darkColors.base03}
+    palette=9=${darkColors.base08}
+    palette=10=${darkColors.base0B}
+    palette=11=${darkColors.base0A}
+    palette=12=${darkColors.base0D}
+    palette=13=${darkColors.base0E}
+    palette=14=${darkColors.base0C}
+    palette=15=${darkColors.base07}
   '';
 }

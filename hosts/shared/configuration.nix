@@ -21,7 +21,6 @@
       enable = true;
       powerOnBoot = true;
     };
-    xpadneo.enable = true; # enables support for the Xbox One controller
   };
 
   #----------------------------------------------------------------------------#
@@ -30,26 +29,11 @@
   boot = {
     loader = {
       systemd-boot.enable = true;
-      timeout = 0;
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
     };
-
-    consoleLogLevel = 3;
-
-    plymouth = { enable = true; };
-
-    initrd = { verbose = false; };
-
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
   };
 
   #----------------------------------------------------------------------------#
@@ -88,23 +72,8 @@
     };
     gamemode.enable = true;
     dconf.enable = true;
-    hyprland = { enable = true; };
     obs-studio = { enable = true; };
   };
-
-  #----------------------------------------------------------------------------#
-  # XDG PORTAL                                                                 #
-  #----------------------------------------------------------------------------#
-  xdg.portal = {
-    enable = true;
-    extraPortals =
-      [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
-    config = {
-      common = { default = [ "gnome" ]; };
-      hyprland = { default = [ "gnome" "hyprland" ]; };
-    };
-    xdgOpenUsePortal = true;
-  }; # this section makes default file chooser to be nautilus (gnome)
 
   #----------------------------------------------------------------------------#
   # SECURITY                                                                   #
@@ -124,56 +93,13 @@
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-
-      wireplumber.configPackages = [
-        (pkgs.writeTextDir
-          "share/wireplumber/wireplumber.conf.d/51-disable-suspension.conf" ''
-            monitor.alsa.rules = [
-              {
-                matches = [
-                  {
-                    node.name = "~alsa_output.*"
-                  }
-                ]
-                actions = {
-                  update-props = {
-                    session.suspend-timeout-seconds = 0
-                  }
-                }
-              }
-            ]
-          '')
-      ];
     };
 
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command =
-            "${pkgs.hyprland}/bin/start-hyprland > $XDG_RUNTIME_DIR/hyprland.log 2>&1";
-          user = "accme";
-        };
-        default_session = initial_session;
-      };
-    };
-
-    blueman.enable = true;
+    desktopManager.plasma6.enable = true;
+    displayManager.plasma-login-manager.enable = true;
 
     envfs.enable = true;
-    xserver.xkb = {
-      layout = "us,ru";
-      variant = "";
-      options = "grp:alt_shift_toggle";
-    };
 
-    libinput = {
-      enable = true;
-      mouse = {
-        accelProfile = "flat";
-        accelSpeed = "0";
-      };
-    };
     keyd = {
       enable = true;
       keyboards = {
@@ -197,14 +123,9 @@
   #----------------------------------------------------------------------------#
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
-  environment.variables = {
-    QT_STYLE_OVERRIDE = "kvantum";
-    EDITOR = "nvim";
-  };
+  environment.variables = { EDITOR = "nvim"; };
 
   environment.sessionVariables = {
-    SDL_JOYSTICK_HIDAPI = "0"; # is required for xpadneo
-
     STEAM_EXTRA_COMPAT_TOOLS_PATHS =
       "\${HOME}/.steam/root/compatibilitytools.d";
 

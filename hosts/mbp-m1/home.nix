@@ -9,10 +9,4 @@
     enableNvm = false;
     enableDirenv = false;
   };
-
-  stylix.desktop = {
-    enableCursor = false;
-    enableWallpaper = false;
-    enableIcons = false;
-  };
 }

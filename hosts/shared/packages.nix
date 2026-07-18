@@ -28,8 +28,6 @@
     unzip # zip file extraction utility
     ollama # running local llms
     pciutils # get hardware info
-    wiremix # audio control
-    playerctl # required by waybar mpris module
     libnotify # notification library
     ghostty # modern terminal emulator
     gowall # image manipulation
@@ -42,7 +40,6 @@
     brave # browser
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pinta # image viewer
-    nautilus # file manager
     protonup-ng # installing proton ge
 
     # Communication & Entertainment
@@ -51,13 +48,6 @@
     discord # chat and voice communication platform
     thunderbird # email client
     transmission_4-gtk # torrent client
-
-    # Wayland Tools
-    xclip # command line interface to X clipboard
-    grim # screenshot utility for wayland
-    slurp # region selector for wayland
-    wl-clipboard # wayland based clipboard command tool
-    bluez
   ];
 
   #----------------------------------------------------------------------------#

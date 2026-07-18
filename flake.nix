@@ -9,17 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       # optional, but recommended if you closely follow NixOS unstable so it shares
       # system libraries, and improves startup time
       # NOTE: if you experience a build failure with Zen, the first thing to check is to remove this line!
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     darwin = {
@@ -33,8 +34,8 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, stylix, darwin, solaar
-    , zen-browser }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, solaar, zen-browser
+    , plasma-manager }: {
       nixosConfigurations = {
         "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
