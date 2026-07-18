@@ -106,7 +106,6 @@
                   imports = [
                     ./hosts/mbp-m1/home.nix
                     ./modules/home-manager/profiles/base.nix
-                    ./modules/home-manager/profiles/darwin.nix
                   ];
                 };
               };

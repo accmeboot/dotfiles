@@ -8,7 +8,7 @@
 
   environment.systemPackages = with pkgs; [
     ffmpegthumbnailer
-    unar
+    # unar
     jq
     poppler
     fd
@@ -25,8 +25,7 @@
 
   homebrew = {
     enable = true;
-    casks = [ "aerospace" "ghostty" ];
-    taps = [ "nikitabobko/aerospace" ];
+    casks = [ "ghostty" ];
   };
 
   system = {
