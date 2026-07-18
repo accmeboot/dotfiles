@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-let colors = import ../colorschemes/material-darker.nix;
-in {
+{ pkgs, ... }: {
   programs.tmux = {
     enable = true;
     shell = "$SHELL";
@@ -60,8 +58,8 @@ in {
       set-option -g renumber-windows on
 
 
-      set -g pane-border-style fg=${colors.base05}
-      set -g pane-active-border-style fg=${colors.base05}
+      set -g pane-border-style fg=colour7
+      set -g pane-active-border-style fg=colour7
 
       set -g status-position top
       set -g window-status-separator "  "
@@ -71,18 +69,18 @@ in {
       set -g "status-format[1]" ""
       set -g status 2
 
-      set -g message-style "fg=${colors.base05},bg=terminal"
-      set -g message-command-style "fg=${colors.base05},bg=terminal"
+      set -g message-style "fg=colour7,bg=terminal"
+      set -g message-command-style "fg=colour7,bg=terminal"
 
-      set -g status-style "fg=${colors.base05},bg=default"
+      set -g status-style "fg=colour7,bg=default"
 
       set -g status-left ""
 
-      set -g window-status-format "#[fg=${colors.base05},bg=terminal]#I:#W"
-      set -g window-status-current-format "#[fg=${colors.base05},bg=${colors.base00}]#[fg=${colors.base00},bg=${colors.base05}]#I:#W#[fg=${colors.base05},bg=${colors.base00}]"
+      set -g window-status-format "#[fg=colour7,bg=terminal]#I:#W"
+      set -g window-status-current-format "#[fg=colour7,bg=colour0]#[fg=colour0,bg=colour7]#I:#W#[fg=colour7,bg=colour0]"
 
       set -g status-right-length 100
-      set -g status-right "#[fg=${colors.base05},bg=terminal] #S"
+      set -g status-right "#[fg=colour7,bg=terminal] #S"
     '';
 
     plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator yank resurrect ];
