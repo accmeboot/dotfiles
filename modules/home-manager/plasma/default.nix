@@ -9,7 +9,7 @@
   programs.plasma = {
     enable = true;
 
-    workspace.wallpaper = "${../../../assets/wallpapers/grass.png}";
+    workspace.wallpaper = "${../../../assets/wallpapers/nixos.png}";
 
     shortcuts = {
       "kwin"."Window Close" = "Meta+C";
