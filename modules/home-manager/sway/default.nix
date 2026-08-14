@@ -25,7 +25,7 @@ in {
       # Your preferred terminal emulator
       set $term ghostty
       # Your preferred application launcher
-      set $menu wmenu-run -N '${colors.base00}' -n '${colors.base05}' -M '${colors.base03}' -m '${colors.base05}' -S '${colors.base0D}' -s '${colors.base00}' -f '${config.stylix.fonts.sansSerif.name} ${
+      set $menu wmenu-run -N '${colors.base00}' -n '${colors.base05}' -M '${colors.base03}' -m '${colors.base05}' -S '${colors.base05}' -s '${colors.base00}' -f '${config.stylix.fonts.sansSerif.name} ${
         toString (config.stylix.fonts.sizes.popups + 3)
       }'
 
@@ -243,14 +243,10 @@ in {
       # Colors:
       #
       # class                 border  backgr. text    indicator child_border
-      client.focused          ${colors.base0D} ${colors.base0D} ${colors.base00} ${colors.base0D} ${colors.base0D}
-      client.focused_inactive ${colors.base02} ${colors.base02} ${colors.base05} ${colors.base02} ${colors.base02}
-      client.unfocused        ${colors.base01} ${colors.base01} ${colors.base03} ${colors.base01} ${colors.base01}
+      client.focused          ${colors.base05} ${colors.base05} ${colors.base00} ${colors.base05} ${colors.base05}
+      client.focused_inactive ${colors.base03} ${colors.base03} ${colors.base05} ${colors.base03} ${colors.base03}
+      client.unfocused        ${colors.base03} ${colors.base03} ${colors.base05} ${colors.base03} ${colors.base03}
       client.urgent           ${colors.base08} ${colors.base08} ${colors.base00} ${colors.base08} ${colors.base08}
-
-
-      default_border pixel 1
-      default_floating_border pixel 1
 
       gaps inner 4
       gaps outer 8
@@ -274,9 +270,9 @@ in {
           colors {
               statusline ${colors.base05}
               background ${colors.base00}
-              focused_workspace ${colors.base0D} ${colors.base0D} ${colors.base00}
-              active_workspace ${colors.base02} ${colors.base02} ${colors.base05}
-              inactive_workspace ${colors.base01} ${colors.base01} ${colors.base03}
+              focused_workspace ${colors.base05} ${colors.base05} ${colors.base00}
+              active_workspace ${colors.base05} ${colors.base05} ${colors.base00}
+              inactive_workspace ${colors.base03} ${colors.base03} ${colors.base05}
               urgent_workspace ${colors.base08} ${colors.base08} ${colors.base00}
               binding_mode ${colors.base0A} ${colors.base0A} ${colors.base00}
           }
