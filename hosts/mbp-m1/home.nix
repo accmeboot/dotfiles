@@ -9,4 +9,6 @@
     enableNvm = false;
     enableDirenv = false;
   };
+
+  ghostty.autoTheme = true;
 }

@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ../plasma/default.nix ]; }
+{ ... }: { imports = [ ../sway/default.nix ../stylix/default.nix ]; }

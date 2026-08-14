@@ -76,6 +76,15 @@
   };
 
   #----------------------------------------------------------------------------#
+  # XDG PORTAL                                                                 #
+  #----------------------------------------------------------------------------#
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    config.common.default = [ "wlr" "gtk" ];
+  };
+
+  #----------------------------------------------------------------------------#
   # SECURITY                                                                   #
   #----------------------------------------------------------------------------#
   security = {
@@ -94,9 +103,6 @@
       pulse.enable = true;
       jack.enable = true;
     };
-
-    desktopManager.plasma6.enable = true;
-    displayManager.plasma-login-manager.enable = true;
 
     envfs.enable = true;
 
@@ -121,8 +127,21 @@
   users.defaultUserShell = pkgs.zsh;
 
   #----------------------------------------------------------------------------#
+  # SYSTEMD                                                                #
+  #----------------------------------------------------------------------------#
+
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.kanshi}/bin/kanshi -c kanshi_config_file";
+    };
+  };
+
+  #----------------------------------------------------------------------------#
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
+
   environment.variables = { EDITOR = "nvim"; };
 
   environment.sessionVariables = {
