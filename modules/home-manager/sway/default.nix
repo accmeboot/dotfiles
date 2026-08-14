@@ -244,8 +244,8 @@ in {
       #
       # class                 border  backgr. text    indicator child_border
       client.focused          ${colors.base05} ${colors.base05} ${colors.base00} ${colors.base05} ${colors.base05}
-      client.focused_inactive ${colors.base03} ${colors.base03} ${colors.base05} ${colors.base03} ${colors.base03}
-      client.unfocused        ${colors.base03} ${colors.base03} ${colors.base05} ${colors.base03} ${colors.base03}
+      client.focused_inactive ${colors.base01} ${colors.base01} ${colors.base05} ${colors.base01} ${colors.base01}
+      client.unfocused        ${colors.base01} ${colors.base01} ${colors.base05} ${colors.base01} ${colors.base01}
       client.urgent           ${colors.base08} ${colors.base08} ${colors.base00} ${colors.base08} ${colors.base08}
 
       gaps inner 4
@@ -272,7 +272,7 @@ in {
               background ${colors.base00}
               focused_workspace ${colors.base05} ${colors.base05} ${colors.base00}
               active_workspace ${colors.base05} ${colors.base05} ${colors.base00}
-              inactive_workspace ${colors.base03} ${colors.base03} ${colors.base05}
+              inactive_workspace ${colors.base01} ${colors.base01} ${colors.base05}
               urgent_workspace ${colors.base08} ${colors.base08} ${colors.base00}
               binding_mode ${colors.base0A} ${colors.base0A} ${colors.base00}
           }
