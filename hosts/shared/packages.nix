@@ -48,16 +48,6 @@
     discord # chat and voice communication platform
     thunderbird # email client
     transmission_4-gtk # torrent client
-
-    # sway deps
-    wl-clipboard
-    grim
-    wireplumber
-    playerctl
-    brightnessctl
-    wmenu
-    wiremix
-    tray-tui
   ];
 
   #----------------------------------------------------------------------------#
