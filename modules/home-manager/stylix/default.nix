@@ -53,6 +53,8 @@ in {
       targets = {
         gtk.enable = !config.isMacos;
         qt.enable = !config.isMacos;
+        fontconfig.enable = !config.isMacos;
+
         yazi.enable = true;
       };
 
