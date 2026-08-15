@@ -46,9 +46,9 @@ in {
       enable = true;
       autoEnable = false;
 
-      polarity = "light";
+      polarity = "dark";
 
-      base16Scheme = colorSchemes.light;
+      base16Scheme = colorSchemes.dark;
 
       targets = {
         gtk.enable = !config.isMacos;
