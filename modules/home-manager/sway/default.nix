@@ -12,6 +12,7 @@ in {
     brightnessctl
     wiremix
     tray-tui
+    xdg-utils
   ];
 
   wayland.windowManager.sway = {
@@ -168,6 +169,20 @@ in {
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
       bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
       bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+      # Special keys to control media via playerctl
+      bindsym --locked XF86AudioPlay exec playerctl play-pause
+      bindsym --locked XF86AudioPause exec playerctl play-pause
+      bindsym --locked XF86AudioPrev exec playerctl previous
+      bindsym --locked XF86AudioNext exec playerctl next
+      bindsym --locked XF86AudioStop exec playerctl stop
+
+      # Special keys to adjust brightness via brightnessctl
+      bindsym --locked XF86MonBrightnessDown exec brightnessctl set 1%-
+      bindsym --locked XF86MonBrightnessUp exec brightnessctl set 1%+
+
+      # Special key to take a screenshot with grim
+      bindsym Print exec grim
     '';
   };
 }
