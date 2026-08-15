@@ -50,7 +50,7 @@ in {
 
       # Output configuration
       output = {
-        "*" = { bg = "${../../../assets/wallpapers/fire.png} fill"; };
+        "*" = { bg = "${config.stylix.image} fill"; };
         "DP-2" = { resolution = "2560x1440@240Hz"; };
       };
 

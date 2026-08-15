@@ -1,10 +1,8 @@
 { pkgs, inputs, lib, config, ... }:
 let
-  # Helper to parse YAML base16 schemes
   parseBase16Scheme = schemeFile:
     let
       yamlContent = builtins.readFile schemeFile;
-      # Use yq to convert YAML to JSON, then parse it
       jsonContent = builtins.fromJSON (builtins.readFile
         (pkgs.runCommand "scheme-to-json" { } ''
           ${pkgs.yq-go}/bin/yq eval -o=json ${schemeFile} > $out
@@ -16,7 +14,6 @@ let
     dark = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   };
 
-  # Parse the color schemes into attribute sets
   parsedSchemes = {
     light = parseBase16Scheme colorSchemes.light;
     dark = parseBase16Scheme colorSchemes.dark;
@@ -49,6 +46,8 @@ in {
       polarity = "dark";
 
       base16Scheme = colorSchemes.dark;
+
+      image = ../../../assets/wallpapers/fire.png;
 
       targets = {
         gtk.enable = !config.isMacos;

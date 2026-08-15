@@ -5,9 +5,10 @@ in {
   programs.swaylock = {
     enable = true;
     settings = {
+      image = config.stylix.image;
       color = "${colors.base00}";
       font-size = config.stylix.fonts.sizes.popups;
-      indicator-idle-visible = false;
+      indicator-idle-visible = true;
       indicator-radius = 100;
 
       ring-color = "${colors.base01}";
