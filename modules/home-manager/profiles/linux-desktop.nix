@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ../sway/default.nix ../stylix/default.nix ]; }
+{ ... }: { imports = [ ../sway/default.nix ]; }

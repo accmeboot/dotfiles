@@ -2,6 +2,7 @@
 
 let colors = config.lib.stylix.colors;
 in {
+  home.packages = [ pkgs.bemenu ];
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -25,9 +26,30 @@ in {
       # Your preferred terminal emulator
       set $term ghostty
       # Your preferred application launcher
-      set $menu wmenu-run -N '${colors.base00}' -n '${colors.base05}' -M '${colors.base03}' -m '${colors.base05}' -S '${colors.base05}' -s '${colors.base00}' -f '${config.stylix.fonts.sansSerif.name} ${
-        toString (config.stylix.fonts.sizes.popups + 3)
-      }'
+      set $menu bemenu-run \
+        -p '❯' \
+        -H ${toString (config.stylix.fonts.sizes.popups + 13)} \
+        --fn '${config.stylix.fonts.sansSerif.name} ${
+          toString config.stylix.fonts.sizes.popups
+        }' \
+        --hp 8 \
+        --cw 1 \
+        --tf '#${colors.base05}' \
+        --tb '#${colors.base00}' \
+        --ff '#${colors.base05}' \
+        --fb '#${colors.base00}' \
+        --cf '#${colors.base05}' \
+        --cb '#${colors.base00}' \
+        --nf '#${colors.base05}' \
+        --nb '#${colors.base00}' \
+        --hf '#${colors.base00}' \
+        --hb '#${colors.base05}' \
+        --fbf '#${colors.base0D}' \
+        --fbb '#${colors.base00}' \
+        --sf '#${colors.base00}' \
+        --sb '#${colors.base05}' \
+        --af '#${colors.base05}' \
+        --ab '#${colors.base00}'
 
       ### Output configuration
       #

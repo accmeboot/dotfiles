@@ -10,5 +10,6 @@
     enableDirenv = false;
   };
 
+  isMacos = true;
   ghostty.autoTheme = true;
 }

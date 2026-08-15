@@ -1,14 +1,14 @@
 { lib, config, ... }:
 let
-  lightColors = import ../colorschemes/cyberdream-light.nix;
-  darkColors = import ../colorschemes/cyberdream.nix;
+  lightColors = config._colorSchemes.light;
+  darkColors = config._colorSchemes.dark;
 
   autoTheme = config.ghostty.autoTheme or false;
   isDarkMode = config.stylix.polarity == "dark";
-  defaultTheme = if isDarkMode then "cyberdream-dark" else "cyberdream-light";
+  defaultTheme = if isDarkMode then "stylix-dark" else "stylix-light";
 
   themeConfig = if autoTheme then
-    "theme=dark:cyberdream-dark,light:cyberdream-light"
+    "theme=dark:stylix-dark,light:stylix-light"
   else
     "theme=${defaultTheme}";
 in {
@@ -35,7 +35,7 @@ in {
       ${themeConfig}
     '';
 
-    home.file.".config/ghostty/themes/cyberdream-light".text = ''
+    home.file.".config/ghostty/themes/stylix-light".text = ''
       background=${lightColors.base00}
       foreground=${lightColors.base05}
       cursor-color=${lightColors.base05}
@@ -60,7 +60,7 @@ in {
       palette=15=${lightColors.base07}
     '';
 
-    home.file.".config/ghostty/themes/cyberdream-dark".text = ''
+    home.file.".config/ghostty/themes/stylix-dark".text = ''
       background=${darkColors.base00}
       foreground=${darkColors.base05}
       cursor-color=${darkColors.base05}
