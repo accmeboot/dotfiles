@@ -28,12 +28,31 @@
   #----------------------------------------------------------------------------#
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true; # if you want to detect other OS
+      };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
     };
+
+    consoleLogLevel = 3;
+
+    plymouth = { enable = true; };
+
+    initrd = { verbose = false; };
+
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
   };
 
   #----------------------------------------------------------------------------#
@@ -73,6 +92,7 @@
     gamemode.enable = true;
     dconf.enable = true;
     obs-studio = { enable = true; };
+    sway.enable = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -104,6 +124,8 @@
       pulse.enable = true;
       jack.enable = true;
     };
+
+    displayManager.ly.enable = true;
 
     envfs.enable = true;
 
