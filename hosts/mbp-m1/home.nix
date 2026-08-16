@@ -11,5 +11,4 @@
   };
 
   isMacos = true;
-  ghostty.autoTheme = true;
 }

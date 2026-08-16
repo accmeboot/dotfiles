@@ -1,34 +1,20 @@
 { pkgs, inputs, lib, config, ... }:
 let
-  parseBase16Scheme = schemeFile:
-    let
-      yamlContent = builtins.readFile schemeFile;
-      jsonContent = builtins.fromJSON (builtins.readFile
-        (pkgs.runCommand "scheme-to-json" { } ''
-          ${pkgs.yq-go}/bin/yq eval -o=json ${schemeFile} > $out
-        ''));
-    in jsonContent.palette or jsonContent;
-
-  colorSchemes = {
-    light = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
-    dark = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+  darkScheme = {
+    image = "${../../../assets/wallpapers/fire.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    polarity = "dark";
   };
-
-  parsedSchemes = {
-    light = parseBase16Scheme colorSchemes.light;
-    dark = parseBase16Scheme colorSchemes.dark;
+  lightSceme = {
+    image = "${../../../assets/wallpapers/fire.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
+    polarity = "light";
   };
 in {
 
   imports = [ inputs.stylix.homeModules.stylix ];
 
   options = {
-    _colorSchemes = lib.mkOption {
-      type = lib.types.attrs;
-      default = parsedSchemes;
-      description = "Light and dark color schemes for stylix";
-    };
-
     isMacos = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -41,20 +27,15 @@ in {
 
     stylix = {
       enable = true;
-      autoEnable = false;
 
-      polarity = "dark";
-
-      base16Scheme = colorSchemes.dark;
-
-      image = ../../../assets/wallpapers/fire.png;
+      polarity = lib.mkDefault darkScheme.polarity;
+      base16Scheme = lib.mkDefault darkScheme.scheme;
+      image = lib.mkDefault darkScheme.image;
 
       targets = {
-        gtk.enable = !config.isMacos;
-        qt.enable = !config.isMacos;
-        fontconfig.enable = !config.isMacos;
-
-        yazi.enable = true;
+        sway.enable = false;
+        swaylock.enable = false;
+        bemenu.enable = false;
       };
 
       fonts = lib.mkIf (!config.isMacos) {
@@ -78,9 +59,63 @@ in {
       icons = lib.mkIf (!config.isMacos) {
         enable = true;
         package = pkgs.papirus-icon-theme;
-        dark = "Papirus";
-        light = "Papirus";
+        dark = "Papirus-Dark";
+        light = "Papirus-Light";
       };
     };
+
+    # this generates separate generation that we can activate manualy
+    specialisation.light.configuration = {
+      stylix = {
+        image = lightSceme.image;
+        base16Scheme = lightSceme.scheme;
+        polarity = lightSceme.polarity;
+      };
+    };
+
+    # Base script
+    home.packages = [
+      (lib.lowPrio (pkgs.writeShellApplication {
+        name = "set-light-theme";
+        runtimeInputs = with pkgs; [ coreutils nix ];
+        text = ''
+          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
+            if [[ -d "$gen/specialisation/light" ]]; then
+              echo "$gen"
+              break
+            fi
+          done)
+
+          if [[ -n "$current_gen" ]]; then
+            echo "Switching to light theme: $current_gen/specialisation/light"
+            "$current_gen"/specialisation/light/activate
+          else
+            echo "No home-manager generation with light specialisation found"
+            exit 1
+          fi
+        '';
+      }))
+
+      (lib.lowPrio (pkgs.writeShellApplication {
+        name = "set-dark-theme";
+        runtimeInputs = with pkgs; [ coreutils nix ];
+        text = ''
+          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
+            if [[ -d "$gen/specialisation/light" ]]; then
+              echo "$gen"
+              break
+            fi
+          done)
+
+          if [[ -n "$current_gen" ]]; then
+            echo "Switching to dark theme: $current_gen"
+            "$current_gen"/activate
+          else
+            echo "Something went terrible wrong ACHTUNG!"
+            exit 1
+          fi
+        '';
+      }))
+    ];
   };
 }
