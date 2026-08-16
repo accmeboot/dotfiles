@@ -9,4 +9,6 @@
     enableNvm = false;
     enableDirenv = false;
   };
+
+  isMacos = true;
 }

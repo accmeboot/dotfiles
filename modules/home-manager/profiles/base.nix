@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ../stylix/default.nix
     ../nvim/default.nix
     ../yazi/default.nix
     ../starship/default.nix

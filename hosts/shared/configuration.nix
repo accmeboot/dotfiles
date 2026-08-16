@@ -28,12 +28,29 @@
   #----------------------------------------------------------------------------#
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true; # if you want to detect other OS
+      };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
       };
     };
+
+    consoleLogLevel = 3;
+
+    initrd = { verbose = false; };
+
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
   };
 
   #----------------------------------------------------------------------------#
@@ -73,6 +90,16 @@
     gamemode.enable = true;
     dconf.enable = true;
     obs-studio = { enable = true; };
+    sway.enable = true;
+  };
+
+  #----------------------------------------------------------------------------#
+  # XDG PORTAL                                                                 #
+  #----------------------------------------------------------------------------#
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    config.common.default = [ "wlr" "gtk" ];
   };
 
   #----------------------------------------------------------------------------#
@@ -81,6 +108,7 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    pam.services.swaylock = { };
   };
 
   #----------------------------------------------------------------------------#
@@ -95,8 +123,7 @@
       jack.enable = true;
     };
 
-    desktopManager.plasma6.enable = true;
-    displayManager.plasma-login-manager.enable = true;
+    displayManager.ly.enable = true;
 
     envfs.enable = true;
 
@@ -121,8 +148,21 @@
   users.defaultUserShell = pkgs.zsh;
 
   #----------------------------------------------------------------------------#
+  # SYSTEMD                                                                #
+  #----------------------------------------------------------------------------#
+
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.kanshi}/bin/kanshi -c kanshi_config_file";
+    };
+  };
+
+  #----------------------------------------------------------------------------#
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
+
   environment.variables = { EDITOR = "nvim"; };
 
   environment.sessionVariables = {
