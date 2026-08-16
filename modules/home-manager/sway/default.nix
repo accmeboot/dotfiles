@@ -32,20 +32,16 @@ in {
       "wireless _first_" = {
         position = 1;
         settings = {
-          format_up = "󰖩 %quality at %essid";
-          format_down = "󰖪 ";
-          separator = true;
-          separator_block_width = 20;
+          format_up = "WiFi: %quality at %essid";
+          format_down = "WiFi: Disconnected";
         };
       };
 
       "ethernet _first_" = {
         position = 2;
         settings = {
-          format_up = "󰈁 %speed";
-          format_down = "󰈂 ";
-          separator = true;
-          separator_block_width = 20;
+          format_up = "Ethernet: %speed";
+          format_down = "Ethernet: Disconnected";
         };
       };
 
@@ -53,50 +49,38 @@ in {
         position = 3;
         settings = {
           format = "%status %percentage %remaining";
-          format_down = "󱉝 ";
-          status_chr = "󱊦 ";
-          status_bat = "󱊣";
-          status_unk = "?";
-          status_full = "󱊣";
+          format_down = "Battery: N/A";
+          status_chr = "Charging:";
+          status_bat = "Battery:";
+          status_unk = "Battery: Unknown";
+          status_full = "Battery: Full";
           path = "/sys/class/power_supply/BAT%d/uevent";
           low_threshold = 10;
-          separator = true;
-          separator_block_width = 20;
         };
       };
 
       "disk /" = {
         position = 4;
-        settings = {
-          format = " %avail";
-          separator = true;
-          separator_block_width = 20;
-        };
+        settings = { format = "Disk: %avail"; };
       };
 
       "load" = {
         position = 5;
-        settings = {
-          format = " %1min";
-          separator = true;
-          separator_block_width = 20;
-        };
+        settings = { format = "Load: %1min"; };
       };
 
       "memory" = {
         position = 6;
         settings = {
-          format = "  %used / %total";
+          format = "Memory: %used / %total";
           threshold_degraded = "1G";
-          format_degraded = "  < %available";
-          separator = true;
-          separator_block_width = 20;
+          format_degraded = "Memory: < %available";
         };
       };
 
       "tztime local" = {
         position = 7;
-        settings = { format = " %H:%M"; };
+        settings = { format = "Time: %H:%M"; };
       };
     };
   };
