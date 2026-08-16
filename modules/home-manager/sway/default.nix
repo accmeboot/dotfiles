@@ -14,6 +14,7 @@ in {
     tray-tui
     xdg-utils
     i3status
+    sway-audio-idle-inhibit
   ];
 
   programs.i3status = {
@@ -222,21 +223,10 @@ in {
         };
       }];
 
-      startup =
-        [{ command = "sleep 5; systemctl --user start kanshi.service"; }];
-
-      window = {
-        commands = [
-          {
-            criteria = { class = ".*"; };
-            command = "inhibit_idle fullscreen";
-          }
-          {
-            criteria = { app_id = ".*"; };
-            command = "inhibit_idle fullscreen";
-          }
-        ];
-      };
+      startup = [
+        { command = "sleep 5; systemctl --user start kanshi.service"; }
+        { command = "sway-audio-idle-inhibit"; }
+      ];
     };
 
     extraConfig = ''
