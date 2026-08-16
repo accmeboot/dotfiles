@@ -36,6 +36,7 @@ in {
         sway.enable = false;
         swaylock.enable = false;
         bemenu.enable = false;
+        starship.enable = false;
       };
 
       fonts = lib.mkIf (!config.isMacos) {

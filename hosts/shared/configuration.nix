@@ -42,8 +42,6 @@
 
     consoleLogLevel = 3;
 
-    plymouth = { enable = true; };
-
     initrd = { verbose = false; };
 
     kernelParams = [
