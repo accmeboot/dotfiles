@@ -104,11 +104,6 @@ in {
         };
       };
 
-      gaps = {
-        inner = 4;
-        outer = 8;
-      };
-
       bars = [{
         position = "top";
 
