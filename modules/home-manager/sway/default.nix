@@ -154,16 +154,22 @@ in {
 
       startup =
         [{ command = "sleep 5; systemctl --user start kanshi.service"; }];
+
+      window = {
+        commands = [
+          {
+            criteria = { class = ".*"; };
+            command = "inhibit_idle fullscreen";
+          }
+          {
+            criteria = { app_id = ".*"; };
+            command = "inhibit_idle fullscreen";
+          }
+        ];
+      };
     };
 
-    # Extra config for idle and includes
     extraConfig = ''
-      # Idle configuration
-      exec swayidle -w \
-           timeout 300 'swaylock' \
-           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-           before-sleep 'swaylock'
-
       # Special keys to adjust volume via PipeWire
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
