@@ -22,6 +22,10 @@ in {
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
+      window = {
+        titlebar = false;
+        border = 2;
+      };
       menu = ''
         bemenu-run \
           -p '❯' \
