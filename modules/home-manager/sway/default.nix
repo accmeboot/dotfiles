@@ -13,7 +13,93 @@ in {
     wiremix
     tray-tui
     xdg-utils
+    i3status
   ];
+
+  programs.i3status = {
+    enable = true;
+    enableDefault = false;
+
+    general = {
+      colors = true;
+      color_good = "#${stylixColors.base0B}";
+      color_degraded = "#${stylixColors.base0A}";
+      color_bad = "#${stylixColors.base08}";
+      interval = 5;
+    };
+
+    modules = {
+      "wireless _first_" = {
+        position = 1;
+        settings = {
+          format_up = "󰖩 %quality at %essid";
+          format_down = "󰖪 ";
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "ethernet _first_" = {
+        position = 2;
+        settings = {
+          format_up = "󰈁 %speed";
+          format_down = "󰈂 ";
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "battery all" = {
+        position = 3;
+        settings = {
+          format = "%status %percentage %remaining";
+          format_down = "󱉝 ";
+          status_chr = "󱊦 ";
+          status_bat = "󱊣";
+          status_unk = "?";
+          status_full = "󱊣";
+          path = "/sys/class/power_supply/BAT%d/uevent";
+          low_threshold = 10;
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "disk /" = {
+        position = 4;
+        settings = {
+          format = " %avail";
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "load" = {
+        position = 5;
+        settings = {
+          format = " %1min";
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "memory" = {
+        position = 6;
+        settings = {
+          format = "  %used / %total";
+          threshold_degraded = "1G";
+          format_degraded = "  < %available";
+          separator = true;
+          separator_block_width = 20;
+        };
+      };
+
+      "tztime local" = {
+        position = 7;
+        settings = { format = " %H:%M"; };
+      };
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -113,7 +199,8 @@ in {
 
         trayOutput = "none";
 
-        statusCommand = "${../../../scripts/sway-status.sh}";
+        # statusCommand = "${../../../scripts/sway-status.sh}";
+        statusCommand = "i3status";
 
         fonts = {
           names = [ config.stylix.fonts.sansSerif.name ];
