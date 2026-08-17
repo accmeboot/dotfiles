@@ -38,7 +38,6 @@
     vlc # video player
     gimp # image editor
     brave # browser
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pinta # image viewer
     protonup-ng # installing proton ge
 

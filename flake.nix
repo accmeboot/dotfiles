@@ -9,14 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      # optional, but recommended if you closely follow NixOS unstable so it shares
-      # system libraries, and improves startup time
-      # NOTE: if you experience a build failure with Zen, the first thing to check is to remove this line!
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,84 +25,83 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, solaar, zen-browser
-    , stylix }: {
-      nixosConfigurations = {
-        "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            solaar.nixosModules.default
-            home-manager.nixosModules.home-manager
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, solaar, stylix }: {
+    nixosConfigurations = {
+      "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          solaar.nixosModules.default
+          home-manager.nixosModules.home-manager
 
-            ./hosts/7950x3d-xtx/default.nix
+          ./hosts/7950x3d-xtx/default.nix
 
-            {
-              home-manager = {
-                useGlobalPkgs = false;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; };
-                users.accme = {
-                  imports = [
-                    ./hosts/7950x3d-xtx/home.nix
-                    ./modules/home-manager/profiles/base.nix
-                    ./modules/home-manager/profiles/linux-desktop.nix
-                  ];
-                };
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+              users.accme = {
+                imports = [
+                  ./hosts/7950x3d-xtx/home.nix
+                  ./modules/home-manager/profiles/base.nix
+                  ./modules/home-manager/profiles/linux-desktop.nix
+                ];
               };
-            }
-          ];
-        };
-
-        "rog16" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            home-manager.nixosModules.home-manager
-
-            ./hosts/rog16/default.nix
-
-            {
-              home-manager = {
-                useGlobalPkgs = false;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; };
-                users.accme = {
-                  imports = [
-                    ./hosts/rog16/home.nix
-                    ./modules/home-manager/profiles/base.nix
-                    ./modules/home-manager/profiles/linux-desktop.nix
-                  ];
-                };
-              };
-            }
-          ];
-        };
+            };
+          }
+        ];
       };
 
-      darwinConfigurations = {
-        "mbp-m1" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [
-            ./hosts/mbp-m1/default.nix
+      "rog16" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          home-manager.nixosModules.home-manager
 
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; };
-                users.Mikhail_Vialov = {
-                  imports = [
-                    ./hosts/mbp-m1/home.nix
-                    ./modules/home-manager/profiles/base.nix
-                  ];
-                };
+          ./hosts/rog16/default.nix
+
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+              users.accme = {
+                imports = [
+                  ./hosts/rog16/home.nix
+                  ./modules/home-manager/profiles/base.nix
+                  ./modules/home-manager/profiles/linux-desktop.nix
+                ];
               };
-            }
-          ];
-        };
+            };
+          }
+        ];
       };
     };
+
+    darwinConfigurations = {
+      "mbp-m1" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/mbp-m1/default.nix
+
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+              users.Mikhail_Vialov = {
+                imports = [
+                  ./hosts/mbp-m1/home.nix
+                  ./modules/home-manager/profiles/base.nix
+                ];
+              };
+            };
+          }
+        ];
+      };
+    };
+  };
 }
