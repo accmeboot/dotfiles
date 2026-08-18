@@ -27,13 +27,15 @@
   # BOOT & KERNEL                                                              #
   #----------------------------------------------------------------------------#
   boot = {
+    plymouth = {
+      enable = true;
+      theme = "glow";
+    };
+
     loader = {
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true; # if you want to detect other OS
-      };
+      systemd-boot.enable = true;
+      timeout = 0;
+
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot";
@@ -44,13 +46,8 @@
 
     initrd = { verbose = false; };
 
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "udev.log_priority=3"
-      "rd.systemd.show_status=auto"
-    ];
+    kernelParams =
+      [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" ];
   };
 
   #----------------------------------------------------------------------------#
@@ -127,7 +124,8 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+          command =
+            "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-user-session";
           user = "greeter";
         };
       };
