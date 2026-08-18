@@ -123,7 +123,15 @@
       jack.enable = true;
     };
 
-    displayManager.ly.enable = true;
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "greeter";
+        };
+      };
+    };
 
     envfs.enable = true;
 
