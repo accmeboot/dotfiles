@@ -32,6 +32,7 @@
     ghostty # modern terminal emulator
     gowall # image manipulation
     lm_sensors # hardware info
+    claude-code # Agentic coding tool
 
     # Media & Viewers
     mpv # video player
