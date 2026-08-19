@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }:
+let theme = import ../../theme.nix { inherit pkgs lib; };
+in {
   imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
@@ -95,8 +97,15 @@
   #----------------------------------------------------------------------------#
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
-    config.common.default = [ "wlr" "gtk" ];
+    xdgOpenUsePortal = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    wlr.enable = true;
+    wlr.settings.screencast = {
+      output_name = "";
+      chooser_type = "dmenu";
+      chooser_cmd = "${theme.bemenuWrapper}";
+    };
   };
 
   #----------------------------------------------------------------------------#
@@ -178,5 +187,7 @@
     LUA_PATH =
       "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
+
+    XDG_CURRENT_DESKTOP = "sway";
   };
 }

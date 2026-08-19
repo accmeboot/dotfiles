@@ -1,15 +1,8 @@
 { pkgs, inputs, lib, config, ... }:
 let
-  darkScheme = {
-    image = "${../../../assets/wallpapers/fire.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-    polarity = "dark";
-  };
-  lightSceme = {
-    image = "${../../../assets/wallpapers/fire.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
-    polarity = "light";
-  };
+  theme = import ../../../theme.nix { inherit pkgs lib; };
+  darkScheme = theme.darkScheme;
+  lightScheme = theme.lightScheme;
 in {
 
   imports = [ inputs.stylix.homeModules.stylix ];
@@ -68,9 +61,9 @@ in {
     # this generates separate generation that we can activate manualy
     specialisation.light.configuration = {
       stylix = {
-        image = lightSceme.image;
-        base16Scheme = lightSceme.scheme;
-        polarity = lightSceme.polarity;
+        image = lightScheme.image;
+        base16Scheme = lightScheme.scheme;
+        polarity = lightScheme.polarity;
       };
     };
 

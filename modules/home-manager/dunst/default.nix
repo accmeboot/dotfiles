@@ -13,7 +13,7 @@ in {
         frame_width = 1;
         gap_size = 4;
         max_icon_size = 128;
-        dmenu = "${pkgs.bemenu}/bin/bemenu -p 'Select:'";
+        dmenu = "${pkgs.bemenu}/bin/bemenu";
         min_icon_size = 32;
         text_icon_padding = 8;
         vertical_alignment = "center";

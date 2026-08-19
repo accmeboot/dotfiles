@@ -6,6 +6,7 @@ in {
     swayidle
     wl-clipboard
     grim
+    slurp
     wireplumber
     playerctl
     brightnessctl
