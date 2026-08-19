@@ -31,8 +31,7 @@ in {
     }
 
     window {
-    	location: north;
-    	width: 100%;
+    	location: north west;
       y-offset: -25px;
     	background-color: #${colors.base00};
       border-radius: 0px;
@@ -76,8 +75,10 @@ in {
 
     listview {
     	layout: horizontal;
+      flow: horizontal;
+      dynamic: true;
+      cycle: true;
       border: inherit;
-      lines: 100;
       padding: 0;
     }
 
