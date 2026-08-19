@@ -27,7 +27,7 @@ in {
         titlebar = false;
         border = 2;
       };
-      menu = "bemenu-run ${config.programs.bemenu.opts}";
+      menu = "${pkgs.rofi}/bin/rofi -show run";
 
       # Output configuration
       output = {

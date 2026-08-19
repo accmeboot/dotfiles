@@ -1,6 +1,4 @@
-{ pkgs, lib, ... }:
-let theme = import ../../theme.nix { inherit pkgs lib; };
-in {
+{ pkgs, ... }: {
   imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
@@ -104,7 +102,7 @@ in {
     wlr.settings.screencast = {
       output_name = "";
       chooser_type = "dmenu";
-      chooser_cmd = "${theme.bemenuWrapper}";
+      chooser_cmd = "${pkgs.rofi}/bin/rofi -dmenu -p 'Source:'";
     };
   };
 

@@ -1,8 +1,15 @@
 { pkgs, inputs, lib, config, ... }:
 let
-  theme = import ../../../theme.nix { inherit pkgs lib; };
-  darkScheme = theme.darkScheme;
-  lightScheme = theme.lightScheme;
+  darkScheme = {
+    image = "${../../../assets/wallpapers/fire.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    polarity = "dark";
+  };
+  lightScheme = {
+    image = "${../../../assets/wallpapers/fire.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
+    polarity = "light";
+  };
 in {
 
   imports = [ inputs.stylix.homeModules.stylix ];

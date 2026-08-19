@@ -13,7 +13,7 @@ in {
         frame_width = 1;
         gap_size = 4;
         max_icon_size = 128;
-        dmenu = "${pkgs.bemenu}/bin/bemenu";
+        dmenu = "${pkgs.rofi}/bin/rofi -dmenu -p 'Action:'";
         min_icon_size = 32;
         text_icon_padding = 8;
         vertical_alignment = "center";
