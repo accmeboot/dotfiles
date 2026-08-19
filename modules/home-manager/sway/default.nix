@@ -3,7 +3,6 @@
 let stylixColors = config.lib.stylix.colors;
 in {
   home.packages = with pkgs; [
-    bemenu
     swayidle
     wl-clipboard
     grim
@@ -13,78 +12,8 @@ in {
     wiremix
     tray-tui
     xdg-utils
-    i3status
     sway-audio-idle-inhibit
   ];
-
-  programs.i3status = {
-    enable = true;
-    enableDefault = false;
-
-    general = {
-      colors = true;
-      color_good = "#${stylixColors.base0B}";
-      color_degraded = "#${stylixColors.base0A}";
-      color_bad = "#${stylixColors.base08}";
-      interval = 5;
-    };
-
-    modules = {
-      "wireless _first_" = {
-        position = 1;
-        settings = {
-          format_up = "WiFi: %quality at %essid";
-          format_down = "WiFi: Disconnected";
-        };
-      };
-
-      "ethernet _first_" = {
-        position = 2;
-        settings = {
-          format_up = "Ethernet: %speed";
-          format_down = "Ethernet: Disconnected";
-        };
-      };
-
-      "battery all" = {
-        position = 3;
-        settings = {
-          format = "%status %percentage %remaining";
-          format_down = "Battery: N/A";
-          status_chr = "Charging:";
-          status_bat = "Battery:";
-          status_unk = "Battery: Unknown";
-          status_full = "Battery: Full";
-          path = "/sys/class/power_supply/BAT%d/uevent";
-          low_threshold = 10;
-        };
-      };
-
-      "disk /" = {
-        position = 4;
-        settings = { format = "Disk: %avail"; };
-      };
-
-      "load" = {
-        position = 5;
-        settings = { format = "Load: %1min"; };
-      };
-
-      "memory" = {
-        position = 6;
-        settings = {
-          format = "Memory: %used / %total";
-          threshold_degraded = "1G";
-          format_degraded = "Memory: < %available";
-        };
-      };
-
-      "tztime local" = {
-        position = 7;
-        settings = { format = "Time: %H:%M"; };
-      };
-    };
-  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -97,32 +26,7 @@ in {
         titlebar = false;
         border = 2;
       };
-      menu = ''
-        bemenu-run \
-          -p '❯' \
-          -H ${toString (config.stylix.fonts.sizes.popups + 13)} \
-          --fn '${config.stylix.fonts.sansSerif.name} ${
-            toString config.stylix.fonts.sizes.popups
-          }' \
-          --hp 8 \
-          --cw 1 \
-          --tf '#${stylixColors.base05}' \
-          --tb '#${stylixColors.base00}' \
-          --ff '#${stylixColors.base05}' \
-          --fb '#${stylixColors.base00}' \
-          --cf '#${stylixColors.base05}' \
-          --cb '#${stylixColors.base00}' \
-          --nf '#${stylixColors.base05}' \
-          --nb '#${stylixColors.base00}' \
-          --hf '#${stylixColors.base00}' \
-          --hb '#${stylixColors.base05}' \
-          --fbf '#${stylixColors.base0D}' \
-          --fbb '#${stylixColors.base00}' \
-          --sf '#${stylixColors.base00}' \
-          --sb '#${stylixColors.base05}' \
-          --af '#${stylixColors.base05}' \
-          --ab '#${stylixColors.base00}'
-      '';
+      menu = "bemenu-run ${config.programs.bemenu.opts}";
 
       # Output configuration
       output = {
