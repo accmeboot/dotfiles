@@ -9,7 +9,7 @@ in {
         height = "(0,200)";
         offset = "(24, 24)";
         corner_radius = 0;
-        icon_corner_radius = 100;
+        icon_corner_radius = 0;
         frame_width = 1;
         gap_size = 4;
         max_icon_size = 128;
