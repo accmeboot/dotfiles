@@ -1,12 +1,12 @@
 { pkgs, inputs, lib, config, ... }:
 let
   darkScheme = {
-    image = "${../../../assets/wallpapers/fire.png}";
+    image = "${../../../assets/wallpapers/earth.png}";
     scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
     polarity = "dark";
   };
   lightScheme = {
-    image = "${../../../assets/wallpapers/fire.png}";
+    image = "${../../../assets/wallpapers/earth.png}";
     scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
     polarity = "light";
   };
@@ -59,9 +59,9 @@ in {
 
       icons = lib.mkIf (!config.isMacos) {
         enable = true;
-        package = pkgs.papirus-icon-theme;
-        dark = "Papirus-Dark";
-        light = "Papirus-Light";
+        package = pkgs.gruvbox-plus-icons;
+        dark = "Gruvbox-Plus-Dark";
+        light = "Gruvbox-Plus-Light";
       };
     };
 

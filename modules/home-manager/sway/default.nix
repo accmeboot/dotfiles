@@ -87,9 +87,6 @@ in {
       bars = [{
         position = "top";
 
-        trayOutput = "none";
-
-        # statusCommand = "${../../../scripts/sway-status.sh}";
         statusCommand = "i3status";
 
         fonts = {
