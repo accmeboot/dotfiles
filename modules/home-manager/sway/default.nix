@@ -87,6 +87,8 @@ in {
       bars = [{
         position = "top";
 
+        trayOutput = "none";
+
         statusCommand = "i3status";
 
         fonts = {
