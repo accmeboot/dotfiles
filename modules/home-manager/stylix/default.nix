@@ -59,9 +59,9 @@ in {
 
       icons = lib.mkIf (!config.isMacos) {
         enable = true;
-        package = pkgs.gruvbox-plus-icons;
-        dark = "Gruvbox-Plus-Dark";
-        light = "Gruvbox-Plus-Light";
+        package = pkgs.papirus-icon-theme;
+        dark = "Papirus-Dark";
+        light = "Papirus-Light";
       };
     };
 
