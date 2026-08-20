@@ -76,8 +76,8 @@
 
       set -g status-left ""
 
-      set -g window-status-format "#[fg=colour7,bg=terminal]#I:#W"
-      set -g window-status-current-format "#[fg=colour7,bg=colour0]#[fg=colour0,bg=colour7]#I:#W#[fg=colour7,bg=colour0]"
+      set -g window-status-format "#[fg=colour7,bg=terminal] #I:#W "
+      set -g window-status-current-format "#[fg=colour0,bg=colour7] #I:#W "
 
       set -g status-right-length 100
       set -g status-right "#[fg=colour7,bg=terminal] #S"
