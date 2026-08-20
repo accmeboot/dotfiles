@@ -21,7 +21,7 @@
 
     # Terminal Utilities
     fzf # command-line fuzzy finder
-    btop # resource monitor
+    bottom # resource monitor
     fd # fast alternative to 'find'
     ripgrep # fast alternative to grep
     jq # command-line JSON processor
