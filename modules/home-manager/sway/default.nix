@@ -3,7 +3,6 @@
 let stylixColors = config.lib.stylix.colors;
 in {
   home.packages = with pkgs; [
-    swayidle
     wl-clipboard
     grim
     slurp
@@ -13,7 +12,6 @@ in {
     wiremix
     tray-tui
     xdg-utils
-    sway-audio-idle-inhibit
   ];
 
   wayland.windowManager.sway = {
@@ -223,10 +221,8 @@ in {
         };
       }];
 
-      startup = [
-        { command = "sleep 5; systemctl --user start kanshi.service"; }
-        { command = "sway-audio-idle-inhibit"; }
-      ];
+      startup =
+        [{ command = "sleep 5; systemctl --user start kanshi.service"; }];
     };
 
     extraConfig = ''
