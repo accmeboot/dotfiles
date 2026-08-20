@@ -28,14 +28,10 @@ in {
         border = 2;
       };
       menu = "${pkgs.rofi}/bin/rofi -show run";
-
-      # Output configuration
       output = {
         "*" = { bg = "${config.stylix.image} fill"; };
         "DP-2" = { resolution = "2560x1440@240Hz"; };
       };
-
-      # Input configuration
       input = {
         "type:pointer" = {
           accel_profile = "flat";
@@ -52,7 +48,6 @@ in {
           xkb_options = "grp:alt_shift_toggle";
         };
       };
-
       colors = {
         focused = {
           border = "#${stylixColors.base05}";
@@ -81,6 +76,107 @@ in {
           text = "#${stylixColors.base00}";
           indicator = "#${stylixColors.base08}";
           childBorder = "#${stylixColors.base08}";
+        };
+      };
+
+      keybindings = let
+        modifier = config.wayland.windowManager.sway.config.modifier;
+        terminal = config.wayland.windowManager.sway.config.terminal;
+        menu = config.wayland.windowManager.sway.config.menu;
+      in {
+        # Terminal
+        "${modifier}+Return" = "exec ${terminal}";
+
+        # Kill focused window
+        "${modifier}+Shift+q" = "kill";
+
+        # Reload configuration
+        "${modifier}+Shift+c" = "reload";
+
+        # Exit sway
+        "${modifier}+Shift+e" =
+          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+
+        # Start launcher
+        "${modifier}+d" = "exec ${menu}";
+
+        # Focus
+        "${modifier}+h" = "focus left";
+        "${modifier}+j" = "focus down";
+        "${modifier}+k" = "focus up";
+        "${modifier}+l" = "focus right";
+        "${modifier}+Left" = "focus left";
+        "${modifier}+Down" = "focus down";
+        "${modifier}+Up" = "focus up";
+        "${modifier}+Right" = "focus right";
+
+        # Move
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+j" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+l" = "move right";
+        "${modifier}+Shift+Left" = "move left";
+        "${modifier}+Shift+Down" = "move down";
+        "${modifier}+Shift+Up" = "move up";
+        "${modifier}+Shift+Right" = "move right";
+
+        # Workspaces
+        "${modifier}+1" = "workspace one";
+        "${modifier}+2" = "workspace two";
+        "${modifier}+3" = "workspace three";
+        "${modifier}+4" = "workspace four";
+        "${modifier}+5" = "workspace five";
+        "${modifier}+6" = "workspace six";
+        "${modifier}+7" = "workspace seven";
+        "${modifier}+8" = "workspace eight";
+        "${modifier}+9" = "workspace nine";
+        "${modifier}+0" = "workspace ten";
+
+        # Move to workspace
+        "${modifier}+Shift+1" = "move container to workspace one";
+        "${modifier}+Shift+2" = "move container to workspace two";
+        "${modifier}+Shift+3" = "move container to workspace three";
+        "${modifier}+Shift+4" = "move container to workspace four";
+        "${modifier}+Shift+5" = "move container to workspace five";
+        "${modifier}+Shift+6" = "move container to workspace six";
+        "${modifier}+Shift+7" = "move container to workspace seven";
+        "${modifier}+Shift+8" = "move container to workspace eight";
+        "${modifier}+Shift+9" = "move container to workspace nine";
+        "${modifier}+Shift+0" = "move container to workspace ten";
+
+        # Layout
+        "${modifier}+b" = "splith";
+        "${modifier}+v" = "splitv";
+        "${modifier}+f" = "fullscreen toggle";
+        "${modifier}+a" = "focus parent";
+        "${modifier}+s" = "layout stacking";
+        "${modifier}+w" = "layout tabbed";
+        "${modifier}+e" = "layout toggle split";
+
+        # Floating
+        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+space" = "focus mode_toggle";
+
+        # Scratchpad
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
+
+        # Resize mode
+        "${modifier}+r" = "mode resize";
+      };
+
+      modes = {
+        resize = {
+          "h" = "resize shrink width 10 px";
+          "j" = "resize grow height 10 px";
+          "k" = "resize shrink height 10 px";
+          "l" = "resize grow width 10 px";
+          "Left" = "resize shrink width 10 px";
+          "Down" = "resize grow height 10 px";
+          "Up" = "resize shrink height 10 px";
+          "Right" = "resize grow width 10 px";
+          "Return" = "mode default";
+          "Escape" = "mode default";
         };
       };
 
