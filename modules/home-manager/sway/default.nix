@@ -21,14 +21,6 @@ in {
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
-      window = {
-        titlebar = false;
-        border = 3;
-      };
-      gaps = {
-        inner = 4;
-        outer = 6;
-      };
       menu = "${pkgs.rofi}/bin/rofi -show run";
       output = {
         "*" = { bg = "${config.stylix.image} fill"; };
