@@ -1,13 +1,13 @@
 { pkgs, inputs, lib, config, ... }:
 let
   darkScheme = {
-    image = "${../../../assets/wallpapers/earth.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    image = "${../../../assets/wallpapers/sway.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/0x96f.yaml";
     polarity = "dark";
   };
   lightScheme = {
-    image = "${../../../assets/wallpapers/earth.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
+    image = "${../../../assets/wallpapers/sway.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/classic-light.yaml";
     polarity = "light";
   };
 in {

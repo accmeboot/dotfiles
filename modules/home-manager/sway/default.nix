@@ -23,7 +23,11 @@ in {
       terminal = "ghostty";
       window = {
         titlebar = false;
-        border = 2;
+        border = 3;
+      };
+      gaps = {
+        inner = 4;
+        outer = 6;
       };
       menu = "${pkgs.rofi}/bin/rofi -show run";
       output = {
@@ -48,11 +52,11 @@ in {
       };
       colors = {
         focused = {
-          border = "#${stylixColors.base05}";
-          background = "#${stylixColors.base05}";
+          border = "#${stylixColors.base0D}";
+          background = "#${stylixColors.base0D}";
           text = "#${stylixColors.base00}";
-          indicator = "#${stylixColors.base05}";
-          childBorder = "#${stylixColors.base05}";
+          indicator = "#${stylixColors.base0D}";
+          childBorder = "#${stylixColors.base0D}";
         };
         focusedInactive = {
           border = "#${stylixColors.base01}";
@@ -194,13 +198,13 @@ in {
           statusline = "#${stylixColors.base05}";
           background = "#${stylixColors.base00}";
           focusedWorkspace = {
-            border = "#${stylixColors.base05}";
-            background = "#${stylixColors.base05}";
+            border = "#${stylixColors.base0D}";
+            background = "#${stylixColors.base0D}";
             text = "#${stylixColors.base00}";
           };
           activeWorkspace = {
-            border = "#${stylixColors.base05}";
-            background = "#${stylixColors.base05}";
+            border = "#${stylixColors.base0D}";
+            background = "#${stylixColors.base0D}";
             text = "#${stylixColors.base00}";
           };
           inactiveWorkspace = {
