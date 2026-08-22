@@ -52,11 +52,11 @@ in {
       };
       colors = {
         focused = {
-          border = "#${stylixColors.base0D}";
-          background = "#${stylixColors.base0D}";
+          border = "#${stylixColors.base05}";
+          background = "#${stylixColors.base05}";
           text = "#${stylixColors.base00}";
-          indicator = "#${stylixColors.base0D}";
-          childBorder = "#${stylixColors.base0D}";
+          indicator = "#${stylixColors.base05}";
+          childBorder = "#${stylixColors.base05}";
         };
         focusedInactive = {
           border = "#${stylixColors.base01}";
@@ -198,13 +198,13 @@ in {
           statusline = "#${stylixColors.base05}";
           background = "#${stylixColors.base00}";
           focusedWorkspace = {
-            border = "#${stylixColors.base0D}";
-            background = "#${stylixColors.base0D}";
+            border = "#${stylixColors.base05}";
+            background = "#${stylixColors.base05}";
             text = "#${stylixColors.base00}";
           };
           activeWorkspace = {
-            border = "#${stylixColors.base0D}";
-            background = "#${stylixColors.base0D}";
+            border = "#${stylixColors.base05}";
+            background = "#${stylixColors.base05}";
             text = "#${stylixColors.base00}";
           };
           inactiveWorkspace = {

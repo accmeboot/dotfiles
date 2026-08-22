@@ -107,7 +107,7 @@ in {
     }
 
     element selected.normal {
-    	background-color: #${colors.base0D};
+    	background-color: #${colors.base05};
     	text-color: #${colors.base00};
     }
 
@@ -117,7 +117,7 @@ in {
 
     element selected.active {
     	text-color: #${colors.base00};
-    	background-color: #${colors.base0D};
+    	background-color: #${colors.base05};
     }
 
     element alternate.normal {
