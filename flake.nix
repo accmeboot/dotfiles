@@ -14,24 +14,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    solaar = {
-      url = "github:Svenum/Solaar-Flake/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, solaar, stylix }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, stylix }: {
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          solaar.nixosModules.default
           home-manager.nixosModules.home-manager
 
           ./hosts/7950x3d-xtx/default.nix

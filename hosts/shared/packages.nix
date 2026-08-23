@@ -48,6 +48,9 @@
     discord # chat and voice communication platform
     thunderbird # email client
     transmission_4-gtk # torrent client
+
+    # accessories
+    solaar
   ];
 
   #----------------------------------------------------------------------------#
