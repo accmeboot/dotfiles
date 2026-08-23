@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   #----------------------------------------------------------------------------#
   # SYSTEM PACKAGES                                                             #
   #----------------------------------------------------------------------------#
@@ -40,7 +40,7 @@
     gimp # image editor
     brave # browser
     pinta # image viewer
-    protonup-ng # installing proton ge
+    protonup-rs # installing proton ge
 
     # Communication & Entertainment
     telegram-desktop # messaging application
