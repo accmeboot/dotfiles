@@ -29,10 +29,6 @@ in {
         };
         "DP-2" = { resolution = "2560x1440@240Hz"; };
       };
-      fonts = {
-        names = [ config.stylix.fonts.sansSerif.name ];
-        size = config.stylix.fonts.sizes.desktop * 1.11;
-      };
       input = {
         "type:pointer" = {
           accel_profile = "flat";
@@ -130,8 +126,6 @@ in {
     };
 
     extraConfig = ''
-      title_align center
-
       # Special keys to adjust volume via PipeWire
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
