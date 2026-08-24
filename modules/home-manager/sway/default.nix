@@ -102,8 +102,8 @@ in {
             text = "#${stylixColors.base00}";
           };
           inactiveWorkspace = {
-            border = "#${stylixColors.base01}";
-            background = "#${stylixColors.base01}";
+            border = "#${stylixColors.base00}";
+            background = "#${stylixColors.base00}";
             text = "#${stylixColors.base05}";
           };
           urgentWorkspace = {
