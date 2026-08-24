@@ -12,7 +12,7 @@ let
   };
 in {
 
-  imports = [ inputs.stylix.homeModules.stylix ];
+  imports = [ inputs.stylix.homeModules.stylix ./polarity-toggle.nix ];
 
   options = {
     isMacos = lib.mkOption {
@@ -65,7 +65,6 @@ in {
       };
     };
 
-    # this generates separate generation that we can activate manualy
     specialisation.light.configuration = {
       stylix = {
         image = lightScheme.image;
@@ -73,50 +72,5 @@ in {
         polarity = lightScheme.polarity;
       };
     };
-
-    # Base script
-    home.packages = [
-      (lib.lowPrio (pkgs.writeShellApplication {
-        name = "set-light-theme";
-        runtimeInputs = with pkgs; [ coreutils nix ];
-        text = ''
-          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
-            if [[ -d "$gen/specialisation/light" ]]; then
-              echo "$gen"
-              break
-            fi
-          done)
-
-          if [[ -n "$current_gen" ]]; then
-            echo "Switching to light theme: $current_gen/specialisation/light"
-            "$current_gen"/specialisation/light/activate
-          else
-            echo "No home-manager generation with light specialisation found"
-            exit 1
-          fi
-        '';
-      }))
-
-      (lib.lowPrio (pkgs.writeShellApplication {
-        name = "set-dark-theme";
-        runtimeInputs = with pkgs; [ coreutils nix ];
-        text = ''
-          current_gen=$(nix-store --query --requisites /run/current-system | grep "home-manager-generation$" | while read -r gen; do
-            if [[ -d "$gen/specialisation/light" ]]; then
-              echo "$gen"
-              break
-            fi
-          done)
-
-          if [[ -n "$current_gen" ]]; then
-            echo "Switching to dark theme: $current_gen"
-            "$current_gen"/activate
-          else
-            echo "Something went terrible wrong ACHTUNG!"
-            exit 1
-          fi
-        '';
-      }))
-    ];
   };
 }
