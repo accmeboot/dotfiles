@@ -101,8 +101,8 @@
     wlr.enable = true;
     wlr.settings.screencast = {
       output_name = "";
-      chooser_type = "dmenu";
-      chooser_cmd = "${pkgs.rofi}/bin/rofi -dmenu -p 'Source:'";
+      chooser_type = "simple";
+      chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
     };
   };
 
