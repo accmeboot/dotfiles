@@ -76,48 +76,7 @@ in {
         };
       };
 
-      bars = [{
-        position = "top";
-
-        trayOutput = "none";
-
-        statusCommand = "i3status";
-
-        fonts = {
-          names = [ config.stylix.fonts.sansSerif.name ];
-          size = config.stylix.fonts.sizes.popups * 1.0;
-        };
-
-        colors = {
-          statusline = "#${stylixColors.base05}";
-          background = "#${stylixColors.base00}";
-          focusedWorkspace = {
-            border = "#${stylixColors.base05}";
-            background = "#${stylixColors.base05}";
-            text = "#${stylixColors.base00}";
-          };
-          activeWorkspace = {
-            border = "#${stylixColors.base05}";
-            background = "#${stylixColors.base05}";
-            text = "#${stylixColors.base00}";
-          };
-          inactiveWorkspace = {
-            border = "#${stylixColors.base00}";
-            background = "#${stylixColors.base00}";
-            text = "#${stylixColors.base05}";
-          };
-          urgentWorkspace = {
-            border = "#${stylixColors.base08}";
-            background = "#${stylixColors.base08}";
-            text = "#${stylixColors.base00}";
-          };
-          bindingMode = {
-            border = "#${stylixColors.base0A}";
-            background = "#${stylixColors.base0A}";
-            text = "#${stylixColors.base00}";
-          };
-        };
-      }];
+      bars = [ ];
 
       startup = [
         { command = "sleep 5; systemctl --user start kanshi.service"; }

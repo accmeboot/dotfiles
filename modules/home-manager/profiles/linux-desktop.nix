@@ -6,5 +6,6 @@
     ../i3status/default.nix
     ../dunst/default.nix
     ../rofi/default.nix
+    ../quickshell/default.nix
   ];
 }

@@ -45,7 +45,7 @@ in {
         monospace = { name = "JetBrainsMono Nerd Font"; };
         sizes = {
           applications = 10;
-          desktop = 10;
+          desktop = 12;
           popups = 12;
           terminal = 12;
         };

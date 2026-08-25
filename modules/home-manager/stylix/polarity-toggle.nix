@@ -23,6 +23,7 @@ let
         "$current_gen"${subdir}/activate
 
         pkill -USR2 ghostty || true
+        qs ipc call settings reload || true
       '';
     });
 in {
