@@ -21,7 +21,7 @@ in {
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
-      menu = "${pkgs.rofi}/bin/rofi -show run";
+      menu = "qs ipc call dmenu toggle";
       output = {
         "*" = {
           bg = "${config.stylix.image} fill";
