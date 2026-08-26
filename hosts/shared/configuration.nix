@@ -27,11 +27,6 @@
   # BOOT & KERNEL                                                              #
   #----------------------------------------------------------------------------#
   boot = {
-    plymouth = {
-      enable = true;
-      theme = "glow";
-    };
-
     loader = {
       systemd-boot.enable = true;
       timeout = 0;
