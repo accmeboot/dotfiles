@@ -1,7 +1,7 @@
 { config, ... }: {
   programs.quickshell = {
     enable = true;
-    # systemd.enable = true;
+    systemd.enable = true;
   };
 
   home.file.".config/quickshell/settings.json".text = ''
