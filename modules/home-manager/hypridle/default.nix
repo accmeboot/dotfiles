@@ -10,16 +10,16 @@
 
       listener = [
         {
-          timeout = 60;
+          timeout = 300;
           on-timeout = "swaylock -f";
         }
         {
-          timeout = 120;
+          timeout = 360;
           on-timeout = "swaymsg 'output * power off'";
           on-resume = "swaymsg 'output * power on'";
         }
         {
-          timeout = 180;
+          timeout = 480;
           on-timeout = "systemctl suspend";
         }
       ];
