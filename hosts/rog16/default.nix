@@ -32,6 +32,7 @@
       middleEmulation = false;
       scrollMethod = "twofinger";
     };
+    upower.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ brightnessctl ];
