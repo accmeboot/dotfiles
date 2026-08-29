@@ -30,6 +30,10 @@
       },
       "workspaces": {
         "persistent": true
+      },
+      "spacing": {
+        "horizontal": 20,
+        "vertical": 5
       }
     }
   '';

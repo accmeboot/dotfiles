@@ -27,6 +27,7 @@
   # BOOT & KERNEL                                                              #
   #----------------------------------------------------------------------------#
   boot = {
+    plymouth.enable = true;
     loader = {
       systemd-boot.enable = true;
       timeout = 0;
