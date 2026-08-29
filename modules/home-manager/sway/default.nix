@@ -79,6 +79,7 @@ in {
       bars = [ ];
 
       startup = [
+        { command = "swaylock -f"; }
         { command = "sleep 5; systemctl --user start kanshi.service"; }
         { command = "solaar --window=hide"; }
         { command = "${../../../scripts/stylix-autotheme-switch.sh}"; }

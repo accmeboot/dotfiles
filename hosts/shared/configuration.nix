@@ -43,7 +43,7 @@
     initrd = { verbose = false; };
 
     kernelParams =
-      [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" ];
+      [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" "splash" ];
   };
 
   #----------------------------------------------------------------------------#
@@ -125,12 +125,12 @@
 
     greetd = {
       enable = true;
-      settings = {
-        default_session = {
-          command =
-            "${pkgs.tuigreet}/bin/tuigreet --time --cmd sway --remember --remember-user-session";
-          user = "greeter";
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.sway}/bin/sway";
+          user = "accme";
         };
+        default_session = initial_session;
       };
     };
 
