@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   programs.quickshell = {
     enable = true;
     systemd.enable = true;
@@ -37,4 +37,6 @@
       }
     }
   '';
+
+  home.packages = with pkgs; [ qt6.qt5compat ];
 }
