@@ -47,11 +47,11 @@ in {
       };
       colors = {
         focused = {
-          border = "#${stylixColors.base05}";
-          background = "#${stylixColors.base05}";
+          border = "#${stylixColors.base0D}";
+          background = "#${stylixColors.base0D}";
           text = "#${stylixColors.base00}";
-          indicator = "#${stylixColors.base05}";
-          childBorder = "#${stylixColors.base05}";
+          indicator = "#${stylixColors.base0D}";
+          childBorder = "#${stylixColors.base0D}";
         };
         focusedInactive = {
           border = "#${stylixColors.base01}";
