@@ -2,7 +2,7 @@
 let
   darkScheme = {
     image = "${../../../assets/wallpapers/dark.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/0x96f.yaml";
+    scheme = "${pkgs.base16-schemes}/share/themes/classic-dark.yaml";
     polarity = "dark";
   };
   lightScheme = {
