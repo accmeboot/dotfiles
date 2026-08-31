@@ -49,7 +49,7 @@ in {
         focused = {
           border = "#${stylixColors.base0D}";
           background = "#${stylixColors.base0D}";
-          text = "#${stylixColors.base05}";
+          text = "#${stylixColors.base00}";
           indicator = "#${stylixColors.base0D}";
           childBorder = "#${stylixColors.base0D}";
         };
@@ -70,7 +70,7 @@ in {
         urgent = {
           border = "#${stylixColors.base08}";
           background = "#${stylixColors.base08}";
-          text = "#${stylixColors.base05}";
+          text = "#${stylixColors.base00}";
           indicator = "#${stylixColors.base08}";
           childBorder = "#${stylixColors.base08}";
         };
