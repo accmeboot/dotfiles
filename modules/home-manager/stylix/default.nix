@@ -1,8 +1,8 @@
 { pkgs, inputs, lib, config, ... }:
 let
   darkScheme = {
-    image = "${../../../assets/wallpapers/sway.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/material-darker.yaml";
+    image = "${../../../assets/wallpapers/sl.png}";
+    scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
     polarity = "dark";
   };
   lightScheme = {
