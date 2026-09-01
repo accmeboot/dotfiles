@@ -4,7 +4,7 @@
     systemd.enable = true;
   };
 
-  home.file.".config/quickshell/settings.json".text = ''
+  home.file.".config/quickshell/config.json".text = ''
     {
       "colors": {
         "base00": "#${config.lib.stylix.colors.base00}",

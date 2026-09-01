@@ -106,6 +106,8 @@ in {
 
       # Special key to take a screenshot with grim
       bindsym Print exec grim
+
+      bindsym Mod4+p exec qs ipc call settingsWindow toggle
     '';
   };
 }
