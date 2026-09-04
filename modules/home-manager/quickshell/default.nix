@@ -1,40 +1,29 @@
 { config, pkgs, ... }: {
   programs.quickshell = {
     enable = true;
+    activeConfig = "mesa-shell";
     systemd.enable = true;
   };
 
-  home.file.".config/quickshell/config.json".text = ''
+  home.file.".config/quickshell/mesa-shell/config.json".text = ''
+
     {
       "colors": {
-        "base00": "#${config.lib.stylix.colors.base00}",
-        "base01": "#${config.lib.stylix.colors.base01}",
-        "base02": "#${config.lib.stylix.colors.base02}",
-        "base03": "#${config.lib.stylix.colors.base03}",
-        "base04": "#${config.lib.stylix.colors.base04}",
-        "base05": "#${config.lib.stylix.colors.base05}",
-        "base06": "#${config.lib.stylix.colors.base06}",
-        "base07": "#${config.lib.stylix.colors.base07}",
-        "base08": "#${config.lib.stylix.colors.base08}",
-        "base09": "#${config.lib.stylix.colors.base09}",
-        "base0A": "#${config.lib.stylix.colors.base0A}",
-        "base0B": "#${config.lib.stylix.colors.base0B}",
-        "base0C": "#${config.lib.stylix.colors.base0C}",
-        "base0D": "#${config.lib.stylix.colors.base0D}",
-        "base0E": "#${config.lib.stylix.colors.base0E}",
-        "base0F": "#${config.lib.stylix.colors.base0F}"
+        "background": "#${config.lib.stylix.colors.base00}",
+        "surface": "#${config.lib.stylix.colors.base01}",
+        "on_surface": "#${config.lib.stylix.colors.base02}",
+        "foreground": "#${config.lib.stylix.colors.base05}",
+        "highlight": "#${config.lib.stylix.colors.base0D}",
+        "attention": "#${config.lib.stylix.colors.base0A}",
+        "ok": "#${config.lib.stylix.colors.base0B}",
+        "critical": "#${config.lib.stylix.colors.base08}"
       },
       "font": {
         "name": "${config.stylix.fonts.sansSerif.name}",
         "size": "${toString config.stylix.fonts.sizes.desktop}"
       },
-      "workspaces": {
-        "persistent": true
-      },
-      "spacing": {
-        "horizontal": 20,
-        "vertical": 5
-      }
+      "spacing": 8,
+      "border": 1
     }
   '';
 

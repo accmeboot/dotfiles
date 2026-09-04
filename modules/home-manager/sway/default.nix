@@ -21,7 +21,7 @@ in {
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
-      menu = "qs ipc call dmenu toggle";
+      menu = "qs -c mesa-shell ipc call dmenu toggle";
       output = {
         "*" = {
           bg = "${config.stylix.image} fill";
@@ -111,7 +111,7 @@ in {
       # Special key to take a screenshot with grim
       bindsym Print exec grim
 
-      bindsym Mod4+p exec qs ipc call settingsWindow toggle
+      bindsym Mod4+p exec qs -c mesa-shell ipc call settingsWindow toggle
     '';
   };
 }
