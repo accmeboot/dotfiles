@@ -9,8 +9,6 @@ in {
     wireplumber
     playerctl
     brightnessctl
-    wiremix
-    tray-tui
     xdg-utils
   ];
 
