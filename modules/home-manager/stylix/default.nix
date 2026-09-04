@@ -7,7 +7,7 @@ let
   };
   lightScheme = {
     image = "${../../../assets/wallpapers/sway.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/classic-light.yaml";
+    scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
     polarity = "light";
   };
 in {

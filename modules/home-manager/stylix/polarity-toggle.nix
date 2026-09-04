@@ -23,7 +23,7 @@ let
         "$current_gen"${subdir}/activate
 
         pkill -USR2 ghostty || true
-        qs ipc call config reload || true
+        qs -c mesa-shell ipc call config reload || true
       '';
     });
 in {
