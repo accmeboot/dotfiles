@@ -23,7 +23,7 @@ in {
 
       window = {
         titlebar = false;
-        border = 2;
+        border = 4;
       };
       floating.titlebar = false;
       output = {
