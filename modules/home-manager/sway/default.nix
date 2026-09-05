@@ -25,7 +25,10 @@ in {
         titlebar = false;
         border = 4;
       };
-      floating.titlebar = false;
+      floating = {
+        titlebar = false;
+        border = 4;
+      };
       output = {
         "*" = {
           bg = "${config.stylix.image} fill";
