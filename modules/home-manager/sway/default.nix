@@ -20,6 +20,12 @@ in {
       modifier = "Mod4";
       terminal = "ghostty";
       menu = "qs -c mesa-shell ipc call dmenu toggle";
+
+      window = {
+        titlebar = false;
+        border = 2;
+      };
+      floating.titlebar = false;
       output = {
         "*" = {
           bg = "${config.stylix.image} fill";

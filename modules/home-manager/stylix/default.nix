@@ -1,13 +1,23 @@
 { pkgs, inputs, lib, config, ... }:
 let
-  darkScheme = {
+  retint = import ./retint.nix { inherit pkgs lib; };
+
+  mkScheme = { base, image, polarity }: {
+    inherit image polarity;
+    scheme = retint.mkScheme {
+      scheme = base;
+      inherit image;
+    };
+  };
+
+  darkScheme = mkScheme {
     image = "${../../../assets/wallpapers/dark.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
+    base = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     polarity = "dark";
   };
-  lightScheme = {
+  lightScheme = mkScheme {
     image = "${../../../assets/wallpapers/sway.png}";
-    scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+    base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };
 in {
