@@ -21,14 +21,6 @@ in {
       terminal = "ghostty";
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
-      window = {
-        titlebar = false;
-        border = 4;
-      };
-      floating = {
-        titlebar = false;
-        border = 4;
-      };
       output = {
         "*" = {
           bg = "${config.stylix.image} fill";
