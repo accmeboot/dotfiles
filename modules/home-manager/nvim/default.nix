@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
-let colors = config.lib.stylix.colors;
-in {
+let
+  colors = config.lib.stylix.colors;
+in
+{
   programs.neovim.enable = true;
 
   programs.neovim.withRuby = false;
@@ -33,5 +35,8 @@ in {
     base0F: "${colors.base0F}"
   '';
 
-  home.packages = with pkgs; [ tree-sitter file ];
+  home.packages = with pkgs; [
+    tree-sitter
+    file
+  ];
 }
