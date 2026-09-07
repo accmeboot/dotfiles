@@ -33,6 +33,7 @@ return {
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
+        { name = "lazydev", group_index = 0 }, -- replaces nvim_lsp results in lua config files
         { name = "nvim_lsp" },
         { name = "buffer" }, -- text within current buffer
         { name = "path" },   -- file system paths

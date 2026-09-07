@@ -5,7 +5,12 @@
   # NIX SETTINGS                                                               #
   #----------------------------------------------------------------------------#
   nix = {
-    settings = { experimental-features = [ "nix-command" "flakes" ]; };
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
     gc = {
       automatic = true;
       dates = "weekly";
@@ -40,10 +45,16 @@
 
     consoleLogLevel = 3;
 
-    initrd = { verbose = false; };
+    initrd = {
+      verbose = false;
+    };
 
-    kernelParams =
-      [ "quiet" "rd.udev.log_level=3" "rd.systemd.show_status=auto" "splash" ];
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+      "splash"
+    ];
   };
 
   #----------------------------------------------------------------------------#
@@ -65,13 +76,16 @@
   # PROGRAMS                                                                   #
   #----------------------------------------------------------------------------#
   programs = {
-    nix-ld = { enable = true; };
+    nix-ld = {
+      enable = true;
+    };
     zsh.enable = true;
     starship.enable = true;
     gamescope = {
       enable = true;
-      package = pkgs.gamescope.overrideAttrs
-        (_: { NIX_CFLAGS_COMPILE = [ "-fno-fast-math" ]; });
+      package = pkgs.gamescope.overrideAttrs (_: {
+        NIX_CFLAGS_COMPILE = [ "-fno-fast-math" ];
+      });
     };
     steam = {
       enable = true;
@@ -82,7 +96,9 @@
     };
     gamemode.enable = true;
     dconf.enable = true;
-    obs-studio = { enable = true; };
+    obs-studio = {
+      enable = true;
+    };
     sway.enable = true;
   };
 
@@ -142,7 +158,9 @@
         default = {
           ids = [ "*" ];
           settings = {
-            main = { rightcontrol = "rightmeta"; };
+            main = {
+              rightcontrol = "rightmeta";
+            };
             otherlayer = { };
           };
         };
@@ -174,14 +192,14 @@
   # ENVIRONMENT                                                                #
   #----------------------------------------------------------------------------#
 
-  environment.variables = { EDITOR = "nvim"; };
+  environment.variables = {
+    EDITOR = "nvim";
+  };
 
   environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
-      "\${HOME}/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
 
-    LUA_PATH =
-      "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
+    LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
 
     XDG_CURRENT_DESKTOP = "sway";

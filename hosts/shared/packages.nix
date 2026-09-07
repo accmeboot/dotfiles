@@ -10,6 +10,9 @@
     gnumake # build automation tool
     git # version control system
     nil # nix language server
+    jetbrains.idea # ide
+    jdk21 # java development kit
+    gradle # jvm build tool (kotlin-language-server resolves its classpath through it)
 
     # Programming Languages
     python3 # python programming language
@@ -56,6 +59,5 @@
   #----------------------------------------------------------------------------#
   # FONTS                                                                       #
   #----------------------------------------------------------------------------#
-  fonts.packages =
-    builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

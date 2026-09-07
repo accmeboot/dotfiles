@@ -1,7 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local conform = require("conform")
 
@@ -22,27 +22,10 @@ return {
 				go = { "goimports", "gofmt" },
 				rust = { "rustfmt" },
 				nix = { "nixfmt" },
-			},
-			formatters = {
-				prettier = {
-					cwd = function(self, ctx)
-						-- Try to find project root by looking for common root markers
-						local root_markers = {
-							".git",
-							"package.json",
-							".prettierrc",
-							".prettierrc.js",
-							".prettierrc.json",
-							"prettier.config.js",
-						}
-						local root =
-							vim.fs.dirname(vim.fs.find(root_markers, { upward = true, path = ctx.filename })[1])
-						return root or vim.fn.getcwd()
-					end,
-				},
+				kotlin = { "ktlint" },
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_format = "fallback",
 				timeout_ms = 500,
 			},
 		})

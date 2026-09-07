@@ -5,5 +5,3 @@ require("accme.lazy")
 
 -- local
 require("accme.local.spell-check")
-
-require("accme.core.colorscheme")
