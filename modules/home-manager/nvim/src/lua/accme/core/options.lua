@@ -34,6 +34,7 @@ opt.cursorline = true
 -- appearance
 opt.laststatus = 3 -- one statusline for all windows (lualine's `globalstatus`)
 opt.pumborder = "rounded" -- border around the completion popupmenu
+opt.winborder = "rounded" -- border around all floating windows
 opt.termguicolors = true
 opt.signcolumn = "yes"
 

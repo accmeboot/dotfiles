@@ -33,7 +33,6 @@ pick.setup({
 			local width = math.floor(0.5 * vim.o.columns)
 
 			return {
-				border = "rounded",
 				anchor = "NW",
 				height = height,
 				width = width,
@@ -44,9 +43,4 @@ pick.setup({
 	},
 })
 
-require("mini.completion").setup({
-	window = {
-		info = { border = "rounded" },
-		signature = { border = "rounded" },
-	},
-})
+require("mini.completion").setup()

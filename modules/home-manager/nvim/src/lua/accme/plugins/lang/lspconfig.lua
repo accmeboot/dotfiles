@@ -35,6 +35,6 @@ require("mason-registry"):on("package:install:success", function()
 end)
 
 vim.diagnostic.config({
-	float = { border = "rounded", source = true, focusable = true },
+	float = { source = true, focusable = true },
 	virtual_lines = false,
 })

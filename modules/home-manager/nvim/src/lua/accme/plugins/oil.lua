@@ -19,7 +19,6 @@ require("oil").setup({
 		padding = 12,
 		max_width = math.floor(vim.api.nvim_win_get_width(0) / 1.5),
 		max_height = 0,
-		border = "rounded",
 		win_options = {
 			winblend = 0,
 		},
