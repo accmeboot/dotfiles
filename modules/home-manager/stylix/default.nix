@@ -1,14 +1,26 @@
-{ pkgs, inputs, lib, config, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}:
 let
   retint = import ./retint.nix { inherit pkgs lib; };
 
-  mkScheme = { base, image, polarity }: {
-    inherit image polarity;
-    scheme = retint.mkScheme {
-      scheme = base;
-      inherit image;
+  mkScheme =
+    {
+      base,
+      image,
+      polarity,
+    }:
+    {
+      inherit image polarity;
+      scheme = retint.mkScheme {
+        scheme = base;
+        inherit image;
+      };
     };
-  };
 
   darkScheme = mkScheme {
     image = "${../../../assets/wallpapers/dark.png}";
@@ -20,16 +32,19 @@ let
     base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };
-in {
+in
+{
 
-  imports = [ inputs.stylix.homeModules.stylix ./polarity-toggle.nix ];
+  imports = [
+    inputs.stylix.homeModules.stylix
+    ./polarity-toggle.nix
+  ];
 
   options = {
     isMacos = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description =
-        "Whether running on macOS to disable Linux-specific theming";
+      description = "Whether running on macOS to disable Linux-specific theming";
     };
   };
 
@@ -43,16 +58,22 @@ in {
       image = lib.mkDefault darkScheme.image;
 
       targets = {
+        neovim.enable = false;
         sway.enable = false;
         swaylock.enable = false;
-        bemenu.enable = false;
         starship.enable = false;
       };
 
       fonts = lib.mkIf (!config.isMacos) {
-        serif = { name = "Arimo Nerd Font"; };
-        sansSerif = { name = "Arimo Nerd Font"; };
-        monospace = { name = "JetBrainsMono Nerd Font"; };
+        serif = {
+          name = "Arimo Nerd Font";
+        };
+        sansSerif = {
+          name = "Arimo Nerd Font";
+        };
+        monospace = {
+          name = "JetBrainsMono Nerd Font";
+        };
         sizes = {
           applications = 10;
           desktop = 12;

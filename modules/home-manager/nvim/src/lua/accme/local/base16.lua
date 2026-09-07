@@ -1,5 +1,8 @@
 local M = {}
 
+-- Written by the Nix module, see ../../../../default.nix
+local COLORS_FILE = vim.fn.stdpath("config") .. "/colors.yaml"
+
 function M.get_colors_from_yaml_file(filename)
   local file = io.open(filename, "r")
   if not file then
@@ -26,6 +29,10 @@ function M.get_colors_from_yaml_file(filename)
   file:close()
 
   return data
+end
+
+function M.get_colors()
+  return M.get_colors_from_yaml_file(COLORS_FILE)
 end
 
 function M.adjust_color(hex, r_offset, g_offset, b_offset)

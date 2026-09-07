@@ -1,7 +1,15 @@
-return {
-	"https://github.com/christoomey/vim-tmux-navigator",
-	"nvim-tree/nvim-web-devicons",
-	"nvim-lua/plenary.nvim",
-	"chrisbra/Colorizer",
-	"numToStr/Comment.nvim",
-}
+-- Order matters
+require("accme.plugins.misc")
+require("accme.plugins.cyberdream")
+require("accme.plugins.mini")
+require("accme.plugins.treesitter")
+require("accme.plugins.oil")
+require("accme.plugins.vim-fugitive")
+
+require("accme.plugins.lang.mason")
+require("accme.plugins.lang.lazydev")
+require("accme.plugins.lang.lspconfig")
+require("accme.plugins.lang.conform")
+require("accme.plugins.lang.lint")
+require("accme.plugins.lang.rustaceanvim")
+require("accme.plugins.lang.kotlin")

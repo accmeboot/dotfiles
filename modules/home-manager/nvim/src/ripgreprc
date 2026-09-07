@@ -1,0 +1,6 @@
+# Used by mini.pick's files/grep pickers: they call `rg` with only the basic
+# arguments and expect customisation to come from rg's own config file.
+# Pointed at by RIPGREP_CONFIG_PATH in lua/accme/plugins/mini.lua.
+--hidden
+--glob=!.git/
+--glob=!node_modules/

@@ -1,9 +1,19 @@
 local opt = vim.opt -- options gloabals variable
 
+-- Set here, not in keymaps.lua: must be set before plugins define mappings
+vim.g.mapleader = " "
+
 vim.g.have_nerd_font = true
 
+-- home-manager generates its own init.lua with these, but this config's
+-- init.lua shadows it, so set them here (matches withRuby/withPython3 = false)
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0
+
 -- line numbers
-opt.number = true         -- Show current line number
+opt.number = true -- Show current line number
 opt.relativenumber = true -- Show relative line numbers
 
 -- tabs & indentation
@@ -22,6 +32,8 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
+opt.laststatus = 3 -- one statusline for all windows (lualine's `globalstatus`)
+opt.pumborder = "rounded" -- border around the completion popupmenu
 opt.termguicolors = true
 opt.signcolumn = "yes"
 
@@ -55,5 +67,3 @@ opt.foldcolumn = "0"
 opt.foldlevelstart = 99
 
 opt.fillchars:append({ eob = " " })
-
-opt.cmdheight = 0

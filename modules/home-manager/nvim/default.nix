@@ -8,11 +8,9 @@ in
   programs.neovim.withRuby = false;
   programs.neovim.withPython3 = false;
 
-  home.file = {
-    ".config/nvim" = {
-      source = ./src;
-      recursive = true;
-    };
+  home.file.".config/nvim" = {
+    source = ./src;
+    recursive = true;
   };
 
   home.file.".config/nvim/colors.yaml".text = ''

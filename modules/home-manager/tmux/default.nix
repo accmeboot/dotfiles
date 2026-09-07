@@ -62,7 +62,7 @@
       set -g pane-active-border-style fg=colour7
 
       set -g status-position top
-      set -g window-status-separator "  "
+      set -g window-status-separator ""
       set -g status-left-length 50
 
       set -Fg "status-format[0]" "#{status-format[0]}"
@@ -77,12 +77,16 @@
       set -g status-left ""
 
       set -g window-status-format "#[fg=colour7,bg=terminal] #I:#W "
-      set -g window-status-current-format "#[fg=colour0,bg=colour7] #I:#W "
+      set -g window-status-current-format "#[fg=colour0,bg=colour4] #I:#W "
 
       set -g status-right-length 100
       set -g status-right "#[fg=colour7,bg=terminal] #S"
     '';
 
-    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator yank resurrect ];
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      yank
+      resurrect
+    ];
   };
 }
