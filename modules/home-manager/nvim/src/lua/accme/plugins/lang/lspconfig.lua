@@ -52,9 +52,7 @@ return {
 
 		vim.diagnostic.config({
 			float = { border = "rounded", source = true, focusable = true },
-			virtual_lines = {
-				current_line = false,
-			},
+			virtual_lines = false,
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
