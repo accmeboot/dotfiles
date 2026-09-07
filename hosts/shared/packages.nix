@@ -13,6 +13,7 @@
     jetbrains.idea # ide
     jdk21 # java development kit
     gradle # jvm build tool (kotlin-language-server resolves its classpath through it)
+    httpie # better curl
 
     # Programming Languages
     python3 # python programming language
