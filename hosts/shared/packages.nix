@@ -43,6 +43,7 @@
     vlc # video player
     gimp # image editor
     brave # browser
+    firefox # browser
     pinta # image viewer
     protonup-rs # installing proton ge
 
