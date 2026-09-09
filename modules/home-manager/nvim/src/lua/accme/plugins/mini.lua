@@ -21,6 +21,7 @@ vim.env.RIPGREP_CONFIG_PATH = vim.fs.joinpath(vim.fn.stdpath("config"), "ripgrep
 local pick = require("mini.pick")
 
 require("mini.extra").setup()
+require("mini.pairs").setup()
 
 pick.setup({
 	mappings = {
