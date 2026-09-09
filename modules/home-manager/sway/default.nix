@@ -1,7 +1,9 @@
 { pkgs, config, ... }:
 
-let stylixColors = config.lib.stylix.colors;
-in {
+let
+  stylixColors = config.lib.stylix.colors;
+in
+{
   home.packages = with pkgs; [
     wl-clipboard
     grim
@@ -23,16 +25,16 @@ in {
 
       output = {
         "*" = {
-          bg = "${config.stylix.image} fill";
           adaptive_sync = "on";
         };
-        "DP-2" = { resolution = "2560x1440@240Hz"; };
+        "DP-2" = {
+          resolution = "2560x1440@240Hz";
+        };
       };
       input = {
-        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" =
-          {
-            events = "disabled";
-          };
+        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" = {
+          events = "disabled";
+        };
         "type:pointer" = {
           accel_profile = "flat";
           pointer_accel = "0";
@@ -113,4 +115,3 @@ in {
     '';
   };
 }
-

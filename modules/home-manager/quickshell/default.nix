@@ -23,7 +23,8 @@
         "size": "${toString config.stylix.fonts.sizes.desktop}"
       },
       "spacing": 8,
-      "border": 1
+      "border": 1,
+      "wallpaper": "${config.stylix.image}"
     }
   '';
 
