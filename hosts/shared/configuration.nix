@@ -139,16 +139,7 @@
       jack.enable = true;
     };
 
-    greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.sway}/bin/sway";
-          user = "accme";
-        };
-        default_session = initial_session;
-      };
-    };
+    displayManager.ly.enable = true;
 
     envfs.enable = true;
 
