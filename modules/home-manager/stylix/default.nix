@@ -60,7 +60,6 @@ in
       targets = {
         neovim.enable = false;
         sway.enable = false;
-        swaylock.enable = false;
         starship.enable = false;
       };
 

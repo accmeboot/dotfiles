@@ -5,13 +5,14 @@
       general = {
         after_sleep_cmd = "swaymsg 'output * power on'";
         ignore_dbus_inhibit = false;
-        lock_cmd = "pidof swaylock || swaylock -f";
+        lock_cmd = "qs -c mesa-shell ipc call lock lock";
+        before_sleep_cmd = "loginctl lock-session";
       };
 
       listener = [
         {
           timeout = 300;
-          on-timeout = "swaylock -f";
+          on-timeout = "qs -c mesa-shell ipc call lock lock";
         }
         {
           timeout = 360;
