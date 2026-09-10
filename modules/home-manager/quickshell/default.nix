@@ -1,4 +1,9 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  dark = config.lib.stylix.colors;
+  light = config.specialisation.light.configuration.lib.stylix.colors or config.lib.stylix.colors;
+in
+{
   programs.quickshell = {
     enable = true;
     activeConfig = "mesa-shell";
@@ -6,17 +11,33 @@
   };
 
   home.file.".config/quickshell/mesa-shell/config.json".text = ''
-
     {
       "colors": {
-        "background": "#${config.lib.stylix.colors.base00}",
-        "surface": "#${config.lib.stylix.colors.base01}",
-        "on_surface": "#${config.lib.stylix.colors.base02}",
-        "foreground": "#${config.lib.stylix.colors.base05}",
-        "highlight": "#${config.lib.stylix.colors.base0D}",
-        "attention": "#${config.lib.stylix.colors.base0A}",
-        "ok": "#${config.lib.stylix.colors.base0B}",
-        "critical": "#${config.lib.stylix.colors.base08}"
+        "dark":  {
+          "background": "#${dark.base00}",
+            "surface": "#${dark.base01}",
+            "on_surface": "#${dark.base02}",
+            "foreground": "#${dark.base05}",
+            "highlight": "#${dark.base0D}",
+            "attention": "#${dark.base0A}",
+            "ok": "#${dark.base0B}",
+            "critical": "#${dark.base08}"
+        },
+          "light": {
+            "background": "#${light.base00}",
+            "surface": "#${light.base01}",
+            "on_surface": "#${light.base02}",
+            "foreground": "#${light.base05}",
+            "highlight": "#${light.base0D}",
+            "attention": "#${light.base0A}",
+            "ok": "#${light.base0B}",
+            "critical": "#${light.base08}"
+          }
+      },
+      "defaultPolarity": "${config.stylix.polarity}",
+      "hooks": {
+        "onDarkThemeSet": "set-dark-theme",
+        "onLightThemeSet": "set-light-theme"
       },
       "font": {
         "name": "${config.stylix.fonts.sansSerif.name}",
