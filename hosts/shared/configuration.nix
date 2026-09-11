@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
@@ -114,7 +114,7 @@
     wlr.settings.screencast = {
       output_name = "";
       chooser_type = "dmenu";
-      chooser_cmd = "${pkgs.rofi}/bin/rofi -dmenu -p 'Select a source to share:'";
+      chooser_cmd = lib.getExe (import ./mesa-dmenu.nix { inherit pkgs lib; });
     };
   };
 
