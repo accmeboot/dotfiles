@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, inputs, ... }: {
   imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
@@ -114,7 +114,7 @@
     wlr.settings.screencast = {
       output_name = "";
       chooser_type = "dmenu";
-      chooser_cmd = lib.getExe (import ./mesa-dmenu.nix { inherit pkgs lib; });
+      chooser_cmd = lib.getExe inputs.mesa-shell.packages.${pkgs.stdenv.hostPlatform.system}.mesa-dmenu;
     };
   };
 

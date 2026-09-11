@@ -18,9 +18,14 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mesa-shell = {
+      url = "github:accmeboot/mesa-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, stylix }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, stylix, mesa-shell }: {
     nixosConfigurations = {
       "7950x3d-xtx" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
