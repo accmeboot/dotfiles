@@ -23,6 +23,18 @@ in
       terminal = "ghostty";
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
+      window = {
+        titlebar = false;
+        border = 4;
+      };
+
+      floating.titlebar = false;
+
+      gaps = {
+        outer = 12;
+        inner = 6;
+      };
+
       output = {
         "*" = {
           adaptive_sync = "on";
