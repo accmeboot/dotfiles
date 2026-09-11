@@ -8,6 +8,7 @@ in
     enable = true;
     activeConfig = "mesa-shell";
     systemd.enable = true;
+    systemd.target = "sway-session.target";
   };
 
   home.file.".config/quickshell/mesa-shell/config.json".text = ''

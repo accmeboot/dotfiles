@@ -1,6 +1,7 @@
 { ... }: {
   services.hypridle = {
     enable = true;
+    systemdTarget = "sway-session.target";
     settings = {
       general = {
         after_sleep_cmd = "swaymsg 'output * power on'";
