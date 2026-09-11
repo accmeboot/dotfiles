@@ -121,7 +121,7 @@ in
       # Special key to take a screenshot with grim
       bindsym Print exec grim
 
-      bindsym Mod4+p exec qs -c mesa-shell ipc call settingsWindow toggle
+      bindsym Mod4+p exec ${../../../scripts/select-sinks.sh}
     '';
   };
 }

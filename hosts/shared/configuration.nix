@@ -1,4 +1,10 @@
-{ pkgs, lib, inputs, ... }: {
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   imports = [ ./packages.nix ];
 
   #----------------------------------------------------------------------------#
@@ -181,5 +187,6 @@
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
 
     XDG_CURRENT_DESKTOP = "sway";
+    WLR_RENDERER = "vulkan";
   };
 }
