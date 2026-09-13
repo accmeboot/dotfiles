@@ -1,9 +1,7 @@
 { pkgs, config, ... }:
 
-let
-  stylixColors = config.lib.stylix.colors;
-in
-{
+let stylixColors = config.lib.stylix.colors;
+in {
   home.packages = with pkgs; [
     wl-clipboard
     grim
@@ -12,6 +10,7 @@ in
     playerctl
     brightnessctl
     xdg-utils
+    wlrctl
   ];
 
   wayland.windowManager.sway = {
@@ -36,17 +35,14 @@ in
       };
 
       output = {
-        "*" = {
-          adaptive_sync = "on";
-        };
-        "DP-2" = {
-          resolution = "2560x1440@240Hz";
-        };
+        "*" = { adaptive_sync = "on"; };
+        "DP-2" = { resolution = "2560x1440@240Hz"; };
       };
       input = {
-        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" = {
-          events = "disabled";
-        };
+        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" =
+          {
+            events = "disabled";
+          };
         "type:pointer" = {
           accel_profile = "flat";
           pointer_accel = "0";
@@ -55,7 +51,11 @@ in
           tap = "disabled";
           accel_profile = "adaptive";
           dwt = "enabled";
-          middle_emulation = "enabled";
+          natural_scroll = "enabled";
+          click_method = "clickfinger";
+          clickfinger_button_map = "lrm";
+          middle_emulation = "disabled";
+          scroll_factor = "0.1";
         };
         "type:keyboard" = {
           xkb_layout = "us,ru";
@@ -95,9 +95,7 @@ in
 
       bars = [ ];
 
-      startup = [
-        { command = "solaar --window=hide"; }
-      ];
+      startup = [{ command = "solaar --window=hide"; }];
     };
 
     extraConfig = ''
@@ -122,6 +120,10 @@ in
       bindsym Mod4+i exec ${../../../scripts/screenshot-area.sh}
 
       bindsym Mod4+p exec ${../../../scripts/select-sinks.sh}
+
+      # Touchpad swipes send mouse back/forward buttons, like macOS
+      bindgesture swipe:3:right exec wlrctl pointer click side
+      bindgesture swipe:3:left exec wlrctl pointer click extra
     '';
   };
 }
