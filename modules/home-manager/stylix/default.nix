@@ -23,12 +23,12 @@ let
     };
 
   darkScheme = mkScheme {
-    image = "${../../../assets/wallpapers/galaxy.png}";
+    image = "${../../../assets/wallpapers/cyberpunk.png}";
     base = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     polarity = "dark";
   };
   lightScheme = mkScheme {
-    image = "${../../../assets/wallpapers/gameboy.png}";
+    image = "${../../../assets/wallpapers/clouds.png}";
     base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };

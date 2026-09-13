@@ -31,8 +31,8 @@ in
       floating.titlebar = false;
 
       gaps = {
-        outer = 12;
-        inner = 6;
+        outer = 10;
+        inner = 5;
       };
 
       output = {
