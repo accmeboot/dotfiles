@@ -118,8 +118,8 @@ in
       bindsym --locked XF86MonBrightnessDown exec brightnessctl set 1%-
       bindsym --locked XF86MonBrightnessUp exec brightnessctl set 1%+
 
-      # Special key to take a screenshot with grim
-      bindsym Print exec grim
+      bindsym Print exec ${../../../scripts/screenshot-full.sh}
+      bindsym Mod4+i exec ${../../../scripts/screenshot-area.sh}
 
       bindsym Mod4+p exec ${../../../scripts/select-sinks.sh}
     '';
