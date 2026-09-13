@@ -1,7 +1,9 @@
 { pkgs, config, ... }:
 
-let stylixColors = config.lib.stylix.colors;
-in {
+let
+  stylixColors = config.lib.stylix.colors;
+in
+{
   home.packages = with pkgs; [
     wl-clipboard
     grim
@@ -35,14 +37,17 @@ in {
       };
 
       output = {
-        "*" = { adaptive_sync = "on"; };
-        "DP-2" = { resolution = "2560x1440@240Hz"; };
+        "*" = {
+          adaptive_sync = "on";
+        };
+        "DP-2" = {
+          resolution = "2560x1440@240Hz";
+        };
       };
       input = {
-        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" =
-          {
-            events = "disabled";
-          };
+        "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" = {
+          events = "disabled";
+        };
         "type:pointer" = {
           accel_profile = "flat";
           pointer_accel = "0";
@@ -71,18 +76,18 @@ in {
           childBorder = "#${stylixColors.base0D}";
         };
         focusedInactive = {
-          border = "#${stylixColors.base01}";
-          background = "#${stylixColors.base01}";
+          border = "#${stylixColors.base03}";
+          background = "#${stylixColors.base03}";
           text = "#${stylixColors.base05}";
-          indicator = "#${stylixColors.base01}";
-          childBorder = "#${stylixColors.base01}";
+          indicator = "#${stylixColors.base03}";
+          childBorder = "#${stylixColors.base03}";
         };
         unfocused = {
-          border = "#${stylixColors.base01}";
-          background = "#${stylixColors.base01}";
+          border = "#${stylixColors.base03}";
+          background = "#${stylixColors.base03}";
           text = "#${stylixColors.base05}";
-          indicator = "#${stylixColors.base01}";
-          childBorder = "#${stylixColors.base01}";
+          indicator = "#${stylixColors.base03}";
+          childBorder = "#${stylixColors.base03}";
         };
         urgent = {
           border = "#${stylixColors.base08}";
@@ -95,7 +100,7 @@ in {
 
       bars = [ ];
 
-      startup = [{ command = "solaar --window=hide"; }];
+      startup = [ { command = "solaar --window=hide"; } ];
     };
 
     extraConfig = ''
