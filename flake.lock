@@ -167,11 +167,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789273010,
-        "narHash": "sha256-E7dWx+utzZPpqQsBUd5sMimKTWMEEbTKFD+ya99Shps=",
+        "lastModified": 1789352311,
+        "narHash": "sha256-E9hlcRNSRQ1vb+UicOusX/ucroGlBAz/pYhCBorLOn4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fdc36b12804b0179b24a5ffd282e4c95c37072e2",
+        "rev": "cfcda3f99334c8459fa4cd46cce87502e0b48f0a",
         "type": "github"
       },
       "original": {
@@ -187,11 +187,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789303435,
-        "narHash": "sha256-+keUcDlyHZcFn1t8jmyZFNZhU2AbRi1t7QjupnnLAUI=",
+        "lastModified": 1789354936,
+        "narHash": "sha256-GunKbbJiCTKXTB+hc63KzwgPOLnJkH480aOxdOxdiMc=",
         "owner": "accmeboot",
         "repo": "mesa-shell",
-        "rev": "6a5f46ed50ea47c722d836e6c535149286065bed",
+        "rev": "3f9f2f30a4b57e7c92b2ddd3e94f9e1c4bd2d08f",
         "type": "github"
       },
       "original": {

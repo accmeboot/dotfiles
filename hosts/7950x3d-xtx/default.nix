@@ -20,7 +20,11 @@
     users.accme = {
       isNormalUser = true;
       description = "accme";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "gamemode"
+      ];
     };
   };
 }
