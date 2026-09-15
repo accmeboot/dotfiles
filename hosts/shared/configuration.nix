@@ -182,6 +182,8 @@
 
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
+    PROTON_ENABLE_WAYLAND = 1;
+    PROTON_DXVK_LOWLATENCY = 1;
 
     LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";

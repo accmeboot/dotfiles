@@ -29,6 +29,11 @@ in
         inner = 5;
       };
 
+      fonts = {
+        names = [ config.stylix.fonts.sansSerif.name ];
+        size = config.stylix.fonts.sizes.applications * 1.0;
+      };
+
       output = {
         "*" = {
           adaptive_sync = "on";

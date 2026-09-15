@@ -1,6 +1,7 @@
-{ config, ... }: {
+{ config, ... }:
+{
   home.file.".config/ghostty/config".text = ''
-    font-family=""
+    font-family="${config.stylix.fonts.monospace.name}"
     background-blur=90
     cursor-style=block
     shell-integration-features=no-cursor
@@ -33,4 +34,3 @@
     palette=15=${config.lib.stylix.colors.base07}
   '';
 }
-

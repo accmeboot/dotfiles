@@ -63,14 +63,17 @@ in
         starship.enable = false;
       };
 
-      fonts = lib.mkIf (!config.isMacos) {
+      fonts = {
         serif = {
+          package = pkgs.nerd-fonts.arimo;
           name = "Arimo Nerd Font";
         };
         sansSerif = {
+          package = pkgs.nerd-fonts.arimo;
           name = "Arimo Nerd Font";
         };
         monospace = {
+          package = pkgs.nerd-fonts.jetbrains-mono;
           name = "JetBrainsMono Nerd Font";
         };
         sizes = {

@@ -56,9 +56,4 @@
     # accessories
     solaar
   ];
-
-  #----------------------------------------------------------------------------#
-  # FONTS                                                                       #
-  #----------------------------------------------------------------------------#
-  fonts.packages = builtins.filter pkgs.lib.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }
