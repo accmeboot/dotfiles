@@ -25,7 +25,7 @@ in
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
       gaps = {
-        outer = 10;
+        outer = 5;
         inner = 5;
       };
 
