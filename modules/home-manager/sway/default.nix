@@ -22,6 +22,7 @@ in
     config = {
       modifier = "Mod4";
       terminal = "ghostty";
+      defaultWorkspace = "workspace number 1";
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
       gaps = {
@@ -67,25 +68,25 @@ in
       };
       colors = {
         focused = {
-          border = "#${stylixColors.base01}";
-          background = "#${stylixColors.base01}";
-          text = "#${stylixColors.base05}";
-          indicator = "#${stylixColors.base01}";
-          childBorder = "#${stylixColors.base01}";
+          border = "#${stylixColors.base0D}";
+          background = "#${stylixColors.base0D}";
+          text = "#${stylixColors.base00}";
+          indicator = "#${stylixColors.base0D}";
+          childBorder = "#${stylixColors.base0D}";
         };
         focusedInactive = {
-          border = "#${stylixColors.base01}";
-          background = "#${stylixColors.base01}";
-          text = "#${stylixColors.base03}";
-          indicator = "#${stylixColors.base01}";
-          childBorder = "#${stylixColors.base01}";
+          border = "#${stylixColors.base03}";
+          background = "#${stylixColors.base03}";
+          text = "#${stylixColors.base05}";
+          indicator = "#${stylixColors.base03}";
+          childBorder = "#${stylixColors.base03}";
         };
         unfocused = {
-          border = "#${stylixColors.base01}";
-          background = "#${stylixColors.base01}";
-          text = "#${stylixColors.base03}";
-          indicator = "#${stylixColors.base01}";
-          childBorder = "#${stylixColors.base01}";
+          border = "#${stylixColors.base03}";
+          background = "#${stylixColors.base03}";
+          text = "#${stylixColors.base05}";
+          indicator = "#${stylixColors.base03}";
+          childBorder = "#${stylixColors.base03}";
         };
         urgent = {
           border = "#${stylixColors.base08}";
