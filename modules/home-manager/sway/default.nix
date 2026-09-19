@@ -47,6 +47,9 @@ in
         "1356:3570:Sony_Interactive_Entertainment_DualSense_Edge_Wireless_Controller_Touchpad" = {
           events = "disabled";
         };
+        "1356:3570:DualSense_Edge_Wireless_Controller_Touchpad" = {
+          events = "disabled";
+        };
         "type:pointer" = {
           accel_profile = "flat";
           pointer_accel = "0";
