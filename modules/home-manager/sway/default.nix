@@ -2,6 +2,7 @@
 
 let
   stylixColors = config.lib.stylix.colors;
+  panel = name: "exec qs -c mesa-shell ipc call panel toggle ${name}";
 in
 {
   home.packages = with pkgs; [
@@ -126,7 +127,13 @@ in
       bindsym Print exec ${../../../scripts/screenshot-full.sh}
       bindsym Mod4+i exec ${../../../scripts/screenshot-area.sh}
 
-      bindsym Mod4+p exec ${../../../scripts/select-sinks.sh}
+      # mesa-shell panels
+      bindsym Mod4+p ${panel "audio"}
+      bindsym Mod4+n ${panel "network"}
+      bindsym Mod4+c ${panel "bluetooth"}
+      bindsym Mod4+m ${panel "display"}
+      bindsym Mod4+t ${panel "tray"}
+      bindsym Mod4+q ${panel "power"}
 
       # Touchpad swipes send mouse back/forward buttons, like macOS
       bindgesture swipe:3:right exec wlrctl pointer click side
