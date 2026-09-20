@@ -187,11 +187,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789909300,
-        "narHash": "sha256-DGwRphp6xe92IsfPN+XuhKqu/FPbXoW+9hQNcKMaQts=",
+        "lastModified": 1789910748,
+        "narHash": "sha256-sr7ZKN1J6lOBjzxEHyn/94+59F8mG0zu62jcXWTUHaY=",
         "owner": "accmeboot",
         "repo": "mesa-shell",
-        "rev": "c0643d630a28f88bc3aad116e248963360f9550f",
+        "rev": "7fdbb4496bce86d46de1fa1d04389156330a1ccd",
         "type": "github"
       },
       "original": {
