@@ -127,13 +127,17 @@ in
       bindsym Print exec ${../../../scripts/screenshot-full.sh}
       bindsym Mod4+i exec ${../../../scripts/screenshot-area.sh}
 
-      # mesa-shell panels
+      # mesa-shell
       bindsym Mod4+p ${panel "audio"}
       bindsym Mod4+n ${panel "network"}
       bindsym Mod4+c ${panel "bluetooth"}
       bindsym Mod4+m ${panel "display"}
       bindsym Mod4+t ${panel "tray"}
       bindsym Mod4+q ${panel "power"}
+      bindsym Mod4+grave exec qs -c mesa-shell ipc call theme toggle
+      bindsym Mod4+backslash exec qs -c mesa-shell ipc call notifications toggle
+      bindsym Mod4+bracketleft exec qs -c mesa-shell ipc call notifications dismissLast
+      bindsym Mod4+bracketright exec qs -c mesa-shell ipc call notifications dismissAll
 
       # Touchpad swipes send mouse back/forward buttons, like macOS
       bindgesture swipe:3:right exec wlrctl pointer click side
