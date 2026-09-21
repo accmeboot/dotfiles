@@ -15,6 +15,13 @@
         bindkey -v
 
         ${lib.optionalString config.isMacos ''
+          # pnpm
+          export PNPM_HOME="$HOME/Library/pnpm"
+          case ":$PATH:" in
+            *":$PNPM_HOME/bin:"*) ;;
+            *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+          esac
+          # pnpm end
           export PATH="$HOME/.local/bin:$PATH"
           eval "$(/opt/homebrew/bin/brew shellenv)"
           eval "$(fnm env --shell zsh)"
