@@ -65,22 +65,22 @@ in
 
       fonts = {
         serif = {
-          package = pkgs.nerd-fonts.arimo;
-          name = "Arimo Nerd Font";
+          package = pkgs.nerd-fonts.terminess-ttf;
+          name = "Terminess Nerd Font";
         };
         sansSerif = {
           package = pkgs.nerd-fonts.arimo;
-          name = "Arimo Nerd Font";
+          name = "Terminess Nerd Font";
         };
         monospace = {
           package = pkgs.nerd-fonts.jetbrains-mono;
-          name = "JetBrainsMono Nerd Font";
+          name = "Terminess Nerd Font";
         };
         sizes = {
-          applications = 10;
-          desktop = 12;
-          popups = 12;
-          terminal = 12;
+          applications = 12;
+          desktop = 14;
+          popups = 14;
+          terminal = 14;
         };
       };
 

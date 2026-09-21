@@ -2,6 +2,7 @@
 {
   home.file.".config/ghostty/config".text = ''
     font-family="${config.stylix.fonts.monospace.name}"
+    font-size="${toString config.stylix.fonts.sizes.terminal}"
     background-blur=90
     cursor-style=block
     shell-integration-features=no-cursor
