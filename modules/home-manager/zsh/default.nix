@@ -17,6 +17,7 @@
         ${lib.optionalString config.isMacos ''
           export PATH="$HOME/.local/bin:$PATH"
           eval "$(/opt/homebrew/bin/brew shellenv)"
+          eval "$(fnm env --shell zsh)"
         ''}
 
         # Source the .env file
