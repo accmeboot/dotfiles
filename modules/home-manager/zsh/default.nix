@@ -14,6 +14,11 @@
       initContent = ''
         bindkey -v
 
+        ${lib.optionalString config.isMacos ''
+          export PATH="$HOME/.local/bin:$PATH"
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        ''}
+
         # Source the .env file
         if [ -f "$HOME/.env" ]; then
           source "$HOME/.env"
