@@ -45,7 +45,7 @@ in
         name = config.stylix.fonts.sansSerif.name;
         size = config.stylix.fonts.sizes.desktop;
       };
-      spacing = 10;
+      spacing = 8;
       border = 1;
       wallpaper = "${config.stylix.image}";
     };
