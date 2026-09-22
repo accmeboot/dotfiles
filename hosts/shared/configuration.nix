@@ -63,8 +63,11 @@
     ];
   };
 
+  # Don't pivot into /run/initramfs for the final shutdown stage.
+  systemd.shutdownRamfs.enable = false;
+
   #----------------------------------------------------------------------------#
-  # NETWORKING                                                                 #
+  # NETWORKING                                                               #
   #----------------------------------------------------------------------------#
   networking = {
     hostName = "nixos";
