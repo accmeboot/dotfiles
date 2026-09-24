@@ -1,17 +1,29 @@
-{ pkgs, inputs, lib, config, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}:
 let
   retint = import ./retint.nix { inherit pkgs lib; };
 
-  mkScheme = { base, image, polarity, }: {
-    inherit image polarity;
-    scheme = retint.mkScheme {
-      scheme = base;
-      inherit image;
+  mkScheme =
+    {
+      base,
+      image,
+      polarity,
+    }:
+    {
+      inherit image polarity;
+      scheme = retint.mkScheme {
+        scheme = base;
+        inherit image;
+      };
     };
-  };
 
   darkScheme = mkScheme {
-    image = "${../../../assets/wallpapers/cyberpunk.png}";
+    image = "${../../../assets/wallpapers/nixos.png}";
     base = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     polarity = "dark";
   };
@@ -20,16 +32,19 @@ let
     base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };
-in {
+in
+{
 
-  imports = [ inputs.stylix.homeModules.stylix ./polarity-toggle.nix ];
+  imports = [
+    inputs.stylix.homeModules.stylix
+    ./polarity-toggle.nix
+  ];
 
   options = {
     isMacos = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description =
-        "Whether running on macOS to disable Linux-specific theming";
+      description = "Whether running on macOS to disable Linux-specific theming";
     };
   };
 
