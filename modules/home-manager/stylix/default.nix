@@ -1,26 +1,14 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, inputs, lib, config, ... }:
 let
   retint = import ./retint.nix { inherit pkgs lib; };
 
-  mkScheme =
-    {
-      base,
-      image,
-      polarity,
-    }:
-    {
-      inherit image polarity;
-      scheme = retint.mkScheme {
-        scheme = base;
-        inherit image;
-      };
+  mkScheme = { base, image, polarity, }: {
+    inherit image polarity;
+    scheme = retint.mkScheme {
+      scheme = base;
+      inherit image;
     };
+  };
 
   darkScheme = mkScheme {
     image = "${../../../assets/wallpapers/cyberpunk.png}";
@@ -32,19 +20,16 @@ let
     base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };
-in
-{
+in {
 
-  imports = [
-    inputs.stylix.homeModules.stylix
-    ./polarity-toggle.nix
-  ];
+  imports = [ inputs.stylix.homeModules.stylix ./polarity-toggle.nix ];
 
   options = {
     isMacos = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Whether running on macOS to disable Linux-specific theming";
+      description =
+        "Whether running on macOS to disable Linux-specific theming";
     };
   };
 
@@ -67,21 +52,21 @@ in
       fonts = {
         serif = {
           package = pkgs.nerd-fonts.terminess-ttf;
-          name = "Arimo Nerd Font";
+          name = "Terminess Nerd Font";
         };
         sansSerif = {
-          package = pkgs.nerd-fonts.arimo;
-          name = "Arimo Nerd Font";
+          package = pkgs.nerd-fonts.terminess-ttf;
+          name = "Terminess Nerd Font";
         };
         monospace = {
-          package = pkgs.nerd-fonts.jetbrains-mono;
-          name = "JetBrainsMono Nerd Font";
+          package = pkgs.nerd-fonts.terminess-ttf;
+          name = "Terminess Nerd Font";
         };
         sizes = {
-          applications = 10;
-          desktop = 12;
-          popups = 12;
-          terminal = 12;
+          applications = 12;
+          desktop = 14;
+          popups = 14;
+          terminal = 16;
         };
       };
 
