@@ -27,8 +27,8 @@ in
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
       gaps = {
-        outer = 5;
-        inner = 5;
+        outer = 0;
+        inner = 0;
       };
 
       fonts = {
