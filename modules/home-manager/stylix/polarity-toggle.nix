@@ -135,7 +135,6 @@ in
         Unit = {
           PartOf = lib.mkForce [ "sway-session.target" ];
           BindsTo = lib.mkForce [ "sway-session.target" ];
-          After = [ "quickshell.service" ];
         };
         Install.WantedBy = [ "sway-session.target" ];
       };
