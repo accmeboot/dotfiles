@@ -42,7 +42,7 @@ in
 
       fonts = {
         names = [ config.stylix.fonts.sansSerif.name ];
-        size = config.stylix.fonts.sizes.applications * 1.0;
+        size = 0.1;
       };
 
       output = {
@@ -83,28 +83,28 @@ in
         focused = {
           border = "#${stylixColors.base03}";
           background = "#${stylixColors.base03}";
-          text = "#${stylixColors.base05}";
+          text = "#${stylixColors.base03}";
           indicator = "#${stylixColors.base03}";
           childBorder = "#${stylixColors.base03}";
         };
         focusedInactive = {
           border = "#${stylixColors.base02}";
           background = "#${stylixColors.base02}";
-          text = "#${stylixColors.base04}";
+          text = "#${stylixColors.base02}";
           indicator = "#${stylixColors.base02}";
           childBorder = "#${stylixColors.base02}";
         };
         unfocused = {
           border = "#${stylixColors.base02}";
           background = "#${stylixColors.base02}";
-          text = "#${stylixColors.base04}";
+          text = "#${stylixColors.base02}";
           indicator = "#${stylixColors.base02}";
           childBorder = "#${stylixColors.base02}";
         };
         urgent = {
           border = "#${stylixColors.base08}";
           background = "#${stylixColors.base08}";
-          text = "#${stylixColors.base00}";
+          text = "#${stylixColors.base08}";
           indicator = "#${stylixColors.base08}";
           childBorder = "#${stylixColors.base08}";
         };
@@ -116,6 +116,9 @@ in
     };
 
     extraConfig = ''
+      titlebar_padding 1
+      titlebar_border_thickness 0
+
       # Special keys to adjust volume via PipeWire
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
