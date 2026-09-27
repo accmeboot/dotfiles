@@ -26,9 +26,18 @@ in
       defaultWorkspace = "workspace number 1";
       menu = "qs -c mesa-shell ipc call dmenu toggle";
 
+      window = {
+        titlebar = false;
+        border = 1;
+      };
+      floating = {
+        titlebar = false;
+        border = 1;
+      };
+
       gaps = {
-        outer = 0;
-        inner = 0;
+        outer = 8;
+        inner = 4;
       };
 
       fonts = {
@@ -72,25 +81,25 @@ in
       };
       colors = {
         focused = {
-          border = "#${stylixColors.base0D}";
-          background = "#${stylixColors.base0D}";
-          text = "#${stylixColors.base00}";
-          indicator = "#${stylixColors.base0D}";
-          childBorder = "#${stylixColors.base0D}";
+          border = "#${stylixColors.base03}";
+          background = "#${stylixColors.base03}";
+          text = "#${stylixColors.base05}";
+          indicator = "#${stylixColors.base03}";
+          childBorder = "#${stylixColors.base03}";
         };
         focusedInactive = {
-          border = "#${stylixColors.base03}";
-          background = "#${stylixColors.base03}";
-          text = "#${stylixColors.base05}";
-          indicator = "#${stylixColors.base03}";
-          childBorder = "#${stylixColors.base03}";
+          border = "#${stylixColors.base02}";
+          background = "#${stylixColors.base02}";
+          text = "#${stylixColors.base04}";
+          indicator = "#${stylixColors.base02}";
+          childBorder = "#${stylixColors.base02}";
         };
         unfocused = {
-          border = "#${stylixColors.base03}";
-          background = "#${stylixColors.base03}";
-          text = "#${stylixColors.base05}";
-          indicator = "#${stylixColors.base03}";
-          childBorder = "#${stylixColors.base03}";
+          border = "#${stylixColors.base02}";
+          background = "#${stylixColors.base02}";
+          text = "#${stylixColors.base04}";
+          indicator = "#${stylixColors.base02}";
+          childBorder = "#${stylixColors.base02}";
         };
         urgent = {
           border = "#${stylixColors.base08}";
