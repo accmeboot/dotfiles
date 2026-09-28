@@ -2,6 +2,7 @@
 require("accme.plugins.misc")
 require("accme.plugins.cyberdream")
 require("accme.plugins.mini")
+require("accme.plugins.nvim-cmp")
 require("accme.plugins.treesitter")
 require("accme.plugins.oil")
 require("accme.plugins.vim-fugitive")

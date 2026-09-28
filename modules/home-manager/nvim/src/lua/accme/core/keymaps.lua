@@ -70,20 +70,20 @@ keymap.set("n", "<leader>tgc", MiniExtra.pickers.git_commits)
 -- spell suggestion
 keymap.set("n", "<leader>m", MiniExtra.pickers.spellsuggest)
 
--- mini.completion: popupmenu navigation
-keymap.set("i", "<C-j>", function()
-	return vim.fn.pumvisible() == 1 and "<C-n>" or "<C-j>"
-end, { expr = true })
+-- nvim-cmp --
+local cmp = require("cmp")
 
-keymap.set("i", "<C-k>", function()
-	return vim.fn.pumvisible() == 1 and "<C-p>" or "<C-k>"
-end, { expr = true })
-
--- Confirm only an explicitly selected item, like nvim-cmp's `select = false`
-keymap.set("i", "<CR>", function()
-	local selected = vim.fn.pumvisible() == 1 and vim.fn.complete_info({ "selected" }).selected ~= -1
-	return selected and "<C-y>" or "<CR>"
-end, { expr = true })
+cmp.setup({
+	mapping = cmp.mapping.preset.insert({
+		["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+		["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+		["<C-e>"] = cmp.mapping.abort(), -- close completion window
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
+	}),
+})
 
 -- nvim-lint --
 keymap.set("n", "<leader>l", function()

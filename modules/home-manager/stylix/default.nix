@@ -23,7 +23,7 @@ let
     };
 
   darkScheme = mkScheme {
-    image = "${../../../assets/wallpapers/hello-world.png}";
+    image = "${../../../assets/wallpapers/death.png}";
     base = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     polarity = "dark";
   };

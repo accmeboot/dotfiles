@@ -43,5 +43,3 @@ pick.setup({
 		end,
 	},
 })
-
-require("mini.completion").setup()
