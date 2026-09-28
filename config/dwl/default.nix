@@ -8,6 +8,8 @@ let
         patches = (old.patches or [ ]) ++ import ./patches.nix { inherit pkgs; };
       });
 
+  dwlmsg = import ./dwlmsg { inherit pkgs; };
+
   # Not using programs.dwl: its session script starts dwl-session.target
   # before dwl runs, so WAYLAND_DISPLAY isn't in the systemd environment yet.
   # WAYLAND_DISPLAY only exists once dwl is running, so the environment is
@@ -29,6 +31,7 @@ in
 {
   environment.systemPackages = [
     dwl
+    dwlmsg
   ]
   # used by keybinds in config.nix and scripts/screenshot-*.sh
   ++ (with pkgs; [
