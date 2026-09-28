@@ -8,8 +8,9 @@ in
 
   programs.quickshell.systemd = {
     enable = true;
-    target = "sway-session.target";
+    target = "dwl-session.target";
   };
+  systemd.user.services.quickshell.Unit.PartOf = [ "dwl-session.target" ];
 
   programs.mesa-shell = {
     enable = true;

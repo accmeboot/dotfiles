@@ -59,7 +59,6 @@ in
 
       targets = {
         neovim.enable = false;
-        sway.enable = false;
         starship.enable = false;
         rofi.enable = false;
       };

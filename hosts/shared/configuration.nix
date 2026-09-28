@@ -108,7 +108,7 @@
     obs-studio = {
       enable = true;
     };
-    sway.enable = true;
+    xwayland.enable = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -119,12 +119,65 @@
     xdgOpenUsePortal = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+    config.dwl.default = [
+      "wlr"
+      "gtk"
+    ];
+
     wlr.enable = true;
     wlr.settings.screencast = {
       output_name = "";
       chooser_type = "dmenu";
       chooser_cmd = lib.getExe inputs.mesa-shell.packages.${pkgs.stdenv.hostPlatform.system}.mesa-dmenu;
     };
+  };
+
+  #----------------------------------------------------------------------------#
+  # DWL SESSION                                                                #
+  #----------------------------------------------------------------------------#
+  # dwl itself is built in home-manager (for stylix colors), so the session
+  # launches it from the per-user profile.
+  services.displayManager.sessionPackages =
+    let
+      dwlSession = pkgs.writeShellScript "dwl-session" ''
+        export XDG_CURRENT_DESKTOP=dwl
+        export XDG_SESSION_DESKTOP=dwl
+        export XDG_SESSION_TYPE=wayland
+
+        # WAYLAND_DISPLAY only exists once dwl is running, so the environment
+        # is exported and the target started from dwl's startup command.
+        /etc/profiles/per-user/$USER/bin/dwl -s '
+          ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd \
+            DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+          systemctl --user start dwl-session.target
+        '
+
+        systemctl --user stop dwl-session.target
+      '';
+    in
+    [
+      (
+        (pkgs.writeTextDir "share/wayland-sessions/dwl.desktop" ''
+          [Desktop Entry]
+          Name=dwl
+          Comment=Dynamic window manager for Wayland
+          Exec=${dwlSession}
+          Type=Application
+        '').overrideAttrs
+        { passthru.providedSessions = [ "dwl" ]; }
+      )
+    ];
+
+  # Normally enabled by a compositor's NixOS module; dwl has none.
+  services.graphical-desktop.enable = true;
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
+
+  systemd.user.targets.dwl-session = {
+    description = "dwl compositor session";
+    documentation = [ "man:systemd.special(7)" ];
+    bindsTo = [ "graphical-session.target" ];
+    wants = [ "graphical-session-pre.target" ];
+    after = [ "graphical-session-pre.target" ];
   };
 
   #----------------------------------------------------------------------------#
@@ -190,8 +243,5 @@
 
     LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
     LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
-
-    XDG_CURRENT_DESKTOP = "sway";
-    WLR_RENDERER = "vulkan";
   };
 }

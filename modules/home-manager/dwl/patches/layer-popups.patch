@@ -1,0 +1,128 @@
+diff --git a/dwl.c b/dwl.c
+index b71bee2..28ab6df 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -92,7 +92,7 @@
+ enum { CurNormal, CurPressed, CurMove, CurResize }; /* cursor */
+ enum { XDGShell, LayerShell, X11 }; /* client types */
+ enum { LyrBg, LyrBottom, LyrTile, LyrFloat, LyrTop, LyrFS, LyrUnmanaged, LyrOverlay,
+-	LyrIMPopup, LyrBlock, NUM_LAYERS }; /* scene layers */
++	LyrPopup, LyrIMPopup, LyrBlock, NUM_LAYERS }; /* scene layers */
+ enum { AxisUp, AxisRight, AxisDown, AxisLeft };
+ 
+ typedef union {
+@@ -207,6 +207,12 @@ typedef struct {
+ 	struct wl_listener surface_commit;
+ } LayerSurface;
+ 
++typedef struct {
++	struct wlr_xdg_popup *popup;
++	struct wl_listener reposition;
++	struct wl_listener destroy;
++} Popup;
++
+ typedef struct {
+ 	const char *symbol;
+ 	void (*arrange)(Monitor *);
+@@ -311,6 +317,7 @@ static void destroylock(SessionLock *lock, int unlocked);
+ static void destroylocksurface(struct wl_listener *listener, void *data);
+ static void destroynotify(struct wl_listener *listener, void *data);
+ static void destroypointerconstraint(struct wl_listener *listener, void *data);
++static void destroypopup(struct wl_listener *listener, void *data);
+ static void destroysessionlock(struct wl_listener *listener, void *data);
+ static void destroykeyboardgroup(struct wl_listener *listener, void *data);
+ static Monitor *dirtomon(enum wlr_direction dir);
+@@ -358,6 +365,7 @@ static void powermgrsetmode(struct wl_listener *listener, void *data);
+ static void quit(const Arg *arg);
+ static void rendermon(struct wl_listener *listener, void *data);
+ static void requestdecorationmode(struct wl_listener *listener, void *data);
++static void repositionpopup(struct wl_listener *listener, void *data);
+ static void requeststartdrag(struct wl_listener *listener, void *data);
+ static void requestmonstate(struct wl_listener *listener, void *data);
+ static void resize(Client *c, struct wlr_box geo, int interact);
+@@ -384,6 +392,7 @@ static void togglefullscreen(const Arg *arg);
+ static void togglegaps(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
++static void unconstrainpopup(struct wlr_xdg_popup *popup);
+ static void unlocksession(struct wl_listener *listener, void *data);
+ static void unmaplayersurfacenotify(struct wl_listener *listener, void *data);
+ static void unmapnotify(struct wl_listener *listener, void *data);
+@@ -988,8 +997,6 @@ commitlayersurfacenotify(struct wl_listener *listener, void *data)
+ 		wlr_scene_node_reparent(&l->scene->node, scene_layer);
+ 		wl_list_remove(&l->link);
+ 		wl_list_insert(&l->mon->layers[layer_surface->current.layer], &l->link);
+-		wlr_scene_node_reparent(&l->popups->node, (layer_surface->current.layer
+-				< ZWLR_LAYER_SHELL_V1_LAYER_TOP ? layers[LyrTop] : scene_layer));
+ 	}
+ 
+ 	arrangelayers(l->mon);
+@@ -1034,7 +1041,7 @@ commitpopup(struct wl_listener *listener, void *data)
+ 	struct wlr_xdg_popup *popup = wlr_xdg_popup_try_from_wlr_surface(surface);
+ 	LayerSurface *l = NULL;
+ 	Client *c = NULL;
+-	struct wlr_box box;
++	Popup *p;
+ 	int type = -1;
+ 
+ 	if (!popup->base->initial_commit)
+@@ -1049,12 +1056,47 @@ commitpopup(struct wl_listener *listener, void *data)
+ 		wlr_xdg_popup_destroy(popup);
+ 		return;
+ 	}
++	unconstrainpopup(popup);
++
++	p = ecalloc(1, sizeof(*p));
++	p->popup = popup;
++	LISTEN(&popup->events.reposition, &p->reposition, repositionpopup);
++	LISTEN(&popup->events.destroy, &p->destroy, destroypopup);
++
++	wl_list_remove(&listener->link);
++	free(listener);
++}
++
++void
++destroypopup(struct wl_listener *listener, void *data)
++{
++	Popup *p = wl_container_of(listener, p, destroy);
++	wl_list_remove(&p->reposition.link);
++	wl_list_remove(&p->destroy.link);
++	free(p);
++}
++
++void
++repositionpopup(struct wl_listener *listener, void *data)
++{
++	Popup *p = wl_container_of(listener, p, reposition);
++	unconstrainpopup(p->popup);
++}
++
++void
++unconstrainpopup(struct wlr_xdg_popup *popup)
++{
++	LayerSurface *l = NULL;
++	Client *c = NULL;
++	struct wlr_box box;
++	int type = toplevel_from_wlr_surface(popup->base->surface, &c, &l);
++
++	if (type < 0 || (l && !l->mon) || (c && !c->mon))
++		return;
+ 	box = type == LayerShell ? l->mon->m : c->mon->w;
+ 	box.x -= (type == LayerShell ? l->scene->node.x : c->geom.x);
+ 	box.y -= (type == LayerShell ? l->scene->node.y : c->geom.y);
+ 	wlr_xdg_popup_unconstrain_from_box(popup, &box);
+-	wl_list_remove(&listener->link);
+-	free(listener);
+ }
+ 
+ void
+@@ -1150,8 +1192,7 @@ createlayersurface(struct wl_listener *listener, void *data)
+ 	l->mon = layer_surface->output->data;
+ 	l->scene_layer = wlr_scene_layer_surface_v1_create(scene_layer, layer_surface);
+ 	l->scene = l->scene_layer->tree;
+-	l->popups = surface->data = wlr_scene_tree_create(layer_surface->current.layer
+-			< ZWLR_LAYER_SHELL_V1_LAYER_TOP ? layers[LyrTop] : scene_layer);
++	l->popups = surface->data = wlr_scene_tree_create(layers[LyrPopup]);
+ 	l->scene->node.data = l->popups->node.data = l;
+ 
+ 	wl_list_insert(&l->mon->layers[layer_surface->pending.layer],&l->link);

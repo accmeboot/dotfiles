@@ -41,6 +41,7 @@ let
           "$current_gen"${subdir}/activate
 
           pkill -USR2 ghostty || true
+          pkill -${if polarity == "light" then "USR2" else "USR1"} -x dwl || true
           qs -c mesa-shell ipc call config reload || true
         '';
       }
@@ -133,10 +134,11 @@ in
       };
       systemd.user.services.darkman = {
         Unit = {
-          PartOf = lib.mkForce [ "sway-session.target" ];
-          BindsTo = lib.mkForce [ "sway-session.target" ];
+          PartOf = lib.mkForce [ "dwl-session.target" ];
+          BindsTo = lib.mkForce [ "dwl-session.target" ];
+          After = [ "dwl-session.target" ];
         };
-        Install.WantedBy = [ "sway-session.target" ];
+        Install.WantedBy = [ "dwl-session.target" ];
       };
     })
   ];
