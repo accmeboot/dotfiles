@@ -1,0 +1,34 @@
+Fix exclusive_focus never being released when a layer surface drops exclusive
+keyboard interactivity without unmapping (e.g. a bar that grabs the keyboard
+while a panel is open). commitlayersurfacenotify() compared the
+wlr_layer_surface_v1 against exclusive_focus, which holds the LayerSurface, so
+the check never matched: focusclient() then stopped painting focuscolor and
+clearing urgent borders for good. Also hands keyboard focus back to the top
+client when the surface goes to keyboard_interactive = none.
+
+Upstream main dropped exclusive_focus in a rewrite; remove this patch once dwl
+is bumped past 0.9. Applies on top of the other patches in patches.nix.
+
+diff --git a/dwl.c b/dwl.c
+index e571b45..621c1af 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -972,10 +972,16 @@ commitlayersurfacenotify(struct wl_listener *listener, void *data)
+ 		return;
+ 	}
+ 
+-	if (layer_surface == exclusive_focus
++	if (l == exclusive_focus
+ 			&& layer_surface->current.keyboard_interactive !=
+-				ZWLR_LAYER_SURFACE_V1_KEYBOARD_INTERACTIVITY_EXCLUSIVE)
++				ZWLR_LAYER_SURFACE_V1_KEYBOARD_INTERACTIVITY_EXCLUSIVE) {
+ 		exclusive_focus = NULL;
++		/* A surface that dropped keyboard interactivity must not keep focus */
++		if (layer_surface->current.keyboard_interactive ==
++					ZWLR_LAYER_SURFACE_V1_KEYBOARD_INTERACTIVITY_NONE
++				&& layer_surface->surface == seat->keyboard_state.focused_surface)
++			focusclient(focustop(selmon), 1);
++	}
+ 
+ 	if (layer_surface->current.committed == 0 && l->mapped == layer_surface->surface->mapped)
+ 		return;

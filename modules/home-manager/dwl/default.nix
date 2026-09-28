@@ -1,11 +1,8 @@
 { pkgs, lib, config, ... }:
 let
-  dark = config.lib.stylix.colors;
-  light = config.specialisation.light.configuration.lib.stylix.colors or config.lib.stylix.colors;
-
   dwl =
     (pkgs.dwl.override {
-      configH = import ./config.nix { inherit dark light; };
+      configH = import ./config.nix;
     }).overrideAttrs
       (old: {
         patches = (old.patches or [ ]) ++ import ./patches.nix { inherit pkgs; };

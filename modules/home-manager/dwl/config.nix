@@ -1,9 +1,9 @@
-{ dark, light }:
 ''
-  /* Taken from https://github.com/djpohly/dwl/issues/466 */
-  #define COLOR(hex)    { ((hex >> 24) & 0xFF) / 255.0f, \
-                          ((hex >> 16) & 0xFF) / 255.0f, \
-                          ((hex >> 8) & 0xFF) / 255.0f, \
+  /* Taken from https://github.com/djpohly/dwl/issues/466, premultiplied by
+   * alpha since wlroots blends rects as premultiplied (opaque colors are unchanged) */
+  #define COLOR(hex)    { ((hex >> 24) & 0xFF) / 255.0f * (hex & 0xFF) / 255.0f, \
+                          ((hex >> 16) & 0xFF) / 255.0f * (hex & 0xFF) / 255.0f, \
+                          ((hex >> 8) & 0xFF) / 255.0f * (hex & 0xFF) / 255.0f, \
                           (hex & 0xFF) / 255.0f }
   /* appearance */
   static const int sloppyfocus               = 1;  /* focus follows mouse */
@@ -14,11 +14,11 @@
   static int gaps                            = 1;  /* 1 means gaps between windows are added */
   static const unsigned int gappx            = 8;  /* gap pixel between windows */
   static const unsigned int snap             = 32; /* snap pixel */
-  /* { root, border, focus, urgent }; SIGUSR1 selects dark, SIGUSR2 light (patches/palette.patch) */
-  static const float palettes[][4][4]        = {
-  	{ COLOR(0x${dark.base00}ff), COLOR(0x${dark.base02}ff), COLOR(0x${dark.base03}ff), COLOR(0x${dark.base08}ff) },
-  	{ COLOR(0x${light.base00}ff), COLOR(0x${light.base02}ff), COLOR(0x${light.base03}ff), COLOR(0x${light.base08}ff) },
-  };
+  /* polarity-neutral: same gray for both themes, focus only differs in alpha */
+  static const float rootcolor[]             = COLOR(0x222222ff);
+  static const float bordercolor[]           = COLOR(0x80808060);
+  static const float focuscolor[]            = COLOR(0x808080d0);
+  static const float urgentcolor[]           = COLOR(0xd05050ff);
   /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
   static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 

@@ -41,7 +41,6 @@ let
           "$current_gen"${subdir}/activate
 
           pkill -USR2 ghostty || true
-          pkill -${if polarity == "light" then "USR2" else "USR1"} -x dwl || true
           qs -c mesa-shell ipc call config reload || true
         '';
       }
