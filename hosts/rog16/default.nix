@@ -1,7 +1,11 @@
 { pkgs, ... }: {
   imports = [
-    ../shared/configuration.nix
-    ../shared/packages.nix
+    ../../config/system.nix
+    ../../config/dev.nix
+    ../../config/gaming.nix
+    ../../config/desktop.nix
+    ../../config/solaar.nix
+    ../../config/dwl
 
     ./hardware-configuration.nix
   ];

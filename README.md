@@ -5,7 +5,7 @@ This repository contains dotfiles managed declaratively with [Nix](https://nixos
 - NixOS and macOS system settings
 - Home Manager user environment
 - Neovim (with plugins and custom Lua config)
-- And more (see the `modules/home-manager` directory)
+- And more (see the `home-manager` and `config` directories)
 
 Configuration is organized by system and tool for easy navigation and setup.
 

@@ -53,8 +53,8 @@
                 users.accme = {
                   imports = [
                     ./hosts/7950x3d-xtx/home.nix
-                    ./modules/home-manager/profiles/base.nix
-                    ./modules/home-manager/profiles/linux-desktop.nix
+                    ./home-manager/profiles/base.nix
+                    ./home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
@@ -79,8 +79,8 @@
                 users.accme = {
                   imports = [
                     ./hosts/rog16/home.nix
-                    ./modules/home-manager/profiles/base.nix
-                    ./modules/home-manager/profiles/linux-desktop.nix
+                    ./home-manager/profiles/base.nix
+                    ./home-manager/profiles/linux-desktop.nix
                   ];
                 };
               };
@@ -103,7 +103,8 @@
                 users.Mikhail_Vialov = {
                   imports = [
                     ./hosts/mbp-m1/home.nix
-                    ./modules/home-manager/profiles/base.nix
+                    ./home-manager/profiles/base.nix
+                    ./home-manager/profiles/macos.nix
                   ];
                 };
               };

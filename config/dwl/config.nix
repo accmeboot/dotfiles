@@ -201,8 +201,8 @@
   	{ MODKEY, XKB_KEY_bracketleft, spawn, SHCMD("qs -c mesa-shell ipc call notifications dismissLast") },
 
   	/* screenshots */
-  	{ 0,                  XKB_KEY_Print, spawn, SHCMD("${../../../scripts/screenshot-full.sh}") },
-  	{ WLR_MODIFIER_SHIFT, XKB_KEY_Print, spawn, SHCMD("${../../../scripts/screenshot-area.sh}") },
+  	{ 0,                  XKB_KEY_Print, spawn, SHCMD("${../../scripts/screenshot-full.sh}") },
+  	{ WLR_MODIFIER_SHIFT, XKB_KEY_Print, spawn, SHCMD("${../../scripts/screenshot-area.sh}") },
 
   	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
   	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_BackSpace, quit, {0} },

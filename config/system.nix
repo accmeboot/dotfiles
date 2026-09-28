@@ -5,8 +5,6 @@
   ...
 }:
 {
-  imports = [ ./packages.nix ];
-
   #----------------------------------------------------------------------------#
   # NIX SETTINGS                                                               #
   #----------------------------------------------------------------------------#
@@ -85,29 +83,7 @@
   # PROGRAMS                                                                   #
   #----------------------------------------------------------------------------#
   programs = {
-    nix-ld = {
-      enable = true;
-    };
-    zsh.enable = true;
-    starship.enable = true;
-    gamescope = {
-      enable = true;
-      package = pkgs.gamescope.overrideAttrs (_: {
-        NIX_CFLAGS_COMPILE = [ "-fno-fast-math" ];
-      });
-    };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-      gamescopeSession.enable = true;
-    };
-    gamemode.enable = true;
     dconf.enable = true;
-    obs-studio = {
-      enable = true;
-    };
     xwayland.enable = true;
   };
 
@@ -119,65 +95,12 @@
     xdgOpenUsePortal = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-    config.dwl.default = [
-      "wlr"
-      "gtk"
-    ];
-
     wlr.enable = true;
     wlr.settings.screencast = {
       output_name = "";
       chooser_type = "dmenu";
       chooser_cmd = lib.getExe inputs.mesa-shell.packages.${pkgs.stdenv.hostPlatform.system}.mesa-dmenu;
     };
-  };
-
-  #----------------------------------------------------------------------------#
-  # DWL SESSION                                                                #
-  #----------------------------------------------------------------------------#
-  # dwl itself is built in home-manager (for stylix colors), so the session
-  # launches it from the per-user profile.
-  services.displayManager.sessionPackages =
-    let
-      dwlSession = pkgs.writeShellScript "dwl-session" ''
-        export XDG_CURRENT_DESKTOP=dwl
-        export XDG_SESSION_DESKTOP=dwl
-        export XDG_SESSION_TYPE=wayland
-
-        # WAYLAND_DISPLAY only exists once dwl is running, so the environment
-        # is exported and the target started from dwl's startup command.
-        /etc/profiles/per-user/$USER/bin/dwl -s '
-          ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd \
-            DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
-          systemctl --user start dwl-session.target
-        '
-
-        systemctl --user stop dwl-session.target
-      '';
-    in
-    [
-      (
-        (pkgs.writeTextDir "share/wayland-sessions/dwl.desktop" ''
-          [Desktop Entry]
-          Name=dwl
-          Comment=Dynamic window manager for Wayland
-          Exec=${dwlSession}
-          Type=Application
-        '').overrideAttrs
-        { passthru.providedSessions = [ "dwl" ]; }
-      )
-    ];
-
-  # Normally enabled by a compositor's NixOS module; dwl has none.
-  services.graphical-desktop.enable = true;
-  services.xserver.desktopManager.runXdgAutostartIfNone = true;
-
-  systemd.user.targets.dwl-session = {
-    description = "dwl compositor session";
-    documentation = [ "man:systemd.special(7)" ];
-    bindsTo = [ "graphical-session.target" ];
-    wants = [ "graphical-session-pre.target" ];
-    after = [ "graphical-session-pre.target" ];
   };
 
   #----------------------------------------------------------------------------#
@@ -223,25 +146,19 @@
   };
 
   #----------------------------------------------------------------------------#
-  # USERS                                                                #
+  # PACKAGES                                                                   #
   #----------------------------------------------------------------------------#
-
-  users.defaultUserShell = pkgs.zsh;
-
-  #----------------------------------------------------------------------------#
-  # ENVIRONMENT                                                                #
-  #----------------------------------------------------------------------------#
-
-  environment.variables = {
-    EDITOR = "nvim";
-  };
-
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-    PROTON_ENABLE_WAYLAND = 1;
-    PROTON_DXVK_LOWLATENCY = 1;
-
-    LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
-    LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
-  };
+  environment.systemPackages = with pkgs; [
+    # Terminal Utilities
+    fzf # command-line fuzzy finder
+    bottom # resource monitor
+    fd # fast alternative to 'find'
+    ripgrep # fast alternative to grep
+    jq # command-line JSON processor
+    unzip # zip file extraction utility
+    pciutils # get hardware info
+    libnotify # notification library
+    gowall # image manipulation
+    lm_sensors # hardware info
+  ];
 }

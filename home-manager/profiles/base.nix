@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ../vars.nix
     ../stylix/default.nix
     ../nvim/default.nix
     ../yazi/default.nix
