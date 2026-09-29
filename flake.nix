@@ -20,7 +20,7 @@
     };
 
     mesa-shell = {
-      url = "github:accmeboot/mesa-shell/feat/dwl";
+      url = "github:accmeboot/mesa-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
