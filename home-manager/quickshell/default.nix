@@ -39,7 +39,7 @@ in
         surface = "#${dark.base01}";
         on_surface = "#${dark.base02}";
         foreground = "#${dark.base05}";
-        highlight = "#${dark.base05}";
+        highlight = "#${dark.base0D}";
         attention = "#${dark.base0A}";
         ok = "#${dark.base0B}";
         critical = "#${dark.base08}";
