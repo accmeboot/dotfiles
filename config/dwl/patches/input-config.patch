@@ -1,0 +1,77 @@
+Separate mouse/touchpad libinput settings, touchpad scroll factor and
+disabling pointer devices by name. Applies on top of ipc.patch + gaps.patch.
+
+diff --git a/dwl.c b/dwl.c
+index f93ab78..0b45393 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -685,6 +685,7 @@ axisnotify(struct wl_listener *listener, void *data)
+ 	unsigned int adir;
+ 	struct wlr_keyboard *keyboard;
+ 	uint32_t mods;
++	double factor;
+ 
+ 	wlr_idle_notifier_v1_notify_activity(idle_notifier, seat);
+ 
+@@ -702,9 +703,11 @@ axisnotify(struct wl_listener *listener, void *data)
+ 	}
+ 
+ 	/* Notify the client with pointer focus of the axis event. */
++	factor = event->source == WL_POINTER_AXIS_SOURCE_FINGER ? scroll_factor : 1.0;
+ 	wlr_seat_pointer_notify_axis(seat,
+-			event->time_msec, event->orientation, event->delta,
+-			event->delta_discrete, event->source, event->relative_direction);
++			event->time_msec, event->orientation, factor * event->delta,
++			(int32_t)lround(factor * event->delta_discrete), event->source,
++			event->relative_direction);
+ }
+ 
+ void
+@@ -1272,8 +1275,11 @@ void
+ createpointer(struct wlr_pointer *pointer)
+ {
+ 	struct libinput_device *device;
++	const char *const *d;
++	int istouchpad;
+ 	if (wlr_input_device_is_libinput(&pointer->base)
+ 			&& (device = wlr_libinput_get_device_handle(&pointer->base))) {
++		istouchpad = libinput_device_config_tap_get_finger_count(device) > 0;
+ 
+ 		if (libinput_device_config_tap_get_finger_count(device)) {
+ 			libinput_device_config_tap_set_enabled(device, tap_to_click);
+@@ -1283,7 +1289,8 @@ createpointer(struct wlr_pointer *pointer)
+ 		}
+ 
+ 		if (libinput_device_config_scroll_has_natural_scroll(device))
+-			libinput_device_config_scroll_set_natural_scroll_enabled(device, natural_scrolling);
++			libinput_device_config_scroll_set_natural_scroll_enabled(device,
++					istouchpad ? natural_scrolling : mouse_natural_scrolling);
+ 
+ 		if (libinput_device_config_dwt_is_available(device))
+ 			libinput_device_config_dwt_set_enabled(device, disable_while_typing);
+@@ -1300,12 +1307,22 @@ createpointer(struct wlr_pointer *pointer)
+ 		if (libinput_device_config_click_get_methods(device) != LIBINPUT_CONFIG_CLICK_METHOD_NONE)
+ 			libinput_device_config_click_set_method(device, click_method);
+ 
+-		if (libinput_device_config_send_events_get_modes(device))
++		if (libinput_device_config_send_events_get_modes(device)) {
+ 			libinput_device_config_send_events_set_mode(device, send_events_mode);
++			for (d = disabled_devices; d < END(disabled_devices); d++) {
++				if (!strcmp(libinput_device_get_name(device), *d)) {
++					libinput_device_config_send_events_set_mode(device,
++							LIBINPUT_CONFIG_SEND_EVENTS_DISABLED);
++					break;
++				}
++			}
++		}
+ 
+ 		if (libinput_device_config_accel_is_available(device)) {
+-			libinput_device_config_accel_set_profile(device, accel_profile);
+-			libinput_device_config_accel_set_speed(device, accel_speed);
++			libinput_device_config_accel_set_profile(device,
++					istouchpad ? accel_profile : mouse_accel_profile);
++			libinput_device_config_accel_set_speed(device,
++					istouchpad ? accel_speed : mouse_accel_speed);
+ 		}
+ 	}
+ 

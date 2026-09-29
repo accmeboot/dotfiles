@@ -4,11 +4,4 @@
     username = "Mikhail_Vialov";
     homeDirectory = /Users/Mikhail_Vialov;
   };
-
-  programs.zsh = {
-    enableNvm = false;
-    enableDirenv = false;
-  };
-
-  isMacos = true;
 }

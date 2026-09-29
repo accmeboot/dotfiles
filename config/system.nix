@@ -5,8 +5,6 @@
   ...
 }:
 {
-  imports = [ ./packages.nix ];
-
   #----------------------------------------------------------------------------#
   # NIX SETTINGS                                                               #
   #----------------------------------------------------------------------------#
@@ -85,30 +83,8 @@
   # PROGRAMS                                                                   #
   #----------------------------------------------------------------------------#
   programs = {
-    nix-ld = {
-      enable = true;
-    };
-    zsh.enable = true;
-    starship.enable = true;
-    gamescope = {
-      enable = true;
-      package = pkgs.gamescope.overrideAttrs (_: {
-        NIX_CFLAGS_COMPILE = [ "-fno-fast-math" ];
-      });
-    };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-      gamescopeSession.enable = true;
-    };
-    gamemode.enable = true;
     dconf.enable = true;
-    obs-studio = {
-      enable = true;
-    };
-    sway.enable = true;
+    xwayland.enable = true;
   };
 
   #----------------------------------------------------------------------------#
@@ -170,28 +146,19 @@
   };
 
   #----------------------------------------------------------------------------#
-  # USERS                                                                #
+  # PACKAGES                                                                   #
   #----------------------------------------------------------------------------#
-
-  users.defaultUserShell = pkgs.zsh;
-
-  #----------------------------------------------------------------------------#
-  # ENVIRONMENT                                                                #
-  #----------------------------------------------------------------------------#
-
-  environment.variables = {
-    EDITOR = "nvim";
-  };
-
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-    PROTON_ENABLE_WAYLAND = 1;
-    PROTON_DXVK_LOWLATENCY = 1;
-
-    LUA_PATH = "${pkgs.luarocks}/share/lua/5.1/?.lua;${pkgs.luarocks}/share/lua/5.1/?/init.lua;;";
-    LUA_CPATH = "${pkgs.luarocks}/lib/lua/5.1/?.so;;";
-
-    XDG_CURRENT_DESKTOP = "sway";
-    WLR_RENDERER = "vulkan";
-  };
+  environment.systemPackages = with pkgs; [
+    # Terminal Utilities
+    fzf # command-line fuzzy finder
+    bottom # resource monitor
+    fd # fast alternative to 'find'
+    ripgrep # fast alternative to grep
+    jq # command-line JSON processor
+    unzip # zip file extraction utility
+    pciutils # get hardware info
+    libnotify # notification library
+    gowall # image manipulation
+    lm_sensors # hardware info
+  ];
 }

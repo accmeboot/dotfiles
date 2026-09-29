@@ -2,7 +2,7 @@
 let
   source = lib.removePrefix ''
     #!/usr/bin/env python3
-  '' (builtins.readFile ../../../scripts/retint.py);
+  '' (builtins.readFile ../../scripts/retint.py);
 
   package = pkgs.writers.writePython3Bin "retint" {
     libraries = with pkgs.python3Packages; [

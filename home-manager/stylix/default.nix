@@ -23,12 +23,12 @@ let
     };
 
   darkScheme = mkScheme {
-    image = "${../../../assets/wallpapers/hello-world.png}";
+    image = "${../../assets/wallpapers/forest.jpg}";
     base = "${pkgs.base16-schemes}/share/themes/default-dark.yaml";
     polarity = "dark";
   };
   lightScheme = mkScheme {
-    image = "${../../../assets/wallpapers/paper.png}";
+    image = "${../../assets/wallpapers/paper.png}";
     base = "${pkgs.base16-schemes}/share/themes/default-light.yaml";
     polarity = "light";
   };
@@ -39,14 +39,6 @@ in
     inputs.stylix.homeModules.stylix
     ./polarity-toggle.nix
   ];
-
-  options = {
-    isMacos = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Whether running on macOS to disable Linux-specific theming";
-    };
-  };
 
   config = {
 
@@ -59,7 +51,6 @@ in
 
       targets = {
         neovim.enable = false;
-        sway.enable = false;
         starship.enable = false;
         rofi.enable = false;
       };

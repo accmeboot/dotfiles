@@ -187,26 +187,27 @@
         ]
       },
       "locked": {
-        "lastModified": 1790276796,
-        "narHash": "sha256-uDaxndUxw+v20AP5QjpVATY7ctpNwI98Dy01024eo0w=",
+        "lastModified": 1790631982,
+        "narHash": "sha256-MGlkNHr9XF64JmjcMGwiM4b6GF7+9r8uo64Qjw/9/DQ=",
         "owner": "accmeboot",
         "repo": "mesa-shell",
-        "rev": "b9db2b7175ca4569886f6ec8b4cdb28e4bc312e0",
+        "rev": "a2f3d94941b42992c2e3baf0167374ac4fdf71b6",
         "type": "github"
       },
       "original": {
         "owner": "accmeboot",
+        "ref": "feat/dwl",
         "repo": "mesa-shell",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1790480522,
-        "narHash": "sha256-fXrm/q9klVBtVq5rGQ+XpI/dokPuSB15ZK2CZvWxXOk=",
+        "lastModified": 1790570722,
+        "narHash": "sha256-Avcz96Q+8OkfUIUXipBBVsQn19L622BtKP7mk6M+uls=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8d5d270900d3fc75655ea2d9d248b234f6631439",
+        "rev": "419fe0f449b3fbe3bdd53d9840288db4509ec32e",
         "type": "github"
       },
       "original": {

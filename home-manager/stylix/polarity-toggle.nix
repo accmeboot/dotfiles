@@ -133,10 +133,11 @@ in
       };
       systemd.user.services.darkman = {
         Unit = {
-          PartOf = lib.mkForce [ "sway-session.target" ];
-          BindsTo = lib.mkForce [ "sway-session.target" ];
+          PartOf = lib.mkForce [ "dwl-session.target" ];
+          BindsTo = lib.mkForce [ "dwl-session.target" ];
+          After = [ "dwl-session.target" ];
         };
-        Install.WantedBy = [ "sway-session.target" ];
+        Install.WantedBy = [ "dwl-session.target" ];
       };
     })
   ];
