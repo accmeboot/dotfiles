@@ -197,7 +197,7 @@
   	/* mesa-shell panels */
   	{ MODKEY, XKB_KEY_a, spawn, SHCMD("qs -c mesa-shell ipc call panel toggle audio") },
   	{ MODKEY, XKB_KEY_s, spawn, SHCMD("qs -c mesa-shell ipc call panel toggle tray") },
-  	{ MODKEY, XKB_KEY_q, spawn, SHCMD("qs -c mesa-shell ipc call panel toggle power") },
+  	{ MODKEY, XKB_KEY_q, spawn, SHCMD("qs -c mesa-shell ipc call panel toggle control") },
   	{ MODKEY, XKB_KEY_bracketleft, spawn, SHCMD("qs -c mesa-shell ipc call notifications dismissLast") },
 
   	/* screenshots */
